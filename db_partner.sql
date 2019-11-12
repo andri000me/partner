@@ -1,18 +1,17 @@
-﻿# Host: localhost  (Version 5.5.5-10.1.36-MariaDB)
-# Date: 2019-11-11 16:20:44
-# Generator: MySQL-Front 6.0  (Build 2.20)
+﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
+# Date: 2019-11-12 21:24:59
+# Generator: MySQL-Front 6.1  (Build 1.26)
 
 
 #
 # Structure for table "partner"
 #
 
-DROP TABLE IF EXISTS `partner`;
 CREATE TABLE `partner` (
   `Id_partner` int(11) NOT NULL AUTO_INCREMENT,
   `nama_usaha` varchar(255) DEFAULT NULL,
   `bidang_usaha` varchar(255) DEFAULT NULL,
-  `alamat` text,
+  `alamat` text DEFAULT NULL,
   `telepon` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
   `bentuk_usaha` varchar(255) DEFAULT NULL,

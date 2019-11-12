@@ -12,16 +12,20 @@ class Home_model extends CI_Model
 
     public function update($table, $data, $where)
     {
-        //
+        $this->db->update($table, $data, $where);
     }
 
     public function delete($table, $where)
     {
-        //
+        $this->db->delete($table, $where);
     }
 
-    public function get($table)
+    public function get($table, $id = NULL)
     {
-        //
+        $this->db->from($table);
+        if ($id != null) {
+            $this->db->where($id);
+        }
+        return $this->db->get();
     }
 }
