@@ -1,29 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
-        <meta content="Admin Dashboard" name="description" />
-        <meta content="Themesbrand" name="author" />
-        <link rel="shortcut icon" href="<?= base_url('template/assets/images/favicon.ico') ?>">
 
-        <link rel="stylesheet" href="../plugins/morris/morris.css">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+    <meta content="Admin Dashboard" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="<?= base_url('template/assets/images/favicon.ico') ?>">
 
-        <link href="<?= base_url('template/assets/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css">
-        <link href="<?= base_url('template/assets/css/metismenu.min.css') ?>" rel="stylesheet" type="text/css">
-        <link href="<?= base_url('template/assets/css/icons.css') ?>" rel="stylesheet" type="text/css">
-        <link href="<?= base_url('template/assets/css/style.css') ?>" rel="stylesheet" type="text/css">
-    </head>
+    <link rel="stylesheet" href="../plugins/morris/morris.css">
 
-    <body>
+    <link href="<?= base_url('template/assets/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('template/assets/css/metismenu.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('template/assets/css/icons.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('template/assets/css/style.css') ?>" rel="stylesheet" type="text/css">
+</head>
 
-        <!-- Begin page -->
-        <div class="wrapper-page">
+<body>
 
-            <div class="card">
+    <!-- Begin page -->
+    <div class="wrapper-page">
+
+        <div class="card">
+            <form action="<?= base_url('Auth/process') ?>" method="post">
                 <div class="card-body">
 
                     <h3 class="text-center m-0">
@@ -54,34 +55,36 @@
 
                             <di v class="form-group m-t-10 mb-0 row">
                                 <div class="col-12 m-t-20">
-                                    <a href="pages-recoverpw.html" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a>
+                                    <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a>
                                 </div>
                             </di>
                         </form>
                     </div>
 
                 </div>
-            </div>
-
+            </form>
         </div>
-        
 
-        <!-- jQuery  -->
-        <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
-        <script src="<?= base_url('template/assets/js/bootstrap.bundle.min.js') ?>"></script>
-        <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
-        <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
-        <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
+    </div>
 
-        <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
-        <!--Morris Chart-->
-        <script src="../plugins/morris/morris.min.js"></script>
-        <script src="../plugins/raphael/raphael-min.js"></script>
-        <script src="<?= base_url('template/assets/pages/dashboard.js') ?>"></script>
+    <!-- jQuery  -->
+    <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
 
-        <!-- App js -->
-        <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
+    <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
-    </body>
+    <!--Morris Chart-->
+    <script src="../plugins/morris/morris.min.js"></script>
+    <script src="../plugins/raphael/raphael-min.js"></script>
+    <script src="<?= base_url('template/assets/pages/dashboard.js') ?>"></script>
+
+    <!-- App js -->
+    <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
+
+</body>
+
 </html>

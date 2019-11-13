@@ -2,7 +2,7 @@
     <center>
       <h1>Form Inputan Partner</h1>
     </center>
-    <form action="<?= base_url('Home/save') ?>" method="post">
+    <form action="<?= base_url('Home/save_stage1') ?>" method="post">
       <div class="form-group">
         <label>Nama Usaha</label>
         <input type="text" class="form-control" id="nama_usaha" name="nama_usaha" placeholder="Nama Usaha">
@@ -24,6 +24,6 @@
         <input type="email" class="form-control" id="email" name="email" placeholder="Email">
       </div>
       <button class="btn btn-primary" type="submit">Save</button>
-      <button class="btn btn-primary" type="submit">Continue</button> 
+      <button class="btn btn-primary" type="submit">Continue</button>
     </form>
   </div>
