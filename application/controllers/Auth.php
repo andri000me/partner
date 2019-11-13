@@ -6,38 +6,28 @@ class Auth extends CI_Controller
 		parent::__construct();
 
 		$this->load->library('form_validation');
+		$this->load->model('user_model');
 	}
 
 	// Halaman Login
 	public function index()
 	{
-		check_already_login();
-		$this->load->view('login-2');
-	}
-
-	//Halaman List para User
-	public function list_user()
-	{
-		$data = [
-			'list_user' => $this->user_m->get_cabang(),
-			'list_cabang' => $this->data_m->get('tb_cabang')
-		];
-		$this->template->load('template2', 'user/list_user', $data);
+		$this->load->view('login');
 	}
 
 	//Halaman reset password
 	public function lupa_password()
 	{
-		$this->load->model('user_m');
 		$post = $this->input->post(null, TRUE);
 
 
 		if (isset($_POST['reset_password'])) {
 
 			$email = $post['email'];
-			$data = $this->user_m->get($email);
+			$data = $this->user_model->get($email);
 
 			if ($data->num_rows() > 0) {
+
 				function generateMixedPassword($length = 8)
 				{
 					$base = 'abcdefghijklmnopqrstuvwxyz';
@@ -55,10 +45,11 @@ class Auth extends CI_Controller
 
 					return implode('', $r);
 				}
+
 				$generate = generateMixedPassword();
 				$random_password = $generate;
 				// Script untuk ubah password random
-				$this->user_m->update(['password' => md5($random_password)], ['email' => $email]);
+				$this->user_model->update(['password' => md5($random_password)], ['email' => $email]);
 
 				$akun = $data->row();
 				// Konfigurasi email
@@ -108,12 +99,10 @@ class Auth extends CI_Controller
 	{
 		$post = $this->input->post(null, TRUE);
 		if (isset($post['login'])) {
-			$this->load->model('user_m');
-
 			$nik = $post['username'];
 			$password = md5($post['password']);
 
-			$query = $this->user_m->login($nik, $password);
+			$query = $this->user_model->login($nik, $password);
 
 			//cek login
 			if ($query->num_rows() > 0) {

@@ -16,6 +16,8 @@
     <link href="<?= base_url('template/assets/css/metismenu.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?= base_url('template/assets/css/icons.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?= base_url('template/assets/css/style.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('template/assets/css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -53,6 +55,7 @@
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
@@ -63,7 +66,11 @@
 
     <!-- App js -->
     <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
-
+    <script>
+    $(document).ready( function () {
+    $('#myTable').DataTable();
+    } );
+    </script>
 </body>
 
 </html>

@@ -15,6 +15,11 @@ class Home extends CI_Controller
         $this->template->load('template/index', 'form');
     }
 
+    public function mapping()
+    {
+        $this->template->load('template/index', 'mapping');
+    }
+
     public function save()
     {
         $post = $this->input->post(NULL, TRUE);
