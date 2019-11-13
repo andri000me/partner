@@ -19,8 +19,7 @@ class Auth extends CI_Controller
 	public function lupa_password()
 	{
 		$post = $this->input->post(null, TRUE);
-
-
+		
 		if (isset($_POST['reset_password'])) {
 
 			$email = $post['email'];
@@ -90,7 +89,7 @@ class Auth extends CI_Controller
 				echo "akun tidak ditemukan";
 			}
 		} else {
-			$this->load->view('lupa_password');
+			$this->load->view('recoverpw');
 		}
 	}
 
@@ -98,33 +97,32 @@ class Auth extends CI_Controller
 	public function process()
 	{
 		$post = $this->input->post(null, TRUE);
-		if (isset($post['login'])) {
-			$nik = $post['username'];
-			$password = md5($post['password']);
+		$nik = $post['nik'];
+		$password = md5($post['password']);
 
-			$query = $this->user_model->login($nik, $password);
 
-			//cek login
-			if ($query->num_rows() > 0) {
-				$row = $query->row();
-				$params = [
-					'userid' => $row->nik,
-					'level' => $row->level,
-					'id_cabang' => $row->id_cabang
-				];
-				$this->session->set_userdata($params);
-				echo "<script>window.location='" . site_url("status") . "'</script>";
-			} else {
-				echo "<script>alert('Akun tidak cocok/belum diaktivasi'); window.location='" . site_url("auth") . "'</script>";
-			}
+		$query = $this->user_model->login($nik, $password);
+
+		//cek login
+		if ($query->num_rows() > 0) {
+			$row = $query->row();
+			$params = [
+				'nik' => $row->nik
+			];
+
+			//Menyimpan Session
+			$this->session->set_userdata($params);
+			echo "<script>window.location='" . site_url("Home") . "'</script>";
+		} else {
+			echo "<script>alert('Akun tidak cocok/belum diaktivasi'); window.location='" . site_url("Auth") . "'</script>";
 		}
 	}
 
 	// Proses Logout
 	public function logout()
 	{
-		$params = ['userid', 'level', 'id_cabang'];
+		$params = ['nik'];
 		$this->session->unset_userdata($params);
-		redirect('auth');
+		redirect('Auth');
 	}
 }

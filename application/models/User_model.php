@@ -5,13 +5,10 @@ class User_model extends CI_Model
 {
 
     // Get User
-    public function get($id = null)
+    public function get($id)
     {
-        $this->db->from('user');
-        if ($id != null) {
-            $this->db->join('tb_cabang', 'user.id_cabang = tb_cabang.id_cabang', 'inner');
-            $this->db->where("nik = '$id' or email = '$id'");
-        }
+        $this->db->from('users');
+        $this->db->where("nik = '$id' or email = '$id'");
         $query = $this->db->get();
 
         return $query;
@@ -26,7 +23,7 @@ class User_model extends CI_Model
     // Update User
     public function update($data, $where)
     {
-        $this->db->update('user', $data, $where);
+        $this->db->update('users', $data, $where);
     }
 
     // Delete User
@@ -39,9 +36,9 @@ class User_model extends CI_Model
     //Method Proses Login
     public function login($username, $password)
     {
+        $this->db->from('users');
         $this->db->where("(email = '$username' OR nik = '$username') AND password =  '$password'");
-        $this->db->where('is_active', 1);
-        $query = $this->db->get('user');
+        $query = $this->db->get();
 
         return $query;
     }
