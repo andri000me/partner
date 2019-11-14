@@ -1,6 +1,38 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-11-13 16:02:17
+# Date: 2019-11-14 10:38:36
 # Generator: MySQL-Front 6.1  (Build 1.26)
+
+
+#
+# Structure for table "agents"
+#
+
+CREATE TABLE `agents` (
+  `id_agents` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_agents`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "agents"
+#
+
+
+#
+# Structure for table "merchants"
+#
+
+CREATE TABLE `merchants` (
+  `id_merchant` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_merchant`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "merchants"
+#
 
 
 #
@@ -31,7 +63,7 @@ CREATE TABLE `partners` (
   PRIMARY KEY (`id_partner`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `telepon` (`telepon`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "partners"
