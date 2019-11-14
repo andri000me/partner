@@ -13,14 +13,6 @@
 <nav class="navbar-custom">
 
     <ul class="navbar-right d-flex list-inline float-right mb-0">
-        <li class="dropdown notification-list d-none d-sm-block">
-            <form role="search" class="app-search">
-                <div class="form-group mb-0">
-                    <input type="text" class="form-control" placeholder="Search..">
-                    <button type="submit"><i class="fa fa-search"></i></button>
-                </div>
-            </form>
-        </li>
 
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
@@ -73,9 +65,6 @@
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
                     <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-wallet m-r-5"></i> My Wallet</a>
-                    <a class="dropdown-item d-block" href="#"><span class="badge badge-success float-right">11</span><i class="mdi mdi-settings m-r-5"></i> Settings</a>
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-lock-open-outline m-r-5"></i> Lock screen</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i class="mdi mdi-power text-danger"></i> Logout</a>
                 </div>
@@ -89,21 +78,6 @@
             <button class="button-menu-mobile open-left waves-effect">
                 <i class="mdi mdi-menu"></i>
             </button>
-        </li>
-        <li class="d-none d-sm-block">
-            <div class="dropdown pt-3 d-inline-block">
-                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Create
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-            </div>
         </li>
     </ul>
 

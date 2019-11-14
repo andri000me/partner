@@ -1,21 +1,21 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Partner extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('home_model');
+        $this->load->model('partner_model');
     }
 
     public function index()
     {
         $data = [
-            'data' => $this->home_model->get('partners')
+            'data' => $this->partner_model->get('partners')
         ];
-        $this->template->load('template/index', 'mapping', $data);
+        $this->template->load('template/index', 'partner', $data);
     }
 
     public function mapping()
@@ -47,8 +47,8 @@ class Home extends CI_Controller
             // 'punya_pinjaman'        => $post['punya_pinjaman']
         ];
 
-        $id = $this->home_model->create('partners', $data);
+        $id = $this->partner_model->create('partners', $data);
         $this->session->set_flashdata("berhasil_simpan", "Data berhasil disimpan. <a href='#'>Lihat Data</a>");
-        redirect('Home');
+        redirect('Partner');
     }
 }

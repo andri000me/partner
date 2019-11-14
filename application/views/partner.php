@@ -1,4 +1,4 @@
-<a href="<?= base_url('Home/mapping') ?>"><button class="btn btn-primary mt-4 mb-4"> + Tambah Data Mapping</button></a>
+<a href="<?= base_url('Partner/mapping') ?>"><button class="btn btn-primary mt-4 mb-4"> + Tambah Data Mapping</button></a>
 
 <table id="myTable" class="table table-striped table-bordered" style="width:100%">
     <thead>

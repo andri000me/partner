@@ -112,7 +112,7 @@ class Auth extends CI_Controller
 
 			//Menyimpan Session
 			$this->session->set_userdata($params);
-			echo "<script>window.location='" . site_url("Home") . "'</script>";
+			echo "<script>window.location='" . site_url("Partner") . "'</script>";
 		} else {
 			echo "<script>alert('Akun tidak cocok/belum diaktivasi'); window.location='" . site_url("Auth") . "'</script>";
 		}
