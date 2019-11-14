@@ -3423,6 +3423,90 @@ Invoice
   height: 300px;
 }
 
+input#website {
+	display: none;
+}
+
+h3.main_question {
+	margin: 0 0 20px 0;
+	padding: 0;
+	font-weight: 400;
+	font-size: 26px;
+}
+
+h3.main_question strong {
+	display: block;
+	color: #999;
+	font-size: 18px;
+	margin-bottom: 5px;
+	font-weight: 400;
+}
+
+#form_container {
+	background-color: #fff;
+	width: 1000px;
+	min-height: 450px;
+	margin: 120px auto 30px;
+}
+
+#wizard_container {
+	position: relative;
+	min-height: 450px;
+}
+
+#top-wizard {
+	margin-left: -30px;
+}
+
+#middle-wizard {
+  padding: 30px 30px 120px 30px;
+}
+
+#bottom-wizard {
+	text-align: right;
+	position: absolute;
+	width: 100%;
+	bottom: 25px;
+	right: 45px;
+}
+
+button.backward,
+button.forward,
+button.submit {
+	border: none;
+	color: #fff;
+	padding: 7px 20px;
+	text-decoration: none;
+	transition: background .5s ease;
+	-moz-transition: background .5s ease;
+	-webkit-transition: background .5s ease;
+	-o-transition: background .5s ease;
+	display: inline-block;
+	cursor: pointer;
+	font-weight: 400;
+	outline: none;
+	text-align: center;
+	background: #409fff;
+	position: relative;
+	font-size: 15px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	line-height: 1;
+	padding: 10px 30px 10px 30px;
+}
+
+button.backward {
+	color: #333;
+	background: #e8e8e8;
+	padding: 10px 20px 10px 30px;
+}
+
+
+button[disabled] {
+	display: none;
+}
+
 /* ======
 34. Responsive
    ====== */
