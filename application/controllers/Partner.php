@@ -20,7 +20,7 @@ class Partner extends CI_Controller
 
     public function mapping()
     {
-        $this->template->load('template/index', 'form');
+        $this->template->load('template/index', 'wizardform');
     }
 
     public function draft()

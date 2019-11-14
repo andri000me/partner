@@ -18,12 +18,32 @@
     <link href="<?= base_url('template/assets/css/style.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?= base_url('template/assets/css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <link href="<?= base_url('template/assets/css/icon_fonts/css/all_icons_min.css') ?>" rel="stylesheet" type="text/css">
+
+    <!-- Mavia CSS -->
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,400,400i,700,700i" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link href="<?= base_url('template/mavia/html/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('template/mavia/html/css/style.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('template/mavia/html/css/responsive.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('template/mavia/html/css/menu.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('template/mavia/html/css/animate.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('template/mavia/html/css/icon_fonts/css/all_icons_min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('template/mavia/html/css/skins/square/grey.css') ?>" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <script src="<?= base_url('template/mavia/html/js/modernizr.js') ?>"></script>
+    <!-- Modernizr -->
 </head>
 
 <body>
 
     <div id="wrapper">
-    
+
         <!-- Topbar -->
         <div class="topbar">
             <?php $this->load->view('template/partial/topbar') ?>
@@ -58,6 +78,9 @@
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url('template/assets/js/jquery-3.2.1.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/common_scripts_min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/registration_wizard_func.js') ?>"></script>
 
     <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
@@ -68,6 +91,16 @@
 
     <!-- App js -->
     <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
+
+    <!-- Mavia Scripts -->
+    <!-- SCRIPTS -->
+    <!-- Jquery-->
+    <script src="<?= base_url('template/mavia/html/js/jquery-3.2.1.min.js') ?>"></script>
+    <script src="<?= base_url('template/mavia/html/js/common_scripts_min.js') ?>"></script>
+    <script src="<?= base_url('template/mavia/html/js/registration_wizard_func.js') ?>"></script>
+    <script src="<?= base_url('template/mavia/html/js/velocity.min.js') ?>"></script>
+    <script src="<?= base_url('template/mavia/html/js/main.js') ?>"></script>
+    <script src="<?= base_url('template/mavia/html/js/functions.js') ?>"></script>
 
     <!-- Custom Scripts -->
     <?php $this->load->view('template/partial/scripts') ?>
