@@ -6,7 +6,7 @@
         <ul class="metismenu" id="side-menu">
             <li class="menu-title">Main</li>
             <li>
-                <a href="index.html" class="waves-effect">
+                <a href="<?= base_url('Partner') ?>" class="waves-effect">
                     <i class="mdi mdi-view-dashboard"></i><span class="badge badge-primary badge-pill float-right">2</span> <span> Dashboard </span>
                 </a>
             </li>
