@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-11-14 13:40:33
+# Date: 2019-11-14 14:31:19
 # Generator: MySQL-Front 6.1  (Build 1.26)
 
 
@@ -62,28 +62,32 @@ CREATE TABLE `partners` (
   `punya_pinjaman` varchar(255) DEFAULT NULL COMMENT 'Ya / Tidak',
   `on_going_project` varchar(255) DEFAULT NULL COMMENT 'Ada / Tidak Ada',
   `punya_jumlah_plafond` varchar(255) DEFAULT NULL COMMENT 'Ya / Tidak',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
   `punya_giro_cek` varchar(255) DEFAULT NULL,
   `keterangan_tambahan` text DEFAULT NULL,
   `rekening_bank` varchar(255) DEFAULT NULL,
   `cabang_bank` varchar(255) DEFAULT NULL,
   `nama_bank` varchar(255) DEFAULT NULL,
   `atas_nama` varchar(255) DEFAULT NULL,
-  `akhir_izin` varchar(255) DEFAULT NULL COMMENT 'Muncul Kalau Kategori Produk My Ihram & My Safar',
-  `ktp` varchar(255) DEFAULT NULL,
-  `npwp` varchar(255) DEFAULT NULL,
-  `buku_tabungan` varchar(255) DEFAULT NULL,
+  `akhir_izin` date DEFAULT NULL COMMENT 'Muncul Kalau Kategori Produk My Ihram & My Safar',
+  `ktp` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `npwp` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `buku_tabungan` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `siup` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `logo_perusahaan` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `foto_usaha` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_partner`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `telepon` (`telepon`)
+  UNIQUE KEY `telepon` (`telepon`),
+  UNIQUE KEY `rekening_bank` (`rekening_bank`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "partners"
 #
 
-INSERT INTO `partners` VALUES (1,'PT DON','Narkotika','legok',NULL,'08982781277122','don.sabda@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `partners` VALUES (1,'PT DON','Narkotika','legok',NULL,'08982781277122','don.sabda@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'logo_perusahaan',NULL,NULL,NULL);
 
 #
 # Structure for table "users"
