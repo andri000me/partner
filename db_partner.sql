@@ -1,6 +1,38 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-11-13 16:02:17
+# Date: 2019-11-14 14:31:19
 # Generator: MySQL-Front 6.1  (Build 1.26)
+
+
+#
+# Structure for table "agents"
+#
+
+CREATE TABLE `agents` (
+  `id_agents` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_agents`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "agents"
+#
+
+
+#
+# Structure for table "merchants"
+#
+
+CREATE TABLE `merchants` (
+  `id_merchant` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id_merchant`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "merchants"
+#
 
 
 #
@@ -10,34 +42,52 @@
 CREATE TABLE `partners` (
   `id_partner` int(11) NOT NULL AUTO_INCREMENT,
   `nama_usaha` varchar(255) DEFAULT NULL,
-  `bidang_usaha` varchar(255) DEFAULT NULL,
+  `bidang_usaha` varchar(255) DEFAULT NULL COMMENT 'Travel / Wedding / Renovasi & Interior/ Mobil / Elektronik / Jasa Lainnya',
   `alamat` text DEFAULT NULL,
+  `geotagging` text DEFAULT NULL,
   `telepon` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `bentuk_usaha` varchar(255) DEFAULT NULL,
+  `kategori_produk` varchar(255) DEFAULT NULL COMMENT 'My Ihram / My Safar / My Talim / My Hajat / My Faedah / My CarS',
+  `bentuk_usaha` varchar(255) DEFAULT NULL COMMENT 'Perorangan / PD / CV / PT',
   `jumlah_karyawan` int(11) DEFAULT NULL,
   `tahun_berdiri` varchar(255) DEFAULT NULL,
   `barang_jual` varchar(255) DEFAULT NULL,
   `sosial_media` varchar(255) DEFAULT NULL,
-  `status_tempat_usaha` varchar(255) DEFAULT NULL,
-  `jenis_pembayaran` varchar(255) DEFAULT NULL,
+  `status_tempat_usaha` varchar(255) DEFAULT NULL COMMENT 'Milik Sendiri / Milik Keluarga / Sewa',
+  `jenis_pembayaran` varchar(255) DEFAULT NULL COMMENT 'Tunai / Kredit Konvensional / Kredit Syariah',
   `omset` varchar(255) DEFAULT NULL,
   `jumlah_cabang` int(11) DEFAULT NULL,
-  `promosi` varchar(255) DEFAULT NULL,
+  `pernah_promosi` varchar(255) DEFAULT NULL COMMENT 'Perna melakukan promosi? Pernah / Tidak Pernah',
   `hobi` varchar(255) DEFAULT NULL,
-  `punya_pinjaman` varchar(255) DEFAULT NULL,
+  `punya_pinjaman` varchar(255) DEFAULT NULL COMMENT 'Ya / Tidak',
+  `on_going_project` varchar(255) DEFAULT NULL COMMENT 'Ada / Tidak Ada',
+  `punya_jumlah_plafond` varchar(255) DEFAULT NULL COMMENT 'Ya / Tidak',
+  `punya_giro_cek` varchar(255) DEFAULT NULL,
+  `keterangan_tambahan` text DEFAULT NULL,
+  `rekening_bank` varchar(255) DEFAULT NULL,
+  `cabang_bank` varchar(255) DEFAULT NULL,
+  `nama_bank` varchar(255) DEFAULT NULL,
+  `atas_nama` varchar(255) DEFAULT NULL,
+  `akhir_izin` date DEFAULT NULL COMMENT 'Muncul Kalau Kategori Produk My Ihram & My Safar',
+  `ktp` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `npwp` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `buku_tabungan` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `siup` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `logo_perusahaan` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `foto_usaha` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id_partner`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `telepon` (`telepon`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  UNIQUE KEY `telepon` (`telepon`),
+  UNIQUE KEY `rekening_bank` (`rekening_bank`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "partners"
 #
 
-INSERT INTO `partners` VALUES (1,'PT DON','Narkotika','legok','08982781277122','don.sabda@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `partners` VALUES (1,'PT DON','Narkotika','legok',NULL,'08982781277122','don.sabda@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'logo_perusahaan',NULL,NULL,NULL);
 
 #
 # Structure for table "users"
