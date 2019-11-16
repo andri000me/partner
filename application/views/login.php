@@ -32,33 +32,38 @@
                     </h3>
 
                     <div class="p-3">
-                        <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
-                        <p class="text-muted text-center">Sign in to continue to Lexa.</p>
+                        <h4 class="text-muted font-18 m-b-5 text-center">Assalamualaikum!</h4>
+                        <p class="text-muted text-center">Masuk untuk menggunakan <i>Sysroad</i></p>
 
                         <form class="form-horizontal m-t-30" action="index.html">
 
                             <div class="form-group">
-                                <label for="username">Nik / Email</label>
-                                <input type="text" class="form-control" id="nik" name="nik" placeholder="Nik / Email">
+                                <label for="username">Nomor Induk karyawan</label>
+                                <input type="text" class="form-control" id="nik" name="nik" placeholder="Mauskkan NIK">
                             </div>
 
                             <div class="form-group">
                                 <label for="userpassword">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" nam placeholder="Password">
+                                <input type="password" class="form-control" id="password" name="password" nam placeholder="Masukkan Sandi">
                             </div>
 
                             <div class="form-group row m-t-20">
                                 <div class="col-12   text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log In</button>
+                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
                                 </div>
                             </div>
 
                             <div class="form-group m-t-10 mb-0 row">
                                 <div class="col-12 m-t-20">
-                                    <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Forgot your password?</a>
+                                    <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Password? </a>
                                 </div>
                             </div>
                         </form>
+                    </div>
+
+                    <div class="m-t-40 text-center">
+                            <p>Belum punya akun ? <a href="#" class="text-primary"> Daftar yuk </a> </p>
+                            <p>2019 BFI Syariah. Crafted with by Themesbrand</p>
                     </div>
 
                 </div>

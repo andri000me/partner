@@ -8,15 +8,14 @@
         <title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
         <meta content="Admin Dashboard" name="description" />
         <meta content="Themesbrand" name="author" />
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+        <link rel="shortcut icon" href="template/assets/images/favicon.ico">
 
-        <!-- Dropzone css -->
-        <link href="../plugins/dropzone/dist/dropzone.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="../plugins/morris/morris.css">
 
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-        <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+        <link href="template/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="template/assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+        <link href="template/assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="template/assets/css/style.css" rel="stylesheet" type="text/css">
     </head>
 
     <body>
@@ -118,7 +117,8 @@
                             <button class="button-menu-mobile open-left waves-effect">
                                 <i class="mdi mdi-menu"></i>
                             </button>
-                        </li>                        <li class="d-none d-sm-block">
+                        </li>
+                        <li class="d-none d-sm-block">
                             <div class="dropdown pt-3 d-inline-block">
                                 <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Create
@@ -295,58 +295,7 @@
                 <div class="content">
                     <div class="container-fluid">
 
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="page-title-box">
-                                    <h4 class="page-title">File Upload</h4>
-                                    <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Lexa</a></li>
-                                        <li class="breadcrumb-item"><a href="javascript:void(0);">Forms</a></li>
-                                        <li class="breadcrumb-item active">File Upload</li>
-                                    </ol>
-            
-                                    <div class="state-information d-none d-sm-block">
-                                        <div class="state-graph">
-                                            <div id="header-chart-1"></div>
-                                            <div class="info">Balance $ 2,317</div>
-                                        </div>
-                                        <div class="state-graph">
-                                            <div id="header-chart-2"></div>
-                                            <div class="info">Item Sold 1230</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end row -->
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card m-b-20">
-                                    <div class="card-body">
-        
-                                        <h4 class="mt-0 header-title">Dropzone</h4>
-                                        <p class="text-muted m-b-30">DropzoneJS is an open source library
-                                            that provides drag’n’drop file uploads with image previews.
-                                        </p>
-        
-                                        <div class="m-b-30">
-                                            <form action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </form>
-                                        </div>
-        
-                                        <div class="text-center m-t-15">
-                                            <button type="button" class="btn btn-primary waves-effect waves-light">Send Files</button>
-                                        </div>
-        
-                                    </div>
-                                </div>
-                            </div> <!-- end col -->
-                        </div> <!-- end row -->
-        
+                        
 
                     </div> <!-- container-fluid -->
 
@@ -355,7 +304,7 @@
                 <footer class="footer">
                     © 2018 - 2019 Lexa - <span class="d-none d-sm-inline-block"> Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</span>.
                 </footer>
-
+                
             </div>
 
 
@@ -369,21 +318,22 @@
             
 
         <!-- jQuery  -->
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/metisMenu.min.js"></script>
-        <script src="assets/js/jquery.slimscroll.js"></script>
-        <script src="assets/js/waves.min.js"></script>
-        <script src="assets/js/dropzone.js"></script>
+        <script src="template/assets/js/jquery.min.js"></script>
+        <script src="template/assets/js/bootstrap.bundle.min.js"></script>
+        <script src="template/assets/js/metisMenu.min.js"></script>
+        <script src="template/assets/js/jquery.slimscroll.js"></script>
+        <script src="template/assets/js/waves.min.js"></script>
 
         <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
 
-        <!-- Dropzone js -->
-        <script src="../plugins/dropzone/dist/dropzone.js"></script>
+        <!--Morris Chart-->
+        <script src="../plugins/morris/morris.min.js"></script>
+        <script src="../plugins/raphael/raphael-min.js"></script>
+        <script src="template/assets/pages/dashboard.js"></script>
 
         <!-- App js -->
-        <script src="assets/js/app.js"></script>
+        <script src="template/assets/js/app.js"></script>
 
-    </body>
+</body>
 
 </html>

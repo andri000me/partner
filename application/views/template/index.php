@@ -19,13 +19,6 @@
     <link href="<?= base_url('template/assets/css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 
-    <!-- Mavia CSS -->
-    <link href="<?= base_url('template/mavia/html/css/style.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('template/mavia/html/css/responsive.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('template/mavia/html/css/menu.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('template/mavia/html/css/animate.min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('template/mavia/html/css/icon_fonts/css/all_icons_min.css') ?>" rel="stylesheet">
-    <link href="<?= base_url('template/mavia/html/css/skins/square/grey.css') ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -65,6 +58,9 @@
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/registration_wizard_func.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/common_scripts_min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/dropzone.js') ?>"></script>
     <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 
     <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
@@ -77,15 +73,6 @@
     <!-- App js -->
     <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
 
-    <!-- Mavia Scripts -->
-    <!-- SCRIPTS -->
-    <!-- Jquery-->
-    <script src="<?= base_url('template/mavia/html/js/common_scripts_min.js') ?>"></script>
-    <script src="<?= base_url('template/mavia/html/js/registration_wizard_func.js') ?>"></script>
-    <script src="<?= base_url('template/mavia/html/js/velocity.min.js') ?>"></script>
-    <script src="<?= base_url('template/mavia/html/js/main.js') ?>"></script>
-    <script src="<?= base_url('template/mavia/html/js/functions.js') ?>"></script>
-    <script src="<?= base_url('template/mavia/html/js/modernizr.js') ?>"></script>
 
     <!-- Custom Scripts -->
     <?php $this->load->view('template/partial/scripts') ?>

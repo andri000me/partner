@@ -1,4 +1,5 @@
-<div id="form_container">
+<div class="content">
+    <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
             <div id="wizard_container">
@@ -12,18 +13,26 @@
                     <div id="middle-wizard">
 
                         <div class="step">
-                            <h3 class="main_question"><strong> 1 /3</strong>Form Inputan Partner</h3>
+                            <h3 class="main_question"><strong> 1/4</strong>Form Inputan Partner</h3>
                             <div class="form-group">
                                 <label>Nama Usaha</label>
                                 <input type="text" class="form-control required" id="nama_usaha" name="nama_usaha" placeholder="Nama Usaha">
                             </div>
                             <div class="form-group">
                                 <label>Bidang Usaha</label>
-                                <input type="text" class="form-control required" id="bidang_usaha" name="bidang_usaha" placeholder="Bidang Usaha">
+                                <select class="form-control required" id="bidang_usaha" name="bidang_usaha" placeholder="Bidang Usaha">
+                                    <option selected disabled value="">- Pilih Bidang Usaha -</option>
+                                    <option value="Travel">Travel</option>
+                                    <option value="Wedding">Wedding</option>
+                                    <option value="Renovasi & Interior">Renovasi & Interior</option>
+                                    <option value="Mobil">Mobil</option>
+                                    <option value="Elektronik">Elektronik</option>
+                                    <option value="Jasa Lainnya">Jasa Lainnya</option>
+                                </select>
                             </div>
                             <div class="form-group">
-                                <label>Alamat</label>
-                                <textarea class="form-control required" id="alamat" name="alamat" placeholder="Alamat"></textarea>
+                                <label>Alamat / Lokasi</label>
+                                <textarea class="form-control required" id="alamat" name="alamat" placeholder="Alamat / Alamat"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Nomor Telepon</label>
@@ -33,15 +42,53 @@
                                 <label>Email</label>
                                 <input type="email" class="form-control required" id="email" name="email" placeholder="Email">
                             </div>
+                            <div class="form-group">
+                                <label>Kategori Produk</label>
+                                <select class="form-control required" id="kategori_produk" name="kategori_produk" placeholder="Kategori Produk">
+                                    <option selected disabled value="">- Pilih Kategori Produk -</option>
+                                    <option value="My Ihram">My Ihram</option>
+                                    <option value="My Safar">My Safar</option>
+                                    <option value="My Talim">My Talim</option>
+                                    <option value="My Hajat">My Hajat</option>
+                                    <option value="My Faedah">My Faedah</option>
+                                    <option value="My cars">My cars</option>
+                                </select>
+                            </div>
                             <!-- /row -->
                         </div>
                         <!-- /step-->
 
                         <div class="step">
-                            <h3 class="main_question"><strong>2/3</strong>Form Inputan Partner</h3>
+                            <h3 class="main_question"><strong>2/4</strong>Form Inputan Partner</h3>
+                            <div class="form-group">
+                                <label>Kelurahan</label>
+                                <input type="text" class="form-control required" id="kelurahan" name="kelurahan" placeholder="kelurahan">
+                            </div>
+                            <div class="form-group">
+                                <label>Kecamatan</label>
+                                <input type="text" class="form-control required" id="kecamatan" name="kecamatan" placeholder="Kecamatan">
+                            </div>
+                            <div class="form-group">
+                                <label>Kode Pos</label>
+                                <input type="phone" class="form-control required" id="kode_pos" name="kode_pos" placeholder="Kode Pos">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Pemilik</label>
+                                <input type="text" class="form-control required" id="nama_pemilik" name="nama_pemilik" placeholder="Nama Pemilik">
+                            </div>
+                            <div class="form-group">
+                                <label>Hobi / Interest</label>
+                                <input type="text" class="form-control" id="hobi" name="hobi" placeholder="Hobi / Interest">
+                            </div>
                             <div class="form-group">
                                 <label>Bentuk Usaha</label>
-                                <input type="text" class="form-control required" id="bentuk_usaha" name="bentuk_usaha" placeholder="Bentuk Usaha">
+                                <select class="form-control required" id="bentuk_usaha" name="bentuk_usaha" placeholder="Bentuk Usaha">
+                                    <option selected disabled value="">- Pilih bentuk Usaha -</option>
+                                    <option value="My Ihram">Perorangan</option>
+                                    <option value="My Safar">PD</option>
+                                    <option value="My Talim">CV</option>
+                                    <option value="My Hajat">PT</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <label>Jumalah Karyawan</label>
@@ -52,92 +99,86 @@
                                 <input type="date" class="form-control required" id="tahun_berdiri" placeholder="Tahun Berdiri">
                             </div>
                             <div class="form-group">
-                                <label>Barang Jual</label>
-                                <input type="text" class="form-control required" id="barang_jual" name="barang_jual" placeholder="Barang Jual">
+                                <label>Barang Yang Dijual</label>
+                                <input type="text" class="form-control required" id="barang_jual" name="barang_jual" placeholder="Barang Yang Dijual">
                             </div>
                             <div class="form-group">
-                                <label>Sosial Media</label>
+                                <label>Sosial Media / Website</label>
                                 <input type="text" class="form-control required" id="sosial_media" name="sosial_media" placeholder="Sosial Media">
                             </div>
                             <div class="form-group">
                                 <label>Status Tempat Usaha</label>
-                                <input type="text" class="form-control required required" id="status_tempat_usaha" name="status_tempat_usaha" placeholder="Status Tempat Usaha">
-                            </div>
-                            <div class="form-group">
-                                <label>Jenis Pembayaran</label>
-                                <select class="form-control required" id="jenis_pembayaran" name="jenis_pembayaran" placeholder="Status Tempat Usaha">
-                                    <option value="Tunai">Tunai</option>
-                                    <option value="Kredit">Kredit</option>
-                                    <option value="Ngutang">Ngutang</option>
+                                <select class="form-control required" id="status_tempat_usaha" name="status_tempat_usaha" placeholder="Status Tempat Usaha">
+                                    <option selected disabled value="">- Pilih Status Tempat usaha -</option>
+                                    <option value="Milik Sendiri">Milik Sendiri</option>
+                                    <option value="Milik Keluarga">Milik Keluarga</option>
+                                    <option value="Sewa">Sewa</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Omset</label>
-                                <input type="number" class="form-control required" id="omset" name="omset" placeholder="Omset">
+                                <label>Jenis Pembayaran</label>
+                                <select class="form-control required" id="jenis_pembayaran" name="jenis_pembayaran" placeholder="Jenis Pembayaran">
+                                    <option selected disabled value="">- Pilih Jenis Pembayaran -</option>
+                                    <option value="Tunai">Tunai</option>
+                                    <option value="Kredit Konvensional">Kredit Konvensional</option>
+                                    <option value="Kredit Syariah">Kredit Syariah</option>
+                                </select>
                             </div>
+                            <div class="form-group">
+                                <label>Omset Perbulan</label>
+                                <input type="phone" class="form-control required" id="omset" name="omset" placeholder="Omset Perbulan">
+                            </div>
+                        </div>
+                        <div class="step">
+                            <h3 class="main_question"><strong>3/4</strong>Form Inputan Partner</h3>
                             <div class="form-group">
                                 <label>Jumlah Cabang</label>
                                 <input type="number" class="form-control required" id="jumlah_cabang" name="jumlah_cabang" placeholder="Jumlah Cabang">
                             </div>
                             <div class="form-group">
-                                <label>Promosi</label>
+                                <label>Pernah Melakukan Promosi</label>
                                 <div class="form-check">
-                                    <input class="form-check-input required" type="radio" name="promosi" id="promosi" value="Ya">
+                                    <input class="form-check-input required" type="radio" name="pernah_promosi" id="pernah_promosi" value="pernah">
                                     <label class="form-check-label">
-                                        Ya!
+                                    Pernah
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input required" type="radio" name="promosi" id="promosi" value="Tidak">
+                                    <input class="form-check-input required" type="radio" name="pernah_promosi" id="pernah_promosi" value="Tidak Pernah">
                                     <label class="form-check-label">
-                                        Tidak :(
+                                    Tidak Pernah
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Hobi</label>
-                                <input type="text" class="form-control required" id="hobi" name="hobi" placeholder="Hobi">
-                            </div>
-                            <div class="form-group">
-                                <label>Puanya Pinjaman</label>
+                                <label>Apakah Puanya Pinjaman?</label>
                                 <div class="form-check">
                                     <input class="form-check-input required" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya">
                                     <label class="form-check-label">
-                                        Ya!
+                                        Ya
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input required" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak">
                                     <label class="form-check-label">
-                                        Tidak :(
+                                        Tidak
                                     </label>
                                 </div>
                             </div>
-                            <!-- /row -->
-                        </div>
-                        <!-- /step-->
-
-                        <div class="submit step">
-                            <h3 class="main_question"><strong>3/3</strong>Form Inputan Partner</h3>
-                            <div class="form-group">
-                                <label>KTP / Paspor</label>
-                                <input type="file" class="form-control required" id="ktp" name="ktp" placeholder="KTP / Paspor">
-                            </div>
-                            <div class="form-group">
-                                <label>NPWP</label>
-                                <input type="file" class="form-control required" id="npwp" name="npwp" placeholder="NPWP">
-                            </div>
-                            <div class="form-group">
-                                <label>SIUP / TDP</label>
-                                <input type="file" class="form-control required" id="siup" name="siup" placeholder="SIUP">
-                            </div>
-                            <div class="form-group">
-                                <label>Logo Perusahaan</label>
-                                <input type="file" class="form-control required" id="logo" name="logo" placeholder="Logo Perusahaan">
-                            </div>
                             <div class="form-group">
                                 <label>On Going Project</label>
-                                <input type="text" class="form-control required" id="on_going_project" name="on_going_project" placeholder="On Going Project">
+                                <div class="form-check">
+                                    <input class="form-check-input required" type="radio" name="on_going_project" id="on_going_project" value="Ada">
+                                    <label class="form-check-label">
+                                        Ada
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input required" type="radio" name="on_going_project" id="on_going_project" value="Tidak Ada">
+                                    <label class="form-check-label">
+                                        Tidak Ada
+                                    </label>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>Punya Jumlah Plafond</label>
@@ -157,26 +198,74 @@
                             <div class="form-group">
                                 <label>Punya Giro / Cek</label>
                                 <div class="form-check">
-                                    <input class="form-check-input required" type="radio" name="punya_giro" id="punya_giro" value="Giro">
+                                    <input class="form-check-input required" type="radio" name="punya_giro_cek" id="punya_giro_cek" value="Giro">
                                     <label class="form-check-label">
                                         Giro
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input required" type="radio" name="punya_giro" id="punya_giro" value="Cek">
+                                    <input class="form-check-input required" type="radio" name="punya_giro_cek" id="punya_giro_cek" value="Cek">
                                     <label class="form-check-label">
                                         Cek
                                     </label>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>Foto Usaha</label>
-                                <input type="file" class="form-control required" id="foto_usaha" name="foto_usaha" placeholder="Foto Usaha">
-                            </div>
-                            <div class="form-group">
                                 <label>Keterangan Tambahan</label>
                                 <textarea class="form-control required" id="keterangan_tambahan" name="keterangan_tambahan" placeholder="Keterangan Tambahan"></textarea>
                             </div>
+                            <div class="form-group">
+                                <label>Rekening Bank</label>
+                                <input type="number" class="form-control required" id="rekening_bank" name="rekening_bank" placeholder="Rekening Bank">
+                            </div>
+                            <div class="form-group">
+                                <label>Cabang Bank</label>
+                                <input type="text" class="form-control required" id="cabang_bank" name="cabang_bank" placeholder="Cabang bank">
+                            </div>
+                            <div class="form-group">
+                                <label>Nama Bank</label>
+                                <input type="text" class="form-control required" id="nama_bank" name="nama_bank" placeholder="Nama Bank">
+                            </div>
+                            <div class="form-group">
+                                <label>Atas Nama</label>
+                                <input type="text" class="form-control required" id="atas_nama" name="atas_nama" placeholder="Atas Nama">
+                            </div>
+                            <!--muncul jika Kategori produk My ihram dan My safar-->
+                            <div id="disable" class="form-group">
+                                <label>Tahun Berakhir Izin Travel</label>
+                                <input type="date" class="form-control required" id="akhir_izin" name="akhir_izin" placeholder="Tahun Berakhir Izin Travel">
+                            </div>
+                            <!--muncul jika Kategori produk My ihram dan My safar-->
+                        </div>
+                        <!-- /step-->
+
+                        <div class="submit step">
+                            <h3 class="main_question"><strong>4/4</strong>Form Inputan Partner</h3>
+                            <div class="form-group">
+                                <label>KTP / Paspor</label>
+                                <input type="file" class="form-control required" id="ktp" name="ktp" placeholder="KTP / Paspor">
+                            </div>
+                            <div class="form-group">
+                                <label>NPWP</label>
+                                <input type="file" class="form-control required" id="npwp" name="npwp" placeholder="NPWP">
+                            </div>
+                            <div class="form-group">
+                                <label>Buku tabungan Perusahaan</label>
+                                <input type="file" class="form-control required" id="buku_tabungan_perusahaan" name="buku_tabungan_perusahaan" placeholder="Buku tabungan Perusahaan">
+                            </div>
+                            <div class="form-group">
+                                <label>SIUP / TDP</label>
+                                <input type="file" class="form-control required" id="siup" name="siup" placeholder="SIUP">
+                            </div>
+                            <div class="form-group">
+                                <label>Logo Perusahaan</label>
+                                <input type="file" class="form-control required" id="logo_perusahaan" name="logo_perusahaan" placeholder="Logo Perusahaan">
+                            </div>
+                            <div class="form-group">
+                                <label>Foto Usaha luar / Dalam</label>
+                                <input type="file" class="form-control required" id="foto_usaha" name="foto_usaha" placeholder="Foto Usaha">
+                            </div>
+                            
                         </div>
                         <!-- /step-->
                     </div>
@@ -192,4 +281,5 @@
             <!-- /Wizard container -->
         </div>
     </div><!-- /Row -->
+    </div>
 </div>

@@ -10,7 +10,7 @@
 					return false;
 				}
 				if (!state.isMovingForward)
-					return true;
+					return true; 
 				var inputs = $(this).wizard('state').step.find(':input');
 				return !inputs.length || !!inputs.valid();
 			}
