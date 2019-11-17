@@ -17,7 +17,7 @@ class User_model extends CI_Model
     // Tambah User
     public function add($data)
     {
-        $this->db->insert('user', $data);
+        $this->db->insert('users', $data);
     }
 
     // Update User
@@ -30,7 +30,7 @@ class User_model extends CI_Model
     public function del($id)
     {
         $this->db->where('user_id', $id);
-        $this->db->delete('user');
+        $this->db->delete('users');
     }
 
     //Method Proses Login

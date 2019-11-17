@@ -7,11 +7,15 @@ class Auth extends CI_Controller
 
 		$this->load->library('form_validation');
 		$this->load->model('user_model');
+
+		$this->load->helper('fungsi');
 	}
 
 	// Halaman Login
 	public function index()
 	{
+		check_already_login();
+
 		$this->load->view('login');
 	}
 
@@ -19,14 +23,16 @@ class Auth extends CI_Controller
 	public function lupa_password()
 	{
 		$post = $this->input->post(null, TRUE);
-		
+
 		if (isset($_POST['reset_password'])) {
 
 			$email = $post['email'];
 			$data = $this->user_model->get($email);
 
+			// Jika email ada di database, maka lakukan proses ubah password
 			if ($data->num_rows() > 0) {
 
+				// Fungsi untuk ubah password random
 				function generateMixedPassword($length = 8)
 				{
 					$base = 'abcdefghijklmnopqrstuvwxyz';
@@ -47,10 +53,11 @@ class Auth extends CI_Controller
 
 				$generate = generateMixedPassword();
 				$random_password = $generate;
-				// Script untuk ubah password random
+
 				$this->user_model->update(['password' => md5($random_password)], ['email' => $email]);
 
 				$akun = $data->row();
+
 				// Konfigurasi email
 				$config = [
 					'mailtype'  => 'html',
@@ -97,6 +104,7 @@ class Auth extends CI_Controller
 	public function process()
 	{
 		$post = $this->input->post(null, TRUE);
+
 		$nik = $post['nik'];
 		$password = md5($post['password']);
 
@@ -107,6 +115,8 @@ class Auth extends CI_Controller
 		if ($query->num_rows() > 0) {
 			$row = $query->row();
 			$params = [
+				'id_user' => $row->id_user,
+				'id_branch' => $row->id_branch,
 				'nik' => $row->nik
 			];
 
@@ -121,7 +131,7 @@ class Auth extends CI_Controller
 	// Proses Logout
 	public function logout()
 	{
-		$params = ['nik'];
+		$params = ['id_user', 'id_branch', 'nik'];
 		$this->session->unset_userdata($params);
 		redirect('Auth');
 	}
