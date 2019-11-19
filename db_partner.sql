@@ -228,18 +228,23 @@ CREATE TABLE `partners` (
   `nama_bank` varchar(255) DEFAULT NULL,
   `atas_nama` varchar(255) DEFAULT NULL,
   `akhir_izin` date DEFAULT NULL COMMENT 'Muncul Kalau Kategori Produk My Ihram & My Safar',
+  `status` varchar(255) DEFAULT NULL,
   `ktp` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
   `npwp` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
   `buku_tabungan_perusahaan` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
   `siup` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
   `logo_perusahaan` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
   `foto_usaha` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `id_branch` int(3) DEFAULT NULL,
+  `id_user` int(3) DEFAULT NULL,
   PRIMARY KEY (`id_partner`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `telepon` (`telepon`),
-  UNIQUE KEY `rekening_bank` (`rekening_bank`)
+  UNIQUE KEY `rekening_bank` (`rekening_bank`),
+  KEY `id_user` (`id_user`),
+  KEY `id_branch` (`id_branch`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 #
@@ -248,9 +253,9 @@ CREATE TABLE `partners` (
 
 LOCK TABLES `partners` WRITE;
 /*!40000 ALTER TABLE `partners` DISABLE KEYS */;
-INSERT INTO `partners` VALUES (1,'PT DON','Narkotika','legok','08982781277122','don.sabda@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'logo_perusahaan',NULL,NULL,NULL);
-INSERT INTO `partners` VALUES (3,'Gudang Gula','Travel','Bumi Puspiptek Asri','0896 1881 9905','gudang_gula@gmai.com','My Ihram','Mantaap',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
-INSERT INTO `partners` VALUES (8,'PT Maju Mundir','Mobil','Bumi Puspiptek Asri','089618819905','ibrahim.ahmad58@gmail.com','My Faedah','',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `partners` VALUES (1,'PT DON','Narkotika','legok','08982781277122','don.sabda@gmail.com',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'logo_perusahaan',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `partners` VALUES (3,'Gudang Gula','Travel','Bumi Puspiptek Asri','0896 1881 9905','gudang_gula@gmai.com','My Ihram',NULL,'Pagedangan','Pagedangan','15339','','',NULL,NULL,0,'','','',NULL,NULL,'',0,NULL,NULL,NULL,NULL,NULL,'','','','','','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-11-18 05:33:50','2019-11-18 08:03:49',8,26);
+INSERT INTO `partners` VALUES (8,'PT Maju Mundir','Mobil','Bumi Puspiptek Asri','089618819905','ibrahim.ahmad58@gmail.com','My Ihram','','Pagedangan','Pagedangan','15339','Ibrahim','Futsal',NULL,'PT',90,'2019-11-15','PS','www.facebook.com','Milik Keluarga','Kredit Konvensional','9000',90,'pernah','Ya','Ada','Ya','Giro','asd','1236','123','sad','ads','0000-00-00',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-11-18 10:04:01',8,26);
 /*!40000 ALTER TABLE `partners` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -464,6 +469,14 @@ ADD CONSTRAINT `surveyor` FOREIGN KEY (`surveyor`) REFERENCES `users` (`id_user`
 
 ALTER TABLE `maintains`
 ADD CONSTRAINT `maintains_ibfk_1` FOREIGN KEY (`id_partner`) REFERENCES `partners` (`id_partner`);
+
+#
+#  Foreign keys for table partners
+#
+
+ALTER TABLE `partners`
+ADD CONSTRAINT `id_branch` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`),
+ADD CONSTRAINT `id_user` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 #
 #  Foreign keys for table users

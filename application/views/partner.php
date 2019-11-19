@@ -9,7 +9,7 @@
                         <h4 class="mt-0 header-title">Data Partner</h4>
                         <div class="table-rep-plugin">
                             <div class="table-responsive mb-0" data-pattern="priority-columns">
-                                <table id="tech-companies-1" class="table table-striped">
+                                <table id="myTable" class="table table-striped">
                                     <thead>
                                         <tr>
                                         <tr>

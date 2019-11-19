@@ -22,6 +22,10 @@
                 <p class="text-muted m-b-30">Gunakan form ini untuk mendata calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
 
                 <form method="post" class="" action="<?= base_url('Partner/save_mapping') ?>">
+                    <!-- Inputan hidden id user -->
+                    <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
+                    <!-- Inputan hidden id cabang -->
+                    <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label>Nama Usaha</label>
