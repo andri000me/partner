@@ -42,4 +42,9 @@ class User_model extends CI_Model
 
         return $query;
     }
+
+    public function login_log($data)
+    {
+        $this->db->insert('login_log', $data);
+    }
 }

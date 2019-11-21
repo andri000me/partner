@@ -28,7 +28,7 @@ class Partner extends CI_Controller
         $this->template->load('template/index', 'form');
     }
 
-    public function kerjasama($id)
+    public function detail($id)
     {
         $where = ['id_partner' => $id];
 
@@ -39,19 +39,11 @@ class Partner extends CI_Controller
         $this->template->load('template/index', 'wizardform', $data);
     }
 
-    public function save_draft()
+    public function save()
     {
         $post = $this->input->post(NULL, TRUE);
 
         $data = [
-            //Stage 1
-            'nama_usaha'            => $post['nama_usaha'],
-            'bidang_usaha'          => $post['bidang_usaha'],
-            'alamat'                => $post['alamat'],
-            'telepon'               => $post['telepon'],
-            'email'                 => $post['email'],
-            'kategori_produk'       => $post['kategori_produk'],
-            // 'catatan'               => $post['catatan'],
 
             //Stage 2
             'kelurahan'             => isset($post['kelurahan']) ? $post['kelurahan'] : NULL,

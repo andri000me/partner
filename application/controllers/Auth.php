@@ -122,6 +122,13 @@ class Auth extends CI_Controller
 
 			//Menyimpan Session
 			$this->session->set_userdata($params);
+
+			$login_log = [
+				'login_date' => date('Y-m-d H:i:s'),
+				'id_user' => $row->id_user
+			];
+			$this->user_model->login_log($login_log);
+
 			echo "<script>window.location='" . site_url("Partner") . "'</script>";
 		} else {
 			echo "<script>alert('Akun tidak cocok/belum diaktivasi'); window.location='" . site_url("Auth") . "'</script>";
