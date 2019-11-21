@@ -3664,41 +3664,24 @@ h3.main_question strong {
 	right: 45px;
 }
 
-button.backward,
-button.forward,
-button.submit {
-	border: none;
-	color: #fff;
-	padding: 7px 20px;
-	text-decoration: none;
-	transition: background .5s ease;
-	-moz-transition: background .5s ease;
-	-webkit-transition: background .5s ease;
-	-o-transition: background .5s ease;
-	display: inline-block;
-	cursor: pointer;
-	font-weight: 400;
-	outline: none;
-	text-align: center;
-	background: #409fff;
-	position: relative;
-	font-size: 15px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	line-height: 1;
-	padding: 10px 30px 10px 30px;
-}
-
-button.backward {
-	color: #333;
-	background: #e8e8e8;
-	padding: 10px 20px 10px 30px;
-}
-
-
 button[disabled] {
 	display: none;
+}
+
+.nav-tab {
+	height: 0;
+	visibility: hidden;
+  }
+
+.ui-progressbar {
+	height: 5px;
+	width: 100%;
+}
+
+.ui-progressbar .ui-progressbar-value {
+	height: 100%;
+	-webkit-transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 /* ======

@@ -426,80 +426,8 @@ h3.main_question strong {
 	font-weight: 400;
 }
 
-/* Wizard Buttons*/
-button.backward,
-button.forward,
-button.submit {
-	border: none;
-	color: #fff;
-	padding: 7px 20px;
-	text-decoration: none;
-	transition: background .5s ease;
-	-moz-transition: background .5s ease;
-	-webkit-transition: background .5s ease;
-	-o-transition: background .5s ease;
-	display: inline-block;
-	cursor: pointer;
-	font-weight: 400;
-	outline: none;
-	text-align: center;
-	background: #409fff;
-	position: relative;
-	font-size: 15px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	line-height: 1;
-	padding: 10px 30px 10px 30px;
-}
 
-button.backward {
-	color: #333;
-	background: #e8e8e8;
-	padding: 10px 20px 10px 30px;
-}
 
-button.forward,
-button.submit {
-	padding: 10px 30px 10px 20px;
-}
-
-button[disabled] {
-	display: none;
-}
-
-button.backward:before {
-	content: "\34";
-	font-family: 'ElegantIcons';
-	position: absolute;
-	top: 8px;
-	left: 12px;
-	font-size: 18px;
-}
-
-button.forward:before {
-	content: "\35";
-	font-family: 'ElegantIcons';
-	position: absolute;
-	top: 8px;
-	right: 10px;
-	font-size: 18px;
-}
-
-button.submit:before {
-	content: "\4e";
-	font-family: 'ElegantIcons';
-	position: absolute;
-	top: 8px;
-	right: 10px;
-	font-size: 18px;
-}
-
-.backward:hover,
-.forward:hover {
-	background: #0073e5;
-	color: #fff;
-}
 
 #top-wizard {
 	margin-left: -30px;

@@ -12,10 +12,28 @@
 
     <link rel="stylesheet" href="../plugins/morris/morris.css">
 
+    <!-- Dropzone css -->
+    <link href="../assets/plugins/css/dropzone.css" rel="stylesheet" type="text/css">
+
+    <!-- Plugins css -->
+    <link href="../assets/plugins/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="../assets/plugins/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="../assets/plugins/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="../assets/plugins/css/morris.css" rel="stylesheet" />
+    <link href="../assets/plugins/css/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
     <link href="<?= base_url('template/assets/css/bootstrap.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?= base_url('template/assets/css/metismenu.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?= base_url('template/assets/css/icons.css') ?>" rel="stylesheet" type="text/css">
     <link href="<?= base_url('template/assets/css/style.css') ?>" rel="stylesheet" type="text/css">
+
+    <!-- DataTables -->
+    <link href="../assets/plugins/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/plugins/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Responsive datatable examples -->
+    <link href="../assets/plugins/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -62,8 +80,8 @@
                     </div>
 
                     <div class="m-t-40 text-center">
-                            <p>Belum punya akun ? <a href="#" class="text-primary"> Daftar yuk </a> </p>
-                            <p>2019 BFI Syariah. Crafted with by Themesbrand</p>
+                        <p>Belum punya akun ? <a href="#" class="text-primary"> Daftar yuk </a> </p>
+                        <p>2019 BFI Syariah. Crafted with by Themesbrand</p>
                     </div>
 
                 </div>
@@ -79,16 +97,57 @@
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
+    <script src="../assets/js/common_scripts_min.js"></script>
 
-    <script src="../plugins/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
+
+    <!-- Plugins js -->
+    <script src="template/assets/plugins/js/bootstrap-colorpicker.min.js"></script>
+    <script src="template/assets/plugins/js/bootstrap-datepicker.js"></script>
+    <script src="template/assets/plugins/js/select2.min.js"></script>
+    <script src="template/assets/plugins/js/bootstrap-maxlength.min.js"></script>
+    <script src="template/assets/plugins/js/bootstrap-filestyle.min.js"></script>
+    <script src="template/assets/plugins/js/jquery.bootstrap-touchspin.min.js"></script>
+
+    <!-- Sweet-Alert  -->
+    <script src="template/assets/plugins/js/sweetalert2.min.js"></script>
+    <script src="template/assets/pages/sweet-alert.init.js"></script>
+
+    <!--Dropzone-->
+    <script src="template/assets/plugins/js/dropzone.js"></script>
+
+    <!-- Plugins Init js -->
+    <script src="template/assets/pages/form-advanced.js"></script>
+
+    <!-- Required datatable js -->
+    <script src="template/assets/plugins/js/jquery.dataTables.min.js"></script>
+    <script src="template/assets/plugins/js/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Buttons examples -->
+    <script src="template/assets/plugins/js/dataTables.buttons.min.js"></script>
+    <script src="template/assets/plugins/js/buttons.bootstrap4.min.js"></script>
+    <script src="template/assets/plugins/js/jszip.min.js"></script>
+    <script src="template/assets/plugins/js/pdfmake.min.js"></script>
+    <script src="template/assets/plugins/js/vfs_fonts.js"></script>
+    <script src="template/assets/plugins/js/buttons.html5.min.js"></script>
+    <script src="template/assets/plugins/js/buttons.print.min.js"></script>
+    <script src="template/assets/plugins/js/buttons.colVis.min.js"></script>
+
+    <!-- Responsive examples -->
+    <script src="template/assets/plugins/js/dataTables.responsive.min.js"></script>
+    <script src="template/assets/plugins/js/responsive.bootstrap4.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="template/assets/pages/datatables.init.js"></script>
 
     <!--Morris Chart-->
-    <script src="../plugins/morris/morris.min.js"></script>
-    <script src="../plugins/raphael/raphael-min.js"></script>
-    <script src="<?= base_url('template/assets/pages/dashboard.js') ?>"></script>
+    <script src="template/assets/plugins/js/morris.min.js"></script>
+    <script src="template/assets/plugins/js/raphael-min.js"></script>
+    <script src="template/assets/pages/dashboard.js"></script>
 
     <!-- App js -->
-    <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
+    <script src="template/assets/js/app.js"></script>
+    <script src="template/assets/js/apps.js"></script>
 
 </body>
 

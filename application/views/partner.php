@@ -1,50 +1,57 @@
-<div class="content">
-    <div class="container-fluid">
-        <?= $this->session->flashdata('berhasil_simpan') ?>
-        <div class="row">
-            <div class="col-12">
-                <a href="<?= base_url('Partner/mapping') ?>"><button class="btn btn-primary mt-4 mb-4"> + Tambah Data Mapping</button></a>
-                <div class="card m-b-20">
-                    <div class="card-body">
-                        <h4 class="mt-0 header-title">Data Partner</h4>
-                        <div class="table-rep-plugin">
-                            <div class="table-responsive mb-0" data-pattern="priority-columns">
-                                <table id="myTable" class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                        <tr>
-                                            <th>Nama Usaha</th>
-                                            <th>Bidang Usaha</th>
-                                            <th>Alamat</th>
-                                            <th>Telepon</th>
-                                            <th>Email</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php foreach ($data->result() as $partner) { ?>
-                                            <tr>
-                                                <td><?= $partner->nama_usaha ?></td>
-                                                <td><?= $partner->bidang_usaha ?></td>
-                                                <td><?= $partner->alamat ?></td>
-                                                <td><?= $partner->telepon ?></td>
-                                                <td><?= $partner->email ?></td>
-                                                <td>
-                                                    <center><a href="<?= base_url('Partner/kerjasama/' . $partner->id_partner) ?>" class="btn btn-primary">Detail</a></center>
-                                                </td>
-                                            <?php } ?>
-                                            </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Form Inputan Partner</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Lexa</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
+                <li class="breadcrumb-item active">Basic Tables</li>
+            </ol>
+        </div>
+    </div>
+</div>
 
-                    </div>
-                </div>
-            </div> <!-- end col -->
-        </div> <!-- end row -->
+<div class="row">
+    <div class="col-md-12">
 
-    </div> <!-- container-fluid -->
+        <a href="partnership-form.html"><button class="btn btn-primary mb-4">Rekrut
+                Partner</button></a>
+        <a href="maintain-partner.html"><button class="btn btn-success ml-3 mb-4">Maintain
+                Partner</button></a>
 
-</div> <!-- content -->
+    </div>
+    <div class="col-12">
+        <div class="card m-b-20">
+            <div class="card-body">
+                <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
+                <p class="text-muted m-b-30">Gunakan form ini untuk mendata calon partner yang
+                    berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
+                    memudahkan anda dalam memaintain partner anda.</p>
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name Usaha</th>
+                            <th>Bidang Usaha</th>
+                            <th>alamat</th>
+                            <th>Telepon</th>
+                            <th>Amail</th>
+                            <th>Produk</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="clickable-row" data-href="detail-partnership.html">
+                            <td>Tiger Nixon</td>
+                            <td>System Architect</td>
+                            <td>Edinburgh</td>
+                            <td>61</td>
+                            <td>2011/04/25</td>
+                            <td>$320,800</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div> <!-- end col -->
+</div>
