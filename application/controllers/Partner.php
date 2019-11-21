@@ -15,12 +15,12 @@ class Partner extends CI_Controller
         $data = [
             'data' => $this->partner_model->get('partners')
         ];
-        $this->template->load('template/index', 'partner', $data);
+        $this->template->load('template/index', 'agent-detail', $data);
     }
 
     public function mapping()
     {
-        $this->template->load('template/index', 'wizardform');
+        $this->template->load('template/index', 'form');
     }
 
     public function draft()

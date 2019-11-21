@@ -111,7 +111,7 @@
             limitReachedClass: "badge badge-warning"
         });
 
-        $('input#placement').maxlength({
+        $('input.placement').maxlength({
             alwaysShow: true,
             placement: 'top-left',
             warningClass: "badge badge-info",
