@@ -20,12 +20,12 @@ class Mapping_partner extends CI_Controller
             'data' => $this->mapping_partner->get()
         ];
 
-        $this->template->load('template/index', 'partner', $data);
+        $this->template->load('template/index', 'mapping', $data);
     }
 
     public function create()
     {
-        $this->template->load('template/index', 'form_mapping');
+        $this->template->load('template/index', 'mapping-form');
     }
 
     public function edit($id)
@@ -40,11 +40,13 @@ class Mapping_partner extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+
         $this->form_validation->set_rules('nama_usaha', 'Nama Usaha', 'required');
         $this->form_validation->set_rules('bidang_usaha', 'Bidang Usaha', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required|is_unique[mapping_partners.telepon]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[mapping_partners.email]');
+        $this->form_validation->set_rules('telepon', 'Telepon', 'required|is_unique[mapping_partners.telepon]', ['is_unique' => 'Nomor telepon sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[mapping_partners.email]', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti Alamat E-mail']);
         $this->form_validation->set_rules('kategori_produk', 'Kategori Produk', 'required');
 
         if ($this->form_validation->run() != FALSE) {
@@ -73,9 +75,9 @@ class Mapping_partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");
 
-            redirect('Partner');
+            redirect('Mapping_partner');
         } else {
-            $this->template->load('template/index', 'form_mapping');
+            $this->template->load('template/index', 'mapping-form');
         }
     }
 

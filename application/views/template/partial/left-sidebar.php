@@ -6,7 +6,7 @@
         <ul class="metismenu" id="side-menu">
             <li class="menu-title">Informasi</li>
             <li>
-                <a href="<?= base_url('Partner') ?>" class="waves-effect">
+                <a href="<?= base_url('#') ?>" class="waves-effect">
                     <i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
                 </a>
             </li>
@@ -39,9 +39,9 @@
                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi ion-person-stalker "></i><span> Kerjasama <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </span></a>
                 <ul class="submenu">
-                    <li><a href="mapping.html">Mapping Lokasi Partner</a></li>
-                    <li><a href="partnership.html">Partnership</a></li>
-                    <li><a href="agent.html">Agent / BA</a></li>
+                    <li><a href="<?= base_url('Mapping_partner') ?>">Mapping Lokasi Partner</a></li>
+                    <li><a href="<?= base_url('Partner') ?>">Partnership</a></li>
+                    <li><a href="<?= base_url('Agent') ?>">Agent / BA</a></li>
                 </ul>
             </li>
 

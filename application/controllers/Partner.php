@@ -8,6 +8,8 @@ class Partner extends CI_Controller
     {
         parent::__construct();
         $this->load->model('partner_model');
+        $this->load->model('mapping_partner_model', 'mapping_partner');
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -23,10 +25,17 @@ class Partner extends CI_Controller
         $this->template->load('template/index', 'partner', $data);
     }
 
-    public function mapping()
+    public function create()
     {
-        $this->template->load('template/index', 'form');
+        $data = [
+            'data' => $this->partner_model->get(),
+            'mapping' => $this->mapping_partner->get()
+
+        ];
+
+        $this->template->load('template/index', 'partner-form', $data);
     }
+
 
     public function detail($id)
     {

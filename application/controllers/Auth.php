@@ -129,7 +129,7 @@ class Auth extends CI_Controller
 			];
 			$this->user_model->login_log($login_log);
 
-			echo "<script>window.location='" . site_url("Partner") . "'</script>";
+			echo "<script>window.location='" . site_url("Mapping_partner") . "'</script>";
 		} else {
 			echo "<script>alert('Akun tidak cocok/belum diaktivasi'); window.location='" . site_url("Auth") . "'</script>";
 		}
