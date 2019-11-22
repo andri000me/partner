@@ -77,7 +77,7 @@
 							</div>
 							<div class="form-group">
 								<label>income Per bulan saat ini</label>
-								<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="income" id="income" required placeholder="3,000,000" maxlength="15" />
+								<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="income" id="rupiah" required placeholder="Rp.3,000,000" />
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-4">
@@ -254,6 +254,8 @@
 					<button class="btn btn-secondary">Cetak PKS</button>
 				</div>
 			</div>
+
+			
 		</div>
 	</div>
 </div>

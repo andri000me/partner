@@ -44,8 +44,7 @@ class Partner extends CI_Controller
         $data = [
             'data' => $this->partner_model->get($where)->row()
         ];
-
-        $this->template->load('template/index', 'wizardform', $data);
+        $this->template->load('template/index', 'mapping', $data);
     }
 
     public function edit($id)
