@@ -15,7 +15,7 @@ class Partner extends CI_Controller
         $data = [
             'data' => $this->partner_model->get('partners')
         ];
-        $this->template->load('template/index', 'agent-detail', $data);
+        $this->template->load('template/index', 'mapping', $data);
     }
 
     public function mapping()
