@@ -33,7 +33,7 @@
                             <th>Telepon</th>
                             <th>E-mail</th>
                             <th>Produk</th>
-                            <!-- <th>Action</th> -->
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -45,7 +45,8 @@
                                 <td><?= $mapping->telepon ?></td>
                                 <td><?= $mapping->email ?></td>
                                 <td><?= $mapping->kategori_produk ?></td>
-                                <!-- <td></td> -->
+                                <td><a href="<?= base_url('Mapping_partner/edit/' . $mapping->id_mapping) ?>" class="btn btn-secondary">Edit</a></td>
+
                             </tr>
                         <?php } ?>
                     </tbody>
