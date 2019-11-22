@@ -38,7 +38,7 @@
                     </thead>
                     <tbody>
                         <?php foreach ($data->result() as $mapping) { ?>
-                            <tr class="clickable-row" data-href="detail-partnership.html">
+                            <tr>
                                 <td><?= $mapping->nama_usaha ?></td>
                                 <td><?= $mapping->bidang_usaha ?></td>
                                 <td><?= $mapping->alamat ?></td>

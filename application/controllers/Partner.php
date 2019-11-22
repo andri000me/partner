@@ -65,11 +65,12 @@ class Partner extends CI_Controller
 
         $data = [
             //ID Mapping
-            'id_mapping'             => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
+            'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
 
             //Stage 1
             'kelurahan'             => !empty($post['kelurahan']) ? $post['kelurahan'] : NULL,
             'kecamatan'             => !empty($post['kecamatan']) ? $post['kecamatan'] : NULL,
+            'provinsi'              => !empty($post['provinsi']) ? $post['provinsi'] : NULL,
             'kode_pos'              => !empty($post['kode_pos']) ? $post['kode_pos'] : NULL,
             'nama_pemilik'          => !empty($post['nama_pemilik']) ? $post['nama_pemilik'] : NULL,
             'hobi'                  => !empty($post['hobi']) ? $post['hobi'] : NULL,
