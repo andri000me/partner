@@ -25,6 +25,7 @@
         var telepon = $(this).data('telepon');
         var bidang_usaha = $(this).data('bidang');
         var email = $(this).data('email');
+        var alamat = $(this).data('alamat');
 
         $('#id_mapping').val(id_mapping);
         $('#nama_usaha').val(nama_usaha);
@@ -32,6 +33,7 @@
         $('#telepon').val(telepon);
         $('#bidang_usaha').val(bidang_usaha);
         $('#email').val(email);
+        $('#alamat').val(alamat);
 
 
 
@@ -102,4 +104,11 @@
         warningClass: "badge badge-info",
         limitReachedClass: "badge badge-warning"
     });
+</script>
+
+<!-- Menghilangkan attr required untuk save sementara -->
+<script>
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
 </script>

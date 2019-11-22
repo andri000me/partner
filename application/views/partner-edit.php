@@ -25,7 +25,7 @@
                             <!-- Leave for security protection, read docs for details -->
 
                             <!-- ID Partner Mapping -->
-                            <input type="hidden" name="id_mapping" id="id_mapping">
+                            <input type="hidden" name="id_mapping" value="<?= $partner->id_mapping ?>" id="id_mapping">
 
                             <div id="middle-wizard">
                                 <div class="step">
@@ -39,7 +39,7 @@
                                         <div class="col-md-6">
                                             <label>Nama Usaha</label>
                                             <div class="input-group mb-3">
-                                                <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" value="<?= $partner->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
@@ -47,35 +47,35 @@
                                         </div>
                                         <div class="form-group col-md-5">
                                             <label>Alamat / Lokasi</label>
-                                            <input type="phone" class="form-control" name="alamat" id="alamat" required placeholder="Jalan Perjalanan Panjang No.22" />
+                                            <input type="phone" class="form-control" name="alamat" id="alamat" required value="<?= $partner->alamat ?>" placeholder="Jalan Perjalanan Panjang No.22" />
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>E-Mail</label>
-                                            <input type="email" class="form-control" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
+                                            <input type="email" class="form-control" name="email" id="email" parsley-type="email" required value="<?= $partner->email ?>" placeholder="Aisha@bfisyariah.id" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Kelurahan</label>
-                                            <input type="text" class="form-control" name="kelurahan" id="kelurahan" required placeholder="Lengkong Gudang" />
+                                            <input type="text" class="form-control" name="kelurahan" id="kelurahan" required value="<?= $partner->kelurahan ?>" placeholder="Lengkong Gudang" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Kecamatan</label>
-                                            <input type="text" class="form-control" name="kecamatan" id="kecamatan" required placeholder="Serpong utara" />
+                                            <input type="text" class="form-control" name="kecamatan" id="kecamatan" required value="<?= $partner->kecamatan ?>" placeholder="Serpong utara" />
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Nomor Telepon / WhatsApp</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="EG 0811977500" maxlength="15" />
+                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $partner->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
                                         </div>
                                         <div class="form-group col-md-1">
                                             <label>Kode Pos</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required placeholder="125487" maxlength="6" />
+                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required value="<?= $partner->kode_pos ?>" placeholder="125487" maxlength="6" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Provinsi</label>
-                                            <input type="text" class="form-control" name="provinsi" id="provinsi" required placeholder="Kalimantan Tengah" />
+                                            <input type="text" class="form-control" name="provinsi" id="provinsi" required value="<?= $partner->provinsi ?>" placeholder="Kalimantan Tengah" />
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -83,36 +83,36 @@
                                             <label>Kategori Produk</label>
                                             <select class="form-control" name="kategori_produk" id="kategori_produk" required>
                                                 <option selected disabled value="">Pilih Kategori Produk</option>
-                                                <option value="My Ihram">My Ihram</option>
-                                                <option value="My Safar">My Safar</option>
-                                                <option value="My Talim">My Talim</option>
-                                                <option value="My Hajat">My Hajat</option>
-                                                <option value="My Faedah">My Faedah</option>
-                                                <option value="My CarS">My CarS</option>
+                                                <option <?= $partner->kategori_produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                <option <?= $partner->kategori_produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                <option <?= $partner->kategori_produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                <option <?= $partner->kategori_produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                <option <?= $partner->kategori_produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                <option <?= $partner->kategori_produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Status Tempat Usaha</label>
                                             <select class="form-control" name="status_tempat_usaha" id="status_tempat_usaha" required>
                                                 <option selected disabled value="">Pilih Status Tempat usaha</option>
-                                                <option value="Milik Sendiri">Milik Sendiri</option>
-                                                <option value="Milik Keluarga">Milik Keluarga</option>
-                                                <option value="Sewa">Sewa</option>
+                                                <option <?= $partner->status_tempat_usaha == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+                                                <option <?= $partner->status_tempat_usaha == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+                                                <option <?= $partner->status_tempat_usaha == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Bidang Usaha</label>
-                                            <input type="text" class="form-control" name="bidang_usaha" id="bidang_usaha" required placeholder="Garmen / Percetakan / Lainnya" />
+                                            <input type="text" class="form-control" name="bidang_usaha" id="bidang_usaha" required value="<?= $partner->bidang_usaha ?>" placeholder="Garmen / Percetakan / Lainnya" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Tahun Berdiri</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" required placeholder="2016" maxlength="4">
+                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" value="<?= $partner->tahun_berdiri ?>" required placeholder="2016" maxlength="4">
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Jumalah Karyawan</label>
-                                            <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" required placeholder="25">
+                                            <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $partner->jumlah_karyawan ?>" required placeholder="25">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -120,10 +120,10 @@
                                             <label>Bentuk Usaha</label>
                                             <select class="form-control" name="bentuk_usaha" id="" required placeholder="Bentuk Usaha">
                                                 <option selected value="">Pilih Bentuk Usaha</option>
-                                                <option value="Perorangan">Perorangan</option>
-                                                <option value="PD">PD</option>
-                                                <option value="CV">CV</option>
-                                                <option value="PT">PT</option>
+                                                <option <?= $partner->bentuk_usaha == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
+                                                <option <?= $partner->bentuk_usaha == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
+                                                <option <?= $partner->bentuk_usaha == 'CV' ? 'selected' : '' ?> value="CV">CV</option>
+                                                <option <?= $partner->bentuk_usaha == 'PT' ? 'selected' : '' ?> value="PT">PT</option>
                                             </select>
                                         </div>
                                     </div>
@@ -140,25 +140,25 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Barang Yang Dijual</label>
-                                            <input type="text" class="form-control" name="barang_jual" id="barang_jual" name="barang_jual" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
+                                            <input type="text" class="form-control" name="barang_jual" id="barang_jual" name="barang_jual" required value="<?= $partner->barang_jual ?>" placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Nama Pemilik</label>
-                                            <input type="text" class="form-control" name="nama_pemilik" id="nama_pemilik" required placeholder="Khadaffi Antashari">
+                                            <input type="text" class="form-control" name="nama_pemilik" id="nama_pemilik" required value="<?= $partner->nama_pemilik ?>" placeholder="Khadaffi Antashari">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Sosial Media / Website</label>
-                                            <input type="text" class="form-control" name="sosial_media" id="sosial_media" required placeholder="https://www.instagram.com/bfisyariah">
+                                            <input type="text" class="form-control" name="sosial_media" id="sosial_media" required value="<?= $partner->sosial_media ?>" placeholder="https://www.instagram.com/bfisyariah">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Nomor Telepon / WhatsApp</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
+                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="<?= $partner->telepon ?>" placeholder="0811977500" maxlength="15" />
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Hobi / Interest</label>
-                                            <input type="text" class="form-control" name="hobi" id="hobi" placeholder="Memancing">
+                                            <input type="text" class="form-control" name="hobi" id="hobi" placeholder="Memancing" value="<?= $partner->hobi ?>">
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -166,21 +166,21 @@
                                             <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
                                             <select class="form-control" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
                                                 <option selected disabled value="">Pilih Jenis Pembayaran</option>
-                                                <option value="Tunai">Tunai</option>
-                                                <option value="Kredit Konvensional">Kredit Konvensional</option>
-                                                <option value="Kredit Syariah">Kredit Syariah</option>
+                                                <option <?= $partner->jenis_pembayaran == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
+                                                <option <?= $partner->jenis_pembayaran == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
+                                                <option <?= $partner->jenis_pembayaran == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Apakah Puanya Pinjaman?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Ya' ? 'selected' : '' ?> value="Ya" required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Tidak' ? 'selected' : '' ?> value="Tidak" required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -190,13 +190,13 @@
                                         <div class="form-group col-md-3">
                                             <label>Punya Jumlah Plafond?</label><br>
                                             <div class="form-check  form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Ya' ? 'selected' : '' ?> value="Ya" required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check  form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Tidak' ? 'selected' : '' ?> value="Tidak" required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -207,26 +207,26 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-3">
                                             <label>Omset Perbulan</label>
-                                            <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="omset" id="omset" required placeholder="50,000,000">
+                                            <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="omset" id="omset" value="<?= $partner->omset ?>" required placeholder="50,000,000">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Jumlah Cabang</label>
-                                            <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="jumlah_cabang" id="jumlah_cabang" required placeholder="5">
+                                            <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="jumlah_cabang" id="jumlah_cabang" value="<?= $partner->jumlah_cabang ?>" required placeholder="5">
                                         </div>
                                         <div id="disable" class="form-group col-md-3">
                                             <label>Tahun Berakhir Izin Usaha</label>
-                                            <input type="text" class="form-control  pelacement" onkeypress="return hanyaAngka(event);" name="akhir_izin" id="akhir_izin" placeholder="2016" maxlength="4">
+                                            <input type="text" class="form-control  pelacement" onkeypress="return hanyaAngka(event);" name="akhir_izin" id="akhir_izin" value="<?= $partner->akhir_izin ?>" placeholder="2016" maxlength="4">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Apakah Memiliki Giro / Cek?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Giro">
+                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Giro' ? 'selected' : '' ?> required value="Giro">
                                                 <label class="form-check-label">
                                                     Giro
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Cek">
+                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Cek' ? 'selected' : '' ?> required value="Cek">
                                                 <label class="form-check-label">
                                                     Cek
                                                 </label>

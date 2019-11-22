@@ -48,7 +48,7 @@
                                 <td><?= $mapping->telepon ?></td>
                                 <td><?= $mapping->email ?></td>
                                 <td><?= $mapping->kategori_produk ?></td>
-                                <td></td>
+                                <td><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>" class="btn btn-secondary">Edit</a href="base_url('Partner/edit/'.$mapping->id_partner)"></td>
                             </tr>
                         <?php } ?>
                     </tbody>
