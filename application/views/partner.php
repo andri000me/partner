@@ -14,9 +14,9 @@
 <div class="row">
     <div class="col-md-12">
 
-        <a href="partnership-form.html"><button class="btn btn-primary mb-4">Rekrut
+        <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4">Rekrut
                 Partner</button></a>
-        <a href="maintain-partner.html"><button class="btn btn-success ml-3 mb-4">Maintain
+        <a href="#"><button class="btn btn-success ml-3 mb-4">Maintain
                 Partner</button></a>
 
     </div>
@@ -30,25 +30,27 @@
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Usaha</th>
+                            <th>Nama Usaha</th>
                             <th>Bidang Usaha</th>
                             <th>alamat</th>
                             <th>Telepon</th>
-                            <th>Amail</th>
+                            <th>Email</th>
                             <th>Produk</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="clickable-row" data-href="detail-partnership.html">
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td></td>
-                        </tr>
+                        <?php foreach ($data->result() as $mapping) { ?>
+                            <tr class="clickable-row" data-href="detail-partnership.html">
+                                <td><?= $mapping->nama_usaha ?></td>
+                                <td><?= $mapping->bidang_usaha ?></td>
+                                <td><?= $mapping->alamat ?></td>
+                                <td><?= $mapping->telepon ?></td>
+                                <td><?= $mapping->email ?></td>
+                                <td><?= $mapping->kategori_produk ?></td>
+                                <td><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>" class="btn btn-secondary">Edit</a href="base_url('Partner/edit/'.$mapping->id_partner)"></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

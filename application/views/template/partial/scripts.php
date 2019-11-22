@@ -18,7 +18,26 @@
     });
     $("table").on('click', '.clickable-row', function() {
         $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
-        window.location = $(this).data("href");
+
+        var id_mapping = $(this).data('id');
+        var nama_usaha = $(this).data('usaha');
+        var kategori_produk = $(this).data('produk');
+        var telepon = $(this).data('telepon');
+        var bidang_usaha = $(this).data('bidang');
+        var email = $(this).data('email');
+        var alamat = $(this).data('alamat');
+
+        $('#id_mapping').val(id_mapping);
+        $('#nama_usaha').val(nama_usaha);
+        $('#kategori_produk').val(kategori_produk);
+        $('#telepon').val(telepon);
+        $('#bidang_usaha').val(bidang_usaha);
+        $('#email').val(email);
+        $('#alamat').val(alamat);
+
+
+
+        $('.bd-example-modal-xl').modal('hide');
     })
 </script>
 <!-- script -->
@@ -87,3 +106,9 @@
     });
 </script>
 
+<!-- Menghilangkan attr required untuk save sementara -->
+<script>
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
+</script>

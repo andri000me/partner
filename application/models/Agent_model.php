@@ -1,29 +1,28 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Partner_model extends CI_Model
+class Agent_model extends CI_Model
 {
 
     public function create($data)
     {
-        $this->db->insert('partners', $data);
+        $this->db->insert('agents', $data);
         return $this->db->affected_rows();
     }
 
     public function update($data, $where)
     {
-        $this->db->update('partners', $data, $where);
+        $this->db->update('agents', $data, $where);
     }
 
     public function delete($where)
     {
-        $this->db->delete('partners', $where);
+        $this->db->delete('agents', $where);
     }
 
     public function get($where = NULL)
     {
         $this->db->from('partners');
-        $this->db->join('mapping_partners', 'mapping_partners.id_mapping = partners.id_mapping', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }

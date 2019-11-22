@@ -14,8 +14,7 @@
 <div class="row">
     <div class="col-md-12">
         <div>
-            <a href="mapping-form.html"><button class="btn btn-primary mb-4">Buat Data
-                    Baru</button></a>
+            <a href="<?= base_url('Mapping_partner/create') ?>"><button class="btn btn-primary mb-4">Buat Data Baru</button></a>
         </div>
     </div>
     <div class="col-12">
@@ -28,25 +27,27 @@
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Usaha</th>
+                            <th>Nama Usaha</th>
                             <th>Bidang Usaha</th>
-                            <th>alamat</th>
+                            <th>Alamat</th>
                             <th>Telepon</th>
-                            <th>Amail</th>
+                            <th>E-mail</th>
                             <th>Produk</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                            <td></td>
-                        </tr>
+                        <?php foreach ($data->result() as $mapping) { ?>
+                            <tr class="clickable-row" data-href="detail-partnership.html">
+                                <td><?= $mapping->nama_usaha ?></td>
+                                <td><?= $mapping->bidang_usaha ?></td>
+                                <td><?= $mapping->alamat ?></td>
+                                <td><?= $mapping->telepon ?></td>
+                                <td><?= $mapping->email ?></td>
+                                <td><?= $mapping->kategori_produk ?></td>
+                                <!-- <td></td> -->
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
