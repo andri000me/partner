@@ -24,7 +24,7 @@
                         <label>Jenis Kegiatan</label>
                         <select class="form-control" name="jenis_kegiatan" id="jenis_kegiatan">
                             <option selected>Pilih Jenis Kegiatan</option>
-                            <option value="Update produk">Update produk/option>
+                            <option value="Update produk">Update produk</option>
                             <option value="Silaturahmi">Silaturahmi</option>
                             <option value="Presentasi">Presentasi</option>
                             <option value="Follow Up Leads">Follow Up Leads</option>
@@ -60,26 +60,14 @@
                     </div>
 
                     <hr class="mt-3 mb-4">
-
                     <h4 class="mt-0 header-title">AKTIVITAS TERAKHIR</h4>
-                    <p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-                        pada
-                        data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <code>30 Des, 2019 -
-                            Ibrahim Ahmad</code>
-                    </p>
-                    <p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-                        pada
-                        data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <code>27 Nov, 2019 -
-                            Don Aria Sabda</code>
-                    </p>
-                    <p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-                        pada
-                        data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <code>24 Nov, 2019 -
-                            Don Aria Sabda</code>
-                    </p>
+                    <?php foreach ($activities->result() as $activity) { ?>
+                        <p class="text-muted m-b-10">
+                            <i class="dripicons-clock"></i>
+                            <?= $activity->activity ?>&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <code><?= $activity->date_activity ?> - Ibrahim Ahmad</code>
+                        </p>
+                    <?php } ?>
 
                     <hr class="mt-4 mb-4">
 

@@ -26,6 +26,10 @@
 
                             <!-- ID Partner Mapping -->
                             <input type="hidden" name="id_mapping" id="id_mapping">
+                            <!-- ID User -->
+                            <input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
+                            <!-- ID Cabang -->
+                            <input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
 
                             <div id="middle-wizard">
                                 <div class="step">
@@ -299,42 +303,42 @@
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="ktp" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="npwp" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="buku_tabungan_perusahaan" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="siup" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="logo_perusahaan" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="foto_usaha" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -410,8 +414,54 @@
 </div>
 <!-- Modal -->
 
-<!-- script -->
+<script>
+    $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
+    $("table").on("click", ".not-clickable", function(e) {
+        e.stopPropagation();
+    });
+    $("table").on('click', '.clickable-row', function() {
+        $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
 
+        var id_mapping = $(this).data('id');
+        var nama_usaha = $(this).data('usaha');
+        var kategori_produk = $(this).data('produk');
+        var telepon = $(this).data('telepon');
+        var bidang_usaha = $(this).data('bidang');
+        var email = $(this).data('email');
+        var alamat = $(this).data('alamat');
+
+        $('#id_mapping').val(id_mapping);
+        $('#nama_usaha').val(nama_usaha);
+        $('#kategori_produk').val(kategori_produk);
+        $('#telepon').val(telepon);
+        $('#bidang_usaha').val(bidang_usaha);
+        $('#email').val(email);
+        $('#alamat').val(alamat);
+
+
+
+        $('.bd-example-modal-xl').modal('hide');
+    })
+</script>
+
+<script>
+    $('#disable').hide();
+    $('#kategori_produk').change(function() {
+        if ($('#kategori_produk').val() == 'My Ihram' || $('#kategori_produk').val() == 'My Safar') {
+            $('#disable').show();
+            // alert($('#kategori_produk').val());
+        } else {
+            $('#disable').hide();
+        }
+    })
+</script>
+
+<!-- Menghilangkan attr required untuk save sementara -->
+<script>
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
+</script>
 
 <script>
     /*  Wizard */

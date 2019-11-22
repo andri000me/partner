@@ -20,12 +20,14 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Partner/save') ?>" method="post">
+                        <form action="<?= base_url('Partner/update') ?>" method="post">
                             <input id="website" name="website" type="disable" value="">
                             <!-- Leave for security protection, read docs for details -->
 
                             <!-- ID Partner Mapping -->
                             <input type="hidden" name="id_mapping" value="<?= $partner->id_mapping ?>" id="id_mapping">
+                            <!-- ID Partner -->
+                            <input type="hidden" name="id_partner" value="<?= $partner->id_partner ?>" id="id_partner">
 
                             <div id="middle-wizard">
                                 <div class="step">
@@ -174,13 +176,13 @@
                                         <div class="form-group col-md-3">
                                             <label>Apakah Puanya Pinjaman?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Ya' ? 'selected' : '' ?> value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Ya' ? 'checked' : '' ?> value="Ya" required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Tidak' ? 'selected' : '' ?> value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Tidak' ? 'checked' : '' ?> value="Tidak" required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -190,13 +192,13 @@
                                         <div class="form-group col-md-3">
                                             <label>Punya Jumlah Plafond?</label><br>
                                             <div class="form-check  form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Ya' ? 'selected' : '' ?> value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Ya' ? 'checked' : '' ?> value="Ya" required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check  form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Tidak' ? 'selected' : '' ?> value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Tidak' ? 'checked' : '' ?> value="Tidak" required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -220,13 +222,13 @@
                                         <div class="form-group col-md-3">
                                             <label>Apakah Memiliki Giro / Cek?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Giro' ? 'selected' : '' ?> required value="Giro">
+                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Giro' ? 'checked' : '' ?> required value="Giro">
                                                 <label class="form-check-label">
                                                     Giro
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Cek' ? 'selected' : '' ?> required value="Cek">
+                                                <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Cek' ? 'checked' : '' ?> required value="Cek">
                                                 <label class="form-check-label">
                                                     Cek
                                                 </label>
@@ -237,52 +239,52 @@
                                         <div class="form-group col-md-3">
                                             <label>Pernah Melakukan Promosi?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $partner->pernah_promosi == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $partner->pernah_promosi == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
                                             </div>
                                             <div class="form-group mt-3">
                                                 <label>Rekening Bank</label>
-                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" value="<?= $partner->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
                                             </div>
                                             <div class="form-group">
                                                 <label>Cabang Bank</label>
-                                                <input type="text" class="form-control" id="cabang_bank" name="cabang_bank" required placeholder="Cabang Karawaci">
+                                                <input type="text" class="form-control" id="cabang_bank" name="cabang_bank" required value="<?= $partner->cabang_bank ?>" placeholder="Cabang Karawaci">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Ada Project Yang Sedang Berjalan?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Ada">
+                                                <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $partner->on_going_project == 'Ada' ? 'checked' : '' ?> required value="Ada">
                                                 <label class="form-check-label">
                                                     Ada
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Tidak Ada">
+                                                <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $partner->on_going_project == 'Tidak Ada' ? 'checked' : '' ?> required value="Tidak Ada">
                                                 <label class="form-check-label">
                                                     Tidak Ada
                                                 </label>
                                             </div>
                                             <div class="form-group mt-3">
                                                 <label>Nama Bank</label>
-                                                <input type="text" class="form-control" id="nama_bank" name="nama_bank" required placeholder="Bank Mandiri">
+                                                <input type="text" class="form-control" id="nama_bank" name="nama_bank" required value="<?= $partner->nama_bank ?>" placeholder="Bank Mandiri">
                                             </div>
                                             <div class="form-group">
                                                 <label>Atas Nama</label>
-                                                <input type="text" class="form-control" id="atas_nama" name="atas_nama" required placeholder="Anton Hoed">
+                                                <input type="text" class="form-control" id="atas_nama" name="atas_nama" required value="<?= $partner->atas_nama ?>" placeholder="Anton Hoed">
                                             </div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Catatan</label>
-                                            <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
+                                            <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"><?= $partner->catatan ?></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -299,42 +301,42 @@
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="ktp" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="npwp" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="buku_tabungan_perusahaan" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="siup" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="logo_perusahaan" type="file">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
+                                                    <input name="foto_usaha" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -410,8 +412,55 @@
 </div>
 <!-- Modal -->
 
-<!-- script -->
+<script>
+    $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
+    $("table").on("click", ".not-clickable", function(e) {
+        e.stopPropagation();
+    });
+    $("table").on('click', '.clickable-row', function() {
+        $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
 
+        var id_mapping = $(this).data('id');
+        var nama_usaha = $(this).data('usaha');
+        var kategori_produk = $(this).data('produk');
+        var telepon = $(this).data('telepon');
+        var bidang_usaha = $(this).data('bidang');
+        var email = $(this).data('email');
+        var alamat = $(this).data('alamat');
+
+        $('#id_mapping').val(id_mapping);
+        $('#nama_usaha').val(nama_usaha);
+        $('#kategori_produk').val(kategori_produk);
+        $('#telepon').val(telepon);
+        $('#bidang_usaha').val(bidang_usaha);
+        $('#email').val(email);
+        $('#alamat').val(alamat);
+
+
+
+        $('.bd-example-modal-xl').modal('hide');
+    })
+</script>
+
+<script>
+    $('#disable').hide();
+    $('#kategori_produk').change(function() {
+        if ($('#kategori_produk').val() == 'My Ihram' || $('#kategori_produk').val() == 'My Safar') {
+            $('#disable').show();
+            // alert($('#kategori_produk').val());
+        } else {
+            $('#disable').hide();
+        }
+    })
+</script>
+</script>
+
+<!-- Menghilangkan attr required untuk save sementara -->
+<script>
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
+</script>
 
 <script>
     /*  Wizard */

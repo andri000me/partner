@@ -16,7 +16,7 @@
 
         <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4">Rekrut
                 Partner</button></a>
-        <a href="#"><button class="btn btn-success ml-3 mb-4">Maintain
+        <a href="#"><button class="btn btn-success ml-3 mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain
                 Partner</button></a>
 
     </div>
@@ -56,4 +56,38 @@
             </div>
         </div>
     </div> <!-- end col -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header mb-2">
+                    <h4 class="modal-title">Cari Data Partner</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name Usaha</th>
+                            <th>Kategori Produk</th>
+                            <th>Telepon</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data->result() as $data) { ?>
+                            <tr class="clickable-row" data-id="<?= $data->id_mapping ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
+                                <td class="not-clickable"><?= $data->nama_usaha ?></td>
+                                <td><?= $data->kategori_produk ?></td>
+                                <td><?= $data->telepon ?></td>
+                                <td><a class="btn btn-primary" href="<?= base_url('Maintain_partner/create/' . $data->id_partner) ?>">Maintain</a></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
