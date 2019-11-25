@@ -270,7 +270,13 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-6">
+                                                                                <div class="col-md-3">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Nomor Telepon / Whatsapp</label>
+                                                                                        <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15"/>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-3">
                                                                                     <div class="form-group ml-3 mr-3">
                                                                                         <label>ID Ktp</label>
                                                                                         <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="id_ktp" id="id_ktp" required placeholder="0786 6875 8725 3564" maxlength="16"/>
@@ -278,17 +284,37 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-row">
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>E-Mail</label>
-                                                                                    <input type="email" class="form-control" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id"/>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group mr-3 ml-3">
+                                                                                        <label>Asal Aplikasi</label>
+                                                                                        <select class="form-control" name="soa" id="soa">
+                                                                                                <option selected>Pilih Source Aplikasi</option>
+                                                                                            <option value="Website BFI Syariah">Website BFI Syariah</option>
+                                                                                            <option value="Digital Marketing">Digital Marketing</option>
+                                                                                            <option value="Penyedia Jasa">Penyedia Jasa</option>
+                                                                                            <option value="Direct Selling">Direct Selling</option>
+                                                                                            <option value="Tour & travel">Tour & travel</option>
+                                                                                            <option value="Agent BA">Agent BA</option>
+                                                                                            <option value="Walkin">Walkin</option>
+                                                                                            <option value="EGC">EGC</option>
+                                                                                            <option value="CGC">CGC</option>
+                                                                                            <option value="RO">RO</option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group col-md-2">
-                                                                                    <label>Kelurahan</label>
-                                                                                    <input type="text" class="form-control" name="kelurahan" id="kelurahan" required placeholder="Lengkong Gudang"/>
-                                                                                </div>
-                                                                                <div class="form-group col-md-2">
-                                                                                    <label>Kecamatan</label>
-                                                                                    <input type="text" class="form-control" name="kecamatan" id="kecamatan" required placeholder="Serpong utara"/>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group mr-3 ml-3">
+                                                                                        <label>Produk</label>
+                                                                                        <select class="form-control" name="produk" id="produk">
+                                                                                            <option selected>Pilih Kategori Produk</option>
+                                                                                            <option value="My Ihram">My Ihram</option>
+                                                                                            <option value="My Safar">My Safar</option>
+                                                                                            <option value="My Talin">My Talin</option>
+                                                                                            <option value="My Hajat">My Hajat</option>
+                                                                                            <option value="My Faedah">My Faedah</option>
+                                                                                            <option value="My CarS">My CarS</option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-row">

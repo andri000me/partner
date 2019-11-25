@@ -3613,55 +3613,9 @@ Invoice
 /* ======
 33. Dashboard Page
    ====== */
-.dashboard-charts {
-	height: 300px;
-}
 
 input#website {
 	display: none;
-}
-
-h3.main_question {
-	margin: 0 0 20px 0;
-	padding: 0;
-	font-weight: 400;
-	font-size: 26px;
-}
-
-h3.main_question strong {
-	display: block;
-	color: #999;
-	font-size: 18px;
-	margin-bottom: 5px;
-	font-weight: 400;
-}
-
-#form_container {
-	background-color: #fff;
-	width: 1000px;
-	min-height: 450px;
-	margin: 120px auto 30px;
-}
-
-#wizard_container {
-	position: relative;
-	min-height: 450px;
-}
-
-#top-wizard {
-	margin-left: -30px;
-}
-
-#middle-wizard {
-	padding: 30px 30px 120px 30px;
-}
-
-#bottom-wizard {
-	text-align: right;
-	position: absolute;
-	width: 100%;
-	bottom: 25px;
-	right: 45px;
 }
 
 button[disabled] {
@@ -3671,7 +3625,7 @@ button[disabled] {
 .nav-tab {
 	height: 0;
 	visibility: hidden;
-  }
+}
 
 .ui-progressbar {
 	height: 5px;
@@ -3784,9 +3738,91 @@ button[disabled] {
 	}
 }
 
+
 @media (min-width: 768px) {
 	.enlarged .slimscroll-menu {
 		overflow: inherit !important;
+	}
+}
+
+.sticky-top {
+	position: fixed;
+	top: 165px;
+	z-index: 0;
+	margin-left: unset;
+	margin-right: unset;
+
+}
+
+@media (max-width: 480px) {
+	.sticky-top {
+		position: unset;
+		top: unset;
+		margin-left: 30px;
+		margin-right: 30px;
+		width: 345px;
+	}
+
+	.btn-kanan {
+		float: right;
+	}
+}
+
+@media (max-width: 414px) {
+	.sticky-top {
+		position: unset;
+		top: unset;
+		margin-left: 30px;
+		margin-right: 30px;
+		width: 385px;
+	}
+}
+
+@media (max-width: 411px) {
+	.sticky-top {
+		position: unset;
+		top: unset;
+		margin-left: 30px;
+		margin-right: 30px;
+		width: 380px;
+	}
+}
+
+@media (max-width: 375px) {
+	.sticky-top {
+		position: unset;
+		top: unset;
+		margin-left: 30px;
+		margin-right: 30px;
+		width: 345px;
+	}
+}
+
+@media (max-width: 360px) {
+	.sticky-top {
+		position: unset;
+		top: unset;
+		margin-left: 30px;
+		margin-right: 30px;
+		width: 330px;
+	}
+
+	.text-size {
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 320px) {
+	.sticky-top {
+		position: unset;
+		top: unset;
+		margin-left: 30px;
+		margin-right: 30px;
+		width: 290px;
+	}
+
+	.text-size {
+		font-size: 11px;
 	}
 }
 
