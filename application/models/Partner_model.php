@@ -7,12 +7,13 @@ class Partner_model extends CI_Model
     public function create($data)
     {
         $this->db->insert('partners', $data);
-        return $this->db->affected_rows();
+        return $this->db->insert_id();
     }
 
     public function update($data, $where)
     {
         $this->db->update('partners', $data, $where);
+        return $this->db->affected_rows();
     }
 
     public function delete($where)

@@ -7,8 +7,9 @@ class Maintain_partner extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('partner_model');
         $this->load->model('maintain_partner_model', 'maintain_model');
+        $this->load->model('partner_activity_model', 'partner_activity');
+        $this->load->model('partner_model');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -27,10 +28,15 @@ class Maintain_partner extends CI_Controller
         $this->template->load('template/index', 'maintain_partner', $data);
     }
 
-    // public function create($id)
-    // {
-    //     $post = $this->input->post(NULL, TRUE);
-    // }
+    public function create($id)
+    {
+        $data = [
+            'data' => $this->partner_model->get(['id_partner', $id]),
+            'activities' => $this->partner_activity->get(['partner_activities.id_partner' => $id])
+        ];
+
+        $this->template->load('template/index', 'partner-maintain', $data);
+    }
 
     //Save Maintain
     public function save()

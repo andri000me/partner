@@ -35,7 +35,8 @@
     <link href="<?= base_url('template/assets/plugins/css/jquery.bootstrap-touchspin.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('template/assets/plugins/css/morris.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('template/assets/plugins/css/sweetalert2.min.css') ?>" rel="stylesheet" type="text/css">
-
+    <!-- jQuery  -->
+    <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
 </head>
 
 <body>
@@ -69,8 +70,7 @@
     </div>
 
 
-    <!-- jQuery  -->
-    <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
+
     <script src="<?= base_url('template/assets/js/bootstrap.bundle.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>

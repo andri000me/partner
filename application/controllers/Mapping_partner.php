@@ -31,9 +31,9 @@ class Mapping_partner extends CI_Controller
     public function edit($id)
     {
         $data = [
-            'data' => $this->mapping_partner->get(['id_mapping' => $id])
+            'data' => $this->mapping_partner->get(['id_mapping' => $id])->row()
         ];
-        $this->template->load('template/index', 'form_mapping_edit', $data);
+        $this->template->load('template/index', 'mapping-edit', $data);
     }
 
     public function save()
@@ -88,8 +88,8 @@ class Mapping_partner extends CI_Controller
         $this->form_validation->set_rules('nama_usaha', 'Nama Usaha', 'required');
         $this->form_validation->set_rules('bidang_usaha', 'Bidang Usaha', 'required');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
-        $this->form_validation->set_rules('telepon', 'Telepon', 'required|is_unique[mapping_partners.telepon]');
-        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[mapping_partners.email]');
+        $this->form_validation->set_rules('telepon', 'Telepon', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
         $this->form_validation->set_rules('kategori_produk', 'Kategori Produk', 'required');
 
         if ($this->form_validation->run() != FALSE) {
@@ -103,7 +103,7 @@ class Mapping_partner extends CI_Controller
                 'catatan'               => $post['catatan'],
 
                 //Timestamp
-                'created_at'            => date('Y-m-d H:i:s'),
+                // 'created_at'            => date('Y-m-d H:i:s'),
                 'updated_at'            => date('Y-m-d H:i:s'),
 
                 //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
@@ -120,9 +120,12 @@ class Mapping_partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil diupdate. <a href='#'>Lihat Data</a>");
 
-            redirect('Partner');
+            redirect('Mapping_partner');
         } else {
-            $this->template->load('template/index', 'form_mapping');
+            $data = [
+                'data' => $this->mapping_partner->get(['id_mapping' => $post['id_mapping']])->row()
+            ];
+            $this->template->load('template/index', 'mapping-edit', $data);
         }
     }
 }

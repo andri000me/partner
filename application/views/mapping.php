@@ -33,7 +33,7 @@
                             <th>Telepon</th>
                             <th>E-mail</th>
                             <th>Produk</th>
-                            <!-- <th>Action</th> -->
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
