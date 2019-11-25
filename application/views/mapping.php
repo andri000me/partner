@@ -57,6 +57,7 @@
                                 <td>
                                     <div class="text-size"><?= $mapping->kategori_produk ?></div>
                                 </td>
+                                <td><a href="<?= base_url('Mapping_partner/edit/' . $mapping->id_mapping) ?>" class="btn btn-secondary">Edit</a></td>
                                 <!-- <td></td> -->
                             </tr>
                         <?php } ?>

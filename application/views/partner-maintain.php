@@ -15,7 +15,13 @@
                     area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam
                     memaintain partner anda.</p>
 
-                <form class="" action="#">
+                <form class="" action="<?= base_url('Maintain_partner/save') ?>" method="post" enctype="multipart/form-data">
+                    <!-- ID Partner -->
+                    <input type="hidden" name="id_partner" value="<?= $data->id_partner ?>">
+                    <!-- ID user -->
+                    <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
+                    <!-- ID branch -->
+                    <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="form-group">
                         <label>Upload Foto Kegiatan</label>
                         <input type="file" class="form-control" name="photo_activity" id="photo_activity" required placeholder="Silahkan Upload Foto Kegiatan" />
@@ -61,12 +67,17 @@
 
                     <hr class="mt-3 mb-4">
                     <h4 class="mt-0 header-title">AKTIVITAS TERAKHIR</h4>
-                    <?php foreach ($activities->result() as $activity) { ?>
-                        <p class="text-muted m-b-10">
-                            <i class="dripicons-clock"></i>
-                            <?= $activity->activity ?>&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <code><?= $activity->date_activity ?> - Ibrahim Ahmad</code>
-                        </p>
+                    <?php if ($activities->num_rows() > 0) {
+                        foreach ($activities->result() as $activity) { ?>
+                            <p class="text-muted m-b-10">
+                                <i class="dripicons-clock"></i>
+                                <?= $activity->activity ?>&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <code><?= $activity->date_activity ?> - <?= $activity->name ?></code>
+                            </p>
+                        <?php
+                            }
+                        } else { ?>
+                        <p class="text-muted m-b-10">Tidak Ada Data</p>
                     <?php } ?>
 
                     <hr class="mt-4 mb-4">

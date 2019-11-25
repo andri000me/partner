@@ -7,7 +7,7 @@ class Agent_model extends CI_Model
     public function create($data)
     {
         $this->db->insert('agents', $data);
-        return $this->db->affected_rows();
+        return $this->db->insert_id();
     }
 
     public function update($data, $where)
@@ -22,7 +22,7 @@ class Agent_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->from('partners');
+        $this->db->from('agents');
         if ($where != null) {
             $this->db->where($where);
         }

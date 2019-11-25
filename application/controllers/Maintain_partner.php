@@ -31,7 +31,7 @@ class Maintain_partner extends CI_Controller
     public function create($id)
     {
         $data = [
-            'data' => $this->partner_model->get(['id_partner', $id]),
+            'data' => $this->partner_model->get(['id_partner' => $id])->row(),
             'activities' => $this->partner_activity->get(['partner_activities.id_partner' => $id])
         ];
 
@@ -45,6 +45,7 @@ class Maintain_partner extends CI_Controller
 
         $data = [
             'date_maintain' => date('Y-m-d H:i:s'),
+            'jenis_kegiatan' => $post['jenis_kegiatan'],
             'catatan' => $post['catatan'],
 
             //Timestamp
@@ -63,13 +64,24 @@ class Maintain_partner extends CI_Controller
         $config['max_height']           = 0;
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('upload_file')) {
+        if (!$this->upload->do_upload('photo_activity')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
             $data['photo_activity'] = $this->upload->data('file_name');
         }
 
         $this->maintain_model->create($data);
+
+        //Membuat history activity inputan data partner
+        $partner_activity = [
+            'activity' => 'Partner telah dimaintain',
+            'date_activity' => date('Y-m-d H:i:s'),
+            'id_partner' => $post['id_partner'],
+            'id_user' => $post['id_user']
+        ];
+
+        $this->partner_activity->create($partner_activity);
+        $this->session->set_flashdata("berhasil_simpan", "Data Maintain Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
         redirect('Partner');
     }

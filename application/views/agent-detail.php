@@ -21,75 +21,81 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active p-3" id="home2" role="tabpanel">
-						<form class="" action="#">
+						<form class="" action="<?= base_url('Agent/update') ?>" method="post" <!-- ID Partner -->
+							<input type="hidden" name="id_agent" value="<?= $data->id_agent ?>" id="id_agent">
+							<!-- ID User -->
+							<input type="hidden" name="id_user" value="<?= $data->id_user ?>" id="id_user">
+							<!-- ID Cabang -->
+							<input type="hidden" name="id_branch" value="<?= $data->id_branch ?>" id="id_branch">
+
 							<div class="form-group">
 								<label>Nama Usaha</label>
-								<input type="text" class="form-control" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" />
+								<input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" value="<?= $data->nama_lengkap ?>" required placeholder="Aisha Putri" />
 							</div>
 							<div class="form-group">
 								<label>E-Mail</label>
 								<div>
-									<input type="email" class="form-control" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
+									<input type="email" class="form-control" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label>Tanggal Lahir</label>
-									<input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required placeholder="19 / 10 / 1927" />
+									<input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" required placeholder="19 / 10 / 1927" />
 								</div>
 								<div class="form-group col-md-4">
 									<label>Nomor KTP</label>
-									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tanggal_lahir" id="tanggal_lahir" required placeholder="1234567891234567" maxlength="16" />
+									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
 								</div>
 								<div class="form-group col-md-4">
 									<label>Nomor NPWP</label>
-									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tanggal_lahir" id="tanggal_lahir" required placeholder="1234567891234567" maxlength="15" />
+									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label>Pekerjaan</label>
-									<input type="text" class="form-control" name="pekerjaan" id="pekerjaan" required placeholder="Pilih Pekerjaan" />
+									<input type="text" class="form-control" name="pekerjaan" id="pekerjaan" value="<?= $data->pekerjaan ?>" required placeholder="Pilih Pekerjaan" />
 								</div>
 								<div class="form-group col-md-8">
 									<label>Jenis Pekerjaan</label>
-									<input type="text" class="form-control" name="jenis_pekerjaan" id="jenis_pekerjaan" required placeholder="Pekerja Rumah tangga" />
+									<input type="text" class="form-control" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= $data->jenis_pekerjaan ?>" required placeholder="Pekerja Rumah tangga" />
 								</div>
 							</div>
 							<div class="form-group">
 								<label>Jenis Agent / BA</label>
 								<select class="form-control" name="jenis_agent" id="jenis_agent" required>
 									<option selected disabled value="">Pilih Jenis Agent / BA</option>
-									<option value="Syariah Agent">Syariah Agent</option>
-									<option value="Syariah Ambassador">Syariah Ambassador</option>
-									<option value="Syariah Point">Syariah Point</option>
+									<option <?= $data->jenis_agent == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
+									<option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
+									<option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label>Status Kepemilikan Rumah</label>
 								<select class="form-control" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
 									<option selected disabled value="">Rumah Milik Siapa?</option>
-									<option value="Milik Sendiri">Milik Sendiri</option>
-									<option value="Milik Keluarga">Milik Keluarga</option>
-									<option value="Kontrak">Kontrak</option>
-									<option value="Sewa">Sewa</option>
+									<option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+									<option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+									<option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
+									<option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
 								</select>
 							</div>
 							<div class="form-group">
 								<label>income Per bulan saat ini</label>
-								<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="income" id="rupiah" required placeholder="Rp.3,000,000" />
+								<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="income" id="rupiah" value="<?= $data->income ?>" required placeholder="Rp.3,000,000" />
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-4">
-									<label>Apakah Puanya Pinjaman?</label><br>
+									<label>Apakah Punya Pinjaman?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" required>
+										<input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" <?= $data->punya_pinjaman == 'Ya' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Ya
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" required>
+										<input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" <?= $data->punya_pinjaman == 'Tidak' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Tidak
 										</label>
@@ -98,13 +104,13 @@
 								<div class="form-group col-md-4">
 									<label>Terdaftar Sebagai Agen travel / Lainnya?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" required>
+										<input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" <?= $data->afiliasi_travel == 'Ya' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Ya
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Tidak" required>
+										<input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Tidak" <?= $data->afiliasi_travel == 'Tidak' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Tidak
 										</label>
@@ -113,13 +119,13 @@
 								<div class="form-group col-md-4">
 									<label>Terdaftar Sebagai Agen BFI Finance?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" required>
+										<input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" <?= $data->agent_konvensional == 'Ya' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Ya
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Tidak" required>
+										<input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Tidak" <?= $data->agent_konvensional == 'Tidak' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Tidak
 										</label>
@@ -130,13 +136,13 @@
 								<div class="form-group col-md-4">
 									<label>Apakah pernah menjadi konsumen BFI Finance?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" required>
+										<input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" <?= $data->konsumen_bfi == 'Pernah' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Pernah
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Tidak Pernah" required>
+										<input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Tidak Pernah" <?= $data->konsumen_bfi == 'Tidak Pernah' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Tidak Pernah
 										</label>
@@ -145,13 +151,13 @@
 								<div class="form-group col-md-6">
 									<label>Apakah ada hubungan dengan karyawan BFI Finance?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" required>
+										<input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" <?= $data->hubungan_karyawan_bfi == 'Ada' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Ada
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Tidak Ada" required>
+										<input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Tidak Ada" <?= $data->hubungan_karyawan_bfi == 'Tidak Ada' ? 'checked' : '' ?> required>
 										<label class="form-check-label">
 											Tidak Ada
 										</label>
@@ -161,21 +167,21 @@
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label>Rekening Bank</label>
-									<input type="text" class="form-control pelacement" pelacement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
+									<input type="text" class="form-control pelacement" pelacement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
 								</div>
 								<div class="form-group col-md-4">
 									<label>Nama Bank</label>
-									<input type="text" class="form-control" id="nama_bank" name="nama_bank" required placeholder="Bank Mandiri">
+									<input type="text" class="form-control" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-4">
 									<label>Cabang Bank</label>
-									<input type="text" class="form-control" id="cabang_bank" name="cabang_bank" requiredH placeholder="Cabang Karawaci">
+									<input type="text" class="form-control" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
 								</div>
 								<div class="form-group col-md-4">
 									<label>Nama Pemilik</label>
-									<input type="text" class="form-control" name="nama_pemilik" id="nama_pemilik" required placeholder="Anto Hoed">
+									<input type="text" class="form-control" name="atas_nama" id="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anto Hoed">
 								</div>
 							</div>
 							<div class="form-group mb-0 float-right mt-2">
@@ -205,24 +211,18 @@
 					<hr class="mt-3 mb-4">
 
 					<h4 class="mt-0 header-title">AKTIVITAS TERAKHIR</h4>
-					<p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-						pada
-						data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<code>30 Des, 2019 -
-							Ibrahim Ahmad</code>
-					</p>
-					<p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-						pada
-						data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<code>27 Nov, 2019 -
-							Don Aria Sabda</code>
-					</p>
-					<p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-						pada
-						data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<code>24 Nov, 2019 -
-							Don Aria Sabda</code>
-					</p>
+					<?php if ($activities->num_rows() > 0) {
+						foreach ($activities->result() as $activity) { ?>
+							<p class="text-muted m-b-10">
+								<i class="dripicons-clock"></i>
+								<?= $activity->activity ?>&nbsp;&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<code><?= $activity->date_activity ?> - <?= $activity->name ?></code>
+							</p>
+						<?php
+							}
+						} else { ?>
+						<p class="text-muted m-b-10">Tidak Ada Data</p>
+					<?php } ?>
 
 					<hr class="mt-4 mb-4">
 
@@ -255,7 +255,7 @@
 				</div>
 			</div>
 
-			
+
 		</div>
 	</div>
 </div>

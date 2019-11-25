@@ -20,8 +20,15 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Home/save_stage1') ?>" method="post">
+                        <form action="<?= base_url('Agent/save') ?>" method="post">
                             <input id="website" name="website" type="disable" value="">
+
+                            <!-- ID Agent -->
+                            <!-- <input type="hidden" name="id_agent" id="id_agent"> -->
+                            <!-- ID User -->
+                            <input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
+                            <!-- ID Cabang -->
+                            <input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                             <!-- Leave for security protection, read docs for details -->
                             <div id="middle-wizard">
                                 <div class="step">
@@ -33,11 +40,11 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label>Nama Usaha</label>
-                                            <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" />
+                                            <label>Nama Lengkap</label>
+                                            <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required placeholder="Aisha Putri" />
                                         </div>
                                         <div class="form-group col-md-2">
-                                            <label>Apakah Puanya Pinjaman?</label><br>
+                                            <label>Apakah Punya Pinjaman?</label><br>
                                             <div class="form-check form-check-inline mt-2">
                                                 <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" required>
                                                 <label class="form-check-label">
@@ -97,11 +104,11 @@
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Nomor KTP</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tanggal_lahir" id="tanggal_lahir" required placeholder="1234567891234567" maxlength="16" />
+                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="1234567891234567" maxlength="16" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Nomor NPWP</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tanggal_lahir" id="tanggal_lahir" required placeholder="1234567891234567" maxlength="15" />
+                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" required placeholder="1234567891234567" maxlength="15" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Apakah ada hubungan dengan karyawan BFI Finance?</label><br>
@@ -180,7 +187,7 @@
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Nama Pemilik</label>
-                                            <input type="text" class="form-control" name="nama_pemilik" id="nama_pemilik" required placeholder="Anto Hoed">
+                                            <input type="text" class="form-control" name="atas_nama" id="atas_nama" required placeholder="Anto Hoed">
                                         </div>
                                     </div>
                                     <div class="form-row">

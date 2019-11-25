@@ -364,7 +364,7 @@
                                             <label>KTP</label>
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="ktp" id="ktp" type="file" require multiple="multiple">
+                                                    <input name="ktp" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -372,7 +372,7 @@
                                             <label>NPWP</label>
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="npwp" id="npwp" type="file" multiple="multiple">
+                                                    <input name="npwp" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -380,7 +380,7 @@
                                             <label>Buku Tabungan</label>
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="buku_tabungan_perusahaan" id="buku_tabungan_perusahaan" type="file" multiple="multiple">
+                                                    <input name="buku_tabungan_perusahaan" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -388,7 +388,7 @@
                                             <label>SIUP / TDP</label>
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="siup" id="siup" type="file" multiple="multiple">
+                                                    <input name="siup" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -396,7 +396,7 @@
                                             <label>Logo Perusahaan</label>
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="logo_perusahaan" id="logo_perusahaan" type="file" multiple="multiple">
+                                                    <input name="logo_perusahaan" type="file">
                                                 </div>
                                             </div>
                                         </div>
@@ -404,7 +404,7 @@
                                             <label>Foto usaha</label>
                                             <div action="#" class="dropzone">
                                                 <div class="fallback">
-                                                    <input name="foto_usaha" id="foto_usaha" type="file" multiple="multiple">
+                                                    <input name="foto_usaha" type="file">
                                                 </div>
                                             </div>
                                         </div>
