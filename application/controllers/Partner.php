@@ -38,15 +38,6 @@ class Partner extends CI_Controller
     }
 
 
-    public function detail($id)
-    {
-        $where = ['id_partner' => $id];
-
-        $data = [
-            'data' => $this->partner_model->get($where)->row()
-        ];
-        $this->template->load('template/index', 'mapping', $data);
-    }
 
     public function edit($id)
     {
@@ -58,6 +49,16 @@ class Partner extends CI_Controller
         ];
 
         $this->template->load('template/index', 'partner-edit', $data);
+    }
+
+    public function detail($id)
+    {
+        $where = ['id_partner' => $id];
+
+        $data = [
+            'data' => $this->partner_model->get($where)->row()
+        ];
+        $this->template->load('template/index', 'partner-detail', $data);
     }
 
     public function save()
@@ -156,13 +157,10 @@ class Partner extends CI_Controller
             $upload = $this->upload->data('file_name');
         }
 
-        //Memasukkan data mapping ke database `partners`
-        // $where = ['id_partner' => $post['id_partner']];
-
         $id = $this->partner_model->create($data);
 
         $partner_activity = [
-            'activity' => 'Data Partner pertama dibuat',
+            'activity' => 'Data Partner telah dibuat',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_partner' => $id,
             'id_user' => $post['id_user']
@@ -172,7 +170,7 @@ class Partner extends CI_Controller
 
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");
+            $this->session->set_flashdata("berhasil_simpan", "Data Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
             redirect('Partner');
         }
@@ -272,7 +270,7 @@ class Partner extends CI_Controller
 
         //Membuat history activity inputan data partner
         $partner_activity = [
-            'activity' => 'Perubahan pada data partner',
+            'activity' => 'Perubahan pada data Partner',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_partner' => $post['id_partner'],
             'id_user' => $post['id_user']
@@ -286,5 +284,10 @@ class Partner extends CI_Controller
 
             redirect('Partner');
         }
+    }
+
+    public function update_detail()
+    {
+        //
     }
 }

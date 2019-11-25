@@ -28,6 +28,10 @@
                             <input type="hidden" name="id_mapping" value="<?= $partner->id_mapping ?>" id="id_mapping">
                             <!-- ID Partner -->
                             <input type="hidden" name="id_partner" value="<?= $partner->id_partner ?>" id="id_partner">
+                            <!-- ID User -->
+                            <input type="hidden" name="id_user" value="<?= $partner->id_user ?>" id="id_user">
+                            <!-- ID Cabang -->
+                            <input type="hidden" name="id_branch" value="<?= $partner->id_branch ?>" id="id_branch">
 
                             <div id="middle-wizard">
                                 <div class="step">

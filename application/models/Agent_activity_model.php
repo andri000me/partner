@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Partner_activity_model extends CI_Model
+class Agent_activity_model extends CI_Model
 {
 
     public function create($data)
@@ -23,6 +23,8 @@ class Partner_activity_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from('agent_activities');
+        $this->db->join('agents', 'agents.id_agent = agent_activities.id_agent', 'inner');
+        $this->db->join('users', 'users.id_user = agent_activities.id_user', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }
