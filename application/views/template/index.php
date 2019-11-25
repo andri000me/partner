@@ -60,8 +60,8 @@
 
             </div>
 
-            <footer class="footer">
-                <!-- © 2018 - 2019 Lexa - <span class="d-none d-sm-inline-block"> Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesbrand</span>. -->
+            <footer class="footer mt-5">
+                <p class="text-size">2019 BFI Syariah. Crafted with by Themesbrand</p>
             </footer>
 
         </div>
