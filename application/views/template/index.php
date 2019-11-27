@@ -35,8 +35,12 @@
     <link href="<?= base_url('template/assets/plugins/css/jquery.bootstrap-touchspin.min.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('template/assets/plugins/css/morris.css') ?>" rel="stylesheet" />
     <link href="<?= base_url('template/assets/plugins/css/sweetalert2.min.css') ?>" rel="stylesheet" type="text/css">
+
     <!-- jQuery  -->
     <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
+
+    <!-- Magnific popup -->
+    <link href="<?= base_url('template/assets/plugins/css/magnific-popup.css') ?>" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -129,6 +133,10 @@
     <script src="<?= base_url('template/assets/plugins/js/bootstrap-maxlength.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/plugins/js/bootstrap-filestyle.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/plugins/js/jquery.bootstrap-touchspin.min.js') ?>"></script>
+
+    <!-- Magnific popup -->
+    <script src="<?= base_url('template/assets/plugins/js/jquery.magnific-popup.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/pages/lightbox.js') ?>"></script>
 
     <script>
         var rupiah = document.getElementById("rupiah");
