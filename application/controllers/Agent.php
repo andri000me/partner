@@ -3,14 +3,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Agent extends CI_Controller
 {
+    public $where;
 
     public function __construct()
     {
         parent::__construct();
         $this->load->model('agent_model');
+        $this->load->model('ticket_model');
+        $this->load->model('notification_model');
         $this->load->model('agent_activity_model', 'agent_activity');
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
+
+        //Jika CMS login maka memunculkan data berdasarkan `id_user`
+        if ($this->fungsi->user_login()->level == 1) {
+            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+        }
+        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
+        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+        } else {
+            $this->where = NULL;
+        }
 
         check_not_login();
     }
@@ -18,7 +32,7 @@ class Agent extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->agent_model->get()
+            'data' => $this->agent_model->get($this->where)
         ];
 
         $this->template->load('template/index', 'agent', $data);
@@ -47,56 +61,88 @@ class Agent extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        $data = [
-            'nama_lengkap'              => $post['nama_lengkap'],
-            // 'jenis_kelamin'             => $post['jenis_kelamin'],
-            'email'                     => $post['email'],
-            'tanggal_lahir'             => $post['tanggal_lahir'],
-            'no_ktp'                    => $post['no_ktp'],
-            'no_npwp'                   => $post['no_npwp'],
-            'pekerjaan'                 => $post['pekerjaan'],
-            'jenis_pekerjaan'           => $post['jenis_pekerjaan'],
-            'jenis_agent'               => $post['jenis_agent'],
-            'status_kepemilikan_rumah'  => $post['status_kepemilikan_rumah'],
-            'punya_pinjaman'            => $post['punya_pinjaman'],
-            'afiliasi_travel'           => $post['afiliasi_travel'],
-            'agent_konvensional'        => $post['agent_konvensional'],
-            'hubungan_karyawan_bfi'     => $post['hubungan_karyawan_bfi'],
-            'konsumen_bfi'              => $post['konsumen_bfi'],
-            'income'                    => $post['income'],
-            'rekening_bank'             => $post['rekening_bank'],
-            'cabang_bank'               => $post['cabang_bank'],
-            'nama_bank'                 => $post['nama_bank'],
-            'atas_nama'                 => $post['atas_nama'],
+        $this->form_validation->set_rules('email', 'Alamat E-mail', 'required|is_unique[agents.email]', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'required|is_unique[agents.no_ktp]', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_rules('no_npwp', 'NPWP', 'required|is_unique[agents.no_npwp]', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'required|is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor telepon']);
 
-            //Timestamp
-            'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
+        $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 
-            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            'id_user'               => $post['id_user'],
-            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            'id_branch'             => $post['id_branch']
-        ];
 
-        //Memasukkan data mapping ke database `Agents`
+        if ($this->form_validation->run() != FALSE) {
 
-        $id = $this->agent_model->create($data);
+            $data = [
+                'nama_lengkap'              => $post['nama_lengkap'],
+                // 'jenis_kelamin'             => $post['jenis_kelamin'],
+                'email'                     => $post['email'],
+                'tanggal_lahir'             => $post['tanggal_lahir'],
+                'no_ktp'                    => $post['no_ktp'],
+                'no_npwp'                   => $post['no_npwp'],
+                'pekerjaan'                 => $post['pekerjaan'],
+                'jenis_pekerjaan'           => $post['jenis_pekerjaan'],
+                'jenis_agent'               => $post['jenis_agent'],
+                'status_kepemilikan_rumah'  => $post['status_kepemilikan_rumah'],
+                'punya_pinjaman'            => $post['punya_pinjaman'],
+                'afiliasi_travel'           => $post['afiliasi_travel'],
+                'agent_konvensional'        => $post['agent_konvensional'],
+                'hubungan_karyawan_bfi'     => $post['hubungan_karyawan_bfi'],
+                'konsumen_bfi'              => $post['konsumen_bfi'],
+                'income'                    => $post['income'],
+                'rekening_bank'             => $post['rekening_bank'],
+                'cabang_bank'               => $post['cabang_bank'],
+                'nama_bank'                 => $post['nama_bank'],
+                'atas_nama'                 => $post['atas_nama'],
 
-        //Membuat history activity inputan data Agent
-        $agent_activity = [
-            'activity' => 'Data Agent telah dibuat',
-            'date_activity' => date('Y-m-d H:i:s'),
-            'id_agent' => $id,
-            'id_user' => $post['id_user']
-        ];
+                //Timestamp
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
 
-        $this->agent_activity->create($agent_activity);
+                //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
+                'id_user'               => $post['id_user'],
+                //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
+                'id_branch'             => $post['id_branch']
+            ];
 
-        //Memberi pesan berhasil data menyimpan data mapping
-        $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil disimpan. <a href='#'>Lihat Data</a>");
+            //Memasukkan data mapping ke database `Agents`
 
-        redirect('Agent');
+            $id = $this->agent_model->create($data);
+
+            //Membuat history activity inputan data Agent
+            $agent_activity = [
+                'activity' => 'Data Agent telah dibuat',
+                'date_activity' => date('Y-m-d H:i:s'),
+                'id_agent' => $id,
+                'id_user' => $post['id_user']
+            ];
+
+            $this->agent_activity->create($agent_activity);
+
+            //Menambah antrian tiket untuk data Agentc
+            $ticket = [
+                'status'        => 0,
+                'date_pending'  => date('Y-m-d H:i:s'),
+                'id_agent'      => $id,
+                'id_user'       => $this->fungsi->user_login()->id_user,
+                'id_branch'     => $this->fungsi->user_login()->id_branch
+            ];
+            $this->ticket_model->create($ticket);
+
+            //Notifikasi
+            $notification = [
+                'pengirim' => $this->fungsi->user_login()->id_user,
+                'type'      => 'new data',
+                'id_agent'  => $id,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            $this->notification_model->create($notification);
+
+            //Memberi pesan berhasil data menyimpan data mapping
+            $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil disimpan. <a href='#'>Lihat Data</a>");
+
+            redirect('Agent');
+        } else {
+            $this->template->load('template/index', 'agent-form');
+        }
     }
 
     public function update()

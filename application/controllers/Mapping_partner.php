@@ -3,6 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mapping_partner extends CI_Controller
 {
+    public $where;
+
 
     public function __construct()
     {
@@ -11,13 +13,24 @@ class Mapping_partner extends CI_Controller
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
+        //Jika CMS login maka memunculkan data berdasarkan `id_user`
+        if ($this->fungsi->user_login()->level == 1) {
+            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+        }
+        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
+        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+        } else {
+            $this->where = NULL;
+        }
+
         check_not_login();
     }
 
     public function index()
     {
         $data = [
-            'data' => $this->mapping_partner->get()
+            'data' => $this->mapping_partner->get($this->where)
         ];
 
         $this->template->load('template/index', 'mapping', $data);
@@ -31,7 +44,7 @@ class Mapping_partner extends CI_Controller
     public function edit($id)
     {
         $data = [
-            'data' => $this->mapping_partner->get(['id_mapping' => $id])->row()
+            'data' => $this->mapping_partner->get(['A.id_mapping' => $id])->row()
         ];
         $this->template->load('template/index', 'mapping-edit', $data);
     }
@@ -123,7 +136,7 @@ class Mapping_partner extends CI_Controller
             redirect('Mapping_partner');
         } else {
             $data = [
-                'data' => $this->mapping_partner->get(['id_mapping' => $post['id_mapping']])->row()
+                'data' => $this->mapping_partner->get(['A.id_mapping' => $post['id_mapping']])->row()
             ];
             $this->template->load('template/index', 'mapping-edit', $data);
         }

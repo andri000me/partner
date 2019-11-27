@@ -72,7 +72,7 @@ class Maintain_partner extends CI_Controller
 
         $this->maintain_model->create($data);
 
-        //Membuat history activity inputan data partner
+        //Membuat history activity inputan data maintain partner
         $partner_activity = [
             'activity' => 'Partner telah dimaintain',
             'date_activity' => date('Y-m-d H:i:s'),
