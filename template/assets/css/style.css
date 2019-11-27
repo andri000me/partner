@@ -3745,26 +3745,47 @@ button[disabled] {
 	}
 }
 
-.sticky-top {
+.sticky {
 	position: fixed;
-	top: 165px;
 	z-index: 0;
-	margin-left: unset;
-	margin-right: unset;
+	width: 380px;
+}
 
+.height {
+	height: 1000px;
+}
+
+.card-content {
+	margin-top: 50px;
+}
+
+.box {
+	width: 330px;
+	height: 600px;
+}
+
+.boxx {
+	width: 300px;
+	height: 150px;
 }
 
 @media (max-width: 480px) {
-	.sticky-top {
+	.sticky {
 		position: unset;
-		top: unset;
-		margin-left: 30px;
-		margin-right: 30px;
-		width: 345px;
+		z-index: 0;
+		width: unset;
 	}
 
 	.btn-kanan {
 		float: right;
+	}
+
+	.height {
+		height: unset;
+	}
+
+	.card-content {
+		margin-top: unset;
 	}
 }
 
@@ -3805,6 +3826,11 @@ button[disabled] {
 		margin-left: 30px;
 		margin-right: 30px;
 		width: 330px;
+	}
+
+	.lebar {
+		width: unset;
+		height: unset;
 	}
 
 	.text-size {
