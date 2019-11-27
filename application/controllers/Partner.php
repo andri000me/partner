@@ -4,15 +4,30 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Partner extends CI_Controller
 {
 
+    public $where;
+
     public function __construct()
     {
         parent::__construct();
         $this->load->model('partner_model');
+        $this->load->model('ticket_model');
         $this->load->model('partner_activity_model', 'partner_activity');
         $this->load->model('mapping_partner_model', 'mapping_partner');
+        $this->load->model('maintain_partner_model', 'maintain_partner');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
+
+        //Jika CMS login maka memunculkan data berdasarkan `id_user`
+        if ($this->fungsi->user_login()->level == 1) {
+            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+        }
+        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
+        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+        } else {
+            $this->where = NULL;
+        }
 
         check_not_login();
     }
@@ -20,7 +35,7 @@ class Partner extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->partner_model->get()
+            'data' => $this->partner_model->get($this->where)
         ];
 
         $this->template->load('template/index', 'partner', $data);
@@ -30,7 +45,7 @@ class Partner extends CI_Controller
     {
         $data = [
             'data' => $this->partner_model->get(),
-            'mapping' => $this->mapping_partner->get()
+            'mapping' => $this->mapping_partner->get($this->where)
 
         ];
 
@@ -45,7 +60,8 @@ class Partner extends CI_Controller
 
         $data = [
             'partner' => $this->partner_model->get($where)->row(),
-            'mapping' => $this->mapping_partner->get()
+            'mapping' => $this->mapping_partner->get(),
+
         ];
 
         $this->template->load('template/index', 'partner-edit', $data);
@@ -53,10 +69,13 @@ class Partner extends CI_Controller
 
     public function detail($id)
     {
-        $where = ['id_partner' => $id];
+        $where = ['partners.id_partner' => $id];
 
         $data = [
-            'data' => $this->partner_model->get($where)->row()
+            'data' => $this->partner_model->get($where)->row(),
+            'maintain' => $this->maintain_partner->get($where),
+            'activities' => $this->partner_activity->get($where),
+            'ticket' => $this->ticket_model->get($where)->row()
         ];
         $this->template->load('template/index', 'partner-detail', $data);
     }
@@ -115,50 +134,54 @@ class Partner extends CI_Controller
         if (!$this->upload->do_upload('ktp')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $this->upload->data('file_name');
+            $data['ktp'] = $this->upload->data('file_name');
         }
-        //Konfigurasi Upload
 
 
         if (!$this->upload->do_upload('npwp')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $this->upload->data('file_name');
+            $data['npwp'] = $this->upload->data('file_name');
         }
-        //Konfigurasi Upload
 
 
         if (!$this->upload->do_upload('buku_tabungan_perusahaan')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $this->upload->data('file_name');
+            $data['buku_tabungan_perusahaan'] = $this->upload->data('file_name');
         }
-        //Konfigurasi Upload
 
 
         if (!$this->upload->do_upload('siup')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $this->upload->data('file_name');
+            $data['siup'] = $this->upload->data('file_name');
         }
-        //Konfigurasi Upload
 
 
         if (!$this->upload->do_upload('logo_perusahaan')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $this->upload->data('file_name');
+            $data['logo_perusahaan'] = $this->upload->data('file_name');
         }
 
 
         if (!$this->upload->do_upload('foto_usaha')) {
-            $upload =  $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $upload = $this->upload->data('file_name');
+            $data['foto_usaha'] = $this->upload->data('file_name');
+        }
+
+        if (isset($post['draft'])) {
+            $data['status'] = 'draft';
+        } else if (isset($post['process'])) {
+            $data['status'] = 'lengkap';
         }
 
         $id = $this->partner_model->create($data);
 
+
+        //Membuat history activity inputan data partner
         $partner_activity = [
             'activity' => 'Data Partner telah dibuat',
             'date_activity' => date('Y-m-d H:i:s'),
@@ -167,6 +190,28 @@ class Partner extends CI_Controller
         ];
 
         $this->partner_activity->create($partner_activity);
+
+        //Menambah antrian tiket untuk data Partner
+        if (isset($post['process'])) {
+            $ticket = [
+                'status'        => 0,
+                'date_pending'  => date('Y-m-d H:i:s'),
+                'id_partner'    => $id,
+                'id_user'       => $this->fungsi->user_login()->id_user,
+                'id_branch'     => $this->fungsi->user_login()->id_branch
+            ];
+            $this->ticket_model->create($ticket);
+
+            //Notifikasi
+            $notification = [
+                'pengirim'      => $this->fungsi->user_login()->id_user,
+                'type'          => 'new data',
+                'id_partner'    => $id,
+                'created_at'    => date('Y-m-d H:i:s')
+            ];
+            $this->notification_model->create($notification);
+        }
+
 
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -263,6 +308,21 @@ class Partner extends CI_Controller
             $data['foto_usaha'] = $this->upload->data('file_name');
         }
 
+        if (isset($post['draft'])) {
+            $data['status'] = 'draft';
+        } else if (isset($post['process'])) {
+            $data['status'] = 'lengkap';
+
+            $ticket = [
+                'status'        => 0,
+                'date_pending'  => date('Y-m-d H:i:s'),
+                'id_partner'    => $post['id_partner'],
+                'id_user'       => $this->fungsi->user_login()->id_user,
+                'id_branch'     => $this->fungsi->user_login()->id_branch
+            ];
+            $this->ticket_model->create($ticket);
+        }
+
         //Memasukkan data mapping ke database `partners`
         $where = ['id_partner' => $post['id_partner']];
 
@@ -288,6 +348,47 @@ class Partner extends CI_Controller
 
     public function update_detail()
     {
-        //
+        $post = $this->input->post(NULL, TRUE);
+
+        $data_mapping = [
+            'nama_usaha'        => $post['nama_usaha'],
+            'email'             => $post['email'],
+            'telepon'           => $post['telepon'],
+            'kategori_produk'   => $post['kategori_produk'],
+            'bidang_usaha'      => $post['bidang_usaha'],
+            'alamat'            => $post['alamat']
+        ];
+
+        $where_mapping = ['id_mapping' => $post['id_mapping']];
+
+        $this->mapping_partner->update($data_mapping, $where_mapping);
+
+        $data_partner = [
+            'bentuk_usaha'          => $post['bentuk_usaha'],
+            'kelurahan'             => $post['kelurahan'],
+            'kecamatan'             => $post['kecamatan'],
+            'kode_pos'              => $post['kode_pos'],
+            'provinsi'              => $post['provinsi'],
+            'status_tempat_usaha'   => $post['status_tempat_usaha'],
+            'tahun_berdiri'         => $post['tahun_berdiri'],
+            'jumlah_karyawan'       => $post['jumlah_karyawan']
+        ];
+
+        $where_partner = ['id_partner' => $post['id_partner']];
+
+        $this->partner_model->update($data_partner, $where_partner);
+
+        //Membuat history activity inputan data partner
+        $partner_activity = [
+            'activity' => 'Perubahan pada data Partner',
+            'date_activity' => date('Y-m-d H:i:s'),
+            'id_partner' => $post['id_partner'],
+            'id_user' => $post['id_user']
+        ];
+
+        $this->partner_activity->create($partner_activity);
+
+
+        redirect('Partner');
     }
 }

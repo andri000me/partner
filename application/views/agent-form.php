@@ -41,18 +41,18 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Nama Lengkap</label>
-                                            <input type="text" class="form-control" name="nama_lengkap" id="nama_lengkap" required placeholder="Aisha Putri" />
+                                            <input type="text" class="form-control <?= form_error('nama_lengkap') ? 'is-invalid' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" required placeholder="Aisha Putri" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Apakah Punya Pinjaman?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" <?= set_value('punya_pinjaman') == 'Ya' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" <?= set_value('punya_pinjaman') == 'Tidak' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -61,13 +61,13 @@
                                         <div class="form-group col-md-4">
                                             <label>Terdaftar Sebagai Agen travel / Lainnya?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" <?= set_value('afiliasi_travel') == 'Ya' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Tidak" <?= set_value('afiliasi_travel') == 'Tidak' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -78,19 +78,20 @@
                                         <div class="form-group col-md-6">
                                             <label>E-Mail</label>
                                             <div>
-                                                <input type="email" class="form-control" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
+                                                <input type="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" required placeholder="Aisha@bfisyariah.id" />
+                                                <?= form_error('email'); ?>
                                             </div>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Terdaftar Sebagai Agen BFI Finance?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" required>
+                                                <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" <?= set_value('agent_konvensional') == 'Ya' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Ya
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Tidak" required>
+                                                <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Tidak" <?= set_value('agent_konvensional') == 'Tidak' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Tidak
                                                 </label>
@@ -100,26 +101,28 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
                                             <label>Tanggal Lahir</label>
-                                            <input type="date" class="form-control" name="tanggal_lahir" id="tanggal_lahir" required placeholder="19 / 10 / 1927" />
+                                            <input type="date" class="form-control <?= form_error('tanggal_lahir') ? 'is-invalid' : '' ?>" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>" required placeholder="19 / 10 / 1927" />
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Nomor KTP</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="1234567891234567" maxlength="16" />
+                                            <input type="text" class="form-control <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="1234567891234567" maxlength="16" />
+                                            <?= form_error('no_ktp'); ?>
                                         </div>
                                         <div class="form-group col-md-2">
                                             <label>Nomor NPWP</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" required placeholder="1234567891234567" maxlength="15" />
+                                            <input type="text" class="form-control <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" value="<?= set_value('no_npwp') ?>" required placeholder="1234567891234567" maxlength="15" />
+                                            <?= form_error('no_npwp'); ?>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Apakah ada hubungan dengan karyawan BFI Finance?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" required>
+                                                <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" <?= set_value('hubungan_karyawan_bfi') == 'Ada' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Ada
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Tidak Ada" required>
+                                                <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Tidak Ada" <?= set_value('hubungan_karyawan_bfi') == 'Tidak Ada' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Tidak Ada
                                                 </label>
@@ -129,22 +132,22 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
                                             <label>Pekerjaan</label>
-                                            <input type="text" class="form-control" name="pekerjaan" id="pekerjaan" required placeholder="Pilih Pekerjaan" />
+                                            <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" />
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Jenis Pekerjaan</label>
-                                            <input type="text" class="form-control" name="jenis_pekerjaan" id="jenis_pekerjaan" required placeholder="Pekerja Rumah tangga" />
+                                            <input type="text" class="form-control <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= set_value('jenis_pekerjaan') ?>" required placeholder="Pekerja Rumah tangga" />
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label>Apakah pernah menjadi konsumen BFI Finance?</label><br>
                                             <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" required>
+                                                <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" <?= set_value('konsumen_bfi') == 'Pernah' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Pernah
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Tidak Pernah" required>
+                                                <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Tidak Pernah" <?= set_value('konsumen_bfi') == 'Tidak Pernah' ? 'checked' : '' ?> required>
                                                 <label class="form-check-label">
                                                     Tidak Pernah
                                                 </label>
@@ -154,46 +157,47 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Jenis Agent / BA</label>
-                                            <select class="form-control" name="jenis_agent" id="jenis_agent" required>
+                                            <select class="form-control <?= form_error('jenis_agent') ? 'is-invalid' : '' ?>" name="jenis_agent" id="jenis_agent" required>
                                                 <option selected disabled value="">Pilih Jenis Agent / BA</option>
-                                                <option value="Syariah Agent">Syariah Agent</option>
-                                                <option value="Syariah Ambassador">Syariah Ambassador</option>
-                                                <option value="Syariah Point">Syariah Point</option>
+                                                <option <?= set_value('jenis_agent') == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
+                                                <option <?= set_value('jenis_agent') == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
+                                                <option <?= set_value('jenis_agent') == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Rekening Bank</label>
-                                            <input type="text" class="form-control pelacement" pelacement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
+                                            <input type="text" class="form-control <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                            <?= form_error('rekening_bank'); ?>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Nama Bank</label>
-                                            <input type="text" class="form-control" id="nama_bank" name="nama_bank" required placeholder="Bank Mandiri">
+                                            <input type="text" class="form-control <?= form_error('nama_bank') ? 'is-invalid' : '' ?>" id="nama_bank" name="nama_bank" value="<?= set_value('nama_bank') ?>" required placeholder="Bank Mandiri">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>Status Kepemilikan Rumah</label>
-                                            <select class="form-control" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
+                                            <select class="form-control <?= form_error('') ? 'is-invalid' : 'status_kepemilikan_rumah' ?>" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
                                                 <option selected disabled value="">Rumah Milik Siapa?</option>
-                                                <option value="Milik Sendiri">Milik Sendiri</option>
-                                                <option value="Milik Keluarga">Milik Keluarga</option>
-                                                <option value="Kontrak">Kontrak</option>
-                                                <option value="Sewa">Sewa</option>
+                                                <option <?= set_value('status_kepemilikan_rumah') == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+                                                <option <?= set_value('status_kepemilikan_rumah') == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+                                                <option <?= set_value('status_kepemilikan_rumah') == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
+                                                <option <?= set_value('status_kepemilikan_rumah') == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Cabang Bank</label>
-                                            <input type="text" class="form-control" id="cabang_bank" name="cabang_bank" required placeholder="Cabang Karawaci">
+                                            <input type="text" class="form-control <?= form_error('cabang_bank') ? 'is-invalid' : '' ?>" id="cabang_bank" name="cabang_bank" value="<?= set_value('cabang_bank') ?>" required placeholder="Cabang Karawaci">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label>Nama Pemilik</label>
-                                            <input type="text" class="form-control" name="atas_nama" id="atas_nama" required placeholder="Anto Hoed">
+                                            <input type="text" class="form-control <?= form_error('atas_nama') ? 'is-invalid' : '' ?>" name="atas_nama" id="atas_nama" value="<?= set_value('atas_nama') ?>" required placeholder="Anto Hoed">
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label>income Per bulan saat ini</label>
-                                            <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="income" id="income" required placeholder="3,000,000" maxlength="15" />
+                                            <input type="text" class="form-control <?= form_error('income') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="income" id="income" value="<?= set_value('income') ?>" required placeholder="3,000,000" maxlength="15" />
                                         </div>
                                     </div>
                                 </div>

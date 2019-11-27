@@ -22,11 +22,13 @@ class Maintain_partner_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->from('maintain_partners');
-        $this->db->join('partners', 'partners.id_partner = maintain_partners.id_partner', 'inner');
+        $this->db->select("*, DATE_FORMAT(date_maintain, '%d %M %Y %H:%i:%s') as tanggal_maintain");
+        $this->db->from("maintain_partners");
+        $this->db->join("partners", "partners.id_partner = maintain_partners.id_partner", "inner");
         if ($where != null) {
             $this->db->where($where);
         }
+        $this->db->order_by('date_maintain', 'DESC');
         return $this->db->get();
     }
 }

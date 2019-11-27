@@ -24,7 +24,7 @@ class Ticket_model extends CI_Model
     {
         $this->db->from('tickets');
         $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');
-        $this->db->join('agents', 'agent.id_agent = tickets.id_agent', 'left');
+        $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

@@ -27,7 +27,7 @@
                     <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
                     <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <!-- Form inputan hidden untuk id mapping -->
-                    <input type="hidden" name="id_mapping" value="<?= $data->id_mapping ?>">
+                    <input type="hidden" name="id_mapping" value="<?= $data->mapping_id ?>">
 
                     <div class="form-row">
                         <div class="form-group col-md-6">

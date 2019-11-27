@@ -26,6 +26,8 @@
                     <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
                     <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
                     <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+                    <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
+                    <input type="hidden" name="id_mapping" id="id_mapping">
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">

@@ -219,13 +219,13 @@
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Apakah Puanya Pinjaman?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Ya' ? 'selected' : '' ?> value="Ya" required>
+                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Ya' ? 'checked' : '' ?> value="Ya" required>
                                                     <label class="form-check-label">
                                                         Ya
                                                     </label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Tidak' ? 'selected' : '' ?> value="Tidak" required>
+                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= $partner->punya_pinjaman == 'Tidak' ? 'checked' : '' ?> value="Tidak" required>
                                                     <label class="form-check-label">
                                                         Tidak
                                                     </label>
@@ -236,13 +236,13 @@
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Punya Jumlah Plafond?</label><br>
                                                 <div class="form-check  form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Ya' ? 'selected' : '' ?> value="Ya" required>
+                                                    <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Ya' ? 'checked' : '' ?> value="Ya" required>
                                                     <label class="form-check-label">
                                                         Ya
                                                     </label>
                                                 </div>
                                                 <div class="form-check  form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Tidak' ? 'selected' : '' ?> value="Tidak" required>
+                                                    <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= $partner->punya_jumlah_plafond == 'Tidak' ? 'checked' : '' ?> value="Tidak" required>
                                                     <label class="form-check-label">
                                                         Tidak
                                                     </label>
@@ -267,13 +267,13 @@
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Apakah Memiliki Giro / Cek?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Giro' ? 'selected' : '' ?> required value="Giro">
+                                                    <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Giro' ? 'checked' : '' ?> required value="Giro">
                                                     <label class="form-check-label">
                                                         Giro
                                                     </label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Cek' ? 'selected' : '' ?> required value="Cek">
+                                                    <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= $partner->punya_giro_cek == 'Cek' ? 'checked' : '' ?> required value="Cek">
                                                     <label class="form-check-label">
                                                         Cek
                                                     </label>
@@ -292,13 +292,13 @@
                                             <div class="form-group ml-3 mr-3 mt-1">
                                                 <label>Pernah Melakukan Promosi?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $partner->pernah_promosi == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                     <label class="form-check-label">
                                                         Ya
                                                     </label>
                                                 </div>
                                                 <div class="form-check form-check-inline ml-3 mr-3">
-                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $partner->pernah_promosi == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                     <label class="form-check-label">
                                                         Tidak
                                                     </label>
@@ -317,13 +317,13 @@
                                             <div class="form-group ml-3 mr-3 mt-1">
                                                 <label>Ada Project Yang Sedang Berjalan?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Ada">
+                                                    <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $partner->on_going_project == 'Ada' ? 'checked' : '' ?> required value="Ada">
                                                     <label class="form-check-label">
                                                         Ada
                                                     </label>
                                                 </div>
                                                 <div class="form-check form-check-inline ml-3 mr-3">
-                                                    <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Tidak Ada">
+                                                    <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $partner->on_going_project == 'Tidak Ada' ? 'checked' : '' ?> required value="Tidak Ada">
                                                     <label class="form-check-label">
                                                         Tidak Ada
                                                     </label>
@@ -341,7 +341,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Catatan</label>
-                                                <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
+                                                <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"><?= $partner->catatan ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -410,7 +410,7 @@
                             </div>
                             <!-- /middle-wizard -->
                             <div class="form-group mb-0 float-right mt-3">
-                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
+                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit" name="draft">Draft</button>
                                 <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
                                 <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
                                 <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>

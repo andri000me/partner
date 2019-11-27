@@ -413,7 +413,7 @@
                                 </div>
                                 <!-- /middle-wizard -->
                                 <div class="form-group mb-0 float-right mt-3">
-                                    <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
+                                    <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
                                     <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
                                     <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
                                     <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
@@ -446,7 +446,7 @@
                     </thead>
                     <tbody>
                         <?php foreach ($mapping->result() as $data) { ?>
-                            <tr class="clickable-row" data-id="<?= $data->id_mapping ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
+                            <tr class="clickable-row" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
                                 <td class="not-clickable">
                                     <div class="text-size"><?= $data->nama_usaha ?></div>
                                 </td>
@@ -492,7 +492,7 @@
     $("table").on('click', '.clickable-row', function() {
         $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
 
-        var id_mapping = $(this).data('id');
+        var id_mapping = $(this).data('mapping');
         var nama_usaha = $(this).data('usaha');
         var kategori_produk = $(this).data('produk');
         var telepon = $(this).data('telepon');
