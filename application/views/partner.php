@@ -12,11 +12,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-12"><a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4">Rekrut
-                Partner</button></a>
-        <a href="#"><button class="btn btn-success ml-3 mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain
-                Partner</button></a>
-
+    <div class="col-md-12">
         <div class="btn-kanan">
             <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4 text-size">Rekrut
                     Partner</button></a>

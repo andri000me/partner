@@ -1,4 +1,28 @@
 <script>
+    $('#disable').hide();
+    $('#kategori_produk').change(function() {
+        if ($('#kategori_produk').val() == 'My Ihram' || $('#kategori_produk').val() == 'My Safar') {
+            $('#disable').show();
+            // alert($('#kategori_produk').val());
+        } else {
+            $('#disable').hide();
+        }
+    })
+</script>
+
+<script>
+    $('#hide').hide();
+    $('.cross_branch').click(function() {
+        var cross_branch = $(this).val();
+        if (cross_branch == 'Ya') {
+            $('#hide').show();
+        } else if (cross_branch == 'Tidak') {
+            $('#hide').hide();
+        }
+    })
+</script>
+
+<script>
     /*  Wizard */
     jQuery(function($) {
         "use strict";
