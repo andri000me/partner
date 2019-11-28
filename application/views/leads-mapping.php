@@ -14,9 +14,7 @@
 <div class="row">
     <div class="col-md-12">
         <div>
-            <a href="leads-mapping-form.html"><button class="btn btn-primary mb-4 btn-kanan text-size">Buat
-                    Data
-                    Baru</button></a>
+            <a href="<?= base_url('mapping_leads/create') ?>"><button class="btn btn-primary mb-4 btn-kanan text-size">Buat Data Baru</button></a>
         </div>
     </div>
     <div class="col-12">
@@ -35,26 +33,32 @@
                             <th>Asal Aplikasi</th>
                             <th>Produk</th>
                             <th>Detail Produk</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="text-size">Ibrahim Ahmad</div>
-                            </td>
-                            <td>
-                                <div class="text-size">0878828899882</div>
-                            </td>
-                            <td>
-                                <div class="text-size">RO</div>
-                            </td>
-                            <td>
-                                <div class="text-size">My Ihram</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Mantep</div>
-                            </td>
-                        </tr>
+                        <?php foreach ($data->result() as $mapping_leads) { ?>
+                            <tr>
+                                <td>
+                                    <div class="text-size"><?= $mapping_leads->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping_leads->telepon ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping_leads->soa ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping_leads->produk ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping_leads->detail_produk ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><a class="btn btn-primary" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Detail</a></div>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

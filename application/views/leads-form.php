@@ -20,8 +20,10 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Home/save_stage1') ?>" method="post">
+                        <form action="<?= base_url('Leads/save') ?>" method="post">
                             <input id="website" name="website" type="disable" value="">
+                            <!-- ID Mapping Leads -->
+                            <input type="hidden" id="id_mapping_leads" name="id_mapping_leads">
                             <!-- Leave for security protection, read docs for details -->
                             <div id="middle-wizard">
                                 <div class="step">
@@ -35,9 +37,9 @@
                                         <div class="col-md-6">
                                             <label class="ml-3">Nama Konsumen</label>
                                             <div class="input-group ml-3 mb-3">
-                                                <input type="text" class="form-control" name="nama-konsumen" id="nama-konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <div class="input-group-append mr-3">
-                                                    <button class="btn btn-primary" type="button" id="button-addon2"><span class="ion-ios7-search-strong" data-toggle="modal" data-target=".bd-example-modal-xl"></span></button>
+                                                    <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,8 +51,8 @@
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>ID Ktp</label>
-                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="id_ktp" id="id_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                                <label>Nomor KTP</label>
+                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                             </div>
                                         </div>
                                     </div>
@@ -80,7 +82,7 @@
                                                     <option selected>Pilih Kategori Produk</option>
                                                     <option value="My Ihram">My Ihram</option>
                                                     <option value="My Safar">My Safar</option>
-                                                    <option value="My Talin">My Talin</option>
+                                                    <option value="My Talim">My Talim</option>
                                                     <option value="My Hajat">My Hajat</option>
                                                     <option value="My Faedah">My Faedah</option>
                                                     <option value="My CarS">My CarS</option>
@@ -94,7 +96,7 @@
                                                 <label>Follow Up By</label>
                                                 <select class="form-control" name="follow_up_by" id="follow_up_by" required>
                                                     <option selected disabled value="">Pilih Follow Up By</option>
-                                                    <option value="kunjungan">kunjungan</option>
+                                                    <option value="Kunjungan">Kunjungan</option>
                                                     <option value="Telepon">Telepon</option>
                                                     <option value="Whatsapp">Whatsapp</option>
                                                     <option value="Email">Email</option>
@@ -164,7 +166,9 @@
                                                 <label>Pilih cabang</label>
                                                 <select class="form-control" name="cabang_cross" id="cabang_cross">
                                                     <option selected disabled value="">Pilih Cabang</option>
-                                                    <option value="kunjungan">kunjungan</option>
+                                                    <?php foreach ($branches->result() as $cabang) { ?>
+                                                        <option value="<?= $cabang->id_branch ?>"><?= $cabang->nama_cabang ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -173,14 +177,22 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Surveyor</label>
-                                                <input type="text" class="form-control" name="surveyor" id="surveyor" required placeholder="Surveyor">
-                                            </div>
+                                                <select class="form-control" name="surveyor" id="surveyor">
+                                                    <option selected disabled value="">Pilih Surveyor</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select> </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Pic Tandatangan</label>
-                                                <input type="text" class="form-control" name="pic_ttd" id="pic_ttd" required placeholder="Pic Tandatangan">
-                                            </div>
+                                                <select class="form-control" name="pic_ttd" id="pic_ttd">
+                                                    <option selected disabled value="">Pilih Pic Tandatangan</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -269,27 +281,25 @@
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Usaha</th>
-                            <th>Kategori Produk</th>
+                            <th>Nama Konsumen</th>
+                            <th>Produk</th>
                             <th>Telepon</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>PT Markibul</td>
-                            <td>My Safar</td>
-                            <td>0811977500</td>
-                        </tr>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>PT Markobar</td>
-                            <td>My Faedah</td>
-                            <td>0811977500</td>
-                        </tr>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>CV Antasari Ashar</td>
-                            <td>My Ihram</td>
-                            <td>0811977500</td>
-                        </tr>
+                        <?php foreach ($mapping->result() as $data) { ?>
+                            <tr class="clickable-row" data-mapping="<?= $data->mapping_id ?>" data-konsumen="<?= $data->nama_konsumen ?>" data-soa="<?= $data->soa ?>" data-telepon="<?= $data->telepon ?>" data-produk="<?= $data->produk ?>">
+                                <td class="not-clickable">
+                                    <div class="text-size"><?= $data->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->produk ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->telepon ?></div>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -297,3 +307,30 @@
     </div>
 </div>
 <!-- Modal -->
+
+<script>
+    $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
+    $("table").on("click", ".not-clickable", function(e) {
+        e.stopPropagation();
+    });
+    $("table").on('click', '.clickable-row', function() {
+        $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
+
+        var id_mapping = $(this).data('mapping');
+        var nama_konsumen = $(this).data('konsumen');
+        var produk = $(this).data('produk');
+        var telepon = $(this).data('telepon');
+        var soa = $(this).data('soa');
+        // var ktp = $(this).data('ktp');
+
+        $('#id_mapping_leads').val(id_mapping);
+        $('#nama_konsumen').val(nama_konsumen);
+        $('#produk').val(produk);
+        $('#telepon').val(telepon);
+        $('#soa').val(soa);
+        // $('#ktp').val(ktp);
+
+        $('.bd-example-modal-xl').modal('hide');
+        console.log('clicked');
+    })
+</script>

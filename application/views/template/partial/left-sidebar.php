@@ -12,7 +12,7 @@
             </li>
 
             <li>
-                <a href="<?= base_url('') ?>" class="waves-effect">
+                <a href="<?= base_url('profile') ?>" class="waves-effect">
                     <i class="mdi ion-person"></i><span> Profile </span>
                 </a>
             </li>
@@ -30,8 +30,8 @@
                 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email-outline"></i><span> Leads <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                     </span></a>
                 <ul class="submenu">
-                    <li><a href="email-inbox.html">Database</a></li>
-                    <li><a href="email-read.html">Prospect</a></li>
+                    <li><a href="<?= base_url('mapping_leads') ?>">Database</a></li>
+                    <li><a href="<?= base_url('leads') ?>">Prospect</a></li>
                 </ul>
             </li>
 

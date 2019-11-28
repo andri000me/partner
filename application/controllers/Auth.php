@@ -135,6 +135,38 @@ class Auth extends CI_Controller
 		}
 	}
 
+	// Update Profil
+	public function update_password()
+	{
+		$post = $this->input->post(null, TRUE);
+
+		$this->form_validation->set_error_delimiters('<div class="alert alert-danger">', '</div>');
+
+		$this->form_validation->set_rules('password', 'Password', 'trim');
+		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'trim|matches[password]');
+
+
+		if ($this->form_validation->run() != FALSE) {
+			$md5_password = md5($post['password']);
+			$data = [
+				'password' => $md5_password
+			];
+
+			$where = [
+				'id_user' => $this->fungsi->user_login()->id_user
+			];
+
+			$this->user_model->update($data, $where);
+
+			redirect('profile');
+		} else {
+			$data = [
+				'data' => $this->user_model->get($this->fungsi->user_login()->nik)->row()
+			];
+			$this->template->load('template/index', 'profile', $data);
+		}
+	}
+
 	// Proses Logout
 	public function logout()
 	{

@@ -17,7 +17,7 @@ class Ticket extends CI_Controller
     public function index()
     {
         $data = [
-            'ticket' => $this->ticket_model->get();
+            'ticket' => $this->ticket_model->get()
         ];
         $this->template->load('template/index', 'ticket');
     }

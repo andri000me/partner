@@ -132,7 +132,13 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-2">
                                             <label>Pekerjaan</label>
-                                            <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" />
+                                            <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" /> -->
+                                            <select class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
+                                                <option selected disabled value="">Pilih Pekerjaan</option>
+                                                <option <?= set_value('pekerjaan') == 'Swasta' ? 'selected' : '' ?> value="Swasta">Swasta</option>
+                                                <option <?= set_value('pekerjaan') == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">Wiraswasta</option>
+                                                <option <?= set_value('pekerjaan') == 'Freelance' ? 'selected' : '' ?> value="Freelance">Freelance</option>
+                                            </select>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label>Jenis Pekerjaan</label>
