@@ -84,6 +84,20 @@ class Partner extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        // meng-update data mapping jika berubah
+        $data_mapping = [
+            'nama_usaha'        => $post['nama_usaha'],
+            'email'             => $post['email'],
+            'telepon'           => $post['telepon'],
+            'kategori_produk'   => $post['kategori_produk'],
+            'bidang_usaha'      => $post['bidang_usaha'],
+            'alamat'            => $post['alamat']
+        ];
+
+        $where_mapping = ['id_mapping' => $post['id_mapping']];
+
+        $this->mapping_partner->update($data_mapping, $where_mapping);
+
         $data = [
             //ID Mapping
             'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
@@ -225,9 +239,23 @@ class Partner extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        $data_mapping = [
+            'nama_usaha'        => $post['nama_usaha'],
+            'email'             => $post['email'],
+            'telepon'           => $post['telepon'],
+            'kategori_produk'   => $post['kategori_produk'],
+            'bidang_usaha'      => $post['bidang_usaha'],
+            'alamat'            => $post['alamat']
+        ];
+
+        $where_mapping = ['id_mapping' => $post['id_mapping']];
+
+        $this->mapping_partner->update($data_mapping, $where_mapping);
+
         $data = [
             //ID Mapping
             'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
+
 
             //Stage 1
             'kelurahan'             => !empty($post['kelurahan']) ? $post['kelurahan'] : NULL,
@@ -330,10 +358,10 @@ class Partner extends CI_Controller
 
         //Membuat history activity inputan data partner
         $partner_activity = [
-            'activity' => 'Perubahan pada data Partner',
+            'activity'      => 'Perubahan pada data Partner',
             'date_activity' => date('Y-m-d H:i:s'),
-            'id_partner' => $post['id_partner'],
-            'id_user' => $post['id_user']
+            'id_partner'    => $post['id_partner'],
+            'id_user'       => $post['id_user']
         ];
 
         $this->partner_activity->create($partner_activity);

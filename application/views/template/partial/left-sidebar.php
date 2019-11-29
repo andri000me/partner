@@ -45,6 +45,12 @@
                 </ul>
             </li>
 
+            <li>
+                <a href="<?= base_url('Ticket') ?>" class="waves-effect">
+                    <i class="mdi mdi-view-dashboard"></i> <span> Tiket </span>
+                </a>
+            </li>
+
             <li class="menu-title">Bantuan HO</li>
 
             <li>

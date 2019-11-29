@@ -27,7 +27,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="home2" role="tabpanel">
-                        <form class="" action="#">
+                        <form class="" action="<?= base_url('Leads/update_detail') ?>">
                             <div class="form-group">
                                 <label>Nama Usaha</label>
                                 <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" />

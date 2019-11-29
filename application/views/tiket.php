@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <!-- <tr>
                             <td>
                                 <div class="text-size">00045</div>
                             </td>
@@ -139,7 +139,53 @@
                             <td>
                                 <center><button class="btn btn-primary">Edit</button></center>
                             </td>
-                        </tr>
+                        </tr> -->
+
+                        <?php foreach ($data->result() as $ticket) { ?>
+                            <tr>
+                                <td>
+                                    <div class="text-size"><?= $ticket->id_ticket ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $ticket->name ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $ticket->nama_cabang ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $ticket->aktivitas_cabang ?></div>
+                                </td>
+                                <td>
+                                    <center>
+                                        <?php if ($ticket->status == 0) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span></h6>
+                                        <?php } else if ($ticket->status == 1) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span></h6>
+                                        <?php } else if ($ticket->status == 2) { ?>
+                                            <h6><span class="badge badge-secondary">Pending</span></h6>
+                                        <?php } else if ($ticket->status == 3) { ?>
+                                            <h6><span class="badge badge-secondary">In Progress</span></h6>
+                                        <?php } else if ($ticket->status == 4) { ?>
+                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                        <?php } else if ($ticket->status == 5) { ?>
+                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                        <?php } ?>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <?php if ($ticket->id_agent != NULL) { ?>
+                                            <a href="<?= base_url('Agent/edit/' . $ticket->id_agent) ?>" class="btn btn-primary">Detail</a>
+                                        <?php } else if ($ticket->id_partner != NULL) { ?>
+                                            <a href="<?= base_url('partner/detail/' . $ticket->id_partner) ?>" class="btn btn-primary">Detail</a>
+                                        <?php } else if ($ticket->id_leads != NULL) { ?>
+                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary">Detail</a>
+                                        <?php } ?>
+                                        <!-- <button class="btn btn-primary">Detail</button> -->
+                                    </center>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

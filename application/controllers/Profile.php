@@ -41,10 +41,12 @@ class Profile extends CI_Controller
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
             echo $this->upload->display_errors();
         } else {
-            echo $this->upload->data('file_name');
+            $data['foto'] = $this->upload->data('file_name');
         }
 
         $where = ['id_user' => $this->fungsi->user_login()->id_user];
         $this->user_model->update($data, $where);
+
+        redirect('Profile');
     }
 }

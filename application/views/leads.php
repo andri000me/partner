@@ -54,7 +54,12 @@
                                     <div class="text-size"><?= $leads->follow_up_by ?></div>
                                 </td>
                                 <td>
-                                    <center><a href="<?= base_url('Leads/detail/' . $leads->id_mapping_leads)  ?>"><button class="btn btn-primary">Detail</button></a></center>
+
+                                    <?php if ($leads->status == 'draft') { ?>
+                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary">Lanjutkan</a></center>
+                                    <?php } else if ($leads->status == 'lengkap') { ?>
+                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary">Detail</a></center>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php } ?>
