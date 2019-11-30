@@ -132,57 +132,66 @@
                                                 <i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
                                             </a>
                                         </li>
-                            
+                
                                         <li>
-                                            <a href="<?= base_url('') ?>" class="waves-effect">
-                                                <i class="mdi mdi-account-circle "></i><span> Profile </span>
+                                            <a href="profile.html" class="waves-effect">
+                                                <i class="mdi ion-person"></i><span> Profile </span>
                                             </a>
                                         </li>
-                            
+                
                                         <li>
                                             <a href="<?= base_url('') ?>" class="waves-effect">
-                                                <i class="ti-bell noti-icon"></i><span class="badge badge-primary badge-pill float-right">2</span> <span> Notification </span>
+                                                <i class="ti-bell noti-icon"></i><span
+                                                    class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+                                                </span>
                                             </a>
                                         </li>
-            
+                
                                         <li class="menu-title">Aktivitas Cabang</li>
-            
+                
                                         <li>
-                                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email-outline"></i><span> Leads <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                            <a href="tiket.html" class="waves-effect">
+                                                <i class="mdi ion-person"></i><span> Tiket </span>
+                                            </a>
+                                        </li>
+                
+                                        <li>
+                                            <a href="javascript:void(0);" class="waves-effect"><i
+                                                    class="mdi mdi-email-outline"></i><span> Leads <span
+                                                        class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                                                </span></a>
                                             <ul class="submenu">
-                                                <li><a href="email-inbox.html">Database</a></li>
-                                                <li><a href="email-read.html">Prospect</a></li>
+                                                <li><a href="leads-mapping.html">Database</a></li>
+                                                <li><a href="leads.html">Prospect</a></li>
                                             </ul>
                                         </li>
-            
+                
                                         <li>
-                                            <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-email-outline"></i><span> Kerjasama <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                                            <a href="javascript:void(0);" class="waves-effect"><i
+                                                    class="mdi ion-person-stalker "></i><span> Kerjasama <span
+                                                        class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                                                </span></a>
                                             <ul class="submenu">
-                                                <li><a href="email-inbox.html">Mapping Lokasi Partner</a></li>
-                                                <li><a href="email-read.html">Partnership</a></li>
-                                                <li><a href="email-compose.html">Agent / BA</a></li>
+                                                <li><a href="mapping.html">Mapping Lokasi Partner</a></li>
+                                                <li><a href="partnership.html">Partnership</a></li>
+                                                <li><a href="agent.html">Agent / BA</a></li>
                                             </ul>
                                         </li>
-            
-                                        <li class="menu-title">Bantuan HD</li>
-            
+                
+                                        <li class="menu-title">Bantuan HO</li>
+                
                                         <li>
                                             <a href="<?= base_url('') ?>" class="waves-effect">
                                                 <i class="ion-headphone  noti-icon"></i><span> Product Support </span>
                                             </a>
                                         </li>
-            
+                
                                         <li>
                                             <a href="<?= base_url('') ?>" class="waves-effect">
                                                 <i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
                                             </a>
                                         </li>
-            
-                            
                                     </ul>
-            
-                                    
-                            
                                 </div>
                                 <!-- Sidebar -->
                                 <div class="clearfix"></div>
@@ -221,57 +230,81 @@
                                                                         <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
                                                                         <p class="text-muted m-b-30">Gunakan form ini untuk mendata calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
                                         
-                                                                        <form class="" action="#">
+                                                                        <form class="" method="post" action="<?= base_url('Mapping_partner/save') ?>">
+                                                                            <!-- Form inputan hidden untuk id user, untuk mengetahui user mana yg input data -->
+                                                                            <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
+                                                                            <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
+                                                                            <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+                                                                            <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
+                                                                            <input type="hidden" name="id_mapping" id="id_mapping">
                                                                             <div class="form-row">
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>Nama Usaha</label>
-                                                                                    <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santiika"/>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Nama Usaha</label>
+                                                                                        <input type="text" class="form-control <?= form_error('nama_usaha') ? 'is-invalid' : '' ?>" name="nama_usaha" id="nama_usaha" required value="" placeholder="CV Aria Santiika" />
+                                                                                        <?= form_error('nama_usaha'); ?>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>E-Mail</label>
-                                                                                    <div>
-                                                                                        <input type="email" class="form-control" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id"/>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>E-Mail</label>
+                                                                                        <div>
+                                                                                            <input type="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" required value="" placeholder="Aisha@bfisyariah.id" />
+                                                                                            <?= form_error('email'); ?>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-row">
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>Bidang Usaha</label>
-                                                                                    <input type="text" class="form-control" name="bidang_usaha" id="bidang_usaha" required placeholder="Garmen / Percetakan / Lainnya"/>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Bidang Usaha</label>
+                                                                                        <input type="text" class="form-control <?= form_error('bidang_usaha') ? 'is-invalid' : '' ?>" name="bidang_usaha" id="bidang_usaha" required value="" placeholder="Garmen / Percetakan / Lainnya" />
+                                                                                        <?= form_error('bidang_usaha'); ?>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>Kategori Produk</label>
-                                                                                    <select class="form-control" name="kategori_produk" id="kategori_produk">
-                                                                                        <option selected>Pilih Kategori Produk</option>
-                                                                                        <option value="My Ihram">My Ihram</option>
-                                                                                        <option value="My Safar">My Safar</option>
-                                                                                        <option value="My Talin">My Talin</option>
-                                                                                        <option value="My Hajat">My Hajat</option>
-                                                                                        <option value="My Faedah">My Faedah</option>
-                                                                                        <option value="My CarS">My CarS</option>
-                                                                                    </select>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Kategori Produk</label>
+                                                                                        <select class="form-control <?= form_error('kategori_produk') ? 'is-invalid' : '' ?>" name="kategori_produk" id="kategori_produk" required>
+                                                                                            <option selected value="">Pilih Kategori Produk</option>
+                                                                                            <option <?= set_value('kategori_produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                                                            <option <?= set_value('kategori_produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                                                            <option <?= set_value('kategori_produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                                                            <option <?= set_value('kategori_produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                                                            <option <?= set_value('kategori_produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                                                            <option <?= set_value('kategori_produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                                                                        </select>
+                                                                                        <?= form_error('kategori_produk'); ?>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-row">
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>Alamat / Lokasi</label>
-                                                                                    <input type="phone" class="form-control" name="alamat" id="alamat" required placeholder="Jalan Perjalanan Panjang No.22"/>
-                                                                                    <div class="form-group mt-3">
-                                                                                        <label>Nomor Telepon</label>
-                                                                                        <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="EG 0811977500" maxlength="15"/>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Alamat / Lokasi</label>
+                                                                                        <input type="phone" class="form-control <?= form_error('alamat') ? 'is-invalid' : '' ?>" name="alamat" id="alamat" required value="" placeholder="Jalan Perjalanan Panjang No.22" />
+                                                                                        <?= form_error('alamat'); ?>
+                                                                                        <div class="form-group mt-3">
+                                                                                            <label>Nomor Telepon</label>
+                                                                                            <input type="text" class="form-control placement <?= form_error('telepon') ? 'is-invalid' : '' ?>" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="" placeholder="EG 0811977500" maxlength="15" />
+                                                                                            <?= form_error('telepon'); ?>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="form-group col-md-6">
-                                                                                    <label>Catatan</label>
-                                                                                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Catatan</label>
+                                                                                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" value="" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="form-group mb-0 float-right">
+                                                                            <div class="form-group mb-0 float-right mt-3">
                                                                                 <div>
-                                                                                    <button type="cancle" class="btn btn-secondary waves-effect waves-light">
+                                                                                    <button type="reset" class="btn btn-secondary waves-effect waves-light text-size">
                                                                                         Batal
                                                                                     </button>
-                                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light text-size">
                                                                                         Simpan
                                                                                     </button>
                                                                                 </div>

@@ -85,3 +85,22 @@
         limitReachedClass: "badge badge-warning"
     });
 </script>
+
+<script>
+    $('.owl-carousel').owlCarousel({
+        margin: 10,
+        responsiveClass: true,
+        autoWidth: true,
+        responsive: {
+            0: {
+                items: 1,
+            },
+            600: {
+                items: 1,
+            },
+            1000: {
+                items: 1,
+            }
+        }
+    })
+</script>

@@ -160,7 +160,7 @@
 						</li>
 
 						<li>
-							<a href="<?= base_url('') ?>" class="waves-effect">
+							<a href="profile.html" class="waves-effect">
 								<i class="mdi ion-person"></i><span> Profile </span>
 							</a>
 						</li>
@@ -176,13 +176,19 @@
 						<li class="menu-title">Aktivitas Cabang</li>
 
 						<li>
+							<a href="tiket.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Tiket </span>
+							</a>
+						</li>
+
+						<li>
 							<a href="javascript:void(0);" class="waves-effect"><i
 									class="mdi mdi-email-outline"></i><span> Leads <span
 										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
 								</span></a>
 							<ul class="submenu">
-								<li><a href="email-inbox.html">Database</a></li>
-								<li><a href="email-read.html">Prospect</a></li>
+								<li><a href="leads-mapping.html">Database</a></li>
+								<li><a href="leads.html">Prospect</a></li>
 							</ul>
 						</li>
 
@@ -194,7 +200,7 @@
 							<ul class="submenu">
 								<li><a href="mapping.html">Mapping Lokasi Partner</a></li>
 								<li><a href="partnership.html">Partnership</a></li>
-								<li><a href="#">Agent / BA</a></li>
+								<li><a href="agent.html">Agent / BA</a></li>
 							</ul>
 						</li>
 
@@ -228,8 +234,8 @@
 		<div class="content-page" style="margin-top: 20px;">
 			<!-- Start content -->
 			<div class="row mt-5">
-				<div class="col-lg-8">
-					<div class="page-title-box">
+				<div class="col-md-9">
+					<div class="page-title-box ml-3">
 						<h4 class="page-title">Timeline Maintain</h4>
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
@@ -237,7 +243,7 @@
 							<li class="breadcrumb-item active">Timeline Maintain</li>
 						</ol>
 					</div>
-					<div class="card">
+					<div class="card ml-3">
 						<div class="card-body">
 							<h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
 							<p class="text-muted m-b-30">Gunakan form ini untuk mendata calon partner yang berpotensi di
@@ -283,63 +289,240 @@
 					</div>
 				</div>
 
-				<div class="col-lg-4">
-					<div class="">
-						<div class="card">
-							<div class="card-body">
-								<div class="">
-									<img src="../assets/images/logo.png" class="img-fluid" alt="Responsive image">
+				<div class="col-md-3">
+					<div class="ml-3 mr-3">
+						<div class="sticky">
+							<div class="card height">
+								<div class="card-body">
+									<div class="card-content ">
+										<div class="">
+											<img src="../assets/images/logo.png" class="img-fluid"
+												alt="Responsive image">
+										</div>
+
+										<ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+											<li class="nav-item">
+												<a class="nav-link active" data-toggle="tab" href="#home1" role="tab">
+													<span class="d-block d-sm-none"><i
+															class="far fa-newspaper"></i></span>
+													<span class="d-none d-sm-block">Home</span>
+												</a>
+											</li>
+											<li class="nav-item">
+												<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
+													<span class="d-block d-sm-none"><i
+															class="far fa-comment-dots"></i></span>
+													<span class="d-none d-sm-block">Profile</span>
+												</a>
+											</li>
+										</ul>
+
+										<div class="tab-content">
+											<div class="tab-pane active p-3" id="home1" role="tabpanel">
+												<div class="mt-3 ml-4 mr-4">
+													<h4 class="mt-0 header-title">AKTIVITAS TERAKHIR</h4>
+													<div class="boxx overflow-auto">
+														<p class="text-muted m-b-10"><i
+																class="ion-android-stopwatch"></i>&nbsp;&nbsp;Perubahan
+															pada
+															data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<code>30 Des, 2019 -
+																Ibrahim Ahmad</code>
+														</p>
+														<p class="text-muted m-b-10"><i
+																class="ion-android-stopwatch"></i>&nbsp;&nbsp;Perubahan
+															pada
+															data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<code>27 Nov, 2019 -
+																Don Aria Sabda</code>
+														</p>
+														<p class="text-muted m-b-10"><i
+																class="ion-android-stopwatch"></i>&nbsp;&nbsp;Perubahan
+															pada
+															data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<code>24 Nov, 2019 -
+																Don Aria Sabda</code>
+														</p>
+													</div>
+												</div>
+
+												<hr class="mt-4 mb-4">
+
+												<div class="ml-4 mr-4">
+													<h4 class="mt-0 header-title">STATUS PARTNER</h4>
+													<p class="text-muted"><i
+															class="mdi mdi-account-check"></i>&nbsp;&nbsp;&nbsp;Terverifikasi
+														Oleh
+														Teri
+														Anggraini<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<code style="color: blue;">30 Des, 2019 -
+															Admin HO</code>
+													</p>
+													<p class="text-muted"><i
+															class="mdi mdi-timer-sand"></i>&nbsp;&nbsp;&nbsp;Belum
+														Diverivikasi.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<code style="color: blue;">30 Des, 2019 -
+															Admin HO</code>
+													</p>
+													<p class="text-muted m-b-10"><i
+															class="mdi mdi-checkbox-marked"></i>&nbsp;&nbsp;&nbsp;Sudah
+														tanda
+														tangan
+														Kerjasama<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<code style="color: blue;">30 Des, 2019 -
+															Ibrahim Ahmad</code>
+													</p>
+													<form action="">
+														<div class="form-group ml-4">
+															<label>Kerjasama?</label><br>
+															<div class="form-check form-check-inline mt-2">
+																<input class="form-check-input" type="radio"
+																	name="pernah_promosi" id="pernah_promosi" required
+																	value="Ya">
+																<label class="form-check-label">
+																	Ya
+																</label>
+															</div>
+															<div class="form-check form-check-inline">
+																<input class="form-check-input" type="radio"
+																	name="pernah_promosi" id="pernah_promosi" required
+																	value="Tidak">
+																<label class="form-check-label">
+																	Tidak
+																</label>
+															</div>
+														</div>
+													</form>
+												</div>
+
+												<hr class="mt-4 mb-4">
+
+												<div class="ml-4 mr-4">
+													<h4 class="mt-0 header-title">LAMPIRAN</h4>
+													<p class="text-muted"><i
+															class="mdi mdi-account-check"></i>&nbsp;&nbsp;&nbsp;<a
+															href="">Download
+															Semua Lampiran</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														<code style="color: blue;">30 Des, 2019 -
+															Don Aria Sabda</code>
+													</p>
+												</div>
+
+												<hr class="mt-4">
+											</div>
+											<div class="tab-pane p-3" id="profile1" role="tabpanel">
+												<div class="box overflow-auto">
+													<div class="media">
+														<a class="image-popup-vertical-fit"
+															href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
+															<img class="d-flex align-self-start rounded mr-3" alt=""
+																src="../assets/images/ibrahim.jpeg" height="64">
+														</a>
+														<div class="media-body">
+															<h5 class="mt-0 font-16">Ibrahim</h5>
+															<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+																metus
+																scelerisque ante sollicitudin. Cras purus odio,
+																vestibulum
+																in vulputate at, tempus viverra turpis. Fusce
+																condimentum
+																nunc ac nisi vulputate fringilla. Donec lacinia congue
+																felis
+																in faucibus.</p>
+														</div>
+													</div>
+													<div class="media">
+														<a class="image-popup-vertical-fit"
+															href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
+															<img class="d-flex align-self-start rounded mr-3" alt=""
+																src="../assets/images/ibrahim.jpeg" height="64">
+														</a>
+														<div class="media-body">
+															<h5 class="mt-0 font-16">Ibrahim</h5>
+															<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+																metus
+																scelerisque ante sollicitudin. Cras purus odio,
+																vestibulum
+																in vulputate at, tempus viverra turpis. Fusce
+																condimentum
+																nunc ac nisi vulputate fringilla. Donec lacinia congue
+																felis
+																in faucibus.</p>
+														</div>
+													</div>
+													<div class="media">
+														<a class="image-popup-vertical-fit"
+															href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
+															<img class="d-flex align-self-start rounded mr-3" alt=""
+																src="../assets/images/ibrahim.jpeg" height="64">
+														</a>
+														<div class="media-body">
+															<h5 class="mt-0 font-16">Ibrahim</h5>
+															<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+																metus
+																scelerisque ante sollicitudin. Cras purus odio,
+																vestibulum
+																in vulputate at, tempus viverra turpis. Fusce
+																condimentum
+																nunc ac nisi vulputate fringilla. Donec lacinia congue
+																felis
+																in faucibus.</p>
+														</div>
+													</div>
+													<div class="media">
+														<a class="image-popup-vertical-fit"
+															href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
+															<img class="d-flex align-self-start rounded mr-3" alt=""
+																src="../assets/images/ibrahim.jpeg" height="64">
+														</a>
+														<div class="media-body">
+															<h5 class="mt-0 font-16">Ibrahim</h5>
+															<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+																metus
+																scelerisque ante sollicitudin. Cras purus odio,
+																vestibulum
+																in vulputate at, tempus viverra turpis. Fusce
+																condimentum
+																nunc ac nisi vulputate fringilla. Donec lacinia congue
+																felis
+																in faucibus.</p>
+														</div>
+													</div>
+													<div class="media">
+														<a class="image-popup-vertical-fit"
+															href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
+															<img class="d-flex align-self-start rounded mr-3" alt=""
+																src="../assets/images/ibrahim.jpeg" height="64">
+														</a>
+														<div class="media-body">
+															<h5 class="mt-0 font-16">Ibrahim</h5>
+															<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+																metus
+																scelerisque ante sollicitudin. Cras purus odio,
+																vestibulum
+																in vulputate at, tempus viverra turpis. Fusce
+																condimentum
+																nunc ac nisi vulputate fringilla. Donec lacinia congue
+																felis
+																in faucibus.</p>
+														</div>
+													</div>
+												</div>
+												<form action="">
+													<div class="form-group">
+														<label>Comment</label>
+														<textarea class="form-control" name="comment" id="comment"
+															cols="30" rows="10" required
+															placeholder="tulis comment disini"
+															style="height:107px;"></textarea>
+													</div>
+													<button class="btn btn-primary waves-effect waves-light float-right"
+														type="submit" name="process">Kirim</button>
+												</form>
+											</div>
+										</div>
+									</div>
 								</div>
-
-								<hr class="mt-3 mb-4">
-
-								<h4 class="mt-0 header-title">AKTIVITAS TERAKHIR</h4>
-								<p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-									pada
-									data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<code>30 Des, 2019 -
-										Ibrahim Ahmad</code>
-								</p>
-								<p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-									pada
-									data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<code>27 Nov, 2019 -
-										Don Aria Sabda</code>
-								</p>
-								<p class="text-muted m-b-10"><i class="dripicons-clock"></i>&nbsp;&nbsp;Perubahan
-									pada
-									data partner<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<code>24 Nov, 2019 -
-										Don Aria Sabda</code>
-								</p>
-
-								<hr class="mt-4 mb-4">
-
-								<h4 class="mt-0 header-title">STATUS PARTNER</h4>
-								<p class="text-muted"><i
-										class="mdi mdi-account-check"></i>&nbsp;&nbsp;&nbsp;Terverifikasi Oleh Teri
-									Anggraini<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<code style="color: blue;">30 Des, 2019 -
-										Admin HO</code>
-								</p>
-								<p class="text-muted m-b-10"><i
-										class="mdi mdi-checkbox-marked"></i>&nbsp;&nbsp;&nbsp;Sudah tanda tangan
-									Kerjasama<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<code style="color: blue;">30 Des, 2019 -
-										Ibrahim Ahmad</code>
-								</p>
-
-								<hr class="mt-4 mb-4">
-
-								<h4 class="mt-0 header-title">LAMPIRAN</h4>
-								<p class="text-muted"><i class="mdi mdi-account-check"></i>&nbsp;&nbsp;&nbsp;<a
-										href="">Download
-										Semua Lampiran</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<code style="color: blue;">30 Des, 2019 -
-										Don Aria Sabda</code>
-								</p>
-
-								<hr class="mt-4">
 							</div>
 						</div>
 					</div>

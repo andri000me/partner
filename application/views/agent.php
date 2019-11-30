@@ -43,8 +43,9 @@
                                 <td><?= $agent->pekerjaan ?></td>
                                 <td><?= $agent->email ?></td>
                                 <td><?= $agent->no_ktp ?></td>
-                                <td><a class="btn btn-primary" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Detail</a></td>
-                                <td></td>
+                                <td>
+                                    <center><a class="btn btn-primary" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Detail</a></center>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
