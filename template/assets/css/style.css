@@ -3545,7 +3545,7 @@ Invoice
 }
 
 /* ==============
-  Print css
+Print css
 ===================*/
 @media print {
 
@@ -3579,7 +3579,7 @@ Invoice
 32. Account Pages
    ====== */
 /* ==============
-  Account Pages
+Account Pages
 ===================*/
 .wrapper-page {
 	margin: 5.5% auto;
@@ -3738,7 +3738,6 @@ button[disabled] {
 	}
 }
 
-
 @media (min-width: 768px) {
 	.enlarged .slimscroll-menu {
 		overflow: inherit !important;
@@ -3747,8 +3746,8 @@ button[disabled] {
 
 .sticky {
 	position: fixed;
-	z-index: 0;
-	width: 380px;
+	z-index: 1;
+	width: 545px;
 }
 
 .height {
@@ -3759,14 +3758,68 @@ button[disabled] {
 	margin-top: 50px;
 }
 
-.box {
-	width: 330px;
-	height: 600px;
+.boxx {
+	width: 480px;
+	height: 160px;
 }
 
-.boxx {
-	width: 300px;
-	height: 150px;
+.box {
+	width: 480px;
+	height: 500px;
+}
+
+.mobile {
+	display: none;
+}
+
+@media (max-width: 1366px) {
+	.sticky {
+		position: fixed;
+		z-index: 1;
+		width: 365px;
+	}
+
+	.btn-kanan {
+		float: right;
+	}
+
+	.height {
+		height: unset;
+	}
+
+	.card-content {
+		margin-top: unset;
+	}
+
+	.boxx {
+		width: 300px;
+		height: 80px;
+	}
+
+	.box {
+		width: 225px;
+		height: 400px;
+	}
+
+	.media {
+		width: ;
+	}
+}
+
+@media (max-width: 640px) {
+	.sticky {
+		position: unset;
+		z-index: 0;
+		width: unset;
+	}
+
+	.btn-kanan {
+		float: right;
+	}
+
+	.height {
+		height: unset;
+	}
 }
 
 @media (max-width: 480px) {
@@ -3817,6 +3870,10 @@ button[disabled] {
 		margin-right: 30px;
 		width: 345px;
 	}
+
+	.media {
+		max-width: 290px;
+	}
 }
 
 @media (max-width: 360px) {
@@ -3836,19 +3893,50 @@ button[disabled] {
 	.text-size {
 		font-size: 12px;
 	}
+
+	.media {
+		max-width: 270px;
+	}
 }
 
 @media (max-width: 320px) {
-	.sticky-top {
+	.sticky {
 		position: unset;
-		top: unset;
-		margin-left: 30px;
-		margin-right: 30px;
-		width: 290px;
+		z-index: 0;
+		width: unset;
+	}
+
+	.height {
+		height: auto;
 	}
 
 	.text-size {
 		font-size: 11px;
+	}
+
+	.media {
+		max-width: 240px;
+	}
+
+	.web {
+		display: none;
+	}
+
+	.mobile {
+		display: unset;
+	}
+
+	.boxx {
+		width: 200px;
+		height: 20px;
+	}
+
+	.box {
+		width: 230px;
+	}
+
+	.media {
+		width: 220px;
 	}
 }
 

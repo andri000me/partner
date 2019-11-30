@@ -90,7 +90,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group mb-0 float-right mt-3">
+                    <div class="form-group mb-0 float-right ml-3 mr-3">
                         <div>
                             <button type="reset" class="btn btn-secondary waves-effect waves-light text-size">
                                 Batal
