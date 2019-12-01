@@ -201,13 +201,13 @@
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-newspaper"></i></span>
-                                    <span class="d-none d-sm-block">Home</span>
+                                    <span class="d-none d-sm-block">Status</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-comment-dots"></i></span>
-                                    <span class="d-none d-sm-block">Profile</span>
+                                    <span class="d-none d-sm-block">Komentar</span>
                                 </a>
                             </li>
                         </ul>
@@ -353,93 +353,21 @@
 
                             <div class="tab-pane p-3" id="profile1" role="tabpanel">
                                 <div class="box overflow-auto">
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
+                                    <?php foreach ($comments->result() as $comment) { ?>
+                                        <div class="media">
+                                            <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
+                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="mt-0 font-16"><?= $comment->name ?></h5>
+                                                <p><?= $comment->comment ?></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
-                                <form action="">
+                                <form action="<?= base_url('Comment/save/id_partner') ?>" method="post">
+                                    <input type="hidden" name="id_type" id="id_type" value="<?= $data->id_partner ?>">
+                                    <input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
                                     <div class="form-group">
                                         <label>Comment</label>
                                         <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>

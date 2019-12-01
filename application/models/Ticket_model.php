@@ -28,7 +28,7 @@ class Ticket_model extends CI_Model
             WHEN tickets.id_partner IS NOT NULL THEN 'Partner'
             WHEN tickets.id_agent IS NOT NULL THEN 'Agent'
             WHEN tickets.id_leads IS NOT NULL THEN 'Leads'
-        END) as aktivitas_cabang 
+        END) as aktivitas_cabang, tickets.status as status_approval 
         ");
         $this->db->from('tickets');
         $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');

@@ -3772,6 +3772,8 @@ button[disabled] {
 	display: none;
 }
 
+
+
 @media (max-width: 1366px) {
 	.sticky {
 		position: fixed;

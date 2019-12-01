@@ -8,10 +8,16 @@ class Agent extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        //Load Modul Agent
         $this->load->model('agent_model');
+        //Load Modul Ticket
         $this->load->model('ticket_model');
+        //Load Modul Notifikasi
         $this->load->model('notification_model');
+        //Load Modul Agent Activity
         $this->load->model('agent_activity_model', 'agent_activity');
+        //Load Modul Comment
+        $this->load->model('comment_model');
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -46,11 +52,11 @@ class Agent extends CI_Controller
     public function edit($id)
     {
 
-        $where = ['id_agent' => $id];
+        $where = ['agents.id_agent' => $id];
         $data = [
             'data' => $this->agent_model->get($where)->row(),
-            'activities' => $this->agent_activity->get(['agent_activities.id_agent' => $id])
-
+            'activities' => $this->agent_activity->get($where),
+            'comments' => $this->comment_model->get($where)
         ];
 
         $this->template->load('template/index', 'agent-detail', $data);

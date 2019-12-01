@@ -9,11 +9,18 @@ class Partner extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // Load Modul Partner
         $this->load->model('partner_model');
+        // Load Modul Ticket
         $this->load->model('ticket_model');
+        // Load Modul Partner Activity
         $this->load->model('partner_activity_model', 'partner_activity');
+        // Load Modul Mapping Partner 
         $this->load->model('mapping_partner_model', 'mapping_partner');
+        // Load Modul Maintain Partner 
         $this->load->model('maintain_partner_model', 'maintain_partner');
+        //Load Modul Comment
+        $this->load->model('comment_model');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -61,7 +68,7 @@ class Partner extends CI_Controller
         $data = [
             'partner' => $this->partner_model->get($where)->row(),
             'mapping' => $this->mapping_partner->get(),
-
+            'comments' => $this->comment_model->get($where)
         ];
 
         $this->template->load('template/index', 'partner-edit', $data);
@@ -72,10 +79,11 @@ class Partner extends CI_Controller
         $where = ['partners.id_partner' => $id];
 
         $data = [
-            'data' => $this->partner_model->get($where)->row(),
-            'maintain' => $this->maintain_partner->get($where),
-            'activities' => $this->partner_activity->get($where),
-            'ticket' => $this->ticket_model->get($where)->row()
+            'data'          => $this->partner_model->get($where)->row(),
+            'maintain'      => $this->maintain_partner->get($where),
+            'activities'    => $this->partner_activity->get($where),
+            'ticket'        => $this->ticket_model->get($where)->row(),
+            'comments'      => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'partner-detail', $data);
     }

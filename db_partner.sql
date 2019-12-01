@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-11-29 20:54:24
+# Date: 2019-12-01 11:16:21
 # Generator: MySQL-Front 6.1  (Build 1.26)
 
 
@@ -48,7 +48,7 @@ CREATE TABLE `leads` (
   KEY `cabang_cross` (`cabang_cross`),
   KEY `surveyor` (`surveyor`),
   KEY `pic_ttd` (`pic_ttd`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "leads"
@@ -67,7 +67,7 @@ CREATE TABLE `leads_activities` (
   `id_leads` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_lead_activity`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "leads_activities"
@@ -273,7 +273,7 @@ CREATE TABLE `mapping_leads` (
   KEY `id_user` (`id_user`),
   CONSTRAINT `mapping_leads_ibfk_1` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `mapping_leads_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "mapping_leads"
@@ -343,13 +343,13 @@ CREATE TABLE `login_log` (
   PRIMARY KEY (`id_login_log`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "login_log"
 #
 
-INSERT INTO `login_log` VALUES (1,'0000-00-00 00:00:00',26),(2,'2019-11-20 02:49:49',26),(3,'2019-11-21 05:33:42',26),(4,'2019-11-21 08:35:13',26),(5,'2019-11-21 08:39:01',26),(6,'2019-11-22 08:53:40',26),(7,'2019-11-22 19:22:43',26),(8,'2019-11-22 22:04:45',26),(9,'2019-11-23 09:28:11',26),(10,'2019-11-23 10:06:55',17),(11,'2019-11-23 11:51:22',26),(12,'2019-11-23 14:52:05',26),(13,'2019-11-23 22:18:31',26),(14,'2019-11-24 13:38:30',26),(15,'2019-11-25 08:44:59',26),(16,'2019-11-25 19:16:47',26),(17,'2019-11-26 08:28:26',26),(18,'2019-11-26 13:20:53',17),(19,'2019-11-26 13:30:26',26),(20,'2019-11-26 13:31:03',26),(21,'2019-11-26 13:32:36',1),(22,'2019-11-26 14:14:02',26),(23,'2019-11-26 14:15:34',26),(24,'2019-11-26 14:27:15',11),(25,'2019-11-27 09:06:52',17),(26,'2019-11-27 09:08:36',26),(27,'2019-11-27 09:09:05',11),(28,'2019-11-27 13:20:25',26),(29,'2019-11-28 10:21:38',26),(30,'2019-11-28 15:55:51',26),(31,'2019-11-29 09:27:17',26),(32,'2019-11-29 13:40:46',26);
+INSERT INTO `login_log` VALUES (1,'0000-00-00 00:00:00',26),(2,'2019-11-20 02:49:49',26),(3,'2019-11-21 05:33:42',26),(4,'2019-11-21 08:35:13',26),(5,'2019-11-21 08:39:01',26),(6,'2019-11-22 08:53:40',26),(7,'2019-11-22 19:22:43',26),(8,'2019-11-22 22:04:45',26),(9,'2019-11-23 09:28:11',26),(10,'2019-11-23 10:06:55',17),(11,'2019-11-23 11:51:22',26),(12,'2019-11-23 14:52:05',26),(13,'2019-11-23 22:18:31',26),(14,'2019-11-24 13:38:30',26),(15,'2019-11-25 08:44:59',26),(16,'2019-11-25 19:16:47',26),(17,'2019-11-26 08:28:26',26),(18,'2019-11-26 13:20:53',17),(19,'2019-11-26 13:30:26',26),(20,'2019-11-26 13:31:03',26),(21,'2019-11-26 13:32:36',1),(22,'2019-11-26 14:14:02',26),(23,'2019-11-26 14:15:34',26),(24,'2019-11-26 14:27:15',11),(25,'2019-11-27 09:06:52',17),(26,'2019-11-27 09:08:36',26),(27,'2019-11-27 09:09:05',11),(28,'2019-11-27 13:20:25',26),(29,'2019-11-28 10:21:38',26),(30,'2019-11-28 15:55:51',26),(31,'2019-11-29 09:27:17',26),(32,'2019-11-29 13:40:46',26),(33,'2019-11-30 09:16:47',26);
 
 #
 # Structure for table "agents"
@@ -395,7 +395,7 @@ CREATE TABLE `agents` (
   KEY `id_branch` (`id_branch`),
   CONSTRAINT `agents_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`),
   CONSTRAINT `agents_ibfk_2` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "agents"
@@ -409,7 +409,6 @@ INSERT INTO `agents` VALUES (1,'Aisha Ai Ai Aisha','NULL',NULL,'admin@perpus.tes
 
 CREATE TABLE `comments` (
   `id_comment` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_comment_id` int(11) NOT NULL DEFAULT 0,
   `comment` text NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `has_read` int(3) DEFAULT 0,
@@ -423,12 +422,13 @@ CREATE TABLE `comments` (
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`),
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`id_partner`) REFERENCES `partners` (`id_partner`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`id_agent`) REFERENCES `agents` (`id_agent`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1667 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=1668 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 #
 # Data for table "comments"
 #
 
+INSERT INTO `comments` VALUES (1667,'Ibrahim Ganteng','2019-11-30 10:48:01',0,26,33,NULL),(1668,'Ibrahim is handsome','2019-11-30 10:50:16',0,26,33,NULL),(1669,'Ibrahim the cool','2019-11-30 11:03:04',0,26,33,NULL),(1670,'Bismillah','2019-11-30 11:14:09',0,26,NULL,1),(1671,'Alhamdulillah','2019-11-30 11:14:39',0,26,NULL,1),(1672,'ID Agent 11','2019-11-30 11:53:44',0,26,NULL,11);
 
 #
 # Structure for table "tickets"
@@ -458,13 +458,13 @@ CREATE TABLE `tickets` (
   CONSTRAINT `tickets_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`id_leads`) REFERENCES `leads` (`id_leads`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "tickets"
 #
 
-INSERT INTO `tickets` VALUES (5,'belum','2019-11-27 14:23:25',NULL,NULL,NULL,2,33,NULL,NULL,26,8),(6,'belum','2019-11-27 15:33:13',NULL,NULL,NULL,2,NULL,11,NULL,26,8),(8,'belum','2019-11-29 13:49:15',NULL,NULL,NULL,2,NULL,NULL,1,26,8),(9,'belum','2019-11-29 16:40:42',NULL,NULL,NULL,0,NULL,NULL,5,26,8),(10,'belum','2019-11-29 16:42:58',NULL,NULL,NULL,0,NULL,12,NULL,26,8);
+INSERT INTO `tickets` VALUES (5,'belum','2019-11-27 14:23:25',NULL,NULL,NULL,3,33,NULL,NULL,26,8),(6,'belum','2019-11-27 15:33:13',NULL,NULL,NULL,3,NULL,11,NULL,26,8),(8,'belum','2019-11-29 13:49:15',NULL,NULL,NULL,3,NULL,NULL,1,26,8),(9,'belum','2019-11-29 16:40:42',NULL,NULL,NULL,0,NULL,NULL,5,26,8),(10,'belum','2019-11-29 16:42:58',NULL,NULL,NULL,0,NULL,12,NULL,26,8);
 
 #
 # Structure for table "agent_activities"

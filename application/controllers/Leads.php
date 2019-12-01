@@ -72,7 +72,8 @@ class Leads extends CI_Controller
             'data' => $this->leads_model->get($where)->row(),
             'mapping' => $this->mapping_leads->get($this->where),
             'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all()
+            'users' => $this->user_model->get_all(),
+            'comments' => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'leads-detail', $data);
     }

@@ -28,118 +28,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td>
-                                <div class="text-size">00045</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Ibrahim</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Tangerang</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Partner</div>
-                            </td>
-                            <td>
-                                <center>
-                                    <h6><span class="badge badge-secondary">Menunggu
-                                            Persetujuan Head</span></h6><br>
-                                </center>
-                            </td>
-                            <td>
-                                <center><button class="btn btn-primary">Edit</button></center>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="text-size">00045</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Ibrahim</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Tangerang</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Partner</div>
-                            </td>
-                            <td>
-                                <center>
-                                    <h6><span class="badge badge-secondary">Menunggu
-                                            Persetujuan Manager</span></h6><br>
-                                </center>
-                            </td>
-                            <td>
-                                <center><button class="btn btn-primary">Edit</button></center>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="text-size">00045</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Ibrahim</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Tangerang</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Partner</div>
-                            </td>
-                            <td>
-                                <center>
-                                    <h6><span class="badge badge-secondary">Pending</span></h6><br>
-                                </center>
-                            </td>
-                            <td>
-                                <center><button class="btn btn-primary">Edit</button></center>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="text-size">00045</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Ibrahim</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Tangerang</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Partner</div>
-                            </td>
-                            <td>
-                                <center>
-                                    <h6><span class="badge badge-success">Disetujui</span></h6><br>
-                                </center>
-                            </td>
-                            <td>
-                                <center><button class="btn btn-primary">Edit</button></center>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="text-size">00045</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Ibrahim</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Tangerang</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Partner</div>
-                            </td>
-                            <td>
-                                <center>
-                                    <h6><span class="badge badge-danger">Ditolak</span></h6>
-                                </center>
-                            </td>
-                            <td>
-                                <center><button class="btn btn-primary">Edit</button></center>
-                            </td>
-                        </tr> -->
 
                         <?php foreach ($data->result() as $ticket) { ?>
                             <tr>
@@ -157,17 +45,17 @@
                                 </td>
                                 <td>
                                     <center>
-                                        <?php if ($ticket->status == 0) { ?>
+                                        <?php if ($ticket->status_approval == 0) { ?>
                                             <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span></h6>
-                                        <?php } else if ($ticket->status == 1) { ?>
+                                        <?php } else if ($ticket->status_approval == 1) { ?>
                                             <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span></h6>
-                                        <?php } else if ($ticket->status == 2) { ?>
+                                        <?php } else if ($ticket->status_approval == 2) { ?>
                                             <h6><span class="badge badge-secondary">Pending</span></h6>
-                                        <?php } else if ($ticket->status == 3) { ?>
-                                            <h6><span class="badge badge-secondary">In Progress</span></h6>
-                                        <?php } else if ($ticket->status == 4) { ?>
+                                        <?php } else if ($ticket->status_approval == 3) { ?>
+                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                        <?php } else if ($ticket->status_approval == 4) { ?>
                                             <h6><span class="badge badge-danger">Ditolak</span></h6>
-                                        <?php } else if ($ticket->status == 5) { ?>
+                                        <?php } else if ($ticket->status_approval == 5) { ?>
                                             <h6><span class="badge badge-success">Disetujui</span></h6>
                                         <?php } ?>
                                     </center>
