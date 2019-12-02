@@ -41,18 +41,34 @@ class Ticket extends CI_Controller
 
         //Jika Head yang menekan tombol approve, maka tiket sudah disetujui oleh Head
         if ($this->fungsi->user_login()->level == 2) {
-            $this->ticket_model->update(['date_approved_by_head' => date('Y-m-d H:i:s'), 'status' => 1], $where);
+            $data = [
+                'date_approved_by_head' => date('Y-m-d H:i:s'),
+                'status' => 1
+            ];
         }
         //Jika Manager yang menekan tombol approve, maka tiket sudah disetujui oleh Manager
         else if ($this->fungsi->user_login()->level == 3) {
-            $this->ticket_model->update(['date_approved_by_manager' => date('Y-m-d H:i:s'), 'status' => 2], $where);
+            $data = [
+                'date_approved_by_manager' => date('Y-m-d H:i:s'),
+                'status' => 2
+            ];
         }
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
         else if ($this->fungsi->user_login()->level == 4) {
-            $this->ticket_model->update(['date_completed' => date('Y-m-d H:i:s'), 'status' => 5], $where);
+            $data = [
+                'date_completed' => date('Y-m-d H:i:s'),
+                'status' => 5,
+                'verified_by' => $this->fungsi->user_login()->id_user
+            ];
         }
+        $this->ticket_model->update($data, $where);
 
         $this->session->set_flashdata("berhasil_approve", "Data Tiket ID #$id_ticket berhasil diapprove.");
         redirect('Ticket');
+    }
+
+    public function update_ttd()
+    {
+        // $data
     }
 }
