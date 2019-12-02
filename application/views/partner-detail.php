@@ -201,13 +201,13 @@
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-newspaper"></i></span>
-                                    <span class="d-none d-sm-block">Home</span>
+                                    <span class="d-none d-sm-block">Status</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-comment-dots"></i></span>
-                                    <span class="d-none d-sm-block">Profile</span>
+                                    <span class="d-none d-sm-block">Comment</span>
                                 </a>
                             </li>
                         </ul>
@@ -226,10 +226,10 @@
                                                                 <p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-0 text-size"><b><?= $activity->activity ?></b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b><?= $activity->activity ?></b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size"><?= $activity->date_activity ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 text-size"><?= $activity->date_activity ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -262,7 +262,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <code class="inbox-item-text text-muted mb-0"><?= $activity->date_activity ?></code>
+                                                                <p class="inbox-item-text text-muted mb-0"><?= $activity->date_activity ?></p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -289,8 +289,8 @@
                                                     <td>
                                                         <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
                                                     </td>
-                                                    </td>
-                                                    <p class="inbox-item-date text-muted text-size">30 Des, 2019</p>
+                                                    <td>
+                                                        <p class="inbox-item-date text-muted mt-1 mb-0 text-size">30 Des, 2019</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -310,7 +310,7 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <p class="inbox-item-text text-muted mb-0"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                     </td>
                                                     <td>
                                                         <p class="inbox-item-author mt-0 mb-1 text-size"><b>Belum
@@ -334,7 +334,7 @@
                                             <table>
                                                 <tr>
                                                     <td>
-                                                        <i class="mdi mdi-account-check"></i>&nbsp;
+                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                     </td>
                                                     <td>
                                                         <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah
@@ -344,7 +344,7 @@
                                                         </p>
                                                     </td>
                                                     <td>
-                                                        <p class="inbox-item-date text-muted text-size">30 Des, 2019</p>
+                                                        <p class="inbox-item-date text-muted mt-1 mb-0 text-size">30 Des, 2019</p>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -373,20 +373,22 @@
 
                                                     </td>
                                                     <td>
-                                                        <div class="form-group ml-3">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-                                                                <label class="form-check-label">
-                                                                    Ya
-                                                                </label>
+                                                        <form action="">
+                                                            <div class="form-group ml-3 mb-0">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+                                                                    <label class="form-check-label">
+                                                                        Ya
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+                                                                    <label class="form-check-label">
+                                                                        Tidak
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-                                                                <label class="form-check-label">
-                                                                    Tidak
-                                                                </label>
-                                                            </div>
-                                                        </div>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -416,7 +418,7 @@
                                                 <tr>
                                                     <td></td>
                                                     <td>
-                                                        <code class="inbox-item-text text-muted">30 Des, 2019</code>
+                                                        <p class="inbox-item-text text-muted">30 Des, 2019</p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -468,7 +470,7 @@
                                                 <tr>
                                                     <td></td>
                                                     <td>
-                                                        <code class="inbox-item-text text-muted">30 Des, 2019</code>
+                                                        <p class="inbox-item-text text-muted">30 Des, 2019</p>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -489,7 +491,7 @@
                                                         <div class="form-group">
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-                                                                <label class="form-check-label">
+                                                                <label class="form-check-label text">
                                                                     Ya
                                                                 </label>
                                                             </div>
@@ -512,7 +514,17 @@
                                 <h4 class="mt-0 header-title">LAMPIRAN</h4>
                                 <div class="inbox-wid">
                                     <div class="inbox-item">
-                                        <p class="inbox-item-author mt-0 mb-1 text-size"><i class="fas fa-download"></i><b>&nbsp;&nbsp;<a href="#">Download Semua Lampiran</b></a></p>
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <p class="inbox-item-author mt-0 mb-1"><i class="fas fa-download"></i>&nbsp;</p>
+                                                </td>
+                                                <td>
+                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="#">Download Semua Lampiran</b></a></p>
+                                                </td>
+                                            </tr>
+                                        </table>
+
                                     </div>
                                 </div>
                             </div>
