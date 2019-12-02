@@ -206,7 +206,7 @@
 							<div class="form-group mb-0 float-right mt-2">
 								<div>
 									<?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3 || $this->fungsi->user_login()->level == 4) { ?>
-										<a class="btn btn-info" href="<?= base_url('ticket/update/' . $ticket->id_ticket) ?>">Approve</a>
+										<a class="btn btn-info" href="<?= base_url('ticket/update_status/' . $ticket->id_ticket) ?>">Approve</a>
 									<?php } ?>
 									<button type="submit" class="btn btn-primary waves-effect waves-light ml-3 mr-3">
 										Simpan

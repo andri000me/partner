@@ -3,6 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Ticket extends CI_Controller
 {
+    public $where;
 
     public function __construct()
     {
@@ -11,18 +12,29 @@ class Ticket extends CI_Controller
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
+        //Jika CMS login maka memunculkan data berdasarkan `id_user`
+        if ($this->fungsi->user_login()->level == 1) {
+            $this->where = ['tickets.id_user' => $this->fungsi->user_login()->id_user];
+        }
+        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
+        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            $this->where = ['tickets.id_branch' => $this->fungsi->user_login()->id_branch];
+        } else {
+            $this->where = NULL;
+        }
+
         check_not_login();
     }
 
     public function index()
     {
         $data = [
-            'data' => $this->ticket_model->get()
+            'data' => $this->ticket_model->get($this->where)
         ];
         $this->template->load('template/index', 'tiket', $data);
     }
 
-    public function update($id_ticket)
+    public function update_status($id_ticket)
     {
         // $data = ['']
         $where = ['id_ticket' => $id_ticket];

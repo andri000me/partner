@@ -52,7 +52,7 @@ class Partner extends CI_Controller
     {
         $data = [
             'data' => $this->partner_model->get(),
-            'mapping' => $this->mapping_partner->get($this->where)
+            'mappings' => $this->mapping_partner->get($this->where)
 
         ];
 
