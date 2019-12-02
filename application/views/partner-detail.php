@@ -275,10 +275,8 @@
                                     <?php } ?>
                                 </div>
 
-                                <hr class="">
-
-                                <div class="web">
-                                    <h6 class="mt-0 header-title">STATUS PARTNER</h6>
+                                <div class="web mt-2">
+                                    <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table>
@@ -397,7 +395,7 @@
                                 </div>
 
                                 <div class="mobile">
-                                    <h6 class="mt-0 header-title">STATUS PARTNER</h6>
+                                    <h6 class="header-title mb-0">STATUS PARTNER</h6>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table>
@@ -509,9 +507,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="">
-
-                                <h4 class="mt-0 header-title">LAMPIRAN</h4>
+                                <h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>
                                 <div class="inbox-wid">
                                     <div class="inbox-item">
                                         <table>
@@ -536,76 +532,8 @@
                                             <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
                                         </a>
                                         <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="mt-0 font-16">Ibrahim</h5>
-                                            <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
+                                            <h6 class="mt-0">Ibrahim</h6>
+                                            <p class="text-size">Cras sit amet nibh libero, in gravida nulla. Nulla vel
                                                 metus
                                                 scelerisque ante sollicitudin. Cras purus odio,
                                                 vestibulum
