@@ -441,8 +441,8 @@
                         <div class="form-group mt-2">
                             <label class="control-label center">Cari Data partner Disini.</label>
                             <select class="form-control select2">
-                                <option>Select</option>
-                                <optgroup label="Alaskan/Hawaiian Time Zone">
+                                <option value="">Select</option>
+                                <optgroup label="Mapping Partner">
                                     <option value="AK">Alaska</option>
                                     <option value="HI">Hawaii</option>
                                 </optgroup>

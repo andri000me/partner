@@ -56,7 +56,8 @@ class Agent extends CI_Controller
         $data = [
             'data' => $this->agent_model->get($where)->row(),
             'activities' => $this->agent_activity->get($where),
-            'comments' => $this->comment_model->get($where)
+            'comments' => $this->comment_model->get($where),
+            'ticket' => $this->ticket_model->get($where)->row()
         ];
 
         $this->template->load('template/index', 'agent-detail', $data);

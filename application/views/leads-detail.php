@@ -48,7 +48,7 @@
                                     <option selected disabled value="">Pilih Kategori Produk</option>
                                     <option value="My Ihram">My Ihram</option>
                                     <option value="My Safar">My Safar</option>
-                                    <option value="My Talin">My Talin</option>
+                                    <option value="My Talim">My Talim</option>
                                     <option value="My Hajat">My Hajat</option>
                                     <option value="My Faedah">My Faedah</option>
                                     <option value="My CarS">My CarS</option>

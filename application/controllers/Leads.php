@@ -83,76 +83,85 @@ class Leads extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        // $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
-        // $this->form_validation->set_rules('email', 'Alamat E-mail', 'required|is_unique[leads.email]', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+        $this->form_validation->set_rules('id_mapping_leads', 'ID Mapping Leads', 'required', ['required' => 'Mohon pilih data dari Mapping Leads']);
 
-        $data = [
-            'id_mapping_leads' => $post['id_mapping_leads'],
+        if ($this->form_validation->run() != FALSE) {
+            $data = [
+                'id_mapping_leads' => $post['id_mapping_leads'],
 
-            'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
-            'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-            'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
-            'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
-            'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-            'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
-            'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
-            'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
+                'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
+                'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
+                'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
+                'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
+                'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
+                'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
+                'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
+                'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
 
-            //Timestamp
-            'created_at'        => date('Y-m-d H:i:s'),
-            'updated_at'        => date('Y-m-d H:i:s'),
+                //Timestamp
+                'created_at'        => date('Y-m-d H:i:s'),
+                'updated_at'        => date('Y-m-d H:i:s'),
 
-            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            // 'id_user'           => $post['id_user'],
-            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            // 'id_branch'         => $post['id_branch']
-        ];
-
-        if (isset($post['draft'])) {
-            $data['status'] = 'draft';
-        } else if (isset($post['process'])) {
-            $data['status'] = 'lengkap';
-        }
-
-        //Memasukkan data mapping ke database `leads`
-
-        $id = $this->leads_model->create($data);
-
-        //Membuat history activity inputan data leads
-        $leads_activity = [
-            'activity' => 'Data leads telah dibuat',
-            'date_activity' => date('Y-m-d H:i:s'),
-            'id_lead' => $id,
-            'id_user' => $this->fungsi->user_login()->id_user
-        ];
-
-        $this->leads_activity->create($leads_activity);
-
-        //Menambah antrian tiket untuk data leads
-        if (isset($post['process'])) {
-            $ticket = [
-                'status'        => 0,
-                'date_pending'  => date('Y-m-d H:i:s'),
-                'id_lead'       => $id,
-                'id_user'       => $this->fungsi->user_login()->id_user,
-                'id_branch'     => $this->fungsi->user_login()->id_branch
+                //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
+                // 'id_user'           => $post['id_user'],
+                //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
+                // 'id_branch'         => $post['id_branch']
             ];
-            $this->ticket_model->create($ticket);
 
-            //Notifikasi
-            // $notification = [
-            //     'pengirim' => $this->fungsi->user_login()->id_user,
-            //     'type'      => 'new data',
-            //     'id_leads'  => $id,
-            //     'created_at' => date('Y-m-d H:i:s')
-            // ];
-            // $this->notification_model->create($notification);
-        }
-        if ($id) {
-            //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
+            if (isset($post['draft'])) {
+                $data['status'] = 'draft';
+            } else if (isset($post['process'])) {
+                $data['status'] = 'lengkap';
+            }
 
-            redirect('Leads');
+            //Memasukkan data mapping ke database `leads`
+
+            $id = $this->leads_model->create($data);
+
+            //Membuat history activity inputan data leads
+            $leads_activity = [
+                'activity' => 'Data leads telah dibuat',
+                'date_activity' => date('Y-m-d H:i:s'),
+                'id_leads' => $id,
+                'id_user' => $this->fungsi->user_login()->id_user
+            ];
+
+            $this->leads_activity->create($leads_activity);
+
+            //Menambah antrian tiket untuk data leads
+            if (isset($post['process'])) {
+                $ticket = [
+                    'status'        => 0,
+                    'date_pending'  => date('Y-m-d H:i:s'),
+                    'id_lead'       => $id,
+                    'id_user'       => $this->fungsi->user_login()->id_user,
+                    'id_branch'     => $this->fungsi->user_login()->id_branch
+                ];
+                $this->ticket_model->create($ticket);
+
+                //Notifikasi
+                // $notification = [
+                //     'pengirim' => $this->fungsi->user_login()->id_user,
+                //     'type'      => 'new data',
+                //     'id_leads'  => $id,
+                //     'created_at' => date('Y-m-d H:i:s')
+                // ];
+                // $this->notification_model->create($notification);
+            }
+            if ($id) {
+                //Memberi pesan berhasil data menyimpan data mapping
+                $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
+
+                redirect('Leads');
+            }
+        } else {
+            $data = [
+                'mapping' => $this->mapping_leads->get($this->where),
+                'branches' => $this->branch_model->get(),
+                'users' => $this->user_model->get_all()
+            ];
+            $this->template->load('template/index', 'leads-form', $data);
         }
     }
     public function update()
