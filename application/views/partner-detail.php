@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-8">
         <div class="page-title-box">
             <h4 class="page-title">Timeline Maintain</h4>
             <ol class="breadcrumb">
@@ -172,7 +172,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-lg-4">
         <div class="sticky">
             <div class="card height">
                 <div class="card-body">
@@ -278,10 +278,8 @@
                                     <?php } ?>
                                 </div>
 
-                                <hr class="">
-
-                                <div class="web">
-                                    <h6 class="mt-0 header-title">STATUS PARTNER</h6>
+                                <div class="web mt-2">
+                                    <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table>
@@ -400,7 +398,7 @@
                                 </div>
 
                                 <div class="mobile">
-                                    <h6 class="mt-0 header-title">STATUS PARTNER</h6>
+                                    <h6 class="header-title mb-0">STATUS PARTNER</h6>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table>
@@ -512,9 +510,7 @@
                                     </div>
                                 </div>
 
-                                <hr class="">
-
-                                <h4 class="mt-0 header-title">LAMPIRAN</h4>
+                                <h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>
                                 <div class="inbox-wid">
                                     <div class="inbox-item">
                                         <table>
@@ -540,8 +536,8 @@
                                                 <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
                                             </a>
                                             <div class="media-body">
-                                                <h5 class="mt-0 font-16"><?= $comment->name ?></h5>
-                                                <p><?= $comment->comment ?></p>
+                                                <p class=" mt-0"><b><?= $comment->name ?></b></p>
+                                                <p class="text-size"><?= $comment->comment ?></p>
                                             </div>
                                         </div>
                                     <?php } ?>
@@ -562,4 +558,3 @@
             </div>
         </div>
     </div>
-</div>
