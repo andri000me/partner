@@ -31,10 +31,15 @@ class Ticket_model extends CI_Model
         END) as aktivitas_cabang, tickets.status as status_approval 
         ");
         $this->db->from('tickets');
+        // Join Table `Partner`
         $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');
+        // Join Table `Agents`
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
+        // Join Table `Leads`
         $this->db->join('leads', 'leads.id_leads = tickets.id_leads', 'left');
+        // Join Table `Users`
         $this->db->join('users', 'users.id_user = tickets.id_user', 'left');
+        // Join Table `Branches`
         $this->db->join('branches', 'branches.id_branch = tickets.id_branch', 'left');
         if ($where != null) {
             $this->db->where($where);
