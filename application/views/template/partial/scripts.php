@@ -112,3 +112,29 @@
         maximumSelectionLength: 2
     });
 </script>
+
+//Script untuk update tanda tangan pks
+<script>
+    //Update Barang
+    $('#btn_update').on('click', function() {
+        var kobar = $('#ttd_pks').val();
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('ticket/update_ttd') ?>",
+            dataType: "JSON",
+            data: {
+                kobar: kobar,
+                nabar: nabar,
+                harga: harga
+            },
+            success: function(data) {
+                $('[name="kobar_edit"]').val("");
+                $('[name="nabar_edit"]').val("");
+                $('[name="harga_edit"]').val("");
+                $('#ModalaEdit').modal('hide');
+                tampil_data_barang();
+            }
+        });
+        return false;
+    });
+</script>

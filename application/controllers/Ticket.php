@@ -69,6 +69,11 @@ class Ticket extends CI_Controller
 
     public function update_ttd()
     {
-        // $data
+        $post = $this->input->post(null, TRUE);
+        $data = [
+            'ttd_pks' => $post['ttd_pks']
+        ];
+        $where = ['id_ticket' => $post['id_ticket']];
+        echo json_encode($this->ticket_model->update($data, $where));
     }
 }

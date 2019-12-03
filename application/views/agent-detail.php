@@ -12,7 +12,10 @@
 			<div class="card-body">
 				<div class="tab-content">
 					<div class="tab-pane active p-3" id="home2" role="tabpanel">
-						<form class="" action="<?= base_url('Agent/update') ?>" method="post" <!-- ID Partner -->
+						<form class="" action="<?= base_url('Agent/update') ?>" method="post">
+							<!-- ID Ticket -->
+							<input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
+							<!-- ID Agent -->
 							<input type="hidden" name="id_agent" value="<?= $data->id_agent ?>" id="id_agent">
 							<!-- ID User -->
 							<input type="hidden" name="id_user" value="<?= $data->id_user ?>" id="id_user">
@@ -318,13 +321,13 @@
 											<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
 											<div class="form-group ml-3">
 												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+													<input class="form-check-input" type="radio" name="ttd_pks" id="ttd_pks" value="Ya">
 													<label class="form-check-label">
 														Ya
 													</label>
 												</div>
 												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+													<input class="form-check-input" type="radio" name="ttd_pks" id="ttd_pks" value="Tidak">
 													<label class="form-check-label">
 														Tidak
 													</label>
