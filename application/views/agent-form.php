@@ -45,7 +45,7 @@
                                                 <input type="text" class="form-control <?= form_error('nama_lengkap') ? 'is-invalid' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" required placeholder="Aisha Putri" />
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Apakah Punya Pinjaman?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
@@ -62,7 +62,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Terdaftar Sebagai Agen travel / Lainnya?</label><br>
                                                 <div class="form-check form-check-inline mt-2">

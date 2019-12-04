@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Mapping Lokasi Partner</h4>
+            <h4 class="page-title">Tambah Data Baru</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Mapping Lokasi Partner</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Mapping Lokasi Partner</a></li>
+                <li class="breadcrumb-item active">Tambah Data baru</li>
             </ol>
         </div>
     </div>
@@ -18,10 +19,10 @@
 
             <div class="card-body">
                 <div class="ml-3">
-                    <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
+                    <h4 class="mt-0 header-title">Tambah Data Baru</h4>
                     <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
                 </div>
-                <form class="" method="post" action="<?= base_url('Mapping_partner/save') ?>">
+                <form method="post" action="<?= base_url('Mapping_partner/save') ?>">
                     <!-- Form inputan hidden untuk id user, untuk mengetahui user mana yg input data -->
                     <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
                     <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
@@ -95,7 +96,7 @@
                             <button type="reset" class="btn btn-secondary waves-effect waves-light text-size">
                                 Batal
                             </button>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
                                 Simpan
                             </button>
                         </div>

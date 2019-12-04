@@ -3752,6 +3752,10 @@ button[disabled] {
 		width: 545px;
 	}
 
+	.btn-kanan {
+		float: none;
+	}
+
 	.height {
 		height: 1000px;
 	}
@@ -3767,11 +3771,16 @@ button[disabled] {
 
 	.box {
 		width: 475px;
-		height: 470px;
+		height: 450px;
 	}
 
 	.mobile {
 		display: none;
+	}
+
+	.item {
+		width: 300px;
+		height: 150px;
 	}
 
 }
@@ -3785,7 +3794,7 @@ button[disabled] {
 	}
 
 	.btn-kanan {
-		float: right;
+		float: none;
 	}
 
 	.height {
@@ -3799,7 +3808,7 @@ button[disabled] {
 
 	.box {
 		width: 300px;
-		height: 300px;
+		height: 250px;
 	}
 
 	.media {
@@ -3808,6 +3817,15 @@ button[disabled] {
 
 	.text-size {
 		font-size: 12px;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	.item {
+		width: 100px;
+		height: 50px;
 	}
 }
 
@@ -4015,6 +4033,22 @@ button[disabled] {
 		width: 230px;
 		height: 285px;
 	}
+}
+
+::placeholder {
+	color: red;
+	opacity: 0.1;
+	/* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: red;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: red;
 }
 
 /*# sourceMappingURL=style.css.map */
