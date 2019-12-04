@@ -24,8 +24,9 @@ class Notification_model extends CI_Model
     {
         $this->db->from('notifications');
         $this->db->join('partners', 'partners.id_partner = notifications.id_partner', 'left');
-        $this->db->join('agents', 'agents.id_agent = notifications.id_agent', 'left');
-        $this->db->join('leads', 'leads.id_lead = notifications.id_lead', 'left');
+        $this->db->join('tickets', 'tickets.id_ticket = notifications.id_ticket', 'left');
+        // $this->db->join('agents', 'agents.id_agent = notifications.id_agent', 'left');
+        // $this->db->join('leads', 'leads.id_lead = notifications.id_lead', 'left');
         $this->db->join('users', 'users.id_user = notifications.id_user', 'left');
         if ($where != null) {
             $this->db->where($where);

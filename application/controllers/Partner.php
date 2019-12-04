@@ -21,6 +21,8 @@ class Partner extends CI_Controller
         $this->load->model('maintain_partner_model', 'maintain_partner');
         //Load Modul Comment
         $this->load->model('comment_model');
+        //Load Modul notification
+        $this->load->model('notification_model');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -80,9 +82,9 @@ class Partner extends CI_Controller
 
         $data = [
             'data'          => $this->partner_model->get($where)->row(),
+            'ticket'        => $this->ticket_model->get($where)->row(),
             'maintain'      => $this->maintain_partner->get($where),
             'activities'    => $this->partner_activity->get($where),
-            'ticket'        => $this->ticket_model->get($where)->row(),
             'comments'      => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'partner-detail', $data);
@@ -222,13 +224,13 @@ class Partner extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
 
             //Notifikasi
             $notification = [
                 'pengirim'      => $this->fungsi->user_login()->id_user,
-                'type'          => 'new data',
-                'id_partner'    => $id,
+                'type'          => 'Data Partner Baru',
+                'id_ticket'    => $id_ticket,
                 'created_at'    => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);

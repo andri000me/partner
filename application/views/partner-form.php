@@ -20,7 +20,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="head-wizard">
-                        <form action="<?= base_url('Partner/save') ?>" method="post">
+                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data">
                             <input id="website" name="website" type="disable" value="">
                             <!-- Leave for security protection, read docs for details -->
 
@@ -438,20 +438,30 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="">
-                            <div class="form-group mb-0">
-                                <label class="control-label">Multiple Select</label>
-
-                                <select class="select2 form-control select2-multiple" multiple="multiple" multi ple data-placeholder="Choose ...">
-                                    <optgroup label="Mapping Partner">
-                                        <?php foreach ($mappings->result() as $mapping) { ?>
-                                            <option value="<?= $mapping->mapping_id ?>"><?= $mapping->nama_usaha . ', ' . $mapping->telepon ?></option>
-                                        <?php } ?>
-                                    </optgroup>
-                                </select>
-
-                            </div>
-                        </form>
+                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Name Usaha</th>
+                                    <th>Kategori Produk</th>
+                                    <th>Telepon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($mappings->result() as $data) { ?>
+                                    <tr class="clickable-row" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
+                                        <td class="not-clickable">
+                                            <div class="text-size"><?= $data->nama_usaha ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->kategori_produk ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->telepon ?></div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

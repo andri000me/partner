@@ -209,7 +209,8 @@
 							<div class="form-group mb-0 float-right mt-2">
 								<div>
 									<?php if ($this->fungsi->user_login()->level != 1) { ?>
-										<a class="btn btn-info" href="<?= base_url('ticket/update_status/' . $ticket->id_ticket) ?>">Approve</a>
+										<a class="btn btn-info" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+										<a class="btn btn-danger" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
 									<?php } ?>
 									<button type="submit" class="btn btn-primary waves-effect waves-light ml-3 mr-3">
 										Simpan
@@ -276,7 +277,7 @@
 												<div class="inbox-item">
 													<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i><b>&nbsp;&nbsp;<?= $activity->activity ?></b></p>
 													<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
-													<code class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;<?= $activity->date_activity ?></code>
+													<code class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;<?= $activity->tanggal_activity ?></code>
 												</div>
 											</div>
 										<?php
@@ -290,51 +291,55 @@
 
 								<div class="">
 									<h4 class="mt-0 header-title">STATUS PARTNER</h4>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Terverifikasi</b></p>
-											<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Teri Anggraini</p>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted">30 Des, 2019</code>
+									<!-- Jika tiket status sudah diapprove HO, maka ... -->
+									<?php if ($ticket->status_approval == 5) { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Terverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i><b>&nbsp;&nbsp;Belum
-													Diverifikasi</b>
-											</p>
-											<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Admin HO</p>
+									<?php } else { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i><b>&nbsp;&nbsp;Belum Diverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Admin HO</p>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Sudah
-													tanda
-													tangan
-													Kerjasama</b>
-											</p>
-											<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted">30 Des, 2019</code>
+									<?php } ?>
+									<!-- Jika Data Tiket telah td kerjsama, maka munculkan record ttd kerjasama -->
+									<?php if ($ticket->ttd_pks == 'Ya') { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Sudah tanda tangan Kerjasama</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
-											<div class="form-group ml-3">
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="ttd_pks" id="ttd_pks" value="Ya">
-													<label class="form-check-label">
-														Ya
-													</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="ttd_pks" id="ttd_pks" value="Tidak">
-													<label class="form-check-label">
-														Tidak
-													</label>
+									<?php } ?>
+									<!-- Jika Data Tiket sudah di-approve oleh HO, maka munculkan tombol Kerjasama -->
+									<?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum') { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
+												<div class="form-group ml-3">
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+														<label class="form-check-label">
+															Ya
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+														<label class="form-check-label">
+															Tidak
+														</label>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									<?php } ?>
 								</div>
 
 								<hr class="">
@@ -365,6 +370,7 @@
 								</div>
 								<form action="<?= base_url('Comment/save/id_agent') ?>" method="post">
 									<input type="hidden" name="id_type" id="id_type" value="<?= $data->id_agent ?>">
+									<input type="hidden" name="ticket" id="ticket" value="<?= $ticket->id_ticket ?>">
 									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
 										<label>Comment</label>

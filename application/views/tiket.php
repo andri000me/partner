@@ -35,7 +35,7 @@
                                     <div class="text-size"><?= $ticket->id_ticket ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $ticket->name ?></div>
+                                    <div class="text-size"><?= $ticket->requester ?></div>
                                 </td>
                                 <td>
                                     <div class="text-size"><?= $ticket->nama_cabang ?></div>

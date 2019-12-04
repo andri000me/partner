@@ -28,6 +28,8 @@
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="home2" role="tabpanel">
                         <form class="" action="<?= base_url('Partner/update_detail') ?>" method="post">
+                            <!-- ID Ticket -->
+                            <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
                             <!-- ID Partner -->
                             <input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
                             <!-- ID Mapping -->
@@ -134,7 +136,8 @@
                             <div class="form-group mb-0 float-right mt-2">
                                 <div>
                                     <?php if ($this->fungsi->user_login()->level != 1) { ?>
-                                        <a class="btn btn-info" href="<?= base_url('ticket/update_status/' . $ticket->id_ticket) ?>">Approve</a>
+                                        <a class="btn btn-info" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+                                        <a class="btn btn-danger" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
                                     <?php } ?>
                                     <button type="submit" class="btn btn-primary waves-effect waves-light ml-3 mr-3">
                                         Simpan
@@ -163,7 +166,6 @@
                                     }
                                 } else { ?>
                                 <p class="text-muted m-b-10">Tidak Ada Data</p>
-
                             <?php } ?>
                         </ol>
                     </div>
@@ -280,234 +282,234 @@
 
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-date text-muted mt-1 mb-0 text-size">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Teri Anggraini</p>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php if ($ticket->status_approval == 5) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_completed ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid hide">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 text-size"><b>Belum
-                                                                Diverifikasi</b>
-                                                        </p>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                    <?php } else { ?>
+                                        <div class="inbox-wid hide">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Belum Diverifikasi</b></p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah
-                                                                tanda
-                                                                tangan
-                                                                Kerjasama</b>
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-date text-muted mt-1 mb-0 text-size">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                    <?php } ?>
+                                    <?php if ($ticket->ttd_pks == 'Ya') { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
+                                    <?php } ?>
+                                    <?php if ($ticket->status_approval == 5) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
 
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
 
-                                                    </td>
-                                                    <td>
-                                                        <form action="">
-                                                            <div class="form-group ml-3 mb-0">
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group ml-3">
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
                                                                     <label class="form-check-label">
                                                                         Ya
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
                                                                     <label class="form-check-label">
                                                                         Tidak
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
 
                                 <div class="mobile">
                                     <h6 class="header-title mb-0">STATUS PARTNER</h6>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Terverifikasi</b></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php if ($ticket->status_approval == 5) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Terverifikasi</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Belum
-                                                                Diverifikasi</b>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php } else { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Belum Diverifikasi</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Sudah
-                                                                tanda
-                                                                tangan
-                                                                Kerjasama</b>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php } ?>
+                                    <?php if ($ticket->ttd_pks == 'Ya') { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td> </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Kerjasama?</b></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td class="mb-0">
-                                                        <div class="form-group">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-                                                                <label class="form-check-label text">
-                                                                    Ya
-                                                                </label>
+                                    <?php } ?>
+                                    <?php if ($ticket->status_approval == 5) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td> </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Kerjasama?</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td class="mb-0">
+                                                            <div class="form-group">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+                                                                    <label class="form-check-label">
+                                                                        Ya
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+                                                                    <label class="form-check-label">
+                                                                        Tidak
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-                                                                <label class="form-check-label">
-                                                                    Tidak
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
 
                                 <h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>

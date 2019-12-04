@@ -113,28 +113,27 @@
     });
 </script>
 
-//Script untuk update tanda tangan pks
+<!-- //Script untuk update tanda tangan pks -->
 <script>
     //Update Barang
-    $('#btn_update').on('click', function() {
-        var kobar = $('#ttd_pks').val();
+    $('.ttd_pks').on('click', function() {
+        var ttd_pks = $(this).val();
+        var id_ticket = $('#id_ticket').val();
+
+        // alert(id_ticket + ttd_pks);
         $.ajax({
             type: "POST",
             url: "<?= base_url('ticket/update_ttd') ?>",
             dataType: "JSON",
             data: {
-                kobar: kobar,
-                nabar: nabar,
-                harga: harga
+                ttd_pks: ttd_pks,
+                id_ticket: id_ticket
             },
             success: function(data) {
-                $('[name="kobar_edit"]').val("");
-                $('[name="nabar_edit"]').val("");
-                $('[name="harga_edit"]').val("");
-                $('#ModalaEdit').modal('hide');
-                tampil_data_barang();
+                alert('Success, \n ID Tiket: ' + id_ticket + '\n TTD: ' + ttd_pks);
+                location.reload();
             }
         });
-        return false;
+        // return false;
     });
 </script>

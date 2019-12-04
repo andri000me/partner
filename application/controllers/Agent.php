@@ -132,14 +132,14 @@ class Agent extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
 
             //Notifikasi
             $notification = [
-                'pengirim' => $this->fungsi->user_login()->id_user,
-                'type'      => 'new data',
-                'id_agent'  => $id,
-                'created_at' => date('Y-m-d H:i:s')
+                'pengirim'      => $this->fungsi->user_login()->id_user,
+                'type'          => 'Data Agent Baru',
+                'id_ticket'     => $id_ticket,
+                'created_at'    => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);
 
