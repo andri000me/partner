@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Form Inputan Partner</h4>
+            <h4 class="page-title">Partnership</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Lexa</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
-                <li class="breadcrumb-item active">Basic Tables</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
+                <li class="breadcrumb-item active">Partnership</li>
             </ol>
         </div>
     </div>
@@ -24,7 +24,7 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
+                <h4 class="mt-0 header-title">Table Partnership</h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
                     memudahkan anda dalam memaintain partner anda.</p>
@@ -101,7 +101,9 @@
                                 <td class="not-clickable"><?= $data->nama_usaha ?></td>
                                 <td><?= $data->kategori_produk ?></td>
                                 <td><?= $data->telepon ?></td>
-                                <td><a class="btn btn-primary" href="<?= base_url('Maintain_partner/create/' . $data->id_partner) ?>">Maintain</a></td>
+                                <td>
+                                    <center><a class="btn btn-primary" href="<?= base_url('Maintain_partner/create/' . $data->id_partner) ?>">Maintain</a></center>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>

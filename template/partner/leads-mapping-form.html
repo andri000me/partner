@@ -20,6 +20,10 @@
         <link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
         <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+
+        <!-- DataTables -->
+        <link href="../assets/plugins/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
@@ -245,6 +249,28 @@
                                                                             <div class="form-row">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group mr-3 ml-3">
+                                                                                        <label>Produk</label>
+                                                                                        <select class="form-control" name="produk" id="produk">
+                                                                                            <option selected>Pilih Kategori Produk</option>
+                                                                                            <option value="My Ihram">My Ihram</option>
+                                                                                            <option value="My Safar">My Safar</option>
+                                                                                            <option value="My Talin">My Talin</option>
+                                                                                            <option value="My Hajat">My Hajat</option>
+                                                                                            <option value="My Faedah">My Faedah</option>
+                                                                                            <option value="My CarS">My CarS</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group mr-3 ml-3">
+                                                                                        <label>Detail Produk</label>
+                                                                                        <input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk"/>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="form-row">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group mr-3 ml-3">
                                                                                         <label>Asal Aplikasi</label>
                                                                                         <select class="form-control" name="soa" id="soa">
                                                                                             <option selected>Pilih Source Aplikasi</option>
@@ -258,38 +284,30 @@
                                                                                             <option value="Website BFI Syariah">Website BFI Syariah</option>
                                                                                             <option value="RO">RO</option>
                                                                                             <option value="Walkin">Walkin</option>
+                                                                                            <option value="Event">Event</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group mr-3 ml-3">
-                                                                                        <label>Produk</label>
-                                                                                        <select class="form-control" name="produk" id="produk">
-                                                                                            <option selected>Pilih Kategori Produk</option>
-                                                                                            <option value="My Ihram">My Ihram</option>
-                                                                                            <option value="My Safar">My Safar</option>
-                                                                                            <option value="My Talin">My Talin</option>
-                                                                                            <option value="My Hajat">My Hajat</option>
-                                                                                            <option value="My Faedah">My Faedah</option>
-                                                                                            <option value="My CarS">My CarS</option>
-                                                                                        </select>
+                                                                                <div class="col-md-6" id="disable">
+                                                                                        <label class="ml-3">Pilih Data</label>
+                                                                                        <div class="input-group ml-3 mr-3">
+                                                                                            <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" required placeholder="aaaa" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                                                            <div class="input-group-append mr-4">
+                                                                                                <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 disablee">
+                                                                                    <div class="form-group ml-3 mr-3">
+                                                                                        <label>Nama Event</label>
+                                                                                        <input type="text" class="form-control" name="nama_event" id="nama_event" placeholder="Input Nama Event">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="form-row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group mr-3 ml-3">
-                                                                                        <label>Detail Produk</label>
-                                                                                        <input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk"/>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="form-group mb-0 float-right">
+                                                                            <div class="form-group mb-0 float-right mt-3 mr-3">
                                                                                 <div>
-                                                                                    <button type="reset" class="btn btn-secondary waves-effect waves-light">
-                                                                                        Batal
-                                                                                    </button>
-                                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                                                                    <a href="leads.html" class="btn btn-secondary waves-effect waves-light">Batal</a>
+                                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light ml-1">
                                                                                         Simpan
                                                                                     </button>
                                                                                 </div>
@@ -305,6 +323,58 @@
                                 </div>    
                         </div>
                         <!-- end content -->
+
+
+                        <!-- modal -->
+                        <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="modal-header mb-2">
+                                                <h4 class="modal-title">Cari Data Partner</h4>
+                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            </div>
+                                            <table id="datatable"
+                                            class="table table-striped table-bordered dt-responsive nowrap"
+                                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name Usaha</th>
+                                                        <th>Kategori Produk</th>
+                                                        <th>Cabang</th>
+                                                        <th>Telepon</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="clickable-row" data-href="partnership-form.html">
+                                                        <td>PT Markibul</td>
+                                                        <td>My Safar</td>
+                                                        <td>jakarta</td>
+                                                        <td>0811977500</td>
+                                                        <td><center><button class="btn btn-primary">Pilih</button></center></td>
+                                                    </tr>
+                                                    <tr class="clickable-row" data-href="partnership-form.html">
+                                                        <td>PT Markobar</td>
+                                                        <td>My Faedah</td>
+                                                        <td>jakarta</td>
+                                                        <td>0811977500</td>
+                                                        <td><center><button class="btn btn-primary">Pilih</button></center></td>
+                                                    </tr>
+                                                    <tr class="clickable-row" data-href="partnership-form.html">
+                                                        <td>CV Antasari Ashar</td>
+                                                        <td>My Ihram</td>
+                                                        <td>Tangerang</td>
+                                                        <td>0811977500</td>
+                                                        <td><center><button class="btn btn-primary">Pilih</button></center></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- modal -->
                 </div>
 
         </div>
@@ -327,6 +397,30 @@
             }
         </script>
 
+        <script>
+            $('#disable').hide();
+            $('.disablee').hide();
+            $('#soa').change(function() {
+                if ($('#soa').val() == 'Tour & travel' || $('#soa').val() == 'Agent BA' || $('#soa').val() == 'Penyedia Jasa') {
+                    $('#disable').show();
+                    $('.disablee').hide();
+                    // alert($('#kategori_produk').val());
+                } else if ($('#soa').val() == 'Event'){
+                    $('.disablee').show();
+                    $('#disable').hide();
+                }else {
+                    $('#disable').hide();
+                    $('.disablee').hide();
+                }
+            })
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });
+        </script>
+
         <script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
 
         <!-- Plugins js -->
@@ -339,6 +433,13 @@
 
         <!-- Plugins Init js -->
         <script src="../assets/pages/form-advanced.js"></script>
+
+        <!-- Responsive examples -->
+        <script src="../assets/plugins/js/dataTables.responsive.min.js"></script>
+        <script src="../assets/plugins/js/responsive.bootstrap4.min.js"></script>
+
+        <!-- Datatable init js -->
+        <script src="../assets/pages/datatables.init.js"></script>
 
         <!-- App js -->
         <script src="../assets/js/app.js"></script>

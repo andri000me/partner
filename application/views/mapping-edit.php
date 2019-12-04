@@ -3,9 +3,10 @@
         <div class="page-title-box">
             <h4 class="page-title">Mapping Lokasi Partner</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Mapping Lokasi Partner</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Mapping Lokasi Partner</a></li>
+                <li class="breadcrumb-item active">Edit Data Partner</li>
             </ol>
         </div>
     </div>
@@ -18,8 +19,8 @@
 
             <div class="card-body">
 
-                <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
-                <p class="text-muted m-b-30">Gunakan form ini untuk mendata calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
+                <h4 class="mt-0 header-title">Edit Data Partner</h4>
+                <p class="text-muted m-b-30">Gunakan form ini untuk mengedit data calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
 
                 <form class="" method="post" action="<?= base_url('Mapping_partner/update') ?>">
                     <!-- Form inputan hidden untuk id user, untuk mengetahui user mana yg input data -->
@@ -96,7 +97,7 @@
                             <button type="reset" class="btn btn-secondary waves-effect waves-light">
                                 Batal
                             </button>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light ml-1">
                                 Simpan
                             </button>
                         </div>

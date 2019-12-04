@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Partnership</h4>
+            <h4 class="page-title">Rekrut Partner</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Partnership</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Partnership</a></li>
+                <li class="breadcrumb-item active">Rekrut Partner</li>
             </ol>
         </div>
     </div>
@@ -388,11 +389,11 @@
                                     <!-- /step-->
                                 </div>
                                 <!-- /middle-wizard -->
-                                <div class="form-group mb-0 float-right mt-3">
+                                <div class="form-group mb-0 float-right mt-3 mr-3">
                                     <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                                    <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
-                                    <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
-                                    <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                                    <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
+                                    <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
+                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
                                 </div>
                                 <!-- /bottom-wizard -->
                         </form>
@@ -511,51 +512,6 @@
     $('#draft').click(function() {
         $("input, select").removeAttr('required');
     })
-</script>
-
-<script>
-    /*  Wizard */
-    jQuery(function($) {
-        "use strict";
-        $('form#wrapped').attr('action', '');
-        $("#wizard_container").wizard({
-            stepsWrapper: "#wrapped",
-            submit: ".submit",
-            beforeSelect: function(event, state) {
-                if ($('input#website').val().length != 0) {
-                    return false;
-                }
-                if (!state.isMovingForward)
-                    return true;
-                var inputs = $(this).wizard('state').step.find(':input');
-                return !inputs.length || !!inputs.valid();
-            }
-        }).validate({
-            errorPlacement: function(error, element) {
-                if (element.is(':radio') || element.is(':checkbox')) {
-                    error.insertBefore(element.next());
-                } else {
-                    error.insertAfter(element);
-                }
-            }
-        });
-        //  progress bar
-        $("#progressbar").progressbar();
-        $("#wizard_container").wizard({
-            afterSelect: function(event, state) {
-                $("#progressbar").progressbar("value", state.percentComplete);
-                $("#location").text("(" + state.stepsComplete + "/" + state.stepsPossible + ")");
-            }
-        });
-        /* Submit loader mask */
-        $('form').on('submit', function() {
-            var form = $("form#wrapped");
-            form.validate();
-            if (form.valid()) {
-                $("#loader_form").fadeIn();
-            }
-        });
-    });
 </script>
 
 

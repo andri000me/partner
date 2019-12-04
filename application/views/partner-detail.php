@@ -179,24 +179,24 @@
             <div class="card height">
                 <div class="card-body">
                     <div class="owl-carousel owl-theme">
-                        <div class="item" style="height:79px; width:120px;">
+                        <div class="item">
                             <div class="zoom-gallery">
-                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img class="item" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt=""></a>
                             </div>
                         </div>
-                        <div class="item" style="height:79px; width:120px;">
+                        <div class="item">
                             <div class="zoom-gallery">
-                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img class="item" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt=""></a>
                             </div>
                         </div>
-                        <div class="item" style="height:79px; width:120px;">
+                        <div class="item">
                             <div class="zoom-gallery">
-                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img class="item" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt=""></a>
                             </div>
                         </div>
-                        <div class="item" style="height:79px; width:120px;">
+                        <div class="item">
                             <div class="zoom-gallery">
-                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+                                <a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img class="item" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -538,8 +538,8 @@
                                                 <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
                                             </a>
                                             <div class="media-body">
-                                                <p class=" mt-0"><b><?= $comment->name ?></b></p>
-                                                <p class="text-size"><?= $comment->comment ?></p>
+                                                <h6 class="mt-0 mb-0"><?= $comment->name ?></h6>
+                                                <p class="text-size mt-0"><?= $comment->comment ?></p>
                                             </div>
                                         </div>
                                     <?php } ?>
