@@ -21,7 +21,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="head-wizard">
-                        <form action="<?= base_url('Partner/save') ?>" method="post">
+                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data">
                             <input id="website" name="website" type="disable" value="">
                             <!-- Leave for security protection, read docs for details -->
 
@@ -363,51 +363,27 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>KTP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="ktp" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="ktp" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>NPWP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="npwp" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="npwp" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>Buku Tabungan</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="buku_tabungan_perusahaan" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="buku_tabungan_perusahaan" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>SIUP / TDP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="siup" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="siup" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>Logo Perusahaan</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="logo_perusahaan" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="logo_perusahaan" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>Foto usaha</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="foto_usaha" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="foto_usaha" type="file">
                                         </div>
                                     </div>
                                     <!-- /step-->
@@ -439,75 +415,30 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="">
-                            <div class="form-group mb-0">
-                                <label class="control-label">Multiple Select</label>
-
-                                <select class="select2 form-control" data-placeholder="Choose ...">
-                                    <optgroup label="Alaskan/Hawaiian Time Zone">
-                                        <option value="AK">Alaska</option>
-                                        <option value="HI">Hawaii</option>
-                                    </optgroup>
-                                    <optgroup label="Pacific Time Zone">
-                                        <option value="CA">California</option>
-                                        <option value="NV">Nevada</option>
-                                        <option value="OR">Oregon</option>
-                                        <option value="WA">Washington</option>
-                                    </optgroup>
-                                    <optgroup label="Mountain Time Zone">
-                                        <option value="AZ">Arizona</option>
-                                        <option value="CO">Colorado</option>
-                                        <option value="ID">Idaho</option>
-                                        <option value="MT">Montana</option>
-                                        <option value="NE">Nebraska</option>
-                                        <option value="NM">New Mexico</option>
-                                        <option value="ND">North Dakota</option>
-                                        <option value="UT">Utah</option>
-                                        <option value="WY">Wyoming</option>
-                                    </optgroup>
-                                    <optgroup label="Central Time Zone">
-                                        <option value="AL">Alabama</option>
-                                        <option value="AR">Arkansas</option>
-                                        <option value="IL">Illinois</option>
-                                        <option value="IA">Iowa</option>
-                                        <option value="KS">Kansas</option>
-                                        <option value="KY">Kentucky</option>
-                                        <option value="LA">Louisiana</option>
-                                        <option value="MN">Minnesota</option>
-                                        <option value="MS">Mississippi</option>
-                                        <option value="MO">Missouri</option>
-                                        <option value="OK">Oklahoma</option>
-                                        <option value="SD">South Dakota</option>
-                                        <option value="TX">Texas</option>
-                                        <option value="TN">Tennessee</option>
-                                        <option value="WI">Wisconsin</option>
-                                    </optgroup>
-                                    <optgroup label="Eastern Time Zone">
-                                        <option value="CT">Connecticut</option>
-                                        <option value="DE">Delaware</option>
-                                        <option value="FL">Florida</option>
-                                        <option value="GA">Georgia</option>
-                                        <option value="IN">Indiana</option>
-                                        <option value="ME">Maine</option>
-                                        <option value="MD">Maryland</option>
-                                        <option value="MA">Massachusetts</option>
-                                        <option value="MI">Michigan</option>
-                                        <option value="NH">New Hampshire</option>
-                                        <option value="NJ">New Jersey</option>
-                                        <option value="NY">New York</option>
-                                        <option value="NC">North Carolina</option>
-                                        <option value="OH">Ohio</option>
-                                        <option value="PA">Pennsylvania</option>
-                                        <option value="RI">Rhode Island</option>
-                                        <option value="SC">South Carolina</option>
-                                        <option value="VT">Vermont</option>
-                                        <option value="VA">Virginia</option>
-                                        <option value="WV">West Virginia</option>
-                                    </optgroup>
-                                </select>
-
-                            </div>
-                        </form>
+                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Name Usaha</th>
+                                    <th>Kategori Produk</th>
+                                    <th>Telepon</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($mappings->result() as $data) { ?>
+                                    <tr class="clickable-row" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
+                                        <td class="not-clickable">
+                                            <div class="text-size"><?= $data->nama_usaha ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->kategori_produk ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->telepon ?></div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

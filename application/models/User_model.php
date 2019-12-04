@@ -8,7 +8,16 @@ class User_model extends CI_Model
     public function get($id)
     {
         $this->db->from('users');
+        $this->db->join('branches', 'branches.id_branch = users.id_branch');
         $this->db->where("nik = '$id' or email = '$id'");
+        $query = $this->db->get();
+
+        return $query;
+    }
+
+    public function get_all()
+    {
+        $this->db->from('users');
         $query = $this->db->get();
 
         return $query;
@@ -23,7 +32,7 @@ class User_model extends CI_Model
     // Update User
     public function update($data, $where)
     {
-        $this->db->update('users', $data, $where);
+        return $this->db->update('users', $data, $where);
     }
 
     // Delete User

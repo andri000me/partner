@@ -65,11 +65,11 @@
         <li class="dropdown notification-list">
             <div class="dropdown notification-list nav-pro-img">
                 <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <img src="<?= base_url('template/assets/images/users/user-4.jpg') ?>" alt="user" class="rounded-circle">
+                    <img src="<?= $this->fungsi->user_login()->foto != '' ? base_url('uploads/foto_profil/' .  $this->fungsi->user_login()->foto) : base_url('assets/img/profile-pic.jpg')  ?>" alt="user" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i>
+                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i>
                         Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i class="mdi mdi-power text-danger"></i> Logout</a>

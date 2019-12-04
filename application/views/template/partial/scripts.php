@@ -112,3 +112,28 @@
         maximumSelectionLength: 2
     });
 </script>
+
+<!-- //Script untuk update tanda tangan pks -->
+<script>
+    //Update Barang
+    $('.ttd_pks').on('click', function() {
+        var ttd_pks = $(this).val();
+        var id_ticket = $('#id_ticket').val();
+
+        // alert(id_ticket + ttd_pks);
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('ticket/update_ttd') ?>",
+            dataType: "JSON",
+            data: {
+                ttd_pks: ttd_pks,
+                id_ticket: id_ticket
+            },
+            success: function(data) {
+                alert('Success, \n ID Tiket: ' + id_ticket + '\n TTD: ' + ttd_pks);
+                location.reload();
+            }
+        });
+        // return false;
+    });
+</script>

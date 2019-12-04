@@ -8,10 +8,16 @@ class Agent extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        //Load Modul Agent
         $this->load->model('agent_model');
+        //Load Modul Ticket
         $this->load->model('ticket_model');
+        //Load Modul Notifikasi
         $this->load->model('notification_model');
+        //Load Modul Agent Activity
         $this->load->model('agent_activity_model', 'agent_activity');
+        //Load Modul Comment
+        $this->load->model('comment_model');
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -46,11 +52,12 @@ class Agent extends CI_Controller
     public function edit($id)
     {
 
-        $where = ['id_agent' => $id];
+        $where = ['agents.id_agent' => $id];
         $data = [
             'data' => $this->agent_model->get($where)->row(),
-            'activities' => $this->agent_activity->get(['agent_activities.id_agent' => $id])
-
+            'activities' => $this->agent_activity->get($where),
+            'comments' => $this->comment_model->get($where),
+            'ticket' => $this->ticket_model->get($where)->row()
         ];
 
         $this->template->load('template/index', 'agent-detail', $data);
@@ -103,8 +110,39 @@ class Agent extends CI_Controller
                 'id_branch'             => $post['id_branch']
             ];
 
-            //Memasukkan data mapping ke database `Agents`
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/partners';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
 
+            if (!$this->upload->do_upload('ktp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['ktp'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('npwp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['npwp'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('buku_tabungan')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['buku_tabungan'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('foto_selfie')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['foto_selfie'] = $this->upload->data('file_name');
+            }
+
+            //Memasukkan data ke database `Agents`
             $id = $this->agent_model->create($data);
 
             //Membuat history activity inputan data Agent
@@ -125,14 +163,14 @@ class Agent extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
 
             //Notifikasi
             $notification = [
-                'pengirim' => $this->fungsi->user_login()->id_user,
-                'type'      => 'new data',
-                'id_agent'  => $id,
-                'created_at' => date('Y-m-d H:i:s')
+                'pengirim'      => $this->fungsi->user_login()->id_user,
+                'type'          => 'Data Agent Baru',
+                'id_agent'     => $id,
+                'created_at'    => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);
 

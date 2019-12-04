@@ -20,10 +20,12 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Leads/save') ?>" method="post">
+                        <form action="<?= base_url('Leads/update') ?>" method="post">
                             <input id="website" name="website" type="disable" value="">
                             <!-- ID Mapping Leads -->
-                            <input type="hidden" id="id_mapping_leads" name="id_mapping_leads">
+                            <input type="hidden" id="id_mapping_leads" value="<?= $data->id_mapping_leads ?>" name="id_mapping_leads">
+                            <!-- ID Leads -->
+                            <input type="hidden" id="id_leads" value="<?= $data->id_leads ?>" name="id_leads">
                             <!-- Leave for security protection, read docs for details -->
                             <div id="middle-wizard">
                                 <div class="step">
@@ -37,7 +39,7 @@
                                         <div class="col-md-6">
                                             <label class="ml-3">Nama Konsumen</label>
                                             <div class="input-group ml-3 mb-3">
-                                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <div class="input-group-append mr-3">
                                                     <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
@@ -46,13 +48,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Nomor Telepon / Whatsapp</label>
-                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
+                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Nomor KTP</label>
-                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                             </div>
                                         </div>
                                     </div>
@@ -61,17 +63,17 @@
                                             <div class="form-group mr-3 ml-3">
                                                 <label>Asal Aplikasi</label>
                                                 <select class="form-control" name="soa" id="soa">
-                                                    <option value="" selected>Pilih Source Aplikasi</option>
-                                                    <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                                    <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                                    <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                                    <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                                    <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                                    <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                                    <option <?= set_value('soa') == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
-                                                    <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                                    <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                                    <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                                    <option selected>Pilih Source Aplikasi</option>
+                                                    <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                                    <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                                    <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                                    <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                                    <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                                    <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                                    <option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
+                                                    <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                                    <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                                    <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -80,12 +82,12 @@
                                                 <label>Produk</label>
                                                 <select class="form-control" name="produk" id="produk">
                                                     <option selected>Pilih Kategori Produk</option>
-                                                    <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                                    <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                                    <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                                    <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                                    <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-                                                    <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                                    <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                    <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                    <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                    <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                    <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                    <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -96,17 +98,17 @@
                                                 <label>Follow Up By</label>
                                                 <select class="form-control" name="follow_up_by" id="follow_up_by" required>
                                                     <option selected disabled value="">Pilih Follow Up By</option>
-                                                    <option <?= set_value('follow_up_by') == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
-                                                    <option <?= set_value('follow_up_by') == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
-                                                    <option <?= set_value('follow_up_by') == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
-                                                    <option <?= set_value('follow_up_by') == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
+                                                    <option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
+                                                    <option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
+                                                    <option <?= $data->follow_up_by == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
+                                                    <option <?= $data->follow_up_by == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Alamat</label>
-                                                <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="10" value="<?= set_value('alamat') ?>" required placeholder="Alamat Lengkap Anda" style="height:112px;"></textarea>
+                                                <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="10" required placeholder="Alamat Lengkap Anda" style="height:112px;"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -124,20 +126,20 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Leads ID</label>
-                                                <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="009377736433744">
+                                                <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
                                             <div class="form-group ml-3 mr-3 posisi">
                                                 <label>Appeal NST</label><br>
                                                 <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= set_value('appeal_nst') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                    <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                     <label class="form-check-label">
                                                         Ya
                                                     </label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= set_value('appeal_nst') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                    <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                     <label class="form-check-label">
                                                         Tidak
                                                     </label>
@@ -148,13 +150,13 @@
                                             <div class="form-group ml-3 mr-3 posisi">
                                                 <label>Cross Branch?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= set_value('cross_branch') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                     <label class="form-check-label">
                                                         Ya
                                                     </label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= set_value('cross_branch') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                     <label class="form-check-label">
                                                         Tidak
                                                     </label>
@@ -167,7 +169,7 @@
                                                 <select class="form-control" name="cabang_cross" id="cabang_cross">
                                                     <option selected disabled value="">Pilih Cabang</option>
                                                     <?php foreach ($branches->result() as $cabang) { ?>
-                                                        <option <?= set_value('cabang_cross') == $cabang->id_branch ? 'selected' : '' ?> value="<?= $cabang->id_branch ?>"><?= $cabang->nama_cabang ?></option>
+                                                        <option <?= $cabang->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $cabang->id_branch ?>"><?= $cabang->nama_cabang ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -180,7 +182,7 @@
                                                 <select class="form-control" name="surveyor" id="surveyor">
                                                     <option selected disabled value="">Pilih Surveyor</option>
                                                     <?php foreach ($users->result() as $user) { ?>
-                                                        <option <?= set_value('surveyor') == $user->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <option <?= $user->id_user == $data->surveyor ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
                                                     <?php } ?>
                                                 </select> </div>
                                         </div>
@@ -190,10 +192,9 @@
                                                 <select class="form-control" name="pic_ttd" id="pic_ttd">
                                                     <option selected disabled value="">Pilih Pic Tandatangan</option>
                                                     <?php foreach ($users->result() as $user) { ?>
-                                                        <option <?= set_value('pic_ttd') == $user->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <option <?= $user->id_user == $data->pic_ttd ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
                                                     <?php } ?>
-                                                </select>
-                                            </div>
+                                                </select> </div>
                                         </div>
                                     </div>
                                 </div>
@@ -288,16 +289,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($mapping->result() as $data) { ?>
-                            <tr class="clickable-row" data-mapping="<?= $data->mapping_id ?>" data-konsumen="<?= $data->nama_konsumen ?>" data-soa="<?= $data->soa ?>" data-telepon="<?= $data->telepon ?>" data-produk="<?= $data->produk ?>">
+                        <?php foreach ($mapping->result() as $mapping) { ?>
+                            <tr class="clickable-row" data-mapping="<?= $mapping->mapping_id ?>" data-konsumen="<?= $mapping->nama_konsumen ?>" data-soa="<?= $mapping->soa ?>" data-telepon="<?= $mapping->telepon ?>" data-produk="<?= $mapping->produk ?>">
                                 <td class="not-clickable">
-                                    <div class="text-size"><?= $data->nama_konsumen ?></div>
+                                    <div class="text-size"><?= $mapping->nama_konsumen ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->produk ?></div>
+                                    <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->telepon ?></div>
+                                    <div class="text-size"><?= $mapping->telepon ?></div>
                                 </td>
                             </tr>
                         <?php } ?>

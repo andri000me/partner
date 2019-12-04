@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-lg-8">
         <div class="page-title-box">
             <h4 class="page-title">Timeline Maintain</h4>
             <ol class="breadcrumb">
@@ -28,6 +28,8 @@
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="home2" role="tabpanel">
                         <form class="" action="<?= base_url('Partner/update_detail') ?>" method="post">
+                            <!-- ID Ticket -->
+                            <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
                             <!-- ID Partner -->
                             <input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
                             <!-- ID Mapping -->
@@ -133,6 +135,10 @@
                             </div>
                             <div class="form-group mb-0 float-right mt-2">
                                 <div>
+                                    <?php if ($this->fungsi->user_login()->level != 1) { ?>
+                                        <a class="btn btn-info" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+                                        <a class="btn btn-danger" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+                                    <?php } ?>
                                     <button type="submit" class="btn btn-primary waves-effect waves-light ml-3 mr-3">
                                         Simpan
                                     </button>
@@ -160,7 +166,6 @@
                                     }
                                 } else { ?>
                                 <p class="text-muted m-b-10">Tidak Ada Data</p>
-
                             <?php } ?>
                         </ol>
                     </div>
@@ -169,7 +174,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-lg-4">
         <div class="sticky">
             <div class="card height">
                 <div class="card-body">
@@ -229,7 +234,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size"><b><?= $activity->activity ?></b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-date text-muted mt-1 text-size"><?= $activity->date_activity ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 text-size"><?= $activity->tanggal_activity ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -277,234 +282,234 @@
 
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-date text-muted mt-1 mb-0 text-size">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Teri Anggraini</p>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php if ($ticket->status_approval == 5) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_completed ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid hide">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 text-size"><b>Belum
-                                                                Diverifikasi</b>
-                                                        </p>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                    <?php } else { ?>
+                                        <div class="inbox-wid hide">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Belum Diverifikasi</b></p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah
-                                                                tanda
-                                                                tangan
-                                                                Kerjasama</b>
-                                                        </p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-date text-muted mt-1 mb-0 text-size">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
-                                            </table>
+                                    <?php } ?>
+                                    <?php if ($ticket->ttd_pks == 'Ya') { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
+                                    <?php } ?>
+                                    <?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum') { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
 
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
 
-                                                    </td>
-                                                    <td>
-                                                        <form action="">
-                                                            <div class="form-group ml-3 mb-0">
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group ml-3">
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
                                                                     <label class="form-check-label">
                                                                         Ya
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
                                                                     <label class="form-check-label">
                                                                         Tidak
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
 
                                 <div class="mobile">
                                     <h6 class="header-title mb-0">STATUS PARTNER</h6>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Terverifikasi</b></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php if ($ticket->status_approval == 5) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Terverifikasi</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Belum
-                                                                Diverifikasi</b>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php } else { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Belum Diverifikasi</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Sudah
-                                                                tanda
-                                                                tangan
-                                                                Kerjasama</b>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <p class="inbox-item-text text-muted">30 Des, 2019</p>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                    <?php } ?>
+                                    <?php if ($ticket->ttd_pks == 'Ya') { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="inbox-wid">
-                                        <div class="inbox-item">
-                                            <table>
-                                                <tr>
-                                                    <td> </td>
-                                                    <td>
-                                                        <p class="inbox-item-author mt-0 mb-1"><b>Kerjasama?</b></p>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td></td>
-                                                    <td class="mb-0">
-                                                        <div class="form-group">
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-                                                                <label class="form-check-label text">
-                                                                    Ya
-                                                                </label>
+                                    <?php } ?>
+                                    <?php if ($ticket->status_approval == 5 || $ticket->ttd_pks == 'Ya') { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td> </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Kerjasama?</b></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td class="mb-0">
+                                                            <div class="form-group">
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+                                                                    <label class="form-check-label">
+                                                                        Ya
+                                                                    </label>
+                                                                </div>
+                                                                <div class="form-check form-check-inline">
+                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+                                                                    <label class="form-check-label">
+                                                                        Tidak
+                                                                    </label>
+                                                                </div>
                                                             </div>
-                                                            <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-                                                                <label class="form-check-label">
-                                                                    Tidak
-                                                                </label>
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
                                         </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
 
                                 <h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>
@@ -527,76 +532,21 @@
 
                             <div class="tab-pane p-3" id="profile1" role="tabpanel">
                                 <div class="box overflow-auto">
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Ibrahim</h6>
-                                            <p class="text-size mt-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
+                                    <?php foreach ($comments->result() as $comment) { ?>
+                                        <div class="media">
+                                            <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
+                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
+                                            </a>
+                                            <div class="media-body">
+                                                <p class=" mt-0"><b><?= $comment->name ?></b></p>
+                                                <p class="text-size"><?= $comment->comment ?></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Ibrahim</h6>
-                                            <p class="text-size mt-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Ibrahim</h6>
-                                            <p class="text-size mt-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
-                                    <div class="media">
-                                        <a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-                                        </a>
-                                        <div class="media-body">
-                                            <h6 class="mt-0 mb-0">Ibrahim</h6>
-                                            <p class="text-size mt-0">Cras sit amet nibh libero, in gravida nulla. Nulla vel
-                                                metus
-                                                scelerisque ante sollicitudin. Cras purus odio,
-                                                vestibulum
-                                                in vulputate at, tempus viverra turpis. Fusce
-                                                condimentum
-                                                nunc ac nisi vulputate fringilla. Donec lacinia congue
-                                                felis
-                                                in faucibus.</p>
-                                        </div>
-                                    </div>
+                                    <?php } ?>
                                 </div>
-                                <form action="">
+                                <form action="<?= base_url('Comment/save/id_partner') ?>" method="post">
+                                    <input type="hidden" name="id_type" id="id_type" value="<?= $data->id_partner ?>">
+                                    <input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
                                     <div class="form-group">
                                         <label>Comment</label>
                                         <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>
@@ -610,4 +560,3 @@
             </div>
         </div>
     </div>
-</div>

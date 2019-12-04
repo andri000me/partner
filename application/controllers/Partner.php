@@ -9,11 +9,20 @@ class Partner extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // Load Modul Partner
         $this->load->model('partner_model');
+        // Load Modul Ticket
         $this->load->model('ticket_model');
+        // Load Modul Partner Activity
         $this->load->model('partner_activity_model', 'partner_activity');
+        // Load Modul Mapping Partner 
         $this->load->model('mapping_partner_model', 'mapping_partner');
+        // Load Modul Maintain Partner 
         $this->load->model('maintain_partner_model', 'maintain_partner');
+        //Load Modul Comment
+        $this->load->model('comment_model');
+        //Load Modul notification
+        $this->load->model('notification_model');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -45,7 +54,7 @@ class Partner extends CI_Controller
     {
         $data = [
             'data' => $this->partner_model->get(),
-            'mapping' => $this->mapping_partner->get($this->where)
+            'mappings' => $this->mapping_partner->get($this->where)
 
         ];
 
@@ -61,7 +70,7 @@ class Partner extends CI_Controller
         $data = [
             'partner' => $this->partner_model->get($where)->row(),
             'mapping' => $this->mapping_partner->get(),
-
+            'comments' => $this->comment_model->get($where)
         ];
 
         $this->template->load('template/index', 'partner-edit', $data);
@@ -72,10 +81,11 @@ class Partner extends CI_Controller
         $where = ['partners.id_partner' => $id];
 
         $data = [
-            'data' => $this->partner_model->get($where)->row(),
-            'maintain' => $this->maintain_partner->get($where),
-            'activities' => $this->partner_activity->get($where),
-            'ticket' => $this->ticket_model->get($where)->row()
+            'data'          => $this->partner_model->get($where)->row(),
+            'ticket'        => $this->ticket_model->get($where)->row(),
+            'maintain'      => $this->maintain_partner->get($where),
+            'activities'    => $this->partner_activity->get($where),
+            'comments'      => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'partner-detail', $data);
     }
@@ -84,39 +94,53 @@ class Partner extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        // meng-update data mapping jika berubah
+        $data_mapping = [
+            'nama_usaha'        => $post['nama_usaha'],
+            'email'             => $post['email'],
+            'telepon'           => $post['telepon'],
+            'kategori_produk'   => $post['kategori_produk'],
+            'bidang_usaha'      => $post['bidang_usaha'],
+            'alamat'            => $post['alamat']
+        ];
+
+        $where_mapping = ['id_mapping' => $post['id_mapping']];
+
+        $this->mapping_partner->update($data_mapping, $where_mapping);
+
         $data = [
             //ID Mapping
             'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
 
             //Stage 1
-            'kelurahan'             => !empty($post['kelurahan']) ? $post['kelurahan'] : NULL,
-            'kecamatan'             => !empty($post['kecamatan']) ? $post['kecamatan'] : NULL,
-            'provinsi'              => !empty($post['provinsi']) ? $post['provinsi'] : NULL,
-            'kode_pos'              => !empty($post['kode_pos']) ? $post['kode_pos'] : NULL,
-            'nama_pemilik'          => !empty($post['nama_pemilik']) ? $post['nama_pemilik'] : NULL,
-            'hobi'                  => !empty($post['hobi']) ? $post['hobi'] : NULL,
-            'bentuk_usaha'          => !empty($post['bentuk_usaha']) ? $post['bentuk_usaha'] : NULL,
-            'jumlah_karyawan'       => !empty($post['jumlah_karyawan']) ? $post['jumlah_karyawan'] : NULL,
-            'tahun_berdiri'         => !empty($post['tahun_berdiri']) ? $post['tahun_berdiri'] : NULL,
-            'barang_jual'           => !empty($post['barang_jual']) ? $post['barang_jual'] : NULL,
-            'sosial_media'          => !empty($post['sosial_media']) ? $post['sosial_media'] : NULL,
-            'status_tempat_usaha'   => !empty($post['status_tempat_usaha']) ? $post['status_tempat_usaha'] : NULL,
-            'jenis_pembayaran'      => !empty($post['jenis_pembayaran']) ? $post['jenis_pembayaran'] : NULL,
-            'omset'                 => !empty($post['omset']) ? $post['omset'] : NULL,
+            'kelurahan'             => !empty($post['kelurahan'])               ? $post['kelurahan'] : NULL,
+            'kecamatan'             => !empty($post['kecamatan'])               ? $post['kecamatan'] : NULL,
+            'provinsi'              => !empty($post['provinsi'])                ? $post['provinsi'] : NULL,
+            'kode_pos'              => !empty($post['kode_pos'])                ? $post['kode_pos'] : NULL,
+            'nama_pemilik'          => !empty($post['nama_pemilik'])            ? $post['nama_pemilik'] : NULL,
+            'hobi'                  => !empty($post['hobi'])                    ? $post['hobi'] : NULL,
+            'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
+            'jumlah_karyawan'       => !empty($post['jumlah_karyawan'])         ? $post['jumlah_karyawan'] : NULL,
+            'tahun_berdiri'         => !empty($post['tahun_berdiri'])           ? $post['tahun_berdiri'] : NULL,
+            'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
+            'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
+            'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
+            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
+            'omset'                 => !empty($post['omset'])                   ? $post['omset'] : NULL,
 
             //Stage 2
-            'jumlah_cabang'         => !empty($post['jumlah_cabang']) ? $post['jumlah_cabang'] : NULL,
-            'pernah_promosi'        => !empty($post['pernah_promosi']) ? $post['pernah_promosi'] : NULL,
-            'punya_pinjaman'        => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : NULL,
-            'on_going_project'      => !empty($post['on_going_project']) ? $post['on_going_project'] : NULL,
-            'punya_jumlah_plafond'  => !empty($post['punya_jumlah_plafond']) ? $post['punya_jumlah_plafond'] : NULL,
-            'punya_giro_cek'        => !empty($post['punya_giro_cek']) ? $post['punya_giro_cek'] : NULL,
-            'keterangan_tambahan'   => !empty($post['keterangan_tambahan']) ? $post['keterangan_tambahan'] : NULL,
-            'rekening_bank'         => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
-            'cabang_bank'           => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
-            'nama_bank'             => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
-            'atas_nama'             => !empty($post['atas_nama']) ? $post['atas_nama'] : NULL,
-            'akhir_izin'            => !empty($post['akhir_izin']) ? $post['akhir_izin'] : NULL,
+            'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
+            'pernah_promosi'        => !empty($post['pernah_promosi'])          ? $post['pernah_promosi'] : NULL,
+            'punya_pinjaman'        => !empty($post['punya_pinjaman'])          ? $post['punya_pinjaman'] : NULL,
+            'on_going_project'      => !empty($post['on_going_project'])        ? $post['on_going_project'] : NULL,
+            'punya_jumlah_plafond'  => !empty($post['punya_jumlah_plafond'])    ? $post['punya_jumlah_plafond'] : NULL,
+            'punya_giro_cek'        => !empty($post['punya_giro_cek'])          ? $post['punya_giro_cek'] : NULL,
+            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
+            'rekening_bank'         => !empty($post['rekening_bank'])           ? $post['rekening_bank'] : NULL,
+            'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
+            'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
+            'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
+            'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
 
             //Timestamp
             'created_at' => date('Y-m-d H:i:s'),
@@ -200,13 +224,13 @@ class Partner extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
 
             //Notifikasi
             $notification = [
                 'pengirim'      => $this->fungsi->user_login()->id_user,
-                'type'          => 'new data',
-                'id_partner'    => $id,
+                'type'          => 'Data Partner Baru',
+                'id_ticket'    => $id_ticket,
                 'created_at'    => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);
@@ -225,39 +249,53 @@ class Partner extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        $data_mapping = [
+            'nama_usaha'        => $post['nama_usaha'],
+            'email'             => $post['email'],
+            'telepon'           => $post['telepon'],
+            'kategori_produk'   => $post['kategori_produk'],
+            'bidang_usaha'      => $post['bidang_usaha'],
+            'alamat'            => $post['alamat']
+        ];
+
+        $where_mapping = ['id_mapping' => $post['id_mapping']];
+
+        $this->mapping_partner->update($data_mapping, $where_mapping);
+
         $data = [
             //ID Mapping
             'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
 
+
             //Stage 1
-            'kelurahan'             => !empty($post['kelurahan']) ? $post['kelurahan'] : NULL,
-            'kecamatan'             => !empty($post['kecamatan']) ? $post['kecamatan'] : NULL,
-            'provinsi'              => !empty($post['provinsi']) ? $post['provinsi'] : NULL,
-            'kode_pos'              => !empty($post['kode_pos']) ? $post['kode_pos'] : NULL,
-            'nama_pemilik'          => !empty($post['nama_pemilik']) ? $post['nama_pemilik'] : NULL,
-            'hobi'                  => !empty($post['hobi']) ? $post['hobi'] : NULL,
-            'bentuk_usaha'          => !empty($post['bentuk_usaha']) ? $post['bentuk_usaha'] : NULL,
-            'jumlah_karyawan'       => !empty($post['jumlah_karyawan']) ? $post['jumlah_karyawan'] : NULL,
-            'tahun_berdiri'         => !empty($post['tahun_berdiri']) ? $post['tahun_berdiri'] : NULL,
-            'barang_jual'           => !empty($post['barang_jual']) ? $post['barang_jual'] : NULL,
-            'sosial_media'          => !empty($post['sosial_media']) ? $post['sosial_media'] : NULL,
-            'status_tempat_usaha'   => !empty($post['status_tempat_usaha']) ? $post['status_tempat_usaha'] : NULL,
-            'jenis_pembayaran'      => !empty($post['jenis_pembayaran']) ? $post['jenis_pembayaran'] : NULL,
-            'omset'                 => !empty($post['omset']) ? $post['omset'] : NULL,
+            'kelurahan'             => !empty($post['kelurahan'])               ? $post['kelurahan'] : NULL,
+            'kecamatan'             => !empty($post['kecamatan'])               ? $post['kecamatan'] : NULL,
+            'provinsi'              => !empty($post['provinsi'])                ? $post['provinsi'] : NULL,
+            'kode_pos'              => !empty($post['kode_pos'])                ? $post['kode_pos'] : NULL,
+            'nama_pemilik'          => !empty($post['nama_pemilik'])            ? $post['nama_pemilik'] : NULL,
+            'hobi'                  => !empty($post['hobi'])                    ? $post['hobi'] : NULL,
+            'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
+            'jumlah_karyawan'       => !empty($post['jumlah_karyawan'])         ? $post['jumlah_karyawan'] : NULL,
+            'tahun_berdiri'         => !empty($post['tahun_berdiri'])           ? $post['tahun_berdiri'] : NULL,
+            'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
+            'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
+            'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
+            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
+            'omset'                 => !empty($post['omset'])                   ? $post['omset'] : NULL,
 
             //Stage 2
-            'jumlah_cabang'         => !empty($post['jumlah_cabang']) ? $post['jumlah_cabang'] : NULL,
-            'pernah_promosi'        => !empty($post['pernah_promosi']) ? $post['pernah_promosi'] : NULL,
-            'punya_pinjaman'        => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : NULL,
-            'on_going_project'      => !empty($post['on_going_project']) ? $post['on_going_project'] : NULL,
-            'punya_jumlah_plafond'  => !empty($post['punya_jumlah_plafond']) ? $post['punya_jumlah_plafond'] : NULL,
-            'punya_giro_cek'        => !empty($post['punya_giro_cek']) ? $post['punya_giro_cek'] : NULL,
-            'keterangan_tambahan'   => !empty($post['keterangan_tambahan']) ? $post['keterangan_tambahan'] : NULL,
-            'rekening_bank'         => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
-            'cabang_bank'           => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
-            'nama_bank'             => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
-            'atas_nama'             => !empty($post['atas_nama']) ? $post['atas_nama'] : NULL,
-            'akhir_izin'            => !empty($post['akhir_izin']) ? $post['akhir_izin'] : NULL,
+            'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
+            'pernah_promosi'        => !empty($post['pernah_promosi'])          ? $post['pernah_promosi'] : NULL,
+            'punya_pinjaman'        => !empty($post['punya_pinjaman'])          ? $post['punya_pinjaman'] : NULL,
+            'on_going_project'      => !empty($post['on_going_project'])        ? $post['on_going_project'] : NULL,
+            'punya_jumlah_plafond'  => !empty($post['punya_jumlah_plafond'])    ? $post['punya_jumlah_plafond'] : NULL,
+            'punya_giro_cek'        => !empty($post['punya_giro_cek'])          ? $post['punya_giro_cek'] : NULL,
+            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
+            'rekening_bank'         => !empty($post['rekening_bank'])           ? $post['rekening_bank'] : NULL,
+            'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
+            'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
+            'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
+            'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
@@ -330,10 +368,10 @@ class Partner extends CI_Controller
 
         //Membuat history activity inputan data partner
         $partner_activity = [
-            'activity' => 'Perubahan pada data Partner',
+            'activity'      => 'Perubahan pada data Partner',
             'date_activity' => date('Y-m-d H:i:s'),
-            'id_partner' => $post['id_partner'],
-            'id_user' => $post['id_user']
+            'id_partner'    => $post['id_partner'],
+            'id_user'       => $post['id_user']
         ];
 
         $this->partner_activity->create($partner_activity);

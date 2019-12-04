@@ -23,9 +23,10 @@ class Comment_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from('comments');
+        // $this->db->join('tickets', 'tickets.id_ticket = comments.id_ticket', 'inner');
+        $this->db->join('users', 'users.id_user = comments.id_user', 'left');
         $this->db->join('partners', 'partners.id_partner = comments.id_partner', 'left');
         $this->db->join('agents', 'agents.id_agent = comments.id_agent', 'left');
-        $this->db->join('users', 'users.id_user = comments.id_user', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

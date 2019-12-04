@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="btn-kanan">
-            <a href="leads-form.html"><button class="btn btn-primary mb-4 test-size">Rekrut
+            <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary mb-4 test-size">Rekrut
                     Leads</button></a>
             <a href="maintain_leads.html"><button class="btn btn-success ml-1 mb-4 test-size">Maintain
                     Leads</button></a>
@@ -31,39 +31,38 @@
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Usaha</th>
-                            <th>Bidang Usaha</th>
-                            <th>alamat</th>
-                            <th>Telepon</th>
-                            <th>Amail</th>
-                            <th>Produk</th>
+                            <th>Nama Konsumen</th>
+                            <th>Leads ID</th>
+                            <th>Nomor KTP</th>
+                            <th>Follow Up By</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <div class="text-size">Tiger Nixon</div>
-                            </td>
-                            <td>
-                                <div class="text-size">System Architect</div>
-                            </td>
-                            <td>
-                                <div class="text-size">Edinburgh</div>
-                            </td>
-                            <td>
-                                <div class="text-size">61</div>
-                            </td>
-                            <td>
-                                <div class="text-size">2011/04/25</div>
-                            </td>
-                            <td>
-                                <div class="text-size">$320,800</div>
-                            </td>
-                            <td>
-                                <center><a href="detail-leads.html"><button class="btn btn-primary">Detail</button></a></center>
-                            </td>
-                        </tr>
+                        <?php foreach ($data->result() as $leads) { ?>
+                            <tr>
+                                <td>
+                                    <div class="text-size"><?= $leads->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $leads->leads_id ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $leads->no_ktp ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $leads->follow_up_by ?></div>
+                                </td>
+                                <td>
+
+                                    <?php if ($leads->status == 'draft') { ?>
+                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary">Lanjutkan</a></center>
+                                    <?php } else if ($leads->status == 'lengkap') { ?>
+                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary">Detail</a></center>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>

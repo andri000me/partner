@@ -12,7 +12,10 @@
 			<div class="card-body">
 				<div class="tab-content">
 					<div class="tab-pane active p-3" id="home2" role="tabpanel">
-						<form class="" action="<?= base_url('Agent/update') ?>" method="post" <!-- ID Partner -->
+						<form class="" action="<?= base_url('Agent/update') ?>" method="post">
+							<!-- ID Ticket -->
+							<input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
+							<!-- ID Agent -->
 							<input type="hidden" name="id_agent" value="<?= $data->id_agent ?>" id="id_agent">
 							<!-- ID User -->
 							<input type="hidden" name="id_user" value="<?= $data->id_user ?>" id="id_user">
@@ -205,6 +208,10 @@
 							</div>
 							<div class="form-group mb-0 float-right mt-2">
 								<div>
+									<?php if ($this->fungsi->user_login()->level != 1) { ?>
+										<a class="btn btn-info" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+										<a class="btn btn-danger" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+									<?php } ?>
 									<button type="submit" class="btn btn-primary waves-effect waves-light ml-3 mr-3">
 										Simpan
 									</button>
@@ -249,13 +256,13 @@
 							<li class="nav-item">
 								<a class="nav-link active" data-toggle="tab" href="#home1" role="tab">
 									<span class="d-block d-sm-none"><i class="far fa-newspaper"></i></span>
-									<span class="d-none d-sm-block">Home</span>
+									<span class="d-none d-sm-block">Status</span>
 								</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
 									<span class="d-block d-sm-none"><i class="far fa-comment-dots"></i></span>
-									<span class="d-none d-sm-block">Profile</span>
+									<span class="d-none d-sm-block">Detail</span>
 								</a>
 							</li>
 						</ul>
@@ -270,7 +277,7 @@
 												<div class="inbox-item">
 													<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i><b>&nbsp;&nbsp;<?= $activity->activity ?></b></p>
 													<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
-													<code class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;<?= $activity->date_activity ?></code>
+													<code class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;<?= $activity->tanggal_activity ?></code>
 												</div>
 											</div>
 										<?php
@@ -284,51 +291,55 @@
 
 								<div class="">
 									<h4 class="mt-0 header-title">STATUS PARTNER</h4>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Terverifikasi</b></p>
-											<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Teri Anggraini</p>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted">30 Des, 2019</code>
+									<!-- Jika tiket status sudah diapprove HO, maka ... -->
+									<?php if ($ticket->status_approval == 5) { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Terverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i><b>&nbsp;&nbsp;Belum
-													Diverifikasi</b>
-											</p>
-											<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Admin HO</p>
+									<?php } else { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i><b>&nbsp;&nbsp;Belum Diverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Admin HO</p>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Sudah
-													tanda
-													tangan
-													Kerjasama</b>
-											</p>
-											<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted">30 Des, 2019</code>
+									<?php } ?>
+									<!-- Jika Data Tiket telah td kerjsama, maka munculkan record ttd kerjasama -->
+									<?php if ($ticket->ttd_pks == 'Ya') { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Sudah tanda tangan Kerjasama</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
-											<div class="form-group ml-3">
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-													<label class="form-check-label">
-														Ya
-													</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-													<label class="form-check-label">
-														Tidak
-													</label>
+									<?php } ?>
+									<!-- Jika Data Tiket sudah di-approve oleh HO, maka munculkan tombol Kerjasama -->
+									<?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum') { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
+												<div class="form-group ml-3">
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+														<label class="form-check-label">
+															Ya
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+														<label class="form-check-label">
+															Tidak
+														</label>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									<?php } ?>
 								</div>
 
 								<hr class="">
@@ -345,93 +356,22 @@
 
 							<div class="tab-pane p-3" id="profile1" role="tabpanel">
 								<div class="box overflow-auto">
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-										</a>
-										<div class="media-body">
-											<h5 class="mt-0 font-16">Ibrahim</h5>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
+									<?php foreach ($comments->result() as $comment) { ?>
+										<div class="media">
+											<a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
+												<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
+											</a>
+											<div class="media-body">
+												<h5 class="mt-0 font-16"><?= $comment->name ?></h5>
+												<p><?= $comment->comment ?></p>
+											</div>
 										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-										</a>
-										<div class="media-body">
-											<h5 class="mt-0 font-16">Ibrahim</h5>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-										</a>
-										<div class="media-body">
-											<h5 class="mt-0 font-16">Ibrahim</h5>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-										</a>
-										<div class="media-body">
-											<h5 class="mt-0 font-16">Ibrahim</h5>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" height="64">
-										</a>
-										<div class="media-body">
-											<h5 class="mt-0 font-16">Ibrahim</h5>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
+									<?php } ?>
 								</div>
-								<form action="">
+								<form action="<?= base_url('Comment/save/id_agent') ?>" method="post">
+									<input type="hidden" name="id_type" id="id_type" value="<?= $data->id_agent ?>">
+									<input type="hidden" name="ticket" id="ticket" value="<?= $ticket->id_ticket ?>">
+									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
 										<label>Comment</label>
 										<textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>

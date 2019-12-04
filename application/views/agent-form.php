@@ -20,7 +20,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Agent/save') ?>" method="post">
+                        <form action="<?= base_url('Agent/save') ?>" method="post" enctype="multipart/form-data">
                             <input id="website" name="website" type="disable" value="">
 
                             <!-- ID Agent -->
@@ -148,16 +148,19 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-2">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Pekerjaan</label>
-                                                <select class="form-control <?= form_error('jenis_agent') ? 'is-invalid' : '' ?>" name="jenis_agent" id="jenis_agent" required>
-                                                    <option selected disabled value="">Pilih Pekerjaan</option>
-                                                    <option <?= set_value('jenis_agent') == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
-                                                    <option <?= set_value('jenis_agent') == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
-                                                    <option <?= set_value('jenis_agent') == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
-                                                </select>
-                                            </div>
+                                        <div class="form-group col-md-2">
+                                            <label>Pekerjaan</label>
+                                            <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" /> -->
+                                            <select class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
+                                                <option selected disabled value="">Pilih Pekerjaan</option>
+                                                <option <?= set_value('pekerjaan') == 'Swasta' ? 'selected' : '' ?> value="Swasta">Swasta</option>
+                                                <option <?= set_value('pekerjaan') == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">Wiraswasta</option>
+                                                <option <?= set_value('pekerjaan') == 'Freelance' ? 'selected' : '' ?> value="Freelance">Freelance</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label>Jenis Pekerjaan</label>
+                                            <input type="text" class="form-control <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= set_value('jenis_pekerjaan') ?>" required placeholder="Pekerja Rumah tangga" />
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group ml-3 mr-3">
@@ -254,32 +257,24 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="ktp">KTP</label>
+                                            <input name="ktp" type="file">
                                         </div>
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="npwp">NPWP</label>
+                                            <input name="npwp" type="file">
                                         </div>
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="buku_tabungan">Buku Tabungan</label>
+                                            <input name="buku_tabungan" type="file">
                                         </div>
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="foto_selfie">Foto Selfie</label>
+                                            <input name="foto_selfie" type="file">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="form_f100">Form F100</label>
+                                            <input name="form_f100" type="file">
                                         </div>
                                     </div>
                                 </div>
