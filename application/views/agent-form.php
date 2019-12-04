@@ -20,7 +20,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Agent/save') ?>" method="post">
+                        <form action="<?= base_url('Agent/save') ?>" method="post" enctype="multipart/form-data">
                             <input id="website" name="website" type="disable" value="">
 
                             <!-- ID Agent -->
@@ -257,32 +257,24 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="ktp">KTP</label>
+                                            <input name="ktp" type="file">
                                         </div>
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="npwp">NPWP</label>
+                                            <input name="npwp" type="file">
                                         </div>
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="buku_tabungan">Buku Tabungan</label>
+                                            <input name="buku_tabungan" type="file">
                                         </div>
                                         <div class="col-md-2">
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                            </div>
+                                            <label for="foto_selfie">Foto Selfie</label>
+                                            <input name="foto_selfie" type="file">
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label for="form_f100">Form F100</label>
+                                            <input name="form_f100" type="file">
                                         </div>
                                     </div>
                                 </div>

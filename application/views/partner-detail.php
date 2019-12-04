@@ -234,7 +234,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size"><b><?= $activity->activity ?></b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-date text-muted mt-1 text-size"><?= $activity->date_activity ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 text-size"><?= $activity->tanggal_activity ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -359,7 +359,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5) { ?>
+                                    <?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum') { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -477,7 +477,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5) { ?>
+                                    <?php if ($ticket->status_approval == 5 || $ticket->ttd_pks == 'Ya') { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>

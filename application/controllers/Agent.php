@@ -110,8 +110,39 @@ class Agent extends CI_Controller
                 'id_branch'             => $post['id_branch']
             ];
 
-            //Memasukkan data mapping ke database `Agents`
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/partners';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
 
+            if (!$this->upload->do_upload('ktp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['ktp'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('npwp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['npwp'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('buku_tabungan')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['buku_tabungan'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('foto_selfie')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['foto_selfie'] = $this->upload->data('file_name');
+            }
+
+            //Memasukkan data ke database `Agents`
             $id = $this->agent_model->create($data);
 
             //Membuat history activity inputan data Agent
@@ -138,7 +169,7 @@ class Agent extends CI_Controller
             $notification = [
                 'pengirim'      => $this->fungsi->user_login()->id_user,
                 'type'          => 'Data Agent Baru',
-                'id_ticket'     => $id_ticket,
+                'id_agent'     => $id,
                 'created_at'    => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);
