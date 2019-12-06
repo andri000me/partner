@@ -37,6 +37,7 @@ class Notification_model extends CI_Model
         if ($where != null) {
             $this->db->where($where);
         }
+        $this->db->order_by('id_notification', 'DESC');
         return $this->db->get();
     }
 }

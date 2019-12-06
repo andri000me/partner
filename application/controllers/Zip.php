@@ -47,7 +47,7 @@ class Zip extends CI_Controller
         }
 
         foreach ($uploads as $upload => $file) {
-            if ($upload != NULL || $upload != '') {
+            if ($file != NULL || $file != '') {
                 ${'upload' . $upload} =  FCPATH . 'uploads/' . $folder . '/' . $file;
                 $this->zip->read_file(${"upload" . $upload});
             }

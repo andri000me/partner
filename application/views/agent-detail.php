@@ -207,11 +207,14 @@
 								</div>
 							</div>
 							<div class="form-group mb-0 mt-2 float-right btn-maintain">
-								<?php if ($this->fungsi->user_login()->level != 1) { ?>
+								<?php
+								$level = $this->fungsi->user_login()->level;
+								if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+									?>
 									<a class="btn btn-info text-size" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
-									<?php if ($this->fungsi->user_login()->level == 4) { ?>
-										<a class="btn btn-danger text-size"" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
-									<?php } ?>
+								<?php } ?>
+								<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
+									<a class="btn btn-danger text-size"" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
 								<?php } ?>
 								<button type="submit" class="btn btn-primary waves-effect waves-light text-size">
 									Simpan
