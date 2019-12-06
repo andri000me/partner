@@ -8,10 +8,10 @@
                 <li class="breadcrumb-item active">Timeline Maintain</li>
             </ol>
         </div>
-        <div class="card ml-3 mr-3">
+        <div class="card">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
-                <p class="text-muted m-b-30">Gunakan form ini untuk mendata calon partner yang berpotensi di
+                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang berpotensi di
                     area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam
                     memaintain partner anda.</p>
 

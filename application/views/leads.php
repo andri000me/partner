@@ -30,7 +30,7 @@
                     yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
                     memudahkan anda dalam memaintain partner anda.</p>
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Konsumen</th>

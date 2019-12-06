@@ -3783,6 +3783,10 @@ button[disabled] {
 		height: 150px;
 	}
 
+	.btn-maintain {
+		margin-right: 15px;
+	}
+
 }
 
 
@@ -3826,6 +3830,15 @@ button[disabled] {
 	.item {
 		width: 100px;
 		height: 50px;
+	}
+
+	.alamat-box {
+		width: 100px;
+		height: 30px;
+	}
+
+	.btn-maintain {
+		margin-right: 15px;
 	}
 }
 
@@ -4026,12 +4039,16 @@ button[disabled] {
 
 	.boxx {
 		width: 230px;
-		height: 220px;
+		height: 180px;
 	}
 
 	.box {
 		width: 230px;
 		height: 285px;
+	}
+
+	.btn-maintain {
+		margin-right: unset;
 	}
 }
 
