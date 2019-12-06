@@ -3,10 +3,10 @@
         <div class="page-title-box">
             <h4 class="page-title">Tambah Data Baru</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Mapping Lokasi Partner</a></li>
-                <li class="breadcrumb-item active">Tambah Data baru</li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Mapping Lokasi Partner</a></li>
+                <li class="breadcrumb-item text-size active">Tambah Data baru</li>
             </ol>
         </div>
     </div>
@@ -32,16 +32,16 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">
-                                <label>Nama Usaha</label>
-                                <input type="text" class="form-control <?= form_error('nama_usaha') ? 'is-invalid' : '' ?>" name="nama_usaha" id="nama_usaha" required value="<?= set_value('nama_usaha') ?>" placeholder="CV Aria Santiika" />
+                                <label class="text-size">Nama Usaha</label>
+                                <input type="text" class="form-control text-size <?= form_error('nama_usaha') ? 'is-invalid' : '' ?>" name="nama_usaha" id="nama_usaha" required value="<?= set_value('nama_usaha') ?>" placeholder="CV Aria Santiika" />
                                 <?= form_error('nama_usaha'); ?>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">
-                                <label>E-Mail</label>
+                                <label class="text-size">E-Mail</label>
                                 <div>
-                                    <input type="email" class="form-control <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" required value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
+                                    <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" required value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
                                     <?= form_error('email'); ?>
                                 </div>
                             </div>
@@ -50,15 +50,15 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">
-                                <label>Bidang Usaha</label>
-                                <input type="text" class="form-control <?= form_error('bidang_usaha') ? 'is-invalid' : '' ?>" name="bidang_usaha" id="bidang_usaha" required value="<?= set_value('bidang_usaha') ?>" placeholder="Garmen / Percetakan / Lainnya" />
+                                <label class="text-size">Bidang Usaha</label>
+                                <input type="text" class="form-control text-size <?= form_error('bidang_usaha') ? 'is-invalid' : '' ?>" name="bidang_usaha" id="bidang_usaha" required value="<?= set_value('bidang_usaha') ?>" placeholder="Garmen / Percetakan / Lainnya" />
                                 <?= form_error('bidang_usaha'); ?>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">
-                                <label>Kategori Produk</label>
-                                <select class="form-control <?= form_error('kategori_produk') ? 'is-invalid' : '' ?>" name="kategori_produk" id="kategori_produk" required>
+                                <label class="text-size">Kategori Produk</label>
+                                <select class="form-control text-size <?= form_error('kategori_produk') ? 'is-invalid' : '' ?>" name="kategori_produk" id="kategori_produk" required>
                                     <option selected value="">Pilih Kategori Produk</option>
                                     <option <?= set_value('kategori_produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
                                     <option <?= set_value('kategori_produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
@@ -74,20 +74,20 @@
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">
-                                <label>Alamat / Lokasi</label>
-                                <input type="phone" class="form-control <?= form_error('alamat') ? 'is-invalid' : '' ?>" name="alamat" id="alamat" required value="<?= set_value('alamat') ?>" placeholder="Jalan Perjalanan Panjang No.22" />
+                                <label class="text-size">Alamat / Lokasi</label>
+                                <input type="phone" class="form-control text-size <?= form_error('alamat') ? 'is-invalid' : '' ?>" name="alamat" id="alamat" required value="<?= set_value('alamat') ?>" placeholder="Jalan Perjalanan Panjang No.22" />
                                 <?= form_error('alamat'); ?>
                                 <div class="form-group mt-3">
-                                    <label>Nomor Telepon</label>
-                                    <input type="text" class="form-control placement <?= form_error('telepon') ? 'is-invalid' : '' ?>" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="<?= set_value('telepon') ?>" placeholder="EG 0811977500" maxlength="15" />
+                                    <label class="text-size">Nomor Telepon</label>
+                                    <input type="text" class="form-control text-size placement <?= form_error('telepon') ? 'is-invalid' : '' ?>" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="<?= set_value('telepon') ?>" placeholder="EG 0811977500" maxlength="15" />
                                     <?= form_error('telepon'); ?>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group ml-3 mr-3">
-                                <label>Catatan</label>
-                                <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" value="<?= set_value('catatan') ?>" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
+                                <label class="text-size">Catatan</label>
+                                <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" value="<?= set_value('catatan') ?>" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
                             </div>
                         </div>
                     </div>

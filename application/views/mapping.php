@@ -3,9 +3,9 @@
         <div class="page-title-box">
             <h4 class="page-title">Mapping Lokasi Partner</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Mapping Lokasi Partner</li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
+                <li class="breadcrumb-item text-size active">Mapping Lokasi Partner</li>
             </ol>
         </div>
     </div>
@@ -13,16 +13,14 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div>
-            <a href="<?= base_url('Mapping_partner/create') ?>"><button class="btn btn-primary mb-4 btn-kanan text-size">Tambah Data Baru</button></a>
-        </div>
+        <a href="<?= base_url('Mapping_partner/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
     </div>
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Table Calon partner</h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol Tambah Data baru untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Edit untuk mengedit data yang harus di ubah.</p>
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Usaha</th>
@@ -38,25 +36,25 @@
                         <?php foreach ($data->result() as $mapping) { ?>
                             <tr class="clickable-row" data-href="detail-partnership.html">
                                 <td>
-                                    <div class="text-size"><?= $mapping->nama_usaha ?></div>
+                                    <?= $mapping->nama_usaha ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->bidang_usaha ?></div>
+                                    <?= $mapping->bidang_usaha ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->alamat ?></div>
+                                    <?= $mapping->alamat ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->telepon ?></div>
+                                    <?= $mapping->telepon ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"></div><?= $mapping->email ?>
+                                    <?= $mapping->email ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->kategori_produk ?></div>
+                                    <?= $mapping->kategori_produk ?>
                                 </td>
                                 <td>
-                                    <center><a href="<?= base_url('Mapping_partner/edit/' . $mapping->mapping_id) ?>" class="btn btn-secondary">Edit</a></center>
+                                    <center><a href="<?= base_url('Mapping_partner/edit/' . $mapping->mapping_id) ?>" class="btn btn-secondary text-size">Edit</a></center>
                                 </td>
                                 <!-- <td></td> -->
                             </tr>

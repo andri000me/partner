@@ -3,9 +3,9 @@
         <div class="page-title-box">
             <h4 class="page-title">Partnership</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Partnership</li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
+                <li class="breadcrumb-item text-size active">Partnership</li>
             </ol>
         </div>
     </div>
@@ -16,9 +16,9 @@
         <!-- <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4">Rekrut Partner</button></a>
             <a href="#"><button class="btn btn-success ml-3 mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a> -->
 
-        <div class="btn-kanan">
-            <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4 text-size">Rekrut Partner</button></a>
-            <a href="#"><button class="btn btn-success ml-1 mb-4 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a>
+        <div class="btn-kanan mb-2">
+            <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size">Rekrut Partner</button></a>
+            <a href="#"><button class="btn btn-success ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a>
         </div>
     </div>
     <div class="col-12">
@@ -28,15 +28,15 @@
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
                     memudahkan anda dalam memaintain partner anda.</p>
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap lebar" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Usaha</th>
                             <th>Bidang Usaha</th>
-                            <th>alamat</th>
                             <th>Telepon</th>
                             <th>Email</th>
                             <th>Produk</th>
+                            <th>alamat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,22 +44,22 @@
                         <?php foreach ($data->result() as $mapping) { ?>
                             <tr class="clickable-row" data-href="detail-partnership.html">
                                 <td>
-                                    <div class="text-size"><?= $mapping->nama_usaha ?></div>
+                                    <?= $mapping->nama_usaha ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->bidang_usaha ?></div>
+                                    <?= $mapping->bidang_usaha ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->alamat ?></div>
+                                    <?= $mapping->telepon ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->telepon ?></div>
+                                    <?= $mapping->email ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->email ?></div>
+                                    <?= $mapping->kategori_produk ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->kategori_produk ?></div>
+                                    <?= $mapping->alamat ?>
                                 </td>
                                 <td>
                                     <?php if ($mapping->status == 'draft') { ?>
@@ -83,26 +83,40 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Partner</h4>
+                    <h6 class="modal-title">Cari Data Partner</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Usaha</th>
-                            <th>Kategori Produk</th>
-                            <th>Telepon</th>
-                            <th>Aksi</th>
+                            <th>
+                                <div class="text-size">Usaha</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Kategori Produk</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Telepon</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Aksi</div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($data->result() as $data) { ?>
                             <tr class="clickable-row" data-id="<?= $data->id_mapping ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
-                                <td class="not-clickable"><?= $data->nama_usaha ?></td>
-                                <td><?= $data->kategori_produk ?></td>
-                                <td><?= $data->telepon ?></td>
+                                <td class="not-clickable">
+                                    <div class="text-size"><?= $data->nama_usaha ?></div>
+                                </td>
                                 <td>
-                                    <center><a class="btn btn-primary" href="<?= base_url('Maintain_partner/create/' . $data->id_partner) ?>">Maintain</a></center>
+                                    <div class="text-size"><?= $data->kategori_produk ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->telepon ?></div>
+                                </td>
+                                <td>
+                                    <center><a class="btn btn-primary text-size" href="<?= base_url('Maintain_partner/create/' . $data->id_partner) ?>">Maintain</a></center>
                                 </td>
                             </tr>
                         <?php } ?>

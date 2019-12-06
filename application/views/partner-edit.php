@@ -3,9 +3,9 @@
         <div class="page-title-box">
             <h4 class="page-title">Partnership</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Partnership</li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Helpdesk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
+                <li class="breadcrumb-item text-size active">Partnership</li>
             </ol>
         </div>
     </div>
