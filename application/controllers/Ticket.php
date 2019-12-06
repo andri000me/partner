@@ -31,10 +31,12 @@ class Ticket extends CI_Controller
     private function notification($id_ticket, $message)
     {
         $notification = [
-            'pengirim'      => $this->fungsi->user_login()->id_user,
-            'type'          => $message,
-            'id_ticket'    => $id_ticket,
-            'created_at'    => date('Y-m-d H:i:s')
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->branch_id,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
         ];
 
         return $notification;

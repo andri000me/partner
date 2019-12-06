@@ -13,7 +13,7 @@
     <div class="col-md-12">
         <div class="card directory-card m-b-20">
             <div>
-                <div class="directory-bg text-center" style="background-image: url(../assets/images/montain.jpeg);">
+                <div class="directory-bg text-center" style="background-image: url(<?= base_url('template/assets/images/montain.jpeg') ?>)">
                     <div class="directory-overlay">
                         <a class="image-popup-vertical-fit" href="<?= $data->foto != '' ? base_url('uploads/foto_profil/' . $data->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
                             <img class="img-fluid rounded-circle" alt="" src="<?= $data->foto != '' ? base_url('uploads/foto_profil/' . $data->foto) : base_url('assets/img/profile-pic.jpg')  ?>" style="width: 200px; height: 200px;">

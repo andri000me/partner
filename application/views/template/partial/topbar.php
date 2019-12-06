@@ -17,45 +17,27 @@
         <li class="dropdown notification-list">
             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="ti-bell noti-icon"></i>
-                <span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+                <span class="badge badge-pill badge-danger noti-icon-badge"><?= $this->fungsi->notification()->num_rows() ?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
                 <!-- item-->
                 <h6 class="dropdown-item-text">
-                    Notifications (258)
+                    Notifications (<?= $this->fungsi->notification()->num_rows() ?>)
                 </h6>
                 <div class="slimscroll notification-item-list">
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item active">
-                        <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
-                        <p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
-                                the printing and typesetting industry.</span></p>
-                    </a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
-                        <p class="notify-details">New Message received<span class="text-muted">You have 87
-                                unread messages</span></p>
-                    </a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
-                        <p class="notify-details">Your item is shipped<span class="text-muted">It is a long
-                                established fact that a reader will</span></p>
-                    </a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
-                        <p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
-                                the printing and typesetting industry.</span></p>
-                    </a>
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
-                        <p class="notify-details">New Message received<span class="text-muted">You have 87
-                                unread messages</span></p>
-                    </a>
+                    <?php if ($this->fungsi->notification()->num_rows() > 0) { ?>
+                        <?php foreach ($this->fungsi->notification()->result() as $notifikasi) { ?>
+                            <!-- item-->
+                            <a href="#" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+                                <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
+                            </a>
+                        <?php }
+                        } else { ?>
+                        <span class="text-muted ml-4">Tidak ada notfikasi!</span>
+                    <?php } ?>
                 </div>
+
                 <!-- All-->
                 <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
                     View all <i class="fi-arrow-right"></i>

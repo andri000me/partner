@@ -111,7 +111,7 @@ class Agent extends CI_Controller
             ];
 
             //Konfigurasi Upload
-            $config['upload_path']         = './uploads/partners';
+            $config['upload_path']         = './uploads/agents';
             $config['allowed_types']        = '*';
             $config['max_size']             = 0;
             $config['max_width']            = 0;
@@ -155,9 +155,10 @@ class Agent extends CI_Controller
 
             $this->agent_activity->create($agent_activity);
 
-            //Menambah antrian tiket untuk data Agentc
+            //Menambah antrian tiket untuk data Agent
+            $has_superior = $this->fungsi->user_login()->has_superior;
             $ticket = [
-                'status'        => 0,
+                'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'id_agent'      => $id,
                 'id_user'       => $this->fungsi->user_login()->id_user,
@@ -169,7 +170,7 @@ class Agent extends CI_Controller
             $notification = [
                 'pengirim'      => $this->fungsi->user_login()->id_user,
                 'type'          => 'Data Agent Baru',
-                'id_agent'     => $id,
+                'id_ticket'     => $id_ticket,
                 'created_at'    => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);

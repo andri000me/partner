@@ -24,10 +24,16 @@ class Ticket_model extends CI_Model
     {
         $this->db->select("
         *,
+        users.id_user as user_id,
+        branches.id_branch as branch_id,
         users.name as requester,
         tickets.status as status_approval,
         user_completed.name as nama_user_completed, 
         user_verified_ttd.name as nama_user_verified,
+        partners.ktp as ktp_partner,
+        agents.ktp as ktp_agent,
+        partners.npwp as npwp_partner,
+        agents.npwp as npwp_agent,
 
         DATE_FORMAT(date_pending, '%d %b, %Y') as tanggal_pending,
         DATE_FORMAT(date_approved_by_head, '%d %b, %Y') as tanggal_approved_by_head,

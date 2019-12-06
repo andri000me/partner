@@ -65,7 +65,7 @@ class Partner extends CI_Controller
 
     public function edit($id)
     {
-        $where = ['id_partner' => $id];
+        $where = ['partners.id_partner' => $id];
 
         $data = [
             'partner' => $this->partner_model->get($where)->row(),
@@ -217,8 +217,10 @@ class Partner extends CI_Controller
 
         //Menambah antrian tiket untuk data Partner
         if (isset($post['process'])) {
+            //Menambah antrian tiket untuk data Agent
+            $has_superior = $this->fungsi->user_login()->has_superior;
             $ticket = [
-                'status'        => 0,
+                'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $id,
                 'id_user'       => $this->fungsi->user_login()->id_user,
@@ -349,10 +351,12 @@ class Partner extends CI_Controller
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
         } else if (isset($post['process'])) {
+            //Menambah antrian tiket untuk data Agent
+            $has_superior = $this->fungsi->user_login()->has_superior;
             $data['status'] = 'lengkap';
 
             $ticket = [
-                'status'        => 0,
+                'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $post['id_partner'],
                 'id_user'       => $this->fungsi->user_login()->id_user,

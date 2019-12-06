@@ -13,9 +13,11 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div>
-            <a href="<?= base_url('Agent/create') ?>"><button class="btn btn-primary mb-4">Rekrut Agent / BA</button></a>
-        </div>
+        <?php if ($this->fungsi->user_login()->level != 4) { ?>
+            <div>
+                <a href="<?= base_url('Agent/create') ?>"><button class="btn btn-primary mb-4">Rekrut Agent / BA</button></a>
+            </div>
+        <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20">

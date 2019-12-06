@@ -210,7 +210,9 @@
 								<div>
 									<?php if ($this->fungsi->user_login()->level != 1) { ?>
 										<a class="btn btn-info" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
-										<a class="btn btn-danger" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+										<?php if ($this->fungsi->user_login()->level == 4) { ?>
+											<a class="btn btn-danger" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+										<?php } ?>
 									<?php } ?>
 									<button type="submit" class="btn btn-primary waves-effect waves-light ml-3 mr-3">
 										Simpan
@@ -229,26 +231,41 @@
 			<div class="card height">
 				<div class="card-body">
 					<div class="owl-carousel owl-theme">
-						<div class="item" style="height:79px; width:120px;">
-							<div class="zoom-gallery">
-								<a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+						<?php if ($data->ktp) { ?>
+							<div class="item" style="height:79px; width:120px;">
+								<div class="zoom-gallery">
+									<a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
+								</div>
 							</div>
-						</div>
-						<div class="item" style="height:79px; width:120px;">
-							<div class="zoom-gallery">
-								<a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+						<?php } ?>
+						<?php if ($data->npwp) { ?>
+							<div class="item" style="height:79px; width:120px;">
+								<div class="zoom-gallery">
+									<a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
+								</div>
 							</div>
-						</div>
-						<div class="item" style="height:79px; width:120px;">
-							<div class="zoom-gallery">
-								<a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+						<?php } ?>
+						<?php if ($data->buku_tabungan) { ?>
+							<div class="item" style="height:79px; width:120px;">
+								<div class="zoom-gallery">
+									<a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:79px; width:120px;"></a>
+								</div>
 							</div>
-						</div>
-						<div class="item" style="height:79px; width:120px;">
-							<div class="zoom-gallery">
-								<a href="<?= base_url('template/assets/images/ibrahim.jpeg') ?>"><img src="<?= base_url('template/assets/images/ibrahim.jpeg') ?>" alt="" style="height:79px; width:120px;"></a>
+						<?php } ?>
+						<?php if ($data->foto_selfie) { ?>
+							<div class="item" style="height:79px; width:120px;">
+								<div class="zoom-gallery">
+									<a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:79px; width:120px;"></a>
+								</div>
 							</div>
-						</div>
+						<?php } ?>
+						<?php if ($data->form_f100) { ?>
+							<div class="item" style="height:79px; width:120px;">
+								<div class="zoom-gallery">
+									<a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:79px; width:120px;"></a>
+								</div>
+							</div>
+						<?php } ?>
 					</div>
 
 					<div class="card-contents">
@@ -319,7 +336,7 @@
 										</div>
 									<?php } ?>
 									<!-- Jika Data Tiket sudah di-approve oleh HO, maka munculkan tombol Kerjasama -->
-									<?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum') { ?>
+									<?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum' && ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5)) { ?>
 										<div class="inbox-wid">
 											<div class="inbox-item">
 												<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
@@ -348,7 +365,7 @@
 									<h4 class="mt-0 header-title">LAMPIRAN</h4>
 									<div class="inbox-wid">
 										<div class="inbox-item">
-											<p class="inbox-item-author mt-0 mb-1"><i class="fas fa-download"></i><b>&nbsp;&nbsp;<a href="#">Download Semua Lampiran</b></a></p>
+											<p class="inbox-item-author mt-0 mb-1"><i class="fas fa-download"></i><b>&nbsp;&nbsp;<a href="<?= base_url('zip/create_zip/' . $ticket->id_ticket . '/agents') ?>">Download Semua Lampiran</b></a></p>
 										</div>
 									</div>
 								</div>

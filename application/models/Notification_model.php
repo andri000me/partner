@@ -23,11 +23,17 @@ class Notification_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from('notifications');
-        $this->db->join('partners', 'partners.id_partner = notifications.id_partner', 'left');
+        // $this->db->join('partners', 'partners.id_partner = notifications.id_partner', 'left');
         $this->db->join('tickets', 'tickets.id_ticket = notifications.id_ticket', 'left');
         // $this->db->join('agents', 'agents.id_agent = notifications.id_agent', 'left');
         // $this->db->join('leads', 'leads.id_lead = notifications.id_lead', 'left');
-        $this->db->join('users', 'users.id_user = notifications.id_user', 'left');
+
+        // Pengirim Notifikasi
+        $this->db->join('users as user_pengirim', 'user_pengirim.id_user = notifications.pengirim', 'left');
+        // penerima Notifikasi
+        $this->db->join('users as user_penerima', 'user_penerima.id_user = notifications.penerima', 'left');
+        // penerima cabang Notifikasi
+        $this->db->join('branches as cabang_penerima', 'cabang_penerima.id_branch = notifications.penerima_cabang', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

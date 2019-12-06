@@ -193,13 +193,7 @@
                                                 <input type="text" class="form-control" name="sosial_media" id="sosial_media" required placeholder="https://www.instagram.com/bfisyariah">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nomor Telepon / WhatsApp</label>
-                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Hobi / Interest</label>
                                                 <input type="text" class="form-control" name="hobi" id="hobi" placeholder="Memancing">

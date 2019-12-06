@@ -190,13 +190,7 @@
                                                 <input type="text" class="form-control" name="sosial_media" id="sosial_media" required value="<?= $partner->sosial_media ?>" placeholder="https://www.instagram.com/bfisyariah">
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nomor Telepon / WhatsApp</label>
-                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="<?= $partner->telepon ?>" placeholder="0811977500" maxlength="15" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Hobi / Interest</label>
                                                 <input type="text" class="form-control" name="hobi" id="hobi" placeholder="Memancing" value="<?= $partner->hobi ?>">
@@ -358,51 +352,27 @@
                                     <div class="row">
                                         <div class="col-md-2">
                                             <label>KTP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="ktp" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="ktp" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>NPWP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="npwp" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="npwp" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>Buku Tabungan</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="buku_tabungan_perusahaan" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="buku_tabungan_perusahaan" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>SIUP / TDP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="siup" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="siup" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>Logo Perusahaan</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="logo_perusahaan" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="logo_perusahaan" type="file">
                                         </div>
                                         <div class="col-md-2">
                                             <label>Foto usaha</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="foto_usaha" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="foto_usaha" type="file">
                                         </div>
                                     </div>
                                 </div>

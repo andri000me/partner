@@ -13,12 +13,14 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="btn-kanan">
-            <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary mb-4 test-size">Rekrut
-                    Leads</button></a>
-            <a href="maintain_leads.html"><button class="btn btn-success ml-1 mb-4 test-size">Maintain
-                    Leads</button></a>
-        </div>
+        <?php if ($this->fungsi->user_login()->level != 4) { ?>
+            <div class="btn-kanan">
+                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary mb-4 test-size">Rekrut
+                        Leads</button></a>
+                <a href="maintain_leads.html"><button class="btn btn-success ml-1 mb-4 test-size">Maintain
+                        Leads</button></a>
+            </div>
+        <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20">

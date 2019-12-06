@@ -10,6 +10,8 @@ class Maintain_partner extends CI_Controller
         $this->load->model('maintain_partner_model', 'maintain_model');
         $this->load->model('partner_activity_model', 'partner_activity');
         $this->load->model('partner_model');
+        $this->load->model('ticket_model');
+        $this->load->model('comment_model');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -30,9 +32,16 @@ class Maintain_partner extends CI_Controller
 
     public function create($id)
     {
+        $where = ['partners.id_partner' => $id];
+
         $data = [
-            'data' => $this->partner_model->get(['id_partner' => $id])->row(),
-            'activities' => $this->partner_activity->get(['partner_activities.id_partner' => $id])
+            // 'data' => $this->partner_model->get(['id_partner' => $id])->row(),
+            // 'activities' => $this->partner_activity->get(['partner_activities.id_partner' => $id]),
+            'data'          => $this->partner_model->get($where)->row(),
+            'ticket'        => $this->ticket_model->get($where)->row(),
+            'maintain'      => $this->maintain_model->get($where),
+            'activities'    => $this->partner_activity->get($where),
+            'comments'      => $this->comment_model->get($where)
         ];
 
         $this->template->load('template/index', 'partner-maintain', $data);
