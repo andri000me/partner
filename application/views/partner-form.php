@@ -407,75 +407,46 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <<<<<<< HEAD <div class="row">
-                    <div class="col-md-12">
-                        <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Name Usaha</th>
-                                    <th>Kategori Produk</th>
-                                    <th>Telepon</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($mappings->result() as $data) { ?>
-                                    <tr class="clickable-row" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
-                                        <td class="not-clickable">
-                                            <div class="text-size"><?= $data->nama_usaha ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="text-size"><?= $data->kategori_produk ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="text-size"><?= $data->telepon ?></div>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-            </div>
-            =======
-            <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                <thead>
-                    <tr>
-                        <th>
-                            <div class="text-size">Name Usaha</div>
-                        </th>
-                        <th>
-                            <div class="text-size">Kategori Produk</div>
-                        </th>
-                        <th>
-                            <div class="text-size">Telepon</div>
-                        </th>
-                        <th>
-                            <div class="text-size">Action</div>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($mappings->result() as $data) { ?>
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
                         <tr>
-                            <td class="not-clickable">
-                                <div class="text-size"><?= $data->nama_usaha ?></div>
-                            </td>
-                            <td>
-                                <div class="text-size"><?= $data->kategori_produk ?></div>
-                            </td>
-                            <td>
-                                <div class="text-size"><?= $data->telepon ?></div>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">Pilih</a>
-                            </td>
+                            <th>
+                                <div class="text-size">Name Usaha</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Kategori Produk</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Telepon</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Action</div>
+                            </th>
                         </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            >>>>>>> origin/don
+                    </thead>
+                    <tbody>
+                        <?php foreach ($mappings->result() as $data) { ?>
+                            <tr>
+                                <td class="not-clickable">
+                                    <div class="text-size"><?= $data->nama_usaha ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->kategori_produk ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->telepon ?></div>
+                                </td>
+                                <td>
+                                    <center><a href="#" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">Pilih</a></center>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                >>>>>>> origin/don
+            </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Modal -->
 
