@@ -4052,20 +4052,8 @@ button[disabled] {
 	}
 }
 
-::placeholder {
-	color: red;
-	opacity: 0.1;
-	/* Firefox */
-}
-
-:-ms-input-placeholder {
-	/* Internet Explorer 10-11 */
-	color: red;
-}
-
-::-ms-input-placeholder {
-	/* Microsoft Edge */
-	color: red;
+:placeholder-shown {
+	opacity: 0.5;
 }
 
 /*# sourceMappingURL=style.css.map */
