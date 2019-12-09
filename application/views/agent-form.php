@@ -81,7 +81,7 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>E-Mail</label>
                                                 <div>
@@ -90,7 +90,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Nomor Telepon</label>
+                                                <input type="text" class="form-control <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="09788398364" maxlength="15" />
+                                                <?= form_error('telepon'); ?>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Terdaftar Sebagai Agen BFI Finance?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
@@ -107,31 +114,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-2">
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>Tanggal Lahir</label>
-                                                <input type="date" class="form-control <?= form_error('tanggal_lahir') ? 'is-invalid' : '' ?>" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>" required placeholder="19 / 10 / 1927" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nomor KTP</label>
-                                                <input type="text" class="form-control <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="1234567891234567" maxlength="16" />
-                                                <?= form_error('no_ktp'); ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nomor NPWP</label>
-                                                <input type="text" class="form-control <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" value="<?= set_value('no_npwp') ?>" required placeholder="1234567891234567" maxlength="15" />
-                                                <?= form_error('no_npwp'); ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Apakah ada hubungan dengan karyawan BFI Finance?</label><br>
+                                                <label>Ada hubungan dengan karyawan BFI Finance?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
                                                     <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" <?= set_value('hubungan_karyawan_bfi') == 'Ada' ? 'checked' : '' ?> required>
                                                     <label class="form-check-label">
@@ -148,27 +133,53 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="form-group col-md-2">
-                                            <label>Pekerjaan</label>
-                                            <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" /> -->
-                                            <select class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
-                                                <option selected disabled value="">Pilih Pekerjaan</option>
-                                                <option <?= set_value('pekerjaan') == 'Swasta' ? 'selected' : '' ?> value="Swasta">Swasta</option>
-                                                <option <?= set_value('pekerjaan') == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">Wiraswasta</option>
-                                                <option <?= set_value('pekerjaan') == 'Freelance' ? 'selected' : '' ?> value="Freelance">Freelance</option>
-                                            </select>
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Tanggal Lahir</label>
+                                                <input type="date" class="form-control <?= form_error('tanggal_lahir') ? 'is-invalid' : '' ?>" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>" required placeholder="19 / 10 / 1927" />
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label>Jenis Pekerjaan</label>
-                                            <input type="text" class="form-control <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= set_value('jenis_pekerjaan') ?>" required placeholder="Pekerja Rumah tangga" />
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Nomor KTP</label>
+                                                <input type="text" class="form-control <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="1234567891234567" maxlength="16" />
+                                                <?= form_error('no_ktp'); ?>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Nomor NPWP</label>
+                                                <input type="text" class="form-control <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" value="<?= set_value('no_npwp') ?>" required placeholder="1234567891234567" maxlength="15" />
+                                                <?= form_error('no_npwp'); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Pekerjaan</label>
+                                                <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" /> -->
+                                                <select class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
+                                                    <option selected disabled value="">Pilih Pekerjaan</option>
+                                                    <option <?= set_value('pekerjaan') == 'Swasta' ? 'selected' : '' ?> value="Swasta">Swasta</option>
+                                                    <option <?= set_value('pekerjaan') == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">Wiraswasta</option>
+                                                    <option <?= set_value('pekerjaan') == 'Freelance' ? 'selected' : '' ?> value="Freelance">Freelance</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Jenis Pekerjaan</label>
                                                 <input type="text" class="form-control <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= set_value('jenis_pekerjaan') ?>" required placeholder="Pekerja Rumah tangga" />
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Jenis Pekerjaan</label>
+                                                <input type="text" class="form-control <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= set_value('jenis_pekerjaan') ?>" required placeholder="Pekerja Rumah tangga" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Apakah pernah menjadi konsumen BFI Finance?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
