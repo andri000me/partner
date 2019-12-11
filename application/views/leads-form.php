@@ -92,7 +92,7 @@
                                             <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                             <label class="ml-3 agent">Pilih Data Agent</label>
                                             <div class="input-group ml-3 mr-3">
-                                                <input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="aaaa" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                <input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                                 <div class="input-group-append mr-4">
                                                     <button class="btn btn-primary modal-partner" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-partner"><span class="ion-ios7-search-strong"></span></button>
                                                     <button class="btn btn-primary modal-agent" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-agent"><span class="ion-ios7-search-strong"></span></button>
