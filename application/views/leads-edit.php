@@ -20,13 +20,18 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Leads/update') ?>" method="post">
+                        <form action="<?= base_url('Leads/update') ?>" method="post" enctype="multipart/form-data">
                             <input id="website" name="website" type="disable" value="">
-                            <!-- ID Mapping Leads -->
-                            <input type="hidden" id="id_mapping_leads" value="<?= $data->id_mapping_leads ?>" name="id_mapping_leads">
-                            <!-- ID Leads -->
-                            <input type="hidden" id="id_leads" value="<?= $data->id_leads ?>" name="id_leads">
+
                             <!-- Leave for security protection, read docs for details -->
+                            <!-- ID Mapping Leads -->
+                            <input type="hidden" id="id_mapping_leads" name="id_mapping_leads" value="<?= $data->id_mapping_leads ?>">
+                            <!-- ID Mapping Leads -->
+                            <input type="hidden" id="id_leads" name="id_leads" value="<?= $data->id_leads ?>">
+                            <!-- ID Agent -->
+                            <input type="hidden" id="id_agent" name="id_agent" value="<?= $data->id_agent ?>">
+                            <!-- ID Partner -->
+                            <input type="hidden" id="id_partner" name="id_partner" value="<?= $data->id_partner ?>">
                             <div id="middle-wizard">
                                 <div class="step">
                                     <div class="row mb-3">
@@ -37,12 +42,26 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Leads ID</label>
+                                                <input type="text" class="form-control placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <label class="ml-3">Nama Konsumen</label>
                                             <div class="input-group ml-3 mb-3">
-                                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                <div class="input-group-append mr-3">
-                                                    <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary mr-4" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>ID KTP</label>
+                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
@@ -52,32 +71,45 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nomor KTP</label>
-                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
                                             <div class="form-group mr-3 ml-3">
                                                 <label>Asal Aplikasi</label>
                                                 <select class="form-control" name="soa" id="soa">
                                                     <option selected>Pilih Source Aplikasi</option>
-                                                    <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                                    <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                                    <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
                                                     <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
                                                     <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                                    <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
                                                     <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                                    <option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
                                                     <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
                                                     <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                                    <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                                    <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
                                                     <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                                    <option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
+                                                    <option <?= $data->soa == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-3 form">
+                                            <label class="ml-3 travel">Pilih Data Travel</label>
+                                            <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
+                                            <label class="ml-3 agent">Pilih Data Agent</label>
+                                            <div class="input-group ml-3 mr-3">
+                                                <input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="aaaa" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                <div class="input-group-append mr-4">
+                                                    <button class="btn btn-primary modal-partner" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-partner"><span class="ion-ios7-search-strong"></span></button>
+                                                    <button class="btn btn-primary modal-agent" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-agent"><span class="ion-ios7-search-strong"></span></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3 event">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Nama Event</label>
+                                                <input type="text" class="form-control" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3">
                                             <div class="form-group mr-3 ml-3">
                                                 <label>Produk</label>
                                                 <select class="form-control" name="produk" id="produk">
@@ -91,8 +123,12 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
+                                        <div class="col-md-3">
+                                            <div class="form-group mr-3 ml-3">
+                                                <label>Detail Produk</label>
+                                                <input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Follow Up By</label>
@@ -105,28 +141,64 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Alamat</label>
-                                                <textarea class="form-control" name="alamat" id="alamat" cols="30" rows="10" required placeholder="Alamat Lengkap Anda" style="height:112px;"></textarea>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-3">
+                                            <div class="form-group ml-3 mr-3 posisi">
+                                                <label>Cross Branch?</label><br>
+                                                <div class="form-check form-check-inline mt-2">
+                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                    <label class="form-check-label">
+                                                        Ya
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                    <label class="form-check-label">
+                                                        Tidak
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <!-- /step-->
-                                <div class="step">
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <h4 class="mt-0 header-title">Formulir Partnership</h4>
-                                            <p class="text-muted tezt-size">Semua data dibutuhkan untuk keperluan analisa dan pengembangan strategi produk Syariah, hanya selangkah lagi proses ini selesai :)</p>
+                                        <div class="col-md-3">
+                                            <div id="hide" class="form-group ml-3 mr-3">
+                                                <label>Pilih cabang</label>
+                                                <select class="form-control" name="cabang_cross" id="cabang_cross">
+                                                    <option selected disabled value="">Pilih Cabang</option>
+                                                    <?php foreach ($branches->result() as $branch) { ?>
+                                                        <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="ml-3">Pic Tanda Tangan</label>
+                                            <div class="input-group ml-3 mb-3">
+                                                <select class="form-control" name="pic_ttd" id="pic_ttd">
+                                                    <option value="" selected>Pilih Pic Tanda Tangan</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->pic_ttd ? 'selected' : '' ?>  value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <label class="ml-3">Surveyor</label>
+                                            <div class="input-group ml-3 mb-3">
+                                                <select class="form-control" name="surveyor" id="surveyor">
+                                                    <option value="" selected>Pilih Surveyor</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->surveyor ? 'selected' : '' ?>  value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>Leads ID</label>
-                                                <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744">
+                                                <label>Nilai Funding</label>
+                                                <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
@@ -146,60 +218,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <div class="form-group ml-3 mr-3 posisi">
-                                                <label>Cross Branch?</label><br>
-                                                <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
-                                                    <label class="form-check-label">
-                                                        Ya
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-                                                    <label class="form-check-label">
-                                                        Tidak
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <div id="hide" class="form-group ml-3 mr-3">
-                                                <label>Pilih cabang</label>
-                                                <select class="form-control" name="cabang_cross" id="cabang_cross">
-                                                    <option selected disabled value="">Pilih Cabang</option>
-                                                    <?php foreach ($branches->result() as $cabang) { ?>
-                                                        <option <?= $cabang->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $cabang->id_branch ?>"><?= $cabang->nama_cabang ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Surveyor</label>
-                                                <select class="form-control" name="surveyor" id="surveyor">
-                                                    <option selected disabled value="">Pilih Surveyor</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                        <option <?= $user->id_user == $data->surveyor ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select> </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Pic Tandatangan</label>
-                                                <select class="form-control" name="pic_ttd" id="pic_ttd">
-                                                    <option selected disabled value="">Pilih Pic Tandatangan</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                        <option <?= $user->id_user == $data->pic_ttd ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select> </div>
-                                        </div>
                                     </div>
                                 </div>
-                                <!-- /step-->
-
                                 <div class="submit step">
                                     <div class="row mb-3">
                                         <div class="col-md-12">
@@ -237,7 +257,7 @@
                                 <!-- /step-->
                             </div>
                             <!-- /middle-wizard -->
-                            <div class="form-group mb-0 float-right mt-3">
+                            <div class="form-group mb-0 float-right mt-3 mr-3">
                                 <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
                                 <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
                                 <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
@@ -251,8 +271,15 @@
         </div>
     </div> <!-- end col -->
 </div>
+</div> <!-- container-fluid -->
+</div> <!-- content -->
+</div>
 
-<!-- Modal -->
+
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
+<!-- Modal simpan -->
 <div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -269,36 +296,54 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!-- Modal simpan -->
 
-<!-- Modal -->
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<!-- Modal Mapping Leads -->
+<div class="modal fade bd-example-modal-xl" id="modal-leads" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
-            <div class="modal-body">
+            <div class="modal-body" style="height:700px;">
                 <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Partner</h4>
+                    <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Nama Konsumen</th>
-                            <th>Produk</th>
-                            <th>Telepon</th>
+                            <th>
+                                <div class="text-size">Nama Lengkap</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Nomor Telepon</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Asal Aplikasi</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Produk</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Aksi</div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($mapping->result() as $mapping) { ?>
-                            <tr class="clickable-row" data-mapping="<?= $mapping->mapping_id ?>" data-konsumen="<?= $mapping->nama_konsumen ?>" data-soa="<?= $mapping->soa ?>" data-telepon="<?= $mapping->telepon ?>" data-produk="<?= $mapping->produk ?>">
+                        <?php foreach ($mappings->result() as $data) { ?>
+                            <tr>
                                 <td class="not-clickable">
-                                    <div class="text-size"><?= $mapping->nama_konsumen ?></div>
+                                    <div class="text-size"><?= $data->nama_konsumen ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->produk ?></div>
+                                    <div class="text-size"><?= $data->telepon ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $mapping->telepon ?></div>
+                                    <div class="text-size"><?= $data->soa ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->produk ?></div>
+                                </td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -310,29 +355,137 @@
 </div>
 <!-- Modal -->
 
+<!-- Modal partner -->
+<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header mb-2">
+                    <h4 class="modal-title">Cari Data Partner</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name Usaha</th>
+                            <th>Kategori Produk</th>
+                            <th>Telepon</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($partners->result() as $partner) { ?>
+                            <tr>
+                                <td><?= $partner->nama_usaha ?></td>
+                                <td><?= $partner->kategori_produk ?></td>
+                                <td><?= $partner->telepon ?></td>
+                                <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal partner -->
+
+<!-- Modal agent -->
+<div class="modal fade" id="modal-agent" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header mb-2">
+                    <h4 class="modal-title">Cari Data Agent</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>Telepon</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($agents->result() as $agent) { ?>
+                            <tr>
+                                <td><?= $agent->nama_lengkap ?></td>
+                                <td><?= $agent->telepon ?></td>
+                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-nama="<?= $agent->nama_lengkap ?>">Pilih</button></td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal agent -->
+
 <script>
-    $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
-    $("table").on("click", ".not-clickable", function(e) {
-        e.stopPropagation();
-    });
-    $("table").on('click', '.clickable-row', function() {
-        $("tr.clickable-row").not("tr > td.not-clickable").css('cursor', 'pointer');
+    $('.travel').hide();
+    $('.agent').hide();
+    $('.jasa').hide();
+    $('.event').hide();
+    $('.modal-agent').hide();
+    $('.modal-parnet').hide();
+    $('.form').hide();
+    source_leads();
+    $('#soa').change(function() {
+        source_leads();
+        $('#id_partner').val("");
+        $('#id_agent').val("");
+        $('#nama_vendor').val("").removeAttr("required");
+        $('#nama_event').val("");
+    })
 
-        var id_mapping = $(this).data('mapping');
-        var nama_konsumen = $(this).data('konsumen');
-        var produk = $(this).data('produk');
-        var telepon = $(this).data('telepon');
-        var soa = $(this).data('soa');
-        // var ktp = $(this).data('ktp');
+    function source_leads() {
+        if ($('#soa').val() == 'Tour & travel') {
+            $('.travel, .form, .modal-partner').show();
+            $('#id_partner').attr('placeholder', 'jalan - jalan')
+            $('.agent, .jasa, .event, .modal-agent').hide();
+        } else if ($('#soa').val() == 'Penyedia Jasa') {
+            $('.jasa, .form, .modal-partner').show();
+            $('#id_partner').attr('placeholder', 'Jasa raharja')
+            $('.agent, .travel, .event, .modal-agent').hide();
+        } else if ($('#soa').val() == 'Agent BA') {
+            $('.agent, .form, .modal-agent').show();
+            $('#id_partner').attr('placeholder', 'Ibrahim')
+            $('.jasa, .travel, .event, .modal-partner').hide();
+        } else if ($('#soa').val() == 'Event') {
+            $('.event').show();
+            $('.jasa, .travel, .agent, .form').hide();
+        } else {
+            $('.jasa, .travel, .agent, .form, .event').hide();
+        }
+    }
+</script>
 
-        $('#id_mapping_leads').val(id_mapping);
-        $('#nama_konsumen').val(nama_konsumen);
-        $('#produk').val(produk);
-        $('#telepon').val(telepon);
-        $('#soa').val(soa);
-        // $('#ktp').val(ktp);
+<script>
+    $("table").on('click', '.pilih-partner', function() {
+        $('#id_partner').val($(this).data('partner'));
+        $('#id_agent').val("");
+        $('#nama_vendor').val($(this).data('vendor'));
+        $('#modal-partner').modal('hide');
+    })
+    $("table").on('click', '.pilih-agent', function() {
+        $('#id_agent').val($(this).data('agent'));
+        $('#id_partner').val("");
+        $('#nama_vendor').val($(this).data('nama'));
+        $('#modal-agent').modal('hide');
+    })
+    $("table").on('click', '.pilih-leads', function() {
+        $('#id_mapping_leads').val($(this).data('mapping'));
+        $('#soa').val($(this).data('soa'));
+        $('#produk').val($(this).data('produk'));
+        $('#telepon').val($(this).data('telepon'));
+        $('#data_partner').val($(this).data('partner'));
+        $('#detail_produk').val($(this).data('detail'));
+        $('#nama_event').val($(this).data('event'));
+        $('#nama_konsumen').val($(this).data('nama'));
+        $('#modal-leads').modal('hide');
 
-        $('.bd-example-modal-xl').modal('hide');
-        console.log('clicked');
+        source_leads();
     })
 </script>

@@ -8,11 +8,23 @@ class Leads extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        // Load Modul Leads
         $this->load->model('leads_model');
+        // Load Modul Ticket
         $this->load->model('ticket_model');
+        // Load Modul Branch
         $this->load->model('branch_model');
+        // Load Modul Agent
+        $this->load->model('agent_model');
+        // Load Modul Partner
+        $this->load->model('partner_model');
+        // Load Modul User
         $this->load->model('user_model');
+        // Load Modul Mapping Leads
         $this->load->model('mapping_leads_model', 'mapping_leads');
+        // Load Modul Comment
+        $this->load->model('comment_model');
+        // Load Modul Leads Activity
         $this->load->model('leads_activity_model', 'leads_activity');
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -43,9 +55,12 @@ class Leads extends CI_Controller
     public function create()
     {
         $data = [
-            'mapping' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get($this->where),
             'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all()
+            'users' => $this->user_model->get_all(),
+
+            'agents' => $this->agent_model->get($this->where),
+            'partners' => $this->partner_model->get($this->where)
         ];
         $this->template->load('template/index', 'leads-form', $data);
     }
@@ -56,9 +71,12 @@ class Leads extends CI_Controller
         $where = ['id_leads' => $id];
         $data = [
             'data' => $this->leads_model->get($where)->row(),
-            'mapping' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get($this->where),
             'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all()
+            'users' => $this->user_model->get_all(),
+
+            'agents' => $this->agent_model->get($this->where),
+            'partners' => $this->partner_model->get($this->where)
         ];
 
         $this->template->load('template/index', 'leads-edit', $data);
@@ -86,7 +104,26 @@ class Leads extends CI_Controller
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
         $this->form_validation->set_rules('id_mapping_leads', 'ID Mapping Leads', 'required', ['required' => 'Mohon pilih data dari Mapping Leads']);
 
-        if ($this->form_validation->run() != FALSE) {
+        // if ($this->form_validation->run() != FALSE) {
+            $data_mapping_leads = [
+                'nama_konsumen'         => $post['nama_konsumen'],
+                'telepon'               => $post['telepon'],
+                'soa'                   => $post['soa'],
+                'produk'                => $post['produk'],
+                'detail_produk'         => $post['detail_produk'],
+                'nama_event'            => $post['nama_event'],
+                'nilai_funding'         => $post['nilai_funding'],
+
+                'updated_at'            => date('Y-m-d H:i:s'),
+
+                'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+                'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
+                'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL
+            ];
+
+            $where_mapping_leads = ['id_mapping_leads' => $post['id_mapping_leads']];
+
+            $this->mapping_leads->update($data_mapping_leads, $where_mapping_leads);
             $data = [
                 'id_mapping_leads' => $post['id_mapping_leads'],
 
@@ -115,8 +152,34 @@ class Leads extends CI_Controller
                 $data['status'] = 'lengkap';
             }
 
-            //Memasukkan data mapping ke database `leads`
+             //Konfigurasi Upload
+            $config['upload_path']         = './uploads/partners';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
 
+            if (!$this->upload->do_upload('ktp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['ktp'] = $this->upload->data('file_name');
+            }
+    
+    
+            if (!$this->upload->do_upload('selfie_foto')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['selfie_foto'] = $this->upload->data('file_name');
+            }
+    
+            if (!$this->upload->do_upload('foto_penyedia_jasa')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['foto_penyedia_jasa'] = $this->upload->data('file_name');
+            }
+
+            //Memasukkan data mapping ke database `leads`
             $id = $this->leads_model->create($data);
 
             //Membuat history activity inputan data leads
@@ -134,7 +197,7 @@ class Leads extends CI_Controller
                 $ticket = [
                     'status'        => 0,
                     'date_pending'  => date('Y-m-d H:i:s'),
-                    'id_lead'       => $id,
+                    'id_leads'       => $id,
                     'id_user'       => $this->fungsi->user_login()->id_user,
                     'id_branch'     => $this->fungsi->user_login()->id_branch
                 ];
@@ -155,14 +218,14 @@ class Leads extends CI_Controller
 
                 redirect('Leads');
             }
-        } else {
-            $data = [
-                'mapping' => $this->mapping_leads->get($this->where),
-                'branches' => $this->branch_model->get(),
-                'users' => $this->user_model->get_all()
-            ];
-            $this->template->load('template/index', 'leads-form', $data);
-        }
+        // } else {
+        //     $data = [
+        //         'mapping' => $this->mapping_leads->get($this->where),
+        //         'branches' => $this->branch_model->get(),
+        //         'users' => $this->user_model->get_all()
+        //     ];
+        //     $this->template->load('template/index', 'leads-form', $data);
+        // }
     }
     public function update()
     {
@@ -201,6 +264,7 @@ class Leads extends CI_Controller
             'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
+            'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),
@@ -211,6 +275,8 @@ class Leads extends CI_Controller
             //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
             // 'id_branch'         => $post['id_branch']
         ];
+        $where = ['id_leads' => $post['id_leads']];
+        $this->leads_model->update($data, $where);
 
         if (isset($post['draft'])) {
             $data['status'] = 'draft';

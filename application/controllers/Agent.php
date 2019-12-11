@@ -212,12 +212,12 @@ class Agent extends CI_Controller
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
 
             //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            'id_user'               => $post['id_user'],
+            // 'id_user'               => $post['id_user'],
             //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            'id_branch'             => $post['id_branch']
+            // 'id_branch'             => $post['id_branch']
         ];
 
         $where = ['id_agent' => $post['id_agent']];

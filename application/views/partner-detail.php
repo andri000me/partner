@@ -50,7 +50,8 @@
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Nomor Telepon / WhatsApp</label>
-                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
+                                <input type="text" class="form-control <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
+                                <?= form_error('telepon') ?>
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Kategori Produk</label>

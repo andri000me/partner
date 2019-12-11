@@ -137,33 +137,3 @@
         // return false;
     });
 </script>
-
-<script>
-    $('.travel').hide();
-    $('.agent').hide();
-    $('.jasa').hide();
-    $('.event').hide();
-    $('.modal-agent').hide();
-    $('.modal-parnet').hide();
-    $('.form').hide();
-    $('#soa').change(function() {
-        if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .modal-partner').show();
-            $('#id_partner').attr('placeholder', 'jalan - jalan')
-            $('.agent, .jasa, .event, .modal-agent').hide();
-        } else if ($('#soa').val() == 'Penyedia Jasa') {
-            $('.jasa, .form, .modal-partner').show();
-            $('#id_partner').attr('placeholder', 'Jasa raharja')
-            $('.agent, .travel, .event, .modal-agent').hide();
-        } else if ($('#soa').val() == 'Agent BA') {
-            $('.agent, .form, .modal-agent').show();
-            $('#id_partner').attr('placeholder', 'Ibrahim')
-            $('.jasa, .travel, .event, .modal-partner').hide();
-        } else if ($('#soa').val() == 'Event') {
-            $('.event').show();
-            $('.jasa, .travel, .agent, .form').hide();
-        } else {
-            $('.jasa, .travel, .agent, .form, .event').hide();
-        }
-    })
-</script>

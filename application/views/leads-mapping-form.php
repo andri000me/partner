@@ -18,18 +18,23 @@
                 <h4 class="mt-0 header-title">Mapping Leads</h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
 
-                <form class="" action="#">
+                <form class="" action="<?= base_url('mapping_leads/save') ?>" method="post">
+                    <!-- ID Agent -->
+                    <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
+                    <!-- ID Partner -->
+                    <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
                     <div class="form-row">
                         <div class="col-md-6">
                             <div class="form-group mr-3 ml-3">
-                                <label>Nama Lengkap</label>
-                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" />
+                                <label>Nama Konsumen</label>
+                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mr-3 ml-3">
                                 <label>Nomor Telepon / Whatsapp</label>
-                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
+                                <input type="text" class="form-control <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
+                                <?= form_error('telepon') ?>
                             </div>
                         </div>
                     </div>
@@ -38,20 +43,20 @@
                             <div class="form-group mr-3 ml-3">
                                 <label>Produk</label>
                                 <select class="form-control" name="produk" id="produk">
-                                    <option selected>Kategori Produk</option>
-                                    <option value="My Ihram">My Ihram</option>
-                                    <option value="My Safar">My Safar</option>
-                                    <option value="My Talin">My Talin</option>
-                                    <option value="My Hajat">My Hajat</option>
-                                    <option value="My Faedah">My Faedah</option>
-                                    <option value="My CarS">My CarS</option>
+                                    <option value="" selected>Kategori Produk</option>
+                                    <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                    <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                    <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                    <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                    <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                    <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mr-3 ml-3">
                                 <label>Detail Produk</label>
-                                <input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
+                                <input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Detail produk" />
                             </div>
                         </div>
                     </div>
@@ -59,19 +64,19 @@
                         <div class="col-md-6">
                             <div class="form-group mr-3 ml-3">
                                 <label>Asal Aplikasi</label>
-                                <select class="form-control" name="soa" id="soa">
-                                    <option selected>Pilih Source Aplikasi</option>
-                                    <option value="Direct Selling">Direct Selling</option>
-                                    <option value="Tour & travel">Tour & travel</option>
-                                    <option value="Penyedia Jasa">Penyedia Jasa</option>
-                                    <option value="Agent BA">Agent BA</option>
-                                    <option value="EGC">EGC</option>
-                                    <option value="CGC">CGC</option>
-                                    <option value="Digital Marketing">Digital Marketing</option>
-                                    <option value="Website BFI Syariah">Website BFI Syariah</option>
-                                    <option value="RO">RO</option>
-                                    <option value="Walkin">Walkin</option>
-                                    <option value="Event">Event</option>
+                                <select class="form-control" name="soa" id="soa" required>
+                                    <option value="" selected>Pilih Source Aplikasi</option>
+                                    <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                    <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                    <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                    <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                    <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                    <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                    <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                    <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                    <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                    <option <?= set_value('soa') == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
+                                    <option <?= set_value('soa') == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
                                 </select>
                             </div>
                         </div>
@@ -80,7 +85,7 @@
                             <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                             <label class="ml-3 agent">Pilih Data Agent</label>
                             <div class="input-group ml-3 mr-3">
-                                <input type="text" class="form-control" name="id_partner" id="id_partner" required placeholder="aaaa" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                <input type="text" class="form-control" value="<?= set_value('nama_vendor') ?>" name="nama_vendor" id="nama_vendor" required placeholder="aaaa" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                 <div class="input-group-append mr-4">
                                     <button class="btn btn-primary modal-partner" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-partner"><span class="ion-ios7-search-strong"></span></button>
                                     <button class="btn btn-primary modal-agent" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-agent"><span class="ion-ios7-search-strong"></span></button>
@@ -90,13 +95,13 @@
                         <div class="col-md-6 event">
                             <div class="form-group ml-3 mr-3">
                                 <label>Nama Event</label>
-                                <input type="text" class="form-control" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+                                <input type="text" class="form-control" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
                             </div>
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
                         <div>
-                            <a href="leads.html" class="btn btn-secondary waves-effect waves-light">Batal</a>
+                            <a href="<?= base_url('leads') ?>" class="btn btn-secondary waves-effect waves-light">Batal</a>
                             <button type="submit" class="btn btn-primary waves-effect waves-light ml-1">
                                 Simpan
                             </button>
@@ -130,24 +135,18 @@
                             <th>Name Usaha</th>
                             <th>Kategori Produk</th>
                             <th>Telepon</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>PT Markibul</td>
-                            <td>My Safar</td>
-                            <td>0811977500</td>
-                        </tr>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>PT Markobar</td>
-                            <td>My Faedah</td>
-                            <td>0811977500</td>
-                        </tr>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>CV Antasari Ashar</td>
-                            <td>My Ihram</td>
-                            <td>0811977500</td>
-                        </tr>
+                        <?php foreach ($partners->result() as $partner) { ?>
+                            <tr>
+                                <td><?= $partner->nama_usaha ?></td>
+                                <td><?= $partner->kategori_produk ?></td>
+                                <td><?= $partner->telepon ?></td>
+                                <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -168,27 +167,19 @@
                 <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Usaha</th>
-                            <th>Kategori Produk</th>
+                            <th>Nama Lengkap</th>
                             <th>Telepon</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>PT Markibul</td>
-                            <td>My Safar</td>
-                            <td>0811977500</td>
-                        </tr>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>PT Markobar</td>
-                            <td>My Faedah</td>
-                            <td>0811977500</td>
-                        </tr>
-                        <tr class="clickable-row" data-href="partnership-form.html">
-                            <td>CV Antasari Ashar</td>
-                            <td>My Ihram</td>
-                            <td>0811977500</td>
-                        </tr>
+                        <?php foreach ($agents->result() as $agent) { ?>
+                            <tr>
+                                <td><?= $agent->nama_lengkap ?></td>
+                                <td><?= $agent->telepon ?></td>
+                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-nama="<?= $agent->nama_lengkap ?>">Pilih</button></td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -196,3 +187,66 @@
     </div>
 </div>
 <!-- Modal agent -->
+
+<script>
+    $("table").on('click', '.pilih-partner', function() {
+        $('#id_partner').val($(this).data('partner'));
+        $('#id_agent').val("");
+        $('#nama_vendor').val($(this).data('vendor'));
+        $('#modal-partner').modal('hide');
+    })
+    $("table").on('click', '.pilih-agent', function() {
+        $('#id_agent').val($(this).data('agent'));
+        $('#id_partner').val("");
+        $('#nama_vendor').val($(this).data('nama'));
+        $('#modal-agent').modal('hide');
+    })
+</script>
+
+<script>
+    $('.travel').hide();
+    $('.agent').hide();
+    $('.jasa').hide();
+    $('.event').hide();
+    $('.modal-agent').hide();
+    $('.modal-parnet').hide();
+    $('.form').hide();
+
+    source_lead();
+    $('#soa').change(function() {
+        source_lead();
+        $('#id_partner').val("");
+        $('#id_agent').val("");
+        $('#nama_vendor').val("").removeAttr("required");
+        $('#nama_event').val("");
+    })
+
+    function source_lead() {
+        if ($('#soa').val() == 'Tour & travel') {
+            $('.travel, .form, .modal-partner').show();
+            $('#id_partner').attr('placeholder', 'jalan - jalan')
+            $('.agent, .jasa, .event, .modal-agent').hide();
+            $('#nama_vendor').attr("required", "required");
+
+        } else if ($('#soa').val() == 'Penyedia Jasa') {
+            $('.jasa, .form, .modal-partner').show();
+            $('#id_partner').attr('placeholder', 'Jasa raharja')
+            $('.agent, .travel, .event, .modal-agent').hide();
+            $('#nama_vendor').attr("required", "required");
+
+        } else if ($('#soa').val() == 'Agent BA') {
+            $('.agent, .form, .modal-agent').show();
+            $('#id_partner').attr('placeholder', 'Ibrahim')
+            $('.jasa, .travel, .event, .modal-partner').hide();
+            $('#nama_vendor').attr("required", "required");
+
+        } else if ($('#soa').val() == 'Event') {
+            $('.event').show();
+            $('.jasa, .travel, .agent, .form').hide();
+            $('#nama_vendor').attr("required", "required");
+        } else {
+            $('.jasa, .travel, .agent, .form, .event').hide();
+            $('#nama_vendor').val("").removeAttr("required");
+        }
+    }
+</script>

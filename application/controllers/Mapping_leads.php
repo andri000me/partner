@@ -10,6 +10,8 @@ class Mapping_leads extends CI_Controller
     {
         parent::__construct();
         $this->load->model('mapping_leads_model', 'mapping_leads');
+        $this->load->model('partner_model');
+        $this->load->model('agent_model');
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -38,13 +40,19 @@ class Mapping_leads extends CI_Controller
 
     public function create()
     {
-        $this->template->load('template/index', 'leads-mapping-form');
+        $data = [
+            'agents' => $this->agent_model->get($this->where),
+            'partners' => $this->partner_model->get($this->where)
+        ];
+        $this->template->load('template/index', 'leads-mapping-form', $data);
     }
 
     public function edit($id)
     {
         $data = [
-            'data' => $this->mapping_leads->get(['A.id_mapping_leads' => $id])->row()
+            'data' => $this->mapping_leads->get(['A.id_mapping_leads' => $id])->row(),
+            'agents' => $this->agent_model->get($this->where),
+            'partners' => $this->partner_model->get($this->where)
         ];
         $this->template->load('template/index', 'leads-mapping-edit', $data);
     }
@@ -64,11 +72,15 @@ class Mapping_leads extends CI_Controller
                 'soa'                   => $post['soa'],
                 'produk'                => $post['produk'],
                 'detail_produk'         => $post['detail_produk'],
+                'nama_event'            => $post['nama_event'],
 
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
                 'updated_at'            => date('Y-m-d H:i:s'),
 
+                'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+                'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
+                'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
                 //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
                 'id_user'               => $this->fungsi->user_login()->id_user,
                 //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
@@ -83,7 +95,11 @@ class Mapping_leads extends CI_Controller
 
             redirect('Mapping_leads');
         } else {
-            $this->template->load('template/index', 'leads-mapping-form');
+            $data = [
+                'agents' => $this->agent_model->get($this->where),
+                'partners' => $this->partner_model->get($this->where),
+            ];
+            $this->template->load('template/index', 'leads-mapping-form', $data);
         }
     }
 
@@ -91,31 +107,36 @@ class Mapping_leads extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-            $data = [
-                'nama_konsumen'         => $post['nama_konsumen'],
-                'telepon'               => $post['telepon'],
-                'soa'                   => $post['soa'],
-                'produk'                => $post['produk'],
-                'detail_produk'         => $post['detail_produk'],
+        $data = [
+            'nama_konsumen'         => $post['nama_konsumen'],
+            'telepon'               => $post['telepon'],
+            'soa'                   => $post['soa'],
+            'produk'                => $post['produk'],
+            'detail_produk'         => $post['detail_produk'],
+            'nama_event'            => $post['nama_event'],
 
-                //Timestamp
-                // 'created_at'            => date('Y-m-d H:i:s'),
-                'updated_at'            => date('Y-m-d H:i:s'),
+            //Timestamp
+            // 'created_at'            => date('Y-m-d H:i:s'),
+            'updated_at'            => date('Y-m-d H:i:s'),
 
-                //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-                'id_user'               => $this->fungsi->user_login()->id_user,
-                //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-                'id_branch'             => $this->fungsi->user_login()->id_branch
-            ];
+            'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL
 
-            $where = ['id_mapping_leads' => $post['id_mapping_leads']];
+            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
+            // 'id_user'               => $this->fungsi->user_login()->id_user,
+            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
+            // 'id_branch'             => $this->fungsi->user_login()->id_branch
+        ];
 
-            //Memasukkan data mapping ke database `leadss`
-            $id = $this->mapping_leads->update($data, $where);
+        $where = ['id_mapping_leads' => $post['id_mapping_leads']];
 
-            //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Data Mapping Leads berhasil diupdate. <a href='#'>Lihat Data</a>");
+        //Memasukkan data mapping ke database `leadss`
+        $id = $this->mapping_leads->update($data, $where);
 
-            redirect('Mapping_leads');
+        //Memberi pesan berhasil data menyimpan data mapping
+        $this->session->set_flashdata("berhasil_simpan", "Data Mapping Leads berhasil diupdate. <a href='#'>Lihat Data</a>");
+
+        redirect('Mapping_leads');
     }
 }

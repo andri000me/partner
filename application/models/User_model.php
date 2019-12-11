@@ -18,6 +18,7 @@ class User_model extends CI_Model
     public function get_all()
     {
         $this->db->from('users');
+        $this->db->join('branches', 'branches.id_branch = users.id_branch', 'inner');
         $query = $this->db->get();
 
         return $query;
