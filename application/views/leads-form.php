@@ -92,7 +92,7 @@
                                             <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                             <label class="ml-3 agent">Pilih Data Agent</label>
                                             <div class="input-group ml-3 mr-3">
-                                                <input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="aaaa" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                <input type="text" class="form-control" name="data_partner" id="data_partner" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                                 <div class="input-group-append mr-4">
                                                     <button class="btn btn-primary modal-partner" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-partner"><span class="ion-ios7-search-strong"></span></button>
                                                     <button class="btn btn-primary modal-agent" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-agent"><span class="ion-ios7-search-strong"></span></button>
@@ -175,7 +175,7 @@
                                                 <select class="form-control" name="pic_ttd" id="pic_ttd">
                                                     <option value="" selected>Pilih Pic Tanda Tangan</option>
                                                     <?php foreach ($users->result() as $user) { ?>
-                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -186,7 +186,7 @@
                                                 <select class="form-control" name="surveyor" id="surveyor">
                                                     <option value="" selected>Pilih Surveyor</option>
                                                     <?php foreach ($users->result() as $user) { ?>
-                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -436,20 +436,21 @@
         $('#id_agent').val("");
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
+        $('#data_partner').val("");
     })
 
     function source_leads() {
         if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .modal-partner').show();
-            $('#id_partner').attr('placeholder', 'jalan - jalan')
+            // $('#id_partner').attr('placeholder', 'jalan - jalan')
             $('.agent, .jasa, .event, .modal-agent').hide();
         } else if ($('#soa').val() == 'Penyedia Jasa') {
             $('.jasa, .form, .modal-partner').show();
-            $('#id_partner').attr('placeholder', 'Jasa raharja')
+            // $('#id_partner').attr('placeholder', 'Jasa raharja')
             $('.agent, .travel, .event, .modal-agent').hide();
         } else if ($('#soa').val() == 'Agent BA') {
             $('.agent, .form, .modal-agent').show();
-            $('#id_partner').attr('placeholder', 'Ibrahim')
+            // $('#id_partner').attr('placeholder', 'Ibrahim')
             $('.jasa, .travel, .event, .modal-partner').hide();
         } else if ($('#soa').val() == 'Event') {
             $('.event').show();
@@ -465,12 +466,14 @@
         $('#id_partner').val($(this).data('partner'));
         $('#id_agent').val("");
         $('#nama_vendor').val($(this).data('vendor'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val("");
         $('#nama_vendor').val($(this).data('nama'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#modal-agent').modal('hide');
     })
     $("table").on('click', '.pilih-leads', function() {
@@ -478,7 +481,7 @@
         $('#soa').val($(this).data('soa'));
         $('#produk').val($(this).data('produk'));
         $('#telepon').val($(this).data('telepon'));
-        $('#data_partner').val($(this).data('partner'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#detail_produk').val($(this).data('detail'));
         $('#nama_event').val($(this).data('event'));
         $('#nama_konsumen').val($(this).data('nama'));

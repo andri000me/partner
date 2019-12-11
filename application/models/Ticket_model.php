@@ -46,6 +46,7 @@ class Ticket_model extends CI_Model
             WHEN tickets.id_partner IS NOT NULL THEN 'Partner'
             WHEN tickets.id_agent IS NOT NULL THEN 'Agent'
             WHEN tickets.id_leads IS NOT NULL THEN 'Leads'
+            WHEN tickets.id_nst IS NOT NULL THEN 'NST'
         END) as aktivitas_cabang 
         ");
         $this->db->from('tickets');
@@ -55,6 +56,8 @@ class Ticket_model extends CI_Model
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
         // Join Table `Leads`
         $this->db->join('leads', 'leads.id_leads = tickets.id_leads', 'left');
+        // Join Table `Leads`
+        $this->db->join('nst', 'nst.id_nst = tickets.id_nst', 'left');
         // Join Table `Users`
         $this->db->join('users', 'users.id_user = tickets.id_user', 'left');
         // Join Table `Users` (untuk id_user siapa yang meng-approve data tiket)

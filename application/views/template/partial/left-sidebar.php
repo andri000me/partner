@@ -6,7 +6,7 @@
         <ul class="metismenu" id="side-menu">
             <li class="menu-title">Informasi</li>
             <li>
-                <a href="<?= base_url('#') ?>" class="waves-effect">
+                <a href="#" class="waves-effect">
                     <i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
                 </a>
             </li>
@@ -61,7 +61,7 @@
             </li>
 
             <li>
-                <a href="<?= base_url('') ?>" class="waves-effect">
+                <a href="<?= base_url('nst') ?>" class="waves-effect">
                     <i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
                 </a>
             </li>
