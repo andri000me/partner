@@ -13,13 +13,15 @@
 				<div class="tab-pane active p-3" id="home2" role="tabpanel">
 					<form class="" action="<?= base_url('Leads/update_detail') ?>">
 						<div class="form-row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
 									<label>Leads ID</label>
 									<input type="text" class="form-control placement" name="leads_id" id="leads_id" required placeholder="009377736433744" maxlength="15">
 								</div>
 							</div>
-							<div class="col-md-6">
+						</div>
+						<div class="form-row">
+							<div class="col-md-12">
 								<label class="ml-3">Nama Konsumen</label>
 								<div class="input-group ml-3 mb-3">
 									<input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
@@ -30,19 +32,21 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>ID KTP</label>
 									<input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Telepon / Whatsapp</label>
 									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
 								</div>
 							</div>
-							<div class="col-md-3">
+						</div>
+						<div class="form-row">
+							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
 									<label>Asal Aplikasi</label>
 									<select class="form-control" name="soa" id="soa">
@@ -61,7 +65,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-3 form">
+							<div class="col-md-6 form">
 								<label class="ml-3 travel">Pilih Data Travel</label>
 								<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
 								<label class="ml-3 agent">Pilih Data Agent</label>
@@ -73,7 +77,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3 event">
+							<div class="col-md-6 event">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Event</label>
 									<input type="text" class="form-control" name="nama_event" id="nama_event" placeholder="Input Nama Event">
@@ -81,7 +85,7 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
 									<label>Produk</label>
 									<select class="form-control" name="produk" id="produk">
@@ -95,13 +99,15 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
 									<label>Detail Produk</label>
 									<input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
 								</div>
 							</div>
-							<div class="col-md-6">
+						</div>
+						<div class="form-row">
+							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
 									<label>Follow Up By</label>
 									<select class="form-control" name="follow_up_by" id="follow_up_by" required>
@@ -115,7 +121,7 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3 posisi">
 									<label>Cross Branch?</label><br>
 									<div class="form-check form-check-inline mt-2">
@@ -132,7 +138,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div id="hide" class="form-group ml-3 mr-3">
 									<label>Pilih cabang</label>
 									<select class="form-control" name="cabang_cross" id="cabang_cross">
@@ -143,7 +149,9 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-3">
+						</div>
+						<div class="form-row">
+							<div class="col-md-6">
 								<div id="hide" class="form-group ml-3 mr-3">
 									<label>Pic Tanda Tangan</label>
 									<select class="form-control" name="pic_ttd" id="pic_ttd">
@@ -154,7 +162,7 @@
 									</select>
 								</div>
 							</div>
-							<div class="col-md-3">
+							<div class="col-md-6">
 								<div id="hide" class="form-group ml-3 mr-3">
 									<label>Surveyor</label>
 									<select class="form-control" name="surveyor" id="surveyor">
@@ -173,7 +181,7 @@
 									<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000">
 								</div>
 							</div>
-							<div class="col-md-2">
+							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3 posisi">
 									<label>Appeal NST</label><br>
 									<div class="form-check form-check-inline mt-2">
@@ -190,6 +198,11 @@
 									</div>
 								</div>
 							</div>
+						</div>
+						<div class="form-group mb-0 mt-2 float-right btn-maintain">
+							<button type="submit" class="btn btn-primary waves-effect waves-light text-size">
+								Simpan
+							</button>
 						</div>
 					</form>
 				</div>
@@ -247,62 +260,6 @@
 									<div class="inbox-wid">
 										<div class="inbox-item">
 											<table class="web">
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 text-size">
-															<b>Perubahan pada data Partner</b></p>
-													</td>
-													<td>
-														<p class="inbox-item-date text-muted mt-1 text-size">
-															30 Des, 2019</p>
-													</td>
-												</tr>
-												<tr>
-													<td>
-
-													</td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0 text-size">
-															Oleh&nbsp;&nbsp;Ibrahim Ahmad Jabar Khaidiru
-															Sobari
-
-														</p>
-													</td>
-													<td>
-
-													</td>
-												</tr>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 text-size">
-															<b>Perubahan pada data Partner</b></p>
-													</td>
-													<td>
-														<p class="inbox-item-date text-muted mt-1 text-size">
-															30 Des, 2019</p>
-													</td>
-												</tr>
-												<tr>
-													<td>
-
-													</td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0 text-size">
-															Oleh&nbsp;&nbsp;Ibrahim Ahmad Jabar Khaidiru
-															Sobari
-
-														</p>
-													</td>
-													<td>
-
-													</td>
-												</tr>
 												<tr>
 													<td>
 														<p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
