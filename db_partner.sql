@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-12-06 14:31:53
+# Date: 2019-12-11 08:43:40
 # Generator: MySQL-Front 6.1  (Build 1.26)
 
 
@@ -21,40 +21,6 @@ CREATE TABLE `branches` (
 INSERT INTO `branches` VALUES (1,'Balikpapan Syariah',''),(2,'Bandung Syariah','0'),(3,'Banjarmasin Syariah','0'),(4,'Batam Syariah','0'),(5,'Bekasi Syariah','0'),(6,'Bogor Syariah','0'),(7,'BSD Syariah','0'),(8,'BukitTinggi Syariah','0'),(9,'Cawang Syariah','0'),(10,'Cirebon Syariah','0'),(11,'Depok Syariah','0'),(12,'Gorontalo Syariah','0'),(13,'Gresik Syariah','0'),(14,'Jakarta Selatan Syariah','0'),(15,'Jakarta Utara Syariah','0'),(16,'Jambi Syariah','0'),(17,'Karawang Syariah','0'),(18,'Kediri Syariah','0'),(19,'Kendari Syariah','0'),(20,'Kudus Syariah','0'),(21,'Lampung Syariah','0'),(22,'Makassar Syariah','0'),(23,'Malang Syariah','0'),(24,'Mataram Syariah','0'),(25,'Medan Syariah','0'),(26,'Meruya Syariah','0'),(27,'Mojokerto Syariah','0'),(28,'Padang Syariah','0'),(29,'Palangkaraya Syariah','0'),(30,'Palembang Syariah','0'),(31,'Pekanbaru Syariah','0'),(32,'Pontianak Syariah','0'),(33,'Purwokerto Syariah','0'),(34,'Samarinda Syariah','0'),(35,'Semarang Syariah','0'),(36,'Sidoarjo Syariah','0'),(37,'Solo Syariah','0'),(38,'Sorong Syariah','0'),(39,'Sukabumi Syariah','0'),(40,'Sunter Syariah','0'),(41,'Surabaya Syariah','0'),(42,'Tangerang Syariah','0'),(43,'Tasikmalaya Syariah','0'),(44,'Ternate Syariah','0'),(45,'Yogyakarta Syariah','0'),(46,'Head Office','0');
 
 #
-# Structure for table "leads"
-#
-
-CREATE TABLE `leads` (
-  `id_leads` int(11) NOT NULL AUTO_INCREMENT,
-  `follow_up_by` varchar(255) DEFAULT NULL COMMENT 'Kunjungan / Telepon / Whatsapp / Email',
-  `no_ktp` varchar(255) DEFAULT NULL,
-  `ktp` varchar(255) DEFAULT NULL COMMENT 'Upload File',
-  `selfie_foto` varchar(255) DEFAULT NULL COMMENT 'Upload File',
-  `foto_penyedia_jasa` varchar(255) DEFAULT '' COMMENT 'Upload File',
-  `leads_id` varchar(255) DEFAULT NULL,
-  `cross_branch` varchar(255) DEFAULT 'Yes / No',
-  `cabang_cross` int(3) DEFAULT NULL COMMENT 'Foreign key cabang dari table branches',
-  `surveyor` int(11) DEFAULT NULL,
-  `pic_ttd` int(11) DEFAULT NULL,
-  `appeal_nst` varchar(255) DEFAULT NULL COMMENT 'ya/tidak',
-  `status` enum('draft','lengkap') DEFAULT NULL,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  `id_mapping_leads` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_leads`),
-  UNIQUE KEY `leads_id` (`leads_id`),
-  UNIQUE KEY `no_ktp` (`no_ktp`),
-  KEY `cabang_cross` (`cabang_cross`),
-  KEY `surveyor` (`surveyor`),
-  KEY `pic_ttd` (`pic_ttd`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
-
-#
-# Data for table "leads"
-#
-
-
-#
 # Structure for table "leads_activities"
 #
 
@@ -65,12 +31,13 @@ CREATE TABLE `leads_activities` (
   `id_leads` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_lead_activity`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "leads_activities"
 #
 
+INSERT INTO `leads_activities` VALUES (14,'Data leads telah dibuat','2019-12-10 09:07:53',9,26),(15,'Data leads telah dibuat','2019-12-10 09:18:42',14,26),(16,'Data leads telah dibuat','2019-12-10 09:45:05',15,26),(17,'Data leads telah dibuat','2019-12-10 10:04:39',16,26),(18,'Perubahan pada data leads','2019-12-10 10:49:25',16,26),(19,'Perubahan pada data leads','2019-12-10 10:53:54',16,26);
 
 #
 # Structure for table "merchants"
@@ -158,7 +125,7 @@ CREATE TABLE `maintain_partners` (
   PRIMARY KEY (`id_maintain`),
   KEY `id_partner` (`id_partner`),
   CONSTRAINT `maintain_partners_ibfk_1` FOREIGN KEY (`id_partner`) REFERENCES `partners` (`id_partner`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "maintain_partners"
@@ -184,7 +151,9 @@ CREATE TABLE `users` (
   `foto` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `nik` (`nik`)
+  UNIQUE KEY `nik` (`nik`),
+  KEY `id_branch` (`id_branch`),
+  CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 #
@@ -226,29 +195,66 @@ CREATE TABLE `mapping_partners` (
 INSERT INTO `mapping_partners` VALUES (13,'PT DON','Teknologi dan Informasi','Pusat Pengembangan Ilmu Pengetahuan dan Teknologi','089827812213123','don.sabda@gmail.com','My Hajat','Catatan','2019-12-03 14:11:44','2019-12-03 14:11:44',7,26),(14,'CV Ibrahim','Teknologi dan Informasi','Pusat Pengembangan Ilmu Pengetahuan dan Teknologi','123127812771243','ibrahim.ahmadd98@gmail.com','My Safar','','2019-12-04 11:06:07','2019-12-04 11:06:07',7,26),(15,'PT OCCY ADITYA','Digital marketing','Pabuaran Sibang','087809974805','ibrahim.ahmad58@gmail.com','My Safar','asdasd','2019-12-05 10:41:30','2019-12-05 10:41:30',7,26),(16,'PT Ahmad','Foto Copy','Pabuaran Sibang','081310590242','ahmad@gmail.com','My Talim','','2019-12-06 08:31:37','2019-12-06 08:31:37',7,26);
 
 #
-# Structure for table "mapping_leads"
+# Structure for table "leads"
 #
 
-CREATE TABLE `mapping_leads` (
-  `id_mapping_leads` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_konsumen` varchar(255) DEFAULT NULL,
-  `telepon` varchar(255) DEFAULT NULL,
-  `soa` varchar(255) DEFAULT NULL,
-  `produk` varchar(255) DEFAULT NULL,
-  `detail_produk` text DEFAULT NULL,
+CREATE TABLE `leads` (
+  `id_leads` int(11) NOT NULL AUTO_INCREMENT,
+  `follow_up_by` varchar(255) DEFAULT NULL COMMENT 'Kunjungan / Telepon / Whatsapp / Email',
+  `no_ktp` varchar(255) DEFAULT NULL,
+  `leads_id` varchar(255) DEFAULT NULL,
+  `cross_branch` varchar(255) DEFAULT 'Yes / No',
+  `cabang_cross` int(3) DEFAULT NULL COMMENT 'Foreign key cabang dari table branches',
+  `surveyor` int(11) DEFAULT NULL COMMENT 'Foreign key id_user dari table users',
+  `pic_ttd` int(11) DEFAULT NULL COMMENT 'Foreign key id_user dari table users',
+  `appeal_nst` varchar(255) DEFAULT NULL COMMENT 'ya/tidak',
+  `nilai_funding` bigint(20) DEFAULT NULL,
+  `status` enum('draft','lengkap') DEFAULT NULL,
+  `ktp` varchar(255) DEFAULT NULL COMMENT 'Upload File',
+  `selfie_foto` varchar(255) DEFAULT NULL COMMENT 'Upload File',
+  `foto_penyedia_jasa` varchar(255) DEFAULT NULL COMMENT 'Upload File',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
-  `id_branch` int(3) DEFAULT NULL,
-  `id_user` int(3) DEFAULT NULL,
-  PRIMARY KEY (`id_mapping_leads`),
-  KEY `id_branch` (`id_branch`),
-  KEY `id_user` (`id_user`),
-  CONSTRAINT `mapping_leads_ibfk_1` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `mapping_leads_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+  `id_mapping_leads` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_leads`),
+  UNIQUE KEY `leads_id` (`leads_id`),
+  UNIQUE KEY `no_ktp` (`no_ktp`),
+  KEY `cabang_cross` (`cabang_cross`),
+  KEY `surveyor` (`surveyor`),
+  KEY `pic_ttd` (`pic_ttd`),
+  CONSTRAINT `leads_ibfk_1` FOREIGN KEY (`cabang_cross`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `leads_ibfk_2` FOREIGN KEY (`surveyor`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `leads_ibfk_3` FOREIGN KEY (`pic_ttd`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 #
-# Data for table "mapping_leads"
+# Data for table "leads"
+#
+
+INSERT INTO `leads` VALUES (9,'kunjungan',NULL,'201912SLOS12345','Ya',20,NULL,163,'Ya',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:07:53','2019-12-10 09:07:53',12),(11,'Telepon','1894798174981729','201912SLOS01234','Tidak',NULL,163,163,'Tidak',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:12:47','2019-12-10 09:12:47',11),(14,'Telepon','1894798174981231','201912SLOS01123','Tidak',NULL,1,1,'Tidak',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:18:42','2019-12-10 09:18:42',0),(15,'Kunjungan','3601832749872349','201912SLOS98651','Ya',42,185,26,'Ya',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:45:04','2019-12-10 09:45:04',7),(16,'Whatsapp','1987981274019824','56','Ya',14,160,173,'Ya',500000067,'lengkap',NULL,NULL,NULL,'2019-12-10 10:04:39','2019-12-10 10:53:54',6);
+
+#
+# Structure for table "nst"
+#
+
+CREATE TABLE `nst` (
+  `id_nst` int(11) NOT NULL AUTO_INCREMENT,
+  `leads_id` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_branch` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_nst`),
+  KEY `leads_id` (`leads_id`),
+  KEY `id_user` (`id_user`),
+  KEY `id_branch` (`id_branch`),
+  CONSTRAINT `nst_ibfk_1` FOREIGN KEY (`leads_id`) REFERENCES `leads` (`leads_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `nst_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `nst_ibfk_3` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "nst"
 #
 
 
@@ -264,6 +270,7 @@ CREATE TABLE `comments` (
   `id_user` int(6) DEFAULT NULL,
   `id_agent` int(11) DEFAULT NULL,
   `id_partner` int(11) DEFAULT NULL,
+  `id_leads` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_comment`),
   KEY `id_user` (`id_user`),
   KEY `id_partner` (`id_agent`),
@@ -274,7 +281,7 @@ CREATE TABLE `comments` (
 # Data for table "comments"
 #
 
-INSERT INTO `comments` VALUES (1675,'Agent ID 14 mohon di approve trims.','2019-12-03 14:22:29',0,26,NULL,NULL),(1676,'Siap pak Agent ID 14 siap untuk di-approve','2019-12-03 14:38:37',0,17,NULL,NULL),(1677,'Agent ID 15','2019-12-04 11:18:12',0,26,15,NULL),(1678,'ID partner 34','2019-12-05 09:41:37',0,26,NULL,34),(1679,'id partner 36','2019-12-05 13:08:59',0,1,NULL,36),(1680,'hi sayang','2019-12-05 13:09:29',0,1,NULL,36),(1681,'i love you','2019-12-05 13:09:45',0,1,NULL,36);
+INSERT INTO `comments` VALUES (1675,'Agent ID 14 mohon di approve trims.','2019-12-03 14:22:29',0,26,NULL,NULL,NULL),(1676,'Siap pak Agent ID 14 siap untuk di-approve','2019-12-03 14:38:37',0,17,NULL,NULL,NULL),(1677,'Agent ID 15','2019-12-04 11:18:12',0,26,15,NULL,NULL),(1678,'ID partner 34','2019-12-05 09:41:37',0,26,NULL,34,NULL),(1679,'id partner 36','2019-12-05 13:08:59',0,1,NULL,36,NULL),(1680,'hi sayang','2019-12-05 13:09:29',0,1,NULL,36,NULL),(1681,'i love you','2019-12-05 13:09:45',0,1,NULL,36,NULL);
 
 #
 # Structure for table "userss"
@@ -295,8 +302,7 @@ CREATE TABLE `userss` (
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `nik` (`nik`),
-  KEY `id_branch` (`id_branch`),
-  CONSTRAINT `userss_ibfk_1` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`)
+  KEY `id_branch` (`id_branch`)
 ) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 #
@@ -338,13 +344,13 @@ CREATE TABLE `login_log` (
   PRIMARY KEY (`id_login_log`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=89 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "login_log"
 #
 
-INSERT INTO `login_log` VALUES (1,'0000-00-00 00:00:00',26),(2,'2019-11-20 02:49:49',26),(3,'2019-11-21 05:33:42',26),(4,'2019-11-21 08:35:13',26),(5,'2019-11-21 08:39:01',26),(6,'2019-11-22 08:53:40',26),(7,'2019-11-22 19:22:43',26),(8,'2019-11-22 22:04:45',26),(9,'2019-11-23 09:28:11',26),(10,'2019-11-23 10:06:55',17),(11,'2019-11-23 11:51:22',26),(12,'2019-11-23 14:52:05',26),(13,'2019-11-23 22:18:31',26),(14,'2019-11-24 13:38:30',26),(15,'2019-11-25 08:44:59',26),(16,'2019-11-25 19:16:47',26),(17,'2019-11-26 08:28:26',26),(18,'2019-11-26 13:20:53',17),(19,'2019-11-26 13:30:26',26),(20,'2019-11-26 13:31:03',26),(21,'2019-11-26 13:32:36',1),(22,'2019-11-26 14:14:02',26),(23,'2019-11-26 14:15:34',26),(24,'2019-11-26 14:27:15',11),(25,'2019-11-27 09:06:52',17),(26,'2019-11-27 09:08:36',26),(27,'2019-11-27 09:09:05',11),(28,'2019-11-27 13:20:25',26),(29,'2019-11-28 10:21:38',26),(30,'2019-11-28 15:55:51',26),(31,'2019-11-29 09:27:17',26),(32,'2019-11-29 13:40:46',26),(33,'2019-11-30 09:16:47',26),(34,'2019-12-02 08:45:54',26),(35,'2019-12-02 15:01:55',26),(36,'2019-12-02 15:15:04',11),(37,'2019-12-02 15:26:14',26),(38,'2019-12-02 15:46:18',1),(39,'2019-12-03 10:44:22',11),(40,'2019-12-03 10:57:48',1),(41,'2019-12-03 13:31:39',26),(42,'2019-12-03 13:32:06',1),(43,'2019-12-03 13:45:34',11),(44,'2019-12-03 13:58:57',26),(45,'2019-12-03 13:59:42',26),(46,'2019-12-03 14:00:13',17),(47,'2019-12-03 14:07:55',26),(48,'2019-12-03 14:21:15',17),(49,'2019-12-03 14:21:47',26),(50,'2019-12-03 14:22:38',26),(51,'2019-12-03 14:22:58',17),(52,'2019-12-03 15:56:28',26),(53,'2019-12-03 15:56:54',26),(54,'2019-12-03 15:57:25',17),(55,'2019-12-04 11:03:57',26),(56,'2019-12-04 11:17:04',26),(57,'2019-12-04 11:33:21',17),(58,'2019-12-04 13:38:59',26),(59,'2019-12-04 14:44:33',26),(60,'2019-12-04 14:44:45',17),(61,'2019-12-05 08:41:47',26),(62,'2019-12-05 09:41:55',17),(63,'2019-12-05 09:44:14',1),(64,'2019-12-05 10:21:14',26),(65,'2019-12-05 13:06:54',17),(66,'2019-12-05 13:07:10',1),(67,'2019-12-05 13:20:45',26),(68,'2019-12-05 13:55:38',1),(69,'2019-12-05 15:51:45',26),(70,'2019-12-05 15:55:24',26),(71,'2019-12-05 15:56:12',11),(72,'2019-12-05 16:01:02',26),(73,'2019-12-05 16:01:35',2),(74,'2019-12-05 16:05:44',11),(75,'2019-12-05 16:08:41',1),(76,'2019-12-05 16:10:01',26),(77,'2019-12-05 16:30:19',26),(78,'2019-12-05 16:30:25',1),(79,'2019-12-05 16:44:03',26),(80,'2019-12-06 08:14:56',26),(81,'2019-12-06 09:03:28',2),(82,'2019-12-06 09:06:03',26),(83,'2019-12-06 09:38:46',11),(84,'2019-12-06 09:39:03',26);
+INSERT INTO `login_log` VALUES (1,'0000-00-00 00:00:00',26),(2,'2019-11-20 02:49:49',26),(3,'2019-11-21 05:33:42',26),(4,'2019-11-21 08:35:13',26),(5,'2019-11-21 08:39:01',26),(6,'2019-11-22 08:53:40',26),(7,'2019-11-22 19:22:43',26),(8,'2019-11-22 22:04:45',26),(9,'2019-11-23 09:28:11',26),(10,'2019-11-23 10:06:55',17),(11,'2019-11-23 11:51:22',26),(12,'2019-11-23 14:52:05',26),(13,'2019-11-23 22:18:31',26),(14,'2019-11-24 13:38:30',26),(15,'2019-11-25 08:44:59',26),(16,'2019-11-25 19:16:47',26),(17,'2019-11-26 08:28:26',26),(18,'2019-11-26 13:20:53',17),(19,'2019-11-26 13:30:26',26),(20,'2019-11-26 13:31:03',26),(21,'2019-11-26 13:32:36',1),(22,'2019-11-26 14:14:02',26),(23,'2019-11-26 14:15:34',26),(24,'2019-11-26 14:27:15',11),(25,'2019-11-27 09:06:52',17),(26,'2019-11-27 09:08:36',26),(27,'2019-11-27 09:09:05',11),(28,'2019-11-27 13:20:25',26),(29,'2019-11-28 10:21:38',26),(30,'2019-11-28 15:55:51',26),(31,'2019-11-29 09:27:17',26),(32,'2019-11-29 13:40:46',26),(33,'2019-11-30 09:16:47',26),(34,'2019-12-02 08:45:54',26),(35,'2019-12-02 15:01:55',26),(36,'2019-12-02 15:15:04',11),(37,'2019-12-02 15:26:14',26),(38,'2019-12-02 15:46:18',1),(39,'2019-12-03 10:44:22',11),(40,'2019-12-03 10:57:48',1),(41,'2019-12-03 13:31:39',26),(42,'2019-12-03 13:32:06',1),(43,'2019-12-03 13:45:34',11),(44,'2019-12-03 13:58:57',26),(45,'2019-12-03 13:59:42',26),(46,'2019-12-03 14:00:13',17),(47,'2019-12-03 14:07:55',26),(48,'2019-12-03 14:21:15',17),(49,'2019-12-03 14:21:47',26),(50,'2019-12-03 14:22:38',26),(51,'2019-12-03 14:22:58',17),(52,'2019-12-03 15:56:28',26),(53,'2019-12-03 15:56:54',26),(54,'2019-12-03 15:57:25',17),(55,'2019-12-04 11:03:57',26),(56,'2019-12-04 11:17:04',26),(57,'2019-12-04 11:33:21',17),(58,'2019-12-04 13:38:59',26),(59,'2019-12-04 14:44:33',26),(60,'2019-12-04 14:44:45',17),(61,'2019-12-05 08:41:47',26),(62,'2019-12-05 09:41:55',17),(63,'2019-12-05 09:44:14',1),(64,'2019-12-05 10:21:14',26),(65,'2019-12-05 13:06:54',17),(66,'2019-12-05 13:07:10',1),(67,'2019-12-05 13:20:45',26),(68,'2019-12-05 13:55:38',1),(69,'2019-12-05 15:51:45',26),(70,'2019-12-05 15:55:24',26),(71,'2019-12-05 15:56:12',11),(72,'2019-12-05 16:01:02',26),(73,'2019-12-05 16:01:35',2),(74,'2019-12-05 16:05:44',11),(75,'2019-12-05 16:08:41',1),(76,'2019-12-05 16:10:01',26),(77,'2019-12-05 16:30:19',26),(78,'2019-12-05 16:30:25',1),(79,'2019-12-05 16:44:03',26),(80,'2019-12-06 08:14:56',26),(81,'2019-12-06 09:03:28',2),(82,'2019-12-06 09:06:03',26),(83,'2019-12-06 09:38:46',11),(84,'2019-12-06 09:39:03',26),(85,'2019-12-09 10:27:47',26),(86,'2019-12-09 14:19:27',26),(87,'2019-12-10 08:11:19',26),(88,'2019-12-11 08:25:07',26);
 
 #
 # Structure for table "agents"
@@ -399,6 +405,41 @@ CREATE TABLE `agents` (
 INSERT INTO `agents` VALUES (14,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmadd98@gmail.com','2011-07-13','3698273942794872','234233523534435','Swasta','Karyawan Swasta','Syariah Ambassador','Milik Sendiri',3000000,'Ya','Ya','Ya','Ada','Pernah','1236010042342342','Bank Negara Indonesia','ITC BSD','Ibra Kadabra','','','','',NULL,'2019-12-03 14:15:19','2019-12-03 15:02:39',26,7),(15,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmadd58@gmail.com','2019-12-18','3603222019301942','093429902837501','Freelance','Freelance','Syariah Agent','Milik Sendiri',123123123213123,'Ya','Ya','Ya','Ada','Pernah','1212312312314242','Bank Negara Indonesia','OKEOKE','Anton','','','','',NULL,'2019-12-04 11:07:25','2019-12-04 11:07:25',26,7),(16,'Ibrahim Ahmad','NULL',NULL,'okky.aditya@gmail.com','2019-12-12','8732589207509827','175873495087349','Wiraswasta','Pekerja','Syariah Ambassador','Milik Keluarga',6000000,'Ya','Ya','Ya','Ada','Pernah','7123598729053872','bANK','tANGERANG','iBRA','bfi_syariah.jpg','gede.JPG','leads.JPG','Logo-BFI-768x768.jpeg',NULL,'2019-12-05 08:47:08','2019-12-05 08:47:08',26,7),(17,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmad58@gmail.com','2019-12-12','2973492837492875','283572983759283','Swasta','Swasta','Syariah Agent','Milik Sendiri',5645454547,'Ya','Tidak','Ya','Ada','Pernah','3463463463463463','Bank Negara Indonesia','OKEOKE','Ibra','aaa.JPG','','register.png','76207029_ML.jpg',NULL,'2019-12-05 09:24:26','2019-12-05 09:24:26',26,7),(18,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmad988@gmail.com','2019-12-17','1749187492174928','123131231312123','Wiraswasta','Pekerja Rumah Tangga','Syariah Agent','Milik Keluarga',9000000,'Ya','Ya','Ya','Ada','Pernah','1212312312314212','Bank Negara Indonesia','OKEOKE','asdasdasd','14613779_ML.jpg','26345152_ML.jpg','39648233_ML.jpg','76207029_ML1.jpg',NULL,'2019-12-05 15:58:34','2019-12-05 16:08:20',11,7);
 
 #
+# Structure for table "mapping_leads"
+#
+
+CREATE TABLE `mapping_leads` (
+  `id_mapping_leads` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_konsumen` varchar(255) DEFAULT NULL,
+  `telepon` varchar(255) DEFAULT NULL,
+  `soa` varchar(255) DEFAULT NULL,
+  `produk` varchar(255) DEFAULT NULL,
+  `detail_produk` text DEFAULT NULL,
+  `nama_event` varchar(255) DEFAULT NULL COMMENT 'Nama Event wajib diisi jika SOA event dipilih',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `id_branch` int(3) DEFAULT NULL,
+  `id_user` int(3) DEFAULT NULL,
+  `id_partner` int(11) DEFAULT NULL,
+  `id_agent` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_mapping_leads`),
+  KEY `id_branch` (`id_branch`),
+  KEY `id_user` (`id_user`),
+  KEY `id_partner` (`id_partner`),
+  KEY `id_agent` (`id_agent`),
+  CONSTRAINT `mapping_leads_ibfk_1` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mapping_leads_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mapping_leads_ibfk_3` FOREIGN KEY (`id_partner`) REFERENCES `partners` (`id_partner`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `mapping_leads_ibfk_4` FOREIGN KEY (`id_agent`) REFERENCES `agents` (`id_agent`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+#
+# Data for table "mapping_leads"
+#
+
+INSERT INTO `mapping_leads` VALUES (6,'Okky Aditya Wibowo','08982781277121','Agent BA','My Ihram','Safar','DWP','2019-12-09 14:35:53','2019-12-10 10:53:54',7,26,NULL,NULL),(7,'MY HAJAT','089827812771414','Tour & travel','My Hajat','Safar',NULL,'2019-12-09 14:37:14','2019-12-10 09:45:04',7,26,NULL,NULL),(9,'Okky Aditya Berwibawa','08982781277122','Tour & travel','My Safar','Safar',NULL,'2019-12-09 14:39:10','2019-12-10 10:49:25',7,26,NULL,NULL),(10,'Okky Aditya Berwibawa','089827812771212','Agent BA','My Talim','Safar',NULL,'2019-12-09 14:40:19','2019-12-09 14:40:19',7,26,NULL,15),(11,'asdasd','089827812771123','Agent BA','My Safar','Safar asd',NULL,'2019-12-09 15:34:39','2019-12-10 09:13:03',7,26,NULL,NULL),(12,'Okky Aditya Berwibawa','089827887957293','Event','My Ihram','Safar','JWP','2019-12-09 15:38:39','2019-12-10 09:08:20',7,26,NULL,NULL);
+
+#
 # Structure for table "tickets"
 #
 
@@ -433,13 +474,13 @@ CREATE TABLE `tickets` (
   CONSTRAINT `tickets_ibfk_4` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`id_leads`) REFERENCES `leads` (`id_leads`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_6` FOREIGN KEY (`verified_by`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "tickets"
 #
 
-INSERT INTO `tickets` VALUES (12,'Belum','2019-12-03 14:15:19',NULL,'2019-12-03 14:22:47',NULL,'2019-12-03 15:41:22','2019-12-05 15:48:17','2019-12-05 13:54:33',5,NULL,14,NULL,26,7,1,26),(13,'Ya','2019-12-04 11:07:25',NULL,'2019-12-04 11:07:50',NULL,NULL,'2019-12-04 11:33:25','2019-12-04 11:41:45',5,NULL,15,NULL,26,7,17,17),(14,'Ya','2019-12-04 14:04:32',NULL,'2019-12-05 15:54:46',NULL,'2019-12-04 14:47:51','2019-12-05 16:09:52','2019-12-04 14:44:53',5,34,NULL,NULL,26,7,1,17),(15,'Belum','2019-12-04 14:13:24',NULL,NULL,NULL,NULL,'2019-12-05 13:10:40',NULL,5,36,NULL,NULL,26,7,1,NULL),(16,'Ya','2019-12-05 08:47:08',NULL,NULL,NULL,NULL,'2019-12-05 13:55:45','2019-12-05 13:59:00',5,NULL,16,NULL,26,7,1,1),(17,'Belum','2019-12-05 09:24:27',NULL,'2019-12-05 16:12:40',NULL,NULL,'2019-12-05 16:37:59',NULL,5,NULL,17,NULL,26,7,1,NULL),(18,'Belum','2019-12-05 15:58:34',NULL,NULL,NULL,NULL,'2019-12-05 16:08:45',NULL,5,NULL,18,NULL,11,7,1,NULL),(19,'Belum','2019-12-06 08:18:35','2019-12-06 09:28:42',NULL,NULL,NULL,NULL,NULL,1,37,NULL,NULL,26,8,NULL,NULL),(20,'Belum','2019-12-06 08:37:00',NULL,NULL,NULL,NULL,'2019-12-06 09:05:49',NULL,5,39,NULL,NULL,26,8,2,NULL);
+INSERT INTO `tickets` VALUES (12,'Belum','2019-12-03 14:15:19',NULL,'2019-12-03 14:22:47',NULL,'2019-12-03 15:41:22','2019-12-05 15:48:17','2019-12-05 13:54:33',5,NULL,14,NULL,26,7,1,26),(13,'Ya','2019-12-04 11:07:25',NULL,'2019-12-04 11:07:50',NULL,NULL,'2019-12-04 11:33:25','2019-12-04 11:41:45',5,NULL,15,NULL,26,7,17,17),(14,'Ya','2019-12-04 14:04:32',NULL,'2019-12-05 15:54:46',NULL,'2019-12-04 14:47:51','2019-12-05 16:09:52','2019-12-04 14:44:53',5,34,NULL,NULL,26,7,1,17),(15,'Belum','2019-12-04 14:13:24',NULL,NULL,NULL,NULL,'2019-12-05 13:10:40',NULL,5,36,NULL,NULL,26,7,1,NULL),(16,'Ya','2019-12-05 08:47:08',NULL,NULL,NULL,NULL,'2019-12-05 13:55:45','2019-12-05 13:59:00',5,NULL,16,NULL,26,7,1,1),(17,'Belum','2019-12-05 09:24:27',NULL,'2019-12-05 16:12:40',NULL,NULL,'2019-12-05 16:37:59',NULL,5,NULL,17,NULL,26,7,1,NULL),(18,'Belum','2019-12-05 15:58:34',NULL,NULL,NULL,NULL,'2019-12-05 16:08:45',NULL,5,NULL,18,NULL,11,7,1,NULL),(19,'Belum','2019-12-06 08:18:35','2019-12-06 09:28:42',NULL,NULL,NULL,NULL,NULL,1,37,NULL,NULL,26,8,NULL,NULL),(20,'Belum','2019-12-06 08:37:00',NULL,NULL,NULL,NULL,'2019-12-06 09:05:49',NULL,5,39,NULL,NULL,26,8,2,NULL),(21,'Belum','2019-12-10 09:18:42',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,14,26,7,NULL,NULL),(22,'Belum','2019-12-10 09:45:05',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,15,26,7,NULL,NULL),(23,'Belum','2019-12-10 10:53:54',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,16,26,7,NULL,NULL);
 
 #
 # Structure for table "notifications"
