@@ -137,3 +137,13 @@
         // return false;
     });
 </script>
+
+<script>
+    var $table = $('.datatable');
+    if (window.innerWidth <= 600) $table.addClass('table-responsive');
+    else $table.removeClass('table-responsive');
+    $(window).resize(function() {
+        if (window.innerWidth <= 600) $table.addClass('table-responsive');
+        else $table.removeClass('table-responsive');
+    });
+</script>

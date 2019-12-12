@@ -64,9 +64,9 @@
                                 </td>
                                 <td>
                                     <?php if ($mapping->status == 'draft') { ?>
-                                        <center><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>" class="btn btn-secondary">Lanjutkan</a></center>
+                                        <center><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
                                     <?php } else if ($mapping->status == 'lengkap') { ?>
-                                        <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>" class="btn btn-primary">Detail</a></center>
+                                        <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>" class="btn btn-primary text-size">Detail</a></center>
                                     <?php } ?>
                                 </td>
                             </tr>
@@ -87,7 +87,7 @@
                     <h6 class="modal-title">Cari Data Partner</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable table table-striped table-bordered dt-responsive wrap table-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>

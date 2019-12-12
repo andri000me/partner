@@ -2,8 +2,8 @@
     <div class="col-sm-12">
         <div class="page-title-box">
             <h4 class="page-title">Form Inputan Partner</h4>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Lexa</a></li>
+            <ol class="breadcrumb text-size">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
                 <li class="breadcrumb-item active">Basic Tables</li>
             </ol>
@@ -14,10 +14,10 @@
 <div class="row">
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <div class="btn-kanan">
-                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary mb-4 test-size">Rekrut
+            <div class="btn-kanan mb-2">
+                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Rekrut
                         Leads</button></a>
-                <a href="maintain_leads.html"><button class="btn btn-success ml-1 mb-4 test-size">Maintain
+                <a href="maintain_leads.html"><button class="btn btn-success ml-1 text-size">Maintain
                         Leads</button></a>
             </div>
         <?php } ?>
@@ -30,7 +30,7 @@
                     yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
                     memudahkan anda dalam memaintain partner anda.</p>
-                <table class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Konsumen</th>
@@ -44,23 +44,22 @@
                         <?php foreach ($data->result() as $leads) { ?>
                             <tr>
                                 <td>
-                                    <div class="text-size"><?= $leads->nama_konsumen ?></div>
+                                    <?= $leads->nama_konsumen ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $leads->leads_id ?></div>
+                                    <?= $leads->leads_id ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $leads->no_ktp ?></div>
+                                    <?= $leads->no_ktp ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $leads->follow_up_by ?></div>
+                                    <?= $leads->follow_up_by ?>
                                 </td>
                                 <td>
-
                                     <?php if ($leads->status == 'draft') { ?>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary">Lanjutkan</a></center>
+                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
                                     <?php } else if ($leads->status == 'lengkap') { ?>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary">Detail</a></center>
+                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
                                     <?php } ?>
                                 </td>
                             </tr>

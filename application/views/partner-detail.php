@@ -2,7 +2,7 @@
     <div class="col-lg-8">
         <div class="page-title-box">
             <h4 class="page-title">Timeline Maintain</h4>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
                 <li class="breadcrumb-item active">Timeline Maintain</li>
@@ -27,7 +27,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="home2" role="tabpanel">
-                        <form class="" action="<?= base_url('Partner/update_detail') ?>" method="post">
+                        <form class=" text-size" action="<?= base_url('Partner/update_detail') ?>" method="post">
                             <!-- ID Ticket -->
                             <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
                             <!-- ID Partner -->
@@ -40,22 +40,22 @@
                             <input type="hidden" name="id_branch" id="id_branch" value="<?= $data->id_branch ?>">
                             <div class="form-group ml-3 mr-3">
                                 <label>Nama Usaha</label>
-                                <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" value="<?= $data->nama_usaha ?>" required placeholder="CV Aria Santika" />
+                                <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= $data->nama_usaha ?>" required placeholder="CV Aria Santika" />
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>E-Mail</label>
                                 <div>
-                                    <input type="email" class="form-control" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
+                                    <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
                                 </div>
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Nomor Telepon / WhatsApp</label>
-                                <input type="text" class="form-control <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
+                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
                                 <?= form_error('telepon') ?>
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Kategori Produk</label>
-                                <select class="form-control" name="kategori_produk" id="kategori_produk" required>
+                                <select class="form-control text-size" name="kategori_produk" id="kategori_produk" required>
                                     <option selected disabled value="">Pilih Kategori Produk</option>
                                     <option <?= $data->kategori_produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
                                     <option <?= $data->kategori_produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
@@ -67,11 +67,11 @@
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Bidang Usaha</label>
-                                <input type="text" class="form-control" name="bidang_usaha" id="bidang_usaha" value="<?= $data->bidang_usaha ?>" required placeholder="Garmen / Percetakan / Lainnya" />
+                                <input type="text" class="form-control text-size" name="bidang_usaha" id="bidang_usaha" value="<?= $data->bidang_usaha ?>" required placeholder="Garmen / Percetakan / Lainnya" />
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Bentuk Usaha</label>
-                                <select class="form-control" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
+                                <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
                                     <option selected value="">Pilih Bentuk Usaha</option>
                                     <option <?= $data->bentuk_usaha == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
                                     <option <?= $data->bentuk_usaha == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
@@ -81,19 +81,19 @@
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Alamat / Lokasi</label>
-                                <input type="phone" class="form-control" name="alamat" id="alamat" required value="<?= $data->alamat ?>" placeholder="Jalan Perjalanan Panjang No.22" />
+                                <input type="phone" class="form-control text-size" name="alamat" id="alamat" required value="<?= $data->alamat ?>" placeholder="Jalan Perjalanan Panjang No.22" />
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Kelurahan</label>
-                                        <input type="text" class="form-control" name="kelurahan" id="kelurahan" required value="<?= $data->kelurahan ?>" placeholder="Lengkong Gudang" />
+                                        <input type="text" class="form-control text-size" name="kelurahan" id="kelurahan" required value="<?= $data->kelurahan ?>" placeholder="Lengkong Gudang" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Kecamatan</label>
-                                        <input type="text" class="form-control" name="kecamatan" id="kecamatan" required value="<?= $data->kecamatan ?>" placeholder="Serpong utara" />
+                                        <input type="text" class="form-control text-size" name="kecamatan" id="kecamatan" required value="<?= $data->kecamatan ?>" placeholder="Serpong utara" />
                                     </div>
                                 </div>
                             </div>
@@ -101,19 +101,19 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Kode Pos</label>
-                                        <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required value="<?= $data->kode_pos ?>" placeholder="125487" maxlength="6" />
+                                        <input type="text" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required value="<?= $data->kode_pos ?>" placeholder="125487" maxlength="6" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Provinsi</label>
-                                        <input type="text" class="form-control" name="provinsi" id="provinsi" required value="<?= $data->provinsi ?>" placeholder="Kalimantan Tengah" />
+                                        <input type="text" class="form-control text-size" name="provinsi" id="provinsi" required value="<?= $data->provinsi ?>" placeholder="Kalimantan Tengah" />
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group  ml-3 mr-3">
                                 <label>Status Tempat Usaha</label>
-                                <select class="form-control" name="status_tempat_usaha" id="status_tempat_usaha" required>
+                                <select class="form-control text-size" name="status_tempat_usaha" id="status_tempat_usaha" required>
                                     <option selected disabled value="">Pilih Status Tempat usaha</option>
                                     <option <?= $data->status_tempat_usaha == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
                                     <option <?= $data->status_tempat_usaha == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
@@ -122,13 +122,13 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group text-size ml-3 mr-3">
                                         <label>Tahun Berdiri</label>
                                         <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" value="<?= $data->tahun_berdiri ?>"" required placeholder=" 2016" maxlength="4">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group text-size ml-3 mr-3">
                                         <label>Jumalah Karyawan</label>
                                         <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>"" required placeholder=" 25">
                                     </div>
@@ -155,7 +155,7 @@
                         <ol class="activity-feed mb-0">
                             <?php if ($maintain->num_rows() > 0) {
                                 foreach ($maintain->result() as $data) {  ?>
-                                    <li class="feed-item">
+                                    <li class="feed-item  text-size">
                                         <div class="feed-item-list">
                                             <span class="date">Maintain <?= $data->tanggal_maintain ?></span>
                                             <span class="activity-text"><?= $data->catatan ?></span>
@@ -169,7 +169,7 @@
                                 <?php
                                     }
                                 } else { ?>
-                                <p class="text-muted m-b-10">Tidak Ada Data</p>
+                                <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                             <?php } ?>
                         </ol>
                     </div>
@@ -275,7 +275,7 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <table class="mobile">
+                                                    <table class="mobile text-size">
                                                         <tr>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -429,7 +429,7 @@
                                     <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table>
+                                                <table class="text-size">
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
@@ -456,7 +456,7 @@
                                     <?php } else { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table>
+                                                <table class="text-size">
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
@@ -478,7 +478,7 @@
                                     <?php if ($ticket->ttd_pks == 'Ya') { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table>
+                                                <table class="text-size">
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
@@ -516,7 +516,7 @@
                                                     <tr>
                                                         <td></td>
                                                         <td class="mb-0">
-                                                            <div class="form-group">
+                                                            <div class="form-group text-size">
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
                                                                     <label class="form-check-label">
@@ -559,12 +559,12 @@
                             <div class="tab-pane p-3" id="profile1" role="tabpanel">
                                 <div class="box overflow-auto">
                                     <?php foreach ($comments->result() as $comment) { ?>
-                                        <div class="media">
+                                        <div class="media mb-1">
                                             <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
                                                 <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
                                             </a>
-                                            <div class="media-body">
-                                                <h6 class="mt-0 mb-0"><?= $comment->name ?></h6>
+                                            <div class="media-body b">
+                                                <p class="mb-0"><b><?= $comment->name ?></b></p>
                                                 <p class="text-size mt-0"><?= $comment->comment ?></p>
                                             </div>
                                         </div>

@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Table Tiket</h4>
                 <p class="text-muted m-b-30 text-size">Tiket di bawah.</p>
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Tiket</th>
@@ -32,16 +32,16 @@
                         <?php foreach ($data->result() as $ticket) { ?>
                             <tr>
                                 <td>
-                                    <div class="text-size"><?= $ticket->id_ticket ?></div>
+                                    <?= $ticket->id_ticket ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $ticket->requester ?></div>
+                                    <?= $ticket->requester ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $ticket->nama_cabang ?></div>
+                                    <?= $ticket->nama_cabang ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $ticket->aktivitas_cabang ?></div>
+                                    <?= $ticket->aktivitas_cabang ?>
                                 </td>
                                 <td>
                                     <center>
@@ -63,11 +63,11 @@
                                 <td>
                                     <center>
                                         <?php if ($ticket->id_agent != NULL) { ?>
-                                            <a href="<?= base_url('Agent/edit/' . $ticket->id_agent) ?>" class="btn btn-primary">Detail</a>
+                                            <a href="<?= base_url('Agent/edit/' . $ticket->id_agent) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } else if ($ticket->id_partner != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $ticket->id_partner) ?>" class="btn btn-primary">Detail</a>
+                                            <a href="<?= base_url('partner/detail/' . $ticket->id_partner) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } else if ($ticket->id_leads != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary">Detail</a>
+                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } ?>
                                         <!-- <button class="btn btn-primary">Detail</button> -->
                                     </center>

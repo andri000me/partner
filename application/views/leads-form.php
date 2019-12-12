@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="page-title-box">
             <h4 class="page-title">Partnership</h4>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
                 <li class="breadcrumb-item active">Partnership</li>
@@ -20,7 +20,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Leads/save') ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('Leads/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
                             <input id="website" name="website" type="disable" value="">
 
                             <!-- Leave for security protection, read docs for details -->
@@ -42,15 +42,15 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Leads ID</label>
-                                                <input type="text" class="form-control placement" name="leads_id" id="leads_id" required placeholder="009377736433744" maxlength="15">
+                                                <input type="text" class="form-control text-size placement" name="leads_id" id="leads_id" required placeholder="009377736433744" maxlength="15">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="ml-3">Nama Konsumen</label>
                                             <div class="input-group ml-3 mb-3">
-                                                <input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-primary mr-4" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                                                    <button class="btn btn-primary mr-4 text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -59,19 +59,19 @@
                                         <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>ID KTP</label>
-                                                <input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                                <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Nomor Telepon / Whatsapp</label>
-                                                <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
+                                                <input type="text" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
                                             </div>
                                         </div>
                                         <div class="col-md-3">
                                             <div class="form-group mr-3 ml-3">
                                                 <label>Asal Aplikasi</label>
-                                                <select class="form-control" name="soa" id="soa">
+                                                <select class="form-control text-size" name="soa" id="soa">
                                                     <option selected>Pilih Source Aplikasi</option>
                                                     <option value="Direct Selling">Direct Selling</option>
                                                     <option value="Tour & travel">Tour & travel</option>
@@ -91,18 +91,17 @@
                                             <label class="ml-3 travel">Pilih Data Travel</label>
                                             <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                             <label class="ml-3 agent">Pilih Data Agent</label>
-                                            <div class="input-group ml-3 mr-3">
-                                                <input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-                                                <div class="input-group-append mr-4">
-                                                    <button class="btn btn-primary modal-partner" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-partner"><span class="ion-ios7-search-strong"></span></button>
-                                                    <button class="btn btn-primary modal-agent" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-agent"><span class="ion-ios7-search-strong"></span></button>
+                                            <div class="input-group ml-3 mb-3">
+                                                <input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-3 event">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Nama Event</label>
-                                                <input type="text" class="form-control" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+                                                <input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Input Nama Event">
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +109,7 @@
                                         <div class="col-md-3">
                                             <div class="form-group mr-3 ml-3">
                                                 <label>Produk</label>
-                                                <select class="form-control" name="produk" id="produk">
+                                                <select class="form-control text-size" name="produk" id="produk">
                                                     <option selected>Pilih Kategori Produk</option>
                                                     <option value="My Ihram">My Ihram</option>
                                                     <option value="My Safar">My Safar</option>
@@ -124,13 +123,13 @@
                                         <div class="col-md-3">
                                             <div class="form-group mr-3 ml-3">
                                                 <label>Detail Produk</label>
-                                                <input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
+                                                <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Follow Up By</label>
-                                                <select class="form-control" name="follow_up_by" id="follow_up_by" required>
+                                                <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
                                                     <option selected disabled value="">Pilih Follow Up By</option>
                                                     <option value="Kunjungan">Kunjungan</option>
                                                     <option value="Telepon">Telepon</option>
@@ -142,7 +141,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3 posisi">
+                                            <div class="form-group text-size ml-3 mr-3 posisi">
                                                 <label>Cross Branch?</label><br>
                                                 <div class="form-check form-check-inline mt-2">
                                                     <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
@@ -161,7 +160,7 @@
                                         <div class="col-md-3">
                                             <div id="hide" class="form-group ml-3 mr-3">
                                                 <label>Pilih cabang</label>
-                                                <select class="form-control" name="cabang_cross" id="cabang_cross">
+                                                <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                                     <option selected disabled value="">Pilih Cabang</option>
                                                     <?php foreach ($branches->result() as $branch) { ?>
                                                         <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
@@ -170,9 +169,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <label class="ml-3">Pic Tanda Tangan</label>
-                                            <div class="input-group ml-3 mb-3">
-                                                <select class="form-control" name="pic_ttd" id="pic_ttd">
+                                            <div id="hide" class="form-group ml-3 mr-3">
+                                                <label>Pic Tanda Tangan</label>
+                                                <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
                                                     <option value="" selected>Pilih Pic Tanda Tangan</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
@@ -181,9 +180,9 @@
                                             </div>
                                         </div>
                                         <div class="col-md-3">
-                                            <label class="ml-3">Surveyor</label>
-                                            <div class="input-group ml-3 mb-3">
-                                                <select class="form-control" name="surveyor" id="surveyor">
+                                            <div id="hide" class="form-group ml-3 mr-3">
+                                                <label>Surveyor</label>
+                                                <select class="form-control text-size" name="surveyor" id="surveyor">
                                                     <option value="" selected>Pilih Surveyor</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
@@ -196,11 +195,11 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Nilai Funding</label>
-                                                <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000">
+                                                <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000">
                                             </div>
                                         </div>
                                         <div class="col-md-2">
-                                            <div class="form-group ml-3 mr-3 posisi">
+                                            <div class="form-group text-size ml-3 mr-3 posisi">
                                                 <label>Appeal NST</label><br>
                                                 <div class="form-check form-check-inline mt-2">
                                                     <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">
@@ -227,27 +226,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label>KTP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="ktp" type="file">
-                                                </div>
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>KTP</label>
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Foto Selfie</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="selfie_foto" type="file">
-                                                </div>
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Foto Selfie</label>
+                                                <input type="file" name="selfie_foto" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <label>Foto Penyedia Jasa</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="foto_pentedia_jasa" type="file">
-                                                </div>
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Foto Penyedia Jasa</label>
+                                                <input type="file" name="foto_pentedia_jasa" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
@@ -305,7 +298,7 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>
@@ -362,7 +355,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Name Usaha</th>
@@ -397,7 +390,7 @@
                     <h4 class="modal-title">Cari Data Agent</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Lengkap</th>
@@ -426,8 +419,7 @@
     $('.agent').hide();
     $('.jasa').hide();
     $('.event').hide();
-    $('.modal-agent').hide();
-    $('.modal-parnet').hide();
+    $('.btn-data').hide();
     $('.form').hide();
     source_leads();
     $('#soa').change(function() {
@@ -440,17 +432,20 @@
 
     function source_leads() {
         if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .modal-partner').show();
-            $('#id_partner').attr('placeholder', 'jalan - jalan')
-            $('.agent, .jasa, .event, .modal-agent').hide();
+            $('.travel, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'jalan - jalan')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.agent, .jasa, .event').hide();
         } else if ($('#soa').val() == 'Penyedia Jasa') {
-            $('.jasa, .form, .modal-partner').show();
-            $('#id_partner').attr('placeholder', 'Jasa raharja')
-            $('.agent, .travel, .event, .modal-agent').hide();
+            $('.jasa, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Jasa raharja')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.agent, .travel, .event').hide();
         } else if ($('#soa').val() == 'Agent BA') {
-            $('.agent, .form, .modal-agent').show();
-            $('#id_partner').attr('placeholder', 'Ibrahim')
-            $('.jasa, .travel, .event, .modal-partner').hide();
+            $('.agent, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Ibrahim')
+            $('#btn-data').attr('data-target', '#modal-agent')
+            $('.jasa, .travel, .event').hide();
         } else if ($('#soa').val() == 'Event') {
             $('.event').show();
             $('.jasa, .travel, .agent, .form').hide();
