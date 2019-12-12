@@ -44,6 +44,10 @@ class Ticket extends CI_Controller
 
     public function index()
     {
+        if (isset($_GET['id_ticket'])) {
+            $id = $_GET['id_ticket'];
+        }
+
         $data = [
             'data' => $this->ticket_model->get($this->where)
         ];
@@ -100,7 +104,7 @@ class Ticket extends CI_Controller
                 'status'            => 4
                 // 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
-            $notification = $this->notification($id_ticket, 'Data Tiket Disetujui oleh Admin HO');
+            $notification = $this->notification($id_ticket, 'Data Tiket Ditolak oleh Admin HO');
         }
         $where = ['id_ticket' => $id_ticket];
         $this->ticket_model->update($data, $where);

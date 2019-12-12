@@ -174,7 +174,7 @@
                                                 <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
                                                     <option value="" selected>Pilih Pic Tanda Tangan</option>
                                                     <?php foreach ($users->result() as $user) { ?>
-                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -185,7 +185,7 @@
                                                 <select class="form-control text-size" name="surveyor" id="surveyor">
                                                     <option value="" selected>Pilih Surveyor</option>
                                                     <?php foreach ($users->result() as $user) { ?>
-                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -226,41 +226,53 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <<<<<<< HEAD <div class="form-group text-size ml-3 mr-3">
                                                 <label>KTP</label>
                                                 <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>Foto Selfie</label>
-                                                <input type="file" name="selfie_foto" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>Foto Penyedia Jasa</label>
-                                                <input type="file" name="foto_pentedia_jasa" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group text-size ml-3 mr-3">
+                                            <label>Foto Selfie</label>
+                                            <input type="file" name="selfie_foto" class="filestyle" data-buttonname="btn-secondary">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group text-size ml-3 mr-3">
+                                            <label>Foto Penyedia Jasa</label>
+                                            <input type="file" name="foto_pentedia_jasa" class="filestyle" data-buttonname="btn-secondary">
+                                        </div>
+                                        =======
+                                        <label>KTP</label>
+                                        <input name="ktp" type="file">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Foto Selfie</label>
+                                        <input name="selfie_foto" type="file">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label>Foto Penyedia Jasa</label>
+                                        <input name="foto_pentedia_jasa" type="file">
+                                        >>>>>>> master
+                                    </div>
                                 </div>
-                                <!-- /step-->
                             </div>
-                            <!-- /middle-wizard -->
-                            <div class="form-group mb-0 float-right mt-3 mr-3">
-                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
-                                <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
-                                <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
-                                <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
-                            </div>
-                            <!-- /bottom-wizard -->
-                        </form>
+                            <!-- /step-->
                     </div>
+                    <!-- /middle-wizard -->
+                    <div class="form-group mb-0 float-right mt-3 mr-3">
+                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
+                        <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
+                        <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                    </div>
+                    <!-- /bottom-wizard -->
+                    </form>
                 </div>
             </div>
         </div>
-    </div> <!-- end col -->
+    </div>
+</div> <!-- end col -->
 </div>
 </div> <!-- container-fluid -->
 </div> <!-- content -->
@@ -298,48 +310,50 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>
-                                <div class="text-size">Nama Lengkap</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Nomor Telepon</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Asal Aplikasi</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Produk</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Aksi</div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($mappings->result() as $data) { ?>
+                <div class="table-responsive">
+                    <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
                             <tr>
-                                <td class="not-clickable">
-                                    <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $data->telepon ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $data->soa ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $data->produk ?></div>
-                                </td>
-                                <td>
-                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
-                                </td>
+                                <th>
+                                    <div class="text-size">Nama Lengkap</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Nomor Telepon</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Asal Aplikasi</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Produk</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Aksi</div>
+                                </th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mappings->result() as $data) { ?>
+                                <tr>
+                                    <td class="not-clickable">
+                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->telepon ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->soa ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->produk ?></div>
+                                    </td>
+                                    <td>
+                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -403,7 +417,7 @@
                             <tr>
                                 <td><?= $agent->nama_lengkap ?></td>
                                 <td><?= $agent->telepon ?></td>
-                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-nama="<?= $agent->nama_lengkap ?>">Pilih</button></td>
+                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>">Pilih</button></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -428,24 +442,22 @@
         $('#id_agent').val("");
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
+        $('#data_partner').val("");
     })
 
     function source_leads() {
         if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'jalan - jalan')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('.agent, .jasa, .event').hide();
+            $('.travel, .form, .modal-partner').show();
+            // $('#id_partner').attr('placeholder', 'jalan - jalan')
+            $('.agent, .jasa, .event, .modal-agent').hide();
         } else if ($('#soa').val() == 'Penyedia Jasa') {
-            $('.jasa, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Jasa raharja')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('.agent, .travel, .event').hide();
+            $('.jasa, .form, .modal-partner').show();
+            // $('#id_partner').attr('placeholder', 'Jasa raharja')
+            $('.agent, .travel, .event, .modal-agent').hide();
         } else if ($('#soa').val() == 'Agent BA') {
-            $('.agent, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Ibrahim')
-            $('#btn-data').attr('data-target', '#modal-agent')
-            $('.jasa, .travel, .event').hide();
+            $('.agent, .form, .modal-agent').show();
+            // $('#id_partner').attr('placeholder', 'Ibrahim')
+            $('.jasa, .travel, .event, .modal-partner').hide();
         } else if ($('#soa').val() == 'Event') {
             $('.event').show();
             $('.jasa, .travel, .agent, .form').hide();
@@ -460,12 +472,14 @@
         $('#id_partner').val($(this).data('partner'));
         $('#id_agent').val("");
         $('#nama_vendor').val($(this).data('vendor'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val("");
-        $('#nama_vendor').val($(this).data('nama'));
+        // $('#nama_vendor').val($(this).data('nama'));
+        $('#data_partner').val($(this).data('namaagent'));
         $('#modal-agent').modal('hide');
     })
     $("table").on('click', '.pilih-leads', function() {
@@ -473,7 +487,7 @@
         $('#soa').val($(this).data('soa'));
         $('#produk').val($(this).data('produk'));
         $('#telepon').val($(this).data('telepon'));
-        $('#data_partner').val($(this).data('partner'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#detail_produk').val($(this).data('detail'));
         $('#nama_event').val($(this).data('event'));
         $('#nama_konsumen').val($(this).data('nama'));

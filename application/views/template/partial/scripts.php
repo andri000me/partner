@@ -145,5 +145,52 @@
     $(window).resize(function() {
         if (window.innerWidth <= 600) $table.addClass('table-responsive');
         else $table.removeClass('table-responsive');
+    })
+</script>
+
+<!-- //Script untuk update status cabang -->
+<script>
+    //Update Barang
+    $('.has_superior').on('change', function() {
+        var has_superior = $(this).val();
+        var id_branch = $(this).data('id');
+
+        // alert(id_branch + has_superior);
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('branch/update') ?>",
+            dataType: "JSON",
+            data: {
+                has_superior: has_superior,
+                id_branch: id_branch
+            },
+            success: function(data) {
+                alert('Success, \n ID Branch: ' + id_branch + '\n Status: ' + has_superior);
+            }
+        });
+        return false;
+    });
+</script>
+
+<!-- //Script untuk mark as read notifikas -->
+<script>
+    //Update Barang
+    $('.notifikasi').on('click', function() {
+        var id_notification = $(this).data('id');
+        var has_read = 1;
+        // alert(id_notification);
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('notification/update') ?>",
+            dataType: "JSON",
+            data: {
+                has_read: has_read,
+                id_notification: id_notification
+            },
+            success: function(data) {
+                // alert('Success, \n ID Branch: ' + id_notification + '\n Status: ' + has_read);
+            }
+        });
+        // return false;
     });
 </script>

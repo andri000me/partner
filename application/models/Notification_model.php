@@ -22,6 +22,7 @@ class Notification_model extends CI_Model
 
     public function get($where = NULL)
     {
+        $this->db->select("*, user_pengirim.name as nama_pengirim, user_penerima.name as nama_penerima, DATE_FORMAT(notifications.created_at, '%d %b, %Y') as dibuat_pada");
         $this->db->from('notifications');
         // $this->db->join('partners', 'partners.id_partner = notifications.id_partner', 'left');
         $this->db->join('tickets', 'tickets.id_ticket = notifications.id_ticket', 'left');
