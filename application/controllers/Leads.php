@@ -118,7 +118,6 @@ class Leads extends CI_Controller
             'produk'                => $post['produk'],
             'detail_produk'         => $post['detail_produk'],
             'nama_event'            => $post['nama_event'],
-            'nilai_funding'         => $post['nilai_funding'],
 
             'updated_at'            => date('Y-m-d H:i:s'),
 
@@ -141,6 +140,7 @@ class Leads extends CI_Controller
             'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
+            'nilai_funding'         => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
 
             //Timestamp
             'created_at'        => date('Y-m-d H:i:s'),

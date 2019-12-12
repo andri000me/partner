@@ -228,27 +228,15 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <label>KTP</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="ktp" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="ktp" type="file">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Foto Selfie</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="selfie_foto" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="selfie_foto" type="file">
                                         </div>
                                         <div class="col-md-4">
                                             <label>Foto Penyedia Jasa</label>
-                                            <div action="#" class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="foto_pentedia_jasa" type="file">
-                                                </div>
-                                            </div>
+                                            <input name="foto_pentedia_jasa" type="file">
                                         </div>
                                     </div>
                                 </div>
@@ -305,48 +293,50 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>
-                                <div class="text-size">Nama Lengkap</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Nomor Telepon</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Asal Aplikasi</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Produk</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Aksi</div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($mappings->result() as $data) { ?>
+                <div class="table-responsive">
+                    <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
                             <tr>
-                                <td class="not-clickable">
-                                    <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $data->telepon ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $data->soa ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $data->produk ?></div>
-                                </td>
-                                <td>
-                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
-                                </td>
+                                <th>
+                                    <div class="text-size">Nama Lengkap</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Nomor Telepon</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Asal Aplikasi</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Produk</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Aksi</div>
+                                </th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mappings->result() as $data) { ?>
+                                <tr>
+                                    <td class="not-clickable">
+                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->telepon ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->soa ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->produk ?></div>
+                                    </td>
+                                    <td>
+                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -410,7 +400,7 @@
                             <tr>
                                 <td><?= $agent->nama_lengkap ?></td>
                                 <td><?= $agent->telepon ?></td>
-                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-nama="<?= $agent->nama_lengkap ?>">Pilih</button></td>
+                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>">Pilih</button></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -472,8 +462,8 @@
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val("");
-        $('#nama_vendor').val($(this).data('nama'));
-        $('#data_partner').val($(this).data('vendor'));
+        // $('#nama_vendor').val($(this).data('nama'));
+        $('#data_partner').val($(this).data('namaagent'));
         $('#modal-agent').modal('hide');
     })
     $("table").on('click', '.pilih-leads', function() {

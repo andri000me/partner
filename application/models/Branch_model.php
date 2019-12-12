@@ -23,8 +23,6 @@ class Branch_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from("branches");
-        // $this->db->join("leads B", "A.id_mapping_leads = B.id_mapping_leads", "left");
-        // $this->db->where("B.id_mapping_leads IS NULL");
         if ($where != null) {
             $this->db->where($where);
         }

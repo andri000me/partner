@@ -16,11 +16,12 @@ class Fungsi
         return $user_data;
     }
 
-    function notification()
+    function notification($where)
     {
         $this->ci->load->model('notification_model');
         $id_user = $this->ci->session->userdata('id_user');
-        $user_data = $this->ci->notification_model->get(['user_penerima.id_user' => $id_user]);
+        $user_data = $this->ci->notification_model->get($where);
         return $user_data;
+        echo $this->user_login()->level;
     }
 }

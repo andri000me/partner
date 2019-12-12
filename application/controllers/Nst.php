@@ -37,7 +37,6 @@ class Nst extends CI_Controller
 
     public function index()
     {
-        //
         $data = [
             'data' => $this->nst_model->get($this->where)
         ];
@@ -46,8 +45,15 @@ class Nst extends CI_Controller
 
     public function create()
     {
+        $get_leads = "SELECT * FROM leads 
+        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
+        INNER JOIN users ON users.id_user = mapping_leads.id_user 
+        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
+        WHERE users.id_user = " . $this->fungsi->user_login()->id_user . "
+        AND branches.id_branch = " . $this->fungsi->user_login()->id_branch;
+
         $data = [
-            'leads' => $this->leads_model->get()
+            'leads' => $this->nst_model->query($get_leads)
         ];
         $this->template->load('template/index', 'nst-form', $data);
     }
@@ -97,8 +103,15 @@ class Nst extends CI_Controller
 
             redirect('nst');
         } else {
+            $get_leads = "SELECT * FROM leads 
+        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
+        INNER JOIN users ON users.id_user = mapping_leads.id_user 
+        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
+        WHERE users.id_user = " . $this->fungsi->user_login()->id_user . "
+        AND branches.id_branch = " . $this->fungsi->user_login()->id_branch;
+
             $data = [
-                'leads' => $this->leads_model->get()
+                'leads' => $this->nst_model->query($get_leads)
             ];
             $this->template->load('template/index', 'nst-form', $data);
         }

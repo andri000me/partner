@@ -18,7 +18,13 @@
             </li>
 
             <li>
-                <a href="<?= base_url('') ?>" class="waves-effect">
+                <a href="<?= base_url('branch') ?>" class="waves-effect">
+                    <i class="mdi ion-person"></i><span>Branch </span>
+                </a>
+            </li>
+
+            <li>
+                <a href="<?= base_url('notification') ?>" class="waves-effect">
                     <i class="ti-bell noti-icon"></i><span class="badge badge-primary badge-pill float-right">2</span> <span> Notification
                     </span>
                 </a>
