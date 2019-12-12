@@ -2,11 +2,11 @@
     <div class="col-sm-12">
         <div class="page-title-box">
             <h4 class="page-title">Rekrut Partner</h4>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Partnership</a></li>
-                <li class="breadcrumb-item text-size active">Rekrut Partner</li>
+            <ol class="breadcrumb text-size">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Partnership</a></li>
+                <li class="breadcrumb-item active">Rekrut Partner</li>
             </ol>
         </div>
     </div>
@@ -21,7 +21,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="head-wizard">
-                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
                             <input id="website" name="website" type="disable" value="">
                             <!-- Leave for security protection, read docs for details -->
 
@@ -48,7 +48,7 @@
                                             <div class="input-group ml-3 mr-3">
                                                 <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <div class="input-group-append mr-4">
-                                                    <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                    <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -354,30 +354,46 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <label text-size>KTP</label>
-                                            <input name="ktp" type="file">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>KTP</label>
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label text-size>NPWP</label>
-                                            <input name="npwp" type="file">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>NPWP</label>
+                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label text-size>Buku Tabungan</label>
-                                            <input name="buku_tabungan_perusahaan" type="file">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Buku Tabungan</label>
+                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label text-size>SIUP / TDP</label>
-                                            <input name="siup" type="file">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>SIUP / TDP</label>
+                                                <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label text-size>Logo Perusahaan</label>
-                                            <input name="logo_perusahaan" type="file">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Logo Perusahaan</label>
+                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
                                         </div>
-                                        <div class="col-md-2">
-                                            <label text-size>Foto usaha</label>
-                                            <input name="foto_usaha" type="file">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Foto usaha</label>
+                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
                                         </div>
                                     </div>
                                     <!-- /step-->
@@ -407,7 +423,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap table-responsive" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>

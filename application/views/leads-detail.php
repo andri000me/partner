@@ -69,11 +69,10 @@
 								<label class="ml-3 travel">Pilih Data Travel</label>
 								<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
 								<label class="ml-3 agent">Pilih Data Agent</label>
-								<div class="input-group ml-3 mr-3">
+								<div class="input-group ml-3 mb-3">
 									<input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-									<div class="input-group-append mr-4">
-										<button class="btn btn-primary modal-partner" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-partner"><span class="ion-ios7-search-strong"></span></button>
-										<button class="btn btn-primary modal-agent" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-agent"><span class="ion-ios7-search-strong"></span></button>
+									<div class="input-group-append">
+										<button class="btn btn-primary btn-data mr-4" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
 									</div>
 								</div>
 							</div>
@@ -824,27 +823,38 @@
 	$('.agent').hide();
 	$('.jasa').hide();
 	$('.event').hide();
-	$('.modal-agent').hide();
-	$('.modal-parnet').hide();
+	$('.btn-data').hide();
 	$('.form').hide();
+	source_leads();
 	$('#soa').change(function() {
+		source_leads();
+		$('#id_partner').val("");
+		$('#id_agent').val("");
+		$('#nama_vendor').val("").removeAttr("required");
+		$('#nama_event').val("");
+	})
+
+	function source_leads() {
 		if ($('#soa').val() == 'Tour & travel') {
-			$('.travel, .form, .modal-partner').show();
-			$('#id_partner').attr('placeholder', 'jalan - jalan')
-			$('.agent, .jasa, .event, .modal-agent').hide();
+			$('.travel, .form, .btn-data').show();
+			$('#data_partner').attr('placeholder', 'jalan - jalan')
+			$('#btn-data').attr('data-target', '#modal-partner')
+			$('.agent, .jasa, .event').hide();
 		} else if ($('#soa').val() == 'Penyedia Jasa') {
-			$('.jasa, .form, .modal-partner').show();
-			$('#id_partner').attr('placeholder', 'Jasa raharja')
-			$('.agent, .travel, .event, .modal-agent').hide();
+			$('.jasa, .form, .btn-data').show();
+			$('#data_partner').attr('placeholder', 'Jasa raharja')
+			$('#btn-data').attr('data-target', '#modal-partner')
+			$('.agent, .travel, .event').hide();
 		} else if ($('#soa').val() == 'Agent BA') {
-			$('.agent, .form, .modal-agent').show();
-			$('#id_partner').attr('placeholder', 'Ibrahim')
-			$('.jasa, .travel, .event, .modal-partner').hide();
+			$('.agent, .form, .btn-data').show();
+			$('#data_partner').attr('placeholder', 'Ibrahim')
+			$('#btn-data').attr('data-target', '#modal-agent')
+			$('.jasa, .travel, .event').hide();
 		} else if ($('#soa').val() == 'Event') {
 			$('.event').show();
 			$('.jasa, .travel, .agent, .form').hide();
 		} else {
 			$('.jasa, .travel, .agent, .form, .event').hide();
 		}
-	})
+	}
 </script>
