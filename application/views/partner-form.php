@@ -34,129 +34,143 @@
 
                             <div id="middle-wizard">
                                 <div class="step  text-size">
-                                    <div class="form-row">
-                                        <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
                                             <div class="ml-3">
                                                 <h4 class="mt-0 header-title">Formulir Partnership</h4>
                                                 <p class="text-muted text-size">Pilih data yang sudah anda mapping pada pilihan yang akan muncul dilayar, kemudia isi semua kolom pertanyaan untuk melanjutkan ke halaman selanjutnya.</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6 mb-3">
-                                            <label class="ml-3">Nama Usaha</label>
-                                            <div class="input-group ml-3 mr-3">
-                                                <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                <div class="input-group-append mr-4">
-                                                    <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                        <div class="col-md-6">
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label class="ml-3">Nama Usaha</label>
+                                                    <div class="input-group ml-3">
+                                                        <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <div class="input-group-append mr-4">
+                                                            <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>E-Mail</label>
+                                                        <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Nomor Telepon / WhatsApp</label>
+                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="EG 0811977500" maxlength="15" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Kategori Produk</label>
+                                                        <select class="form-control text-size" name="kategori_produk" id="kategori_produk" required>
+                                                            <option selected disabled value="">Pilih Kategori Produk</option>
+                                                            <option value="My Ihram">My Ihram</option>
+                                                            <option value="My Safar">My Safar</option>
+                                                            <option value="My Talim">My Talim</option>
+                                                            <option value="My Hajat">My Hajat</option>
+                                                            <option value="My Faedah">My Faedah</option>
+                                                            <option value="My CarS">My CarS</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Bidang Usaha</label>
+                                                        <input type="text" class="form-control text-size" name="bidang_usaha" id="bidang_usaha" required placeholder="Garmen / Percetakan / Lainnya" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Bentuk Usaha</label>
+                                                        <select class="form-control text-size" name="bentuk_usaha" id="" required placeholder="Bentuk Usaha">
+                                                            <option selected value="">Pilih Bentuk Usaha</option>
+                                                            <option value="Perorangan">Perorangan</option>
+                                                            <option value="PD">PD</option>
+                                                            <option value="CV">CV</option>
+                                                            <option value="PT">PT</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Alamat / Lokasi</label>
-                                                <input type="phone" class="form-control text-size" name="alamat" id="alamat" required placeholder="Jalan Perjalanan Panjang No.22" />
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Alamat / Lokasi</label>
+                                                        <input type="phone" class="form-control text-size" name="alamat" id="alamat" required placeholder="Jalan Perjalanan Panjang No.22" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>E-Mail</label>
-                                                <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Kelurahan</label>
+                                                        <input type="text" class="form-control text-size" name="kelurahan" id="kelurahan" required placeholder="Lengkong Gudang" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Kecamatan</label>
+                                                        <input type="text" class="form-control text-size" name="kecamatan" id="kecamatan" required placeholder="Serpong utara" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Kelurahan</label>
-                                                <input type="text" class="form-control text-size" name="kelurahan" id="kelurahan" required placeholder="Lengkong Gudang" />
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Kode Pos</label>
+                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required placeholder="125487" maxlength="6" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Provinsi</label>
+                                                        <input type="text" class="form-control text-size" name="provinsi" id="provinsi" required placeholder="Kalimantan Tengah" />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Kecamatan</label>
-                                                <input type="text" class="form-control text-size" name="kecamatan" id="kecamatan" required placeholder="Serpong utara" />
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Status Tempat Usaha</label>
+                                                        <select class="form-control text-size" name="status_tempat_usaha" id="status_tempat_usaha" required>
+                                                            <option selected disabled value="">Pilih Status Tempat usaha</option>
+                                                            <option value="Milik Sendiri">Milik Sendiri</option>
+                                                            <option value="Milik Keluarga">Milik Keluarga</option>
+                                                            <option value="Sewa">Sewa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nomor Telepon / WhatsApp</label>
-                                                <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="EG 0811977500" maxlength="15" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Kode Pos</label>
-                                                <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required placeholder="125487" maxlength="6" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Provinsi</label>
-                                                <input type="text" class="form-control text-size" name="provinsi" id="provinsi" required placeholder="Kalimantan Tengah" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Kategori Produk</label>
-                                                <select class="form-control text-size" name="kategori_produk" id="kategori_produk" required>
-                                                    <option selected disabled value="">Pilih Kategori Produk</option>
-                                                    <option value="My Ihram">My Ihram</option>
-                                                    <option value="My Safar">My Safar</option>
-                                                    <option value="My Talim">My Talim</option>
-                                                    <option value="My Hajat">My Hajat</option>
-                                                    <option value="My Faedah">My Faedah</option>
-                                                    <option value="My CarS">My CarS</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Status Tempat Usaha</label>
-                                                <select class="form-control text-size" name="status_tempat_usaha" id="status_tempat_usaha" required>
-                                                    <option selected disabled value="">Pilih Status Tempat usaha</option>
-                                                    <option value="Milik Sendiri">Milik Sendiri</option>
-                                                    <option value="Milik Keluarga">Milik Keluarga</option>
-                                                    <option value="Sewa">Sewa</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Bidang Usaha</label>
-                                                <input type="text" class="form-control text-size" name="bidang_usaha" id="bidang_usaha" required placeholder="Garmen / Percetakan / Lainnya" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Tahun Berdiri</label>
-                                                <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" required placeholder="2016" maxlength="4">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Jumalah Karyawan</label>
-                                                <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" required placeholder="25">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Bentuk Usaha</label>
-                                                <select class="form-control text-size" name="bentuk_usaha" id="" required placeholder="Bentuk Usaha">
-                                                    <option selected value="">Pilih Bentuk Usaha</option>
-                                                    <option value="Perorangan">Perorangan</option>
-                                                    <option value="PD">PD</option>
-                                                    <option value="CV">CV</option>
-                                                    <option value="PT">PT</option>
-                                                </select>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Tahun Berdiri</label>
+                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" required placeholder="2016" maxlength="4">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Jumalah Karyawan</label>
+                                                        <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" required placeholder="25">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -164,181 +178,207 @@
 
                                 <!-- /step-->
                                 <div class="step text-size">
-                                    <div class="row mb-3">
-                                        <div class="col-md-10 ">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-2">
                                             <div class="ml-3">
                                                 <h4 class="mt-0 header-title">Formulir Partnership</h4>
                                                 <p class="text-muted text-size">Semua data dibutuhkan untuk keperluan analisa dan pengembangan strategi produk Syariah, hanya selangkah lagi proses ini selesai :)</p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Barang Yang Dijual</label>
-                                                <input type="text" class="form-control text-size" name="barang_jual" id="barang_jual" name="barang_jual" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nama Pemilik</label>
-                                                <input type="text" class="form-control text-size" name="nama_pemilik" id="nama_pemilik" required placeholder="Khadaffi Antashari">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Sosial Media / Website</label>
-                                                <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" required placeholder="https://www.instagram.com/bfisyariah">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Hobi / Interest</label>
-                                                <input type="text" class="form-control text-size" name="hobi" id="hobi" placeholder="Memancing">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
-                                                <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
-                                                    <option selected disabled value="">Pilih Jenis Pembayaran</option>
-                                                    <option value="Tunai">Tunai</option>
-                                                    <option value="Kredit Konvensional">Kredit Konvensional</option>
-                                                    <option value="Kredit Syariah">Kredit Syariah</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Apakah Punya Pinjaman?</label><br>
-                                                <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" required>
-                                                    <label class="form-check-label text-size">
-                                                        Ya
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" required>
-                                                    <label class="form-check-label text-size">
-                                                        Tidak
-                                                    </label>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Barang Yang Dijual</label>
+                                                        <input type="text" class="form-control text-size" name="barang_jual" id="barang_jual" name="barang_jual" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Ada Plafond Dari Instansi keuangan?</label><br>
-                                                <div class="form-check  form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" value="Ya" required>
-                                                    <label class="form-check-label text-size">
-                                                        Ya
-                                                    </label>
-                                                </div>
-                                                <div class="form-check  form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" value="Tidak" required>
-                                                    <label class="form-check-label text-size">
-                                                        Tidak
-                                                    </label>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Sosial Media / Website</label>
+                                                        <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" required placeholder="https://www.instagram.com/bfisyariah">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Omset Perbulan</label>
-                                                <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="omset" id="omset" required placeholder="50,000,000">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Jumlah Cabang</label>
-                                                <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_cabang" id="jumlah_cabang" required placeholder="5">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Apakah Memiliki Giro / Cek?</label><br>
-                                                <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Giro">
-                                                    <label class="form-check-label">
-                                                        Giro
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Cek">
-                                                    <label class="form-check-label">
-                                                        Cek
-                                                    </label>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
+                                                        <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
+                                                            <option selected disabled value="">Pilih Jenis Pembayaran</option>
+                                                            <option value="Tunai">Tunai</option>
+                                                            <option value="Kredit Konvensional">Kredit Konvensional</option>
+                                                            <option value="Kredit Syariah">Kredit Syariah</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div id="disable" class="form-group ml-3 mr-3">
-                                                <label>Tahun Berakhir Izin Usaha</label>
-                                                <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="akhir_izin" id="akhir_izin" placeholder="2016" maxlength="4">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Pernah Melakukan Promosi?</label><br>
-                                                <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-                                                    <label class="form-check-label">
-                                                        Ya
-                                                    </label>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Omset Perbulan</label>
+                                                        <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="omset" id="omset" required placeholder="50,000,000">
+                                                    </div>
                                                 </div>
-                                                <div class="form-check form-check-inline ml-3 mr-3">
-                                                    <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-                                                    <label class="form-check-label">
-                                                        Tidak
-                                                    </label>
-                                                </div>
-                                                <div class="form-group mt-3">
-                                                    <label>Rekening Bank</label>
-                                                    <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Cabang Bank</label>
-                                                    <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" required placeholder="Cabang Karawaci">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Jumlah Cabang</label>
+                                                        <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_cabang" id="jumlah_cabang" required placeholder="5">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Ada Project Yang Sedang Berjalan?</label><br>
-                                                <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Ada">
-                                                    <label class="form-check-label">
-                                                        Ada
-                                                    </label>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Pernah Melakukan Promosi?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
+                                                            <label class="form-check-label">
+                                                                Ya
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline ml-3 mr-3">
+                                                            <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
+                                                            <label class="form-check-label">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Tidak Ada">
-                                                    <label class="form-check-label">
-                                                        Tidak Ada
-                                                    </label>
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Ada Project Yang Sedang Berjalan?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Ada">
+                                                            <label class="form-check-label">
+                                                                Ada
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" required value="Tidak Ada">
+                                                            <label class="form-check-label">
+                                                                Tidak Ada
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="form-group mt-3">
-                                                    <label>Nama Bank</label>
-                                                    <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" required placeholder="Bank Mandiri">
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Rekening Bank</label>
+                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Atas Nama</label>
-                                                    <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" required placeholder="Anton Hoed">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Nama Bank</label>
+                                                        <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" required placeholder="Bank Mandiri">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Cabang Bank</label>
+                                                        <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" required placeholder="Cabang Karawaci">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Atas Nama</label>
+                                                        <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" required placeholder="Anton Hoed">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Catatan</label>
-                                                <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Nama Pemilik</label>
+                                                        <input type="text" class="form-control text-size" name="nama_pemilik" id="nama_pemilik" required placeholder="Khadaffi Antashari">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Hobi / Interest</label>
+                                                        <input type="text" class="form-control text-size" name="hobi" id="hobi" placeholder="Memancing">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Apakah Punya Pinjaman?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" required>
+                                                            <label class="form-check-label text-size">
+                                                                Ya
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" required>
+                                                            <label class="form-check-label text-size">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Ada Plafond Dari Instansi keuangan?</label><br>
+                                                        <div class="form-check  form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" value="Ya" required>
+                                                            <label class="form-check-label text-size">
+                                                                Ya
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check  form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" value="Tidak" required>
+                                                            <label class="form-check-label text-size">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Apakah Memiliki Giro / Cek?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Giro">
+                                                            <label class="form-check-label">
+                                                                Giro
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Cek">
+                                                            <label class="form-check-label">
+                                                                Cek
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div id="disable" class="form-group ml-3 mr-3">
+                                                        <label>Tahun Berakhir Izin Usaha</label>
+                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="akhir_izin" id="akhir_izin" placeholder="2016" maxlength="4">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Catatan</label>
+                                                        <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

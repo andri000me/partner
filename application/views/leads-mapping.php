@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Form Inputan Partner</h4>
+            <h4 class="page-title">Data Leads</h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Lexa</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tables</a></li>
-                <li class="breadcrumb-item active">Basic Tables</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Database</a></li>
+                <li class="breadcrumb-item active">Data Leads</li>
             </ol>
         </div>
     </div>
@@ -22,11 +22,8 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Leads</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner
-                    yang
-                    berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
-                    memudahkan anda dalam memaintain partner anda.</p>
+                <h4 class="mt-0 header-title">Daftar Leads</h4>
+                <p class="text-muted m-b-30 text-size">Halaman ini berguna untuk melihat leads yang ada di cabang anda dan untuk melihat potensi cabang anda</p>
                 <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>

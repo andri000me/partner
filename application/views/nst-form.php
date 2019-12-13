@@ -1,14 +1,6 @@
 <div class="row">
-	<div class="col-md-12">
+	<div class="col-md-12 mt-5">
 		<div class="ml-3 mr-3">
-			<div class="page-title-box mt-5">
-				<h4 class="page-title">Timeline Maintain</h4>
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
-					<li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-					<li class="breadcrumb-item active">Timeline Maintain</li>
-				</ol>
-			</div>
 			<div class="card m-b-20">
 				<div class="card-body">
 					<h4 class="mt-0 header-title">Form NST</h4>

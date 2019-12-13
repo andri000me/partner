@@ -1,18 +1,5 @@
 <div class="row">
-    <div class="col-sm-12">
-        <div class="page-title-box">
-            <h4 class="page-title">Form Inputan NST</h4>
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Lexa</a></li>
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Tables</a></li>
-                <li class="breadcrumb-item active text-size">Basic Tables</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 mt-5">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan">
                 <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size">Create NST</button></a>
