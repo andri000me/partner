@@ -42,6 +42,8 @@ class Leads extends CI_Controller
             $this->where = NULL;
         }
 
+        $cross_branch = $this->fungsi->user_login()->id_branch;
+
         check_not_login();
     }
 
@@ -59,7 +61,7 @@ class Leads extends CI_Controller
         $data = [
             'mappings' => $this->mapping_leads->get($this->where),
             'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all(),
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
             'agents' => $this->agent_model->get($this->where),
             'partners' => $this->partner_model->get($this->where)
@@ -90,14 +92,16 @@ class Leads extends CI_Controller
 
     public function detail($id)
     {
-        $where = ['id_leads' => $id];
+        $where = ['leads.id_leads' => $id];
 
         $data = [
-            'data' => $this->leads_model->get($where)->row(),
-            'mapping' => $this->mapping_leads->get($this->where),
-            'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all(),
-            'comments' => $this->comment_model->get($where)
+            'data'          => $this->leads_model->get($where)->row(),
+            'mapping'       => $this->mapping_leads->get($this->where),
+            'branches'      => $this->branch_model->get(),
+            'users'         => $this->user_model->get_all(),
+            'ticket'        => $this->ticket_model->get($where)->row(),
+            'comments'      => $this->comment_model->get($where),
+            'activities'    => $this->leads_activity->get($where)
         ];
         $this->template->load('template/index', 'leads-detail', $data);
     }
@@ -349,9 +353,31 @@ class Leads extends CI_Controller
 
         $this->leads_activity->create($leads_activity);
 
+        //Meng-update antrian tiket untuk data Agent
+        $has_superior = $this->fungsi->user_login()->has_superior;
+        $ticket = [
+            'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            'date_pending'  => date('Y-m-d H:i:s'),
+            // 'id_user'       => $this->fungsi->user_login()->id_user,
+            // 'id_branch'     => $this->fungsi->user_login()->id_branch
+        ];
+        $where_ticket = ['id_ticket' => $post['id_ticket']];
+        $this->ticket_model->update($ticket, $where_ticket);
+
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
 
         redirect('Leads');
+    }
+
+    // AJAX Controller
+    public function get_user($cabang_cross = NULL)
+    {
+        //Secara default memunculkan list cabang si user
+        if ($cabang_cross == NULL) {
+            $cabang_cross = $this->fungsi->user_login()->id_branch;
+        }
+        $data = $this->user_model->get_all(['users.id_branch' => $cabang_cross]);
+        echo json_encode($data->result());
     }
 }

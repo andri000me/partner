@@ -109,15 +109,16 @@ class Auth extends CI_Controller
 		$password = md5($post['password']);
 
 
-		$query = $this->user_model->login($nik, $password);
+		$query = $this->user_model->login($nik);
+		$row = $query->row();
 
 		//cek login
-		if ($query->num_rows() > 0) {
-			$row = $query->row();
+		if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password) {
 			$params = [
 				'id_user' => $row->id_user,
 				'id_branch' => $row->id_branch,
-				'nik' => $row->nik
+				'nik' => $row->nik,
+				'level' => $row->level
 			];
 
 			//Menyimpan Session
@@ -129,9 +130,14 @@ class Auth extends CI_Controller
 			];
 			$this->user_model->login_log($login_log);
 
-			echo "<script>window.location='" . site_url("Ticket") . "'</script>";
+			echo "<script>window.location='" . site_url("ticket") . "'</script>";
+		} else if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password != $password) {
+			$this->session->set_flashdata("password_salah", "<div class='text text-danger'>Password Anda Salah.</div>");
+			$this->session->set_flashdata("nik", $nik);
+			redirect('Auth');
 		} else {
-			echo "<script>alert('Akun tidak cocok/belum diaktivasi'); window.location='" . site_url("Auth") . "'</script>";
+			$this->session->set_flashdata("akun_salah", "<div class='text text-danger'>Akun tidak ditemukan.</div>");
+			redirect('Auth');
 		}
 	}
 
@@ -170,7 +176,7 @@ class Auth extends CI_Controller
 	// Proses Logout
 	public function logout()
 	{
-		$params = ['id_user', 'id_branch', 'nik'];
+		$params = ['id_user', 'id_branch', 'nik', 'level'];
 		$this->session->unset_userdata($params);
 		redirect('Auth');
 	}

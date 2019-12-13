@@ -229,13 +229,13 @@ class Partner extends CI_Controller
             $id_ticket = $this->ticket_model->create($ticket);
 
             //Notifikasi
-            $notification = [
-                'pengirim'      => $this->fungsi->user_login()->id_user,
-                'type'          => 'Data Partner Baru',
-                'id_ticket'    => $id_ticket,
-                'created_at'    => date('Y-m-d H:i:s')
-            ];
-            $this->notification_model->create($notification);
+            // $notification = [
+            //     'pengirim'      => $this->fungsi->user_login()->id_user,
+            //     'type'          => 'Data Partner Baru',
+            //     'id_ticket'    => $id_ticket,
+            //     'created_at'    => date('Y-m-d H:i:s')
+            // ];
+            // $this->notification_model->create($notification);
         }
 
 
@@ -429,6 +429,17 @@ class Partner extends CI_Controller
         ];
 
         $this->partner_activity->create($partner_activity);
+
+        //Meng-update antrian tiket untuk data Agent
+        $has_superior = $this->fungsi->user_login()->has_superior;
+        $ticket = [
+            'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            'date_pending'  => date('Y-m-d H:i:s'),
+            // 'id_user'       => $this->fungsi->user_login()->id_user,
+            // 'id_branch'     => $this->fungsi->user_login()->id_branch
+        ];
+        $where_ticket = ['id_ticket' => $post['id_ticket']];
+        $this->ticket_model->update($ticket, $where_ticket);
 
 
         redirect('Partner');

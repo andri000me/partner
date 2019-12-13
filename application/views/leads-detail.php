@@ -16,7 +16,7 @@
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
 									<label>Leads ID</label>
-									<input type="text" class="form-control placement" name="leads_id" id="leads_id" required placeholder="009377736433744" maxlength="15">
+									<input type="text" class="form-control placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15">
 								</div>
 							</div>
 						</div>
@@ -35,13 +35,13 @@
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>ID KTP</label>
-									<input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
+									<input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Telepon / Whatsapp</label>
-									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
+									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
 								</div>
 							</div>
 						</div>
@@ -50,18 +50,18 @@
 								<div class="form-group mr-3 ml-3">
 									<label>Asal Aplikasi</label>
 									<select class="form-control" name="soa" id="soa">
-										<option selected>Pilih Source Aplikasi</option>
-										<option value="Direct Selling">Direct Selling</option>
-										<option value="Tour & travel">Tour & travel</option>
-										<option value="Penyedia Jasa">Penyedia Jasa</option>
-										<option value="Agent BA">Agent BA</option>
-										<option value="EGC">EGC</option>
-										<option value="CGC">CGC</option>
-										<option value="Digital Marketing">Digital Marketing</option>
-										<option value="Website BFI Syariah">Website BFI Syariah</option>
-										<option value="RO">RO</option>
-										<option value="Walkin">Walkin</option>
-										<option value="Event">Event</option>
+										<option value="" selected>Pilih Source Aplikasi</option>
+										<option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+										<option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+										<option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+										<option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+										<option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+										<option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+										<option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+										<option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+										<option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+										<option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
+										<option <?= $data->soa == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
 									</select>
 								</div>
 							</div>
@@ -88,20 +88,20 @@
 								<div class="form-group mr-3 ml-3">
 									<label>Produk</label>
 									<select class="form-control" name="produk" id="produk">
-										<option selected>Pilih Kategori Produk</option>
-										<option value="My Ihram">My Ihram</option>
-										<option value="My Safar">My Safar</option>
-										<option value="My Talim">My Talim</option>
-										<option value="My Hajat">My Hajat</option>
-										<option value="My Faedah">My Faedah</option>
-										<option value="My CarS">My CarS</option>
+										<option value="" selected>Pilih Kategori Produk</option>
+										<option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+										<option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+										<option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+										<option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+										<option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+										<option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
 									</select>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
 									<label>Detail Produk</label>
-									<input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
+									<input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
 								</div>
 							</div>
 						</div>
@@ -111,10 +111,10 @@
 									<label>Follow Up By</label>
 									<select class="form-control" name="follow_up_by" id="follow_up_by" required>
 										<option selected disabled value="">Pilih Follow Up By</option>
-										<option value="Kunjungan">Kunjungan</option>
-										<option value="Telepon">Telepon</option>
-										<option value="Whatsapp">Whatsapp</option>
-										<option value="Email">Email</option>
+										<option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
+										<option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
+										<option <?= $data->follow_up_by == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
+										<option <?= $data->follow_up_by == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
 									</select>
 								</div>
 							</div>
@@ -124,13 +124,13 @@
 								<div class="form-group ml-3 mr-3 posisi">
 									<label>Cross Branch?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
+										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
 										<label class="form-check-label">
 											Ya
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Tidak">
+										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
 										<label class="form-check-label">
 											Tidak
 										</label>
@@ -143,7 +143,7 @@
 									<select class="form-control" name="cabang_cross" id="cabang_cross">
 										<option selected disabled value="">Pilih Cabang</option>
 										<?php foreach ($branches->result() as $branch) { ?>
-											<option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+											<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -156,7 +156,7 @@
 									<select class="form-control" name="pic_ttd" id="pic_ttd">
 										<option value="" selected>Pilih Pic Tanda Tangan</option>
 										<?php foreach ($users->result() as $user) { ?>
-											<option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+											<option <?= $user->id_user == $data->pic_ttd ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -167,7 +167,7 @@
 									<select class="form-control" name="surveyor" id="surveyor">
 										<option value="" selected>Pilih Surveyor</option>
 										<?php foreach ($users->result() as $user) { ?>
-											<option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
+											<option <?= $user->id_user == $data->surveyor ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->name)) . ', ' . ucwords(strtolower($user->nama_cabang)) ?></option>
 										<?php } ?>
 									</select>
 								</div>
@@ -177,20 +177,20 @@
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>Nilai Funding</label>
-									<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000">
+									<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3 posisi">
 									<label>Appeal NST</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">
+										<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Ya' ? 'checked' : '' ?> required value="Ya">
 										<label class="form-check-label">
 											Ya
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Tidak">
+										<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
 										<label class="form-check-label">
 											Tidak
 										</label>
@@ -199,7 +199,16 @@
 							</div>
 						</div>
 						<div class="form-group mb-0 mt-2 float-right btn-maintain">
-							<button type="submit" class="btn btn-primary waves-effect waves-light text-size">
+							<?php
+							$level = $this->fungsi->user_login()->level;
+							if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+								?>
+								<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+							<?php } ?>
+							<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
+								<a class="btn btn-danger text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+							<?php } ?>
+							<button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size">
 								Simpan
 							</button>
 						</div>
@@ -256,314 +265,123 @@
 							<div class="tab-pane active p-3" id="home1" role="tabpanel">
 								<h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
 								<div class="boxx overflow-auto">
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table class="web">
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 text-size">
-															<b>Perubahan pada data Partner</b></p>
-													</td>
-													<td>
-														<p class="inbox-item-date text-muted mt-1 text-size">
-															30 Des, 2019</p>
-													</td>
-												</tr>
-												<tr>
-													<td>
-
-													</td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0 text-size">
-															Oleh&nbsp;&nbsp;Ibrahim Ahmad Jabar Khaidiru
-															Sobari
-
-														</p>
-													</td>
-													<td>
-
-													</td>
-												</tr>
-											</table>
-											<table class="mobile">
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1">
-															<b>Perubahan pada data Partner</b></p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0">
-															Oleh&nbsp;&nbsp;Ibrahim Ahmad Jabar Khaidiru
-															Sobari</p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0">
-															30 Des, 2019</p>
-													</td>
-												</tr>
-											</table>
-										</div>
-									</div>
+									<?php if ($activities->num_rows() > 0) {
+										foreach ($activities->result() as $activity) { ?>
+											<div class="inbox-wid">
+												<div class="inbox-item">
+													<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i><b>&nbsp;&nbsp;<?= $activity->activity ?></b></p>
+													<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+													<code class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;<?= $activity->tanggal_activity ?></code>
+												</div>
+											</div>
+										<?php
+											}
+										} else { ?>
+										<p class="text-muted m-b-10">Tidak Ada Data</p>
+									<?php } ?>
 								</div>
 
 								<div class="web mt-2">
 									<h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 text-size">
-															<b>Terverifikasi</b></p>
-													</td>
-													<td>
-														<p class="inbox-item-date text-muted mt-1 mb-0 text-size">
-															30 Des, 2019</p>
-													</td>
-												</tr>
-												<tr>
-													<td>
-													</td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0 text-size">
-															Oleh&nbsp;&nbsp;Teri Anggraini</p>
-													</td>
-													<td>
-													</td>
-												</tr>
-											</table>
+									<?php if ($ticket->status_approval == 5) { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Terverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid hide">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 text-size">
-															<b>Belum
-																Diverifikasi</b>
-														</p>
-													</td>
-													<td></td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0 text-size">
-															Oleh&nbsp;&nbsp;Admin HO</p>
-													</td>
-													<td></td>
-												</tr>
-											</table>
+									<?php } else { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i><b>&nbsp;&nbsp;Belum Diverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Admin HO</p>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 text-size">
-															<b>Sudah
-																tanda
-																tangan
-																Kerjasama</b>
-														</p>
-													</td>
-													<td>
-														<p class="inbox-item-date text-muted mt-1 mb-0 text-size">
-															30 Des, 2019</p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0 text-size">
-															Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-													</td>
-													<td></td>
-												</tr>
-											</table>
+									<?php } ?>
+									<?php if ($ticket->ttd_pks == 'Ya') { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Sudah tanda tangan Kerjasama</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1 ml-3 text-size">
-															<b>Kerjasama?</b></p>
-													</td>
-												</tr>
-												<tr>
-													<td>
-
-													</td>
-													<td>
-														<form action="">
-															<div class="form-group ml-3 mb-0">
-																<div class="form-check form-check-inline">
-																	<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-																	<label class="form-check-label">
-																		Ya
-																	</label>
-																</div>
-																<div class="form-check form-check-inline">
-																	<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-																	<label class="form-check-label">
-																		Tidak
-																	</label>
-																</div>
-															</div>
-														</form>
-													</td>
-												</tr>
-											</table>
+									<?php } ?>
+									<?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum' && ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5)) { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
+												<div class="form-group ml-3">
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+														<label class="form-check-label">
+															Ya
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+														<label class="form-check-label">
+															Tidak
+														</label>
+													</div>
+												</div>
+											</div>
 										</div>
-									</div>
+									<?php } ?>
 								</div>
 
 								<div class="mobile">
 									<h6 class="header-title mb-0">STATUS PARTNER</h6>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1">
-															<b>Terverifikasi</b></p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0">
-															Oleh&nbsp;&nbsp;Teri Anggraini</p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted">30 Des, 2019
-														</p>
-													</td>
-												</tr>
-											</table>
+									<!-- Jika tiket status sudah diapprove HO, maka ... -->
+									<?php if ($ticket->status_approval == 5) { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Terverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><b>Belum
-																Diverifikasi</b>
-														</p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0">
-															Oleh&nbsp;&nbsp;Admin HO</p>
-													</td>
-												</tr>
-											</table>
+									<?php } else { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i><b>&nbsp;&nbsp;Belum Diverifikasi</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;Admin HO</p>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
-													</td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1"><b>Sudah
-																tanda
-																tangan
-																Kerjasama</b>
-														</p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted mb-0">
-															Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td>
-														<p class="inbox-item-text text-muted">30 Des, 2019
-														</p>
-													</td>
-												</tr>
-											</table>
+									<?php } ?>
+									<!-- Jika Data Tiket telah td kerjsama, maka munculkan record ttd kerjasama -->
+									<?php if ($ticket->ttd_pks == 'Ya') { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i><b>&nbsp;&nbsp;Sudah tanda tangan Kerjasama</b></p>
+												<p class="inbox-item-text text-muted mb-0">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+												&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></code>
+											</div>
 										</div>
-									</div>
-									<div class="inbox-wid">
-										<div class="inbox-item">
-											<table>
-												<tr>
-													<td> </td>
-													<td>
-														<p class="inbox-item-author mt-0 mb-1">
-															<b>Kerjasama?</b></p>
-													</td>
-												</tr>
-												<tr>
-													<td></td>
-													<td class="mb-0">
-														<div class="form-group">
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Ya">
-																<label class="form-check-label text">
-																	Ya
-																</label>
-															</div>
-															<div class="form-check form-check-inline">
-																<input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" required value="Tidak">
-																<label class="form-check-label">
-																	Tidak
-																</label>
-															</div>
-														</div>
-													</td>
-												</tr>
-											</table>
+									<?php } ?>
+									<!-- Jika Data Tiket sudah di-approve oleh HO, maka munculkan tombol Kerjasama -->
+									<?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum' && ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5)) { ?>
+										<div class="inbox-wid">
+											<div class="inbox-item">
+												<p class="inbox-item-author mt-0 mb-1"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Kerjasama?</b></p>
+												<div class="form-group ml-3">
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+														<label class="form-check-label">
+															Ya
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+														<label class="form-check-label">
+															Tidak
+														</label>
+													</div>
+												</div>
+											</div>
 										</div>
-									</div>
+									<?php } ?>
 								</div>
 
 								<h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>
@@ -586,98 +404,22 @@
 
 							<div class="tab-pane p-3" id="profile1" role="tabpanel">
 								<div class="box overflow-auto">
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="../assets/images/ibrahim.jpeg" height="64">
-										</a>
-										<div class="media-body">
-											<h6 class="mt-0 mb-0">Ibrahim</h6>
-											<p class="text-size mt-0">Cras sit amet nibh libero, in gravida
-												nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
+									<?php foreach ($comments->result() as $comment) { ?>
+										<div class="media">
+											<a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
+												<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
+											</a>
+											<div class="media-body">
+												<h5 class="mt-0 font-16"><?= $comment->name ?></h5>
+												<p><?= $comment->comment ?></p>
+											</div>
 										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="../assets/images/ibrahim.jpeg" height="64">
-										</a>
-										<div class="media-body">
-											<h6 class="mt-0 mb-0">Ibrahim</h6>
-											<p class="text-size mt-0">Cras sit amet nibh libero, in gravida
-												nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="../assets/images/ibrahim.jpeg" height="64">
-										</a>
-										<div class="media-body">
-											<h6 class="mt-0 mb-0">Ibrahim</h6>
-											<p class="text-size mt-0">Cras sit amet nibh libero, in gravida
-												nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="../assets/images/ibrahim.jpeg" height="64">
-										</a>
-										<div class="media-body">
-											<h6 class="mt-0 mb-0">Ibrahim</h6>
-											<p class="text-size mt-0">Cras sit amet nibh libero, in gravida
-												nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
-									<div class="media">
-										<a class="image-popup-vertical-fit" href="../assets/images/ibrahim.jpeg" title="Foto Profile.">
-											<img class="d-flex align-self-start rounded mr-3" alt="" src="../assets/images/ibrahim.jpeg" height="64">
-										</a>
-										<div class="media-body">
-											<h6 class="mt-0 mb-0">Ibrahim</h6>
-											<p class="text-size mt-0">Cras sit amet nibh libero, in gravida
-												nulla. Nulla vel
-												metus
-												scelerisque ante sollicitudin. Cras purus odio,
-												vestibulum
-												in vulputate at, tempus viverra turpis. Fusce
-												condimentum
-												nunc ac nisi vulputate fringilla. Donec lacinia congue
-												felis
-												in faucibus.</p>
-										</div>
-									</div>
+									<?php } ?>
 								</div>
-								<form action="">
+								<form action="<?= base_url('Comment/save') ?>" method="post">
+									<input type="hidden" name="id_type" id="id_type" value="<?= $data->id_agent ?>">
+									<input type="hidden" name="ticket" id="ticket" value="<?= $ticket->id_ticket ?>">
+									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
 										<label>Comment</label>
 										<textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>

@@ -21,28 +21,35 @@
                     <!-- <li class="unread">
                         <div class="col-mail col-mail-1">
                             <a href="#" class="title">
-                                <span class="badge-primary badge ml-5">Comment</span></a><span class="far fa-comment ml-5"></span>
+                                <span class="badge-primary badge ml-5">Comment</span>
+                            </a>
+                            <span class="far fa-comment ml-5"></span>
                         </div>
                         <div class="col-mail col-mail-2">
-                            <a href="#" class="subject"><span class="teaser"></span>Ibrahim Ahmad
-                                Jabar khaidiru Sobari &nbsp;–&nbsp; i love u
-                                S</span>
+                            <a href="#" class="subject"><span class="teaser"></span>Ibrahim Ahmad Jabar khaidiru Sobari S</span>
                             </a>
                             <div class="date">04 Dec, 2019</div>
                         </div>
                     </li> -->
-                    <?php foreach ($data->result() as $notif) { ?>
-                        <li class="<?= $notif->has_read == 0 ? 'unread' : '' ?>">
-                            <div class="col-mail col-mail-1">
-                                <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>"><span class="badge-success badge ml-5">Approved</span></a><span class="far fa-check-circle ml-5"></span>
-                            </div>
-                            <div class="col-mail col-mail-2">
-                                <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>" class="subject"><?= $notif->type ?>
-                                    Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket #<?= $notif->id_ticket ?>.
-                                </a>
-                                <div class="date"><?= $notif->dibuat_pada ?></div>
-                            </div>
-                        </li>
+                    <?php if ($data->num_rows() > 0) { ?>
+                        <?php foreach ($data->result() as $notif) { ?>
+                            <li class="<?= $notif->has_read == 0 ? 'unread' : '' ?>">
+                                <div class="col-mail col-mail-1">
+                                    <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>">
+                                        <span class="badge-success badge ml-5">Approved</span></a><span class="far fa-check-circle ml-5"></span>
+                                </div>
+                                <div class="col-mail col-mail-2">
+                                    <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>" class="subject"><?= $notif->type ?>
+                                        Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket #<?= $notif->id_ticket ?>.
+                                    </a>
+                                    <div class="date"><?= $notif->dibuat_pada ?></div>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <center>
+                            <h4>Tidak ada notifikasi!</h4>
+                        </center>
                     <?php } ?>
                     <!-- <li>
                         <div class="col-mail col-mail-1">

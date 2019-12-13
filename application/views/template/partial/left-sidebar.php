@@ -17,16 +17,17 @@
                 </a>
             </li>
 
-            <li>
-                <a href="<?= base_url('branch') ?>" class="waves-effect">
-                    <i class="mdi ion-person"></i><span>Branch </span>
-                </a>
-            </li>
+            <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                <li>
+                    <a href="<?= base_url('branch') ?>" class="waves-effect">
+                        <i class="mdi ion-person"></i><span>Branch </span>
+                    </a>
+                </li>
+            <?php } ?>
 
             <li>
                 <a href="<?= base_url('notification') ?>" class="waves-effect">
-                    <i class="ti-bell noti-icon"></i><span class="badge badge-primary badge-pill float-right">2</span> <span> Notification
-                    </span>
+                    <i class="ti-bell noti-icon"></i><?= $this->fungsi->notification()->num_rows() > 0 ? '<span class="badge badge-primary badge-pill float-right">' . $this->fungsi->notification()->num_rows() .  '</span>' : ''  ?> <span>Notification</span>
                 </a>
             </li>
 

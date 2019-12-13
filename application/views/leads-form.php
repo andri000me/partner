@@ -163,7 +163,7 @@
                                                 <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                                     <option selected disabled value="">Pilih Cabang</option>
                                                     <?php foreach ($branches->result() as $branch) { ?>
-                                                        <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                        <option <?= $branch->id_branch == $this->fungsi->user_login()->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                                     <?php } ?>
                                                 </select>
                                             </div>
@@ -173,9 +173,9 @@
                                                 <label>Pic Tanda Tangan</label>
                                                 <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
                                                     <option value="" selected>Pilih Pic Tanda Tangan</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                                    <?php } ?>
+                                                    <optgroup id="show_pic_ttd">
+
+                                                    </optgroup>
                                                 </select>
                                             </div>
                                         </div>
@@ -184,9 +184,9 @@
                                                 <label>Surveyor</label>
                                                 <select class="form-control text-size" name="surveyor" id="surveyor">
                                                     <option value="" selected>Pilih Surveyor</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                        <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                                    <?php } ?>
+                                                    <optgroup id="show_surveyor">
+
+                                                    </optgroup>
                                                 </select>
                                             </div>
                                         </div>
@@ -321,49 +321,29 @@
                     <tbody>
                         <?php foreach ($mappings->result() as $data) { ?>
                             <tr>
-                                <th>
-                                    <div class="text-size">Nama Lengkap</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Nomor Telepon</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Asal Aplikasi</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Produk</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Aksi</div>
-                                </th>
+                                <td class="not-clickable">
+                                    <div class="text-size"><?= $data->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->telepon ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->soa ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->produk ?></div>
+                                </td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($mappings->result() as $data) { ?>
-                                <tr>
-                                    <td class="not-clickable">
-                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->telepon ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->soa ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->produk ?></div>
-                                    </td>
-                                    <td>
-                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- Modal -->
 
@@ -505,4 +485,36 @@
 
         source_leads();
     })
+</script>
+
+<script>
+    show_pic_ttd();
+    $("#cabang_cross").change(function() {
+        show_pic_ttd();
+    })
+
+    function show_pic_ttd() {
+        var cabang_cross = $("#cabang_cross").val();
+        // if($("#cross_branch").val() == "Ya")
+        // alert(cabang_cross);
+        $.ajax({
+            type: 'ajax',
+            url: '<?= base_url('Leads/get_user/') ?>' + cabang_cross,
+            async: false,
+            dataType: 'json',
+            data: {
+                cabang_cross: cabang_cross
+            },
+            success: function(data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i].id_user + '">' + data[i].name.toUpperCase() + '</option>'
+                }
+                $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
+
+                console.log(html);
+            }
+
+        });
+    }
 </script>
