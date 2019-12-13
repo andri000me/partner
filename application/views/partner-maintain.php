@@ -1,19 +1,17 @@
 <div class="row mt-5">
     <div class="col-lg-8">
         <div class="page-title-box ml-4">
-            <h4 class="page-title">Timeline Maintain</h4>
+            <h4 class="page-title">Form Maintain Partner</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Timeline Maintain</li>
+                <li class="breadcrumb-item active">Form Maintain Partner</li>
             </ol>
         </div>
         <div class="card">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Mapping Lokasi Partner</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang berpotensi di
-                    area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam
-                    memaintain partner anda.</p>
+                <h4 class="mt-0 header-title">Maintain Partner</h4>
+                <p class="text-muted m-b-30 text-size">Form ini digunakan untuk mencatat aktivitas maintain cabang anda.</p>
 
                 <form class="" action="<?= base_url('Maintain_partner/save') ?>" method="post" enctype="multipart/form-data">
                     <!-- ID Partner -->
@@ -22,9 +20,9 @@
                     <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
                     <!-- ID branch -->
                     <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
-                    <div class="form-group ml-3 mr-3">
-                        <label>Upload Foto Kegiatan</label>
-                        <input type="file" class="form-control" name="photo_activity" id="photo_activity" required placeholder="Silahkan Upload Foto Kegiatan" />
+                    <div class="form-group text-size ml-3 mr-3">
+                        <label>Upload Foto Selfie Anda</label>
+                        <input type="file" name="photo_activity" class="filestyle" data-buttonname="btn-secondary">
                     </div>
                     <div class="form-group ml-3 mr-3">
                         <label>Jenis Kegiatan</label>
@@ -40,7 +38,7 @@
                     </div>
                     <div class="form-group ml-3 mr-3">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
+                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
                     </div>
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>

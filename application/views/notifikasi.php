@@ -31,26 +31,19 @@
                             <div class="date">04 Dec, 2019</div>
                         </div>
                     </li> -->
-                    <?php if ($data->num_rows() > 0) { ?>
-                        <?php foreach ($data->result() as $notif) { ?>
-                            <li class="<?= $notif->has_read == 0 ? 'unread' : '' ?>">
-                                <div class="col-mail col-mail-1">
-                                    <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>">
-                                        <span class="badge-success badge ml-5">Approved</span></a><span class="far fa-check-circle ml-5"></span>
-                                </div>
-                                <div class="col-mail col-mail-2">
-                                    <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>" class="subject"><?= $notif->type ?>
-                                        Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket #<?= $notif->id_ticket ?>.
-                                    </a>
-                                    <div class="date"><?= $notif->dibuat_pada ?></div>
-                                </div>
-                            </li>
-                        <?php } ?>
-                    <?php } else { ?>
-                        <center>
-                            <h4>Tidak ada notifikasi!</h4>
-                        </center>
-                    <?php } ?>
+                    <!-- <?php foreach ($data->result() as $notif) { ?>
+                        <li class="<?= $notif->has_read == 0 ? 'unread' : '' ?>">
+                            <div class="col-mail col-mail-1">
+                                <a href="<?= base_url('ticket') ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                            </div>
+                            <div class="col-mail col-mail-2">
+                                <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>" class="subject"><?= $notif->type ?>
+                                    Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
+                                </a>
+                                <div class="date"><?= $notif->dibuat_pada ?></div>
+                            </div>
+                        </li>
+                    <?php } ?> -->
                     <!-- <li>
                         <div class="col-mail col-mail-1">
                             <a href="#" class="title"><span class="badge-danger badge ml-5">Reject</span></a><span class="far fa-times-circle ml-5"></a>
@@ -63,6 +56,37 @@
                         </div>
                     </!-->
                 </ul>
+
+
+                <div class="table-responsive">
+                    <table class="table table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <tbody>
+                            <?php foreach ($data->result() as $notif) { ?>
+                                <tr>
+                                    <td>
+                                        <span class="far fa-check-circle"></span>
+                                    </td>
+                                    <td>
+                                        <div style="width:450px;">
+                                            <?= $notif->type ?> Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <span class="badge-success badge">Approved</span>
+                                    </td>
+                                    <td>
+                                        <div style="width: 70px;">
+                                            <?= $notif->dibuat_pada ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('ticket') ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
+                </div>
             </div> <!-- card -->
         </div>
     </div>
