@@ -54,7 +54,7 @@
                                     <?= $mapping_leads->detail_produk ?>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-primary text-size" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Detail</a></center>
+                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Edit</a></center>
                                 </td>
                             </tr>
                         <?php } ?>

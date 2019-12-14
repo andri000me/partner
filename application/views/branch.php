@@ -14,7 +14,7 @@
     <div class="col-md-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons-branch" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Cabang</th>
@@ -46,7 +46,7 @@
                         <?php }  ?>
                     </tbody>
                 </table>
-                <button class="btn btn-primary float-right mt-5">Simpan</button>
+                <button class="btn btn-primary float-right mt-3">Simpan</button>
             </div>
         </div>
     </div> <!-- end col -->

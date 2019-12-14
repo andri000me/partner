@@ -139,7 +139,7 @@
 </script>
 
 <script>
-    var $table = $('.datatable');
+    var $table = $('.table-modal');
     if (window.innerWidth <= 600) $table.addClass('table-responsive');
     else $table.removeClass('table-responsive');
     $(window).resize(function() {
