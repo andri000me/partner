@@ -16,20 +16,20 @@
                     <ul class="nav nav-tabs mt-5" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#data-anggota" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                                <span class="d-none d-sm-block">Home</span>
+                                <span class="d-block d-sm-none"><i class="fas fa-users"></i></span>
+                                <span class="d-none d-sm-block">List Karyawan</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#edit-data" role="tab">
-                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                <span class="d-none d-sm-block">Profile</span>
+                                <span class="d-block d-sm-none"><i class="fas fa-edit"></i></span>
+                                <span class="d-none d-sm-block">Edit Profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#ganti-password" role="tab">
-                                <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                                <span class="d-none d-sm-block">Messages</span>
+                                <span class="d-block d-sm-none"><i class="fas fa-sync"></i></span>
+                                <span class="d-none d-sm-block">Ganti Password</span>
                             </a>
                         </li>
                     </ul>

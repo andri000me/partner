@@ -181,27 +181,28 @@
                 </div>
                 <a href="<?= base_url('mapping_partner/create') ?>" class="btn btn-primary">Buat Data Partner +</a>
                 <table id="" class="datatable table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Name Usaha</th>
-                            <th>Kategori Produk</th>
-                            <th>Telepon</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($partners->result() as $partner) { ?>
+                    <table id="" class="datatable table table-striped table-bordered dt-responsive nowrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
                             <tr>
-                                <td><?= $partner->nama_usaha ?></td>
-                                <td><?= $partner->kategori_produk ?></td>
-                                <td><?= $partner->telepon ?></td>
-                                <td>
-                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
-                                </td>
+                                <th>Name Usaha</th>
+                                <th>Kategori Produk</th>
+                                <th>Telepon</th>
+                                <th>Aksi</th>
                             </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($partners->result() as $partner) { ?>
+                                <tr>
+                                    <td><?= $partner->nama_usaha ?></td>
+                                    <td><?= $partner->kategori_produk ?></td>
+                                    <td><?= $partner->telepon ?></td>
+                                    <td>
+                                        <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
+                    </table>
             </div>
         </div>
     </div>
@@ -218,7 +219,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <a href="<?= base_url('agent/create') ?>" class="btn btn-primary">Buat Data Agent +</a>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive nowrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Lengkap</th>

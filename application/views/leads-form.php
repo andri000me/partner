@@ -383,57 +383,53 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <<<<<<< HEAD <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>
-                                <div class="text-size">Nama Lengkap</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Nomor Telepon</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Asal Aplikasi</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Produk</div>
-                            </th>
-                            <th>
-                                <div class="text-size">Aksi</div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($mappings->result() as $data) { ?>
-                            =======
-                            <div class="table-responsive">
-                                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                    <thead>
-                                        >>>>>>> origin/don
-                                        <tr>
-                                            <td class="not-clickable">
-                                                <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                            </td>
-                                            <td>
-                                                <div class="text-size"><?= $data->telepon ?></div>
-                                            </td>
-                                            <td>
-                                                <div class="text-size"><?= $data->soa ?></div>
-                                            </td>
-                                            <td>
-                                                <div class="text-size"><?= $data->produk ?></div>
-                                            </td>
-                                            <td>
-                                                <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                    </tbody>
+                <div class="table-responsive">
+                    <table id="" class="datatable table table-striped table-bordered dt-responsive wrap table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <div class="text-size">Nama Lengkap</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Nomor Telepon</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Asal Aplikasi</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Produk</div>
+                                </th>
+                                <th>
+                                    <div class="text-size">Aksi</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($mappings->result() as $data) { ?>
+                                <tr>
+                                    <td class="not-clickable">
+                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->telepon ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->soa ?></div>
+                                    </td>
+                                    <td>
+                                        <div class="text-size"><?= $data->produk ?></div>
+                                    </td>
+                                    <td>
+                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                        </tbody>
                     </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 <!-- Modal -->
 
@@ -446,7 +442,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Name Usaha</th>
@@ -483,7 +479,7 @@
                     <h4 class="modal-title">Cari Data Agent</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Lengkap</th>
