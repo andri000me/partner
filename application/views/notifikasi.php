@@ -88,7 +88,7 @@
                                         <?php } ?>
                                     </td>
                                     <td>
-                                        <div style="width: 70px;">
+                                        <div style="width: 80px;">
                                             <?= $notif->dibuat_pada ?>
                                         </div>
                                     </td>

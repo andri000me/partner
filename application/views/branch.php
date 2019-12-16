@@ -46,7 +46,6 @@
                         <?php }  ?>
                     </tbody>
                 </table>
-                <button class="btn btn-primary float-right mt-3">Simpan</button>
             </div>
         </div>
     </div> <!-- end col -->

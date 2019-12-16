@@ -3762,6 +3762,10 @@ button[disabled] {
 		margin-top: 50px;
 	}
 
+	.mobile {
+		display: none;
+	}
+
 	.boxx {
 		width: px;
 		max-height: 150px;
@@ -3783,6 +3787,11 @@ button[disabled] {
 
 	.btn-maintain {
 		margin-right: 15px;
+	}
+
+	.img-size {
+		width: 200px;
+		height: 200px;
 	}
 
 }
@@ -3840,10 +3849,58 @@ button[disabled] {
 	}
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
+	.sticky {
+		position: fixed;
+		z-index: 1;
+		width: 310px;
+	}
+
+	.btn-kanan {
+		float: none;
+	}
+
+	.height {
+		height: 1220px;
+	}
+
+	.boxx {
+		width: 250px;
+		height: 70px;
+	}
+
+	.box {
+		width: 240px;
+		height: 250px;
+	}
+
+	.media {
+		width: 290px;
+	}
+
+	.mobile {
+		display: none;
+	}
+
+	.item {
+		width: 100px;
+		height: 50px;
+	}
+
+	.alamat-box {
+		width: 100px;
+		height: 30px;
+	}
+
+	.btn-maintain {
+		margin-right: 15px;
+	}
+}
+
+@media (max-width: 768px) {
 	.sticky {
 		position: unset;
-		z-index: 0;
+		z-index: 1;
 		width: unset;
 	}
 
@@ -3853,6 +3910,25 @@ button[disabled] {
 
 	.height {
 		height: unset;
+	}
+
+	.img-size {
+		width: 100px;
+		height: 100px;
+	}
+
+	.boxx {
+		width: 665px;
+		height: 85px;
+	}
+
+	.box {
+		width: 670px;
+		height: 250px;
+	}
+
+	.media {
+		width: 660px;
 	}
 }
 
@@ -4043,6 +4119,11 @@ button[disabled] {
 
 	.btn-maintain {
 		margin-right: unset;
+	}
+
+	.img-size {
+		width: 100px;
+		height: 100px;
 	}
 }
 

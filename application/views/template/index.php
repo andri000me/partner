@@ -57,9 +57,9 @@
         </div>
 
         <!-- Left Sidebar -->
-        <div class="left side-menu">
-            <?php $this->load->view('template/partial/left-sidebar') ?>
-        </div>
+
+        <?php $this->load->view('template/partial/left-sidebar') ?>
+
         <div class="content-page">
             <div class="content">
                 <div class="container-fluid">
@@ -91,12 +91,6 @@
     <script src="<?= base_url('template/assets/plugins/js/morris.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/plugins/js/raphael-min.js') ?>"></script>
     <script src="<?= base_url('template/assets/plugins/js/dashboard.js') ?>"></script>
-
-    <!-- App js -->
-    <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
-
-
-
 
     <!-- Required datatable js -->
     <script src="<?= base_url('template/assets/plugins/js/jquery.dataTables.min.js') ?>"></script>
@@ -142,6 +136,9 @@
     <script src="<?= base_url('template/assets/pages/lightbox.js') ?>"></script>
 
     <script src="<?= base_url('template/assets/plugins/js/owl.carousel.min.js') ?>"></script>
+
+    <!-- App js -->
+    <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
 
     <!-- Custom Scripts -->
     <?php $this->load->view('template/partial/scripts') ?>
