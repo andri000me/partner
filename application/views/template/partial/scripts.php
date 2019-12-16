@@ -12,6 +12,11 @@
 
 <script>
     $('#hide').hide();
+    if ($(".cross_branch").val() == "Ya") {
+        $("#hide").show()
+    } else {
+        $("#hide").hide()
+    }
     $('.cross_branch').click(function() {
         var cross_branch = $(this).val();
         if (cross_branch == 'Ya') {
@@ -222,7 +227,13 @@
             }
 
         });
+        // var surveyor = $("#surveyor").val();
+        // var pic_ttd = $("#pic_ttd").val();
+
+        // alert(surveyor + ' ' + pic_ttd);
     }
+
+
     show_pic_ttd();
     $("#cabang_cross").change(function() {
         show_pic_ttd();

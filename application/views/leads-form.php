@@ -303,50 +303,48 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="table-responsive">
-                    <table id="" class="datatable table table-striped table-bordered dt-responsive wrap table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="text-size">Nama Lengkap</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Nomor Telepon</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Asal Aplikasi</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Produk</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Aksi</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($mappings->result() as $mapping) { ?>
                             <tr>
-                                <th>
-                                    <div class="text-size">Nama Lengkap</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Nomor Telepon</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Asal Aplikasi</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Produk</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Aksi</div>
-                                </th>
+                                <td>
+                                    <div class="text-size"><?= $mapping->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->telepon ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->soa ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->produk ?></div>
+                                </td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>">Pilih</button></center>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($mappings->result() as $data) { ?>
-                                <tr>
-                                    <td class="not-clickable">
-                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->telepon ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->soa ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->produk ?></div>
-                                    </td>
-                                    <td>
-                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>" data-kontrak="<?= $data->nomor_kontrak ?>" data-referral="<?= $data->referral_konsumen ?>" data-nikegc="<?= $data->nik_egc ?>" data-posisiegc="<?= $data->posisi_egc ?>" data-cabangegc="<?= $data->cabang_egc ?>">Pilih</button></center>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -432,6 +430,16 @@
         source_leads();
         $('#id_partner').val("");
         $('#id_agent').val("");
+        //SOA EGC
+        $('#nik_egc').val("");
+        $('#posisi_egc').val("");
+        $('#cabang_egc').val("");
+        //SOA CGC / RO
+        $('#referral_konsumen').val("");
+        $('#nomor_kontrak').val("");
+        //SOA Event
+        $('#nama_event').val("");
+
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
         $('#data_partner').val("");
