@@ -3776,10 +3776,6 @@ button[disabled] {
 		height: 450px;
 	}
 
-	.mobile {
-		display: none;
-	}
-
 	.item {
 		width: 300px;
 		height: 150px;
@@ -3930,6 +3926,8 @@ button[disabled] {
 	.media {
 		width: 660px;
 	}
+
+
 }
 
 @media (max-width: 480px) {
@@ -4105,6 +4103,10 @@ button[disabled] {
 
 	.web {
 		display: none;
+	}
+
+	.mobile {
+		display: unset;
 	}
 
 	.boxx {

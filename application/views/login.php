@@ -46,10 +46,10 @@
                 <div class="card-body">
 
                     <h3 class="text-center m-0">
-                        <a href="index.html" class="logo logo-admin"><img src="assets/images/logo.png" height="30" alt="logo"></a>
+                        <img src="<?= base_url('template/assets/images/bfi.png') ?>" style="width: 150px">
                     </h3>
 
-                    <div class="p-3">
+                    <div class=" p-3">
                         <h4 class="text-muted font-18 m-b-5 text-center">Assalamualaikum!</h4>
                         <p class="text-muted text-center">Masuk untuk menggunakan <i>Sysroad</i></p>
 

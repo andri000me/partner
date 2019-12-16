@@ -2,46 +2,48 @@
 <div class="topbar-left">
     <a href="index.html" class="logo">
         <span>
-            <img src="<?= base_url('template/assets/images/logo-light.png') ?>" alt="" height="18">
+            <img src="<?= base_url('template/assets/images/bfi.png') ?>" alt="" width="100px">
         </span>
         <i>
-            <img src="<?= base_url('template/assets/images/logo-sm.png') ?>" alt="" height="22">
+            <img src="<?= base_url('template/assets/images/bfi.png') ?>" alt="" height="22">
         </i>
     </a>
 </div>
 
 <nav class="navbar-custom">
     <ul class="navbar-right d-flex list-inline float-right mb-0">
-        <li class="dropdown notification-list">
-            <div class="dropdown pt-3 d-inline-block">
-                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Create
-                </a>
+        <div class="mobile">
+            <li class="dropdown notification-list">
+                <div class="dropdown pt-3 d-inline-block">
+                    <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Create
+                    </a>
 
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Separated link</a>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
+        </div>
         <li class="dropdown notification-list">
             <?php
-            if ($this->fungsi->user_login()->level == 1) {
-                $where = [
-                    'user_penerima.id_user' => $this->fungsi->user_login()->id_user,
-                    'has_read' => 0
-                ];
-            } else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-                $where = [
-                    'cabang_penerima.id_branch' => $this->fungsi->user_login()->id_branch,
-                    'has_read' => 0
-                ];
-            } else {
-                $where = NULL;
-            }
+                        if ($this->fungsi->user_login()->level == 1) {
+                            $where = [
+                                'user_penerima.id_user' => $this->fungsi->user_login()->id_user,
+                                'has_read' => 0
+                            ];
+                        } else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+                            $where = [
+                                'cabang_penerima.id_branch' => $this->fungsi->user_login()->id_branch,
+                                'has_read' => 0
+                            ];
+                        } else {
+                            $where = NULL;
+                        }
             ?>
             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="ti-bell noti-icon"></i>
@@ -61,7 +63,7 @@
                                 <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                             </a>
                         <?php }
-                        } else { ?>
+                                                                                                                                } else { ?>
                         <center><span class="text-muted ml-4">Tidak ada notfikasi!</span></center>
                     <?php } ?>
                 </div>
@@ -93,6 +95,21 @@
             <button class="button-menu-mobile open-left waves-effect">
                 <i class="mdi mdi-menu"></i>
             </button>
+        </li>
+        <li class="d-none d-sm-block">
+            <div class="dropdown pt-3 d-inline-block">
+                <a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Create
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                </div>
+            </div>
         </li>
     </ul>
 
