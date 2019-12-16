@@ -194,3 +194,37 @@
     });
     // return false;
 </script>
+
+<script>
+    function show_pic_ttd() {
+        var cabang_cross = $("#cabang_cross").val();
+        if (cabang_cross == null || cabang_cross == '') {
+            cabang_cross = <?= $this->fungsi->user_login()->id_branch ?>
+        }
+        // if($("#cross_branch").val() == "Ya")
+        // alert(cabang_cross);
+        $.ajax({
+            type: 'ajax',
+            url: '<?= base_url('Leads/get_user/') ?>' + cabang_cross,
+            async: false,
+            dataType: 'json',
+            data: {
+                cabang_cross: cabang_cross
+            },
+            success: function(data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i].id_user + '">' + data[i].name.toUpperCase() + '</option>'
+                }
+                $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
+
+                console.log(html);
+            }
+
+        });
+    }
+    show_pic_ttd();
+    $("#cabang_cross").change(function() {
+        show_pic_ttd();
+    })
+</script>

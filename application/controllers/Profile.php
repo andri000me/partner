@@ -17,7 +17,8 @@ class Profile extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->user_model->get($this->fungsi->user_login()->nik)->row()
+            'data' => $this->user_model->get($this->fungsi->user_login()->nik)->row(),
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
         ];
         $this->template->load('template/index', 'profile', $data);
     }

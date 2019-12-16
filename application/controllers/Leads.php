@@ -37,7 +37,7 @@ class Leads extends CI_Controller
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = NULL;
         }
@@ -59,7 +59,7 @@ class Leads extends CI_Controller
     public function create()
     {
         $data = [
-            'mappings' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get("id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch),
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
@@ -116,18 +116,28 @@ class Leads extends CI_Controller
 
         // if ($this->form_validation->run() != FALSE) {
         $data_mapping_leads = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'telepon'               => $post['telepon'],
-            'soa'                   => $post['soa'],
-            'produk'                => $post['produk'],
-            'detail_produk'         => $post['detail_produk'],
-            'nama_event'            => $post['nama_event'],
+            'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
+            'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+            'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
+            'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
+            'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+
+            // Untuk SOA EGC
+            'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+            'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+            'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+            // Untuk SOA CGC / RO
+            'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
+
+            // Untuk SOA Event
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
             'updated_at'            => date('Y-m-d H:i:s'),
 
             'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
-            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
-            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL
+            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL
         ];
 
         $where_mapping_leads = ['id_mapping_leads' => $post['id_mapping_leads']];
@@ -248,6 +258,14 @@ class Leads extends CI_Controller
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
 
+            // Untuk SOA EGC
+            'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+            'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+            'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+            // Untuk SOA CGC / RO
+            'nomor_kontrak'     => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'refferal_konsumen'     => !empty($post['refferal_konsumen']) ? $post['refferal_konsumen'] : NULL,
+
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
@@ -275,6 +293,8 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+
+
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),

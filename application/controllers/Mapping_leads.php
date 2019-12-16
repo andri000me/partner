@@ -67,12 +67,20 @@ class Mapping_leads extends CI_Controller
 
         if ($this->form_validation->run() != FALSE) {
             $data = [
-                'nama_konsumen'         => $post['nama_konsumen'],
-                'telepon'               => $post['telepon'],
-                'soa'                   => $post['soa'],
-                'produk'                => $post['produk'],
-                'detail_produk'         => $post['detail_produk'],
-                'nama_event'            => $post['nama_event'],
+                'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
+                'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+                'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
+                'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
+                'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
+                // Untuk SOA EGC
+                'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+                'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+                'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+                // Untuk SOA CGC / RO
+                'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+                'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
+                // Untuk SOA Event
+                'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
@@ -80,7 +88,6 @@ class Mapping_leads extends CI_Controller
 
                 'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
                 'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
-                'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
                 //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
                 'id_user'               => $this->fungsi->user_login()->id_user,
                 //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
@@ -113,15 +120,21 @@ class Mapping_leads extends CI_Controller
             'soa'                   => $post['soa'],
             'produk'                => $post['produk'],
             'detail_produk'         => $post['detail_produk'],
-            'nama_event'            => $post['nama_event'],
-
+            // Untuk SOA EGC
+            'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+            'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+            'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+            // Untuk SOA CGC / RO
+            'nomor_kontrak'     => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
+            // Untuk SOA Event
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
 
             'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
             'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
-            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL
 
             //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
             // 'id_user'               => $this->fungsi->user_login()->id_user,

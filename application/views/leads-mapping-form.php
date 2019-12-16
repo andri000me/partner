@@ -105,28 +105,16 @@
                                         <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Nama Cabang">
                                     </div>
                                 </div>
-                                <div class="col-md-6 kontrak-cgc">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" placeholder="087883774" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 konsumen-cgc">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen_cgc" id="nama_konsumen_cgc" placeholder="Input Nama konsumen">
-                                    </div>
-                                </div>
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen_ro" id="nama_konsumen_ro" placeholder="Input Nama konsumen">
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
                                     </div>
                                 </div>
                             </div>
@@ -291,10 +279,7 @@
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang').show();
             $('.jasa, .travel, .event, .form, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-cgc, .konsumen-cgc').show();
-            $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'RO') {
+        } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro').show();
             $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc').hide();
         } else if ($('#soa').val() == 'Event') {

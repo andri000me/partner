@@ -62,9 +62,17 @@
                     <table class="table table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
                             <?php foreach ($data->result() as $notif) { ?>
-                                <tr>
+                                <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
                                     <td>
-                                        <span class="far fa-check-circle"></span>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
+                                            <span class="far fa-check-circle"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Komentar') { ?>
+                                            <span class="far fa-comment"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Ditolak') { ?>
+                                            <span class="far fa-times-circle"></span>
+                                        <?php } ?>
                                     </td>
                                     <td>
                                         <div style="width:450px;">
@@ -72,7 +80,12 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <span class="badge-success badge">Approved</span>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
+                                            <span class="badge-success badge">Approved</span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Ditolak') { ?>
+                                            <span class="badge-danger badge">Reject</span>
+                                        <?php } ?>
                                     </td>
                                     <td>
                                         <div style="width: 70px;">
@@ -80,7 +93,15 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a href="<?= base_url('ticket') ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php if ($notif->id_lead != NULL) { ?>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
+                                        <?php if ($notif->agent_id != NULL) { ?>
+                                            <a href="<?= base_url('agent/edit/' . $notif->agent_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
+                                        <?php if ($notif->partner_id != NULL) { ?>
+                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>

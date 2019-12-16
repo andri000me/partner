@@ -64,58 +64,6 @@
                                         <label>Nomor Telepon / Whatsapp</label>
                                         <input type="text" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
                                     </div>
-                                    <<<<<<< HEAD <div class="form-row">
-                                        <div class="col-md-3">
-                                            <div class="form-group text-size ml-3 mr-3 posisi">
-                                                <label>Cross Branch?</label><br>
-                                                <div class="form-check form-check-inline mt-2">
-                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
-                                                    <label class="form-check-label">
-                                                        Ya
-                                                    </label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Tidak">
-                                                    <label class="form-check-label">
-                                                        Tidak
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div id="hide" class="form-group ml-3 mr-3">
-                                                <label>Pilih cabang</label>
-                                                <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                    <option selected disabled value="">Pilih Cabang</option>
-                                                    <?php foreach ($branches->result() as $branch) { ?>
-                                                        <option <?= $branch->id_branch == $this->fungsi->user_login()->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div id="hide" class="form-group ml-3 mr-3">
-                                                <label>Pic Tanda Tangan</label>
-                                                <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
-                                                    <option value="" selected>Pilih Pic Tanda Tangan</option>
-                                                    <optgroup id="show_pic_ttd">
-
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <div id="hide" class="form-group ml-3 mr-3">
-                                                <label>Surveyor</label>
-                                                <select class="form-control text-size" name="surveyor" id="surveyor">
-                                                    <option value="" selected>Pilih Surveyor</option>
-                                                    <optgroup id="show_surveyor">
-
-                                                    </optgroup>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        =======
                                 </div>
                             </div>
                             <div class="form-row">
@@ -131,7 +79,6 @@
                                             <option value="My Faedah">My Faedah</option>
                                             <option value="My CarS">My CarS</option>
                                         </select>
-                                        >>>>>>> origin/don
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -171,180 +118,153 @@
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
                                     </div>
-                                    <<<<<<< HEAD <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                            =======
-                                        </div>
-                                        <div class="col-md-6 nik">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>NIK</label>
-                                                <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="nik_egc" id="nik_egc" placeholder="0786 6875 8725 3564" maxlength="16" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 event">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>Nama Event</label>
-                                                <input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Input Nama Event">
-                                            </div>
-                                        </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6 posisi">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Posisi</label>
-                                            <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi">
-                                        </div>
+                                <div class="col-md-6 nik">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>NIK</label>
+                                        <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="nik_egc" id="nik_egc" placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
-                                    <div class="col-md-6 cabang">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Cabang</label>
-                                            <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 kontrak-cgc">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Nomor Kontrak</label>
-                                            <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" placeholder="087883774" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 konsumen-cgc">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Nama Konsumen</label>
-                                            <input type="text" class="form-control text-size" name="nama_konsumen_cgc" id="nama_konsumen_cgc" placeholder="Input Nama konsumen">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 kontrak-ro">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Nomor Kontrak</label>
-                                            <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 konsumen-ro">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Nama Konsumen</label>
-                                            <input type="text" class="form-control text-size" name="nama_konsumen_ro" id="nama_konsumen_ro" placeholder="Input Nama konsumen">
-                                        </div>
+                                </div>
+                                <div class="col-md-6 event">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Nama Event</label>
+                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Input Nama Event">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size ml-3 mr-3">
-                                            <label>Cross Branch?</label><br>
-                                            <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
-                                                <label class="form-check-label">
-                                                    Ya
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Tidak">
-                                                <label class="form-check-label">
-                                                    Tidak
-                                                </label>
-                                            </div>
-                                        </div>
+                            <div class="form-row">
+                                <div class="col-md-6 posisi">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Posisi</label>
+                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi">
                                     </div>
-                                    <div class="col-md-6">
-                                        <div id="hide" class="form-group ml-3 mr-3">
-                                            <label>Pilih cabang</label>
-                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                <option selected disabled value="">Pilih Cabang</option>
-                                                <?php foreach ($branches->result() as $branch) { ?>
-                                                    <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                <?php } ?>
-                                            </select>
+                                </div>
+                                <div class="col-md-6 cabang">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Cabang</label>
+                                        <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 kontrak-ro">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Nomor Kontrak</label>
+                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 konsumen-ro">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Nama Konsumen</label>
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Cross Branch?</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
+                                            <label class="form-check-label">
+                                                Ya
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Tidak">
+                                            <label class="form-check-label">
+                                                Tidak
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div id="hide" class="form-group ml-3 mr-3">
-                                            <label>Pic Tanda Tangan</label>
-                                            <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
-                                                <option value="" selected>Pilih Pic Tanda Tangan</option>
-                                                <?php foreach ($users->result() as $user) { ?>
-                                                    <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div id="hide" class="form-group ml-3 mr-3">
-                                            <label>Surveyor</label>
-                                            <select class="form-control text-size" name="surveyor" id="surveyor">
-                                                <option value="" selected>Pilih Surveyor</option>
-                                                <?php foreach ($users->result() as $user) { ?>
-                                                    <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                                <?php } ?>
-                                            </select>
-                                        </div>
+                                <div class="col-md-6">
+                                    <div id="hide" class="form-group ml-3 mr-3">
+                                        <label>Pilih cabang</label>
+                                        <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+                                            <option selected disabled value="">Pilih Cabang</option>
+                                            <?php foreach ($branches->result() as $branch) { ?>
+                                                <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Follow Up By</label>
-                                            <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
-                                                <option selected disabled value="">Pilih Follow Up By</option>
-                                                <option value="Kunjungan">Kunjungan</option>
-                                                <option value="Telepon">Telepon</option>
-                                                <option value="Whatsapp">Whatsapp</option>
-                                                <option value="Email">Email</option>
-                                            </select>
-                                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div id="hide" class="form-group ml-3 mr-3">
+                                        <label>Pic Tanda Tangan</label>
+                                        <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
+                                            <option value="" selected>Pilih PIC Tanda tangan</option>
+                                            <optgroup id="show_pic_ttd">
+
+                                            </optgroup>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <label class="ml-3">Nilai Funding</label>
-                                        <div class="input-group flex-nowrap ml-3 mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
-                                                >>>>>>> origin/don
-                                            </div>
-                                            <input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
-                                        </div>
+                                <div class="col-md-6">
+                                    <div id="hide" class="form-group ml-3 mr-3">
+                                        <label>Surveyor</label>
+                                        <select class="form-control text-size" name="surveyor" id="surveyor">
+                                            <option value="" selected>Pilih Surveyor</option>
+                                            <optgroup id="show_surveyor">
+
+                                            </optgroup>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size ml-3 mr-3">
-                                            <label>Appeal NST</label><br>
-                                            <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">
-                                                <label class="form-check-label">
-                                                    Ya
-                                                </label>
-                                            </div>
-                                            <<<<<<< HEAD <div class="col-md-4">
-                                                <div class="form-group text-size ml-3 mr-3">
-                                                    <label>Foto Penyedia Jasa</label>
-                                                    <input type="file" name="foto_pentedia_jasa" class="filestyle" data-buttonname="btn-secondary">
-                                                </div>
-                                                =======
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Tidak">
-                                                    <label class="form-check-label">
-                                                        Tidak
-                                                    </label>
-                                                    >>>>>>> origin/don
-                                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Follow Up By</label>
+                                        <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
+                                            <option selected disabled value="">Pilih Follow Up By</option>
+                                            <option value="Kunjungan">Kunjungan</option>
+                                            <option value="Telepon">Telepon</option>
+                                            <option value="Whatsapp">Whatsapp</option>
+                                            <option value="Email">Email</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <label class="ml-3">Nilai Funding</label>
+                                    <div class="input-group flex-nowrap ml-3 mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                        </div>
+                                        <input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Appeal NST</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">
+                                            <label class="form-check-label">
+                                                Ya
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Tidak">
+                                            <label class="form-check-label">
+                                                Tidak
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group mb-0 float-right mt-3 mr-3">
-                            <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
-                            <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
-                        </div>
-                        <!-- /bottom-wizard -->
+                    </div>
+                    <div class="form-group mb-0 float-right mt-3 mr-3">
+                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                    </div>
+                    <!-- /bottom-wizard -->
                 </form>
             </div>
         </div>
@@ -420,7 +340,7 @@
                                         <div class="text-size"><?= $data->produk ?></div>
                                     </td>
                                     <td>
-                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
+                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>" data-kontrak="<?= $data->nomor_kontrak ?>" data-referral="<?= $data->referral_konsumen ?>" data-nikegc="<?= $data->nik_egc ?>" data-posisiegc="<?= $data->posisi_egc ?>" data-cabangegc="<?= $data->cabang_egc ?>">Pilih</button></center>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -536,10 +456,7 @@
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang').show();
             $('.jasa, .travel, .event, .form, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-cgc, .konsumen-cgc').show();
-            $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'RO') {
+        } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro').show();
             $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc`').hide();
         } else if ($('#soa').val() == 'Event') {
@@ -569,6 +486,15 @@
     $("table").on('click', '.pilih-leads', function() {
         $('#id_mapping_leads').val($(this).data('mapping'));
         $('#soa').val($(this).data('soa'));
+        //EGC
+        $('#nik_egc').val($(this).data('nikegc'));
+        $('#posisi_egc').val($(this).data('posisiegc'));
+        $('#cabang_egc').val($(this).data('cabangegc'));
+        //CGC / RO
+        $('#nomor_kontrak').val($(this).data('kontrak'));
+        $('#referral_konsumen').val($(this).data('referral'));
+
+        //Data Leads
         $('#produk').val($(this).data('produk'));
         $('#telepon').val($(this).data('telepon'));
         $('#data_partner').val($(this).data('vendor'));
@@ -579,36 +505,4 @@
 
         source_leads();
     })
-</script>
-
-<script>
-    show_pic_ttd();
-    $("#cabang_cross").change(function() {
-        show_pic_ttd();
-    })
-
-    function show_pic_ttd() {
-        var cabang_cross = $("#cabang_cross").val();
-        // if($("#cross_branch").val() == "Ya")
-        // alert(cabang_cross);
-        $.ajax({
-            type: 'ajax',
-            url: '<?= base_url('Leads/get_user/') ?>' + cabang_cross,
-            async: false,
-            dataType: 'json',
-            data: {
-                cabang_cross: cabang_cross
-            },
-            success: function(data) {
-                var html = '';
-                for (var i = 0; i < data.length; i++) {
-                    html += '<option value="' + data[i].id_user + '">' + data[i].name.toUpperCase() + '</option>'
-                }
-                $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
-
-                console.log(html);
-            }
-
-        });
-    }
 </script>
