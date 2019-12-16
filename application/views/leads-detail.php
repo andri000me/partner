@@ -48,6 +48,28 @@
 						<div class="form-row">
 							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
+									<label>Produk</label>
+									<select class="form-control" name="produk" id="produk">
+										<option selected>Pilih Kategori Produk</option>
+										<option value="My Ihram">My Ihram</option>
+										<option value="My Safar">My Safar</option>
+										<option value="My Talim">My Talim</option>
+										<option value="My Hajat">My Hajat</option>
+										<option value="My Faedah">My Faedah</option>
+										<option value="My CarS">My CarS</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group mr-3 ml-3">
+									<label>Detail Produk</label>
+									<input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-md-6">
+								<div class="form-group mr-3 ml-3">
 									<label>Asal Aplikasi</label>
 									<select class="form-control" name="soa" id="soa">
 										<option selected>Pilih Source Aplikasi</option>
@@ -70,58 +92,54 @@
 								<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
 								<label class="ml-3 agent">Pilih Data Agent</label>
 								<div class="input-group ml-3 mb-3">
-									<input type="text" class="form-control" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+									<input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
 									<div class="input-group-append">
-										<button class="btn btn-primary btn-data mr-4" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+										<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
 									</div>
+								</div>
+							</div>
+							<div class="col-md-6 nik">
+								<div class="form-group ml-3 mr-3">
+									<label>NIK</label>
+									<input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="nik_egc" id="nik_egc" placeholder="0786 6875 8725 3564" maxlength="16" />
 								</div>
 							</div>
 							<div class="col-md-6 event">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Event</label>
-									<input type="text" class="form-control" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+									<input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Input Nama Event">
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col-md-6">
-								<div class="form-group mr-3 ml-3">
-									<label>Produk</label>
-									<select class="form-control" name="produk" id="produk">
-										<option selected>Pilih Kategori Produk</option>
-										<option value="My Ihram">My Ihram</option>
-										<option value="My Safar">My Safar</option>
-										<option value="My Talim">My Talim</option>
-										<option value="My Hajat">My Hajat</option>
-										<option value="My Faedah">My Faedah</option>
-										<option value="My CarS">My CarS</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group mr-3 ml-3">
-									<label>Detail Produk</label>
-									<input type="text" class="form-control" name="detail_produk" id="detail_produk" required placeholder="Detail produk" />
-								</div>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-12">
+							<div class="col-md-6 posisi">
 								<div class="form-group ml-3 mr-3">
-									<label>Follow Up By</label>
-									<select class="form-control" name="follow_up_by" id="follow_up_by" required>
-										<option selected disabled value="">Pilih Follow Up By</option>
-										<option value="Kunjungan">Kunjungan</option>
-										<option value="Telepon">Telepon</option>
-										<option value="Whatsapp">Whatsapp</option>
-										<option value="Email">Email</option>
-									</select>
+									<label>Posisi</label>
+									<input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi">
+								</div>
+							</div>
+							<div class="col-md-6 cabang">
+								<div class="form-group ml-3 mr-3">
+									<label>Cabang</label>
+									<input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
+								</div>
+							</div>
+							<div class="col-md-6 kontrak-ro">
+								<div class="form-group ml-3 mr-3">
+									<label>Nomor Kontrak</label>
+									<input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
+								</div>
+							</div>
+							<div class="col-md-6 konsumen-ro">
+								<div class="form-group ml-3 mr-3">
+									<label>Nama Konsumen</label>
+									<input type="text" class="form-control text-size" name="nama_konsumen_ro" id="nama_konsumen_ro" placeholder="Input Nama konsumen">
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
-								<div class="form-group ml-3 mr-3 posisi">
+								<div class="form-group ml-3 mr-3">
 									<label>Cross Branch?</label><br>
 									<div class="form-check form-check-inline mt-2">
 										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
@@ -174,14 +192,31 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
-									<label>Nilai Funding</label>
-									<input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000">
+									<label>Follow Up By</label>
+									<select class="form-control" name="follow_up_by" id="follow_up_by" required>
+										<option selected disabled value="">Pilih Follow Up By</option>
+										<option value="Kunjungan">Kunjungan</option>
+										<option value="Telepon">Telepon</option>
+										<option value="Whatsapp">Whatsapp</option>
+										<option value="Email">Email</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-md-6">
+								<label class="ml-3">Nilai Funding</label>
+								<div class="input-group flex-nowrap ml-3 mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+									</div>
+									<input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group ml-3 mr-3 posisi">
+								<div class="form-group ml-3 mr-3">
 									<label>Appeal NST</label><br>
 									<div class="form-check form-check-inline mt-2">
 										<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">
@@ -702,7 +737,7 @@
 					<h4 class="modal-title">Cari Data Leads</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>
@@ -757,7 +792,7 @@
 					<h4 class="modal-title">Cari Data Partner</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<table id="datatable" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="" class="datatable table table-striped table-bordered dt-responsive nowrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>Name Usaha</th>
@@ -819,12 +854,7 @@
 <!-- Modal agent -->
 
 <script>
-	$('.travel').hide();
-	$('.agent').hide();
-	$('.jasa').hide();
-	$('.event').hide();
-	$('.btn-data').hide();
-	$('.form').hide();
+	$('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
 	source_leads();
 	$('#soa').change(function() {
 		source_leads();
@@ -832,6 +862,7 @@
 		$('#id_agent').val("");
 		$('#nama_vendor').val("").removeAttr("required");
 		$('#nama_event').val("");
+		$('#data_partner').val("");
 	})
 
 	function source_leads() {
@@ -839,22 +870,31 @@
 			$('.travel, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'jalan - jalan')
 			$('#btn-data').attr('data-target', '#modal-partner')
-			$('.agent, .jasa, .event').hide();
+			$('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
 		} else if ($('#soa').val() == 'Penyedia Jasa') {
 			$('.jasa, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Jasa raharja')
 			$('#btn-data').attr('data-target', '#modal-partner')
-			$('.agent, .travel, .event').hide();
+			$('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
 		} else if ($('#soa').val() == 'Agent BA') {
 			$('.agent, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Ibrahim')
 			$('#btn-data').attr('data-target', '#modal-agent')
-			$('.jasa, .travel, .event').hide();
+			$('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
+		} else if ($('#soa').val() == 'EGC') {
+			$('.nik, .posisi, .cabang').show();
+			$('.jasa, .travel, .event, .form, .kontrak-ro, .konsumen-ro').hide();
+		} else if ($('#soa').val() == 'CGC') {
+			$('.kontrak-ro, .konsumen-ro').show();
+			$('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang').hide();
+		} else if ($('#soa').val() == 'RO') {
+			$('.kontrak-ro, .konsumen-ro').show();
+			$('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang').hide();
 		} else if ($('#soa').val() == 'Event') {
 			$('.event').show();
-			$('.jasa, .travel, .agent, .form').hide();
+			$('.travel, .agent, .jasa, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
 		} else {
-			$('.jasa, .travel, .agent, .form, .event').hide();
+			$('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
 		}
 	}
 </script>
