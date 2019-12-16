@@ -14,7 +14,7 @@
     <div class="col-md-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <table id="datatable-buttons-branch" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Cabang</th>
@@ -25,21 +25,19 @@
                     <tbody>
                         <?php foreach ($data->result() as $cabang) { ?>
                             <tr>
-                                <td>
-                                    <div class="text-size"><?= $cabang->id_branch ?></div>
+                                <td style="width: 90px">
+                                    <center><?= $cabang->id_branch ?></center>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $cabang->nama_cabang ?></div>
+                                    <?= $cabang->nama_cabang ?>
                                 </td>
-                                <td>
-                                    <div class="text-size">
-                                        <div class="form-group mb-0">
-                                            <select class="form-control has_superior" name="has_superior" data-id="<?= $cabang->id_branch ?>">
-                                                <option <?= $cabang->has_superior == 0 ? 'selected' : '' ?> value="0">Tidak Ada Head & Manager</option>
-                                                <option <?= $cabang->has_superior == 1 ? 'selected' : '' ?> value="1">Ada Head</option>
-                                                <option <?= $cabang->has_superior == 2 ? 'selected' : '' ?> value="2">Ada Head & Manager</option>
-                                            </select>
-                                        </div>
+                                <td style="width: 300px;">
+                                    <div class="form-group mb-0">
+                                        <select class="form-control has_superior" name="has_superior" data-id="<?= $cabang->id_branch ?>">
+                                            <option <?= $cabang->has_superior == 0 ? 'selected' : '' ?> value="0">Tidak Ada Head & Manager</option>
+                                            <option <?= $cabang->has_superior == 1 ? 'selected' : '' ?> value="1">Ada Head</option>
+                                            <option <?= $cabang->has_superior == 2 ? 'selected' : '' ?> value="2">Ada Head & Manager</option>
+                                        </select>
                                     </div>
                                 </td>
                             </tr>

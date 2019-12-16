@@ -31,8 +31,8 @@
 
                         <?php foreach ($data->result() as $ticket) { ?>
                             <tr>
-                                <td>
-                                    <?= $ticket->id_ticket ?>
+                                <td style="width: 70px">
+                                    <center><?= $ticket->id_ticket ?></center>
                                 </td>
                                 <td>
                                     <?= $ticket->requester ?>
