@@ -204,13 +204,11 @@
     function show_pic_ttd() {
         var cabang_cross = $("#cabang_cross").val();
         if (cabang_cross == null || cabang_cross == '') {
-            cabang_cross = <?= $this->fungsi->user_login()->id_branch ?>
+            cabang_cross = $("#id_branch").val();
         }
-        // if($("#cross_branch").val() == "Ya")
-        // alert(cabang_cross);
         $.ajax({
             type: 'ajax',
-            url: '<?= base_url('Leads/get_user/') ?>' + cabang_cross,
+            url: 'partner.bfisyariah.id/leads/get_user/' + cabang_cross,
             async: false,
             dataType: 'json',
             data: {
@@ -233,9 +231,10 @@
         // alert(surveyor + ' ' + pic_ttd);
     }
 
-
-    show_pic_ttd();
-    $("#cabang_cross").change(function() {
+    $(document).ready(function() {
         show_pic_ttd();
+        $("#cabang_cross").change(function() {
+            show_pic_ttd();
+        })
     })
 </script>

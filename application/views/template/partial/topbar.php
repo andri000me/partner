@@ -48,7 +48,7 @@
                                 <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                             </a>
                         <?php }
-                                                                                                                                } else { ?>
+                        } else { ?>
                         <center><span class="text-muted ml-4">Tidak ada notfikasi!</span></center>
                     <?php } ?>
                 </div>
@@ -66,8 +66,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
-                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i>
-                        Profile</a>
+                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i>Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i class="mdi mdi-power text-danger"></i> Logout</a>
                 </div>
