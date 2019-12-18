@@ -42,7 +42,7 @@
                                     <th>Nama</th>
                                     <th>Nik</th>
                                     <th>Jabatan</th>
-                                    <th>cabang</th>
+                                    <th>Cabang</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>

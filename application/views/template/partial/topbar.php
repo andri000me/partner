@@ -66,8 +66,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                     <!-- item-->
-                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i>
-                        Profile</a>
+                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i>Profile</a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i class="mdi mdi-power text-danger"></i> Logout</a>
                 </div>

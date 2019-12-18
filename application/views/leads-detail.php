@@ -20,6 +20,10 @@
 						<input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
 						<!-- ID Agent -->
 						<input type="hidden" name="id_agent" id="id_agent" value="<?= $data->id_agent ?>">
+						<!-- ID Agent -->
+						<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
+						<!-- ID Agent -->
+						<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
 						<div class="form-row">
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
@@ -243,9 +247,9 @@
 						</div>
 						<div class="form-group mb-0 mt-2 float-right btn-maintain">
 							<?php
-							$level = $this->fungsi->user_login()->level;
-							if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
-								?>
+																																													$level = $this->fungsi->user_login()->level;
+																																													if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+							?>
 								<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 							<?php } ?>
 							<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
@@ -309,7 +313,7 @@
 								<h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
 								<div class="boxx overflow-auto">
 									<?php if ($activities->num_rows() > 0) {
-										foreach ($activities->result() as $activity) { ?>
+																																														foreach ($activities->result() as $activity) { ?>
 											<div class="inbox-wid">
 												<div class="inbox-item">
 													<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i><b>&nbsp;&nbsp;<?= $activity->activity ?></b></p>
@@ -318,8 +322,8 @@
 												</div>
 											</div>
 										<?php
-											}
-										} else { ?>
+																																														}
+																																													} else { ?>
 										<p class="text-muted m-b-10">Tidak Ada Data</p>
 									<?php } ?>
 								</div>
@@ -609,11 +613,7 @@
 
 <script>
 	$('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
-	if ($(".cross_branch").val() == "Ya") {
-		$("#hide").show()
-	} else {
-		$("#hide").hide()
-	}
+
 	source_leads();
 	$('#soa').change(function() {
 		source_leads();
@@ -703,7 +703,7 @@
 
 		$.ajax({
 			type: 'GET',
-			url: '<?= base_url('Leads/get_leads/') ?>' + id_leads,
+			url: 'partner.bfisyariah.id/Leads/get_leads/' + id_leads,
 			dataType: 'json',
 			data: {
 				id_leads: id_leads

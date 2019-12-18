@@ -57,10 +57,14 @@ class Leads extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $where_leads = "id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $where_leads = NULL;
+            $where_leads = 'id_leads IS NOT NULL';
         }
         $data = [
-            'data' => $this->leads_model->get($where_leads)
+            'data' => $this->leads_model->get($where_leads),
+            // Menampilkan Data Leads belum funding
+            'belum_funding' => $this->leads_model->get("sudah_funding = 'Belum' AND " . $where_leads),
+            // Menampilkan Data Leads sudah funding
+            'sudah_funding' => $this->leads_model->get("sudah_funding = 'Sudah' AND " . $where_leads)
         ];
 
         $this->template->load('template/index', 'leads', $data);
@@ -94,7 +98,7 @@ class Leads extends CI_Controller
 
             'activities' => $this->leads_activity->get($where),
             'comments' => $this->comment_model->get($where),
-            'ticket' => $this->ticket_model->get($where)->row()
+            'ticket' => $this->ticket_model->get($where)->row(),
         ];
 
         $this->template->load('template/index', 'leads-edit', $data);
@@ -157,6 +161,7 @@ class Leads extends CI_Controller
         $where_mapping_leads = ['id_mapping_leads' => $post['id_mapping_leads']];
 
         $this->mapping_leads->update($data_mapping_leads, $where_mapping_leads);
+
         $data = [
             'id_mapping_leads' => $post['id_mapping_leads'],
 
@@ -168,7 +173,8 @@ class Leads extends CI_Controller
             'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
-            'nilai_funding'         => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+            'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
 
             //Timestamp
             'created_at'        => date('Y-m-d H:i:s'),
@@ -308,8 +314,7 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
-
-
+            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),
@@ -404,6 +409,7 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
