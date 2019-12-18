@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-12-18 08:39:28
+# Date: 2019-12-18 09:42:13
 # Generator: MySQL-Front 6.0  (Build 2.20)
 
 
@@ -284,7 +284,7 @@ INSERT INTO `mapping_leads` VALUES (7,'MY HAJAT','089827812771414','Tour & trave
 DROP TABLE IF EXISTS `leads_follow_up`;
 CREATE TABLE `leads_follow_up` (
   `id_leads_follow_up` int(11) NOT NULL AUTO_INCREMENT,
-  `follow_up_by` varchar(255) DEFAULT NULL,
+  `follow_up_by` varchar(255) DEFAULT NULL COMMENT 'Kunjungan, Whatsapp, Telepon dll',
   `date_follow_up` datetime DEFAULT NULL,
   `catatan` text DEFAULT NULL,
   `id_mapping_leads` int(11) DEFAULT NULL,
