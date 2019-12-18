@@ -30,40 +30,25 @@
             </li>
         </div>
         <li class="dropdown notification-list">
-            <?php
-                        if ($this->fungsi->user_login()->level == 1) {
-                            $where = [
-                                'user_penerima.id_user' => $this->fungsi->user_login()->id_user,
-                                'has_read' => 0
-                            ];
-                        } else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-                            $where = [
-                                'cabang_penerima.id_branch' => $this->fungsi->user_login()->id_branch,
-                                'has_read' => 0
-                            ];
-                        } else {
-                            $where = NULL;
-                        }
-            ?>
             <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                 <i class="ti-bell noti-icon"></i>
-                <span class="badge badge-pill badge-danger noti-icon-badge"><?= $this->fungsi->notification($where)->num_rows() ?></span>
+                <?= $this->fungsi->notification()->num_rows() > 0 ? '<span class="badge badge-pill badge-danger noti-icon-badge">' . $this->fungsi->notification()->num_rows() . '</span>' : '' ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
                 <!-- item-->
                 <h6 class="dropdown-item-text">
-                    Notifications (<?= $this->fungsi->notification($where)->num_rows() ?>)
+                    Notifications (<?= $this->fungsi->notification()->num_rows() ?>)
                 </h6>
                 <div class="slimscroll notification-item-list">
-                    <?php if ($this->fungsi->notification($where)->num_rows() > 0) { ?>
-                        <?php foreach ($this->fungsi->notification($where)->result() as $notifikasi) { ?>
+                    <?php if ($this->fungsi->notification()->num_rows() > 0) { ?>
+                        <?php foreach ($this->fungsi->notification()->result() as $notifikasi) { ?>
                             <!-- item-->
                             <a href="#" class="dropdown-item notify-item">
                                 <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
                                 <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                             </a>
                         <?php }
-                                                                                                                                } else { ?>
+                        else { ?>
                         <center><span class="text-muted ml-4">Tidak ada notfikasi!</span></center>
                     <?php } ?>
                 </div>

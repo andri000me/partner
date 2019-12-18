@@ -47,24 +47,26 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="clickable-row" data-href="detail-partnership.html">
-                                    <td>
-                                        Ibrahim hamad jabar
-                                    </td>
-                                    <td>
-                                        000005
-                                    </td>
-                                    <td>
-                                        CMS
-                                    </td>
-                                    <td>
-                                        BSD
-                                    </td>
-                                    <td>
-                                        <center><a href="" class="btn btn-secondary text-size">Edit</a></center>
-                                    </td>
-                                    <!-- <td></td> -->
-                                </tr>
+                                <?php foreach ($users->result() as $user) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $user->name ?>
+                                        </td>
+                                        <td>
+                                            <?= $user->nik ?>
+                                        </td>
+                                        <td>
+                                            <?= $user->jabatan ?>
+                                        </td>
+                                        <td>
+                                            <?= $user->nama_cabang ?>
+                                        </td>
+                                        <td>
+                                            <center><a href="#" class="btn btn-secondary text-size">Edit</a></center>
+                                        </td>
+                                        <!-- <td></td> -->
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>

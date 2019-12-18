@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class leads_model extends CI_Model
+class Leads_model extends CI_Model
 {
 
     public function create($data)
@@ -24,8 +24,6 @@ class leads_model extends CI_Model
     {
         $this->db->from('leads');
         $this->db->join('mapping_leads', 'mapping_leads.id_mapping_leads = leads.id_mapping_leads', 'inner');
-        // $this->db->join('users', 'users.id_user = mapping_leads.id_user', 'inner');
-        // $this->db->join('branches', 'branches.id_branch = mapping_leads.id_branch', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }

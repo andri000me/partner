@@ -145,28 +145,16 @@
                                         <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
                                     </div>
                                 </div>
-                                <div class="col-md-6 kontrak-cgc">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" placeholder="087883774" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 konsumen-cgc">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen_cgc" id="nama_konsumen_cgc" placeholder="Input Nama konsumen">
-                                    </div>
-                                </div>
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen_ro" id="nama_konsumen_ro" placeholder="Input Nama konsumen">
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
                                     </div>
                                 </div>
                             </div>
@@ -207,10 +195,10 @@
                                     <div id="hide" class="form-group ml-3 mr-3">
                                         <label>Pic Tanda Tangan</label>
                                         <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
-                                            <option value="" selected>Pilih Pic Tanda Tangan</option>
-                                            <?php foreach ($users->result() as $user) { ?>
-                                                <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                            <?php } ?>
+                                            <option value="" selected>Pilih PIC Tanda tangan</option>
+                                            <optgroup id="show_pic_ttd">
+
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -219,9 +207,9 @@
                                         <label>Surveyor</label>
                                         <select class="form-control text-size" name="surveyor" id="surveyor">
                                             <option value="" selected>Pilih Surveyor</option>
-                                            <?php foreach ($users->result() as $user) { ?>
-                                                <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                            <?php } ?>
+                                            <optgroup id="show_surveyor">
+
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -315,50 +303,48 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="table-responsive">
-                    <table id="" class="datatable table table-striped table-bordered dt-responsive wrap table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="text-size">Nama Lengkap</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Nomor Telepon</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Asal Aplikasi</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Produk</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Aksi</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($mappings->result() as $mapping) { ?>
                             <tr>
-                                <th>
-                                    <div class="text-size">Nama Lengkap</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Nomor Telepon</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Asal Aplikasi</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Produk</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Aksi</div>
-                                </th>
+                                <td>
+                                    <div class="text-size"><?= $mapping->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->telepon ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->soa ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->produk ?></div>
+                                </td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>">Pilih</button></center>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($mappings->result() as $data) { ?>
-                                <tr>
-                                    <td class="not-clickable">
-                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->telepon ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->soa ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->produk ?></div>
-                                    </td>
-                                    <td>
-                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -444,6 +430,16 @@
         source_leads();
         $('#id_partner').val("");
         $('#id_agent').val("");
+        //SOA EGC
+        $('#nik_egc').val("");
+        $('#posisi_egc').val("");
+        $('#cabang_egc').val("");
+        //SOA CGC / RO
+        $('#referral_konsumen').val("");
+        $('#nomor_kontrak').val("");
+        //SOA Event
+        $('#nama_event').val("");
+
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
         $('#data_partner').val("");
@@ -468,10 +464,7 @@
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang').show();
             $('.jasa, .travel, .event, .form, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-cgc, .konsumen-cgc').show();
-            $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'RO') {
+        } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro').show();
             $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc`').hide();
         } else if ($('#soa').val() == 'Event') {
@@ -501,6 +494,15 @@
     $("table").on('click', '.pilih-leads', function() {
         $('#id_mapping_leads').val($(this).data('mapping'));
         $('#soa').val($(this).data('soa'));
+        //EGC
+        $('#nik_egc').val($(this).data('nikegc'));
+        $('#posisi_egc').val($(this).data('posisiegc'));
+        $('#cabang_egc').val($(this).data('cabangegc'));
+        //CGC / RO
+        $('#nomor_kontrak').val($(this).data('kontrak'));
+        $('#referral_konsumen').val($(this).data('referral'));
+
+        //Data Leads
         $('#produk').val($(this).data('produk'));
         $('#telepon').val($(this).data('telepon'));
         $('#data_partner').val($(this).data('vendor'));

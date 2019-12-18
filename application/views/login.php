@@ -53,30 +53,30 @@
                         <h4 class="text-muted font-18 m-b-5 text-center">Assalamualaikum!</h4>
                         <p class="text-muted text-center">Masuk untuk menggunakan <i>Sysroad</i></p>
 
-                        <form class="form-horizontal m-t-30" action="index.html">
 
-                            <div class="form-group">
-                                <label for="username">Nomor Induk karyawan</label>
-                                <input type="text" class="form-control" id="nik" name="nik" placeholder="Mauskkan NIK">
-                            </div>
+                        <div class="form-group">
+                            <label for="username">Nomor Induk karyawan</label>
+                            <input type="text" class="form-control <?= $this->session->flashdata('akun_salah') ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= $this->session->flashdata('nik') ?>" placeholder="Mauskkan NIK">
+                            <?= $this->session->flashdata('akun_salah') ?>
+                        </div>
 
-                            <div class="form-group">
-                                <label for="userpassword">Password</label>
-                                <input type="password" class="form-control" id="password" name="password" nam placeholder="Masukkan Sandi">
-                            </div>
+                        <div class="form-group">
+                            <label for="userpassword">Password</label>
+                            <input type="password" class="form-control <?= $this->session->flashdata('password_salah') ? 'is-invalid' : '' ?>" id="password" name="password" nam placeholder="Masukkan Sandi">
+                            <?= $this->session->flashdata('password_salah') ?>
+                        </div>
 
-                            <div class="form-group row m-t-20">
-                                <div class="col-12   text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
-                                </div>
+                        <div class="form-group row m-t-20">
+                            <div class="col-12   text-center">
+                                <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
                             </div>
+                        </div>
 
-                            <div class="form-group m-t-10 mb-0 row">
-                                <div class="col-12 m-t-20">
-                                    <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Password? </a>
-                                </div>
+                        <div class="form-group m-t-10 mb-0 row">
+                            <div class="col-12 m-t-20">
+                                <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Password? </a>
                             </div>
-                        </form>
+                        </div>
                     </div>
 
                     <div class="m-t-40 text-center">

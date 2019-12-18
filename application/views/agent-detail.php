@@ -217,12 +217,12 @@
 								$level = $this->fungsi->user_login()->level;
 								if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
 									?>
-									<a class="btn btn-info text-size" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+									<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 								<?php } ?>
 								<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
-									<a class="btn btn-danger text-size"" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+									<a class="btn btn-danger text-size"" onclick=" return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
 								<?php } ?>
-								<button type="submit" class="btn btn-primary waves-effect waves-light text-size">
+								<button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size">
 									Simpan
 								</button>
 							</div>
@@ -618,7 +618,7 @@
 										</div>
 									<?php } ?>
 								</div>
-								<form action="<?= base_url('Comment/save/id_agent') ?>" method="post">
+								<form action="<?= base_url('Comment/save') ?>" method="post">
 									<input type="hidden" name="id_type" id="id_type" value="<?= $data->id_agent ?>">
 									<input type="hidden" name="ticket" id="ticket" value="<?= $ticket->id_ticket ?>">
 									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">

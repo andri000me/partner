@@ -12,6 +12,11 @@
 
 <script>
     $('#hide').hide();
+    if ($(".cross_branch").val() == "Ya") {
+        $("#hide").show()
+    } else {
+        $("#hide").hide()
+    }
     $('.cross_branch').click(function() {
         var cross_branch = $(this).val();
         if (cross_branch == 'Ya') {
@@ -191,6 +196,46 @@
                 // alert('Success, \n ID Branch: ' + id_notification + '\n Status: ' + has_read);
             }
         });
-        // return false;
     });
+    // return false;
+</script>
+
+<script>
+    function show_pic_ttd() {
+        var cabang_cross = $("#cabang_cross").val();
+        if (cabang_cross == null || cabang_cross == '') {
+            cabang_cross = <?= $this->fungsi->user_login()->id_branch ?>
+        }
+        // if($("#cross_branch").val() == "Ya")
+        // alert(cabang_cross);
+        $.ajax({
+            type: 'ajax',
+            url: '<?= base_url('Leads/get_user/') ?>' + cabang_cross,
+            async: false,
+            dataType: 'json',
+            data: {
+                cabang_cross: cabang_cross
+            },
+            success: function(data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<option value="' + data[i].id_user + '">' + data[i].name.toUpperCase() + '</option>'
+                }
+                $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
+
+                console.log(html);
+            }
+
+        });
+        // var surveyor = $("#surveyor").val();
+        // var pic_ttd = $("#pic_ttd").val();
+
+        // alert(surveyor + ' ' + pic_ttd);
+    }
+
+
+    show_pic_ttd();
+    $("#cabang_cross").change(function() {
+        show_pic_ttd();
+    })
 </script>

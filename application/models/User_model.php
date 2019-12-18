@@ -15,10 +15,13 @@ class User_model extends CI_Model
         return $query;
     }
 
-    public function get_all()
+    public function get_all($where = NULL)
     {
         $this->db->from('users');
         $this->db->join('branches', 'branches.id_branch = users.id_branch', 'inner');
+        if ($where != NULL) {
+            $this->db->where($where);
+        }
         $query = $this->db->get();
 
         return $query;
@@ -44,10 +47,10 @@ class User_model extends CI_Model
     }
 
     //Method Proses Login
-    public function login($username, $password)
+    public function login($username)
     {
         $this->db->from('users');
-        $this->db->where("(email = '$username' OR nik = '$username') AND password =  '$password'");
+        $this->db->where("(email = '$username' OR nik = '$username')");
         $query = $this->db->get();
 
         return $query;

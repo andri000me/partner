@@ -1,5 +1,5 @@
 ﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
-# Date: 2019-12-12 09:49:30
+# Date: 2019-12-13 16:13:35
 # Generator: MySQL-Front 6.1  (Build 1.26)
 
 
@@ -18,7 +18,7 @@ CREATE TABLE `branches` (
 # Data for table "branches"
 #
 
-INSERT INTO `branches` VALUES (1,'Balikpapan Syariah','1'),(2,'Bandung Syariah','2'),(3,'Banjarmasin Syariah','0'),(4,'Batam Syariah','0'),(5,'Bekasi Syariah','0'),(6,'Bogor Syariah','0'),(7,'BSD Syariah','2'),(8,'BukitTinggi Syariah','0'),(9,'Cawang Syariah','0'),(10,'Cirebon Syariah','0'),(11,'Depok Syariah','0'),(12,'Gorontalo Syariah','0'),(13,'Gresik Syariah','0'),(14,'Jakarta Selatan Syariah','0'),(15,'Jakarta Utara Syariah','0'),(16,'Jambi Syariah','0'),(17,'Karawang Syariah','0'),(18,'Kediri Syariah','0'),(19,'Kendari Syariah','0'),(20,'Kudus Syariah','0'),(21,'Lampung Syariah','0'),(22,'Makassar Syariah','0'),(23,'Malang Syariah','0'),(24,'Mataram Syariah','0'),(25,'Medan Syariah','0'),(26,'Meruya Syariah','0'),(27,'Mojokerto Syariah','0'),(28,'Padang Syariah','0'),(29,'Palangkaraya Syariah','0'),(30,'Palembang Syariah','0'),(31,'Pekanbaru Syariah','0'),(32,'Pontianak Syariah','0'),(33,'Purwokerto Syariah','0'),(34,'Samarinda Syariah','0'),(35,'Semarang Syariah','0'),(36,'Sidoarjo Syariah','0'),(37,'Solo Syariah','0'),(38,'Sorong Syariah','0'),(39,'Sukabumi Syariah','0'),(40,'Sunter Syariah','0'),(41,'Surabaya Syariah','0'),(42,'Tangerang Syariah','0'),(43,'Tasikmalaya Syariah','0'),(44,'Ternate Syariah','0'),(45,'Yogyakarta Syariah','0'),(46,'Head Office','0');
+INSERT INTO `branches` VALUES (1,'Balikpapan Syariah','1'),(2,'Bandung Syariah','0'),(3,'Banjarmasin Syariah','0'),(4,'Batam Syariah','0'),(5,'Bekasi Syariah','0'),(6,'Bogor Syariah','0'),(7,'BSD Syariah','2'),(8,'BukitTinggi Syariah','0'),(9,'Cawang Syariah','0'),(10,'Cirebon Syariah','0'),(11,'Depok Syariah','0'),(12,'Gorontalo Syariah','0'),(13,'Gresik Syariah','0'),(14,'Jakarta Selatan Syariah','0'),(15,'Jakarta Utara Syariah','0'),(16,'Jambi Syariah','0'),(17,'Karawang Syariah','0'),(18,'Kediri Syariah','0'),(19,'Kendari Syariah','0'),(20,'Kudus Syariah','0'),(21,'Lampung Syariah','0'),(22,'Makassar Syariah','0'),(23,'Malang Syariah','0'),(24,'Mataram Syariah','0'),(25,'Medan Syariah','0'),(26,'Meruya Syariah','0'),(27,'Mojokerto Syariah','0'),(28,'Padang Syariah','0'),(29,'Palangkaraya Syariah','0'),(30,'Palembang Syariah','0'),(31,'Pekanbaru Syariah','0'),(32,'Pontianak Syariah','0'),(33,'Purwokerto Syariah','0'),(34,'Samarinda Syariah','0'),(35,'Semarang Syariah','0'),(36,'Sidoarjo Syariah','0'),(37,'Solo Syariah','0'),(38,'Sorong Syariah','0'),(39,'Sukabumi Syariah','0'),(40,'Sunter Syariah','0'),(41,'Surabaya Syariah','0'),(42,'Tangerang Syariah','0'),(43,'Tasikmalaya Syariah','0'),(44,'Ternate Syariah','0'),(45,'Yogyakarta Syariah','0'),(46,'Head Office','0');
 
 #
 # Structure for table "leads_activities"
@@ -31,29 +31,13 @@ CREATE TABLE `leads_activities` (
   `id_leads` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_lead_activity`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "leads_activities"
 #
 
-INSERT INTO `leads_activities` VALUES (14,'Data leads telah dibuat','2019-12-10 09:07:53',9,26),(15,'Data leads telah dibuat','2019-12-10 09:18:42',14,26),(16,'Data leads telah dibuat','2019-12-10 09:45:05',15,26),(17,'Data leads telah dibuat','2019-12-10 10:04:39',16,26),(18,'Perubahan pada data leads','2019-12-10 10:49:25',16,26),(19,'Perubahan pada data leads','2019-12-10 10:53:54',16,26),(20,'Data leads telah dibuat','2019-12-11 14:48:32',17,26);
-
-#
-# Structure for table "merchants"
-#
-
-CREATE TABLE `merchants` (
-  `id_merchant` int(11) NOT NULL AUTO_INCREMENT,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id_merchant`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-#
-# Data for table "merchants"
-#
-
+INSERT INTO `leads_activities` VALUES (24,'Data leads telah dibuat','2019-12-13 14:57:03',22,11);
 
 #
 # Structure for table "partners"
@@ -107,7 +91,7 @@ CREATE TABLE `partners` (
 # Data for table "partners"
 #
 
-INSERT INTO `partners` VALUES (34,'OKEOKE','DADAP','Tangerang','badad','212312','OKEOKE',NULL,'PD',123,'2018','OKEOKE','www.ibra.com','Milik Keluarga','Tunai','8000000',90,'Ya','Ya','Ada','Ya','Giro',NULL,'6786786867879942','OKEOKE','Bank Negara Indonesia','Anton',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'lengkap','2019-12-04 14:04:32','2019-12-04 14:04:32',13),(36,'aasd','DADAP','Tangerang','Banten','143123','OKEOKE',NULL,'PT',25,'2011','Apa Saja','oki.com','Milik Sendiri','Kredit Konvensional','8000000',7,'Ya','Ya','Ada','Ya','Giro',NULL,'4325331212314242','OKEOKE','Bank Negara Indonesia','adsads',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'lengkap','2019-12-04 14:13:24','2019-12-04 14:13:24',14),(37,'Kevin Tripp','Curug','Curug','Banten','141423',NULL,NULL,'PD',10,'2019','Bangunan','bangunan.com','Milik Sendiri','Tunai','50000000',15,'Ya','Ya','Ada','Ya','Giro',NULL,'9816598349534958','BSD','Bank Mandiri','Kevin Tripp',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'lengkap','2019-12-05 10:42:11','2019-12-06 08:18:35',15),(39,'Ahmad','Cimone','Cimone','Banten','123456','memcancing',NULL,'Perorangan',35,'2019','FotoCopy, ATK','ahmad-atk.com','Milik Keluarga','Tunai','8000000',90,'Ya','Ya','Ada','Ya','Cek',NULL,'2319872349723482','OKEOKE','Bank Negara Indonesia','Ahmad',NULL,'14613779_ML1.jpg','26345152_ML2.jpg','39648233_ML1.jpg','76207029_ML1.jpg','85597299_ML1.jpg','26345152_ML3.jpg','lengkap','2019-12-06 08:37:00','2019-12-06 08:37:00',16),(40,'Muhammad Gunadarma','Kelapa Dua','Kelapa Dua','Banten','18240','Belajar',NULL,'PT',40,'1998','Buku Paket','www.gunadarma.com','Milik Sendiri','Tunai','80000000',3,'Ya','Tidak','Tidak Ada','Ya','Giro',NULL,'1982489127498127','Karawaci','BCA','M. Gunadarma',NULL,'14613779_ML3.jpg','aaa.JPG','kelebihan.JPG','ERROR_SUBMIT.PNG','steam_error.PNG','xcel.PNG','lengkap','2019-12-11 16:13:07','2019-12-11 16:13:07',17);
+INSERT INTO `partners` VALUES (41,'Andrisa Putri','Sudimara','Ciledug','Banten','123909','Menjahit',NULL,'Perorangan',20,'1998','OKEOKE','wahana.com','Milik Keluarga','Tunai','8000000',55,'Ya','Tidak','Ada','Ya','Giro',NULL,'9326598735872899','Ciledug','Bank Commonwealth','Wahana',NULL,NULL,NULL,NULL,NULL,NULL,NULL,'draft','2019-12-13 14:47:14','2019-12-13 14:47:14',18);
 
 #
 # Structure for table "maintain_partners"
@@ -131,7 +115,6 @@ CREATE TABLE `maintain_partners` (
 # Data for table "maintain_partners"
 #
 
-INSERT INTO `maintain_partners` VALUES (12,'2019-12-06 09:49:03','76207029_ML.jpg','Update produk','mantap','2019-12-06 09:49:03','2019-12-06 09:49:03',34),(13,'2019-12-11 16:18:40','lupa_password.png','Presentasi','Lupa password','2019-12-11 16:18:40','2019-12-11 16:18:40',40);
 
 #
 # Structure for table "users"
@@ -192,7 +175,7 @@ CREATE TABLE `mapping_partners` (
 # Data for table "mapping_partners"
 #
 
-INSERT INTO `mapping_partners` VALUES (13,'PT DON','Teknologi dan Informasi','Pusat Pengembangan Ilmu Pengetahuan dan Teknologi','089827812213123','don.sabda@gmail.com','My Hajat','Catatan','2019-12-03 14:11:44','2019-12-03 14:11:44',7,26),(14,'CV Ibrahim','Teknologi dan Informasi','Pusat Pengembangan Ilmu Pengetahuan dan Teknologi','123127812771243','ibrahim.ahmadd98@gmail.com','My Safar','','2019-12-04 11:06:07','2019-12-04 11:06:07',7,26),(15,'PT OCCY ADITYA','Digital marketing','Pabuaran Sibang','087809974805','ibrahim.ahmad58@gmail.com','My Safar','asdasd','2019-12-05 10:41:30','2019-12-05 10:41:30',7,26),(16,'PT Ahmad','Foto Copy','Pabuaran Sibang','081310590242','ahmad@gmail.com','My Talim','','2019-12-06 08:31:37','2019-12-06 08:31:37',7,26),(17,'PT Gundarma','Kampus','Karawaci','089614419906','gunadarma@gmail.com','My Talim','Gundarma','2019-12-11 16:10:03','2019-12-11 16:10:03',7,11);
+INSERT INTO `mapping_partners` VALUES (18,'PT Wahana','Travel','jl. hj. travel 20','0896389349948','wahana@gmail.com','My Safar','Wahana jasa travel','2019-12-13 14:45:25','2019-12-13 14:45:25',7,11);
 
 #
 # Structure for table "leads"
@@ -216,6 +199,11 @@ CREATE TABLE `leads` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `id_mapping_leads` int(11) DEFAULT NULL,
+  `nik` varchar(10) DEFAULT NULL COMMENT 'Khusus SOA EGC',
+  `posisi` varchar(255) DEFAULT NULL COMMENT 'Khusus SOA EGC',
+  `cabang_egc` varchar(255) DEFAULT NULL COMMENT 'Khusus SOA EGC',
+  `no_kontrak` varchar(255) DEFAULT NULL COMMENT 'Khusus SOA CGC & RO',
+  `referral_konsumen` varchar(255) DEFAULT NULL COMMENT 'Nama Konsumen CGC & RO',
   PRIMARY KEY (`id_leads`),
   UNIQUE KEY `leads_id` (`leads_id`),
   UNIQUE KEY `no_ktp` (`no_ktp`),
@@ -225,13 +213,13 @@ CREATE TABLE `leads` (
   CONSTRAINT `leads_ibfk_1` FOREIGN KEY (`cabang_cross`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `leads_ibfk_2` FOREIGN KEY (`surveyor`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `leads_ibfk_3` FOREIGN KEY (`pic_ttd`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "leads"
 #
 
-INSERT INTO `leads` VALUES (9,'kunjungan','1635873164856934','201912SLOS12345','Ya',20,NULL,163,'Ya',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:07:53','2019-12-10 09:07:53',12),(11,'Telepon','1894798174981729','201912SLOS01234','Tidak',NULL,163,163,'Tidak',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:12:47','2019-12-10 09:12:47',11),(14,'Telepon','1894798174981231','201912SLOS01123','Tidak',NULL,1,1,'Tidak',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:18:42','2019-12-10 09:18:42',0),(15,'Kunjungan','3601832749872349','201912SLOS98651','Ya',42,185,26,'Ya',NULL,'lengkap',NULL,NULL,'','2019-12-10 09:45:04','2019-12-10 09:45:04',7),(16,'Whatsapp','1987981274019824','56','Ya',14,160,173,'Ya',500000067,'lengkap',NULL,NULL,NULL,'2019-12-10 10:04:39','2019-12-10 10:53:54',6),(17,'Kunjungan','2876872364928374','202020SLOS19982','Ya',42,26,61,'Ya',9000000,'lengkap','14613779_ML2.jpg','26345152_ML4.jpg',NULL,'2019-12-11 14:48:31','2019-12-11 14:48:31',10);
+INSERT INTO `leads` VALUES (21,'Telepon','3745379587395824','201930SLOS12908','Ya',42,52,49,'Ya',15000000,'lengkap','lupa_password1.png','register3.png',NULL,'2019-12-13 13:36:53','2019-12-13 13:36:53',13,NULL,NULL,NULL,NULL,NULL),(22,'Whatsapp','1987981212414124','201912SLOS12345','Ya',2,159,154,'Ya',8000000,'lengkap','lupa_password2.png','register4.png',NULL,'2019-12-13 14:57:03','2019-12-13 14:57:03',14,NULL,NULL,NULL,NULL,NULL);
 
 #
 # Structure for table "nst"
@@ -257,7 +245,6 @@ CREATE TABLE `nst` (
 # Data for table "nst"
 #
 
-INSERT INTO `nst` VALUES (2,'201912SLOS98651',NULL,NULL,26,7),(3,'201912SLOS12345','2019-12-11 10:18:38','2019-12-11 10:18:38',26,7),(4,'201912SLOS01234','2019-12-11 14:29:08','2019-12-11 14:29:08',26,7);
 
 #
 # Structure for table "comments"
@@ -272,17 +259,18 @@ CREATE TABLE `comments` (
   `id_agent` int(11) DEFAULT NULL,
   `id_partner` int(11) DEFAULT NULL,
   `id_leads` int(11) DEFAULT NULL,
+  `id_ticket` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_comment`),
   KEY `id_user` (`id_user`),
   KEY `id_partner` (`id_agent`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1683 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=1684 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 #
 # Data for table "comments"
 #
 
-INSERT INTO `comments` VALUES (1675,'Agent ID 14 mohon di approve trims.','2019-12-03 14:22:29',0,26,NULL,NULL,NULL),(1676,'Siap pak Agent ID 14 siap untuk di-approve','2019-12-03 14:38:37',0,17,NULL,NULL,NULL),(1677,'Agent ID 15','2019-12-04 11:18:12',0,26,15,NULL,NULL),(1678,'ID partner 34','2019-12-05 09:41:37',0,26,NULL,34,NULL),(1679,'id partner 36','2019-12-05 13:08:59',0,1,NULL,36,NULL),(1680,'hi sayang','2019-12-05 13:09:29',0,1,NULL,36,NULL),(1681,'i love you','2019-12-05 13:09:45',0,1,NULL,36,NULL),(1682,'I love you too','2019-12-11 16:56:25',0,26,NULL,36,NULL);
+INSERT INTO `comments` VALUES (1685,'tidak','2019-12-13 10:02:04',0,11,NULL,NULL,NULL,28),(1686,'terima kasih','2019-12-13 10:09:24',0,11,NULL,NULL,NULL,18),(1687,'sama-sama','2019-12-13 10:09:56',0,1,NULL,NULL,NULL,18),(1688,'kenapa berterima kasih mas?','2019-12-13 10:13:14',0,1,NULL,NULL,NULL,18),(1689,'kenapa berterima kasih mas?','2019-12-13 10:13:43',0,1,NULL,NULL,NULL,18),(1690,':)','2019-12-13 10:17:22',0,1,NULL,NULL,NULL,18),(1691,'wkwkk jatuh cinta lagi entar','2019-12-13 11:15:19',0,26,NULL,NULL,NULL,18),(1692,'basmallah','2019-12-13 13:40:30',0,11,NULL,NULL,NULL,32),(1693,'ID Leads 21','2019-12-13 14:59:32',0,11,NULL,NULL,NULL,33),(1694,'Oke lemgkap','2019-12-13 15:10:34',0,1,NULL,NULL,NULL,33),(1695,'eh belum ini mohon maaf','2019-12-13 15:11:03',0,1,NULL,NULL,NULL,33);
 
 #
 # Structure for table "userss"
@@ -332,7 +320,7 @@ CREATE TABLE `partner_activities` (
 # Data for table "partner_activities"
 #
 
-INSERT INTO `partner_activities` VALUES (48,'Data Partner telah dibuat','2019-12-04 14:04:32',34,26),(49,'Data Partner telah dibuat','2019-12-04 14:13:24',36,26),(50,'Data Partner telah dibuat','2019-12-05 10:42:11',37,26),(51,'Perubahan pada data Partner','2019-12-05 13:32:59',37,26),(52,'Perubahan pada data Partner','2019-12-06 08:18:35',37,26),(53,'Data Partner telah dibuat','2019-12-06 08:35:32',38,26),(54,'Data Partner telah dibuat','2019-12-06 08:37:00',39,26),(55,'Partner telah dimaintain','2019-12-06 09:49:03',34,26),(56,'Data Partner telah dibuat','2019-12-11 16:13:07',40,11),(57,'Partner telah dimaintain','2019-12-11 16:18:40',40,11),(58,'Perubahan pada data Partner','2019-12-12 09:09:19',40,11);
+INSERT INTO `partner_activities` VALUES (59,'Data Partner telah dibuat','2019-12-13 14:47:14',41,11);
 
 #
 # Structure for table "login_log"
@@ -345,13 +333,13 @@ CREATE TABLE `login_log` (
   PRIMARY KEY (`id_login_log`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "login_log"
 #
 
-INSERT INTO `login_log` VALUES (1,'0000-00-00 00:00:00',26),(2,'2019-11-20 02:49:49',26),(3,'2019-11-21 05:33:42',26),(4,'2019-11-21 08:35:13',26),(5,'2019-11-21 08:39:01',26),(6,'2019-11-22 08:53:40',26),(7,'2019-11-22 19:22:43',26),(8,'2019-11-22 22:04:45',26),(9,'2019-11-23 09:28:11',26),(10,'2019-11-23 10:06:55',17),(11,'2019-11-23 11:51:22',26),(12,'2019-11-23 14:52:05',26),(13,'2019-11-23 22:18:31',26),(14,'2019-11-24 13:38:30',26),(15,'2019-11-25 08:44:59',26),(16,'2019-11-25 19:16:47',26),(17,'2019-11-26 08:28:26',26),(18,'2019-11-26 13:20:53',17),(19,'2019-11-26 13:30:26',26),(20,'2019-11-26 13:31:03',26),(21,'2019-11-26 13:32:36',1),(22,'2019-11-26 14:14:02',26),(23,'2019-11-26 14:15:34',26),(24,'2019-11-26 14:27:15',11),(25,'2019-11-27 09:06:52',17),(26,'2019-11-27 09:08:36',26),(27,'2019-11-27 09:09:05',11),(28,'2019-11-27 13:20:25',26),(29,'2019-11-28 10:21:38',26),(30,'2019-11-28 15:55:51',26),(31,'2019-11-29 09:27:17',26),(32,'2019-11-29 13:40:46',26),(33,'2019-11-30 09:16:47',26),(34,'2019-12-02 08:45:54',26),(35,'2019-12-02 15:01:55',26),(36,'2019-12-02 15:15:04',11),(37,'2019-12-02 15:26:14',26),(38,'2019-12-02 15:46:18',1),(39,'2019-12-03 10:44:22',11),(40,'2019-12-03 10:57:48',1),(41,'2019-12-03 13:31:39',26),(42,'2019-12-03 13:32:06',1),(43,'2019-12-03 13:45:34',11),(44,'2019-12-03 13:58:57',26),(45,'2019-12-03 13:59:42',26),(46,'2019-12-03 14:00:13',17),(47,'2019-12-03 14:07:55',26),(48,'2019-12-03 14:21:15',17),(49,'2019-12-03 14:21:47',26),(50,'2019-12-03 14:22:38',26),(51,'2019-12-03 14:22:58',17),(52,'2019-12-03 15:56:28',26),(53,'2019-12-03 15:56:54',26),(54,'2019-12-03 15:57:25',17),(55,'2019-12-04 11:03:57',26),(56,'2019-12-04 11:17:04',26),(57,'2019-12-04 11:33:21',17),(58,'2019-12-04 13:38:59',26),(59,'2019-12-04 14:44:33',26),(60,'2019-12-04 14:44:45',17),(61,'2019-12-05 08:41:47',26),(62,'2019-12-05 09:41:55',17),(63,'2019-12-05 09:44:14',1),(64,'2019-12-05 10:21:14',26),(65,'2019-12-05 13:06:54',17),(66,'2019-12-05 13:07:10',1),(67,'2019-12-05 13:20:45',26),(68,'2019-12-05 13:55:38',1),(69,'2019-12-05 15:51:45',26),(70,'2019-12-05 15:55:24',26),(71,'2019-12-05 15:56:12',11),(72,'2019-12-05 16:01:02',26),(73,'2019-12-05 16:01:35',2),(74,'2019-12-05 16:05:44',11),(75,'2019-12-05 16:08:41',1),(76,'2019-12-05 16:10:01',26),(77,'2019-12-05 16:30:19',26),(78,'2019-12-05 16:30:25',1),(79,'2019-12-05 16:44:03',26),(80,'2019-12-06 08:14:56',26),(81,'2019-12-06 09:03:28',2),(82,'2019-12-06 09:06:03',26),(83,'2019-12-06 09:38:46',11),(84,'2019-12-06 09:39:03',26),(85,'2019-12-09 10:27:47',26),(86,'2019-12-09 14:19:27',26),(87,'2019-12-10 08:11:19',26),(88,'2019-12-11 08:25:07',26),(89,'2019-12-11 09:59:17',26),(90,'2019-12-11 13:52:16',1),(91,'2019-12-11 13:53:33',26),(92,'2019-12-11 15:55:37',11),(93,'2019-12-11 16:14:17',26),(94,'2019-12-11 16:14:45',164),(95,'2019-12-11 16:18:01',11),(96,'2019-12-11 16:53:07',26),(97,'2019-12-11 16:54:51',26),(98,'2019-12-12 08:40:09',26),(99,'2019-12-12 08:45:55',11),(100,'2019-12-12 08:59:52',1);
+INSERT INTO `login_log` VALUES (1,'0000-00-00 00:00:00',26),(2,'2019-11-20 02:49:49',26),(3,'2019-11-21 05:33:42',26),(4,'2019-11-21 08:35:13',26),(5,'2019-11-21 08:39:01',26),(6,'2019-11-22 08:53:40',26),(7,'2019-11-22 19:22:43',26),(8,'2019-11-22 22:04:45',26),(9,'2019-11-23 09:28:11',26),(10,'2019-11-23 10:06:55',17),(11,'2019-11-23 11:51:22',26),(12,'2019-11-23 14:52:05',26),(13,'2019-11-23 22:18:31',26),(14,'2019-11-24 13:38:30',26),(15,'2019-11-25 08:44:59',26),(16,'2019-11-25 19:16:47',26),(17,'2019-11-26 08:28:26',26),(18,'2019-11-26 13:20:53',17),(19,'2019-11-26 13:30:26',26),(20,'2019-11-26 13:31:03',26),(21,'2019-11-26 13:32:36',1),(22,'2019-11-26 14:14:02',26),(23,'2019-11-26 14:15:34',26),(24,'2019-11-26 14:27:15',11),(25,'2019-11-27 09:06:52',17),(26,'2019-11-27 09:08:36',26),(27,'2019-11-27 09:09:05',11),(28,'2019-11-27 13:20:25',26),(29,'2019-11-28 10:21:38',26),(30,'2019-11-28 15:55:51',26),(31,'2019-11-29 09:27:17',26),(32,'2019-11-29 13:40:46',26),(33,'2019-11-30 09:16:47',26),(34,'2019-12-02 08:45:54',26),(35,'2019-12-02 15:01:55',26),(36,'2019-12-02 15:15:04',11),(37,'2019-12-02 15:26:14',26),(38,'2019-12-02 15:46:18',1),(39,'2019-12-03 10:44:22',11),(40,'2019-12-03 10:57:48',1),(41,'2019-12-03 13:31:39',26),(42,'2019-12-03 13:32:06',1),(43,'2019-12-03 13:45:34',11),(44,'2019-12-03 13:58:57',26),(45,'2019-12-03 13:59:42',26),(46,'2019-12-03 14:00:13',17),(47,'2019-12-03 14:07:55',26),(48,'2019-12-03 14:21:15',17),(49,'2019-12-03 14:21:47',26),(50,'2019-12-03 14:22:38',26),(51,'2019-12-03 14:22:58',17),(52,'2019-12-03 15:56:28',26),(53,'2019-12-03 15:56:54',26),(54,'2019-12-03 15:57:25',17),(55,'2019-12-04 11:03:57',26),(56,'2019-12-04 11:17:04',26),(57,'2019-12-04 11:33:21',17),(58,'2019-12-04 13:38:59',26),(59,'2019-12-04 14:44:33',26),(60,'2019-12-04 14:44:45',17),(61,'2019-12-05 08:41:47',26),(62,'2019-12-05 09:41:55',17),(63,'2019-12-05 09:44:14',1),(64,'2019-12-05 10:21:14',26),(65,'2019-12-05 13:06:54',17),(66,'2019-12-05 13:07:10',1),(67,'2019-12-05 13:20:45',26),(68,'2019-12-05 13:55:38',1),(69,'2019-12-05 15:51:45',26),(70,'2019-12-05 15:55:24',26),(71,'2019-12-05 15:56:12',11),(72,'2019-12-05 16:01:02',26),(73,'2019-12-05 16:01:35',2),(74,'2019-12-05 16:05:44',11),(75,'2019-12-05 16:08:41',1),(76,'2019-12-05 16:10:01',26),(77,'2019-12-05 16:30:19',26),(78,'2019-12-05 16:30:25',1),(79,'2019-12-05 16:44:03',26),(80,'2019-12-06 08:14:56',26),(81,'2019-12-06 09:03:28',2),(82,'2019-12-06 09:06:03',26),(83,'2019-12-06 09:38:46',11),(84,'2019-12-06 09:39:03',26),(85,'2019-12-09 10:27:47',26),(86,'2019-12-09 14:19:27',26),(87,'2019-12-10 08:11:19',26),(88,'2019-12-11 08:25:07',26),(89,'2019-12-11 09:59:17',26),(90,'2019-12-11 13:52:16',1),(91,'2019-12-11 13:53:33',26),(92,'2019-12-11 15:55:37',11),(93,'2019-12-11 16:14:17',26),(94,'2019-12-11 16:14:45',164),(95,'2019-12-11 16:18:01',11),(96,'2019-12-11 16:53:07',26),(97,'2019-12-11 16:54:51',26),(98,'2019-12-12 08:40:09',26),(99,'2019-12-12 08:45:55',11),(100,'2019-12-12 08:59:52',1),(101,'2019-12-12 10:08:22',26),(102,'2019-12-12 13:05:49',11),(103,'2019-12-12 14:35:11',11),(104,'2019-12-12 14:38:16',26),(105,'2019-12-12 16:49:26',11),(106,'2019-12-12 16:50:01',26),(107,'2019-12-12 16:50:34',11),(108,'2019-12-12 16:54:30',164),(109,'2019-12-12 16:55:19',26),(110,'2019-12-12 16:56:12',26),(111,'2019-12-13 08:27:02',26),(112,'2019-12-13 08:53:03',26),(113,'2019-12-13 09:04:26',26),(114,'2019-12-13 09:39:24',11),(115,'2019-12-13 09:45:39',1),(116,'2019-12-13 09:46:38',11),(117,'2019-12-13 10:09:35',1),(118,'2019-12-13 10:15:22',11),(119,'2019-12-13 10:16:53',1),(120,'2019-12-13 10:17:57',11),(121,'2019-12-13 10:44:33',164),(122,'2019-12-13 10:45:29',11),(123,'2019-12-13 10:46:00',164),(124,'2019-12-13 11:09:36',26),(125,'2019-12-13 13:34:19',11),(126,'2019-12-13 13:42:55',164),(127,'2019-12-13 13:56:19',26),(128,'2019-12-13 13:57:44',26),(129,'2019-12-13 13:57:56',164),(130,'2019-12-13 14:00:31',26),(131,'2019-12-13 14:02:11',1),(132,'2019-12-13 14:17:48',26),(133,'2019-12-13 14:18:01',164),(134,'2019-12-13 14:18:17',26),(135,'2019-12-13 14:41:47',11),(136,'2019-12-13 15:07:25',164),(137,'2019-12-13 15:08:14',26),(138,'2019-12-13 15:08:37',1),(139,'2019-12-13 15:08:45',26),(140,'2019-12-13 15:10:11',26),(141,'2019-12-13 15:10:17',1),(142,'2019-12-13 15:11:47',11);
 
 #
 # Structure for table "agents"
@@ -397,13 +385,12 @@ CREATE TABLE `agents` (
   KEY `id_branch` (`id_branch`),
   CONSTRAINT `agents_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`),
   CONSTRAINT `agents_ibfk_2` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "agents"
 #
 
-INSERT INTO `agents` VALUES (14,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmadd98@gmail.com','2011-07-13','3698273942794872','234233523534435','Swasta','Karyawan Swasta','Syariah Ambassador','Milik Sendiri',3000000,'Ya','Ya','Ya','Ada','Pernah','1236010042342342','Bank Negara Indonesia','ITC BSD','Ibra Kadabra','','','','',NULL,'2019-12-03 14:15:19','2019-12-03 15:02:39',26,7),(15,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmadd58@gmail.com','2019-12-18','3603222019301942','093429902837501','Freelance','Freelance','Syariah Agent','Milik Sendiri',123123123213123,'Ya','Ya','Ya','Ada','Pernah','1212312312314242','Bank Negara Indonesia','OKEOKE','Anton','','','','',NULL,'2019-12-04 11:07:25','2019-12-04 11:07:25',26,7),(16,'Ibrahim Ahmad','NULL',NULL,'okky.aditya@gmail.com','2019-12-12','8732589207509827','175873495087349','Wiraswasta','Pekerja','Syariah Ambassador','Milik Keluarga',6000000,'Ya','Ya','Ya','Ada','Pernah','7123598729053872','bANK','tANGERANG','iBRA','bfi_syariah.jpg','gede.JPG','leads.JPG','Logo-BFI-768x768.jpeg',NULL,'2019-12-05 08:47:08','2019-12-05 08:47:08',26,7),(17,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmad58@gmail.com','2019-12-12','2973492837492875','283572983759283','Swasta','Swasta','Syariah Agent','Milik Sendiri',5645454547,'Ya','Tidak','Ya','Ada','Pernah','3463463463463463','Bank Negara Indonesia','OKEOKE','Ibra','aaa.JPG','','register.png','76207029_ML.jpg',NULL,'2019-12-05 09:24:26','2019-12-05 09:24:26',26,7),(18,'Ibrahim Ahmad','NULL',NULL,'ibrahim.ahmad988@gmail.com','2019-12-17','1749187492174928','123131231312123','Wiraswasta','Pekerja Rumah Tangga','Syariah Agent','Milik Keluarga',9000000,'Ya','Ya','Ya','Ada','Pernah','1212312312314212','Bank Negara Indonesia','OKEOKE','asdasdasd','14613779_ML.jpg','26345152_ML.jpg','39648233_ML.jpg','76207029_ML1.jpg',NULL,'2019-12-05 15:58:34','2019-12-05 16:08:20',11,7);
 
 #
 # Structure for table "mapping_leads"
@@ -432,13 +419,13 @@ CREATE TABLE `mapping_leads` (
   CONSTRAINT `mapping_leads_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `mapping_leads_ibfk_3` FOREIGN KEY (`id_partner`) REFERENCES `partners` (`id_partner`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `mapping_leads_ibfk_4` FOREIGN KEY (`id_agent`) REFERENCES `agents` (`id_agent`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "mapping_leads"
 #
 
-INSERT INTO `mapping_leads` VALUES (6,'Okky Aditya Wibowo','08982781277121','Agent BA','My Ihram','Safar','DWP','2019-12-09 14:35:53','2019-12-10 10:53:54',7,26,NULL,NULL),(7,'MY HAJAT','089827812771414','Tour & travel','My Hajat','Safar',NULL,'2019-12-09 14:37:14','2019-12-10 09:45:04',7,26,NULL,NULL),(9,'Okky Aditya Berwibawa','08982781277122','Tour & travel','My Safar','Safar',NULL,'2019-12-09 14:39:10','2019-12-10 10:49:25',7,26,NULL,NULL),(10,'Okky Aditya Berwibawa','089827812771212','Agent BA','My Talim','Safar',NULL,'2019-12-09 14:40:19','2019-12-11 14:48:31',7,26,NULL,NULL),(11,'asdasd','089827812771123','Agent BA','My Safar','Safar asd',NULL,'2019-12-09 15:34:39','2019-12-10 09:13:03',7,26,NULL,NULL),(12,'Okky Aditya Berwibawa','089827887957293','Event','My Ihram','Safar','JWP','2019-12-09 15:38:39','2019-12-10 09:08:20',7,26,NULL,NULL);
+INSERT INTO `mapping_leads` VALUES (6,'Okky Aditya Wibowo','08982781277121','Agent BA','My Ihram','Safar','DWP','2019-12-09 14:35:53','2019-12-10 10:53:54',7,26,NULL,NULL),(7,'MY HAJAT','089827812771414','Tour & travel','My Hajat','Safar',NULL,'2019-12-09 14:37:14','2019-12-10 09:45:04',7,26,NULL,NULL),(9,'Okky Aditya Berwibawa','089827823423423','Tour & travel','My Hajat','Safar',NULL,'2019-12-09 14:39:10','2019-12-12 15:36:01',7,26,NULL,NULL),(10,'Okky Aditya Berwibawa','089827812771212','Agent BA','My Talim','Safar',NULL,'2019-12-09 14:40:19','2019-12-11 14:48:31',7,26,NULL,NULL),(11,'asdasd','089827812771123','Agent BA','My Safar','Safar asd',NULL,'2019-12-09 15:34:39','2019-12-10 09:13:03',7,26,NULL,NULL),(12,'Okky Aditya Berwibawa','089827887957293','Event','My Ihram','Safar','JWP','2019-12-09 15:38:39','2019-12-10 09:08:20',7,26,NULL,NULL),(13,'Gede Laroiba','089618819904','Penyedia Jasa','My Safar','My Safar',NULL,'2019-12-13 13:35:28','2019-12-13 13:36:53',7,11,NULL,NULL),(14,'Ibrahim Ahmad Jabar','089827213131231','Tour & travel','My Safar','My Safar',NULL,'2019-12-13 14:54:28','2019-12-13 14:57:03',7,11,NULL,NULL);
 
 #
 # Structure for table "tickets"
@@ -478,13 +465,13 @@ CREATE TABLE `tickets` (
   CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`id_leads`) REFERENCES `leads` (`id_leads`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_6` FOREIGN KEY (`verified_by`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_7` FOREIGN KEY (`id_nst`) REFERENCES `nst` (`id_nst`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "tickets"
 #
 
-INSERT INTO `tickets` VALUES (12,'Belum','2019-12-03 14:15:19',NULL,'2019-12-03 14:22:47',NULL,'2019-12-03 15:41:22','2019-12-05 15:48:17','2019-12-05 13:54:33',5,NULL,14,NULL,NULL,26,7,1,26),(13,'Ya','2019-12-04 11:07:25',NULL,'2019-12-04 11:07:50',NULL,NULL,'2019-12-04 11:33:25','2019-12-04 11:41:45',5,NULL,15,NULL,NULL,26,7,17,17),(14,'Ya','2019-12-04 14:04:32',NULL,'2019-12-05 15:54:46',NULL,'2019-12-04 14:47:51','2019-12-05 16:09:52','2019-12-04 14:44:53',5,34,NULL,NULL,NULL,26,7,1,17),(15,'Belum','2019-12-04 14:13:24',NULL,NULL,NULL,NULL,'2019-12-05 13:10:40',NULL,5,36,NULL,NULL,NULL,26,7,1,NULL),(16,'Ya','2019-12-05 08:47:08',NULL,NULL,NULL,NULL,'2019-12-05 13:55:45','2019-12-05 13:59:00',5,NULL,16,NULL,NULL,26,7,1,1),(17,'Ya','2019-12-05 09:24:27',NULL,'2019-12-05 16:12:40',NULL,NULL,'2019-12-05 16:37:59','2019-12-11 13:53:12',5,NULL,17,NULL,NULL,26,7,1,1),(18,'Belum','2019-12-05 15:58:34',NULL,NULL,NULL,NULL,'2019-12-05 16:08:45',NULL,5,NULL,18,NULL,NULL,11,7,1,NULL),(19,'Belum','2019-12-06 08:18:35','2019-12-06 09:28:42',NULL,NULL,NULL,NULL,NULL,1,37,NULL,NULL,NULL,26,8,NULL,NULL),(20,'Belum','2019-12-06 08:37:00',NULL,NULL,NULL,NULL,'2019-12-06 09:05:49',NULL,5,39,NULL,NULL,NULL,26,8,2,NULL),(21,'Belum','2019-12-10 09:18:42',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,14,NULL,26,7,NULL,NULL),(22,'Belum','2019-12-10 09:45:05',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,15,NULL,26,7,NULL,NULL),(23,'Belum','2019-12-10 10:53:54',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,16,NULL,26,7,NULL,NULL),(24,'Belum','2019-12-11 10:13:42',NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,2,26,7,NULL,NULL),(25,'Belum','2019-12-11 10:18:38',NULL,NULL,NULL,NULL,NULL,NULL,2,NULL,NULL,NULL,3,26,7,NULL,NULL),(26,'Belum','2019-12-11 14:29:08',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,NULL,4,26,7,NULL,NULL),(27,'Belum','2019-12-11 14:48:32',NULL,NULL,NULL,NULL,NULL,NULL,0,NULL,NULL,17,NULL,26,7,NULL,NULL),(28,'Belum','2019-12-11 16:13:07',NULL,NULL,NULL,NULL,NULL,NULL,0,40,NULL,NULL,NULL,11,7,NULL,NULL);
+INSERT INTO `tickets` VALUES (33,'Belum','2019-12-13 14:57:03','2019-12-13 15:07:42','2019-12-13 15:08:52',NULL,'2019-12-13 15:11:09',NULL,NULL,4,NULL,NULL,22,NULL,11,7,NULL,NULL);
 
 #
 # Structure for table "notifications"
@@ -493,7 +480,7 @@ INSERT INTO `tickets` VALUES (12,'Belum','2019-12-03 14:15:19',NULL,'2019-12-03 
 CREATE TABLE `notifications` (
   `id_notification` int(11) NOT NULL AUTO_INCREMENT,
   `has_read` enum('0','1') DEFAULT '0',
-  `type` varchar(255) DEFAULT NULL,
+  `type` enum('Disetujui oleh Head','Disetujui oleh Manager','Disetujui oleh Admin HO','Komentar','Ditolak','Ditanda tangan') DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL,
   `penerima` int(11) DEFAULT NULL COMMENT 'id_user penerima',
   `penerima_cabang` int(11) DEFAULT NULL COMMENT 'id_cabang penerima',
@@ -506,13 +493,13 @@ CREATE TABLE `notifications` (
   CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`penerima`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`pengirim`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_3` FOREIGN KEY (`id_ticket`) REFERENCES `tickets` (`id_ticket`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "notifications"
 #
 
-INSERT INTO `notifications` VALUES (31,'0','Data Tiket Disetujui oleh Admin HO','2019-12-05 15:48:17',26,8,1,12),(32,'0','Data Tiket Disetujui oleh Manager','2019-12-05 15:54:46',17,8,26,14),(33,'1','Data Agent Baru','2019-12-05 15:58:34',11,7,11,18),(34,'1','Data Tiket Disetujui oleh Admin HO','2019-12-05 16:01:50',11,7,2,18),(35,'1','Data Tiket Disetujui oleh Admin HO','2019-12-05 16:08:45',11,7,1,18),(36,'0','Data Tiket Disetujui oleh Admin HO','2019-12-05 16:09:52',17,8,1,14),(37,'0','Data Tiket Disetujui oleh Manager','2019-12-05 16:12:40',26,8,26,17),(38,'0','Data Tiket Disetujui oleh Admin HO','2019-12-05 16:37:59',26,8,1,17),(39,'0','Data Partner Baru','2019-12-06 08:37:00',NULL,NULL,26,20),(40,'0','Data Tiket Disetujui oleh Admin HO','2019-12-06 09:05:49',26,8,2,20),(41,'0','Data Tiket Disetujui oleh Head','2019-12-06 09:28:42',26,8,26,19),(42,'0','Data NST Baru','2019-12-11 10:13:42',NULL,NULL,26,24),(43,'0','Data NST Baru','2019-12-11 10:18:38',NULL,NULL,26,25),(44,'1','Data Tiket Di tanda tangan','2019-12-11 13:53:12',26,7,1,17),(45,'0','Data NST Baru','2019-12-11 14:29:08',NULL,NULL,26,26),(46,'0','Data Partner Baru','2019-12-11 16:13:08',NULL,NULL,11,28);
+INSERT INTO `notifications` VALUES (65,'0','Komentar','2019-12-13 14:59:32',11,7,11,33),(66,'0','Disetujui oleh Head','2019-12-13 15:07:42',11,7,164,33),(67,'0','Disetujui oleh Manager','2019-12-13 15:08:52',11,7,26,33),(68,'0','Komentar','2019-12-13 15:10:34',11,7,1,33),(69,'0','Komentar','2019-12-13 15:11:04',11,7,1,33),(70,'0','Ditolak','2019-12-13 15:11:09',11,7,1,33);
 
 #
 # Structure for table "agent_activities"
@@ -529,10 +516,9 @@ CREATE TABLE `agent_activities` (
   KEY `id_user` (`id_user`),
   CONSTRAINT `agent_activities_ibfk_1` FOREIGN KEY (`id_agent`) REFERENCES `agents` (`id_agent`),
   CONSTRAINT `agent_activities_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `userss` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
 
 #
 # Data for table "agent_activities"
 #
 
-INSERT INTO `agent_activities` VALUES (19,'Data Agent telah dibuat','2019-12-03 14:15:19',14,26),(20,'Perubahan pada data Agent','2019-12-03 14:21:57',14,26),(21,'Perubahan pada data Agent','2019-12-03 15:02:39',14,26),(22,'Data Agent telah dibuat','2019-12-04 11:07:25',15,26),(23,'Data Agent telah dibuat','2019-12-05 08:47:08',16,26),(24,'Data Agent telah dibuat','2019-12-05 09:24:27',17,26),(25,'Data Agent telah dibuat','2019-12-05 15:58:34',18,11),(26,'Perubahan pada data Agent','2019-12-05 16:08:20',18,11);

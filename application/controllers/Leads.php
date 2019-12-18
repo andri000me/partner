@@ -37,18 +37,30 @@ class Leads extends CI_Controller
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = NULL;
         }
+
+        $cross_branch = $this->fungsi->user_login()->id_branch;
 
         check_not_login();
     }
 
     public function index()
     {
+        //Jika CMS login maka memunculkan data berdasarkan `id_user`
+        if ($this->fungsi->user_login()->level == 1) {
+            $where_leads = "id_user = " . $this->fungsi->user_login()->id_user;
+        }
+        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangnya dan memunculkan data cross-branch.
+        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            $where_leads = "id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
+        } else {
+            $where_leads = NULL;
+        }
         $data = [
-            'data' => $this->leads_model->get($this->where)
+            'data' => $this->leads_model->get($where_leads)
         ];
 
         $this->template->load('template/index', 'leads', $data);
@@ -57,9 +69,9 @@ class Leads extends CI_Controller
     public function create()
     {
         $data = [
-            'mappings' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get("id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch),
             'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all(),
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
             'agents' => $this->agent_model->get($this->where),
             'partners' => $this->partner_model->get($this->where)
@@ -90,14 +102,20 @@ class Leads extends CI_Controller
 
     public function detail($id)
     {
-        $where = ['id_leads' => $id];
+        $where = ['leads.id_leads' => $id];
 
         $data = [
-            'data' => $this->leads_model->get($where)->row(),
-            'mapping' => $this->mapping_leads->get($this->where),
-            'branches' => $this->branch_model->get(),
-            'users' => $this->user_model->get_all(),
-            'comments' => $this->comment_model->get($where)
+            'data'          => $this->leads_model->get($where)->row(),
+            'mappings'      => $this->mapping_leads->get($this->where),
+            'branches'      => $this->branch_model->get(),
+            'users'         => $this->user_model->get_all(),
+
+            'agents'        => $this->agent_model->get($this->where),
+            'partners'      => $this->partner_model->get($this->where),
+
+            'activities'    => $this->leads_activity->get($where),
+            'comments'      => $this->comment_model->get($where),
+            'ticket'        => $this->ticket_model->get($where)->row()
         ];
         $this->template->load('template/index', 'leads-detail', $data);
     }
@@ -112,18 +130,28 @@ class Leads extends CI_Controller
 
         // if ($this->form_validation->run() != FALSE) {
         $data_mapping_leads = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'telepon'               => $post['telepon'],
-            'soa'                   => $post['soa'],
-            'produk'                => $post['produk'],
-            'detail_produk'         => $post['detail_produk'],
-            'nama_event'            => $post['nama_event'],
+            'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
+            'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+            'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
+            'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
+            'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+
+            // Untuk SOA EGC
+            'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+            'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+            'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+            // Untuk SOA CGC / RO
+            'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
+
+            // Untuk SOA Event
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
             'updated_at'            => date('Y-m-d H:i:s'),
 
             'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
-            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
-            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL
+            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL
         ];
 
         $where_mapping_leads = ['id_mapping_leads' => $post['id_mapping_leads']];
@@ -244,6 +272,15 @@ class Leads extends CI_Controller
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
 
+            // Untuk SOA EGC
+            'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+            'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+            'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+            // Untuk SOA CGC / RO
+            'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'refferal_konsumen'     => !empty($post['refferal_konsumen']) ? $post['refferal_konsumen'] : NULL,
+            // Untuk SOA Event
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
@@ -271,6 +308,8 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+
+
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),
@@ -323,19 +362,60 @@ class Leads extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        $mapping_leads = [
+            'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
+            'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+            'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
+            'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
+            'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
+
+            // Untuk SOA EGC
+            'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
+            'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
+            'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
+            // Untuk SOA CGC / RO
+            'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
+            // Untuk SOA Event
+            'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+            //Timestamp
+            // 'created_at'            => date('Y-m-d H:i:s'),
+            'updated_at'            => date('Y-m-d H:i:s'),
+
+            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
+            // 'id_user'               => $this->fungsi->user_login()->id_user,
+            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
+            // 'id_branch'             => $this->fungsi->user_login()->id_branch
+        ];
+
+        $where_mapping = ['id_mapping_leads' => $post['id_mapping_leads']];
+
+        $this->mapping_leads->update($mapping_leads, $where_mapping);
+
         $data = [
+            'id_mapping_leads' => $post['id_mapping_leads'],
+
+            'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
+            'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
+            'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
+            'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
+            'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
+            'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
+            'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
+            'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
+            'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
 
             //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            'id_user'               => $post['id_user'],
+            // 'id_user'               => $post['id_user'],
             //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            'id_branch'             => $post['id_branch']
+            // 'id_branch'             => $post['id_branch']
         ];
 
-        $where = ['id_lead' => $post['id_lead']];
+        $where = ['id_leads' => $post['id_leads']];
         //Memasukkan data mapping ke database `leads`
         $id = $this->leads_model->update($data, $where);
 
@@ -349,9 +429,39 @@ class Leads extends CI_Controller
 
         $this->leads_activity->create($leads_activity);
 
+        //Meng-update antrian tiket untuk data Leads
+        $has_superior = $this->fungsi->user_login()->has_superior;
+        $ticket = [
+            'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            'date_pending'  => date('Y-m-d H:i:s'),
+            // 'id_user'       => $this->fungsi->user_login()->id_user,
+            // 'id_branch'     => $this->fungsi->user_login()->id_branch
+        ];
+        $where_ticket = ['id_ticket' => $post['id_ticket']];
+        $this->ticket_model->update($ticket, $where_ticket);
+
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
 
         redirect('Leads');
+    }
+
+    // AJAX Controller
+    // mengambil list user untuk cross branch
+    public function get_user($cabang_cross = NULL)
+    {
+        //Secara default memunculkan list cabang si user
+        if ($cabang_cross == NULL) {
+            $cabang_cross = $this->fungsi->user_login()->id_branch;
+        }
+        $data = $this->user_model->get_all(['users.id_branch' => $cabang_cross]);
+        echo json_encode($data->result());
+    }
+
+    public function get_leads($id)
+    {
+        $where = ['leads.id_leads' => $id];
+
+        echo json_encode($this->leads_model->get($where)->row());
     }
 }

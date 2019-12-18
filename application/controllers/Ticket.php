@@ -20,6 +20,8 @@ class Ticket extends CI_Controller
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = ['tickets.id_branch' => $this->fungsi->user_login()->id_branch];
+        } else if ($this->fungsi->user_login()->level == 4) {
+            $this->where = ['tickets.status' => 2];
         } else {
             $this->where = NULL;
         }
@@ -44,9 +46,6 @@ class Ticket extends CI_Controller
 
     public function index()
     {
-        if (isset($_GET['id_ticket'])) {
-            $id = $_GET['id_ticket'];
-        }
 
         $data = [
             'data' => $this->ticket_model->get($this->where)
@@ -66,7 +65,7 @@ class Ticket extends CI_Controller
                 'status' => 1
             ];
 
-            $notification = $this->notification($id_ticket, 'Data Tiket Disetujui oleh Head');
+            $notification = $this->notification($id_ticket, 'Disetujui oleh Head');
         }
         //Jika Manager yang menekan tombol approve, maka tiket sudah disetujui oleh Manager
         else if ($this->fungsi->user_login()->level == 3) {
@@ -74,7 +73,7 @@ class Ticket extends CI_Controller
                 'date_approved_by_manager' => date('Y-m-d H:i:s'),
                 'status' => 2
             ];
-            $notification = $this->notification($id_ticket, 'Data Tiket Disetujui oleh Manager');
+            $notification = $this->notification($id_ticket, 'Disetujui oleh Manager');
         }
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
         else if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
@@ -83,13 +82,11 @@ class Ticket extends CI_Controller
                 'status'            => 5,
                 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
-            $notification = $this->notification($id_ticket, 'Data Tiket Disetujui oleh Admin HO');
+            $notification = $this->notification($id_ticket, 'Disetujui oleh Admin HO');
         }
         $this->ticket_model->update($data, $where);
 
         $this->notification_model->create($notification);
-
-
 
         $this->session->set_flashdata("berhasil_approve", "Data Tiket ID #$id_ticket berhasil diapprove.");
         redirect('Ticket');
@@ -104,7 +101,7 @@ class Ticket extends CI_Controller
                 'status'            => 4
                 // 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
-            $notification = $this->notification($id_ticket, 'Data Tiket Ditolak oleh Admin HO');
+            $notification = $this->notification($id_ticket, 'Ditolak');
         }
         $where = ['id_ticket' => $id_ticket];
         $this->ticket_model->update($data, $where);
@@ -130,7 +127,7 @@ class Ticket extends CI_Controller
 
         echo json_encode($data);
 
-        $notification = $this->notification($this->input->post('id_ticket'), 'Data Tiket Di tanda tangan');
+        $notification = $this->notification($this->input->post('id_ticket'), 'Ditanda tangan');
         $this->notification_model->create($notification);
     }
 
