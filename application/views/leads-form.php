@@ -242,6 +242,23 @@
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
+                                        <label>Apakah Sudah Funding?</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" required value="Sudah">
+                                            <label class="form-check-label">
+                                                Sudah
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" required value="Belum">
+                                            <label class="form-check-label">
+                                                Belum
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
                                         <label>Appeal NST</label><br>
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">

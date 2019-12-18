@@ -97,6 +97,14 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Foto usaha</label>
+                                        <input type="file" name="foto-usaha" class="filestyle" data-buttonname="btn-secondary">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label class="text-size">Catatan</label>
                                         <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" value="<?= set_value('catatan') ?>" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>

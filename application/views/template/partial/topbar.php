@@ -48,7 +48,7 @@
                                 <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                             </a>
                         <?php }
-                        else { ?>
+                                                                                                                                } else { ?>
                         <center><span class="text-muted ml-4">Tidak ada notfikasi!</span></center>
                     <?php } ?>
                 </div>

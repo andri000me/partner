@@ -138,7 +138,7 @@
     <script src="<?= base_url('template/assets/plugins/js/owl.carousel.min.js') ?>"></script>
 
     <!-- App js -->
-    <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/apps.js') ?>"></script>
 
     <!-- Custom Scripts -->
     <?php $this->load->view('template/partial/scripts') ?>

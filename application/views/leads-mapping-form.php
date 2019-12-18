@@ -179,25 +179,16 @@
                     <tbody>
                         <?php foreach ($partners->result() as $partner) { ?>
                             <tr>
-                                <th>Name Usaha</th>
-                                <th>Kategori Produk</th>
-                                <th>Telepon</th>
-                                <th>Aksi</th>
+                                <td><?= $partner->nama_usaha ?></td>
+                                <td><?= $partner->kategori_produk ?></td>
+                                <td><?= $partner->telepon ?></td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($partners->result() as $partner) { ?>
-                                <tr>
-                                    <td><?= $partner->nama_usaha ?></td>
-                                    <td><?= $partner->kategori_produk ?></td>
-                                    <td><?= $partner->telepon ?></td>
-                                    <td>
-                                        <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
