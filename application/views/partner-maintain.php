@@ -1,6 +1,6 @@
-<div class="row mt-5">
+<div class="row">
     <div class="col-lg-8">
-        <div class="page-title-box ml-4">
+        <div class="page-title-box">
             <h4 class="page-title">Form Maintain Partner</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
@@ -125,7 +125,7 @@
                                 <h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
                                 <div class="boxx overflow-auto">
                                     <?php if ($activities->num_rows() > 0) {
-                                        foreach ($activities->result() as $activity) { ?>
+                                                                                                                                foreach ($activities->result() as $activity) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table class="web">
@@ -177,8 +177,8 @@
                                                 </div>
                                             </div>
                                         <?php
-                                            }
-                                        } else { ?>
+                                                                                                                                    }
+                                                                                                                                } else { ?>
                                         <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                                     <?php } ?>
                                 </div>

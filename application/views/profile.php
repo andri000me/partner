@@ -11,7 +11,7 @@
                 </div>
                 <div class="directory-content text-center p-4">
                     <p class=" mt-4"><?= $data->jabatan ?>, <?= $data->nama_cabang ?></p>
-                    <h4 class="font-16"><?= $data->name ?> #<?= $data->nik ?></h4>
+                    <h4 class="font-16"><?= $data->name ?><br><span class="badge badge-light">Nik <?= $data->nik ?></span></h4>
 
                     <ul class="nav nav-tabs mt-5" role="tablist">
                         <li class="nav-item">
@@ -36,39 +36,42 @@
                 </div>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="data-anggota" role="tabpanel">
-                        <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Nama</th>
-                                    <th>Nik</th>
-                                    <th>Jabatan</th>
-                                    <th>Cabang</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($users->result() as $user) { ?>
+                        <div class="ml-3 mr-3">
+                            <h4 class="mt-0 header-title">table List Karyawan</h4>
+                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
                                     <tr>
-                                        <td>
-                                            <?= $user->name ?>
-                                        </td>
-                                        <td>
-                                            <?= $user->nik ?>
-                                        </td>
-                                        <td>
-                                            <?= $user->jabatan ?>
-                                        </td>
-                                        <td>
-                                            <?= $user->nama_cabang ?>
-                                        </td>
-                                        <td>
-                                            <center><a href="#" class="btn btn-secondary text-size">Edit</a></center>
-                                        </td>
-                                        <!-- <td></td> -->
+                                        <th>Nama</th>
+                                        <th>Nik</th>
+                                        <th>Jabatan</th>
+                                        <th>Cabang</th>
+                                        <th>Action</th>
                                     </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($users->result() as $user) { ?>
+                                        <tr>
+                                            <td>
+                                                <?= $user->name ?>
+                                            </td>
+                                            <td>
+                                                <?= $user->nik ?>
+                                            </td>
+                                            <td>
+                                                <?= $user->jabatan ?>
+                                            </td>
+                                            <td>
+                                                <?= $user->nama_cabang ?>
+                                            </td>
+                                            <td>
+                                                <center><a href="#" class="btn btn-secondary text-size">Edit</a></center>
+                                            </td>
+                                            <!-- <td></td> -->
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div class="tab-pane p-3" id="edit-data" role="tabpanel">
@@ -112,7 +115,7 @@
 
                     <div class="tab-pane p-3 " id="ganti-password" role="tabpanel">
                         <div class="ml-3">
-                            <h4 class="mt-0 header-title">ganti password</h4>
+                            <h4 class="mt-0 header-title">Ganti password</h4>
                             <p class="text-muted m-b-30 text-size">Pastikan password yang anda ganti memiliki
                                 satu huruf kapital dan kombinasi nomor.</p>
                         </div>
