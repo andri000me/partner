@@ -45,7 +45,7 @@
                                 <div class="col-md-12">
                                     <label class="ml-3">Nama Konsumen</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <input type="search" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary mr-4 text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
                                         </div>

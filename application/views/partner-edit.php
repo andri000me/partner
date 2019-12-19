@@ -45,7 +45,7 @@
                                                 <div class="col-md-12">
                                                     <label class="ml-3">Nama Usaha</label>
                                                     <div class="input-group mb-3 ml-3">
-                                                        <input type="text" class="form-control" name="nama_usaha" id="nama_usaha" value="<?= $partner->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <input type="search" class="form-control" name="nama_usaha" id="nama_usaha" value="<?= $partner->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                         <div class="input-group-append mr-4">
                                                             <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                         </div>
