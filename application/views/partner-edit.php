@@ -137,10 +137,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Kode Pos</label>
-                                                        <<<<<<< HEAD <input type="text" class="form-control placement number-only" name="kode_pos" id="kode_pos" required value="<?= $partner->kode_pos ?>" placeholder="125487" maxlength="6" />
-                                                        =======
-                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" value="<?= $data->kode_pos ?>" required placeholder="125487" maxlength="6" />
-                                                        >>>>>>> master
+                                                        <input type="text" class="form-control placement text-size number-only" name="kode_pos" id="kode_pos" value="<?= $data->kode_pos ?>" required placeholder="125487" maxlength="6" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -167,19 +164,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Tahun Berdiri</label>
-                                                        <<<<<<< HEAD <input type="text" class="form-control placement number-only" name="tahun_berdiri" id="tahun_berdiri" value="<?= $partner->tahun_berdiri ?>" required placeholder="2016" maxlength="4">
-                                                            =======
-                                                            <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" value="<?= $data->tahun_berdiri ?>" required placeholder="2016" maxlength="4">
-                                                            >>>>>>> master
+                                                        <input type="text" class="form-control placement text-size  number-only" name="tahun_berdiri" id="tahun_berdiri" value="<?= $data->tahun_berdiri ?>" required placeholder="2016" maxlength="4">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Jumalah Karyawan</label>
-                                                        <<<<<<< HEAD <input type="text" class="form-control number-only" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $partner->jumlah_karyawan ?>" required placeholder="25">
-                                                            =======
-                                                            <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>" required placeholder="25">
-                                                            >>>>>>> master
+                                                        <input type="text" class="form-control text-size number-only" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>" required placeholder="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -230,19 +221,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Omset Perbulan</label>
-                                                        <<<<<<< HEAD <input type="text" class="form-control number-only" name="omset" id="omset" value="<?= $partner->omset ?>" required placeholder="50,000,000">
-                                                            =======
-                                                            <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="omset" id="omset" value="<?= $data->omset ?>" required placeholder="50,000,000">
-                                                            >>>>>>> master
+                                                        <input type="text" class="form-control text-size number-only" name="omset" id="omset" data-type="currency" value="<?= $data->omset ?>" required placeholder="50,000,000">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Jumlah Cabang</label>
-                                                        <<<<<<< HEAD <input type="text" class="form-control number-only" name="jumlah_cabang" id="jumlah_cabang" value="<?= $partner->jumlah_cabang ?>" required placeholder="5">
-                                                            =======
-                                                            <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_cabang" id="jumlah_cabang" value="<?= $data->jumlah_cabang ?>" required placeholder="5">
-                                                            >>>>>>> master
+                                                        <input type="text" class="form-control text-size number-only" name="jumlah_cabang" id="jumlah_cabang" value="<?= $data->jumlah_cabang ?>" required placeholder="5">
                                                     </div>
                                                 </div>
                                             </div>
@@ -286,10 +271,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Rekening Bank</label>
-                                                        <<<<<<< HEAD <input type="text" class="form-control placement number-only" id="rekening_bank" name="rekening_bank" value="<?= $partner->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
-                                                            =======
-                                                            <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
-                                                            >>>>>>> master
+                                                        <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -386,93 +368,87 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <<<<<<< HEAD <div class="col-md-3">
+                                                    <div class="col-md-3">
                                                         <div id="disable" class="form-group ml-3 mr-3">
                                                             <label>Tahun Berakhir Izin Usaha</label>
-                                                            <input type="text" class="form-control  pelacement number-only" name="akhir_izin" id="akhir_izin" value="<?= $partner->akhir_izin ?>" placeholder="2016" maxlength="4">
+                                                            <input type="text" class="form-control placement text-size number-only" name="akhir_izin" id="akhir_izin" value="<?= $data->akhir_izin ?>" placeholder="2016" maxlength="4">
                                                         </div>
-                                                        =======
-                                                        <div id="disable" class="form-group ml-3 mr-3">
-                                                            <label>Tahun Berakhir Izin Usaha</label>
-                                                            <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="akhir_izin" id="akhir_izin" value="<?= $data->akhir_izin ?>" placeholder="2016" maxlength="4">
-                                                            >>>>>>> master
-                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group ml-3 mr-3">
-                                                        <label>Catatan</label>
-                                                        <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"><?= $data->catatan ?></textarea>
+                                                <div class="form-row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group ml-3 mr-3">
+                                                            <label>Catatan</label>
+                                                            <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"><?= $data->catatan ?></textarea>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <!-- /step-->
-
-                                <div class="submit step text-size">
-                                    <div class="row mb-3">
-                                        <div class="col-md-12">
-                                            <div class="ml-3">
-                                                <h4 class="mt-0 header-title">Formulir Partnership</h4>
-                                                <p class="text-muted">Alhamdulillah, sudah pada bagian terakhir dari pendaftaran partner ini. Pastikan semua data yang dikirim benar dan valid .<br>Silahkan isi</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>Buku Tabungan</label>
-                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>SIUP / TDP</label>
-                                                <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>Logo Perusahaan</label>
-                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>Foto usaha</label>
-                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <!-- /step-->
-                                </div>
-                                <!-- /middle-wizard -->
-                                <div class="form-group mb-0 float-right mt-3 mr-3">
-                                    <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                                    <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
-                                    <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
-                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
-                                </div>
-                                <!-- /bottom-wizard -->
+
+                                    <div class="submit step text-size">
+                                        <div class="row mb-3">
+                                            <div class="col-md-12">
+                                                <div class="ml-3">
+                                                    <h4 class="mt-0 header-title">Formulir Partnership</h4>
+                                                    <p class="text-muted">Alhamdulillah, sudah pada bagian terakhir dari pendaftaran partner ini. Pastikan semua data yang dikirim benar dan valid .<br>Silahkan isi</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size ml-3 mr-3">
+                                                    <label>KTP</label>
+                                                    <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size ml-3 mr-3">
+                                                    <label>NPWP</label>
+                                                    <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size ml-3 mr-3">
+                                                    <label>Buku Tabungan</label>
+                                                    <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size ml-3 mr-3">
+                                                    <label>SIUP / TDP</label>
+                                                    <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size ml-3 mr-3">
+                                                    <label>Logo Perusahaan</label>
+                                                    <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size ml-3 mr-3">
+                                                    <label>Foto usaha</label>
+                                                    <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- /step-->
+                                    </div>
+                                    <!-- /middle-wizard -->
+                                    <div class="form-group mb-0 float-right mt-3 mr-3">
+                                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
+                                        <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
+                                        <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
+                                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                                    </div>
+                                    <!-- /bottom-wizard -->
                         </form>
                     </div>
                 </div>

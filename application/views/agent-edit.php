@@ -61,7 +61,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Nomor Telepon</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="09788398364" maxlength="15" />
+                                                        <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="09788398364" maxlength="15" />
                                                         <?= form_error('telepon'); ?>
                                                     </div>
                                                 </div>
@@ -76,7 +76,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Nomor KTP</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
+                                                        <input type="text" class="form-control text-size <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
                                                         <?= form_error('no_ktp'); ?>
                                                     </div>
                                                 </div>
@@ -130,9 +130,12 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-12">
-                                                    <div class="form-group ml-3 mr-3">
-                                                        <label>income Per bulan saat ini</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('income') ? 'is-invalid' : '' ?>" onkeypress="return hanyaAngka(event);" name="income" id="income" value="<?= $data->income ?>" required placeholder="3,000,000" />
+                                                    <label class="ml-3">income Per bulan saat ini</label>
+                                                    <div class="input-group flex-nowrap ml-3 mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                        </div>
+                                                        <input type="text" class="form-control text-size mr-4 number-only  <?= form_error('income') ? 'is-invalid' : '' ?>" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                                     </div>
                                                 </div>
                                             </div>
@@ -234,7 +237,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Nomor NPWP</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
+                                                        <input type="text" class="form-control text-size <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement  number-only" name="no_npwp" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
                                                         <?= form_error('no_npwp'); ?>
                                                     </div>
                                                 </div>
@@ -243,7 +246,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Rekening Bank</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                        <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement  number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
                                                         <?= form_error('rekening_bank'); ?>
                                                     </div>
                                                 </div>

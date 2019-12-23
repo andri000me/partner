@@ -176,9 +176,9 @@
             // input_val = "$" + input_val;
 
             // final formatting
-            if (blur === "blur") {
-                input_val += ".00";
-            }
+            // if (blur === "blur") {
+            //     input_val += ".00";
+            // }
         }
 
         // send updated string to input

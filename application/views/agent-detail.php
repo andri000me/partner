@@ -78,21 +78,30 @@
 									<option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
 									<option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
 								</select>
-							</div>
-							<div class="form-group ml-3 mr-3">
-								<label class="text-size">Status Kepemilikan Rumah</label>
-								<select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
-									<option selected disabled value="">Rumah Milik Siapa?</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
-								</select>
-							</div>
-							<div class="form-group ml-3 mr-3">
-								<label class="text-size">income Per bulan saat ini</label>
-								<input type="text" class="form-control text-size number-only" name="income" id="income" value="<?= $data->income ?>" required placeholder="Rp.3,000,000" />
-							</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label class="text-size">Status Kepemilikan Rumah</label>
+                                        <select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
+                                            <option selected disabled value="">Rumah Milik Siapa?</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="ml-3">income Per bulan saat ini</label>
+                                    <div class="input-group flex-nowrap ml-3 mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                        </div>
+                                        <input type="text" class="form-control text-size mr-4 number-only" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
+                                    </div>
+                                </div>
+                            </div>  
 							<div class="form-row">
 								<div class="col-md-6">
 									<div class="form-group ml-3 mr-3">
