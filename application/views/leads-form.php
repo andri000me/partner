@@ -237,7 +237,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
                                         </div>
-                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                     </div>
                                 </div>
                             </div>

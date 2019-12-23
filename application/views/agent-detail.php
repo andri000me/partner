@@ -295,7 +295,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active p-3" id="home1" role="tabpanel">
-                                <h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
+                                <h6 class="mt-0 mb-0 header-title web">AKTIVITAS TERAKHIR</h6>
                                 <div class="boxx overflow-auto">
                                     <?php if ($activities->num_rows() > 0) {
                                         foreach ($activities->result() as $activity) { ?>
@@ -358,6 +358,7 @@
 
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
+                                    <div class="boxxx overflow-auto">
                                     <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
@@ -470,12 +471,12 @@
                                                                 <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
                                                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                 <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                                                    <div class="form-group">
+                                                                    <div class="form-group mr-2">
                                                                         <label>Form MOU</label>
                                                                         <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
+                                                                        <button class="btn btn-primary" id="btn_upload" type="submit">Upload</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -485,6 +486,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
+                                    </div>
                                 </div>
 
                                 <div class="mobile">
@@ -599,12 +601,12 @@
                                                                 <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
                                                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                 <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                                                    <div class="form-group">
+                                                                    <div class="form-group mr-2">
                                                                         <label>Form MOU</label>
-                                                                        <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                                        <input type="file" name="upload_mou" class="filestyle mr-1" data-buttonname="btn-secondary">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
+                                                                        <button class="btn btn-primary" id="btn_upload" type="submit">Upload</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -666,30 +668,3 @@
         </div>
     </div>
 </div>
-
-<script>
-	var rupiah = document.getElementById("rupiah");
-	rupiah.addEventListener("keyup", function(e) {
-		// tambahkan 'Rp.' pada saat form di ketik
-		// gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-		rupiah.value = formatRupiah(this.value, "Rp. ");
-	});
-
-	/* Fungsi formatRupiah */
-	function formatRupiah(angka, prefix) {
-		var number_string = angka.replace(/[^,\d]/g, "").toString(),
-			split = number_string.split(","),
-			sisa = split[0].length % 3,
-			rupiah = split[0].substr(0, sisa),
-			ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-		// tambahkan titik jika yang di input sudah menjadi angka ribuan
-		if (ribuan) {
-			separator = sisa ? "." : "";
-			rupiah += separator + ribuan.join(".");
-		}
-
-		rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-		return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-	}
-</script>

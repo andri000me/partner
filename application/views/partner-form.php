@@ -217,9 +217,12 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
-                                                        <label>Omset Perbulan</label>
-                                                        <input type="text" class="form-control text-size number-only" name="omset" id="omset" required placeholder="50,000,000">
+                                                    <label class="ml-3">Omset Perbulan</label>
+                                                    <div class="input-group flex-nowrap ml-3 mb-3">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                        </div>
+                                                        <input type="text" class="form-control text-size mr-4 number-only" name="omset" id="omset" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
