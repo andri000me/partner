@@ -18,32 +18,6 @@
             <div class="card-body">
 
                 <ul class="message-list">
-                    <!-- <li class="unread">
-                        <div class="col-mail col-mail-1">
-                            <a href="#" class="title">
-                                <span class="badge-primary badge ml-5">Comment</span>
-                            </a>
-                            <span class="far fa-comment ml-5"></span>
-                        </div>
-                        <div class="col-mail col-mail-2">
-                            <a href="#" class="subject"><span class="teaser"></span>Ibrahim Ahmad Jabar khaidiru Sobari S</span>
-                            </a>
-                            <div class="date">04 Dec, 2019</div>
-                        </div>
-                    </li> -->
-                    <!-- <?php foreach ($data->result() as $notif) { ?>
-                        <li class="<?= $notif->has_read == 0 ? 'unread' : '' ?>">
-                            <div class="col-mail col-mail-1">
-                                <a href="<?= base_url('ticket') ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
-                            </div>
-                            <div class="col-mail col-mail-2">
-                                <a href="<?= base_url('ticket') ?>" class="title notifikasi" data-id="<?= $notif->id_notification ?>" class="subject"><?= $notif->type ?>
-                                    Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
-                                </a>
-                                <div class="date"><?= $notif->dibuat_pada ?></div>
-                            </div>
-                        </li>
-                    <?php } ?> -->
                     <!-- <li>
                         <div class="col-mail col-mail-1">
                             <a href="#" class="title"><span class="badge-danger badge ml-5">Reject</span></a><span class="far fa-times-circle ml-5"></a>
@@ -61,29 +35,79 @@
                 <div class="table-responsive">
                     <table class="table table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
-                            <?php foreach ($data->result() as $notif) { ?>
+                            <tr>
+                                <td colspan="5"><b>Hari ini</b></td>
+                            </tr>
+                            <?php foreach ($today->result() as $notif) { ?>
                                 <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
                                     <td>
-                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan oleh') { ?>
                                             <span class="far fa-check-circle"></span>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Komentar') { ?>
+                                        <?php if ($notif->type == 'Komentar oleh') { ?>
                                             <span class="far fa-comment"></span>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Ditolak') { ?>
+                                        <?php if ($notif->type == 'Ditolak oleh') { ?>
                                             <span class="far fa-times-circle"></span>
                                         <?php } ?>
                                     </td>
                                     <td>
                                         <div style="width:450px;">
-                                            <?= $notif->type ?> Oleh <?= $notif->nama_pengirim ?> &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
+                                            <?= $notif->type ?> (<?= $notif->nama_pengirim ?>) &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
                                         </div>
                                     </td>
                                     <td>
                                         <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
                                             <span class="badge-success badge">Approved</span>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Ditolak') { ?>
+                                        <?php if ($notif->type == 'Ditolak oleh') { ?>
+                                            <span class="badge-danger badge">Reject</span>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <div style="width: 80px;">
+                                            <?= $notif->dibuat_pada ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <?php if ($notif->id_lead != NULL) { ?>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
+                                        <?php if ($notif->agent_id != NULL) { ?>
+                                            <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
+                                        <?php if ($notif->partner_id != NULL) { ?>
+                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
+                                    </td>
+                                </tr>
+                            <?php } ?>
+                            <tr>
+                                <td colspan="5"><b>Sebelumnya</b></td>
+                            </tr>
+                            <?php foreach ($earlier->result() as $notif) { ?>
+                                <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
+                                    <td>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan oleh') { ?>
+                                            <span class="far fa-check-circle"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Komentar oleh') { ?>
+                                            <span class="far fa-comment"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Ditolak oleh') { ?>
+                                            <span class="far fa-times-circle"></span>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <div style="width:450px;">
+                                            <?= $notif->type ?> (<?= $notif->nama_pengirim ?>) &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
+                                            <span class="badge-success badge">Approved</span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Ditolak oleh') { ?>
                                             <span class="badge-danger badge">Reject</span>
                                         <?php } ?>
                                     </td>

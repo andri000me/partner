@@ -14,13 +14,9 @@
                 <h4 class="mt-0 header-title">Maintain Partner</h4>
                 <p class="text-muted m-b-30 text-size">Form ini digunakan untuk mencatat aktivitas maintain cabang anda.</p>
 
-                <form class="" action="<?= base_url('Maintain_partner/save') ?>" method="post" enctype="multipart/form-data">
+                <form class="" action="<?= base_url('Leads_follow_up/save') ?>" method="post">
                     <!-- ID Partner -->
-                    <input type="hidden" name="id_partner" value="<?= $data->id_partner ?>">
-                    <!-- ID user -->
-                    <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
-                    <!-- ID branch -->
-                    <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+                    <input type="hidden" name="id_mapping_leads" value="<?= $data->mapping_id ?>">
                     <div class="form-group ml-3 mr-3">
                         <label>Follow Up By</label>
                         <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
@@ -33,7 +29,7 @@
                     </div>
                     <div class="form-group ml-3 mr-3">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
+                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="Jelaskan detail kegiatan anda" style="height:110px;"></textarea>
                     </div>
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Maintain_partner extends CI_Controller
+class Leads_follow_up extends CI_Controller
 {
 
     public function __construct()
@@ -32,7 +32,7 @@ class Maintain_partner extends CI_Controller
 
     public function create($id)
     {
-        $where = ['mapping_leads.id_mapping_leads' => $id];
+        $where = ['A.id_mapping_leads' => $id];
 
         $data = [
             'data'          => $this->mapping_leads_model->get($where)->row(),
@@ -48,8 +48,8 @@ class Maintain_partner extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
         $data = [
-            'date_follow_up' => date('Y-m-d H:i:s'),
             'follow_up_by' => $post['follow_up_by'],
+            'date_follow_up' => date('Y-m-d H:i:s'),
             'catatan' => $post['catatan'],
 
             //Timestamp
@@ -63,8 +63,18 @@ class Maintain_partner extends CI_Controller
 
         $this->leads_follow_up_model->create($data);
 
-        $this->session->set_flashdata("berhasil_simpan", "Data Maintain Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
+        $this->session->set_flashdata("berhasil_simpan", "Data Leads Follow up berhasil disimpan. <a href='#'>Lihat Data</a>");
 
-        redirect('Partner');
+        //Membuat history activity inputan data leads
+        // $leads_activity = [
+        //     'activity' => 'Leads telah di follow-up',
+        //     'date_activity' => date('Y-m-d H:i:s'),
+        //     'id_leads' => $post['id_mapping_leads'],
+        //     'id_user' => $this->fungsi->user_login()->id_user
+        // ];
+
+        // $this->leads_activity->create($leads_activity);
+
+        redirect('Mapping_leads');
     }
 }

@@ -17,20 +17,21 @@ class Notification extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['user_penerima.id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "user_penerima.id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['cabang_penerima.id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "cabang_penerima.id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "id.notifcations IS NOT NULL";
         }
     }
 
     public function index()
     {
         $data = [
-            'data' => $this->notification_model->get($this->where)
+            'today' => $this->notification_model->get("DATE_FORMAT(notifications.created_at, '%Y-%m-%d') = CURDATE() AND " . $this->where),
+            'earlier' => $this->notification_model->get("DATE_FORMAT(notifications.created_at, '%Y-%m-%d') < CURDATE() AND " . $this->where)
         ];
 
         $this->template->load('template/index', 'notifikasi', $data);

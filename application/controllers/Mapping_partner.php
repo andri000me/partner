@@ -66,6 +66,7 @@ class Mapping_partner extends CI_Controller
             $data = [
                 'nama_usaha'            => $post['nama_usaha'],
                 'bidang_usaha'          => $post['bidang_usaha'],
+                'bentuk_usaha'          => $post['bentuk_usaha'],
                 'alamat'                => $post['alamat'],
                 'telepon'               => $post['telepon'],
                 'email'                 => $post['email'],
@@ -81,6 +82,20 @@ class Mapping_partner extends CI_Controller
                 //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
                 'id_branch'             => $post['id_branch']
             ];
+
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/partners';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('foto_usaha_mapping')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['foto_usaha_mapping'] = $this->upload->data('file_name');
+            }
 
             //Memasukkan data mapping ke database `partners`
             $id = $this->mapping_partner->create($data);
@@ -109,6 +124,7 @@ class Mapping_partner extends CI_Controller
             $data = [
                 'nama_usaha'            => $post['nama_usaha'],
                 'bidang_usaha'          => $post['bidang_usaha'],
+                'bentuk_usaha'          => $post['bentuk_usaha'],
                 'alamat'                => $post['alamat'],
                 'telepon'               => $post['telepon'],
                 'email'                 => $post['email'],
@@ -124,6 +140,20 @@ class Mapping_partner extends CI_Controller
                 //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
                 // 'id_branch'             => $post['id_branch']
             ];
+
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/partners';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('foto_usaha_mapping')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['foto_usaha_mapping'] = $this->upload->data('file_name');
+            }
 
             $where = ['id_mapping' => $post['id_mapping']];
 

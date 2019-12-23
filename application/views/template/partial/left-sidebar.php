@@ -26,7 +26,7 @@
 
                 <li>
                     <a href="<?= base_url('notification') ?>" class="waves-effect">
-                        <i class="ti-bell noti-icon"></i><span class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+                        <i class="ti-bell noti-icon"></i><span class="badge badge-primary badge-pill float-right"><?= $this->fungsi->notification()->num_rows() > 0 ? $this->fungsi->notification()->num_rows() : '' ?></span><span> Notification
                         </span>
                     </a>
                 </li>

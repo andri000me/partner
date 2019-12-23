@@ -15,16 +15,20 @@
     <div class="col-lg-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <form action="<?= base_url('Leads/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
+                <form action="<?= base_url('Leads/update') ?>" method="post" enctype="multipart/form-data" class="text-size">
                     <input id="website" name="website" type="disable" value="">
 
                     <!-- Leave for security protection, read docs for details -->
+                    <!-- ID Leads -->
+                    <input type="hidden" id="id_leads" name="id_leads" value="<?= $data->id_leads ?>">
                     <!-- ID Mapping Leads -->
-                    <input type="hidden" id="id_mapping_leads" name="id_mapping_leads" value="<?= set_value('id_mapping_leads') ?>">
+                    <input type="hidden" id="id_mapping_leads" name="id_mapping_leads" value="<?= $data->id_mapping_leads ?>">
                     <!-- ID Agent -->
-                    <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
+                    <input type="hidden" id="id_agent" name="id_agent" value="<?= $data->id_agent ?>">
                     <!-- ID Partner -->
-                    <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
+                    <input type="hidden" id="id_partner" name="id_partner" value="<?= $data->id_partner ?>">
+                    <!-- ID Branch -->
+                    <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <h4 class="mt-0 header-title">Formulir Leads</h4>
@@ -37,7 +41,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Leads ID</label>
-                                        <input type="text" class="form-control text-size placement" name="leads_id" id="leads_id" required placeholder="009377736433744" maxlength="15">
+                                        <input type="text" class="form-control text-size placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15">
                                     </div>
                                 </div>
                             </div>
@@ -45,7 +49,7 @@
                                 <div class="col-md-12">
                                     <label class="ml-3">Nama Konsumen</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary mr-4 text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -56,13 +60,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>ID KTP</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Telepon / Whatsapp</label>
-                                        <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
                                     </div>
                                 </div>
                             </div>
@@ -71,20 +75,20 @@
                                     <div class="form-group mr-3 ml-3">
                                         <label>Produk</label>
                                         <select class="form-control text-size" name="produk" id="produk">
-                                            <option selected>Pilih Kategori Produk</option>
-                                            <option value="My Ihram">My Ihram</option>
-                                            <option value="My Safar">My Safar</option>
-                                            <option value="My Talim">My Talim</option>
-                                            <option value="My Hajat">My Hajat</option>
-                                            <option value="My Faedah">My Faedah</option>
-                                            <option value="My CarS">My CarS</option>
+                                            <option value="" selected>Pilih Kategori Produk</option>
+                                            <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                            <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                            <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                            <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                            <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                            <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Detail Produk</label>
-                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" required placeholder="Contoh : " />
+                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Contoh : " />
                                     </div>
                                 </div>
                             </div>
@@ -93,18 +97,18 @@
                                     <div class="form-group mr-3 ml-3">
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa">
-                                            <option selected>Pilih Source Aplikasi</option>
-                                            <option value="Direct Selling">Direct Selling</option>
-                                            <option value="Tour & travel">Tour & travel</option>
-                                            <option value="Penyedia Jasa">Penyedia Jasa</option>
-                                            <option value="Agent BA">Agent BA</option>
-                                            <option value="EGC">EGC</option>
-                                            <option value="CGC">CGC</option>
-                                            <option value="Digital Marketing">Digital Marketing</option>
-                                            <option value="Website BFI Syariah">Website BFI Syariah</option>
-                                            <option value="RO">RO</option>
-                                            <option value="Walkin">Walkin</option>
-                                            <option value="Event">Event</option>
+                                            <option value="" selected>Pilih Source Aplikasi</option>
+                                            <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                            <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                            <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                            <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                            <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                            <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                            <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                            <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                            <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                            <option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
+                                            <option <?= $data->soa == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
                                         </select>
                                     </div>
                                 </div>
@@ -122,13 +126,13 @@
                                 <div class="col-md-6 nik">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 event">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Event</label>
-                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $data->nama_event ?>" placeholder="Input Nama Event">
                                     </div>
                                 </div>
                             </div>
@@ -136,37 +140,25 @@
                                 <div class="col-md-6 posisi">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Posisi</label>
-                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi">
+                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Input Posisi">
                                     </div>
                                 </div>
                                 <div class="col-md-6 cabang">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Cabang</label>
-                                        <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 kontrak-cgc">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" placeholder="087883774" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 konsumen-cgc">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen_cgc" id="nama_konsumen_cgc" placeholder="Input Nama konsumen">
+                                        <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Input Cabang">
                                     </div>
                                 </div>
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen_ro" id="nama_konsumen_ro" placeholder="Input Nama konsumen">
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
                                     </div>
                                 </div>
                             </div>
@@ -177,13 +169,13 @@
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Cross Branch?</label><br>
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Ya">
+                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                             <label class="form-check-label">
                                                 Ya
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" required value="Tidak">
+                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                             <label class="form-check-label">
                                                 Tidak
                                             </label>
@@ -196,7 +188,7 @@
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
-                                                <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -207,10 +199,10 @@
                                     <div id="hide" class="form-group ml-3 mr-3">
                                         <label>Pic Tanda Tangan</label>
                                         <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
-                                            <option value="" selected>Pilih Pic Tanda Tangan</option>
-                                            <?php foreach ($users->result() as $user) { ?>
-                                                <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                            <?php } ?>
+                                            <option value="" selected>Pilih PIC Tanda tangan</option>
+                                            <optgroup id="show_pic_ttd">
+
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -219,9 +211,9 @@
                                         <label>Surveyor</label>
                                         <select class="form-control text-size" name="surveyor" id="surveyor">
                                             <option value="" selected>Pilih Surveyor</option>
-                                            <?php foreach ($users->result() as $user) { ?>
-                                                <option value="<?= $user->id_user ?>"><?= ucwords(strtolower($user->nama_cabang)) . ', ' . ucwords(strtolower($user->name))  ?></option>
-                                            <?php } ?>
+                                            <optgroup id="show_surveyor">
+
+                                            </optgroup>
                                         </select>
                                     </div>
                                 </div>
@@ -232,10 +224,10 @@
                                         <label>Follow Up By</label>
                                         <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
                                             <option selected disabled value="">Pilih Follow Up By</option>
-                                            <option value="Kunjungan">Kunjungan</option>
-                                            <option value="Telepon">Telepon</option>
-                                            <option value="Whatsapp">Whatsapp</option>
-                                            <option value="Email">Email</option>
+                                            <option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
+                                            <option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
+                                            <option <?= $data->follow_up_by == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
+                                            <option <?= $data->follow_up_by == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
                                         </select>
                                     </div>
                                 </div>
@@ -247,22 +239,39 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
                                         </div>
-                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
+                                        <label>Apakah Sudah Funding?</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
+                                            <label class="form-check-label">
+                                                Sudah
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : '' ?> required value="Belum">
+                                            <label class="form-check-label">
+                                                Belum
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
                                         <label>Appeal NST</label><br>
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Ya">
+                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                             <label class="form-check-label">
                                                 Ya
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" required value="Tidak">
+                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                             <label class="form-check-label">
                                                 Tidak
                                             </label>
@@ -273,7 +282,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
+                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
                         <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
                     </div>
                     <!-- /bottom-wizard -->
@@ -284,6 +293,9 @@
 </div>
 
 
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
 <!-- Modal simpan -->
 <div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -312,50 +324,48 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="table-responsive">
-                    <table id="" class="datatable table table-striped table-bordered dt-responsive wrap table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>
+                                <div class="text-size">Nama Lengkap</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Nomor Telepon</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Asal Aplikasi</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Produk</div>
+                            </th>
+                            <th>
+                                <div class="text-size">Aksi</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($mappings->result() as $mapping) { ?>
                             <tr>
-                                <th>
-                                    <div class="text-size">Nama Lengkap</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Nomor Telepon</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Asal Aplikasi</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Produk</div>
-                                </th>
-                                <th>
-                                    <div class="text-size">Aksi</div>
-                                </th>
+                                <td>
+                                    <div class="text-size"><?= $mapping->nama_konsumen ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->telepon ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->soa ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $mapping->produk ?></div>
+                                </td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>">Pilih</button></center>
+                                </td>
                             </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($mappings->result() as $data) { ?>
-                                <tr>
-                                    <td class="not-clickable">
-                                        <div class="text-size"><?= $data->nama_konsumen ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->telepon ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->soa ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $data->produk ?></div>
-                                    </td>
-                                    <td>
-                                        <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $data->mapping_id ?>" data-nama="<?= $data->nama_konsumen ?>" data-telepon="<?= $data->telepon ?>" data-soa="<?= $data->soa ?>" data-produk="<?= $data->produk ?>" data-detail="<?= $data->detail_produk ?>" data-event="<?= $data->nama_event ?>">Pilih</button></center>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -434,6 +444,13 @@
 </div>
 <!-- Modal agent -->
 
+<!-- Menghilangkan attr required untuk save sementara -->
+<script>
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
+</script>
+
 <script>
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
     source_leads();
@@ -441,6 +458,16 @@
         source_leads();
         $('#id_partner').val("");
         $('#id_agent').val("");
+        //SOA EGC
+        $('#nik_egc').val("");
+        $('#posisi_egc').val("");
+        $('#cabang_egc').val("");
+        //SOA CGC / RO
+        $('#referral_konsumen').val("");
+        $('#nomor_kontrak').val("");
+        //SOA Event
+        $('#nama_event').val("");
+
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
         $('#data_partner').val("");
@@ -465,10 +492,7 @@
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang').show();
             $('.jasa, .travel, .event, .form, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-cgc, .konsumen-cgc').show();
-            $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'RO') {
+        } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro').show();
             $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc`').hide();
         } else if ($('#soa').val() == 'Event') {
@@ -498,6 +522,15 @@
     $("table").on('click', '.pilih-leads', function() {
         $('#id_mapping_leads').val($(this).data('mapping'));
         $('#soa').val($(this).data('soa'));
+        //EGC
+        $('#nik_egc').val($(this).data('nikegc'));
+        $('#posisi_egc').val($(this).data('posisiegc'));
+        $('#cabang_egc').val($(this).data('cabangegc'));
+        //CGC / RO
+        $('#nomor_kontrak').val($(this).data('kontrak'));
+        $('#referral_konsumen').val($(this).data('referral'));
+
+        //Data Leads
         $('#produk').val($(this).data('produk'));
         $('#telepon').val($(this).data('telepon'));
         $('#data_partner').val($(this).data('vendor'));
@@ -507,5 +540,27 @@
         $('#modal-leads').modal('hide');
 
         source_leads();
+    })
+</script>
+
+<script>
+    function show_leads() {
+        var id_leads = $("#id_leads").val();
+        $.ajax({
+            type: 'GET',
+            url: '<?= base_url('Leads/get_leads/') ?>' + id_leads,
+            dataType: 'json',
+            data: {
+                id_leads: id_leads
+            },
+            success: function(data) {
+                $("#surveyor").val(data.surveyor);
+                $("#pic_ttd").val(data.pic_ttd);
+            }
+
+        });
+    }
+    $(document).ready(function() {
+        show_leads();
     })
 </script>

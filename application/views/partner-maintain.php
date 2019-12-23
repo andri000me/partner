@@ -95,10 +95,10 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <?php if ($data->foto_usaha) { ?>
+                        <?php if ($data->foto_usaha_mapping) { ?>
                             <div class="item" style="height:79px; width:120px;">
                                 <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>" alt="" style="height:79px; width:120px;"></a>
                                 </div>
                             </div>
                         <?php } ?>
@@ -125,7 +125,7 @@
                                 <h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
                                 <div class="boxx overflow-auto">
                                     <?php if ($activities->num_rows() > 0) {
-                                                                                                                                foreach ($activities->result() as $activity) { ?>
+                                        foreach ($activities->result() as $activity) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table class="web">
@@ -177,8 +177,8 @@
                                                 </div>
                                             </div>
                                         <?php
-                                                                                                                                    }
-                                                                                                                                } else { ?>
+                                        }
+                                    } else { ?>
                                         <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                                     <?php } ?>
                                 </div>

@@ -15,10 +15,7 @@
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan mb-2">
-                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input
-                        Leads</button></a>
-                <button class="btn btn-success ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Follow Up
-                    Leads</button>
+                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input Leads</button></a>
             </div>
         <?php } ?>
     </div>
@@ -55,7 +52,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data->result() as $leads) { ?>
+                            <?php foreach ($belum_funding->result() as $leads) { ?>
                                 <tr>
                                     <td>
                                         <?= $leads->nama_konsumen ?>
@@ -93,7 +90,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php foreach ($data->result() as $leads) { ?>
+                            <?php foreach ($sudah_funding->result() as $leads) { ?>
                                 <tr>
                                     <td>
                                         <?= $leads->nama_konsumen ?>
@@ -122,50 +119,4 @@
             </div>
         </div>
     </div> <!-- end col -->
-</div>
-
-<!-- Modal -->
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="modal-header mb-2">
-                    <h6 class="modal-title">Cari Data Partner</h6>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                    <thead>
-                        <tr>
-                            <th>Nama</th>
-                            <th>Leads ID</th>
-                            <th>Nomor KTP</th>
-                            <th>Follow Up By</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($data->result() as $leads) { ?>
-                            <tr>
-                                <td>
-                                    <?= $leads->nama_konsumen ?>
-                                </td>
-                                <td>
-                                    <?= $leads->leads_id ?>
-                                </td>
-                                <td>
-                                    <?= $leads->no_ktp ?>
-                                </td>
-                                <td>
-                                    <?= $leads->follow_up_by ?>
-                                </td>
-                                <td>
-                                    <center><a href="#" class="btn btn-primary">Pilih</a></center>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
 </div>

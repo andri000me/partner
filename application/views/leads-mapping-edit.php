@@ -76,7 +76,7 @@
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_usaha ?>" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -128,7 +128,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Nomor Telepon / Whatsapp</label>
-                                        <input type="text" class="form-control <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
+                                        <input type="text" class="form-control <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon_mapping ?>" required placeholder="0811977500" maxlength="15" />
                                         <?= form_error('telepon') ?>
                                     </div>
                                 </div>
@@ -233,7 +233,7 @@
     $("table").on('click', '.pilih-partner', function() {
         $('#id_partner').val($(this).data('partner'));
         $('#id_agent').val("");
-        $('#nama_vendor').val($(this).data('vendor'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {

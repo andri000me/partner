@@ -97,7 +97,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Bentuk Usaha</label>
-                                                        <select class="form-control text-size" name="bentuk_usaha" id="" required placeholder="Bentuk Usaha">
+                                                        <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
                                                             <option selected value="">Pilih Bentuk Usaha</option>
                                                             <option value="Perorangan">Perorangan</option>
                                                             <option value="PD">PD</option>
@@ -352,15 +352,15 @@
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Apakah Memiliki Giro / Cek?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Giro">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Ya">
                                                             <label class="form-check-label">
-                                                                Giro
+                                                                Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Cek">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" required value="Tidak">
                                                             <label class="form-check-label">
-                                                                Cek
+                                                                Tidak
                                                             </label>
                                                         </div>
                                                     </div>
@@ -493,7 +493,7 @@
                                     <div class="text-size"><?= $data->telepon ?></div>
                                 </td>
                                 <td>
-                                    <center><a href="#" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">Pilih</a></center>
+                                    <center><a href="#" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>" data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -531,6 +531,7 @@
         var kategori_produk = $(this).data('produk');
         var telepon = $(this).data('telepon');
         var bidang_usaha = $(this).data('bidang');
+        var bentuk_usaha = $(this).data('bentuk');
         var email = $(this).data('email');
         var alamat = $(this).data('alamat');
 
@@ -539,6 +540,7 @@
         $('#kategori_produk').val(kategori_produk);
         $('#telepon').val(telepon);
         $('#bidang_usaha').val(bidang_usaha);
+        $('#bentuk_usaha').val(bentuk_usaha);
         $('#email').val(email);
         $('#alamat').val(alamat);
 

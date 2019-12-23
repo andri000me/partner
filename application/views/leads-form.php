@@ -25,6 +25,8 @@
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
                     <!-- ID Partner -->
                     <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
+                    <!-- ID Branch -->
+                    <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <h4 class="mt-0 header-title">Formulir Leads</h4>
@@ -103,7 +105,7 @@
                                             <option value="Digital Marketing">Digital Marketing</option>
                                             <option value="Website BFI Syariah">Website BFI Syariah</option>
                                             <option value="RO">RO</option>
-                                            <option value="Walkin">Walkin</option>
+                                            <option value="Walking">Walking</option>
                                             <option value="Event">Event</option>
                                         </select>
                                     </div>
@@ -278,7 +280,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" class="btn" type="submit">Draft</button>
+                        <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
                         <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
                     </div>
                     <!-- /bottom-wizard -->
@@ -356,7 +358,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -439,6 +441,13 @@
     </div>
 </div>
 <!-- Modal agent -->
+
+<!-- Menghilangkan attr required untuk save sementara -->
+<script>
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
+</script>
 
 <script>
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
@@ -526,6 +535,8 @@
         $('#detail_produk').val($(this).data('detail'));
         $('#nama_event').val($(this).data('event'));
         $('#nama_konsumen').val($(this).data('nama'));
+        $('#id_agent').val($(this).data('agent'));
+        $('#id_partner').val($(this).data('partner'));
         $('#modal-leads').modal('hide');
 
         source_leads();
