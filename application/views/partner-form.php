@@ -65,7 +65,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Nomor Telepon / WhatsApp</label>
-                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="EG 0811977500" maxlength="15" />
+                                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" required placeholder="EG 0811977500" maxlength="15" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -135,7 +135,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Kode Pos</label>
-                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required placeholder="125487" maxlength="6" />
+                                                        <input type="text" class="form-control placement text-size number-only" name="kode_pos" id="kode_pos" required placeholder="125487" maxlength="6" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -162,13 +162,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Tahun Berdiri</label>
-                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" required placeholder="2016" maxlength="4">
+                                                        <input type="text" class="form-control placement text-size number-only" name="tahun_berdiri" id="tahun_berdiri" required placeholder="2016" maxlength="4">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Jumalah Karyawan</label>
-                                                        <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" required placeholder="25">
+                                                        <input type="text" class="form-control text-size number-only" name="jumlah_karyawan" id="jumlah_karyawan" required placeholder="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -219,13 +219,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Omset Perbulan</label>
-                                                        <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="omset" id="omset" required placeholder="50,000,000">
+                                                        <input type="text" class="form-control text-size number-only" name="omset" id="omset" required placeholder="50,000,000">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Jumlah Cabang</label>
-                                                        <input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="jumlah_cabang" id="jumlah_cabang" required placeholder="5">
+                                                        <input type="text" class="form-control text-size number-only" name="jumlah_cabang" id="jumlah_cabang" required placeholder="5">
                                                     </div>
                                                 </div>
                                             </div>
@@ -269,7 +269,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Rekening Bank</label>
-                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                        <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" required placeholder="0468 6587 6587 45" maxlength="16">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -368,7 +368,7 @@
                                                 <div class="col-md-6">
                                                     <div id="disable" class="form-group ml-3 mr-3">
                                                         <label>Tahun Berakhir Izin Usaha</label>
-                                                        <input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="akhir_izin" id="akhir_izin" placeholder="2016" maxlength="4">
+                                                        <input type="text" class="form-control placement text-size number-only" name="akhir_izin" id="akhir_izin" placeholder="2016" maxlength="4">
                                                     </div>
                                                 </div>
                                             </div>

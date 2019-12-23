@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Nomor Telepon / WhatsApp</label>
-                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
+                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
                                 <?= form_error('telepon') ?>
                             </div>
                             <div class="form-group ml-3 mr-3">
@@ -101,7 +101,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Kode Pos</label>
-                                        <input type="text" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="kode_pos" id="kode_pos" required value="<?= $data->kode_pos ?>" placeholder="125487" maxlength="6" />
+                                        <input type="text" class="form-control text-size placement number-only" name="kode_pos" id="kode_pos" required value="<?= $data->kode_pos ?>" placeholder="125487" maxlength="6" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -124,13 +124,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Tahun Berdiri</label>
-                                        <input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="tahun_berdiri" id="tahun_berdiri" value="<?= $data->tahun_berdiri ?>"" required placeholder=" 2016" maxlength="4">
+                                        <input type="text" class="form-control placement number-only" name="tahun_berdiri" id="tahun_berdiri" value="<?= $data->tahun_berdiri ?>"" required placeholder=" 2016" maxlength="4">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Jumalah Karyawan</label>
-                                        <input type="text" class="form-control" onkeypress="return hanyaAngka(event);" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>"" required placeholder=" 25">
+                                        <input type="text" class="form-control number-only" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>"" required placeholder=" 25">
                                     </div>
                                 </div>
                             </div>

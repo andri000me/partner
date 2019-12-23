@@ -56,13 +56,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>ID KTP</label>
-                                        <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Telepon / Whatsapp</label>
-                                        <input type="text" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" required placeholder="0811977500" maxlength="15" />
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@
                                 <div class="col-md-6 nik">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="nik_egc" id="nik_egc" placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 event">
@@ -148,7 +148,7 @@
                                 <div class="col-md-6 kontrak-cgc">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-cgc">
@@ -160,7 +160,7 @@
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak_ro" id="nomor_kontrak_ro" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
@@ -247,7 +247,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
                                         </div>
-                                        <input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
                                     </div>
                                 </div>
                             </div>

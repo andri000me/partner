@@ -60,7 +60,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label class="text-size">Nomor Telepon</label>
-                                        <input type="text" class="form-control text-size placement <?= form_error('telepon') ? 'is-invalid' : '' ?>" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="<?= set_value('telepon') ?>" placeholder="EG 0811977500" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" required value="<?= set_value('telepon') ?>" placeholder="EG 0811977500" maxlength="15" />
                                         <?= form_error('telepon'); ?>
                                     </div>
                                 </div>
@@ -128,15 +128,3 @@
         </div>
     </div>
 </div>
-
-<!-- script -->
-<script>
-    function hanyaAngka(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-            return false;
-            return true;
-        }
-    }
-</script>
-<!-- script -->

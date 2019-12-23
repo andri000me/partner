@@ -63,7 +63,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Telepon</label>
-                                        <input type="text" class="form-control placement text-size <?= form_error('telepon') ? 'is-invalid' : '' ?>" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" required value="<?= $data->telepon ?>" placeholder="EG 0811977500" maxlength="15" />
+                                        <input type="text" class="form-control placement text-size number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" required value="<?= $data->telepon ?>" placeholder="EG 0811977500" maxlength="15" />
                                         <?= form_error('telepon'); ?>
                                     </div>
                                 </div>

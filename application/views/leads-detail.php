@@ -47,13 +47,13 @@
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>ID KTP</label>
-									<input type="phone" class="form-control placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+									<input type="phone" class="form-control placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Telepon / Whatsapp</label>
-									<input type="text" class="form-control placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
+									<input type="text" class="form-control placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
 								</div>
 							</div>
 						</div>
@@ -113,7 +113,7 @@
 							<div class="col-md-6 nik">
 								<div class="form-group ml-3 mr-3">
 									<label>NIK</label>
-									<input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" value="<?= $data->nik_egc ?>" name="nik_egc" id="nik_egc" placeholder="078612" maxlength="6" />
+									<input type="phone" class="form-control text-size placement number-only" value="<?= $data->nik_egc ?>" name="nik_egc" id="nik_egc" placeholder="078612" maxlength="6" />
 								</div>
 							</div>
 							<div class="col-md-6 event">
@@ -139,7 +139,7 @@
 							<div class="col-md-6 kontrak-ro">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Kontrak</label>
-									<input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" value="<?= $data->nomor_kontrak ?>" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
+									<input type="phone" class="form-control text-size number-only" value="<?= $data->nomor_kontrak ?>" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
 								</div>
 							</div>
 							<div class="col-md-6 konsumen-ro">
@@ -224,7 +224,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
 									</div>
-									<input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+									<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -247,8 +247,8 @@
 						</div>
 						<div class="form-group mb-0 mt-2 float-right btn-maintain">
 							<?php
-																																													$level = $this->fungsi->user_login()->level;
-																																													if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+								$level = $this->fungsi->user_login()->level;
+								if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
 							?>
 								<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 							<?php } ?>

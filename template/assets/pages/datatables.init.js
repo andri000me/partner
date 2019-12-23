@@ -1,5 +1,6 @@
 $(document).ready(function () {
 	$(".datatable").DataTable({
+			responsive: true,
 			pagingType: "simple",
 			bLengthChange: false,
 			language: {
@@ -8,6 +9,7 @@ $(document).ready(function () {
 		}),
 		$("#datatable-buttons")
 		.DataTable({
+			responsive: true,
 			pagingType: "simple",
 			lengthChange: !1,
 			language: {
