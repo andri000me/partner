@@ -22,6 +22,7 @@ class Leads_model extends CI_Model
 
     public function get($where = NULL)
     {
+        $this->db->select("*, mapping_leads.foto_usaha as foto_usaha_mapping");
         $this->db->from('leads');
         $this->db->join('mapping_leads', 'mapping_leads.id_mapping_leads = leads.id_mapping_leads', 'inner');
         if ($where != null) {

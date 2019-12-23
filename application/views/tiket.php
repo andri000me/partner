@@ -63,7 +63,7 @@
                                 <td>
                                     <center>
                                         <?php if ($ticket->id_agent != NULL) { ?>
-                                            <a href="<?= base_url('Agent/edit/' . $ticket->id_agent) ?>" class="btn btn-primary text-size">Detail</a>
+                                            <a href="<?= base_url('Agent/detail/' . $ticket->id_agent) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } else if ($ticket->id_partner != NULL) { ?>
                                             <a href="<?= base_url('partner/detail/' . $ticket->id_partner) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } else if ($ticket->id_leads != NULL) { ?>

@@ -16,7 +16,7 @@
     <div class="col-lg-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <form method="post" action="<?= base_url('Mapping_partner/save') ?>">
+                <form method="post" action="<?= base_url('Mapping_partner/save') ?>" enctype="multipart/form-data">
                     <!-- Form inputan hidden untuk id user, untuk mengetahui user mana yg input data -->
                     <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
                     <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
@@ -44,6 +44,20 @@
                                         <label class="text-size">Bidang Usaha</label>
                                         <input type="text" class="form-control text-size <?= form_error('bidang_usaha') ? 'is-invalid' : '' ?>" name="bidang_usaha" id="bidang_usaha" required value="<?= set_value('bidang_usaha') ?>" placeholder="Garmen / Percetakan / Lainnya" />
                                         <?= form_error('bidang_usaha'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Bentuk Usaha</label>
+                                        <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
+                                            <option selected value="">Pilih Bentuk Usaha</option>
+                                            <option <?= set_value('bentuk_usaha') == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
+                                            <option <?= set_value('bentuk_usaha') == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
+                                            <option <?= set_value('bentuk_usaha') == 'CV' ? 'selected' : '' ?> value="CV">CV</option>
+                                            <option <?= set_value('bentuk_usaha') == 'PT' ? 'selected' : '' ?> value="PT">PT</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +113,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Foto usaha</label>
-                                        <input type="file" name="foto-usaha" class="filestyle" data-buttonname="btn-secondary">
+                                        <input type="file" name="foto_usaha_mapping" class="filestyle" data-buttonname="btn-secondary">
                                     </div>
                                 </div>
                             </div>

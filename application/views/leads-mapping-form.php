@@ -235,7 +235,7 @@
     $("table").on('click', '.pilih-partner', function() {
         $('#id_partner').val($(this).data('partner'));
         $('#id_agent').val("");
-        $('#nama_vendor').val($(this).data('vendor'));
+        $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {

@@ -55,7 +55,6 @@ class Partner extends CI_Controller
         $data = [
             'data' => $this->partner_model->get(),
             'mappings' => $this->mapping_partner->get($this->where)
-
         ];
 
         $this->template->load('template/index', 'partner-form', $data);
@@ -68,9 +67,8 @@ class Partner extends CI_Controller
         $where = ['partners.id_partner' => $id];
 
         $data = [
-            'partner' => $this->partner_model->get($where)->row(),
-            'mapping' => $this->mapping_partner->get(),
-            'comments' => $this->comment_model->get($where)
+            'data' => $this->partner_model->get($where)->row(),
+            'mappings' => $this->mapping_partner->get($this->where)
         ];
 
         $this->template->load('template/index', 'partner-edit', $data);
@@ -101,6 +99,7 @@ class Partner extends CI_Controller
             'telepon'           => $post['telepon'],
             'kategori_produk'   => $post['kategori_produk'],
             'bidang_usaha'      => $post['bidang_usaha'],
+            'bentuk_usaha'      => $post['bentuk_usaha'],
             'alamat'            => $post['alamat']
         ];
 
@@ -119,7 +118,7 @@ class Partner extends CI_Controller
             'kode_pos'              => !empty($post['kode_pos'])                ? $post['kode_pos'] : NULL,
             'nama_pemilik'          => !empty($post['nama_pemilik'])            ? $post['nama_pemilik'] : NULL,
             'hobi'                  => !empty($post['hobi'])                    ? $post['hobi'] : NULL,
-            'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
+            // 'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
             'jumlah_karyawan'       => !empty($post['jumlah_karyawan'])         ? $post['jumlah_karyawan'] : NULL,
             'tahun_berdiri'         => !empty($post['tahun_berdiri'])           ? $post['tahun_berdiri'] : NULL,
             'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
@@ -190,12 +189,6 @@ class Partner extends CI_Controller
         }
 
 
-        if (!$this->upload->do_upload('foto_usaha')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['foto_usaha'] = $this->upload->data('file_name');
-        }
-
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
         } else if (isset($post['process'])) {
@@ -257,6 +250,7 @@ class Partner extends CI_Controller
             'telepon'           => $post['telepon'],
             'kategori_produk'   => $post['kategori_produk'],
             'bidang_usaha'      => $post['bidang_usaha'],
+            'bentuk_usaha'      => $post['bentuk_usaha'],
             'alamat'            => $post['alamat']
         ];
 
@@ -276,7 +270,7 @@ class Partner extends CI_Controller
             'kode_pos'              => !empty($post['kode_pos'])                ? $post['kode_pos'] : NULL,
             'nama_pemilik'          => !empty($post['nama_pemilik'])            ? $post['nama_pemilik'] : NULL,
             'hobi'                  => !empty($post['hobi'])                    ? $post['hobi'] : NULL,
-            'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
+            // 'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
             'jumlah_karyawan'       => !empty($post['jumlah_karyawan'])         ? $post['jumlah_karyawan'] : NULL,
             'tahun_berdiri'         => !empty($post['tahun_berdiri'])           ? $post['tahun_berdiri'] : NULL,
             'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
@@ -342,12 +336,6 @@ class Partner extends CI_Controller
             $data['logo_perusahaan'] = $this->upload->data('file_name');
         }
 
-        if (!$this->upload->do_upload('foto_usaha')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['foto_usaha'] = $this->upload->data('file_name');
-        }
-
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
         } else if (isset($post['process'])) {
@@ -367,7 +355,6 @@ class Partner extends CI_Controller
 
         //Memasukkan data mapping ke database `partners`
         $where = ['id_partner' => $post['id_partner']];
-
         $id = $this->partner_model->update($data, $where);
 
         //Membuat history activity inputan data partner
@@ -377,7 +364,6 @@ class Partner extends CI_Controller
             'id_partner'    => $post['id_partner'],
             'id_user'       => $post['id_user']
         ];
-
         $this->partner_activity->create($partner_activity);
 
         if ($id) {
@@ -398,6 +384,7 @@ class Partner extends CI_Controller
             'telepon'           => $post['telepon'],
             'kategori_produk'   => $post['kategori_produk'],
             'bidang_usaha'      => $post['bidang_usaha'],
+            'bentuk_usaha'      => $post['bentuk_usaha'],
             'alamat'            => $post['alamat']
         ];
 
@@ -406,7 +393,7 @@ class Partner extends CI_Controller
         $this->mapping_partner->update($data_mapping, $where_mapping);
 
         $data_partner = [
-            'bentuk_usaha'          => $post['bentuk_usaha'],
+            // 'bentuk_usaha'          => $post['bentuk_usaha'],
             'kelurahan'             => $post['kelurahan'],
             'kecamatan'             => $post['kecamatan'],
             'kode_pos'              => $post['kode_pos'],

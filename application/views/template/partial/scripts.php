@@ -11,19 +11,23 @@
 </script>
 
 <script>
-    $('#hide').hide();
-    if ($(".cross_branch").val() == "Ya") {
-        $("#hide").show()
-    } else {
-        $("#hide").hide()
-    }
-    $('.cross_branch').click(function() {
-        var cross_branch = $(this).val();
-        if (cross_branch == 'Ya') {
-            $('#hide').show();
-        } else if (cross_branch == 'Tidak') {
-            $('#hide').hide();
+    $(document).ready(function() {
+        $('#hide').hide();
+        var radioValue = $("input[name='cross_branch']:checked");
+        if (radioValue == 'Tidak') {
+            $("#hide").hide();
+        } else if (radioValue == 'Ya') {
+            $("#hide").show()
         }
+        $('.cross_branch').click(function() {
+            var cross_branch = $(this).val();
+            if (cross_branch == 'Ya') {
+                $('#hide').show();
+            } else if (cross_branch == 'Tidak') {
+                $('#hide').hide();
+                $("#cabang_cross").val("");
+            }
+        })
     })
 </script>
 
@@ -120,12 +124,24 @@
 
 <!-- //Script untuk update tanda tangan pks -->
 <script>
-    //Update Barang
-    $('.ttd_pks').on('click', function() {
+    $("#form_mou").hide();
+    // alert($('.ttd_pks').val());
+    if ($("input[name='ttd_pks']:checked").val() == 'Ya') {
+        $("#form_mou").show();
+    } else {
+        $("#form_mou").hide();
+    }
+    //Update tanda tangan pks
+    $(".ttd_pks").on('click', function() {
         var ttd_pks = $(this).val();
         var id_ticket = $('#id_ticket').val();
 
-        // alert(id_ticket + ttd_pks);
+        if (ttd_pks == 'Ya') {
+            $("#form_mou").show();
+        } else {
+            $("#form_mou").hide();
+        }
+
         $.ajax({
             type: "POST",
             url: "<?= base_url('ticket/update_ttd') ?>",
@@ -136,10 +152,26 @@
             },
             success: function(data) {
                 alert('Success, \n ID Tiket: ' + id_ticket + '\n TTD: ' + ttd_pks);
-                location.reload();
+                // location.reload();
             }
         });
         // return false;
+    });
+
+    $('#submit_mou').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            url: '<?= base_url('ticket/upload_mou'); ?>',
+            type: "post",
+            data: new FormData(this),
+            processData: false,
+            contentType: false,
+            cache: false,
+            async: false,
+            success: function(data) {
+                alert("Upload Image Berhasil.");
+            }
+        });
     });
 </script>
 
@@ -208,7 +240,7 @@
         }
         $.ajax({
             type: 'ajax',
-            url: 'partner.bfisyariah.id/leads/get_user/' + cabang_cross,
+            url: '<?= base_url('leads/get_user/') ?>' + cabang_cross,
             async: false,
             dataType: 'json',
             data: {
@@ -220,21 +252,15 @@
                     html += '<option value="' + data[i].id_user + '">' + data[i].name.toUpperCase() + '</option>'
                 }
                 $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
-
                 console.log(html);
             }
-
         });
-        // var surveyor = $("#surveyor").val();
-        // var pic_ttd = $("#pic_ttd").val();
-
-        // alert(surveyor + ' ' + pic_ttd);
     }
 
     $(document).ready(function() {
         show_pic_ttd();
         $("#cabang_cross").change(function() {
             show_pic_ttd();
-        })
+        });
     })
 </script>

@@ -32,12 +32,12 @@ class Comment extends CI_Controller
 
         //Notifikasi
         $notification = [
-            'pengirim'      => $this->fungsi->user_login()->id_user,
+            'pengirim'          => $this->fungsi->user_login()->id_user,
             'penerima'          => $this->ticket_model->get(['id_ticket' => $post['ticket']])->row()->user_id,
             'penerima_cabang'   => $this->ticket_model->get(['id_ticket' => $post['ticket']])->row()->branch_id,
-            'type'          => 'Komentar',
-            'id_ticket'     => $post['ticket'],
-            'created_at'    => date('Y-m-d H:i:s')
+            'type'              => 'Komentar oleh',
+            'id_ticket'         => $post['ticket'],
+            'created_at'        => date('Y-m-d H:i:s')
         ];
         $this->notification_model->create($notification);
 

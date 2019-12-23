@@ -154,13 +154,13 @@
 								<div class="form-group ml-3 mr-3">
 									<label>Cross Branch?</label><br>
 									<div class="form-check form-check-inline mt-2">
-										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
+										<input class="form-check-input cross_branch" type="radio" name="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
 										<label class="form-check-label">
 											Ya
 										</label>
 									</div>
 									<div class="form-check form-check-inline">
-										<input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+										<input class="form-check-input cross_branch" type="radio" name="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
 										<label class="form-check-label">
 											Tidak
 										</label>
@@ -218,13 +218,32 @@
 							</div>
 						</div>
 						<div class="form-row">
-							<div class="col-md-6">
+							<div class="col-md-12">
 								<label class="ml-3">Nilai Funding</label>
 								<div class="input-group flex-nowrap ml-3 mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
 									</div>
 									<input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+								</div>
+							</div>
+						</div>
+						<div class="form-row">
+							<div class="col-md-6">
+								<div class="form-group text-size ml-3 mr-3">
+									<label>Apakah Sudah Funding?</label><br>
+									<div class="form-check form-check-inline mt-2">
+										<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+										<label class="form-check-label">
+											Sudah
+										</label>
+									</div>
+									<div class="form-check form-check-inline">
+										<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+										<label class="form-check-label">
+											Belum
+										</label>
+									</div>
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -247,8 +266,8 @@
 						</div>
 						<div class="form-group mb-0 mt-2 float-right btn-maintain">
 							<?php
-																																													$level = $this->fungsi->user_login()->level;
-																																													if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+							$level = $this->fungsi->user_login()->level;
+							if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
 							?>
 								<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 							<?php } ?>
@@ -313,7 +332,7 @@
 								<h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
 								<div class="boxx overflow-auto">
 									<?php if ($activities->num_rows() > 0) {
-																																														foreach ($activities->result() as $activity) { ?>
+										foreach ($activities->result() as $activity) { ?>
 											<div class="inbox-wid">
 												<div class="inbox-item">
 													<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i><b>&nbsp;&nbsp;<?= $activity->activity ?></b></p>
@@ -322,8 +341,8 @@
 												</div>
 											</div>
 										<?php
-																																														}
-																																													} else { ?>
+										}
+									} else { ?>
 										<p class="text-muted m-b-10">Tidak Ada Data</p>
 									<?php } ?>
 								</div>
@@ -700,16 +719,14 @@
 <script>
 	function show_leads() {
 		var id_leads = $("#id_leads").val();
-
 		$.ajax({
 			type: 'GET',
-			url: 'partner.bfisyariah.id/Leads/get_leads/' + id_leads,
+			url: '<?= base_url('Leads/get_leads/') ?>' + id_leads,
 			dataType: 'json',
 			data: {
 				id_leads: id_leads
 			},
 			success: function(data) {
-				// (data.surveyor + ' ' + data.pic_ttd);
 				$("#surveyor").val(data.surveyor);
 				$("#pic_ttd").val(data.pic_ttd);
 			}

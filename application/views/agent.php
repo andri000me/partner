@@ -68,7 +68,12 @@
                                     <div class="text-size"><?= $agent->no_ktp ?></div>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-primary text-size" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Detail</a></center>
+                                    <?php if ($agent->status == 'draft') { ?>
+                                        <center><a class="btn btn-secondary text-size" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Lanjutkan</a></center>
+                                    <?php } ?>
+                                    <?php if ($agent->status == 'lengkap') { ?>
+                                        <center><a class="btn btn-primary text-size" href="<?= base_url('Agent/detail/' . $agent->id_agent) ?>">Detail</a></center>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php } ?>

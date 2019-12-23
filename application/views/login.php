@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+    <title>Database Partnership</title>
     <meta content="Admin Dashboard" name="description" />
     <meta content="Themesbrand" name="author" />
     <link rel="shortcut icon" href="<?= base_url('template/assets/images/favicon.ico') ?>">
@@ -56,7 +56,7 @@
 
                         <div class="form-group">
                             <label for="username">Nomor Induk karyawan</label>
-                            <input type="text" class="form-control <?= $this->session->flashdata('akun_salah') ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= $this->session->flashdata('nik') ?>" placeholder="Mauskkan NIK">
+                            <input type="text" class="form-control <?= $this->session->flashdata('akun_salah') ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= $this->session->flashdata('nik') ?>" placeholder="Mauskkan NIK" autofocus>
                             <?= $this->session->flashdata('akun_salah') ?>
                         </div>
 

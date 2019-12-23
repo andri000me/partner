@@ -14,8 +14,9 @@
 <div class="row">
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <div>
-                <a href="<?= base_url('mapping_leads/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Buat Data Baru</button></a>
+            <div class="btn-kanan mb-2">
+                <a href=" <?= base_url('mapping_leads/create') ?>"><button class="btn btn-primary text-size">Buat Data Baru</button></a>
+                <button class="btn btn-success ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Follow Up Leads</button>
             </div>
         <?php } ?>
     </div>
@@ -64,4 +65,54 @@
         </div>
     </div> <!-- end col -->
 
+</div>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header mb-2">
+                    <h6 class="modal-title">Cari Data Partner</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name Lengkap</th>
+                            <th>Nomor Telepon / Whatsapp</th>
+                            <th>Asal Aplikasi</th>
+                            <th>Produk</th>
+                            <th>Detail Produk</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data->result() as $leads) { ?>
+                            <tr>
+                                <td>
+                                    <?= $leads->nama_konsumen ?>
+                                </td>
+                                <td>
+                                    <?= $leads->telepon ?>
+                                </td>
+                                <td>
+                                    <?= $leads->soa ?>
+                                </td>
+                                <td>
+                                    <?= $leads->produk ?>
+                                </td>
+                                <td>
+                                    <?= $leads->detail_produk ?>
+                                </td>
+                                <td>
+                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('leads_follow_up/create/' . $leads->mapping_id) ?>">Follow Up</a></center>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>

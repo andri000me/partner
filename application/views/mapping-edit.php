@@ -22,7 +22,7 @@
                 <h4 class="mt-0 header-title">Edit Data Partner</h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mengedit data calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
 
-                <form class="" method="post" action="<?= base_url('Mapping_partner/update') ?>">
+                <form class="" method="post" action="<?= base_url('Mapping_partner/update') ?>" enctype="multipart/form-data">
                     <!-- Form inputan hidden untuk id user, untuk mengetahui user mana yg input data -->
                     <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
                     <!-- Form inputan hidden untuk id cabang, untuk mengetahui cabang mana yg input data -->
@@ -47,6 +47,20 @@
                                         <label>Bidang Usaha</label>
                                         <input type="text" class="form-control text-size <?= form_error('bidang_usaha') ? 'is-invalid' : '' ?>" name="bidang_usaha" id="bidang_usaha" value="<?= $data->bidang_usaha ?>" required value="<?= $data->bidang_usaha ?>" placeholder="Garmen / Percetakan / Lainnya" />
                                         <?= form_error('bidang_usaha'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Bentuk Usaha</label>
+                                        <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
+                                            <option value="">Pilih Bentuk Usaha</option>
+                                            <option <?= $data->bentuk_usaha == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
+                                            <option <?= $data->bentuk_usaha == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
+                                            <option <?= $data->bentuk_usaha == 'CV' ? 'selected' : '' ?> value="CV">CV</option>
+                                            <option <?= $data->bentuk_usaha == 'PT' ? 'selected' : '' ?> value="PT">PT</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -96,6 +110,14 @@
                                             <option <?= $data->kategori_produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
                                         </select>
                                         <?= form_error('kategori_produk'); ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Foto usaha</label>
+                                        <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
                                     </div>
                                 </div>
                             </div>

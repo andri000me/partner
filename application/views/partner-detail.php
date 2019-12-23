@@ -138,7 +138,7 @@
                                 <?php
                                 $level = $this->fungsi->user_login()->level;
                                 if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
-                                    ?>
+                                ?>
                                     <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
                                 <?php } ?>
                                 <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
@@ -167,8 +167,8 @@
                                         </div>
                                     </li>
                                 <?php
-                                    }
-                                } else { ?>
+                                }
+                            } else { ?>
                                 <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                             <?php } ?>
                         </ol>
@@ -218,10 +218,10 @@
                                 </div>
                             </div>
                         <?php } ?>
-                        <?php if ($data->foto_usaha) { ?>
+                        <?php if ($data->foto_usaha_mapping) { ?>
                             <div class="item" style="height:79px; width:120px;">
                                 <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>" alt="" style="height:79px; width:120px;"></a>
                                 </div>
                             </div>
                         <?php } ?>
@@ -300,8 +300,8 @@
                                                 </div>
                                             </div>
                                         <?php
-                                            }
-                                        } else { ?>
+                                        }
+                                    } else { ?>
                                         <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                                     <?php } ?>
                                 </div>
@@ -359,7 +359,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->ttd_pks == 'Ya') { ?>
+                                    <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -385,7 +385,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum' && ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -415,6 +415,19 @@
                                                                         Tidak
                                                                     </label>
                                                                 </div>
+                                                            </div>
+                                                            <div id="form_mou" class="form-group ml-3">
+                                                                <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
+                                                                    <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
+                                                                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                                                                    <div class="form-group">
+                                                                        <label>Form MOU</label>
+                                                                        <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -475,48 +488,50 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->ttd_pks == 'Ya') { ?>
+                                    <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table class="text-size">
+                                                <table>
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Ibrahim Ahmad</p>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                         </td>
-                                                    </tr>
-                                                    <tr>
                                                         <td></td>
-                                                        <td>
-                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
-                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5 && $ticket->ttd_pks == 'Belum' && ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
                                                     <tr>
-                                                        <td> </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1"><b>Kerjasama?</b></p>
+
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td></td>
-                                                        <td class="mb-0">
-                                                            <div class="form-group text-size">
+                                                        <td>
+
+                                                        </td>
+                                                        <td>
+                                                            <div class="form-group ml-3">
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
                                                                     <label class="form-check-label">
@@ -529,6 +544,19 @@
                                                                         Tidak
                                                                     </label>
                                                                 </div>
+                                                            </div>
+                                                            <div id="form_mou" class="form-group ml-3">
+                                                                <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
+                                                                    <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
+                                                                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                                                                    <div class="form-group">
+                                                                        <label>Form MOU</label>
+                                                                        <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                         </td>
                                                     </tr>

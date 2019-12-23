@@ -21,7 +21,7 @@ class Ticket extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = ['tickets.id_branch' => $this->fungsi->user_login()->id_branch];
         } else if ($this->fungsi->user_login()->level == 4) {
-            $this->where = ['tickets.status' => 2];
+            $this->where = ['tickets.status >=' => 2];
         } else {
             $this->where = NULL;
         }
@@ -101,7 +101,7 @@ class Ticket extends CI_Controller
                 'status'            => 4
                 // 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
-            $notification = $this->notification($id_ticket, 'Ditolak');
+            $notification = $this->notification($id_ticket, 'Ditolak oleh');
         }
         $where = ['id_ticket' => $id_ticket];
         $this->ticket_model->update($data, $where);
@@ -116,10 +116,10 @@ class Ticket extends CI_Controller
     {
         // $post = $this->input->post(null, TRUE);
         $data = [
-            'ttd_pks'           => $this->input->post('ttd_pks'),
+            'ttd_pks'           => $this->input->post('ttd_pks')
 
-            'date_verified_ttd' =>  date('Y-m-d H:i:s'),
-            'verified_by'       => $this->fungsi->user_login()->id_user
+            // 'date_verified_ttd' =>  date('Y-m-d H:i:s'),
+            // 'verified_by'       => $this->fungsi->user_login()->id_user
         ];
 
         $where = ['id_ticket' => $this->input->post('id_ticket')];
@@ -127,12 +127,33 @@ class Ticket extends CI_Controller
 
         echo json_encode($data);
 
-        $notification = $this->notification($this->input->post('id_ticket'), 'Ditanda tangan');
+        $notification = $this->notification($this->input->post('id_ticket'), 'Ditanda tangan oleh');
         $this->notification_model->create($notification);
     }
 
-    public function json()
+    //Upload Formulir MOU
+    public function upload_mou()
     {
-        echo json_encode($this->ticket_model->get(['partners.id_partner' => 34])->result());
+        //Konfigurasi Upload
+        $config['upload_path']         = './uploads/mou';
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 0;
+        $config['max_width']            = 0;
+        $config['max_height']           = 0;
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('upload_mou')) {
+            echo $this->upload->display_errors();
+        } else {
+            $data = [
+                'date_verified_ttd' =>  date('Y-m-d H:i:s'),
+                'verified_by'       => $this->fungsi->user_login()->id_user
+            ];
+            $data['form_mou'] = $this->upload->data('file_name');
+            $where = ['id_ticket' => $this->input->post('id_ticket')];
+            $this->ticket_model->update($data, $where);
+
+            redirect($this->input->post('redirect'));
+        }
     }
 }
