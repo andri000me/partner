@@ -720,7 +720,7 @@
 	function show_leads() {
 		var id_leads = $("#id_leads").val();
 		$.ajax({
-			type: 'GET',
+			type: 'POST',
 			url: '<?= base_url('Leads/get_leads/') ?>' + id_leads,
 			dataType: 'json',
 			data: {
@@ -729,8 +729,10 @@
 			success: function(data) {
 				$("#surveyor").val(data.surveyor);
 				$("#pic_ttd").val(data.pic_ttd);
+			},
+			error: function(xhr, status, error) {
+				alert(error);
 			}
-
 		});
 	}
 	$(document).ready(function() {

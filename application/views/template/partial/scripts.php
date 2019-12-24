@@ -124,7 +124,7 @@
 
 <!-- //Script untuk update tanda tangan pks -->
 <script>
-    $("#form_mou").hide();
+    // $("#form_mou").hide();
     // alert($('.ttd_pks').val());
     if ($("input[name='ttd_pks']:checked").val() == 'Ya') {
         $("#form_mou").show();
@@ -239,9 +239,9 @@
             cabang_cross = $("#id_branch").val();
         }
         $.ajax({
-            type: 'ajax',
+            type: 'post',
             url: '<?= base_url('leads/get_user/') ?>' + cabang_cross,
-            async: false,
+            // async: false,
             dataType: 'json',
             data: {
                 cabang_cross: cabang_cross
@@ -253,6 +253,10 @@
                 }
                 $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
                 console.log(html);
+            },
+            error: function(xhr, status, error) {
+                // var err = eval("(" + xhr.responseText + ")");
+                alert(error);
             }
         });
     }

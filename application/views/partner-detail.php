@@ -385,7 +385,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -514,7 +514,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
