@@ -38,7 +38,7 @@
                                 <div class="col-md-6">
 									<div class="form-group ml-3 mr-3">
 										<label class="text-size">Nomor Telepon</label>
-										<input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="109788398364" maxlength="15" />
+										<input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="109788398364" maxlength="15" />
 									</div>
 								</div>
 							</div>
@@ -52,7 +52,7 @@
 								<div class="col-md-6">
 									<div class="form-group ml-3 mr-3">
 										<label class="text-size">Nomor KTP</label>
-										<input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
+										<input type="text" class="form-control placement text-size number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
 									</div>
 								</div>
 							</div>
@@ -78,21 +78,30 @@
 									<option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
 									<option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
 								</select>
-							</div>
-							<div class="form-group ml-3 mr-3">
-								<label class="text-size">Status Kepemilikan Rumah</label>
-								<select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
-									<option selected disabled value="">Rumah Milik Siapa?</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
-									<option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
-								</select>
-							</div>
-							<div class="form-group ml-3 mr-3">
-								<label class="text-size">income Per bulan saat ini</label>
-								<input type="text" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="income" id="income" value="<?= $data->income ?>" required placeholder="Rp.3,000,000" />
-							</div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label class="text-size">Status Kepemilikan Rumah</label>
+                                        <select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
+                                            <option selected disabled value="">Rumah Milik Siapa?</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
+                                            <option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="ml-3">income Per bulan saat ini</label>
+                                    <div class="input-group flex-nowrap ml-3 mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                        </div>
+                                        <input type="text" class="form-control text-size mr-4 number-only" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
+                                    </div>
+                                </div>
+                            </div>  
 							<div class="form-row">
 								<div class="col-md-6">
 									<div class="form-group ml-3 mr-3">
@@ -182,13 +191,13 @@
 									</div>
                             <div class="form-group ml-3 mr-3">
 										<label class="text-size">Nomor NPWP</label>
-										<input type="text" class="form-control placement text-size" onkeypress="return hanyaAngka(event);" name="no_npwp" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
+										<input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
 									</div>
 							<div class="form-row">
 								<div class="col-md-6">
 									<div class="form-group ml-3 mr-3">
 										<label class="text-size">Rekening Bank</label>
-										<input type="text" class="form-control pelacement text-size" pelacement" onkeypress="return hanyaAngka(event);" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+										<input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -295,7 +304,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active p-3" id="home1" role="tabpanel">
-                                <h6 class="mt-0 header-title web">AKTIVITAS TERAKHIR</h6>
+                                <h6 class="mt-0 mb-0 header-title web">AKTIVITAS TERAKHIR</h6>
                                 <div class="boxx overflow-auto">
                                     <?php if ($activities->num_rows() > 0) {
                                         foreach ($activities->result() as $activity) { ?>
@@ -358,6 +367,7 @@
 
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
+                                    <div class="boxxx overflow-auto">
                                     <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
@@ -470,12 +480,12 @@
                                                                 <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
                                                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                 <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                                                    <div class="form-group">
+                                                                    <div class="form-group mr-2">
                                                                         <label>Form MOU</label>
                                                                         <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
+                                                                        <button class="btn btn-primary" id="btn_upload" type="submit">Upload</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -485,6 +495,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
+                                    </div>
                                 </div>
 
                                 <div class="mobile">
@@ -599,12 +610,12 @@
                                                                 <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
                                                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                 <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                                                    <div class="form-group">
+                                                                    <div class="form-group mr-2">
                                                                         <label>Form MOU</label>
-                                                                        <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                                        <input type="file" name="upload_mou" class="filestyle mr-1" data-buttonname="btn-secondary">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
+                                                                        <button class="btn btn-primary" id="btn_upload" type="submit">Upload</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -654,7 +665,7 @@
 									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
 										<label>Comment</label>
-										<textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>
+										<textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
 									</div>
 									<button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
 								</form>
@@ -666,30 +677,3 @@
         </div>
     </div>
 </div>
-
-<script>
-	var rupiah = document.getElementById("rupiah");
-	rupiah.addEventListener("keyup", function(e) {
-		// tambahkan 'Rp.' pada saat form di ketik
-		// gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
-		rupiah.value = formatRupiah(this.value, "Rp. ");
-	});
-
-	/* Fungsi formatRupiah */
-	function formatRupiah(angka, prefix) {
-		var number_string = angka.replace(/[^,\d]/g, "").toString(),
-			split = number_string.split(","),
-			sisa = split[0].length % 3,
-			rupiah = split[0].substr(0, sisa),
-			ribuan = split[0].substr(sisa).match(/\d{3}/gi);
-
-		// tambahkan titik jika yang di input sudah menjadi angka ribuan
-		if (ribuan) {
-			separator = sisa ? "." : "";
-			rupiah += separator + ribuan.join(".");
-		}
-
-		rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
-		return prefix == undefined ? rupiah : rupiah ? "Rp. " + rupiah : "";
-	}
-</script>

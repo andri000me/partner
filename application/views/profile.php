@@ -38,7 +38,7 @@
                     <div class="tab-pane active p-3" id="data-anggota" role="tabpanel">
                         <div class="ml-3 mr-3">
                             <h4 class="mt-0 header-title">table List Karyawan</h4>
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama</th>

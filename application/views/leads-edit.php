@@ -60,13 +60,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>ID KTP</label>
-                                        <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Telepon / Whatsapp</label>
-                                        <input type="text" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
                                     </div>
                                 </div>
                             </div>
@@ -126,7 +126,7 @@
                                 <div class="col-md-6 nik">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 event">
@@ -152,7 +152,7 @@
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
@@ -239,7 +239,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
                                         </div>
-                                        <input type="text" class="form-control text-size mr-4" onkeypress="return hanyaAngka(event);" name="nilai_funding" id="nilai_funding" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
                                     </div>
                                 </div>
                             </div>

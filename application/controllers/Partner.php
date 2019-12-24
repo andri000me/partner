@@ -125,7 +125,7 @@ class Partner extends CI_Controller
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
             'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
-            'omset'                 => !empty($post['omset'])                   ? $post['omset'] : NULL,
+            'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
 
             //Stage 2
             'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
@@ -277,7 +277,7 @@ class Partner extends CI_Controller
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
             'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
-            'omset'                 => !empty($post['omset'])                   ? $post['omset'] : NULL,
+            'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
 
             //Stage 2
             'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,

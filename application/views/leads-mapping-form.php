@@ -73,7 +73,7 @@
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <input type="search" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -82,7 +82,7 @@
                                 <div class="col-md-6 nik">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement" onkeypress="return hanyaAngka(event);" name="nik_egc" id="nik_egc" placeholder="072104" maxlength="6" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" placeholder="072104" maxlength="6" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 event">
@@ -108,7 +108,7 @@
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size" onkeypress="return hanyaAngka(event);" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
@@ -125,7 +125,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Nomor Telepon / Whatsapp</label>
-                                        <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement" onkeypress="return hanyaAngka(event);" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
+                                        <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                         <?= form_error('telepon') ?>
                                     </div>
                                 </div>
@@ -167,7 +167,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive nowrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Name Usaha</th>
@@ -205,7 +205,7 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <a href="<?= base_url('agent/create') ?>" class="btn btn-primary mb-2">Buat Data Agent +</a>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive nowrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Lengkap</th>
