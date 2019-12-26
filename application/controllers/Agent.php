@@ -182,6 +182,8 @@ class Agent extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_agent'      => $id,
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -293,6 +295,8 @@ class Agent extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                // 'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_agent'    => $post['id_agent'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -375,6 +379,8 @@ class Agent extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            // 'date_created'  => date('Y-m-d H:i:s'),
+            'date_modified'  => date('Y-m-d H:i:s'),
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch
         ];

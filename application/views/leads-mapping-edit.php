@@ -76,7 +76,7 @@
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_usaha ?>" readonly>
+                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -136,7 +136,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group mr-3 ml-3">
-                                        <label>Detail Produk</label>
+                                        <label>Info Produk</label>
                                         <input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
                                     </div>
                                 </div>
@@ -239,7 +239,7 @@
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val("");
-        $('#nama_vendor').val($(this).data('nama'));
+        $('#data_partner').val($(this).data('nama'));
         $('#modal-agent').modal('hide');
     })
 </script>

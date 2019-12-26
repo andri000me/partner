@@ -24,6 +24,7 @@ class Ticket_model extends CI_Model
     {
         $this->db->select("
         *,
+        
         users.id_user as user_id,
         branches.id_branch as branch_id,
         users.name as requester,
@@ -42,6 +43,8 @@ class Ticket_model extends CI_Model
         DATE_FORMAT(date_rejected, '%d %b, %Y') as tanggal_rejected,
         DATE_FORMAT(date_completed, '%d %b, %Y') as tanggal_completed,
         DATE_FORMAT(date_verified_ttd, '%d %b, %Y') as tanggal_verified_ttd,
+        DATE_FORMAT(tickets.date_created, '%d %b %Y') as tanggal_dibuat,
+        DATE_FORMAT(tickets.date_modified, '%d %b %Y %H:%i:%s') as tanggal_diubah,
         (CASE
             WHEN tickets.id_partner IS NOT NULL THEN 'Partner'
             WHEN tickets.id_agent IS NOT NULL THEN 'Agent'

@@ -18,26 +18,17 @@
             <div class="card-body">
 
                 <ul class="message-list">
-                    <!-- <li>
-                        <div class="col-mail col-mail-1">
-                            <a href="#" class="title"><span class="badge-danger badge ml-5">Reject</span></a><span class="far fa-times-circle ml-5"></a>
-                        </div>
-                        <div class="col-mail col-mail-2">
-                            <a href="#" class="subject">Oleh Don Aria
-                                sabda
-                            </a>
-                            <div class="date">04 Dec, 2019</div>
-                        </div>
-                    </!-->
                 </ul>
 
 
                 <div class="table-responsive">
                     <table class="table table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
-                            <tr>
-                                <td colspan="5"><b>Hari ini</b></td>
-                            </tr>
+                            <?php if ($today->num_rows() > 0) { ?>
+                                <tr>
+                                    <td colspan="5"><b>Hari ini</b></td>
+                                </tr>
+                            <?php } ?>
                             <?php foreach ($today->result() as $notif) { ?>
                                 <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
                                     <td>

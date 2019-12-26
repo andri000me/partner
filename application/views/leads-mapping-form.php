@@ -133,7 +133,7 @@
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group text-size mr-3 ml-3">
-                                        <label>Detail Produk</label>
+                                        <label>Info Produk</label>
                                         <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Nama Barang / Jasa" />
                                     </div>
                                 </div>
@@ -241,7 +241,7 @@
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val("");
-        $('#nama_vendor').val($(this).data('nama'));
+        $('#data_partner').val($(this).data('nama'));
         $('#modal-agent').modal('hide');
     })
 </script>

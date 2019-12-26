@@ -548,6 +548,7 @@
         $('#alamat').val(alamat);
 
 
+        akhir_izin();
 
         $('.bd-example-modal-xl').modal('hide');
     })
@@ -555,13 +556,17 @@
 
 <script>
     $('#disable').hide();
-    $('#kategori_produk').change(function() {
+
+    function akhir_izin() {
         if ($('#kategori_produk').val() == 'My Ihram' || $('#kategori_produk').val() == 'My Safar') {
             $('#disable').show();
             // alert($('#kategori_produk').val());
         } else {
             $('#disable').hide();
         }
+    }
+    $('#kategori_produk').change(function() {
+        akhir_izin();
     })
 </script>
 

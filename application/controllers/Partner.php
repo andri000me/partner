@@ -60,8 +60,6 @@ class Partner extends CI_Controller
         $this->template->load('template/index', 'partner-form', $data);
     }
 
-
-
     public function edit($id)
     {
         $where = ['partners.id_partner' => $id];
@@ -215,6 +213,8 @@ class Partner extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $id,
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -346,6 +346,8 @@ class Partner extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                // 'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $post['id_partner'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -422,6 +424,8 @@ class Partner extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            // 'date_created'  => date('Y-m-d H:i:s'),
+            'date_modified'  => date('Y-m-d H:i:s'),
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch
         ];
