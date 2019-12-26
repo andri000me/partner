@@ -445,7 +445,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && $ticket->form_mou == NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -575,7 +575,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && $ticket->form_mou == NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -665,7 +665,7 @@
 									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
 										<label>Comment</label>
-										<textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>
+										<textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
 									</div>
 									<button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
 								</form>

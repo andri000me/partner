@@ -104,7 +104,6 @@
 <!-- format rupiah -->
 <script>
     // Jquery Dependency
-
     $("input[data-type='currency']").on({
         keyup: function() {
             formatCurrency($(this));
@@ -230,7 +229,7 @@
 
 <!-- //Script untuk update tanda tangan pks -->
 <script>
-    $("#form_mou").hide();
+    // $("#form_mou").hide();
     // alert($('.ttd_pks').val());
     if ($("input[name='ttd_pks']:checked").val() == 'Ya') {
         $("#form_mou").show();
@@ -345,9 +344,9 @@
             cabang_cross = $("#id_branch").val();
         }
         $.ajax({
-            type: 'ajax',
+            type: 'post',
             url: '<?= base_url('leads/get_user/') ?>' + cabang_cross,
-            async: false,
+            // async: false,
             dataType: 'json',
             data: {
                 cabang_cross: cabang_cross
@@ -359,6 +358,10 @@
                 }
                 $('#show_pic_ttd, #show_surveyor').attr('label', data[0].nama_cabang).html(html);
                 console.log(html);
+            },
+            error: function(xhr, status, error) {
+                // var err = eval("(" + xhr.responseText + ")");
+                alert(error);
             }
         });
     }
@@ -383,4 +386,33 @@
         document.getElementById("hilang").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }
+</script>
+
+<script>
+    function show_leads() {
+        var id_leads = $("#id_leads").val();
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url('Leads/get_leads/') ?>' + id_leads,
+            dataType: 'json',
+            data: {
+                id_leads: id_leads
+            },
+            success: function(data) {
+                $("#surveyor").val(data.surveyor);
+                $("#pic_ttd").val(data.pic_ttd);
+            }
+        });
+    }
+    $(document).ready(function() {
+        setTimeout(function() {
+            show_leads();
+        }, 3000);
+
+        if ($("input[name='cross_branch']:checked").val() == 'Ya') {
+            $("#hide").show();
+        } else {
+            $("#hide").hide();
+        }
+    })
 </script>

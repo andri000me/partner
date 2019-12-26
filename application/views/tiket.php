@@ -24,6 +24,7 @@
                             <th>Cabang</th>
                             <th>Aktivitas Cabang</th>
                             <th>Status</th>
+                            <th>Tanggal Diubah</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -60,6 +61,7 @@
                                         <?php } ?>
                                     </center>
                                 </td>
+                                <td><?= $ticket->tanggal_diubah ?></td>
                                 <td>
                                     <center>
                                         <?php if ($ticket->id_agent != NULL) { ?>

@@ -104,7 +104,7 @@ class Agent extends CI_Controller
                 'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : NULL,
                 'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : NULL,
                 'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : NULL,
-                'income'                    => !empty($post['income']) ? $post['income'] : NULL,
+                'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : NULL,
                 'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
                 'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
                 'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
@@ -182,6 +182,8 @@ class Agent extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_agent'      => $id,
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -227,7 +229,7 @@ class Agent extends CI_Controller
             'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : NULL,
             'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : NULL,
             'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : NULL,
-            'income'                    => !empty($post['income']) ? $post['income'] : NULL,
+            'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : NULL,
             'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
             'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
             'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
@@ -293,6 +295,8 @@ class Agent extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                // 'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_agent'    => $post['id_agent'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -324,27 +328,27 @@ class Agent extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
         $data = [
-            'nama_lengkap'              => $post['nama_lengkap'],
-            // 'jenis_kelamin'             => $post['jenis_kelamin'],
-            'email'                     => $post['email'],
-            'telepon'                   => $post['telepon'],
-            'tanggal_lahir'             => $post['tanggal_lahir'],
-            'no_ktp'                    => $post['no_ktp'],
-            'no_npwp'                   => $post['no_npwp'],
-            'pekerjaan'                 => $post['pekerjaan'],
-            'jenis_pekerjaan'           => $post['jenis_pekerjaan'],
-            'jenis_agent'               => $post['jenis_agent'],
-            'status_kepemilikan_rumah'  => $post['status_kepemilikan_rumah'],
-            'punya_pinjaman'            => $post['punya_pinjaman'],
-            'afiliasi_travel'           => $post['afiliasi_travel'],
-            'agent_konvensional'        => $post['agent_konvensional'],
-            'hubungan_karyawan_bfi'     => $post['hubungan_karyawan_bfi'],
-            'konsumen_bfi'              => $post['konsumen_bfi'],
-            'income'                    => $post['income'],
-            'rekening_bank'             => $post['rekening_bank'],
-            'cabang_bank'               => $post['cabang_bank'],
-            'nama_bank'                 => $post['nama_bank'],
-            'atas_nama'                 => $post['atas_nama'],
+            'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : NULL,
+            // 'jenis_kelamin'             => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
+            'email'                     => !empty($post['email']) ? $post['email'] : NULL,
+            'telepon'                   => !empty($post['telepon']) ? $post['telepon'] : NULL,
+            'tanggal_lahir'             => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
+            'no_ktp'                    => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
+            'no_npwp'                   => !empty($post['no_npwp']) ? $post['no_npwp'] : NULL,
+            'pekerjaan'                 => !empty($post['pekerjaan']) ? $post['pekerjaan'] : NULL,
+            'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan']) ? $post['jenis_pekerjaan'] : NULL,
+            'jenis_agent'               => !empty($post['jenis_agent']) ? $post['jenis_agent'] : NULL,
+            'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah']) ? $post['status_kepemilikan_rumah'] : NULL,
+            'punya_pinjaman'            => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : NULL,
+            'afiliasi_travel'           => !empty($post['afiliasi_travel']) ? $post['afiliasi_travel'] : NULL,
+            'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : NULL,
+            'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : NULL,
+            'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : NULL,
+            'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : NULL,
+            'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
+            'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
+            'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
+            'atas_nama'                 => !empty($post['atas_nama']) ? $post['atas_nama'] : NULL,
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
@@ -375,6 +379,8 @@ class Agent extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            // 'date_created'  => date('Y-m-d H:i:s'),
+            'date_modified'  => date('Y-m-d H:i:s'),
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch
         ];

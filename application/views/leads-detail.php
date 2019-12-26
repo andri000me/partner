@@ -229,7 +229,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
 									</div>
-									<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding"  data-type="currency" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+									<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
 								</div>
 							</div>
 						</div>
@@ -279,9 +279,11 @@
 							<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
 								<a class="btn btn-danger text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
 							<?php } ?>
+							<?php if ($level < 4) { ?>
 							<button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size">
 								Simpan
 							</button>
+							<?php } ?>
 						</div>
 					</form>
 				</div>
@@ -654,7 +656,7 @@
                             </div>
 
                             <div class="tab-pane p-3" id="profile1" role="tabpanel">
-                                <div class="box overflow-auto">
+                                <div class="overflow-auto" style=" max-height: 310px;">
                                     <?php foreach ($comments->result() as $comment) { ?>
                                         <div class="media mb-1">
                                             <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
@@ -673,7 +675,7 @@
                                     <input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>
+                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
                                     </div>
                                     <button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
                                 </form>
@@ -873,7 +875,6 @@
 	$("table").on('click', '.pilih-agent', function() {
 		$('#id_agent').val($(this).data('agent'));
 		$('#id_partner').val("");
-		// $('#nama_vendor').val($(this).data('nama'));
 		$('#data_partner').val($(this).data('namaagent'));
 		$('#modal-agent').modal('hide');
 	})
@@ -898,27 +899,5 @@
 		$('#modal-leads').modal('hide');
 
 		source_leads();
-	})
-</script>
-
-<script>
-	function show_leads() {
-		var id_leads = $("#id_leads").val();
-		$.ajax({
-			type: 'GET',
-			url: '<?= base_url('Leads/get_leads/') ?>' + id_leads,
-			dataType: 'json',
-			data: {
-				id_leads: id_leads
-			},
-			success: function(data) {
-				$("#surveyor").val(data.surveyor);
-				$("#pic_ttd").val(data.pic_ttd);
-			}
-
-		});
-	}
-	$(document).ready(function() {
-		show_leads();
 	})
 </script>

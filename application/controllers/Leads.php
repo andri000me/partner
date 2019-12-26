@@ -62,9 +62,9 @@ class Leads extends CI_Controller
         $data = [
             'data' => $this->leads_model->get($where_leads),
             // Menampilkan Data Leads belum funding
-            'belum_funding' => $this->leads_model->get("sudah_funding = 'Belum' AND " . $where_leads),
+            'belum_funding' => $this->leads_model->get("sudah_funding = 'Belum' AND (" . $where_leads . ")"),
             // Menampilkan Data Leads sudah funding
-            'sudah_funding' => $this->leads_model->get("sudah_funding = 'Sudah' AND " . $where_leads)
+            'sudah_funding' => $this->leads_model->get("sudah_funding = 'Sudah' AND (" . $where_leads . ")")
         ];
 
         $this->template->load('template/index', 'leads', $data);
@@ -167,8 +167,8 @@ class Leads extends CI_Controller
             'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
             'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
-            'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
-            'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+            'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
+            'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
             'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
 
             //Timestamp
@@ -237,15 +237,6 @@ class Leads extends CI_Controller
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
             $this->ticket_model->create($ticket);
-
-            //Notifikasi
-            // $notification = [
-            //     'pengirim' => $this->fungsi->user_login()->id_user,
-            //     'type'      => 'new data',
-            //     'id_leads'  => $id,
-            //     'created_at' => date('Y-m-d H:i:s')
-            // ];
-            // $this->notification_model->create($notification);
         }
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -262,6 +253,7 @@ class Leads extends CI_Controller
         //     $this->template->load('template/index', 'leads-form', $data);
         // }
     }
+
     public function update()
     {
         $post = $this->input->post(NULL, TRUE);
@@ -308,7 +300,7 @@ class Leads extends CI_Controller
             'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
-            'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+            'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
             'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
 
             //Timestamp
@@ -403,7 +395,7 @@ class Leads extends CI_Controller
             'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
-            'nilai_funding'     => !empty($post['nilai_funding']) ? $post['nilai_funding'] : NULL,
+            'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
             'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
 
             //Timestamp

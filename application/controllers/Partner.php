@@ -60,8 +60,6 @@ class Partner extends CI_Controller
         $this->template->load('template/index', 'partner-form', $data);
     }
 
-
-
     public function edit($id)
     {
         $where = ['partners.id_partner' => $id];
@@ -125,7 +123,7 @@ class Partner extends CI_Controller
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
             'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
-            'omset'                 => !empty($post['omset'])                   ? $post['omset'] : NULL,
+            'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
 
             //Stage 2
             'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
@@ -215,6 +213,8 @@ class Partner extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $id,
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -277,7 +277,7 @@ class Partner extends CI_Controller
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
             'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
-            'omset'                 => !empty($post['omset'])                   ? $post['omset'] : NULL,
+            'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
 
             //Stage 2
             'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
@@ -346,6 +346,8 @@ class Partner extends CI_Controller
             $ticket = [
                 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'date_pending'  => date('Y-m-d H:i:s'),
+                // 'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $post['id_partner'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -422,6 +424,8 @@ class Partner extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            // 'date_created'  => date('Y-m-d H:i:s'),
+            'date_modified'  => date('Y-m-d H:i:s'),
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch
         ];

@@ -28,12 +28,11 @@ class Fungsi
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($level == 2 || $level == 3) {
-            $where = ("cabang_penerima.id_branch = $id_branch AND has_read = 1");
+            $where = ("cabang_penerima.id_branch = $id_branch AND has_read = 1 AND pengirim != $id_user");
         } else {
-            $where = NULL;
+            $where = "id.notifcations IS NOT NULL AND pengirim != $id_user";
         }
         $user_data = $this->ci->notification_model->get($where);
         return $user_data;
-        echo $this->user_login()->level;
     }
 }

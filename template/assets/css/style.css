@@ -3809,17 +3809,17 @@ button[disabled] {
 
 	.box {
 		width: 300px;
-		height: 250px;
+		height: 200px;
 	}
 
 	.boxx {
 		width: 300px;
-		height: 150px;
+		height: 125px;
 	}
 
 	.boxxx {
 		width: 300px;
-		height: 170px;
+		height: 125px;
 	}
 
 	.media {
@@ -3827,7 +3827,7 @@ button[disabled] {
 	}
 
 	.text-size {
-		font-size: 12px;
+		font-size: 11px;
 	}
 
 	.mobile {

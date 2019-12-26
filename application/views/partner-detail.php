@@ -144,9 +144,11 @@
                                 <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
                                     <a class="btn btn-danger text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
                                 <?php } ?>
-                                <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size">
-                                    Simpan
-                                </button>
+                                <?php if ($level < 4) { ?>
+                                    <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size">
+                                        Simpan
+                                    </button>
+                                <?php } ?>
                             </div>
                         </form>
                     </div>
@@ -308,7 +310,7 @@
 
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
-                                    <div class="boxx overflow-auto">
+                                    <div class="boxxx overflow-auto">
                                         <?php if ($ticket->status_approval == 5) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
@@ -386,7 +388,7 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                        <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -516,7 +518,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -606,7 +608,7 @@
                                     <input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>
+                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
                                     </div>
                                     <button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
                                 </form>

@@ -17,12 +17,14 @@
                         <i class="mdi ion-person"></i><span> Profile </span>
                     </a>
                 </li>
+                <?php if ($this->fungsi->user_login()->level > 2) { ?>
 
-                <li>
-                    <a href="<?= base_url('branch') ?>" class="waves-effect">
-                        <i class="fas fa-code-branch"></i><span>Branch </span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="<?= base_url('branch') ?>" class="waves-effect">
+                            <i class="fas fa-code-branch"></i><span>Branch </span>
+                        </a>
+                    </li>
+                <?php } ?>
 
                 <li>
                     <a href="<?= base_url('notification') ?>" class="waves-effect">

@@ -21,9 +21,9 @@ class Notification extends CI_Controller
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "cabang_penerima.id_branch = " . $this->fungsi->user_login()->id_branch;
+            $this->where = "cabang_penerima.id_branch = " . $this->fungsi->user_login()->id_branch . " AND pengirim != " . $this->fungsi->user_login()->id_user;
         } else {
-            $this->where = "id.notifcations IS NOT NULL";
+            $this->where = "id.notifcations IS NOT NULL AND pengirim != " . $this->fungsi->user_login()->id_user;
         }
     }
 

@@ -483,7 +483,7 @@
                                     <input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
                                     <div class="form-group">
                                         <label>Comment</label>
-                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:107px;"></textarea>
+                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
                                     </div>
                                     <button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
                                 </form>
