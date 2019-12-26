@@ -8,8 +8,13 @@
 				<li class="breadcrumb-item active">Timeline Maintain</li>
 			</ol>
 		</div>
+		
 		<div class="card">
 			<div class="card-body">
+				<div id="hilang" style="height: 500px;">
+					<div id="loader"></div>
+				</div>
+				<div style="display:none;" id="myDiv" class="animate-bottom">
 				<div class="tab-pane active p-3" id="home2" role="tabpanel">
 					<form class="" action="<?= base_url('Leads/update_detail') ?>" method="post">
 						<!-- ID Mapping Leads -->
@@ -279,6 +284,7 @@
 							</button>
 						</div>
 					</form>
+				</div>
 				</div>
 			</div>
 		</div>
