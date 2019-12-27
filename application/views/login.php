@@ -46,7 +46,7 @@
                 <div class="card-body">
 
                     <h3 class="text-center m-0">
-                        <img src="<?= base_url('template/assets/images/bfi.png') ?>" style="width: 150px">
+                        <img src="<?= base_url('template/assets/images/bfisyariah.png') ?>" style="width: 150px">
                     </h3>
 
                     <div class=" p-3">

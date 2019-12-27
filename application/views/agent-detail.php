@@ -10,6 +10,10 @@
 		</div>
 		<div class="card">
 			<div class="card-body">
+                <div id="hilang" style="height: 650px;">
+                    <div id="loader"></div>
+                </div>
+                <div style="display:none;" id="myDiv" class="animate-bottom">
 				<div class="tab-content">
 					<div class="tab-pane active p-3" id="home2" role="tabpanel">
 						<form class="" action="<?= base_url('Agent/update_detail') ?>" method="post">
@@ -239,7 +243,8 @@
 							</div>
 						</form>
 					</div>
-				</div>
+                </div>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -515,13 +520,13 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -552,30 +557,32 @@
                                     <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table>
+                                                <table class="text-size">
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Sudah tanda tangan Kerjasama</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                         </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && $ticket->form_mou == NULL) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -608,14 +615,14 @@
                                                             </div>
                                                             <div id="form_mou" class="form-group ml-3">
                                                                 <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
-                                                                <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
-                                                                <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                                                                    <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
+                                                                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                                                     <div class="form-group mr-2">
                                                                         <label>Form MOU</label>
-                                                                        <input type="file" name="upload_mou" class="filestyle mr-1" data-buttonname="btn-secondary">
+                                                                        <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <button class="btn btn-primary" id="btn_upload" type="submit">Upload</button>
+                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
