@@ -16,11 +16,7 @@
         <div class="card">
 
             <div class="card-body">
-
-                <ul class="message-list">
-                </ul>
-
-
+                <a class="float-right" href="#" id="mark_all">Mark all as read</a>
                 <div class="table-responsive">
                     <table class="table table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
@@ -40,6 +36,9 @@
                                         <?php } ?>
                                         <?php if ($notif->type == 'Ditolak oleh') { ?>
                                             <span class="far fa-times-circle"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Cross Branch oleh') { ?>
+                                            <span class="fas fa-code-branch"></span>
                                         <?php } ?>
                                     </td>
                                     <td>
@@ -128,3 +127,20 @@
     </div>
 
 </div><!-- End row -->
+
+<!-- //Script untuk mark as read notifikasi -->
+<script>
+    //Update Barang
+    $('#mark_all').on('click', function() {
+        var has_read = 1;
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('notification/mark_all') ?>",
+            dataType: "JSON",
+            success: function(data) {
+                alert('Success');
+            }
+        });
+    });
+    // return false;
+</script>

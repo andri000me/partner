@@ -26,6 +26,8 @@ class Leads extends CI_Controller
         $this->load->model('mapping_leads_model', 'mapping_leads');
         // Load Modul Comment
         $this->load->model('comment_model');
+        // Load Modul Notification
+        $this->load->model('notification_model');
         // Load Modul Leads Activity
         $this->load->model('leads_activity_model', 'leads_activity');
         $this->load->helper('fungsi');
@@ -169,7 +171,7 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
+            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
 
             //Timestamp
             'created_at'        => date('Y-m-d H:i:s'),
@@ -229,6 +231,7 @@ class Leads extends CI_Controller
 
         //Menambah antrian tiket untuk data leads
         if (isset($post['process'])) {
+            //Menambah ke antrian tiket
             $ticket = [
                 'status'        => 0,
                 'date_pending'  => date('Y-m-d H:i:s'),
@@ -236,7 +239,17 @@ class Leads extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
+
+            //Notifikasi
+            $notification = [
+                'pengirim'          => $this->fungsi->user_login()->id_user,
+                'penerima_cabang'   => $post['cabang_cross'],
+                'type'              => 'Cross Branch oleh',
+                'id_ticket'         => $id_ticket,
+                'created_at'        => date('Y-m-d H:i:s')
+            ];
+            $this->notification_model->create($notification);
         }
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -301,7 +314,7 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
+            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),
@@ -320,6 +333,7 @@ class Leads extends CI_Controller
         } else if (isset($post['process'])) {
             $data['status'] = 'lengkap';
 
+            //Menambah antrian ke tiket
             $ticket = [
                 'status'        => 0,
                 'date_pending'  => date('Y-m-d H:i:s'),
@@ -328,6 +342,16 @@ class Leads extends CI_Controller
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
             $this->ticket_model->create($ticket);
+
+            //Notifikasi
+            $notification = [
+                'pengirim'          => $this->fungsi->user_login()->id_user,
+                'penerima_cabang'   => $post['cabang_cross'],
+                'type'              => 'Cross Branch oleh',
+                'id_ticket'         => $post['id_ticket'],
+                'created_at'        => date('Y-m-d H:i:s')
+            ];
+            $this->notification_model->create($notification);
         }
 
         $where = ['id_leads' => $post['id_leads']];
@@ -396,7 +420,7 @@ class Leads extends CI_Controller
             'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
             'appeal_nst'        => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
             'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : NULL,
+            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),

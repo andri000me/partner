@@ -17,13 +17,13 @@ class Notification extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "user_penerima.id_user = " . $this->fungsi->user_login()->id_user;
+            $this->where = "notifications.penerima = " . $this->fungsi->user_login()->id_user . " AND pengirim != " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "cabang_penerima.id_branch = " . $this->fungsi->user_login()->id_branch . " AND pengirim != " . $this->fungsi->user_login()->id_user;
+            $this->where = "notifications.penerima_cabang = " . $this->fungsi->user_login()->id_branch . " AND pengirim != " . $this->fungsi->user_login()->id_user;
         } else {
-            $this->where = "id.notifcations IS NOT NULL AND pengirim != " . $this->fungsi->user_login()->id_user;
+            $this->where = "id_notification IS NOT NULL AND pengirim != " . $this->fungsi->user_login()->id_user;
         }
     }
 
@@ -47,6 +47,13 @@ class Notification extends CI_Controller
 
         $where = ['id_notification' => $post['id_notification']];
         $data = $this->notification_model->update($data, $where);
+        echo json_encode($data);
+    }
+
+    // AJAX Controller
+    public function mark_all()
+    {
+        $data = $this->notification_model->update(['has_read' => '1'], $this->where);
         echo json_encode($data);
     }
 }

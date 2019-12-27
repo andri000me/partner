@@ -314,7 +314,7 @@
     });
 </script>
 
-<!-- //Script untuk mark as read notifikas -->
+<!-- //Script untuk mark as read notifikasi -->
 <script>
     //Update Barang
     $('.notifikasi').on('click', function() {

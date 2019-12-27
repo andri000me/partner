@@ -56,6 +56,9 @@ class Leads_follow_up extends CI_Controller
             // 'created_at' => date('Y-m-d H:i:s'),
             // 'updated_at' => date('Y-m-d H:i:s'),
 
+            //ID User yang mencatat leads follow up
+            'id_user' => $this->fungsi->user_login()->id_user,
+
             //ID Mapping Leads yang di follow-up
             'id_mapping_leads' => $post['id_mapping_leads']
         ];

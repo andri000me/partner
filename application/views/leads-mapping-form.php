@@ -141,7 +141,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                        <a href="<?= base_url('leads') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
+                        <a href="<?= base_url('mapping_leads') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
                         <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
                             Simpan
                         </button>
