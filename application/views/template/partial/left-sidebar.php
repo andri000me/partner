@@ -57,6 +57,15 @@
                 <?php } ?>
 
                 <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="far fa-clipboard"></i><span> Assignment <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="submenu">
+                        <li><a href="#">Prospect</a></li>
+                        <li><a href="#">Leads</a></li>
+                        <li><a href="#">NST</a></li>
+                    </ul>
+                </li>
+
+                <li>
                     <a href="<?= base_url('Ticket') ?>" class="waves-effect">
                         <i class="fas fa-ticket-alt"></i> <span> Tiket </span>
                     </a>

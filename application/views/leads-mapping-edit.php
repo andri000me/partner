@@ -151,12 +151,86 @@
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
 
-</div>
+
+<div class="row">
+    <div class="col-md-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title">Follow Up</h4>
+                <p class="text-muted m-b-30 text-size">Form ini digunakan untuk follow up leads.</p>
+
+                <form class="" action="<?= base_url('Leads_follow_up/save') ?>" method="post">
+                    <!-- ID Partner -->
+                    <input type="hidden" name="id_mapping_leads" value="<?= $data->mapping_id ?>">
+                    <div class="form-group ml-3 mr-3">
+                        <label>Follow Up By</label>
+                        <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
+                            <option selected disabled value="">Pilih Follow Up By</option>
+                            <option value="Kunjungan">Kunjungan</option>
+                            <option value="Telepon">Telepon</option>
+                            <option value="Whatsapp">Whatsapp</option>
+                            <option value="Email">Email</option>
+                        </select>
+                    </div>
+                    <div class="form-group ml-3 mr-3">
+                        <label>Catatan</label>
+                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="Jelaskan detail kegiatan anda" style="height:110px;"></textarea>
+                    </div>
+                    <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
+                        <div>
+                            <button type="cancle" class="btn btn-secondary waves-effect waves-light">
+                                Batal
+                            </button>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                                Simpan
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="overflow-auto" style="height: 350px;">
+                    <div class="tab-pane p-3" id="profile2" role="tabpanel">
+                        <h4 class="mt-0 header-title mb-4">Timeline</h4>
+                        <ol class="activity-feed mb-0">
+                            <li class="feed-item  text-size">
+                                <div class="feed-item-list">
+                                    <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
+                                    <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
+                                    <span class="date">tanggal</span>
+                                    <span class="activity-text">Catatan</span>
+                                </div>
+                            </li>
+                            <li class="feed-item  text-size">
+                                <div class="feed-item-list">
+                                    <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
+                                    <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
+                                    <span class="date">tanggal</span>
+                                    <span class="activity-text">Catatan</span>
+                                </div>
+                            </li>
+                            <li class="feed-item  text-size">
+                                <div class="feed-item-list">
+                                    <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
+                                    <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
+                                    <span class="date">tanggal</span>
+                                    <span class="activity-text">Catatan</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- end content -->
 

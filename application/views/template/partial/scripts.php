@@ -12,19 +12,23 @@
 
 <script>
     $(document).ready(function() {
-        $('#hide').hide();
+        $('#hide, .pic_ttd, .surveyor').hide();
         var radioValue = $("input[name='cross_branch']:checked");
         if (radioValue == 'Tidak') {
             $("#hide").hide();
+            $(".pic_ttd, .surveyor").show();
         } else if (radioValue == 'Ya') {
             $("#hide").show()
+            $('.pic_ttd, .surveyor').hide();
         }
         $('.cross_branch').click(function() {
             var cross_branch = $(this).val();
             if (cross_branch == 'Ya') {
                 $('#hide').show();
+                $('.pic_ttd, .surveyor').hide();
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
+                $(".pic_ttd, .surveyor").show();
                 $("#cabang_cross").val("");
             }
         })
@@ -374,6 +378,19 @@
     })
 </script>
 
+<script>
+    var myVar;
+
+    function myFunction() {
+        myVar = setTimeout(showPage, 3000);
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "none";
+        document.getElementById("hilang").style.display = "none";
+        document.getElementById("myDiv").style.display = "block";
+    }
+</script>
 
 <script>
     function show_leads() {
@@ -394,7 +411,7 @@
     $(document).ready(function() {
         setTimeout(function() {
             show_leads();
-        }, 3000);
+        }, 1000);
 
         if ($("input[name='cross_branch']:checked").val() == 'Ya') {
             $("#hide").show();

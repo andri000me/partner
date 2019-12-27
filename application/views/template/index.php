@@ -47,7 +47,7 @@
     <link href="<?= base_url('template/assets/plugins/css/owl.theme.default.min.css') ?>" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body onload="myFunction()">
 
     <div id="wrapper">
 
@@ -130,6 +130,7 @@
     <script src="<?= base_url('template/assets/plugins/js/bootstrap-maxlength.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/plugins/js/bootstrap-filestyle.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/plugins/js/jquery.bootstrap-touchspin.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/plugins/js/loading-bar.js') ?>"></script>
 
     <!-- Magnific popup -->
     <script src="<?= base_url('template/assets/plugins/js/jquery.magnific-popup.min.js') ?>"></script>

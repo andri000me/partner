@@ -1,29 +1,7 @@
 <div class="row">
-    <div class="col-sm-12">
-        <div class="page-title-box">
-            <h4 class="page-title">Leads Go Live</h4>
-            <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
-                <li class="breadcrumb-item active">Leads Go Live</li>
-            </ol>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <div class="btn-kanan mb-2">
-                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input Prospect</button></a>
-            </div>
-        <?php } ?>
-    </div>
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Tabel Konsumen</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen go live anda dan keperluan KPI dan Perhitungan Bonus</p>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">
