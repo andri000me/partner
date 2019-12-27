@@ -35,8 +35,6 @@ class Maintain_partner extends CI_Controller
         $where = ['partners.id_partner' => $id];
 
         $data = [
-            // 'data' => $this->partner_model->get(['id_partner' => $id])->row(),
-            // 'activities' => $this->partner_activity->get(['partner_activities.id_partner' => $id]),
             'data'          => $this->partner_model->get($where)->row(),
             'ticket'        => $this->ticket_model->get($where)->row(),
             'maintain'      => $this->maintain_model->get($where),

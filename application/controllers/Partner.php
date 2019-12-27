@@ -79,11 +79,12 @@ class Partner extends CI_Controller
         $data = [
             'data'          => $this->partner_model->get($where)->row(),
             'ticket'        => $this->ticket_model->get($where)->row(),
-            'maintain'      => $this->maintain_partner->get($where),
+            'maintains'      => $this->maintain_partner->get($where),
             'activities'    => $this->partner_activity->get($where),
             'comments'      => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'partner-detail', $data);
+        // echo json_encode($data['data']);
     }
 
     public function save()
@@ -236,6 +237,7 @@ class Partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
+            sleep(6);
             redirect('Partner');
         }
     }
@@ -372,6 +374,7 @@ class Partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");
 
+            sleep(6);
             redirect('Partner');
         }
     }

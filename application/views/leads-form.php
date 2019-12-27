@@ -192,9 +192,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
+                            <div class="form-row users">
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3">
                                         <label>Pic Tanda Tangan</label>
                                         <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
                                             <option value="" selected>Pilih PIC Tanda tangan</option>
@@ -205,7 +205,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3">
                                         <label>Surveyor</label>
                                         <select class="form-control text-size" name="surveyor" id="surveyor">
                                             <option value="" selected>Pilih Surveyor</option>
@@ -358,7 +358,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-vendor="<?= $mapping->nama_vendor ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -537,6 +537,7 @@
         $('#nama_konsumen').val($(this).data('nama'));
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val($(this).data('partner'));
+        $('#nama_vendor').val($(this).data('vendor'));
         $('#modal-leads').modal('hide');
 
         source_leads();

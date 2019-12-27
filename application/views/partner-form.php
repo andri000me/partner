@@ -198,7 +198,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Sosial Media / Website</label>
-                                                        <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" required placeholder="https://www.instagram.com/bfisyariah">
+                                                        <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" placeholder="https://www.instagram.com/bfisyariah">
                                                     </div>
                                                 </div>
                                             </div>

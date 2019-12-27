@@ -25,9 +25,9 @@
 						<input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
 						<!-- ID Agent -->
 						<input type="hidden" name="id_agent" id="id_agent" value="<?= $data->id_agent ?>">
-						<!-- ID Agent -->
+						<!-- ID User -->
 						<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
-						<!-- ID Agent -->
+						<!-- ID Branch -->
 						<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
 						<fieldset disabled>
 						<div class="form-row">
@@ -35,14 +35,16 @@
 								<div class="form-group ml-3 mr-3">
 									<label>Leads ID</label>
 									<input type="text" class="form-control placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15">
+									<input type="hidden" name="leads_id" value="<?= $data->leads_id ?>">
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
-									<label>Leads ID</label>
+									<label>Nama Konsumen</label>
 									<input type="text" class="form-control placement" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="009377736433744" maxlength="15">
+									<input type="hidden" name="nama_konsumen" value="<?= $data->nama_konsumen ?>">
 								</div>
 							</div>
 						</div>
@@ -51,12 +53,14 @@
 								<div class="form-group ml-3 mr-3">
 									<label>ID KTP</label>
 									<input type="phone" class="form-control placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+									<input type="hidden" name="no_ktp" value="<?= $data->no_ktp ?>">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Telepon / Whatsapp</label>
 									<input type="text" class="form-control placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
+									<input type="hidden" name="telepon" value="<?= $data->telepon ?>">
 								</div>
 							</div>
 						</div>
@@ -73,12 +77,14 @@
 										<option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
 										<option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
 									</select>
+									<input type="hidden" name="produk" value="<?= $data->produk ?>">
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
 									<label>Detail Produk</label>
 									<input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
+									<input type="hidden" name="detail_produk" value="<?= $data->detail_produk ?>">
 								</div>
 							</div>
 						</div>
@@ -100,6 +106,7 @@
 										<option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
 										<option <?= $data->soa == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
 									</select>
+									<input type="hidden" name="soa" value="<?= $data->soa ?>">
 								</div>
 							</div>
 							<div class="col-md-6 form">
@@ -107,19 +114,21 @@
 								<label class="travel">Pilih Data Travel</label>
 								<label class="jasa">Pilih Data Penyedia Jasa</label>
 								<label class="agent">Pilih Data Agent</label>
-									<input type="text" class="form-control text-size" value="" name="data_partner" id="data_partner" placeholder="">
+									<input type="text" class="form-control text-size" value="" name="data_partner" id="data_partner" value="<?= $data->nama_vendor ?>">
 								</div>
 							</div>
 							<div class="col-md-6 nik">
 								<div class="form-group ml-3 mr-3">
 									<label>NIK</label>
 									<input type="phone" class="form-control text-size placement number-only" value="<?= $data->nik_egc ?>" name="nik_egc" id="nik_egc" placeholder="078612" maxlength="6" />
+									<input type="hidden" name="nik_egc" value="<?= $data->nik_egc ?>">
 								</div>
 							</div>
 							<div class="col-md-6 event">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Event</label>
 									<input type="text" class="form-control text-size" value="<?= $data->nama_event ?>" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+									<input type="hidden" name="nama_event" value="<?= $data->nama_event ?>">
 								</div>
 							</div>
 						</div>
@@ -128,24 +137,28 @@
 								<div class="form-group ml-3 mr-3">
 									<label>Posisi</label>
 									<input type="text" class="form-control text-size" value="<?= $data->posisi_egc ?>" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi">
+									<input type="hidden" name="posisi_egc" value="<?= $data->posisi_egc ?>">
 								</div>
 							</div>
 							<div class="col-md-6 cabang">
 								<div class="form-group ml-3 mr-3">
 									<label>Cabang</label>
 									<input type="text" class="form-control text-size" value="<?= $data->cabang_egc ?>" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
+									<input type="hidden" name="cabang_egc" value="<?= $data->cabang_egc ?>">
 								</div>
 							</div>
 							<div class="col-md-6 kontrak-ro">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Kontrak</label>
 									<input type="phone" class="form-control text-size number-only" value="<?= $data->nomor_kontrak ?>" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
+									<input type="hidden" name="nomor_kontrak" value="<?= $data->nomor_kontrak ?>">
 								</div>
 							</div>
 							<div class="col-md-6 konsumen-ro">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Konsumen</label>
 									<input type="text" class="form-control text-size" value="<?= $data->referral_konsumen ?>" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
+									<input type="hidden" name="referral_konsumen" value="<?= $data->referral_konsumen ?>">
 								</div>
 							</div>
 						</div>
@@ -165,6 +178,7 @@
 											Tidak
 										</label>
 									</div>
+									<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>">
 								</div>
 							</div>
 							<div class="col-md-6">
@@ -176,6 +190,7 @@
 											<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
 										<?php } ?>
 									</select>
+									<input type="hidden" name="cabang_cross" value="<?= $data->cabang_cross ?>">
 								</div>
 							</div>
 						</div>

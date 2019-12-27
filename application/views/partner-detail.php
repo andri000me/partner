@@ -111,7 +111,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group  ml-3 mr-3">
+                            <div class="form-group ml-3 mr-3">
                                 <label>Status Tempat Usaha</label>
                                 <select class="form-control text-size" name="status_tempat_usaha" id="status_tempat_usaha" required>
                                     <option selected disabled value="">Pilih Status Tempat usaha</option>
@@ -129,7 +129,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
-                                        <label>Jumalah Karyawan</label>
+                                        <label>Jumlah Karyawan</label>
                                         <input type="text" class="form-control number-only" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>"" required placeholder=" 25">
                                     </div>
                                 </div>
@@ -155,15 +155,15 @@
                     <div class="tab-pane p-3" id="profile2" role="tabpanel">
                         <h4 class="mt-0 header-title mb-4">Timeline Maintain</h4>
                         <ol class="activity-feed mb-0">
-                            <?php if ($maintain->num_rows() > 0) {
-                                foreach ($maintain->result() as $data) {  ?>
+                            <?php if ($maintains->num_rows() > 0) {
+                                foreach ($maintains->result() as $maintain) {  ?>
                                     <li class="feed-item  text-size">
                                         <div class="feed-item-list">
-                                            <span class="date">Maintain <?= $data->tanggal_maintain ?></span>
-                                            <span class="activity-text"><?= $data->catatan ?></span>
+                                            <span class="date">Maintain <?= $maintain->tanggal_maintain ?></span>
+                                            <span class="activity-text"><?= $maintain->catatan ?></span>
                                             <div class="img-fluid">
-                                                <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $data->photo_activity) ?>" title="Foto Profile.">
-                                                    <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/maintains/' .   $data->photo_activity) ?>" width="100" height="100">
+                                                <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" title="Foto Profile.">
+                                                    <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" width="100" height="100">
                                                 </a>
                                             </div>
                                         </div>

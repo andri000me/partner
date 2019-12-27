@@ -149,6 +149,9 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event'])          ? $post['nama_event'] : NULL,
 
+            'nama_vendor'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+
+
             'updated_at'            => date('Y-m-d H:i:s'),
 
             'id_partner'            => !empty($post['id_partner'])          ? $post['id_partner'] : NULL,
@@ -257,14 +260,6 @@ class Leads extends CI_Controller
 
             redirect('Leads');
         }
-        // } else {
-        //     $data = [
-        //         'mapping' => $this->mapping_leads->get($this->where),
-        //         'branches' => $this->branch_model->get(),
-        //         'users' => $this->user_model->get_all()
-        //     ];
-        //     $this->template->load('template/index', 'leads-form', $data);
-        // }
     }
 
     public function update()
@@ -287,6 +282,9 @@ class Leads extends CI_Controller
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+
+            'nama_vendor'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
@@ -394,6 +392,14 @@ class Leads extends CI_Controller
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+
+            'nama_vendor'           => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+
+            //ID Agent
+            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
+            //ID Partner
+            'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),

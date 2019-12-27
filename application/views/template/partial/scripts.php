@@ -12,24 +12,26 @@
 
 <script>
     $(document).ready(function() {
-        $('#hide, .pic_ttd, .surveyor').hide();
-        var radioValue = $("input[name='cross_branch']:checked");
+        $('#hide, .users').hide();
+        var radioValue = $("input[name='cross_branch']:checked").val();
         if (radioValue == 'Tidak') {
             $("#hide").hide();
-            $(".pic_ttd, .surveyor").show();
+            $(".users").show();
         } else if (radioValue == 'Ya') {
             $("#hide").show()
-            $('.pic_ttd, .surveyor').hide();
+            $('.users').hide();
         }
+
         $('.cross_branch').click(function() {
             var cross_branch = $(this).val();
             if (cross_branch == 'Ya') {
                 $('#hide').show();
-                $('.pic_ttd, .surveyor').hide();
+                $('.users').hide();
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
-                $(".pic_ttd, .surveyor").show();
+                $(".users").show();
                 $("#cabang_cross").val("");
+                show_pic_ttd();
             }
         })
     })
@@ -341,6 +343,7 @@
     // return false;
 </script>
 
+<!-- Memunculkan list nama anggota cabang di field surveyor & pic ttd -->
 <script>
     function show_pic_ttd() {
         var cabang_cross = $("#cabang_cross").val();
@@ -378,6 +381,7 @@
     })
 </script>
 
+<!-- Loading Screen -->
 <script>
     var myVar;
 
@@ -392,6 +396,7 @@
     }
 </script>
 
+<!-- Memunculkan nama surveyor dan pic tdd -->
 <script>
     function show_leads() {
         var id_leads = $("#id_leads").val();
