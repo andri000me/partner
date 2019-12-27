@@ -314,7 +314,7 @@
                 alert('Success, \n ID Branch: ' + id_branch + '\n Status: ' + has_superior);
             }
         });
-        return false;
+        // return false;
     });
 </script>
 

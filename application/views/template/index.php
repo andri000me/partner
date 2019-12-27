@@ -83,7 +83,6 @@
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
-    <script src="<?= base_url('template/assets/js/common_scripts_min.js') ?>"></script>
 
     <script src="<?= base_url('template/assets/plugins/js/jquery.sparkline.min.js') ?>"></script>
 
@@ -116,9 +115,6 @@
     <!-- Sweet-Alert  -->
     <script src="<?= base_url('template/assets/plugins/js/sweetalert2.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/pages/sweet-alert.init.js') ?>"></script>
-
-    <!--Dropzone-->
-    <script src="<?= base_url('template/assets/plugins/js/dropzone.js') ?>"></script>
 
     <!-- Plugins Init js -->
     <script src="<?= base_url('template/assets/pages/form-advanced.js') ?>"></script>
