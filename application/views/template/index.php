@@ -38,6 +38,7 @@
 
     <!-- jQuery  -->
     <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/common_scripts_min.js') ?>"></script>
 
     <!-- Magnific popup -->
     <link href="<?= base_url('template/assets/plugins/css/magnific-popup.css') ?>" rel="stylesheet" type="text/css">
@@ -83,6 +84,7 @@
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
+
 
     <script src="<?= base_url('template/assets/plugins/js/jquery.sparkline.min.js') ?>"></script>
 
@@ -138,6 +140,7 @@
     <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
 
     <!-- Custom Scripts -->
+
     <?php $this->load->view('template/partial/scripts') ?>
 </body>
 
