@@ -55,7 +55,7 @@
                                     <?= $mapping_leads->detail_produk ?>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Edit</a></center>
+                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Detail</a></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -64,7 +64,6 @@
             </div>
         </div>
     </div> <!-- end col -->
-
 </div>
 
 <!-- Modal -->

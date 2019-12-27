@@ -29,7 +29,6 @@
                         <select class="form-control" name="jenis_kegiatan" id="jenis_kegiatan">
                             <option selected>Pilih Jenis Kegiatan</option>
                             <option value="Update produk">Update produk</option>
-                            <option value="Silaturahmi">Silaturahmi</option>
                             <option value="Presentasi">Presentasi</option>
                             <option value="Follow Up Leads">Follow Up Leads</option>
                             <option value="Update Usaha">Update Usaha</option>
@@ -38,7 +37,7 @@
                     </div>
                     <div class="form-group ml-3 mr-3">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
+                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
                     </div>
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>
@@ -495,3 +494,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('#jenis_kegiatan').change(function() {
+        if ($('#jenis_kegiatan').val() == 'Lainnya') {
+            $('#catatan').attr('required', 'required');
+        } else {
+            $('#catatan').removeAttr('required');
+        }
+    })
+</script>

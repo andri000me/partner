@@ -29,6 +29,7 @@
 						<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
 						<!-- ID Agent -->
 						<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+						<fieldset disabled>
 						<div class="form-row">
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
@@ -39,12 +40,9 @@
 						</div>
 						<div class="form-row">
 							<div class="col-md-12">
-								<label class="ml-3">Nama Konsumen</label>
-								<div class="input-group ml-3 mb-3">
-									<input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-									<div class="input-group-append">
-										<button class="btn btn-primary mr-4" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
-									</div>
+								<div class="form-group ml-3 mr-3">
+									<label>Leads ID</label>
+									<input type="text" class="form-control placement" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="009377736433744" maxlength="15">
 								</div>
 							</div>
 						</div>
@@ -105,14 +103,11 @@
 								</div>
 							</div>
 							<div class="col-md-6 form">
-								<label class="ml-3 travel">Pilih Data Travel</label>
-								<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-								<label class="ml-3 agent">Pilih Data Agent</label>
-								<div class="input-group ml-3 mb-3">
-									<input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-									<div class="input-group-append">
-										<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
-									</div>
+								<div class="form-group ml-3 mr-3">
+								<label class="travel">Pilih Data Travel</label>
+								<label class="jasa">Pilih Data Penyedia Jasa</label>
+								<label class="agent">Pilih Data Agent</label>
+									<input type="text" class="form-control text-size" value="" name="data_partner" id="data_partner" placeholder="">
 								</div>
 							</div>
 							<div class="col-md-6 nik">
@@ -184,9 +179,10 @@
 								</div>
 							</div>
 						</div>
+						</fieldset>
 						<div class="form-row">
 							<div class="col-md-6">
-								<div id="hide" class="form-group ml-3 mr-3">
+								<div class="form-group ml-3 mr-3 pic_ttd">
 									<label>Pic Tanda Tangan</label>
 									<select class="form-control text-size" name="pic_ttd" id="pic_ttd">
 										<option value="" selected>Pilih Pic Tanda Tangan</option>
@@ -197,7 +193,7 @@
 								</div>
 							</div>
 							<div class="col-md-6">
-								<div id="hide" class="form-group ml-3 mr-3">
+								<div class="form-group ml-3 mr-3 surveyor">
 									<label>Surveyor</label>
 									<select class="form-control text-size" name="surveyor" id="surveyor">
 										<option value="" selected>Pilih Surveyor</option>
