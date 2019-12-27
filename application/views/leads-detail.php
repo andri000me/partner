@@ -11,7 +11,7 @@
 		
 		<div class="card">
 			<div class="card-body">
-				<div id="hilang" style="height: 500px;">
+				<div id="hilang" style="height: 650px;">
 					<div id="loader"></div>
 				</div>
 				<div style="display:none;" id="myDiv" class="animate-bottom">
@@ -29,13 +29,12 @@
 						<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
 						<!-- ID Branch -->
 						<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
-						<fieldset disabled>
+						
 						<div class="form-row">
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
 									<label>Leads ID</label>
-									<input type="text" class="form-control placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15">
-									<input type="hidden" name="leads_id" value="<?= $data->leads_id ?>">
+									<input type="text" class="form-control placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15" readonly>
 								</div>
 							</div>
 						</div>
@@ -43,8 +42,7 @@
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Konsumen</label>
-									<input type="text" class="form-control placement" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="009377736433744" maxlength="15">
-									<input type="hidden" name="nama_konsumen" value="<?= $data->nama_konsumen ?>">
+									<input type="text" class="form-control placement" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="009377736433744" maxlength="15" readonly>
 								</div>
 							</div>
 						</div>
@@ -52,83 +50,82 @@
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>ID KTP</label>
-									<input type="phone" class="form-control placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
-									<input type="hidden" name="no_ktp" value="<?= $data->no_ktp ?>">
+									<input type="phone" class="form-control placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16"  readonly>
 								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Telepon / Whatsapp</label>
-									<input type="text" class="form-control placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
-									<input type="hidden" name="telepon" value="<?= $data->telepon ?>">
+									<input type="text" class="form-control placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15"  readonly>
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
-								<div class="form-group mr-3 ml-3">
-									<label>Produk</label>
-									<select class="form-control" name="produk" id="produk">
-										<option selected>Pilih Kategori Produk</option>
-										<option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-										<option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-										<option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-										<option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-										<option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-										<option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
-									</select>
-									<input type="hidden" name="produk" value="<?= $data->produk ?>">
-								</div>
+								<fieldset disabled>
+									<div class="form-group mr-3 ml-3">
+										<label>Produk</label>
+										<select class="form-control" name="produk" id="produk">
+											<option selected>Pilih Kategori Produk</option>
+											<option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+											<option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+											<option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+											<option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+											<option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+											<option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+										</select>
+									</div>
+								</fieldset>
+								<input type="hidden" name="produk" value="<?= $data->produk ?>">
 							</div>
 							<div class="col-md-6">
 								<div class="form-group mr-3 ml-3">
 									<label>Detail Produk</label>
-									<input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
-									<input type="hidden" name="detail_produk" value="<?= $data->detail_produk ?>">
+									<input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk"  readonly>
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
-								<div class="form-group mr-3 ml-3">
-									<label>Asal Aplikasi</label>
-									<select class="form-control" name="soa" id="soa">
-										<option value="" selected>Pilih Source Aplikasi</option>
-										<option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-										<option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-										<option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-										<option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-										<option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-										<option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-										<option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-										<option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-										<option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-										<option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
-										<option <?= $data->soa == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
-									</select>
-									<input type="hidden" name="soa" value="<?= $data->soa ?>">
-								</div>
+								<fieldset disabled>
+									<div class="form-group mr-3 ml-3">
+										<label>Asal Aplikasi</label>
+										<select class="form-control" name="soa" id="soa">
+											<option value="" selected>Pilih Source Aplikasi</option>
+											<option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+											<option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+											<option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+											<option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+											<option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+											<option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+											<option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+											<option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+											<option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+											<option <?= $data->soa == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
+											<option <?= $data->soa == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
+										</select>
+									</div>
+								</fieldset>
+								<input type="hidden" name="soa" value="<?= $data->soa ?>">
 							</div>
 							<div class="col-md-6 form">
 								<div class="form-group ml-3 mr-3">
 								<label class="travel">Pilih Data Travel</label>
 								<label class="jasa">Pilih Data Penyedia Jasa</label>
 								<label class="agent">Pilih Data Agent</label>
-									<input type="text" class="form-control text-size" value="" name="data_partner" id="data_partner" value="<?= $data->nama_vendor ?>">
+									<input type="text" class="form-control text-size" value="" name="data_partner" id="data_partner" placeholder="" readonly>
 								</div>
 							</div>
 							<div class="col-md-6 nik">
 								<div class="form-group ml-3 mr-3">
 									<label>NIK</label>
-									<input type="phone" class="form-control text-size placement number-only" value="<?= $data->nik_egc ?>" name="nik_egc" id="nik_egc" placeholder="078612" maxlength="6" />
-									<input type="hidden" name="nik_egc" value="<?= $data->nik_egc ?>">
+									<input type="phone" class="form-control text-size placement number-only" value="<?= $data->nik_egc ?>" name="nik_egc" id="nik_egc" placeholder="078612" maxlength="6" readonly>
 								</div>
 							</div>
 							<div class="col-md-6 event">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Event</label>
-									<input type="text" class="form-control text-size" value="<?= $data->nama_event ?>" name="nama_event" id="nama_event" placeholder="Input Nama Event">
-									<input type="hidden" name="nama_event" value="<?= $data->nama_event ?>">
+									<input type="text" class="form-control text-size" value="<?= $data->nama_event ?>" name="nama_event" id="nama_event" placeholder="Input Nama Event" readonly>
 								</div>
 							</div>
 						</div>
@@ -136,34 +133,31 @@
 							<div class="col-md-6 posisi">
 								<div class="form-group ml-3 mr-3">
 									<label>Posisi</label>
-									<input type="text" class="form-control text-size" value="<?= $data->posisi_egc ?>" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi">
-									<input type="hidden" name="posisi_egc" value="<?= $data->posisi_egc ?>">
+									<input type="text" class="form-control text-size" value="<?= $data->posisi_egc ?>" name="posisi_egc" id="posisi_egc" placeholder="Input Posisi" readonly>
 								</div>
 							</div>
 							<div class="col-md-6 cabang">
 								<div class="form-group ml-3 mr-3">
 									<label>Cabang</label>
-									<input type="text" class="form-control text-size" value="<?= $data->cabang_egc ?>" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang">
-									<input type="hidden" name="cabang_egc" value="<?= $data->cabang_egc ?>">
+									<input type="text" class="form-control text-size" value="<?= $data->cabang_egc ?>" name="cabang_egc" id="cabang_egc" placeholder="Input Cabang" readonly>
 								</div>
 							</div>
 							<div class="col-md-6 kontrak-ro">
 								<div class="form-group ml-3 mr-3">
 									<label>Nomor Kontrak</label>
-									<input type="phone" class="form-control text-size number-only" value="<?= $data->nomor_kontrak ?>" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
-									<input type="hidden" name="nomor_kontrak" value="<?= $data->nomor_kontrak ?>">
+									<input type="phone" class="form-control text-size number-only" value="<?= $data->nomor_kontrak ?>" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774"  readonly>
 								</div>
 							</div>
 							<div class="col-md-6 konsumen-ro">
 								<div class="form-group ml-3 mr-3">
 									<label>Nama Konsumen</label>
-									<input type="text" class="form-control text-size" value="<?= $data->referral_konsumen ?>" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
-									<input type="hidden" name="referral_konsumen" value="<?= $data->referral_konsumen ?>">
+									<input type="text" class="form-control text-size" value="<?= $data->referral_konsumen ?>" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen" readonly>
 								</div>
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="col-md-6">
+								<fieldset disabled>
 								<div class="form-group ml-3 mr-3">
 									<label>Cross Branch?</label><br>
 									<div class="form-check form-check-inline mt-2">
@@ -180,21 +174,24 @@
 									</div>
 									<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>">
 								</div>
+								</fieldset>
+								<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>">
 							</div>
 							<div class="col-md-6">
-								<div id="hide" class="form-group ml-3 mr-3">
-									<label>Pilih cabang</label>
-									<select class="form-control" name="cabang_cross" id="cabang_cross">
-										<option selected disabled value="">Pilih Cabang</option>
-										<?php foreach ($branches->result() as $branch) { ?>
-											<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-										<?php } ?>
-									</select>
-									<input type="hidden" name="cabang_cross" value="<?= $data->cabang_cross ?>">
-								</div>
+								<fieldset disabled>
+									<div id="hide" class="form-group ml-3 mr-3">
+										<label>Pilih cabang</label>
+										<select class="form-control" name="cabang_cross" id="cabang_cross">
+											<option selected disabled value="">Pilih Cabang</option>
+											<?php foreach ($branches->result() as $branch) { ?>
+												<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+											<?php } ?>
+										</select>
+									</div>
+								</fieldset>
+								<input type="hidden" name="cabang_cross" value="<?= $data->cabang_cross?>">
 							</div>
 						</div>
-						</fieldset>
 						<div class="form-row">
 							<div class="col-md-6">
 								<div class="form-group ml-3 mr-3 pic_ttd">
@@ -536,13 +533,13 @@
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -573,30 +570,32 @@
                                     <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table>
+                                                <table class="text-size">
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                            <p class="inbox-item-author mt-0 mb-1"><b>Sudah tanda tangan Kerjasama</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                         </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>

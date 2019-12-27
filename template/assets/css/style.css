@@ -4228,6 +4228,10 @@ button[disabled] {
 	display: none;
 }
 
+/* .dataTables_filter {
+	display: none;
+} */
+
 /* loading animation */
 
 /*# sourceMappingURL=style.css.map */

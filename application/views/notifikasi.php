@@ -14,11 +14,10 @@
     <div class="col-12">
         <!-- Right Sidebar -->
         <div class="card">
-
             <div class="card-body">
-                <a class="float-right" href="#" id="mark_all">Mark all as read</a>
+                <a class="btn btn-primary float-right mb-1 mt-0" href="#" id="mark_all">Mark all as read</a>
                 <div class="table-responsive">
-                    <table class="table table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table class="table table-hover table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
                             <?php if ($today->num_rows() > 0) { ?>
                                 <tr>
@@ -61,7 +60,7 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-secondary " data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->agent_id != NULL) { ?>
                                             <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>

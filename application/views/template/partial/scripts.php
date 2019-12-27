@@ -316,7 +316,7 @@
                 alert('Success, \n ID Branch: ' + id_branch + '\n Status: ' + has_superior);
             }
         });
-        return false;
+        // return false;
     });
 </script>
 
@@ -386,7 +386,7 @@
     var myVar;
 
     function myFunction() {
-        myVar = setTimeout(showPage, 3000);
+        myVar = setTimeout(showPage, 1000);
     }
 
     function showPage() {
