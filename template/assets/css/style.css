@@ -3860,12 +3860,12 @@ button[disabled] {
 
 	.boxx {
 		width: 475px;
-		height: 250px;
+		max-height: 250px;
 	}
 
 	.box {
 		width: 475px;
-		height: 600px;
+		height: 540px;
 	}
 
 	#comment-text {
@@ -3909,12 +3909,12 @@ button[disabled] {
 
 	.box {
 		width: 300px;
-		height: 300px;
+		height: 250px;
 	}
 
 	.boxx {
 		width: 300px;
-		height: 125px;
+		max-height: 125px;
 	}
 
 	.boxxx {

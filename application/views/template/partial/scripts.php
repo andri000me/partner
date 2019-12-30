@@ -17,9 +17,11 @@
         if (radioValue == 'Tidak') {
             $("#hide").hide();
             $(".users").show();
+            $('#cabang_cross').removeAttr('required');
         } else if (radioValue == 'Ya') {
             $("#hide").show()
             $('.users').hide();
+            $('#cabang_cross').attr('required', 'required');
         }
 
         $('.cross_branch').click(function() {
@@ -27,10 +29,12 @@
             if (cross_branch == 'Ya') {
                 $('#hide').show();
                 $('.users').hide();
+                $('#cabang_cross').attr('required', 'required');
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
                 $(".users").show();
                 $("#cabang_cross").val("");
+                $('#cabang_cross').removeAttr('required');
                 show_pic_ttd();
             }
         })
