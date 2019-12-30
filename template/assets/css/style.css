@@ -3639,6 +3639,98 @@ button[disabled] {
 /* ======
 34. Responsive
    ====== */
+
+/* loading animation */
+#loader {
+	position: absolute;
+	left: 54%;
+	top: 55%;
+	width: 80px;
+	height: 80px;
+	margin: -75px 0 0 -75px;
+	border: 10px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 10px solid #3498db;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+
+#loadermobile {
+	position: absolute;
+	left: 65%;
+	top: 55%;
+	width: 50px;
+	height: 50px;
+	margin: -75px 0 0 -75px;
+	border: 5px solid #f3f3f3;
+	border-radius: 50%;
+	border-top: 5px solid #3498db;
+	-webkit-animation: spin 2s linear infinite;
+	animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+	position: relative;
+	-webkit-animation-name: animatebottom;
+	-webkit-animation-duration: 1s;
+	animation-name: animatebottom;
+	animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+	from {
+		bottom: -100px;
+		opacity: 0
+	}
+
+	to {
+		bottom: 0px;
+		opacity: 1
+	}
+}
+
+@keyframes animatebottom {
+	from {
+		bottom: -100px;
+		opacity: 0
+	}
+
+	to {
+		bottom: 0;
+		opacity: 1
+	}
+}
+
+#myDiv {
+	display: none;
+}
+
+/* .dataTables_filter {
+	display: none;
+} */
+
+
 @media (max-width: 620px) {
 	.mo-mb-2 {
 		margin-bottom: 10px;
@@ -3767,13 +3859,17 @@ button[disabled] {
 	}
 
 	.boxx {
-		width: px;
-		max-height: 150px;
+		width: 475px;
+		height: 250px;
 	}
 
 	.box {
 		width: 475px;
-		height: 450px;
+		height: 600px;
+	}
+
+	#comment-text {
+		height: 120px;
 	}
 
 	.item {
@@ -3788,6 +3884,10 @@ button[disabled] {
 	.img-size {
 		width: 200px;
 		height: 200px;
+	}
+
+	#loadermobile {
+		display: none;
 	}
 }
 
@@ -3809,7 +3909,7 @@ button[disabled] {
 
 	.box {
 		width: 300px;
-		height: 200px;
+		height: 300px;
 	}
 
 	.boxx {
@@ -3819,7 +3919,7 @@ button[disabled] {
 
 	.boxxx {
 		width: 300px;
-		height: 125px;
+		max-height: 125px;
 	}
 
 	.media {
@@ -3846,6 +3946,10 @@ button[disabled] {
 
 	.btn-maintain {
 		margin-right: 15px;
+	}
+
+	#loadermobile {
+		display: none;
 	}
 }
 
@@ -3931,7 +4035,6 @@ button[disabled] {
 		width: 660px;
 	}
 
-
 }
 
 @media (max-width: 480px) {
@@ -3951,6 +4054,33 @@ button[disabled] {
 
 	.card-content {
 		margin-top: unset;
+	}
+
+	.img-size {
+		width: 100px;
+		height: 100px;
+	}
+
+	.boxx {
+		width: 665px;
+		height: 85px;
+	}
+
+	.box {
+		width: 670px;
+		height: 250px;
+	}
+
+	.media {
+		width: 660px;
+	}
+
+	#loadermobile {
+		display: unset;
+	}
+
+	#loader {
+		display: none;
 	}
 }
 
@@ -4154,83 +4284,6 @@ button[disabled] {
 .ldBar.no-percent .ldBar-label:after {
 	content: "";
 }
-
-
-/* loading animation */
-#loader {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 150px;
-	height: 150px;
-	margin: -75px 0 0 -75px;
-	border: 16px solid #f3f3f3;
-	border-radius: 50%;
-	border-top: 16px solid #3498db;
-	-webkit-animation: spin 2s linear infinite;
-	animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-/* Add animation to "page content" */
-.animate-bottom {
-	position: relative;
-	-webkit-animation-name: animatebottom;
-	-webkit-animation-duration: 1s;
-	animation-name: animatebottom;
-	animation-duration: 1s
-}
-
-@-webkit-keyframes animatebottom {
-	from {
-		bottom: -100px;
-		opacity: 0
-	}
-
-	to {
-		bottom: 0px;
-		opacity: 1
-	}
-}
-
-@keyframes animatebottom {
-	from {
-		bottom: -100px;
-		opacity: 0
-	}
-
-	to {
-		bottom: 0;
-		opacity: 1
-	}
-}
-
-#myDiv {
-	display: none;
-}
-
-/* .dataTables_filter {
-	display: none;
-} */
 
 /* loading animation */
 
