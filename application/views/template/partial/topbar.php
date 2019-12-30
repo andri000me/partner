@@ -2,10 +2,10 @@
 <div class="topbar-left">
     <a href="index.html" class="logo">
         <span>
-            <img src="<?= base_url('template/assets/images/logobfi.png') ?>" alt="" width="110px">
+            <img src="<?= base_url('template/assets/images/logobfi.png') ?>" alt="" width="100">
         </span>
         <i>
-            <img src="<?= base_url('template/assets/images/bfi.png') ?>" alt="" height="40">
+            <img src="<?= base_url('template/assets/images/bfi.png') ?>" alt="" height="22">
         </i>
     </a>
 </div>
