@@ -13,7 +13,7 @@
 </div>
 
 <div class="row">
-    <div class="col-lg-7">
+    <div class="col-lg-12">
         <div class="card m-b-20">
 
             <div class="card-body">
@@ -141,71 +141,6 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-lg-5">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="mt-0 header-title mb-4">Follow Up By</h4>
-                <form class="" action="" method="post">
-                    <div class="form-group ml-3 mr-3">
-                        <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
-                            <option selected disabled value="">Pilih Follow Up By</option>
-                            <option value="Kunjungan">Kunjungan</option>
-                            <option value="Telepon">Telepon</option>
-                            <option value="Whatsapp">Whatsapp</option>
-                            <option value="Email">Email</option>
-                        </select>
-                    </div>
-                    <div class="form-group ml-3 mr-3">
-                        <label>Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="Jelaskan detail kegiatan anda" style="height:80px;"></textarea>
-                    </div>
-                    <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
-                        <div>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                Simpan
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h4 class="mt-0 header-title mb-4">Timeline</h4>
-                <div class="overflow-auto" style="height: 149px;">
-                    <div class="tab-pane p-3" id="profile2" role="tabpanel">
-                        <ol class="activity-feed mb-0">
-                            <li class="feed-item text-size">
-                                <div class="feed-item-list">
-                                    <span class="activity-text"><b>Follow Up By whatsapp</span><br>
-                                    <span class="activity-text"><b>Oleh ibrahim</b></span>
-                                    <span class="date">30 desember 2019</span>
-                                    <span class="activity-text">mantep</span>
-                                </div>
-                            </li>
-                            <!-- <li class="feed-item  text-size">
-                                <div class="feed-item-list">
-                                    <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
-                                    <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
-                                    <span class="date">tanggal</span>
-                                    <span class="activity-text">Catatan</span>
-                                </div>
-                            </li>
-                            <li class="feed-item  text-size">
-                                <div class="feed-item-list">
-                                    <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
-                                    <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
-                                    <span class="date">tanggal</span>
-                                    <span class="activity-text">Catatan</span>
-                                </div>
-                            </li> -->
-                        </ol>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
