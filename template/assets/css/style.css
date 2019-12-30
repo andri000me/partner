@@ -3860,7 +3860,7 @@ button[disabled] {
 
 	.boxx {
 		width: 475px;
-		height: 250px;
+		max-height: 250px;
 	}
 
 	.box {
@@ -3914,7 +3914,7 @@ button[disabled] {
 
 	.boxx {
 		width: 300px;
-		height: 125px;
+		max-height: 125px;
 	}
 
 	.boxxx {
