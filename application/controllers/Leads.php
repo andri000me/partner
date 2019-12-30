@@ -116,7 +116,10 @@ class Leads extends CI_Controller
 
             'activities'    => $this->leads_activity->get($where),
             'comments'      => $this->comment_model->get($where),
-            'ticket'        => $this->ticket_model->get($where)->row()
+            'ticket'        => $this->ticket_model->get($where)->row(),
+
+            'follow_up'     => $this->leads_follow_up_model->get(['leads_follow_up.id_mapping_leads' => $this->leads_model->get($where)->row()->id_mapping_leads])
+
         ];
         $this->template->load('template/index', 'leads-detail', $data);
     }
@@ -240,6 +243,8 @@ class Leads extends CI_Controller
                 $ticket = [
                     'status'        => 0,
                     'date_pending'  => date('Y-m-d H:i:s'),
+                    'date_created'  => date('Y-m-d H:i:s'),
+                    'date_modified'  => date('Y-m-d H:i:s'),
                     'id_leads'       => $id,
                     'id_user'       => $this->fungsi->user_login()->id_user,
                     'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -349,7 +354,7 @@ class Leads extends CI_Controller
                 'status'        => 0,
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'date_created'  => date('Y-m-d H:i:s'),
-                'date_modified'  => date('Y-m-d H:i:s'),
+                'date_modified' => date('Y-m-d H:i:s'),
                 'id_leads'      => $post['id_leads'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -473,6 +478,7 @@ class Leads extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            // 'date_created'  => date('Y-m-d H:i:s'),
             'date_modified'  => date('Y-m-d H:i:s')
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch

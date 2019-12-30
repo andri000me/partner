@@ -42,22 +42,18 @@
                         <?php foreach ($this->fungsi->notification()->result() as $notifikasi) { ?>
                             <!-- item-->
                             <?php if ($notifikasi->id_lead != NULL) { ?>
-
                                 <a href="<?= base_url('leads/detail/' . $notifikasi->id_lead) ?>" class="dropdown-item notify-item notifikasi" data-id="<?= $notifikasi->id_notification ?>">
                                     <div class=" notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
                                     <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type . ' ' . $notifikasi->nama_pengirim ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                                 </a>
                             <?php } ?>
                             <?php if ($notifikasi->id_agent != NULL) { ?>
-
                                 <a href="<?= base_url('agent/detail/' . $notifikasi->agent_id) ?>" class="dropdown-item notify-item notifikasi" data-id="<?= $notifikasi->id_notification ?>">
-                                    <div class=" notify-icon bg-warning"><i class="mdi mdi-message"></i>
-                                    </div>
+                                    <div class=" notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
                                     <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type . ' ' . $notifikasi->nama_pengirim ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                                 </a>
                             <?php } ?>
                             <?php if ($notifikasi->partner_id != NULL) { ?>
-
                                 <a href="<?= base_url('partner/detail/' . $notifikasi->partner_id) ?>" class="dropdown-item notify-item notifikasi" data-id="<?= $notifikasi->id_notification ?>">
                                     <div class=" notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
                                     <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type . ' ' . $notifikasi->nama_pengirim ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>

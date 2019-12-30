@@ -17,6 +17,8 @@
 				<div style="display:none;" id="myDiv" class="animate-bottom">
 				<div class="tab-pane active p-3" id="home2" role="tabpanel">
 					<form class="" action="<?= base_url('Leads/update_detail') ?>" method="post">
+						<!-- ID Ticket -->
+						<input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
 						<!-- ID Mapping Leads -->
 						<input type="hidden" name="id_mapping_leads" id="id_mapping_leads" value="<?= $data->id_mapping_leads ?>">
 						<!-- ID Leads -->

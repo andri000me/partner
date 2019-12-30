@@ -24,7 +24,7 @@
                             <th>Cabang</th>
                             <th>Aktivitas Cabang</th>
                             <th>Status</th>
-                            <th>Tanggal Diubah</th>
+                            <th>Terakhir Diubah</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>

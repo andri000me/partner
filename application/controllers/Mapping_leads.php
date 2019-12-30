@@ -130,7 +130,7 @@ class Mapping_leads extends CI_Controller
             'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
             'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
             // Untuk SOA CGC / RO
-            'nomor_kontrak'     => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
+            'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
@@ -158,6 +158,6 @@ class Mapping_leads extends CI_Controller
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data Mapping Leads berhasil diupdate. <a href='#'>Lihat Data</a>");
 
-        redirect('Mapping_leads');
+        redirect($post['redirect']);
     }
 }

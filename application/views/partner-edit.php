@@ -521,7 +521,7 @@
                 Tim HO akan memverifikasi data anda, dan informasinya akan diberikan melalui menu <a href="#" style="color: blue;">motification</a> di website ini.
             </div>
             <div class="modal-footer">
-                <a href="index.html"><button class="btn btn-primary text-size">OK</button></a>
+                <a href="<?= base_url('partner') ?>"><button class="btn btn-primary text-size">OK</button></a>
             </div>
         </div>
     </div>

@@ -14,13 +14,15 @@
                     <h4 class="font-16"><?= $data->name ?><br><span class="badge badge-light">Nik <?= $data->nik ?></span></h4>
 
                     <ul class="nav nav-tabs mt-5" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#data-anggota" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-users"></i></span>
-                                <span class="d-none d-sm-block">List Karyawan</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
+                        <?php if ($this->fungsi->user_login()->level > 1) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#data-anggota" role="tab">
+                                    <span class="d-block d-sm-none"><i class="fas fa-users"></i></span>
+                                    <span class="d-none d-sm-block">List Karyawan</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <li class="nav-item active">
                             <a class="nav-link" data-toggle="tab" href="#edit-data" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-edit"></i></span>
                                 <span class="d-none d-sm-block">Edit Profile</span>
@@ -35,46 +37,48 @@
                     </ul>
                 </div>
                 <div class="tab-content">
-                    <div class="tab-pane active p-3" id="data-anggota" role="tabpanel">
-                        <div class="ml-3 mr-3">
-                            <h4 class="mt-0 header-title">table List Karyawan</h4>
-                            <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Nik</th>
-                                        <th>Jabatan</th>
-                                        <th>Cabang</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php foreach ($users->result() as $user) { ?>
+                    <?php if ($this->fungsi->user_login()->level > 1) { ?>
+                        <div class="tab-pane active p-3" id="data-anggota" role="tabpanel">
+                            <div class="ml-3 mr-3">
+                                <h4 class="mt-0 header-title">Table List Karyawan</h4>
+                                <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                    <thead>
                                         <tr>
-                                            <td>
-                                                <?= $user->name ?>
-                                            </td>
-                                            <td>
-                                                <?= $user->nik ?>
-                                            </td>
-                                            <td>
-                                                <?= $user->jabatan ?>
-                                            </td>
-                                            <td>
-                                                <?= $user->nama_cabang ?>
-                                            </td>
-                                            <td>
-                                                <center><a href="#" class="btn btn-secondary text-size">Edit</a></center>
-                                            </td>
-                                            <!-- <td></td> -->
+                                            <th>Nama</th>
+                                            <th>Nik</th>
+                                            <th>Jabatan</th>
+                                            <th>Cabang</th>
+                                            <!-- <th>Action</th> -->
                                         </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        <?php foreach ($users->result() as $user) { ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $user->name ?>
+                                                </td>
+                                                <td>
+                                                    <?= $user->nik ?>
+                                                </td>
+                                                <td>
+                                                    <?= $user->jabatan ?>
+                                                </td>
+                                                <td>
+                                                    <?= $user->nama_cabang ?>
+                                                </td>
+                                                <!-- <td>
+                                                    <center><a href="#" class="btn btn-secondary text-size">Edit</a></center>
+                                                </td> -->
+                                                <!-- <td></td> -->
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
 
-                    <div class="tab-pane p-3" id="edit-data" role="tabpanel">
+                    <div class="tab-pane active p-3" id="edit-data" role="tabpanel">
                         <div class="ml-3">
                             <h4 class="mt-0 header-title">Edit Data</h4>
                             <p class="text-muted m-b-30 text-size">Edit data profile sesuai kebutuhan anda.</p>

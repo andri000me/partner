@@ -29,6 +29,21 @@ class Branch extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
+        $id_branch = $post['has_superior'];
+
+        foreach ($id_branch as $branches => $val) {
+            $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
+
+            // echo 'id branch: ' . $branches . ' has superior: ' . $val . '<br>';
+        }
+
+        redirect('branch');
+    }
+
+    public function update_superior()
+    {
+        $post = $this->input->post(NULL, TRUE);
+
         $data = [
             'has_superior' => $post['has_superior']
         ];
