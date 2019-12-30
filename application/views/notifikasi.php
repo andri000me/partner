@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Notfikasi</h4>
+            <h4 class="page-title">Notifikasi</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">Notifikasi</li>
@@ -37,7 +37,7 @@
                                             <span class="far fa-times-circle"></span>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Cross Branch oleh') { ?>
-                                            <span class="fas fa-code-branch"></span>
+                                            <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                     </td>
                                     <td>
@@ -85,6 +85,9 @@
                                         <?php } ?>
                                         <?php if ($notif->type == 'Ditolak oleh') { ?>
                                             <span class="far fa-times-circle"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Cross Branch oleh') { ?>
+                                            <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                     </td>
                                     <td>

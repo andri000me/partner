@@ -25,6 +25,8 @@
 							<input type="hidden" name="id_user" value="<?= $data->id_user ?>" id="id_user">
 							<!-- ID Cabang -->
 							<input type="hidden" name="id_branch" value="<?= $data->id_branch ?>" id="id_branch">
+                            <!-- Post Redirect halaman ke form -->
+                            <input type="hidden" name="redirect" value="<?= uri_string() ?>">
 
 							<div class="form-group ml-3 mr-3">
 								<label class="text-size">Nama Usaha</label>

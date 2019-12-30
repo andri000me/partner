@@ -127,9 +127,10 @@ class Leads extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
-        $this->form_validation->set_rules('id_mapping_leads', 'ID Mapping Leads', 'required', ['required' => 'Mohon pilih data dari Mapping Leads']);
+        // $this->form_validation->set_rules('id_mapping_leads', 'ID Mapping Leads', 'required', ['required' => 'Mohon pilih data dari Mapping Leads']);
+        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[leads.no_ktp]', ['is_unique' => 'Nomor KTP sudah dipakai, mohon ganti nomor KTP']);
+        $this->form_validation->set_rules('leads_id', 'Leads ID', 'is_unique[leads.leads_id]', ['is_unique' => 'Leads ID sudah dipakai, mohon ganti Leads ID']);
 
-        // if ($this->form_validation->run() != FALSE) {
         $data_mapping_leads = [
             'nama_konsumen'         => !empty($post['nama_konsumen'])       ? $post['nama_konsumen'] : NULL,
             'telepon'               => !empty($post['telepon'])             ? $post['telepon'] : NULL,
@@ -162,103 +163,115 @@ class Leads extends CI_Controller
 
         $this->mapping_leads->update($data_mapping_leads, $where_mapping_leads);
 
-        $data = [
-            'id_mapping_leads' => $post['id_mapping_leads'],
+        if ($this->form_validation->run() != FALSE) {
+            $data = [
+                'id_mapping_leads' => $post['id_mapping_leads'],
 
-            'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
-            'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-            'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
-            'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
-            'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-            'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
-            'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
-            'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
-            'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
+                'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
+                'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
+                'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
+                'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
+                'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
+                'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
+                'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
+                'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
+                'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
+                'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
 
-            //Timestamp
-            'created_at'        => date('Y-m-d H:i:s'),
-            'updated_at'        => date('Y-m-d H:i:s'),
+                //Timestamp
+                'created_at'        => date('Y-m-d H:i:s'),
+                'updated_at'        => date('Y-m-d H:i:s'),
 
-            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            // 'id_user'           => $post['id_user'],
-            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            // 'id_branch'         => $post['id_branch']
-        ];
-
-        if (isset($post['draft'])) {
-            $data['status'] = 'draft';
-        } else if (isset($post['process'])) {
-            $data['status'] = 'lengkap';
-        }
-
-        //Konfigurasi Upload
-        $config['upload_path']         = './uploads/leads';
-        $config['allowed_types']        = '*';
-        $config['max_size']             = 0;
-        $config['max_width']            = 0;
-        $config['max_height']           = 0;
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('ktp')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['ktp'] = $this->upload->data('file_name');
-        }
-
-
-        if (!$this->upload->do_upload('selfie_foto')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['selfie_foto'] = $this->upload->data('file_name');
-        }
-
-        if (!$this->upload->do_upload('foto_penyedia_jasa')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['foto_penyedia_jasa'] = $this->upload->data('file_name');
-        }
-
-        //Memasukkan data mapping ke database `leads`
-        $id = $this->leads_model->create($data);
-
-        //Membuat history activity inputan data leads
-        $leads_activity = [
-            'activity' => 'Data leads telah dibuat',
-            'date_activity' => date('Y-m-d H:i:s'),
-            'id_leads' => $id,
-            'id_user' => $this->fungsi->user_login()->id_user
-        ];
-
-        $this->leads_activity->create($leads_activity);
-
-        //Menambah antrian tiket untuk data leads
-        if (isset($post['process'])) {
-            //Menambah ke antrian tiket
-            $ticket = [
-                'status'        => 0,
-                'date_pending'  => date('Y-m-d H:i:s'),
-                'id_leads'       => $id,
-                'id_user'       => $this->fungsi->user_login()->id_user,
-                'id_branch'     => $this->fungsi->user_login()->id_branch
+                //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
+                // 'id_user'           => $post['id_user'],
+                //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
+                // 'id_branch'         => $post['id_branch']
             ];
-            $id_ticket = $this->ticket_model->create($ticket);
 
-            //Notifikasi
-            $notification = [
-                'pengirim'          => $this->fungsi->user_login()->id_user,
-                'penerima_cabang'   => $post['cabang_cross'],
-                'type'              => 'Cross Branch oleh',
-                'id_ticket'         => $id_ticket,
-                'created_at'        => date('Y-m-d H:i:s')
+            if (isset($post['draft'])) {
+                $data['status'] = 'draft';
+            } else if (isset($post['process'])) {
+                $data['status'] = 'lengkap';
+            }
+
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/leads';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('ktp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['ktp'] = $this->upload->data('file_name');
+            }
+
+
+            if (!$this->upload->do_upload('selfie_foto')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['selfie_foto'] = $this->upload->data('file_name');
+            }
+
+            if (!$this->upload->do_upload('foto_penyedia_jasa')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['foto_penyedia_jasa'] = $this->upload->data('file_name');
+            }
+
+            //Memasukkan data mapping ke database `leads`
+            $id = $this->leads_model->create($data);
+
+            //Membuat history activity inputan data leads
+            $leads_activity = [
+                'activity' => 'Data leads telah dibuat',
+                'date_activity' => date('Y-m-d H:i:s'),
+                'id_leads' => $id,
+                'id_user' => $this->fungsi->user_login()->id_user
             ];
-            $this->notification_model->create($notification);
-        }
-        if ($id) {
-            //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
 
-            redirect('Leads');
+            $this->leads_activity->create($leads_activity);
+
+            //Menambah antrian tiket untuk data leads
+            if (isset($post['process'])) {
+                //Menambah ke antrian tiket
+                $ticket = [
+                    'status'        => 0,
+                    'date_pending'  => date('Y-m-d H:i:s'),
+                    'id_leads'       => $id,
+                    'id_user'       => $this->fungsi->user_login()->id_user,
+                    'id_branch'     => $this->fungsi->user_login()->id_branch
+                ];
+                $id_ticket = $this->ticket_model->create($ticket);
+
+                //Notifikasi
+                $notification = [
+                    'pengirim'          => $this->fungsi->user_login()->id_user,
+                    'penerima_cabang'   => $post['cabang_cross'],
+                    'type'              => 'Cross Branch oleh',
+                    'id_ticket'         => $id_ticket,
+                    'created_at'        => date('Y-m-d H:i:s')
+                ];
+                $this->notification_model->create($notification);
+            }
+            if ($id) {
+                //Memberi pesan berhasil data menyimpan data mapping
+                $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
+                sleep(6);
+                redirect('Leads');
+            }
+        } else {
+            $data = [
+                'mappings' => $this->mapping_leads->get($this->where),
+                'branches' => $this->branch_model->get(),
+                'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
+
+                'agents' => $this->agent_model->get($this->where),
+                'partners' => $this->partner_model->get($this->where)
+            ];
+            $this->template->load('template/index', 'leads-form', $data);
         }
     }
 
@@ -335,6 +348,8 @@ class Leads extends CI_Controller
             $ticket = [
                 'status'        => 0,
                 'date_pending'  => date('Y-m-d H:i:s'),
+                'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
                 'id_leads'      => $post['id_leads'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -369,6 +384,7 @@ class Leads extends CI_Controller
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
 
+        sleep(6);
         redirect('Leads');
     }
 
@@ -457,6 +473,7 @@ class Leads extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            'date_modified'  => date('Y-m-d H:i:s')
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch
         ];
@@ -466,7 +483,7 @@ class Leads extends CI_Controller
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
 
-        redirect('Leads');
+        redirect($post['redirect']);
     }
 
     // AJAX Controller

@@ -90,7 +90,6 @@ class Partner extends CI_Controller
     public function save()
     {
         $post = $this->input->post(NULL, TRUE);
-
         // meng-update data mapping jika berubah
         $data_mapping = [
             'nama_usaha'        => $post['nama_usaha'],
@@ -105,7 +104,6 @@ class Partner extends CI_Controller
         $where_mapping = ['id_mapping' => $post['id_mapping']];
 
         $this->mapping_partner->update($data_mapping, $where_mapping);
-
         $data = [
             //ID Mapping
             'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
@@ -436,6 +434,6 @@ class Partner extends CI_Controller
         $this->ticket_model->update($ticket, $where_ticket);
 
 
-        redirect('Partner');
+        redirect($post['redirect']);
     }
 }
