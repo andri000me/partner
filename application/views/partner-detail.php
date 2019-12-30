@@ -254,7 +254,7 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active p-3" id="home1" role="tabpanel">
-                                <h6 class="header-title web mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
+                                <h6 class="header-title mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
                                 <div class="boxx overflow-auto">
                                     <?php if ($activities->num_rows() > 0) {
                                         foreach ($activities->result() as $activity) { ?>

@@ -84,6 +84,8 @@
     <script src="<?= base_url('template/assets/js/metisMenu.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/jquery.slimscroll.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/waves.min.js') ?>"></script>
+    <script src="<?= base_url('template/assets/js/jquery.bootstrap.wizard.js') ?>"></script>
+
 
     <script src="<?= base_url('template/assets/plugins/js/jquery.sparkline.min.js') ?>"></script>
 
@@ -139,6 +141,7 @@
     <script src="<?= base_url('template/assets/js/app.js') ?>"></script>
 
     <!-- Custom Scripts -->
+
     <?php $this->load->view('template/partial/scripts') ?>
 </body>
 
