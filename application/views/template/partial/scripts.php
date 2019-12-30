@@ -391,6 +391,7 @@
 
     function showPage() {
         document.getElementById("loader").style.display = "none";
+        document.getElementById("loadermobile").style.display = "none";
         document.getElementById("hilang").style.display = "none";
         document.getElementById("myDiv").style.display = "block";
     }

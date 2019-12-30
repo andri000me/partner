@@ -186,7 +186,7 @@
                                 <div class="col-md-6">
                                     <div id="hide" class="form-group ml-3 mr-3">
                                         <label>Pilih cabang</label>
-                                        <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+                                        <select class="form-control text-size" name="cabang_cross" id="cabang_cross" required>
                                             <option selected disabled value="">Pilih Cabang</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
                                                 <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>

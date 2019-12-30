@@ -12,6 +12,7 @@
             <div class="card-body">
                 <div id="hilang" style="height: 650px;">
                     <div id="loader"></div>
+                    <div id="loadermobile"></div>
                 </div>
                 <div style="display:none;" id="myDiv" class="animate-bottom">
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
