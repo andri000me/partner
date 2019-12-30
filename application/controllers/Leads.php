@@ -30,6 +30,8 @@ class Leads extends CI_Controller
         $this->load->model('notification_model');
         // Load Modul Leads Activity
         $this->load->model('leads_activity_model', 'leads_activity');
+        // Load Modul Leads Follow Up
+        $this->load->model('leads_follow_up_model');
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 

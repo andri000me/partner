@@ -21,13 +21,13 @@
 						<li class="nav-item">
 							<a class="nav-link active" data-toggle="tab" href="#home2" role="tab">
 								<span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-								<span class="d-none d-sm-block">Data partner</span>
+								<span class="d-none d-sm-block">Data Leads</span>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" data-toggle="tab" href="#profile2" role="tab">
 								<span class="d-block d-sm-none"><i class="ion-ios7-checkmark-outline"></i></span>
-								<span class="d-none d-sm-block">Data Maintain</span>
+								<span class="d-none d-sm-block">History Follow Up</span>
 							</a>
 						</li>
 					</ul>
@@ -318,11 +318,29 @@
 						</div>
 
 						<div class="tab-pane p-3" id="profile2" role="tabpanel">
-							<h4 class="mt-0 header-title mb-4">Timeline Maintain</h4>
+							<h4 class="mt-0 header-title mb-4">Timeline History Follow Up</h4>
 							<ol class="activity-feed mb-0">
-								<li class="feed-item  text-size">
+								<?php
+                            if ($follow_up->num_rows() > 0) {
+                                foreach ($follow_up->result() as $data) {
+                            ?>
+                                    <li class="feed-item text-size">
+                                        <div class="feed-item-list">
+                                            <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+                                            <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+                                            <span class="date"><?= $data->tanggal_follow_up ?></span>
+                                            <span class="activity-text"><?= $data->catatan ?></span>
+                                        </div>
+                                    </li>
+                                <?php
+                                }
+                            } else { ?>
+                                <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+                            <?php } ?>
+								<!-- <li class="feed-item text-size">
 									<div class="feed-item-list">
-										<span class="date">Maintain 30 December 2019</span>
+									<span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+										<span class="date"><?= $data->tanggal_follow_up ?></span>
 										<span class="activity-text">mantep</span>
 										<div class="img-fluid">
 											<a class="image-popup-vertical-fit" href="" title="Foto Profile.">
@@ -330,7 +348,7 @@
 											</a>
 										</div>
 									</div>
-								</li>
+								</li> -->
 							</ol>
 						</div>
 					</div>
