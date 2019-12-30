@@ -79,17 +79,17 @@ class Partner extends CI_Controller
         $data = [
             'data'          => $this->partner_model->get($where)->row(),
             'ticket'        => $this->ticket_model->get($where)->row(),
-            'maintain'      => $this->maintain_partner->get($where),
+            'maintains'      => $this->maintain_partner->get($where),
             'activities'    => $this->partner_activity->get($where),
             'comments'      => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'partner-detail', $data);
+        // echo json_encode($data['data']);
     }
 
     public function save()
     {
         $post = $this->input->post(NULL, TRUE);
-
         // meng-update data mapping jika berubah
         $data_mapping = [
             'nama_usaha'        => $post['nama_usaha'],
@@ -104,7 +104,6 @@ class Partner extends CI_Controller
         $where_mapping = ['id_mapping' => $post['id_mapping']];
 
         $this->mapping_partner->update($data_mapping, $where_mapping);
-
         $data = [
             //ID Mapping
             'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
@@ -236,6 +235,7 @@ class Partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
+            sleep(6);
             redirect('Partner');
         }
     }
@@ -372,6 +372,7 @@ class Partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");
 
+            sleep(6);
             redirect('Partner');
         }
     }
@@ -433,6 +434,6 @@ class Partner extends CI_Controller
         $this->ticket_model->update($ticket, $where_ticket);
 
 
-        redirect('Partner');
+        redirect($post['redirect']);
     }
 }

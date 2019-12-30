@@ -24,7 +24,8 @@ class Notification_model extends CI_Model
     {
         $this->db->select("*, 
         user_pengirim.name as nama_pengirim, 
-        user_penerima.name as nama_penerima, 
+        user_penerima.name as nama_penerima,
+        cross.nama_cabang as cabang_asal,
         DATE_FORMAT(notifications.created_at, '%d %b, %Y') as dibuat_pada,
         leads.id_leads as id_lead,
         partners.id_partner as partner_id,
@@ -41,6 +42,8 @@ class Notification_model extends CI_Model
         $this->db->join('users as user_penerima', 'user_penerima.id_user = notifications.penerima', 'left');
         // penerima cabang Notifikasi
         $this->db->join('branches as cabang_penerima', 'cabang_penerima.id_branch = notifications.penerima_cabang', 'left');
+        // cross branch Notifikasi
+        $this->db->join('branches as cross', 'cross.id_branch = tickets.id_branch', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

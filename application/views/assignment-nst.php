@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-md-12 mt-5">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <div class="btn-kanan">
+            <!-- <div class="btn-kanan">
                 <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size">NST Assignment</button></a>
-            </div>
+            </div> -->
         <?php } ?>
     </div>
     <div class="col-12">

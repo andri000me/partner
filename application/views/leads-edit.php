@@ -117,7 +117,7 @@
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_vendor ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -194,9 +194,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
+                            <div class="form-row users">
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3">
                                         <label>Pic Tanda Tangan</label>
                                         <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
                                             <option value="" selected>Pilih PIC Tanda tangan</option>
@@ -207,7 +207,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3">
                                         <label>Surveyor</label>
                                         <select class="form-control text-size" name="surveyor" id="surveyor">
                                             <option value="" selected>Pilih Surveyor</option>
@@ -283,7 +283,7 @@
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
                         <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process">Simpan</button>
                     </div>
                     <!-- /bottom-wizard -->
                 </form>
@@ -297,7 +297,7 @@
 <!-- End Right content here -->
 <!-- ============================================================== -->
 <!-- Modal simpan -->
-<div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -312,7 +312,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Modal simpan -->
 
 <!-- Modal Mapping Leads -->
@@ -360,7 +360,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-vendor="<?= $mapping->nama_vendor ?>" data-partner="<?= $mapping->id_partner ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -537,6 +537,11 @@
         $('#detail_produk').val($(this).data('detail'));
         $('#nama_event').val($(this).data('event'));
         $('#nama_konsumen').val($(this).data('nama'));
+        $('#nama_vendor').val($(this).data('vendor'));
+
+        $('#id_agent').val($(this).data('agent'));
+        $('#id_partner').val($(this).data('partner'));
+
         $('#modal-leads').modal('hide');
 
         source_leads();

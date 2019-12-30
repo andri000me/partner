@@ -86,7 +86,7 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label class="text-size">E-Mail</label>
                                         <div>
-                                            <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" required value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
+                                            <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
                                             <?= form_error('email'); ?>
                                         </div>
                                     </div>

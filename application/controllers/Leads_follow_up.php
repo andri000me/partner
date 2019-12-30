@@ -68,16 +68,6 @@ class Leads_follow_up extends CI_Controller
 
         $this->session->set_flashdata("berhasil_simpan", "Data Leads Follow up berhasil disimpan. <a href='#'>Lihat Data</a>");
 
-        //Membuat history activity inputan data leads
-        // $leads_activity = [
-        //     'activity' => 'Leads telah di follow-up',
-        //     'date_activity' => date('Y-m-d H:i:s'),
-        //     'id_leads' => $post['id_mapping_leads'],
-        //     'id_user' => $this->fungsi->user_login()->id_user
-        // ];
-
-        // $this->leads_activity->create($leads_activity);
-
-        redirect('Mapping_leads');
+        redirect($post['redirect']);
     }
 }

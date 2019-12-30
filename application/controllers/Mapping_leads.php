@@ -12,6 +12,8 @@ class Mapping_leads extends CI_Controller
         $this->load->model('mapping_leads_model', 'mapping_leads');
         $this->load->model('partner_model');
         $this->load->model('agent_model');
+        $this->load->model('leads_follow_up_model');
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -52,7 +54,8 @@ class Mapping_leads extends CI_Controller
         $data = [
             'data' => $this->mapping_leads->get(['A.id_mapping_leads' => $id])->row(),
             'agents' => $this->agent_model->get($this->where),
-            'partners' => $this->partner_model->get($this->where)
+            'partners' => $this->partner_model->get($this->where),
+            'follow_up' => $this->leads_follow_up_model->get(['mapping_leads.id_mapping_leads' => $id])
         ];
         $this->template->load('template/index', 'leads-mapping-edit', $data);
     }
@@ -81,6 +84,8 @@ class Mapping_leads extends CI_Controller
                 'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
                 // Untuk SOA Event
                 'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+
+                'nama_vendor'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
 
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
@@ -129,6 +134,9 @@ class Mapping_leads extends CI_Controller
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
+
+            'nama_vendor'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),

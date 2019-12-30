@@ -25,11 +25,13 @@
 						<input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
 						<!-- ID Agent -->
 						<input type="hidden" name="id_agent" id="id_agent" value="<?= $data->id_agent ?>">
-						<!-- ID Agent -->
+						<!-- ID User -->
 						<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
-						<!-- ID Agent -->
+						<!-- ID Branch -->
 						<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
-						
+						<!-- Post Redirect halaman ke form -->
+						<input type="hidden" name="redirect" value="<?= uri_string() ?>">
+
 						<div class="form-row">
 							<div class="col-md-12">
 								<div class="form-group ml-3 mr-3">
@@ -113,7 +115,7 @@
 								<label class="travel">Pilih Data Travel</label>
 								<label class="jasa">Pilih Data Penyedia Jasa</label>
 								<label class="agent">Pilih Data Agent</label>
-									<input type="text" class="form-control text-size" value="" name="data_partner" id="data_partner" placeholder="" readonly>
+									<input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_vendor ?>" readonly>
 								</div>
 							</div>
 							<div class="col-md-6 nik">
@@ -172,6 +174,7 @@
 											Tidak
 										</label>
 									</div>
+									<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>">
 								</div>
 								</fieldset>
 								<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>">

@@ -55,15 +55,17 @@
                     </li>
 
                 <?php } ?>
+                <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
 
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="far fa-clipboard"></i><span> Assignment <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    <ul class="submenu">
-                        <li><a href="#">Prospect</a></li>
-                        <li><a href="#">Leads</a></li>
-                        <li><a href="#">NST</a></li>
-                    </ul>
-                </li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="far fa-clipboard"></i><span> Assignment <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="<?= base_url('assignment/prospect') ?>">Prospect</a></li>
+                            <li><a href="<?= base_url('assignment/leads') ?>">Leads</a></li>
+                            <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li>
+                        </ul>
+                    </li>
+                <?php } ?>
 
                 <li>
                     <a href="<?= base_url('Ticket') ?>" class="waves-effect">

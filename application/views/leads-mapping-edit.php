@@ -76,7 +76,7 @@
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" readonly>
+                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_vendor ?>" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -166,6 +166,8 @@
                 <form class="" action="<?= base_url('Leads_follow_up/save') ?>" method="post">
                     <!-- ID Partner -->
                     <input type="hidden" name="id_mapping_leads" value="<?= $data->mapping_id ?>">
+                    <!-- Redirect -->
+                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="form-group ml-3 mr-3">
                         <label>Follow Up By</label>
                         <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
@@ -178,7 +180,7 @@
                     </div>
                     <div class="form-group ml-3 mr-3">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="Jelaskan detail kegiatan anda" style="height:110px;"></textarea>
+                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" required placeholder="Jelaskan detail kegiatan anda" style="height:110px;"></textarea>
                     </div>
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>
@@ -201,7 +203,24 @@
                     <div class="tab-pane p-3" id="profile2" role="tabpanel">
                         <h4 class="mt-0 header-title mb-4">Timeline</h4>
                         <ol class="activity-feed mb-0">
-                            <li class="feed-item  text-size">
+                            <?php
+                            if ($follow_up->num_rows() > 0) {
+                                foreach ($follow_up->result() as $data) {
+                            ?>
+                                    <li class="feed-item text-size">
+                                        <div class="feed-item-list">
+                                            <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+                                            <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+                                            <span class="date"><?= $data->tanggal_follow_up ?></span>
+                                            <span class="activity-text"><?= $data->catatan ?></span>
+                                        </div>
+                                    </li>
+                                <?php
+                                }
+                            } else { ?>
+                                <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+                            <?php } ?>
+                            <!-- <li class="feed-item  text-size">
                                 <div class="feed-item-list">
                                     <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
                                     <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
@@ -216,15 +235,7 @@
                                     <span class="date">tanggal</span>
                                     <span class="activity-text">Catatan</span>
                                 </div>
-                            </li>
-                            <li class="feed-item  text-size">
-                                <div class="feed-item-list">
-                                    <span class="activity-text"><b>Follow Up By Whatsapp</b></span><br>
-                                    <span class="activity-text"><b>Oleh Sunia Berlianti</b></span>
-                                    <span class="date">tanggal</span>
-                                    <span class="activity-text">Catatan</span>
-                                </div>
-                            </li>
+                            </li> -->
                         </ol>
                     </div>
                 </div>
