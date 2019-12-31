@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Leads Go Live</h4>
+            <h4 class="page-title">Leads Prospect</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
-                <li class="breadcrumb-item active">Leads Go Live</li>
+                <li class="breadcrumb-item active">Leads Prospect</li>
             </ol>
         </div>
     </div>
@@ -30,7 +30,7 @@
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <h4 class="mt-0 header-title">Formulir Leads</h4>
-                            <p class="text-muted text-size">Pilih data yang sudah anda mapping pada pilihan yang akan muncul dilayar, kemudia isi semua kolom pertanyaan untuk melanjutkan ke halaman selanjutnya.</p>
+                            <p class="text-muted text-size">Pilih data yang sudah anda input pada leads database jika ada atau input baru. Pastikan Leads ID sesuai dengan sistem LOS untuk memudahkan pencocokan data. Form ini digunakan untuk keperluan KPI, Bonus dan NST.</p>
                         </div>
                     </div>
                     <div class="row">
@@ -39,7 +39,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Leads ID</label>
-                                        <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="009377736433744" maxlength="15">
+                                        <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" maxlength="15">
                                         <?= form_error('leads_id') ?>
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
-                                        <label>Nomor Telepon / Whatsapp</label>
+                                        <label>Handphone/Whatsapp</label>
                                         <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                         <?= form_error('telepon') ?>
                                     </div>
@@ -89,7 +89,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Detail Produk</label>
-                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Contoh : " />
+                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Paket Umroh ABC Quad" />
                                     </div>
                                 </div>
                             </div>
@@ -108,19 +108,37 @@
                                             <option <?= set_value('soa') == '"Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
                                             <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
                                             <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                            <option <?= set_value('soa') == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
-                                            <option <?= set_value('soa') == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
+                                            <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                            <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 event">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Nama Event</label>
+                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
                                     </div>
                                 </div>
                                 <div class="col-md-6 form">
                                     <label class="ml-3 travel">Pilih Data Travel</label>
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-                                    <label class="ml-3 agent">Pilih Data Agent</label>
+                                    <label class="ml-3 vendor">Pilih Data Partner</label>
                                     <div class="input-group ml-3 mb-3">
                                         <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6 form-agent">
+                                    <label class="ml-3 agent">Pilih Data Agent</label>
+                                    <div class="input-group ml-3 mb-3">
+                                        <input type="text" class="form-control text-size" name="data_agent" id="data_agent" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -130,14 +148,6 @@
                                         <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
                                     </div>
                                 </div>
-                                <div class="col-md-6 event">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Event</label>
-                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
                                 <div class="col-md-6 posisi">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Posisi</label>
@@ -284,7 +294,7 @@
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
                         <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process">Simpan</button>
                     </div>
                     <!-- /bottom-wizard -->
                 </form>
@@ -297,24 +307,6 @@
 <!-- ============================================================== -->
 <!-- End Right content here -->
 <!-- ============================================================== -->
-<!-- Modal simpan -->
-<div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalCenterTitle">Pengajuan Kerjasama Berhasil</h5>
-            </div>
-            <div class="modal-body">
-                Terimakasih telah menyelesaikan tugas perjanjian kerjasama dengan partner potensial di daerah anda.
-                Tim HO akan memverifikasi data anda, dan informasinya akan diberikan melalui menu <a href="#" style="color: blue;">motification</a> di website ini.
-            </div>
-            <div class="modal-footer">
-                <a href="<?= base_url('leads') ?>"><button class="btn btn-primary">OK</button></a>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal simpan -->
 
 <!-- Modal Mapping Leads -->
 <div class="modal fade bd-example-modal-xl" id="modal-leads" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -453,54 +445,78 @@
 </script>
 
 <script>
-    $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor').hide();
     source_leads();
     $('#soa').change(function() {
         source_leads();
         $('#id_partner').val("");
         $('#id_agent').val("");
-        //SOA EGC
-        $('#nik_egc').val("");
-        $('#posisi_egc').val("");
-        $('#cabang_egc').val("");
-        //SOA CGC / RO
-        $('#referral_konsumen').val("");
-        $('#nomor_kontrak').val("");
-        //SOA Event
-        $('#nama_event').val("");
-
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
         $('#data_partner').val("");
     })
 
     function source_leads() {
-        if ($('#soa').val() == 'Tour & travel') {
+        if ($('#soa').val() == 'Direct Selling') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('#data_partner').attr('required', 'required');
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'jalan - jalan')
+            $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
         } else if ($('#soa').val() == 'Penyedia Jasa') {
             $('.jasa, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Jasa raharja')
+            $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
         } else if ($('#soa').val() == 'Agent BA') {
-            $('.agent, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Ibrahim')
-            $('#btn-data').attr('data-target', '#modal-agent')
+            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+            $('#btn-data-agent').attr('data-target', '#modal-agent')
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
         } else if ($('#soa').val() == 'EGC') {
-            $('.nik, .posisi, .cabang').show();
-            $('.jasa, .travel, .event, .form, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
-            $('.kontrak-ro, .konsumen-ro').show();
-            $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc').hide();
-        } else if ($('#soa').val() == 'Event') {
-            $('.event').show();
-            $('.travel, .agent, .jasa, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+        } else if ($('#soa').val() == 'Digital Marketing') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Website BFI Syariah') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Walk In') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Event Promotion') {
+            $('.event, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Tele Marketing') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else {
-            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         }
     }
 </script>

@@ -74,7 +74,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label class="text-size">Nomor Telepon</label>
-                                        <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" required value="<?= set_value('telepon') ?>" placeholder="EG 0811977500" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" placeholder="0811977500" maxlength="15" />
                                         <?= form_error('telepon'); ?>
                                     </div>
                                 </div>

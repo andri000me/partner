@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Leads Go Live</h4>
+            <h4 class="page-title">Leads Prospect</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
-                <li class="breadcrumb-item active">Leads Go Live</li>
+                <li class="breadcrumb-item active">Leads Prospect</li>
             </ol>
         </div>
     </div>
@@ -22,8 +22,8 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Tabel Konsumen</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen go live anda dan keperluan KPI dan Perhitungan Bonus</p>
+                <h4 class="mt-0 header-title">Tabel Leads Prospect</h4>
+                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk keperluan NST, KPI dan Bonus</p>
                 <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">

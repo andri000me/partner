@@ -17,11 +17,13 @@
         if (radioValue == 'Tidak') {
             $("#hide").hide();
             $(".users").show();
+            $('#pic_ttd, #surveyor').attr('required', 'required');
             $('#cabang_cross').removeAttr('required');
         } else if (radioValue == 'Ya') {
             $("#hide").show()
             $('.users').hide();
             $('#cabang_cross').attr('required', 'required');
+            $('#pic_ttd, #surveyor').removeAttr('required');
         }
 
         $('.cross_branch').click(function() {
@@ -29,11 +31,13 @@
             if (cross_branch == 'Ya') {
                 $('#hide').show();
                 $('.users').hide();
+                $('#pic_ttd, #surveyor').removeAttr('required');
                 $('#cabang_cross').attr('required', 'required');
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
                 $(".users").show();
                 $("#cabang_cross").val("");
+                $('#pic_ttd, #surveyor').attr('required', 'required');
                 $('#cabang_cross').removeAttr('required');
                 show_pic_ttd();
             }
