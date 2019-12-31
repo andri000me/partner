@@ -15,8 +15,10 @@
     <div class="col-lg-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Leads Database</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk keperluan database leads anda, pastikan anda selalu recap data anda setiap saat</p>
+                <div class="ml-3">
+                    <h4 class="mt-0 header-title">Leads Database</h4>
+                    <p class="text-muted m-b-30 text-size">Input data leads anda untuk keperluan database.</p>
+                </div>
                 <form class="text-size" action="<?= base_url('mapping_leads/save') ?>" method="post">
                     <!-- ID Agent -->
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
@@ -24,117 +26,107 @@
                     <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group mr-3 ml-3">
-                                        <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" />
-                                    </div>
+                            <div class="form-group mr-3 ml-3">
+                                <label>Nama Konsumen</label>
+                                <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" />
+                            </div>
+                            <div class="form-group mr-3 ml-3">
+                                <label>Produk</label>
+                                <select class="form-control text-size" name="produk" id="produk">
+                                    <option value="" selected>Kategori Produk</option>
+                                    <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                    <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                    <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                    <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                    <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                    <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                </select>
+                            </div>
+                            <div class="form-group text-size mr-3 ml-3">
+                                <label>Detail Produk</label>
+                                <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Nama Barang / Jasa" />
+                            </div>
+                            <div class="form-group mr-3 ml-3">
+                                <label>Handphone/Whatsapp</label>
+                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
+                                <?= form_error('telepon') ?>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group text-size mr-3 ml-3">
+                                <label>SOA</label>
+                                <select class="form-control text-size" name="soa" id="soa" required>
+                                    <option value="" selected>Pilih Source Aplikasi</option>
+                                    <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                    <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                    <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                    <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                    <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                    <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                    <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                    <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                    <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                    <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                    <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                    <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                </select>
+                            </div>
+                            <div class="event">
+                                <div class="form-group ml-3 mr-3">
+                                    <label>Nama Event</label>
+                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Nama Event">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group mr-3 ml-3">
-                                        <label>Produk</label>
-                                        <select class="form-control text-size" name="produk" id="produk">
-                                            <option value="" selected>Kategori Produk</option>
-                                            <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                            <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                            <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                            <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                            <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-                                            <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group text-size mr-3 ml-3">
-                                        <label>Asal Aplikasi</label>
-                                        <select class="form-control text-size" name="soa" id="soa" required>
-                                            <option value="" selected>Pilih Source Aplikasi</option>
-                                            <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                            <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                            <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                            <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                            <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                            <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                            <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                            <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                            <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                            <option <?= set_value('soa') == 'Walking' ? 'selected' : '' ?> value="Walking">Walking</option>
-                                            <option <?= set_value('soa') == 'Event' ? 'selected' : '' ?> value="Event">Event</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 form">
-                                    <label class="ml-3 travel">Pilih Data Travel</label>
-                                    <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-                                    <label class="ml-3 agent">Pilih Data Agent</label>
-                                    <div class="input-group ml-3 mb-3">
-                                        <input type="search" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-md-6 nik">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NIK</label>
                                         <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" placeholder="072104" maxlength="6" />
                                     </div>
                                 </div>
-                                <div class="col-md-6 event">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Event</label>
-                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" placeholder="Nama Event">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
                                 <div class="col-md-6 posisi">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Posisi</label>
                                         <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" placeholder="Nama Jabatan / Posisi">
                                     </div>
                                 </div>
-                                <div class="col-md-6 cabang">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Cabang</label>
-                                        <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Nama Cabang">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 kontrak-ro">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 konsumen-ro">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group mr-3 ml-3">
-                                        <label>Nomor Telepon / Whatsapp</label>
-                                        <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
-                                        <?= form_error('telepon') ?>
+                            </div>
+                            <div class="cabang">
+                                <div class="form-group ml-3 mr-3">
+                                    <label>Cabang</label>
+                                    <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" placeholder="Nama Cabang">
+                                </div>
+                            </div>
+                            <div class="kontrak-ro">
+                                <div class="form-group ml-3 mr-3">
+                                    <label>Nomor Kontrak</label>
+                                    <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" placeholder="087883774" />
+                                </div>
+                            </div>
+                            <div class="konsumen-ro">
+                                <div class="form-group ml-3 mr-3">
+                                    <label>Nama Konsumen</label>
+                                    <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" placeholder="Input Nama konsumen">
+                                </div>
+                            </div>
+                            <div class="form-agent">
+                                <label class="ml-3 agent">Pilih Data Agent</label>
+                                <div class="input-group ml-3 mb-3">
+                                    <input type="text" class="form-control text-size" name="data_agent" id="data_agent" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group text-size mr-3 ml-3">
-                                        <label>Info Produk</label>
-                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Nama Barang / Jasa" />
+                            <div class="form">
+                                <label class="ml-3 vendor">Pilih Data Partner</label>
+                                <label class="ml-3 travel">Pilih Data Travel</label>
+                                <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
+                                <div class="input-group ml-3 mb-3">
+                                    <input type="text" class="form-control text-size" name="data_partner" id="data_partner" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                     </div>
                                 </div>
                             </div>
@@ -247,7 +239,7 @@
 </script>
 
 <script>
-    $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor').hide();
     source_leads();
     $('#soa').change(function() {
         source_leads();
@@ -259,32 +251,66 @@
     })
 
     function source_leads() {
-        if ($('#soa').val() == 'Tour & travel') {
+        if ($('#soa').val() == 'Direct Selling') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('#data_partner').attr('required', 'required');
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
         } else if ($('#soa').val() == 'Penyedia Jasa') {
             $('.jasa, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
         } else if ($('#soa').val() == 'Agent BA') {
-            $('.agent, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Aisha Putri')
-            $('#btn-data').attr('data-target', '#modal-agent')
+            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+            $('#btn-data-agent').attr('data-target', '#modal-agent')
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
         } else if ($('#soa').val() == 'EGC') {
-            $('.nik, .posisi, .cabang').show();
-            $('.jasa, .travel, .event, .form, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
-            $('.kontrak-ro, .konsumen-ro').show();
-            $('.travel, .agent, .jasa, .event, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc').hide();
-        } else if ($('#soa').val() == 'Event') {
-            $('.event').show();
-            $('.travel, .agent, .jasa, .btn-data, .form, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+        } else if ($('#soa').val() == 'Digital Marketing') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Website BFI Syariah') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Walk In') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Event Promotion') {
+            $('.event, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'Tele Marketing') {
+            $('.vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else {
-            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
+            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         }
     }
 </script>

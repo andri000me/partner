@@ -15,7 +15,7 @@
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan mb-2">
-                <a href=" <?= base_url('mapping_leads/create') ?>"><button class="btn btn-primary text-size">Buat Data Baru</button></a>
+                <a href=" <?= base_url('mapping_leads/create') ?>"><button class="btn btn-primary text-size">Input Leads</button></a>
             </div>
         <?php } ?>
     </div>
@@ -23,16 +23,16 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Daftar Leads</h4>
-                <p class="text-muted m-b-30 text-size">Halaman ini berguna untuk melihat leads yang ada di cabang anda dan untuk melihat potensi cabang anda</p>
+                <p class="text-muted m-b-30 text-size">Gunakan halaman ini untuk input leads interest, tabel ini juga dapat digunakan sebagai database leads anda agar memudahkan pencarian data.</p>
                 <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Name Lengkap</th>
-                            <th>Nomor Telepon / Whatsapp</th>
-                            <th>Asal Aplikasi</th>
+                            <th>Nama Konsumen</th>
+                            <th>Handphone/Whatsapp</th>
+                            <th>SOA</th>
                             <th>Produk</th>
                             <th>Detail Produk</th>
-                            <th>Aksi</th>
+                            <th>Lihat Data</th>
                         </tr>
                     </thead>
                     <tbody>
