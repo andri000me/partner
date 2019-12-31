@@ -45,7 +45,7 @@
                             <?php }  ?>
                         </tbody>
                     </table>
-                    <button class="btn btn-primary">Update</button>
+                    <button class="btn btn-primary float-right mt-2">Update</button>
                 </form>
             </div>
         </div>

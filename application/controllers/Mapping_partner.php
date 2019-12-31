@@ -163,7 +163,7 @@ class Mapping_partner extends CI_Controller
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil diupdate. <a href='#'>Lihat Data</a>");
 
-            redirect('Mapping_partner');
+            redirect($post['redirect']);
         } else {
             $data = [
                 'data' => $this->mapping_partner->get(['A.id_mapping' => $post['id_mapping']])->row()

@@ -24,6 +24,8 @@
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= $data->id_agent ?>">
                     <!-- ID Partner -->
                     <input type="hidden" id="id_partner" name="id_partner" value="<?= $data->id_partner ?>">
+                    <!-- Redirect -->
+                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-row">

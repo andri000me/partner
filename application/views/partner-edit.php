@@ -403,12 +403,26 @@
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>KTP</label>
                                             <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                            <?php if ($data->ktp) { ?>
+                                                <div class="img-fluid mt-1">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->ktp) ?>" title="Foto Profile.">
+                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->ktp) ?>" width="100" height="100">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>NPWP</label>
                                             <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                            <?php if ($data->npwp) { ?>
+                                                <div class="img-fluid mt-1">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->npwp) ?>" title="Foto Profile.">
+                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->npwp) ?>" width="100" height="100">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -417,12 +431,26 @@
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>Buku Tabungan</label>
                                             <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                            <?php if ($data->buku_tabungan_perusahaan) { ?>
+                                                <div class="img-fluid mt-1">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" title="Foto Profile.">
+                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" width="100" height="100">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>SIUP / TDP</label>
                                             <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary">
+                                            <?php if ($data->siup) { ?>
+                                                <div class="img-fluid mt-1">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->siup) ?>" title="Foto Profile.">
+                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->siup) ?>" width="100" height="100">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -431,25 +459,40 @@
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>Logo Perusahaan</label>
                                             <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size ml-3 mr-3">
-                                            <label>Foto usaha</label>
-                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                            <?php if ($data->logo_perusahaan) { ?>
+                                                <div class="img-fluid mt-1">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" title="Foto Profile.">
+                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" width="100" height="100">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
-                                <!-- /step-->
+                                <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Foto usaha</label>
+                                        <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                        <?php if ($data->foto_usaha_mapping) { ?>
+                                            <div class="img-fluid mt-1">
+                                                <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
+                                                    <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" width="100" height="100">
+                                                </a>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
                             </div>
-                            <!-- /middle-wizard -->
-                            <div class="form-group mb-0 float-right mt-3 mr-3">
-                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                                <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
-                                <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
-                                <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
-                            </div>
-                            <!-- /bottom-wizard -->
+                            <!-- /step-->
+                        </div>
+                        <!-- /middle-wizard -->
+                        <div class="form-group mb-0 float-right mt-3 mr-3">
+                            <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
+                            <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
+                            <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
+                            <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                        </div>
+                        <!-- /bottom-wizard -->
                     </form>
                 </div>
             </div>

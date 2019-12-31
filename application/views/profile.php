@@ -28,7 +28,7 @@
                         </li>
                         <?php if ($this->fungsi->user_login()->level > 1) { ?>
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#data-anggota" role="tab">
+                                <a class="nav-link" data-toggle="tab" href="#data-anggota" role="tab">
                                     <span class="d-block d-sm-none"><i class="fas fa-users"></i></span>
                                     <span class="d-none d-sm-block">List Karyawan</span>
                                 </a>
@@ -110,7 +110,7 @@
                         </form>
                     </div>
                     <?php if ($this->fungsi->user_login()->level > 1) { ?>
-                        <div class="tab-pane active p-3" id="data-anggota" role="tabpanel">
+                        <div class="tab-pane p-3" id="data-anggota" role="tabpanel">
                             <div class="ml-3 mr-3">
                                 <h4 class="mt-0 header-title">Table List Karyawan</h4>
                                 <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

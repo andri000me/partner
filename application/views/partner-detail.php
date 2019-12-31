@@ -303,7 +303,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0"><?= $activity->date_activity ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0"><?= $activity->tanggal_activity ?></p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -359,13 +359,6 @@
                                                             </td>
                                                             <td></td>
                                                         </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
                                                     </table>
                                                 </div>
                                             </div>
@@ -396,7 +389,7 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+                                        <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -428,7 +421,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div id="form_mou" class="form-group ml-3">
-                                                                    <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
+                                                                    <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                         <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                                                         <div class="form-group mr-2">
@@ -490,12 +483,6 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><b>Belum Diverifikasi</b></p>
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
-                                                        </td>
-                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
@@ -528,7 +515,7 @@
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+                                    <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -560,7 +547,7 @@
                                                                 </div>
                                                             </div>
                                                             <div id="form_mou" class="form-group ml-3">
-                                                                <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
+                                                                <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                     <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                                                     <div class="form-group mr-2">

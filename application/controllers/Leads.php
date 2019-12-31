@@ -32,6 +32,7 @@ class Leads extends CI_Controller
         $this->load->model('leads_activity_model', 'leads_activity');
         // Load Modul Leads Follow Up
         $this->load->model('leads_follow_up_model');
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -262,6 +263,24 @@ class Leads extends CI_Controller
                     'created_at'        => date('Y-m-d H:i:s')
                 ];
                 $this->notification_model->create($notification);
+
+                //Leads Follow Up
+                $data = [
+                    'follow_up_by' => $post['follow_up_by'],
+                    'date_follow_up' => date('Y-m-d H:i:s'),
+                    // 'catatan' => $post['catatan'],
+
+                    //Timestamp
+                    // 'created_at' => date('Y-m-d H:i:s'),
+                    // 'updated_at' => date('Y-m-d H:i:s'),
+
+                    //ID User yang mencatat leads follow up
+                    'id_user' => $this->fungsi->user_login()->id_user,
+
+                    //ID Mapping Leads yang di follow-up
+                    'id_mapping_leads' => $post['id_mapping_leads']
+                ];
+                $this->leads_follow_up_model->create($data);
             }
             if ($id) {
                 //Memberi pesan berhasil data menyimpan data mapping
@@ -372,6 +391,24 @@ class Leads extends CI_Controller
                 'created_at'        => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);
+
+            //Leads Follow Up
+            $data = [
+                'follow_up_by' => $post['follow_up_by'],
+                'date_follow_up' => date('Y-m-d H:i:s'),
+                // 'catatan' => $post['catatan'],
+
+                //Timestamp
+                // 'created_at' => date('Y-m-d H:i:s'),
+                // 'updated_at' => date('Y-m-d H:i:s'),
+
+                //ID User yang mencatat leads follow up
+                'id_user' => $this->fungsi->user_login()->id_user,
+
+                //ID Mapping Leads yang di follow-up
+                'id_mapping_leads' => $post['id_mapping_leads']
+            ];
+            $this->leads_follow_up_model->create($data);
         }
 
         $where = ['id_leads' => $post['id_leads']];
@@ -464,6 +501,24 @@ class Leads extends CI_Controller
         $where = ['id_leads' => $post['id_leads']];
         //Memasukkan data mapping ke database `leads`
         $id = $this->leads_model->update($data, $where);
+
+        //Leads Follow Up
+        $data = [
+            'follow_up_by' => $post['follow_up_by'],
+            'date_follow_up' => date('Y-m-d H:i:s'),
+            // 'catatan' => $post['catatan'],
+
+            //Timestamp
+            // 'created_at' => date('Y-m-d H:i:s'),
+            // 'updated_at' => date('Y-m-d H:i:s'),
+
+            //ID User yang mencatat leads follow up
+            'id_user' => $this->fungsi->user_login()->id_user,
+
+            //ID Mapping Leads yang di follow-up
+            'id_mapping_leads' => $post['id_mapping_leads']
+        ];
+        $this->leads_follow_up_model->create($data);
 
         //Membuat history activity inputan data leads
         $leads_activity = [

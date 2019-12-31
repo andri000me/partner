@@ -301,8 +301,11 @@
 								<div class="form-group mb-0 mt-2 float-right btn-maintain">
 									<?php
 									$level = $this->fungsi->user_login()->level;
-									if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+									if (
+										($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && ($this->fungsi->user_login()->id_branch == $data->id_branch)
+									) {
 									?>
+										<?= $this->fungsi->user_login()->id_branch . ' = ' . $data->id_branch ?>
 										<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 									<?php } ?>
 									<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
@@ -321,34 +324,22 @@
 							<h4 class="mt-0 header-title mb-4">Timeline History Follow Up</h4>
 							<ol class="activity-feed mb-0">
 								<?php
-                            if ($follow_up->num_rows() > 0) {
-                                foreach ($follow_up->result() as $data) {
-                            ?>
-                                    <li class="feed-item text-size">
-                                        <div class="feed-item-list">
-                                            <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
-                                            <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
-                                            <span class="date"><?= $data->tanggal_follow_up ?></span>
-                                            <span class="activity-text"><?= $data->catatan ?></span>
-                                        </div>
-                                    </li>
-                                <?php
-                                }
-                            } else { ?>
-                                <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
-                            <?php } ?>
-								<!-- <li class="feed-item text-size">
-									<div class="feed-item-list">
-									<span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
-										<span class="date"><?= $data->tanggal_follow_up ?></span>
-										<span class="activity-text">mantep</span>
-										<div class="img-fluid">
-											<a class="image-popup-vertical-fit" href="" title="Foto Profile.">
-												<img class="d-flex align-self-start rounded mr-3" alt="" src="" width="100" height="100">
-											</a>
-										</div>
-									</div>
-								</li> -->
+								if ($follow_up->num_rows() > 0) {
+									foreach ($follow_up->result() as $data) {
+								?>
+										<li class="feed-item text-size">
+											<div class="feed-item-list">
+												<span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+												<span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+												<span class="date"><?= $data->tanggal_follow_up ?></span>
+												<span class="activity-text"><?= $data->catatan ?></span>
+											</div>
+										</li>
+									<?php
+									}
+								} else { ?>
+									<p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+								<?php } ?>
 							</ol>
 						</div>
 					</div>
@@ -427,7 +418,7 @@
 														<tr>
 															<td></td>
 															<td>
-																<p class="inbox-item-text text-muted mb-0"><?= $activity->date_activity ?></p>
+																<p class="inbox-item-text text-muted mb-0"><?= $activity->tanggal_activity ?></p>
 															</td>
 														</tr>
 													</table>
@@ -483,13 +474,6 @@
 															</td>
 															<td></td>
 														</tr>
-														<tr>
-															<td></td>
-															<td>
-																<p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
-															</td>
-															<td></td>
-														</tr>
 													</table>
 												</div>
 											</div>
@@ -520,7 +504,7 @@
 												</div>
 											</div>
 										<?php } ?>
-										<?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+										<?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
 											<div class="inbox-wid">
 												<div class="inbox-item">
 													<table>
@@ -614,12 +598,6 @@
 															<p class="inbox-item-author mt-0 mb-1"><b>Belum Diverifikasi</b></p>
 														</td>
 													</tr>
-													<tr>
-														<td></td>
-														<td>
-															<p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
-														</td>
-													</tr>
 												</table>
 											</div>
 										</div>
@@ -652,7 +630,7 @@
 											</div>
 										</div>
 									<?php } ?>
-									<?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+									<?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
 										<div class="inbox-wid">
 											<div class="inbox-item">
 												<table>

@@ -288,12 +288,26 @@
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>KTP</label>
                                                 <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                                <?php if ($data->ktp) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->ktp) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->ktp) ?>" width="100" height="100">
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>NPWP</label>
                                                 <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                                <?php if ($data->npwp) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->npwp) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->npwp) ?>" width="100" height="100">
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
@@ -302,12 +316,26 @@
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Buku Tabungan</label>
                                                 <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary">
+                                                <?php if ($data->buku_tabungan) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" width="100" height="100">
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Foto Selfie</label>
                                                 <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary">
+                                                <?php if ($data->foto_selfie) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" width="100" height="100">
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>
@@ -316,6 +344,13 @@
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Form F100</label>
                                                 <input type="file" name="form_f100" class="filestyle" data-buttonname="btn-secondary">
+                                                <?php if ($data->form_f100) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->form_f100) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->form_f100) ?>" width="100" height="100">
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             </div>
                                         </div>
                                     </div>

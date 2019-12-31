@@ -32,7 +32,8 @@ class Zip extends CI_Controller
                 $data->ktp_agent,
                 $data->npwp_agent,
                 $data->buku_tabungan,
-                $data->foto_selfie
+                $data->foto_selfie,
+                $data->form_mou
             ];
         } else if ($folder == 'partners') {
             $uploads = [
@@ -42,7 +43,8 @@ class Zip extends CI_Controller
                 $data->buku_tabungan_perusahaan,
                 $data->siup,
                 $data->logo_perusahaan,
-                $data->foto_usaha
+                $data->foto_usaha,
+                $data->form_mou
             ];
         }
 

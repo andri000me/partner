@@ -28,6 +28,8 @@
                     <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <!-- Form inputan hidden untuk id mapping -->
                     <input type="hidden" name="id_mapping" value="<?= $data->mapping_id ?>">
+                    <!-- Form inputan hidden untuk redirect halaman -->
+                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
 
                     <div class="row">
                         <div class="col-md-6">
@@ -116,7 +118,12 @@
                                 <div class="col-md-12">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Foto usaha</label>
-                                        <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                        <input type="file" name="foto_usaha_mapping" class="filestyle" data-buttonname="btn-secondary">
+                                        <div class="img-fluid mt-1">
+                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
+                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" width="100" height="100">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
