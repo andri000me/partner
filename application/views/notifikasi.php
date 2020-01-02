@@ -140,7 +140,8 @@
             url: "<?= base_url('notification/mark_all') ?>",
             dataType: "JSON",
             success: function(data) {
-                alert('Success');
+                // alert('Success');
+                location.reload();
             }
         });
     });

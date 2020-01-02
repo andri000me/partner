@@ -314,7 +314,7 @@
         // alert(id_branch + has_superior);
         $.ajax({
             type: "POST",
-            url: "<?= base_url('branch/update') ?>",
+            url: "<?= base_url('branch/update_superior') ?>",
             dataType: "JSON",
             data: {
                 has_superior: has_superior,

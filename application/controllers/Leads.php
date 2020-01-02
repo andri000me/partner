@@ -30,6 +30,9 @@ class Leads extends CI_Controller
         $this->load->model('notification_model');
         // Load Modul Leads Activity
         $this->load->model('leads_activity_model', 'leads_activity');
+        // Load Modul Leads Follow Up
+        $this->load->model('leads_follow_up_model');
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
@@ -116,7 +119,10 @@ class Leads extends CI_Controller
 
             'activities'    => $this->leads_activity->get($where),
             'comments'      => $this->comment_model->get($where),
-            'ticket'        => $this->ticket_model->get($where)->row()
+            'ticket'        => $this->ticket_model->get($where)->row(),
+
+            'follow_up'     => $this->leads_follow_up_model->get(['leads_follow_up.id_mapping_leads' => $this->leads_model->get($where)->row()->id_mapping_leads])
+
         ];
         $this->template->load('template/index', 'leads-detail', $data);
     }
@@ -150,7 +156,8 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event'])          ? $post['nama_event'] : NULL,
 
-            'nama_vendor'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
 
 
             'updated_at'            => date('Y-m-d H:i:s'),
@@ -240,6 +247,8 @@ class Leads extends CI_Controller
                 $ticket = [
                     'status'        => 0,
                     'date_pending'  => date('Y-m-d H:i:s'),
+                    'date_created'  => date('Y-m-d H:i:s'),
+                    'date_modified'  => date('Y-m-d H:i:s'),
                     'id_leads'       => $id,
                     'id_user'       => $this->fungsi->user_login()->id_user,
                     'id_branch'     => $this->fungsi->user_login()->id_branch
@@ -255,6 +264,24 @@ class Leads extends CI_Controller
                     'created_at'        => date('Y-m-d H:i:s')
                 ];
                 $this->notification_model->create($notification);
+
+                //Leads Follow Up
+                $data_leads_follow_up = [
+                    'follow_up_by' => $post['follow_up_by'],
+                    'date_follow_up' => date('Y-m-d H:i:s'),
+                    // 'catatan' => $post['catatan'],
+
+                    //Timestamp
+                    // 'created_at' => date('Y-m-d H:i:s'),
+                    // 'updated_at' => date('Y-m-d H:i:s'),
+
+                    //ID User yang mencatat leads follow up
+                    'id_user' => $this->fungsi->user_login()->id_user,
+
+                    //ID Mapping Leads yang di follow-up
+                    'id_mapping_leads' => $post['id_mapping_leads']
+                ];
+                $this->leads_follow_up_model->create($data_leads_follow_up);
             }
             if ($id) {
                 //Memberi pesan berhasil data menyimpan data mapping
@@ -296,7 +323,8 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
-            'nama_vendor'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
 
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
@@ -336,9 +364,6 @@ class Leads extends CI_Controller
             //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
             // 'id_branch'         => $post['id_branch']
         ];
-        $where = ['id_leads' => $post['id_leads']];
-        $this->leads_model->update($data, $where);
-
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
         } else if (isset($post['process'])) {
@@ -349,22 +374,35 @@ class Leads extends CI_Controller
                 'status'        => 0,
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'date_created'  => date('Y-m-d H:i:s'),
-                'date_modified'  => date('Y-m-d H:i:s'),
+                'date_modified' => date('Y-m-d H:i:s'),
                 'id_leads'      => $post['id_leads'],
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
 
             //Notifikasi
             $notification = [
                 'pengirim'          => $this->fungsi->user_login()->id_user,
                 'penerima_cabang'   => $post['cabang_cross'],
                 'type'              => 'Cross Branch oleh',
-                'id_ticket'         => $post['id_ticket'],
+                'id_ticket'         => $id_ticket,
                 'created_at'        => date('Y-m-d H:i:s')
             ];
             $this->notification_model->create($notification);
+
+            //Leads Follow Up
+            $data_leads_follow_up = [
+                'follow_up_by' => $post['follow_up_by'],
+                'date_follow_up' => date('Y-m-d H:i:s'),
+
+                //ID User yang mencatat leads follow up
+                'id_user' => $this->fungsi->user_login()->id_user,
+
+                //ID Mapping Leads yang di follow-up
+                'id_mapping_leads' => $post['id_mapping_leads']
+            ];
+            $this->leads_follow_up_model->create($data_leads_follow_up);
         }
 
         $where = ['id_leads' => $post['id_leads']];
@@ -409,7 +447,8 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
-            'nama_vendor'           => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
 
             //ID Agent
             'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
@@ -458,6 +497,24 @@ class Leads extends CI_Controller
         //Memasukkan data mapping ke database `leads`
         $id = $this->leads_model->update($data, $where);
 
+        //Leads Follow Up
+        $data = [
+            'follow_up_by' => $post['follow_up_by'],
+            'date_follow_up' => date('Y-m-d H:i:s'),
+            // 'catatan' => $post['catatan'],
+
+            //Timestamp
+            // 'created_at' => date('Y-m-d H:i:s'),
+            // 'updated_at' => date('Y-m-d H:i:s'),
+
+            //ID User yang mencatat leads follow up
+            'id_user' => $this->fungsi->user_login()->id_user,
+
+            //ID Mapping Leads yang di follow-up
+            'id_mapping_leads' => $post['id_mapping_leads']
+        ];
+        $this->leads_follow_up_model->create($data);
+
         //Membuat history activity inputan data leads
         $leads_activity = [
             'activity' => 'Perubahan pada data leads',
@@ -473,6 +530,7 @@ class Leads extends CI_Controller
         $ticket = [
             'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
             'date_pending'  => date('Y-m-d H:i:s'),
+            // 'date_created'  => date('Y-m-d H:i:s'),
             'date_modified'  => date('Y-m-d H:i:s')
             // 'id_user'       => $this->fungsi->user_login()->id_user,
             // 'id_branch'     => $this->fungsi->user_login()->id_branch

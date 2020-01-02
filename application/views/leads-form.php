@@ -136,7 +136,7 @@
                                 <div class="col-md-6 form-agent">
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_agent" id="data_agent" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -308,7 +308,6 @@
 <!-- End Right content here -->
 <!-- ============================================================== -->
 
-
 <!-- Modal Mapping Leads -->
 <div class="modal fade bd-example-modal-xl" id="modal-leads" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
@@ -354,7 +353,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-vendor="<?= $mapping->nama_vendor ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -455,6 +454,7 @@
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
         $('#data_partner').val("");
+        $('#data_agent').val("");
     })
 
     function source_leads() {
@@ -525,16 +525,16 @@
 <script>
     $("table").on('click', '.pilih-partner', function() {
         $('#id_partner').val($(this).data('partner'));
-        $('#id_agent').val("");
+        // $('#id_agent').val("");
         $('#nama_vendor').val($(this).data('vendor'));
         $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
-        $('#id_partner').val("");
+        // $('#id_partner').val("");
         // $('#nama_vendor').val($(this).data('nama'));
-        $('#data_partner').val($(this).data('namaagent'));
+        $('#data_agent').val($(this).data('namaagent'));
         $('#modal-agent').modal('hide');
     })
     $("table").on('click', '.pilih-leads', function() {
@@ -557,7 +557,8 @@
         $('#nama_konsumen').val($(this).data('nama'));
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val($(this).data('partner'));
-        $('#nama_vendor').val($(this).data('vendor'));
+        $('#data_partner').val($(this).data('namapartner'));
+        $('#data_agent').val($(this).data('namaagent'));
         $('#modal-leads').modal('hide');
 
         source_leads();

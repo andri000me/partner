@@ -132,10 +132,10 @@ class Ticket extends CI_Controller
     }
 
     //Upload Formulir MOU
-    public function upload_mou()
+    public function upload_mou($folder)
     {
         //Konfigurasi Upload
-        $config['upload_path']         = './uploads/mou';
+        $config['upload_path']         = './uploads/' . $folder;
         $config['allowed_types']        = '*';
         $config['max_size']             = 0;
         $config['max_width']            = 0;

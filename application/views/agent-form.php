@@ -286,13 +286,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -300,13 +300,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Buku Tabungan</label>
-                                                <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Foto Selfie</label>
-                                                <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -349,7 +349,7 @@
                 Tim HO akan memverifikasi data anda, dan informasinya akan diberikan melalui menu <a href="#" style="color: blue;">motification</a> di website ini.
             </div>
             <div class="modal-footer">
-                <a href="index.html"><button class="btn btn-primary">OK</button></a>
+                <a href="<?= base_url('agent') ?>"><button class="btn btn-primary">OK</button></a>
             </div>
         </div>
     </div>
