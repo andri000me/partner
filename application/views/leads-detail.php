@@ -50,7 +50,6 @@
 								<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
 								<!-- Post Redirect halaman ke form -->
 								<input type="hidden" name="redirect" value="<?= uri_string() ?>">
-
 								<?php $cabang_asal = $this->fungsi->user_login()->id_branch; ?>
 								<div class="form-row">
 									<div class="col-md-12">
@@ -138,7 +137,7 @@
 										<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
 										<label class="ml-3 vendor">Pilih Data Partner</label>
 										<div class="input-group ml-3 mb-3">
-											<input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_vendor ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+											<input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
 											<div class="input-group-append">
 												<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target="" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>><span class="ion-ios7-search-strong"></span></button>
 											</div>
@@ -149,7 +148,7 @@
 									<div class="col-md-6 form-agent">
 										<label class="ml-3 agent">Pilih Data Agent</label>
 										<div class="input-group ml-3 mb-3">
-											<input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= $data->nama_vendor ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+											<input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
 											<div class="input-group-append">
 												<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>><span class="ion-ios7-search-strong"></span></button>
 											</div>
@@ -176,7 +175,7 @@
 									<div class="col-md-6 kontrak-ro">
 										<div class="form-group ml-3 mr-3">
 											<label>Nomor Kontrak</label>
-											<input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
+											<input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="087883774" />
 										</div>
 									</div>
 									<div class="col-md-6 konsumen-ro">
@@ -203,10 +202,9 @@
 														Tidak
 													</label>
 												</div>
-												<!-- <input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>"> -->
 											</div>
 										</fieldset>
-										<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>">
+										<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 									<div class="col-md-6">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
@@ -220,7 +218,7 @@
 												</select>
 											</div>
 										</fieldset>
-										<input type="hidden" name="cabang_cross" value="<?= $data->cabang_cross ?>">
+										<input type="hidden" name="cabang_cross" value="<?= $data->cabang_cross ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 								</div>
 								<div class="form-row">
@@ -233,6 +231,7 @@
 
 												</optgroup>
 											</select>
+											<input type="hidden" name="pic_ttd" value="<?= $data->pic_ttd ?>" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 										</div>
 									</div>
 									<div class="col-md-6">
@@ -244,21 +243,23 @@
 
 												</optgroup>
 											</select>
+											<input type="hidden" name="surveyor" value="<?= $data->surveyor ?>" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-md-12">
-											<div class="form-group ml-3 mr-3">
-												<label>Follow Up By</label>
-												<select class="form-control" name="follow_up_by" id="follow_up_by" required>
-													<option selected disabled value="">Pilih Follow Up By</option>
-													<option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
-													<option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
-													<option <?= $data->follow_up_by == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
-													<option <?= $data->follow_up_by == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
-												</select>
-											</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Follow Up By</label>
+											<select class="form-control" name="follow_up_by" id="follow_up_by" required <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+												<option selected disabled value="">Pilih Follow Up By</option>
+												<option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
+												<option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
+												<option <?= $data->follow_up_by == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
+												<option <?= $data->follow_up_by == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
+											</select>
+											<input type="hidden" name="follow_up_by" value="<?= $data->follow_up_by ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+										</div>
 									</div>
 								</div>
 								<div class="form-row">
@@ -268,44 +269,50 @@
 											<div class="input-group-prepend">
 												<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
 											</div>
-											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-md-6">
-										<div class="form-group text-size ml-3 mr-3">
-											<label>Apakah Sudah Funding?</label><br>
-											<div class="form-check form-check-inline mt-2">
-												<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
-												<label class="form-check-label">
-													Sudah
-												</label>
+										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<div class="form-group text-size ml-3 mr-3">
+												<label>Apakah Sudah Funding?</label><br>
+												<div class="form-check form-check-inline mt-2">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+													<label class="form-check-label">
+														Sudah
+													</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+													<label class="form-check-label">
+														Belum
+													</label>
+												</div>
 											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
-												<label class="form-check-label">
-													Belum
-												</label>
-											</div>
-										</div>
+										</fieldset>
+										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 									<div class="col-md-6">
-										<div class="form-group ml-3 mr-3">
-											<label>Appeal NST</label><br>
-											<div class="form-check form-check-inline mt-2">
-												<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Ya' ? 'checked' : '' ?> required value="Ya">
-												<label class="form-check-label">
-													Ya
-												</label>
+										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<div class="form-group ml-3 mr-3">
+												<label>Appeal NST</label><br>
+												<div class="form-check form-check-inline mt-2">
+													<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Ya' ? 'checked' : '' ?> required value="Ya">
+													<label class="form-check-label">
+														Ya
+													</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+													<label class="form-check-label">
+														Tidak
+													</label>
+												</div>
 											</div>
-											<div class="form-check form-check-inline">
-												<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-												<label class="form-check-label">
-													Tidak
-												</label>
-											</div>
-										</div>
+										</fieldset>
+										<input type="hidden" name="appeal_nst" value="<?= $data->appeal_nst ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 								</div>
 								<div class="form-group mb-0 mt-2 float-right btn-maintain">
@@ -884,6 +891,7 @@
 		$('#nama_vendor').val("").removeAttr("required");
 		$('#nama_event').val("");
 		$('#data_partner').val("");
+		$('#data_agent').val("");
 	})
 
 	function source_leads() {
@@ -954,15 +962,15 @@
 <script>
 	$("table").on('click', '.pilih-partner', function() {
 		$('#id_partner').val($(this).data('partner'));
-		$('#id_agent').val("");
+		// $('#id_agent').val("");
 		$('#nama_vendor').val($(this).data('vendor'));
 		$('#data_partner').val($(this).data('vendor'));
 		$('#modal-partner').modal('hide');
 	})
 	$("table").on('click', '.pilih-agent', function() {
 		$('#id_agent').val($(this).data('agent'));
-		$('#id_partner').val("");
-		$('#data_partner').val($(this).data('namaagent'));
+		// $('#id_partner').val("");
+		$('#data_agent').val($(this).data('namaagent'));
 		$('#modal-agent').modal('hide');
 	})
 	$("table").on('click', '.pilih-leads', function() {
