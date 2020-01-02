@@ -239,6 +239,7 @@
                             <th>Name Usaha</th>
                             <th>Kategori Produk</th>
                             <th>Telepon</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -248,6 +249,12 @@
                                 <td><?= $partner->nama_usaha ?></td>
                                 <td><?= $partner->kategori_produk ?></td>
                                 <td><?= $partner->telepon ?></td>
+                                <?php if ($partner->status == 'draft') { ?>
+                                    <span class="badge badge-secondary">Draft</span>
+                                <?php } ?>
+                                <?php if ($partner->status == 'lengkap') { ?>
+                                    <span class="badge badge-success">Lengkap</span>
+                                <?php } ?>
                                 <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
                             </tr>
                         <?php } ?>
