@@ -154,7 +154,7 @@
                         <label>Follow Up By</label>
                         <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
                             <option selected disabled value="">Pilih Kegiatan Follow Up</option>
-                            <option value="Kunjungan">Visit Konsumen</option>
+                            <option value="Visit Konsumen">Visit Konsumen</option>
                             <option value="Telepon">Telepon</option>
                             <option value="Whatsapp">Whatsapp</option>
                             <option value="Email">Email</option>

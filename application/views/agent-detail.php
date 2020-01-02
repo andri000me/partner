@@ -651,6 +651,7 @@
 											</a>
 											<div class="media-body">
 												<h5 class="mt-0 font-16"><?= $comment->name ?></h5>
+												<p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
 												<p><?= $comment->comment ?></p>
 											</div>
 										</div>

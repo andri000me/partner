@@ -85,8 +85,8 @@ class Mapping_leads extends CI_Controller
                 // Untuk SOA Event
                 'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
-                'data_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-                'data_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+                'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
+                'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
 
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
