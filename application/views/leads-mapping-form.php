@@ -74,20 +74,20 @@
                             <div class="event">
                                 <div class="form-group ml-3 mr-3">
                                     <label>Nama Event</label>
-                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event" <?= set_value('nama_event') ?> placeholder="Nama Event">
+                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Nama Event">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 nik">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" <?= set_value('nik_egc') ?> placeholder="072104" maxlength="6" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="072104" maxlength="6" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 posisi">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Posisi</label>
-                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" <?= set_value('posisi_egc') ?> placeholder="Nama Jabatan / Posisi">
+                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= set_value('posisi_egc') ?>" placeholder="Nama Jabatan / Posisi">
                                     </div>
                                 </div>
 
@@ -95,25 +95,25 @@
                             <div class="cabang">
                                 <div class="form-group ml-3 mr-3">
                                     <label>Cabang</label>
-                                    <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" <?= set_value('cabang_egc') ?> placeholder="Nama Cabang">
+                                    <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= set_value('cabang_egc') ?>" placeholder="Nama Cabang">
                                 </div>
                             </div>
                             <div class="kontrak-ro">
                                 <div class="form-group ml-3 mr-3">
                                     <label>Nomor Kontrak</label>
-                                    <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" <?= set_value('nomor_kontrak') ?> placeholder="087883774" />
+                                    <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" />
                                 </div>
                             </div>
                             <div class="konsumen-ro">
                                 <div class="form-group ml-3 mr-3">
                                     <label>Nama Konsumen</label>
-                                    <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" <?= set_value('referral_konsumen') ?> placeholder="Input Nama konsumen">
+                                    <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
                                 </div>
                             </div>
                             <div class="form-agent">
                                 <label class="ml-3 agent">Pilih Data Agent</label>
                                 <div class="input-group ml-3 mb-3">
-                                    <input type="text" class="form-control text-size" name="data_agent" id="data_agent" <?= set_value('data_agent') ?> placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                    <input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                     <div class="input-group-append">
                                         <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                     </div>
@@ -124,7 +124,7 @@
                                 <label class="ml-3 travel">Pilih Data Travel</label>
                                 <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                 <div class="input-group ml-3 mb-3">
-                                    <input type="text" class="form-control text-size" name="data_partner" id="data_partner" <?= set_value('data_partner') ?> placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                    <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                     <div class="input-group-append">
                                         <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                     </div>
@@ -165,6 +165,7 @@
                             <th>Name Usaha</th>
                             <th>Kategori Produk</th>
                             <th>Telepon</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -174,6 +175,14 @@
                                 <td><?= $partner->nama_usaha ?></td>
                                 <td><?= $partner->kategori_produk ?></td>
                                 <td><?= $partner->telepon ?></td>
+                                <td>
+                                    <?php if ($partner->status == 'draft') { ?>
+                                        <span class="badge badge-secondary">Draft</span>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'lengkap') { ?>
+                                        <span class="badge badge-success">Lengkap</span>
+                                    <?php } ?>
+                                </td>
                                 <td>
                                     <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                                 </td>

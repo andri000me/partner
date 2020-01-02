@@ -740,7 +740,7 @@
 											</a>
 											<div class="media-body b">
 												<p class="mb-0"><b><?= $comment->name ?></b></p>
-												<p class="text-size mt-0 mb-0">30 Desember 2019</p>
+												<p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
 												<p class="text-size mt-0"><?= $comment->comment ?></p>
 											</div>
 										</div>
