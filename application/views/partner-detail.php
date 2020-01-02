@@ -170,7 +170,7 @@
                                                 <span class="activity-text"><?= $maintain->catatan ?></span>
                                                 <div class="img-fluid">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" width="100" height="100">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>">
                                                     </a>
                                                 </div>
                                             </div>
@@ -255,13 +255,13 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active p-3" id="home1" role="tabpanel">
-                                <h6 class="header-title mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
-                                <div class="boxx overflow-auto">
+                                <h6 class="header-title mt-0 mb-0 web">AKTIVITAS TERAKHIR</h6>
+                                <div class="boxx overflow-auto web">
                                     <?php if ($activities->num_rows() > 0) {
                                         foreach ($activities->result() as $activity) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
-                                                    <table class="web">
+                                                    <table class="text-size">
                                                         <tr>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -285,7 +285,22 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <table class="mobile text-size">
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    } else { ?>
+                                        <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
+                                    <?php } ?>
+                                </div>
+
+                                <h6 class="header-title mt-0 mb-0 mobile">AKTIVITAS TERAKHIR</h6>
+                                <div class="boxx mobile">
+                                    <?php if ($activities->num_rows() > 0) {
+                                        foreach ($activities->result() as $activity) { ?>
+                                            <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table class="text-size">
                                                         <tr>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -328,7 +343,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success"><b>Terverifikasi</b></p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_completed ?></p>
@@ -372,7 +387,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success"><b>Sudah tanda tangan Kerjasama</b></p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
@@ -442,7 +457,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mobile">
+                                <div class="mobile mt-2">
                                     <h6 class="header-title mb-0">STATUS PARTNER</h6>
                                     <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
@@ -453,7 +468,7 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1"><b>Terverifikasi</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Terverifikasi</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -496,7 +511,7 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Sudah tanda tangan Kerjasama</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>

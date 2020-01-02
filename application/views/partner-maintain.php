@@ -121,13 +121,13 @@
 
                         <div class="tab-content">
                             <div class="tab-pane active p-3" id="home1" role="tabpanel">
-                                <h6 class="header-title web mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
-                                <div class="boxx overflow-auto">
+                                <h6 class="header-title mt-0 mb-0 web">AKTIVITAS TERAKHIR</h6>
+                                <div class="boxx overflow-auto web">
                                     <?php if ($activities->num_rows() > 0) {
                                         foreach ($activities->result() as $activity) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
-                                                    <table class="web">
+                                                    <table class="text-size">
                                                         <tr>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -151,7 +151,22 @@
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <table class="mobile text-size">
+                                                </div>
+                                            </div>
+                                        <?php
+                                        }
+                                    } else { ?>
+                                        <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
+                                    <?php } ?>
+                                </div>
+
+                                <h6 class="header-title mt-0 mb-0 mobile">AKTIVITAS TERAKHIR</h6>
+                                <div class="boxx mobile">
+                                    <?php if ($activities->num_rows() > 0) {
+                                        foreach ($activities->result() as $activity) { ?>
+                                            <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table class="text-size">
                                                         <tr>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -169,7 +184,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0"><?= $activity->date_activity ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0"><?= $activity->tanggal_activity ?></p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -184,7 +199,7 @@
 
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
-                                    <div class="boxx overflow-auto">
+                                    <div class="boxxx overflow-auto">
                                         <?php if ($ticket->status_approval == 5) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
@@ -194,7 +209,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b>Terverifikasi</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success"><b>Terverifikasi</b></p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_completed ?></p>
@@ -221,14 +236,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b>Belum Diverifikasi</b></p>
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td></td>
-                                                            <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;Admin HO</p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size  text-danger"><b>Belum Diverifikasi</b></p>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -245,7 +253,7 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success"><b>Sudah tanda tangan Kerjasama</b></p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
@@ -262,7 +270,7 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                        <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -294,12 +302,12 @@
                                                                     </div>
                                                                 </div>
                                                                 <div id="form_mou" class="form-group ml-3">
-                                                                    <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
+                                                                    <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                         <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                                                         <div class="form-group mr-2">
                                                                             <label>Form MOU</label>
-                                                                            <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                                            <input type="file" pload_mou" class="filestyle" data-buttonname="btn-secondary">
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
@@ -315,7 +323,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mobile">
+                                <div class="mobile mt-2">
                                     <h6 class="header-title mb-0">STATUS PARTNER</h6>
                                     <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
@@ -326,19 +334,19 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1"><b>Terverifikasi</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Terverifikasi</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Teri Anggraini</p>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted">30 Des, 2019</p>
+                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -353,13 +361,7 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1"><b>Belum Diverifikasi</b></p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td></td>
-                                                        <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;Admin HO</p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-danger"><b>Belum Diverifikasi</b></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -369,30 +371,32 @@
                                     <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
-                                                <table>
+                                                <table class="text-size">
                                                     <tr>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-size"><b>Sudah tanda tangan Kerjasama</b></p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Sudah tanda tangan Kerjasama</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                         </td>
+                                                    </tr>
+                                                    <tr>
                                                         <td></td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                        </td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
                                     <?php } ?>
-                                    <?php if ($ticket->status_approval == 5  && ($this->fungsi->user_login()->level < 4)) { ?>
+                                    <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -424,7 +428,7 @@
                                                                 </div>
                                                             </div>
                                                             <div id="form_mou" class="form-group ml-3">
-                                                                <form action="<?= base_url('ticket/upload_mou') ?>" method="post" enctype="multipart/form-data">
+                                                                <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                     <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                                                     <div class="form-group mr-2">
@@ -471,6 +475,7 @@
                                             </a>
                                             <div class="media-body b">
                                                 <p class="mb-0"><b><?= $comment->name ?></b></p>
+                                                <p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
                                                 <p class="text-size mt-0"><?= $comment->comment ?></p>
                                             </div>
                                         </div>

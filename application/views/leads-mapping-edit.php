@@ -167,7 +167,7 @@
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">
-                                Simpan
+                                Kirim
                             </button>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 web">
         <div class="card">
             <div class="card-body">
                 <h4 class="mt-0 header-title mb-4">Timeline</h4>
@@ -188,7 +188,7 @@
                             ?>
                                     <li class="feed-item text-size">
                                         <div class="feed-item-list">
-                                            <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+                                            <span class="activity-text text-primary"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
                                             <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
                                             <span class="date"><?= $data->tanggal_follow_up ?></span>
                                             <span class="activity-text"><?= $data->catatan ?></span>
@@ -217,6 +217,35 @@
                             </li> -->
                         </ol>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mobile">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Timeline</h4>
+                <div class="tab-pane p-3" id="profile2" role="tabpanel">
+                    <ol class="activity-feed mb-0">
+                        <?php
+                        if ($follow_up->num_rows() > 0) {
+                            foreach ($follow_up->result() as $data) {
+                        ?>
+                                <li class="feed-item text-size">
+                                    <div class="feed-item-list">
+                                        <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+                                        <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+                                        <span class="date"><?= $data->tanggal_follow_up ?></span>
+                                        <span class="activity-text"><?= $data->catatan ?></span>
+                                    </div>
+                                </li>
+                            <?php
+                            }
+                        } else { ?>
+                            <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+                        <?php } ?>
+                    </ol>
                 </div>
             </div>
         </div>

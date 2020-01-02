@@ -49,6 +49,7 @@
                                                 <div class="input-group ml-3">
                                                     <input type="search" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= $data->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                     <div class="input-group-append mr-4">
+                                                        <button class="btn btn-danger text-size" type="button" id="reset">x</button>
                                                         <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                     </div>
                                                 </div>
@@ -406,7 +407,7 @@
                                             <?php if ($data->ktp) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->ktp) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->ktp) ?>" width="100" height="100">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->ktp) ?>" style="width: 150px; height: 150px;">
                                                     </a>
                                                 </div>
                                             <?php } ?>
@@ -419,7 +420,7 @@
                                             <?php if ($data->npwp) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->npwp) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->npwp) ?>" width="100" height="100">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->npwp) ?>" style="width: 150px; height: 150px;">
                                                     </a>
                                                 </div>
                                             <?php } ?>
@@ -434,7 +435,7 @@
                                             <?php if ($data->buku_tabungan_perusahaan) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" width="100" height="100">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" style="width: 150px; height: 150px;">
                                                     </a>
                                                 </div>
                                             <?php } ?>
@@ -447,7 +448,7 @@
                                             <?php if ($data->siup) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->siup) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->siup) ?>" width="100" height="100">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->siup) ?>" style="width: 150px; height: 150px;">
                                                     </a>
                                                 </div>
                                             <?php } ?>
@@ -462,24 +463,24 @@
                                             <?php if ($data->logo_perusahaan) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" width="100" height="100">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" style="width: 150px; height: 150px;">
                                                     </a>
                                                 </div>
                                             <?php } ?>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Foto usaha</label>
-                                        <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
-                                        <?php if ($data->foto_usaha_mapping) { ?>
-                                            <div class="img-fluid mt-1">
-                                                <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
-                                                    <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" width="100" height="100">
-                                                </a>
-                                            </div>
-                                        <?php } ?>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-size ml-3 mr-3">
+                                            <label>Foto usaha</label>
+                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                            <?php if ($data->foto_usaha_mapping) { ?>
+                                                <div class="img-fluid mt-1">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" style="width: 150px; height: 150px;">
+                                                    </a>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -540,7 +541,7 @@
                                     <div class="text-size"><?= $data->telepon ?></div>
                                 </td>
                                 <td>
-                                    <center><a href="#" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>" data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
+                                    <center><a href="#" id="search" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>" data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -654,5 +655,14 @@
     })
 </script>
 
-
+<script>
+    $('#reset').hide()
+    $('#search').click(function() {
+        $('#reset').show()
+    })
+    $('#reset').click(function() {
+        $('#nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
+        $('').hide();
+    })
+</script>
 <!-- script -->

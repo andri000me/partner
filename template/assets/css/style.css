@@ -3914,12 +3914,12 @@ button[disabled] {
 
 	.boxx {
 		width: 300px;
-		height: 300px;
+		height: 125px;
 	}
 
 	.boxxx {
 		width: 300px;
-		max-height: 125px;
+		max-height: 150px;
 	}
 
 	.media {
@@ -4108,43 +4108,11 @@ button[disabled] {
 	.boxx {
 		width: 320px;
 		height: 180px;
-		margin-top: 5px;
 	}
 
 	.box {
 		width: 320px;
-		height: 400px;
-	}
-}
-
-@media (max-width: 411px) {
-	.sticky-top {
-		position: unset;
-		top: unset;
-		width: 380px;
-	}
-
-	.media {
-		max-width: 300px;
-	}
-
-	.web {
-		display: none;
-	}
-
-	.mobile {
-		display: unset;
-	}
-
-	.boxx {
-		width: 320px;
-		height: 220px;
-		margin-top: 5px;
-	}
-
-	.box {
-		width: 320px;
-		height: 400px;
+		height: 380px;
 	}
 }
 
@@ -4172,12 +4140,11 @@ button[disabled] {
 	.boxx {
 		width: 280px;
 		height: 220px;
-		margin-top: 5px;
 	}
 
 	.box {
 		width: 280px;
-		height: 400px;
+		height: 340px;
 	}
 }
 
@@ -4250,7 +4217,7 @@ button[disabled] {
 
 	.box {
 		width: 230px;
-		height: 285px;
+		height: 200px;
 	}
 
 	.btn-maintain {
