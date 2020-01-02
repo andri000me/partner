@@ -5,7 +5,17 @@ $(document).ready(function () {
 			bLengthChange: false,
 			language: {
 				searchPlaceholder: "Cari Data"
-			}
+			},
+		}),
+		$(".datatable-modal").DataTable({
+			responsive: true,
+			pagingType: "simple",
+			bLengthChange: false,
+			"lengthMenu": [5, 40, 60, 80, 100],
+			"pageLength": 5,
+			language: {
+				searchPlaceholder: "Cari Data"
+			},
 		}),
 		$("#datatable-buttons")
 		.DataTable({

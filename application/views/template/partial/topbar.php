@@ -5,7 +5,7 @@
             <img src="<?= base_url('template/assets/images/logobfi.png') ?>" alt="" width="100">
         </span>
         <i>
-            <img src="<?= base_url('template/assets/images/bfi.png') ?>" alt="" height="22">
+            <img src="<?= base_url('template/assets/images/bfi.png') ?>" alt="" height="35">
         </i>
     </a>
 </div>
