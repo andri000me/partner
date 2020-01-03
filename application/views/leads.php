@@ -38,83 +38,83 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane active p-3" id="belum-funding" role="tabpanel">
-                    <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Leads ID</th>
-                                <th>Nomor KTP</th>
-                                <th>Follow Up By</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($belum_funding->result() as $leads) { ?>
+                <div class="tab-content">
+                    <div class="tab-pane active p-3" id="belum-funding" role="tabpanel">
+                        <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <?= $leads->nama_konsumen ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->leads_id ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->no_ktp ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->follow_up_by ?>
-                                    </td>
-                                    <td>
-                                        <?php if ($leads->status == 'draft') { ?>
-                                            <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
-                                        <?php } else if ($leads->status == 'lengkap') { ?>
-                                            <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
-                                        <?php } ?>
-                                    </td>
+                                    <th>Nama</th>
+                                    <th>Leads ID</th>
+                                    <th>Nomor KTP</th>
+                                    <th>Follow Up By</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="tab-pane p-3" id="sudah-funding" role="tabpanel">
-                    <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Nama</th>
-                                <th>Leads ID</th>
-                                <th>Nomor KTP</th>
-                                <th>Follow Up By</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($sudah_funding->result() as $leads) { ?>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($belum_funding->result() as $leads) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $leads->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->leads_id ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->no_ktp ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->follow_up_by ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($leads->status == 'draft') { ?>
+                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                            <?php } else if ($leads->status == 'lengkap') { ?>
+                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane p-3" id="sudah-funding" role="tabpanel">
+                        <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        <?= $leads->nama_konsumen ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->leads_id ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->no_ktp ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->follow_up_by ?>
-                                    </td>
-                                    <td>
-                                        <?php if ($leads->status == 'draft') { ?>
-                                            <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
-                                        <?php } else if ($leads->status == 'lengkap') { ?>
-                                            <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
-                                        <?php } ?>
-                                    </td>
+                                    <th>Nama</th>
+                                    <th>Leads ID</th>
+                                    <th>Nomor KTP</th>
+                                    <th>Follow Up By</th>
+                                    <th>Action</th>
                                 </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($sudah_funding->result() as $leads) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $leads->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->leads_id ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->no_ktp ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->follow_up_by ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($leads->status == 'draft') { ?>
+                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                            <?php } else if ($leads->status == 'lengkap') { ?>
+                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
