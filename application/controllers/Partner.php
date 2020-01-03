@@ -103,10 +103,19 @@ class Partner extends CI_Controller
 
         $where_mapping = ['id_mapping' => $post['id_mapping']];
 
-        $this->mapping_partner->update($data_mapping, $where_mapping);
+        if ($post['id_mapping'] != '' || $post['id_mapping'] != NULL) {
+            $this->mapping_partner->update($data_mapping, $where_mapping);
+        } else {
+            $data_mapping['id_user'] = $this->fungsi->user_login()->id_user;
+            $data_mapping['id_branch'] = $this->fungsi->user_login()->id_branch;
+
+            $id_mapping = $this->mapping_partner->create($data_mapping);
+        }
+
+        // $this->mapping_partner->update($data_mapping, $where_mapping);                             
         $data = [
             //ID Mapping
-            'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
+            'id_mapping'            => ($post['id_mapping'] != '' || $post['id_mapping'] != NULL) ? $post['id_mapping'] : $id_mapping,
 
             //Stage 1
             'kelurahan'             => !empty($post['kelurahan'])               ? $post['kelurahan'] : NULL,

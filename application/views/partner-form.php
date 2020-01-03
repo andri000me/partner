@@ -48,7 +48,7 @@
                                                     <div class="input-group ml-3">
                                                         <input type="search" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= set_value('nama_usaha') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                         <div class="input-group-append mr-4">
-                                                            <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                            <button class="btn btn-primary btn-outline text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                         </div>
                                                     </div>
                                                 </div>

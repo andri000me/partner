@@ -420,7 +420,7 @@
                                                                         </label>
                                                                     </div>
                                                                 </div>
-                                                                <div id="form_mou" class="form-group ml-3">
+                                                                <div id="" class="form-group ml-3 form_mou">
                                                                     <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                         <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
@@ -546,7 +546,7 @@
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div id="form_mou" class="form-group ml-3">
+                                                            <div id="" class="form-group ml-3 form_mou">
                                                                 <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                     <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">

@@ -156,8 +156,8 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event'])          ? $post['nama_event'] : NULL,
 
-            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+            'nama_partner'            => !empty($post['data_partner'])      ? $post['data_partner'] : NULL,
+            'nama_agent'            => !empty($post['data_agent'])          ? $post['data_agent'] : NULL,
 
 
             'updated_at'            => date('Y-m-d H:i:s'),
@@ -168,11 +168,18 @@ class Leads extends CI_Controller
 
         $where_mapping_leads = ['id_mapping_leads' => $post['id_mapping_leads']];
 
-        $this->mapping_leads->update($data_mapping_leads, $where_mapping_leads);
+        if ($post['id_mapping_leads'] != '' || $post['id_mapping_leads'] != NULL) {
+            $this->mapping_leads->update($data_mapping_leads, $where_mapping_leads);
+        } else {
+            $data_mapping_leads['id_user'] = $this->fungsi->user_login()->id_user;
+            $data_mapping_leads['id_branch'] = $this->fungsi->user_login()->id_branch;
+
+            $id_mapping_leads = $this->mapping_leads->create($data_mapping_leads);
+        }
 
         if ($this->form_validation->run() != FALSE) {
             $data = [
-                'id_mapping_leads' => $post['id_mapping_leads'],
+                'id_mapping_leads' => ($post['id_mapping_leads'] != '' || $post['id_mapping_leads'] != NULL) ? $post['id_mapping_leads'] : $id_mapping_leads,
 
                 'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
                 'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
@@ -279,7 +286,7 @@ class Leads extends CI_Controller
                     'id_user' => $this->fungsi->user_login()->id_user,
 
                     //ID Mapping Leads yang di follow-up
-                    'id_mapping_leads' => $post['id_mapping_leads']
+                    'id_mapping_leads' => ($post['id_mapping_leads'] != '' || $post['id_mapping_leads'] != NULL) ? $post['id_mapping_leads'] : $id_mapping_leads
                 ];
                 $this->leads_follow_up_model->create($data_leads_follow_up);
             }

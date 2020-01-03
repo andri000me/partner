@@ -256,9 +256,9 @@
         var id_ticket = $('#id_ticket').val();
 
         if (ttd_pks == 'Ya') {
-            $("#form_mou").show();
+            $(".form_mou").show();
         } else {
-            $("#form_mou").hide();
+            $(".form_mou").hide();
         }
 
         $.ajax({

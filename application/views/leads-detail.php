@@ -213,7 +213,7 @@
 												<select class="form-control" name="cabang_cross" id="cabang_cross">
 													<option selected disabled value="">Pilih Cabang</option>
 													<?php foreach ($branches->result() as $branch) { ?>
-														<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+														<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $cabang_asal ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
 													<?php } ?>
 												</select>
 											</div>
@@ -824,6 +824,7 @@
 							<th>Name Usaha</th>
 							<th>Kategori Produk</th>
 							<th>Telepon</th>
+							<th>Status</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -833,6 +834,14 @@
 								<td><?= $partner->nama_usaha ?></td>
 								<td><?= $partner->kategori_produk ?></td>
 								<td><?= $partner->telepon ?></td>
+								<td>
+									<?php if ($partner->status == 'draft') { ?>
+										<span class="badge badge-secondary">Draft</span>
+									<?php } ?>
+									<?php if ($partner->status == 'lengkap') { ?>
+										<span class="badge badge-success">Lengkap</span>
+									<?php } ?>
+								</td>
 								<td>
 									<center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
 								</td>
@@ -994,5 +1003,23 @@
 		$('#modal-leads').modal('hide');
 
 		source_leads();
+	})
+</script>
+
+<script>
+	if ($("input[name='cross_branch']:checked").val() == 'Ya') {
+		$("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+	} else {
+		$("#surveyor, #pic_ttd").removeAttr('disabled');
+	}
+
+	$("input[name='cross_branch']").click(function() {
+		if ($(this).val() == 'Ya') {
+			$("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+			$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+		} else {
+			$("#surveyor, #pic_ttd").removeAttr('disabled');
+			$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+		}
 	})
 </script>

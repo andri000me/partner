@@ -402,6 +402,7 @@
                             <th>Name Usaha</th>
                             <th>Kategori Produk</th>
                             <th>Telepon</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
