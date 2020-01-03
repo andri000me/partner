@@ -83,9 +83,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
@@ -114,24 +111,33 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Foto usaha</label>
-                                        <input type="file" name="foto_usaha_mapping" class="filestyle" data-buttonname="btn-secondary">
-                                        <div class="img-fluid mt-1">
-                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
-                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" width="100" height="100">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+
+                        <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Catatan</label>
                                         <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:110px;"><?= $data->catatan ?></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Foto usaha</label>
+                                        <input type="file" name="foto_usaha_mapping" class="filestyle" data-buttonname="btn-secondary">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <div class="img-fluid mt-2">
+                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
+                                                <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -339,25 +339,29 @@
 
 						<div class="tab-pane p-3" id="profile2" role="tabpanel">
 							<h4 class="mt-0 header-title mb-4">Timeline History Follow Up</h4>
-							<ol class="activity-feed mb-0">
-								<?php
-								if ($follow_up->num_rows() > 0) {
-									foreach ($follow_up->result() as $data) {
-								?>
-										<li class="feed-item text-size">
-											<div class="feed-item-list">
-												<span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
-												<span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
-												<span class="date"><?= $data->tanggal_follow_up ?></span>
-												<span class="activity-text"><?= $data->catatan ?></span>
-											</div>
-										</li>
-									<?php
-									}
-								} else { ?>
-									<p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
-								<?php } ?>
-							</ol>
+							<div class="row">
+								<div class="col-md-6">
+									<ol class="activity-feed mb-0">
+										<?php
+										if ($follow_up->num_rows() > 0) {
+											foreach ($follow_up->result() as $data) {
+										?>
+												<li class="feed-item text-size">
+													<div class="feed-item-list">
+														<span class="activity-text text-primary"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+														<span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+														<span class="date"><?= $data->tanggal_follow_up ?></span>
+														<span class="activity-text"><?= $data->catatan ?></span>
+													</div>
+												</li>
+											<?php
+											}
+										} else { ?>
+											<p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+										<?php } ?>
+									</ol>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -388,12 +392,12 @@
 						<div class="tab-content">
 							<div class="tab-pane active p-3" id="home1" role="tabpanel">
 								<h6 class="header-title web mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
-								<div class="boxx overflow-auto">
+								<div class="boxx overflow-auto web">
 									<?php if ($activities->num_rows() > 0) {
 										foreach ($activities->result() as $activity) { ?>
 											<div class="inbox-wid">
 												<div class="inbox-item">
-													<table class="web">
+													<table class="text-size">
 														<tr>
 															<td>
 																<p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -417,7 +421,21 @@
 															</td>
 														</tr>
 													</table>
-													<table class="mobile text-size">
+												</div>
+											</div>
+										<?php
+										}
+									} else { ?>
+										<p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
+									<?php } ?>
+								</div>
+								<div class="boxx mobile">
+									<h6 class="header-title mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
+									<?php if ($activities->num_rows() > 0) {
+										foreach ($activities->result() as $activity) { ?>
+											<div class="inbox-wid">
+												<div class="inbox-item">
+													<table class="text-size">
 														<tr>
 															<td>
 																<p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i>&nbsp;</p>
@@ -699,7 +717,7 @@
 									<?php } ?>
 								</div> -->
 
-								<h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>
+								<h4 class="header-title mt-4 mb-0">LAMPIRAN</h4>
 								<div class="inbox-wid">
 									<div class="inbox-item">
 										<table>
@@ -739,7 +757,7 @@
 									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
 										<label>Comment</label>
-										<textarea class="form-control" name="comment" id="comment-text" cols="30" rows="10" required placeholder="tulis comment disini"></textarea>
+										<textarea class="form-control" name="comment" id="comment-text" cols="30" rows="10" required placeholder="tulis comment disini" style="height: 80px;"></textarea>
 									</div>
 									<button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
 								</form>

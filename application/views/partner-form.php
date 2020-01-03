@@ -46,9 +46,10 @@
                                                 <div class="col-md-12 mb-3">
                                                     <label class="ml-3">Nama Usaha</label>
                                                     <div class="input-group ml-3">
-                                                        <input type="search" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= set_value('nama_usaha') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= set_value('nama_usaha') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                         <div class="input-group-append mr-4">
-                                                            <button class="btn btn-primary btn-outline text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                            <button class="btn btn-danger text-size" type="button" id="reset">x</button>
+                                                            <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -496,7 +497,7 @@
                                     <div class="text-size"><?= $data->telepon ?></div>
                                 </td>
                                 <td>
-                                    <center><a href="#" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>" data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
+                                    <center><a href="#" id="search" class="btn btn-primary pilih" data-mapping="<?= $data->mapping_id ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>" data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -605,6 +606,17 @@
         } else {
             $('.jasa, .travel, .agent, .form, .event').hide();
         }
+    })
+</script>
+
+<script>
+    $('#reset').hide()
+    $('#search').click(function() {
+        $('#reset').show()
+    })
+    $('#reset').click(function() {
+        $('#nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
+        $('').hide();
     })
 </script>
 
