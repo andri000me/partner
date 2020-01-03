@@ -135,7 +135,7 @@
                                     <div class="form-group text-size ml-3 mr-3">
                                         <div class="img-fluid mt-2">
                                             <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
-                                                <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>">
+                                                <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" style="width: 150px; height: 150px;">
                                             </a>
                                         </div>
                                     </div>
