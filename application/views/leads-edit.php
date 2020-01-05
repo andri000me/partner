@@ -413,12 +413,14 @@
                                 <td><?= $partner->nama_usaha ?></td>
                                 <td><?= $partner->kategori_produk ?></td>
                                 <td><?= $partner->telepon ?></td>
-                                <?php if ($partner->status == 'draft') { ?>
-                                    <span class="badge badge-secondary">Draft</span>
-                                <?php } ?>
-                                <?php if ($partner->status == 'lengkap') { ?>
-                                    <span class="badge badge-success">Lengkap</span>
-                                <?php } ?>
+                                <td>
+                                    <?php if ($partner->status == 'draft') { ?>
+                                        <span class="badge badge-secondary">Draft</span>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'lengkap') { ?>
+                                        <span class="badge badge-success">Lengkap</span>
+                                    <?php } ?>
+                                </td>
                                 <td>
                                     <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                                 </td>
@@ -593,6 +595,9 @@
 
         $('#modal-leads').modal('hide');
 
+        $('#nama_konsumen').attr('readonly', 'readonly');
+        $('#reset').show()
+
         source_leads();
     })
 </script>
@@ -620,12 +625,10 @@
 </script>
 
 <script>
-    $('#reset').hide()
-    $('#search').click(function() {
-        $('#reset').show()
-    })
+    $('#reset').hide();
     $('#reset').click(function() {
-        $('#nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
+        $('#id_mapping_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
         $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset').hide();
+        $('#nama_konsumen').removeAttr('readonly');
     })
 </script>

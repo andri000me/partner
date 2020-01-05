@@ -171,6 +171,8 @@ class Leads extends CI_Controller
         if ($post['id_mapping_leads'] != '' || $post['id_mapping_leads'] != NULL) {
             $this->mapping_leads->update($data_mapping_leads, $where_mapping_leads);
         } else {
+            $data_mapping_leads['created_at'] = date('Y-m-d H:i:s');
+            $data_mapping_leads['updated_at'] = date('Y-m-d H:i:s');
             $data_mapping_leads['id_user'] = $this->fungsi->user_login()->id_user;
             $data_mapping_leads['id_branch'] = $this->fungsi->user_login()->id_branch;
 

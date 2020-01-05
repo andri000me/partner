@@ -380,7 +380,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Catatan</label>
-                                                        <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" value="<?= set_value('catatan') ?>" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
+                                                        <textarea class="form-control text-size" name="keterangan_tambahan" id="keterangan_tambahan" cols="30" rows="10" value="<?= set_value('keterangan_tambahan') ?>" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -553,6 +553,9 @@
         akhir_izin();
 
         $('.bd-example-modal-xl').modal('hide');
+
+        $('#nama_usaha').attr('readonly', 'readonly');
+        $('#reset').show()
     })
 </script>
 
@@ -615,8 +618,9 @@
         $('#reset').show()
     })
     $('#reset').click(function() {
-        $('#nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
-        $('').hide();
+        $('#id_mapping, #nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
+        $('#reset').hide();
+        $('#nama_usaha').removeAttr('readonly');
     })
 </script>
 

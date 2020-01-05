@@ -252,10 +252,6 @@
         </div>
     </div>
 
-
-
-
-
     <div class="col-lg-4">
         <div class="sticky">
             <div class="card height">

@@ -136,7 +136,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
-                                            <label>Jumalah Karyawan</label>
+                                            <label>Jumlah Karyawan</label>
                                             <input type="text" class="form-control number-only" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= $data->jumlah_karyawan ?>"" required placeholder=" 25">
                                         </div>
                                     </div>
@@ -232,6 +232,20 @@
                             <div class="item" style="height:79px; width:120px;">
                                 <div class="zoom-gallery">
                                     <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>" alt="" style="height:79px; width:120px;"></a>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <?php if ($data->foto_usaha) { ?>
+                            <div class="item" style="height:79px; width:120px;">
+                                <div class="zoom-gallery">
+                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>" alt="" style="height:79px; width:120px;"></a>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <?php foreach ($maintains->result() as $maintain) { ?>
+                            <div class="item" style="height:79px; width:120px;">
+                                <div class="zoom-gallery">
+                                    <a href="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"><img src="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>" alt="" style="height:79px; width:120px;"></a>
                                 </div>
                             </div>
                         <?php } ?>

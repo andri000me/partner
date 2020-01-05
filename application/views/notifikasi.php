@@ -19,6 +19,11 @@
                 <div class="table-responsive">
                     <table class="table table-hover table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
+                            <?php if ($today->num_rows() == 0 && $earlier->num_rows() == 0) { ?>
+                                <tr>
+                                    <td colspan="5" style="text-align:center"><b>Tidak ada notifikasi!</b></td>
+                                </tr>
+                            <?php } ?>
                             <?php if ($today->num_rows() > 0) { ?>
                                 <tr>
                                     <td colspan="5"><b>Hari ini</b></td>
@@ -71,9 +76,11 @@
                                     </td>
                                 </tr>
                             <?php } ?>
-                            <tr>
-                                <td colspan="5"><b>Sebelumnya</b></td>
-                            </tr>
+                            <?php if ($earlier->num_rows() > 0) { ?>
+                                <tr>
+                                    <td colspan="5"><b>Sebelumnya</b></td>
+                                </tr>
+                            <?php } ?>
                             <?php foreach ($earlier->result() as $notif) { ?>
                                 <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
                                     <td>

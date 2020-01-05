@@ -48,9 +48,9 @@
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="far fa-handshake"></i><span> Kerjasama <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url('Mapping_partner') ?>">Mapping Lokasi Partner</a></li>
-                            <li><a href="<?= base_url('Partner') ?>">Partnership</a></li>
-                            <li><a href="<?= base_url('Agent') ?>">Agent / BA</a></li>
+                            <li><a href="<?= base_url('mapping_partner') ?>">Mapping Lokasi Partner</a></li>
+                            <li><a href="<?= base_url('partner') ?>">Partnership</a></li>
+                            <li><a href="<?= base_url('agent') ?>">Agent / BA</a></li>
                         </ul>
                     </li>
 

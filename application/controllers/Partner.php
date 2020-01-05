@@ -43,8 +43,10 @@ class Partner extends CI_Controller
 
     public function index()
     {
+        $merge = array_merge($this->where, ['status' => 'lengkap']);
         $data = [
-            'data' => $this->partner_model->get($this->where)
+            'data' => $this->partner_model->get($this->where),
+            'lengkap' => $this->partner_model->get($merge)
         ];
 
         $this->template->load('template/index', 'partner', $data);
@@ -103,9 +105,13 @@ class Partner extends CI_Controller
 
         $where_mapping = ['id_mapping' => $post['id_mapping']];
 
+        //Bagian ini jika user menginput data leads langsung tanpa mengambil 
+        //Jika ID Mapping sudah terisi maka update data id mapping yang sudah ada
         if ($post['id_mapping'] != '' || $post['id_mapping'] != NULL) {
             $this->mapping_partner->update($data_mapping, $where_mapping);
         } else {
+            $data_mapping['created_at'] = date('Y-m-d H:i:s');
+            $data_mapping['updated_at'] = date('Y-m-d H:i:s');
             $data_mapping['id_user'] = $this->fungsi->user_login()->id_user;
             $data_mapping['id_branch'] = $this->fungsi->user_login()->id_branch;
 
@@ -146,6 +152,7 @@ class Partner extends CI_Controller
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
             'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
+            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
 
             //Timestamp
             'created_at' => date('Y-m-d H:i:s'),
@@ -192,6 +199,12 @@ class Partner extends CI_Controller
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
             $data['logo_perusahaan'] = $this->upload->data('file_name');
+        }
+
+        if (!$this->upload->do_upload('foto_usaha')) {
+            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+        } else {
+            $data['foto_usaha'] = $this->upload->data('file_name');
         }
 
 
@@ -301,6 +314,7 @@ class Partner extends CI_Controller
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
             'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
+            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
@@ -343,6 +357,12 @@ class Partner extends CI_Controller
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
             $data['logo_perusahaan'] = $this->upload->data('file_name');
+        }
+
+        if (!$this->upload->do_upload('foto_usaha')) {
+            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+        } else {
+            $data['foto_usaha'] = $this->upload->data('file_name');
         }
 
         if (isset($post['draft'])) {

@@ -26,24 +26,54 @@
             $('#pic_ttd, #surveyor').removeAttr('required');
         }
 
-        $('.cross_branch').click(function() {
+        //Jika form prospek cross branch 
+        // if ($("input[name='cross_branch']:checked").val() == 'Ya' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
+        //menon-aktifkan form surveyor & pic ttd
+        // $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+        // $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+        // }
+        //Jika form prospek bukan cross branch (milik sendiri) 
+        if ($("input[name='cross_branch']:checked").val() == 'Ya' && $("#id_branch").val() == $("#id_cabang_cross").val()) {
+            //meng-aktifkan form surveyor & pic ttd
+            $("#surveyor, #pic_ttd").removeAttr('disabled');
+            $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+        } else if ($("input[name='cross_branch']:checked").val() == 'Tidak' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
+            $("#surveyor, #pic_ttd").removeAttr('disabled');
+            $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+        }
+
+        $("input[name='cross_branch']").click(function() {
             var cross_branch = $(this).val();
             if (cross_branch == 'Ya') {
                 $('#hide').show();
                 $('.users').hide();
                 $('#pic_ttd, #surveyor').removeAttr('required');
                 $('#cabang_cross').attr('required', 'required');
+
+                $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
                 $(".users").show();
                 $("#cabang_cross").val("");
                 $('#pic_ttd, #surveyor').attr('required', 'required');
                 $('#cabang_cross').removeAttr('required');
+
+                $("#surveyor, #pic_ttd").removeAttr('disabled');
+                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
                 show_pic_ttd();
             }
         })
     })
 </script>
+
+<!-- // $("input[name='cross_branch']").click(function() {
+// if ($(this).val() == 'Ya') {
+
+// } else {
+
+// }
+// }) -->
 
 <script>
     /*  Wizard */

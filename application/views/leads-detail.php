@@ -48,6 +48,8 @@
 								<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
 								<!-- ID Branch -->
 								<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+								<!-- ID Branch -->
+								<input type="hidden" id="id_cross_branch" value="<?= $data->cabang_cross ?>">
 								<!-- Post Redirect halaman ke form -->
 								<input type="hidden" name="redirect" value="<?= uri_string() ?>">
 								<?php $cabang_asal = $this->fungsi->user_login()->id_branch; ?>
@@ -319,10 +321,9 @@
 									<?php
 									$level = $this->fungsi->user_login()->level;
 									if (
-										($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && ($this->fungsi->user_login()->id_branch == $data->id_branch)
+										($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && (($this->fungsi->user_login()->id_branch == $data->id_branch) || $level == 4)
 									) {
 									?>
-										<?= $this->fungsi->user_login()->id_branch . ' = ' . $data->id_branch ?>
 										<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 									<?php } ?>
 									<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
@@ -1021,23 +1022,5 @@
 		$('#modal-leads').modal('hide');
 
 		source_leads();
-	})
-</script>
-
-<script>
-	if ($("input[name='cross_branch']:checked").val() == 'Ya') {
-		$("#surveyor, #pic_ttd").attr('disabled', 'disabled');
-	} else {
-		$("#surveyor, #pic_ttd").removeAttr('disabled');
-	}
-
-	$("input[name='cross_branch']").click(function() {
-		if ($(this).val() == 'Ya') {
-			$("#surveyor, #pic_ttd").attr('disabled', 'disabled');
-			$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
-		} else {
-			$("#surveyor, #pic_ttd").removeAttr('disabled');
-			$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
-		}
 	})
 </script>
