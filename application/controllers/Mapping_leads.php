@@ -92,7 +92,7 @@ class Mapping_leads extends CI_Controller
                 'created_at'            => date('Y-m-d H:i:s'),
                 'updated_at'            => date('Y-m-d H:i:s'),
 
-                'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+                'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
                 'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
                 //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
                 'id_user'               => $this->fungsi->user_login()->id_user,
@@ -143,7 +143,7 @@ class Mapping_leads extends CI_Controller
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
 
-            'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+            'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
             'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
 
             //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping

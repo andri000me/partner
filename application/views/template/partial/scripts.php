@@ -49,7 +49,7 @@
             if (cross_branch == 'Ya') {
                 $('#hide').show();
                 $('.users').hide();
-                if (sudah_funding == 'Sudah') {
+                if (sudah_funding == 'Sudah' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
                     $('#cabang_cross').attr('required', 'required');
                     $('#pic_ttd, #surveyor').removeAttr('required');
 
@@ -60,7 +60,7 @@
                 $('#hide').hide();
                 $(".users").show();
                 $("#cabang_cross").val("");
-                if (sudah_funding == 'Sudah') {
+                if (sudah_funding == 'Sudah' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
                     $('#cabang_cross').removeAttr('required');
                     $('#pic_ttd, #surveyor').attr('required', 'required');
 

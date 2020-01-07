@@ -268,7 +268,7 @@
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Belum' ? 'checked' : '' ?> required value="Belum">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Belum' ? 'checked' : '' ?> checked required value="Belum">
                                             <label class="form-check-label">
                                                 Belum
                                             </label>

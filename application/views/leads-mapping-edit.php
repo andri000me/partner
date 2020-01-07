@@ -25,7 +25,7 @@
                     <!-- ID Agent -->
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= $data->id_agent ?>">
                     <!-- ID Partner -->
-                    <input type="hidden" id="id_partner" name="id_partner" value="<?= $data->id_partner ?>">
+                    <input type="hidden" id="id_mapping" name="id_mapping" value="<?= $data->id_mapping ?>">
                     <!-- Redirect -->
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="form-row">
@@ -278,13 +278,15 @@
                                 <td><?= $partner->nama_usaha ?></td>
                                 <td><?= $partner->kategori_produk ?></td>
                                 <td><?= $partner->telepon ?></td>
-                                <?php if ($partner->status == 'draft') { ?>
-                                    <span class="badge badge-secondary">Draft</span>
-                                <?php } ?>
-                                <?php if ($partner->status == 'lengkap') { ?>
-                                    <span class="badge badge-success">Lengkap</span>
-                                <?php } ?>
-                                <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
+                                <td>
+                                    <?php if ($partner->status == 'draft') { ?>
+                                        <span class="badge badge-secondary">Draft</span>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'lengkap') { ?>
+                                        <span class="badge badge-success">Lengkap</span>
+                                    <?php } ?>
+                                </td>
+                                <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_mapping ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -330,14 +332,14 @@
 
 <script>
     $("table").on('click', '.pilih-partner', function() {
-        $('#id_partner').val($(this).data('partner'));
+        $('#id_mapping').val($(this).data('partner'));
         // $('#id_agent').val("");
         $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
-        // $('#id_partner').val("");
+        // $('#id_mapping').val("");
         $('#data_agent').val($(this).data('nama'));
         $('#modal-agent').modal('hide');
     })
@@ -348,7 +350,7 @@
     source_leads();
     $('#soa').change(function() {
         source_leads();
-        $('#id_partner').val("");
+        $('#id_mapping').val("");
         $('#id_agent').val("");
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
