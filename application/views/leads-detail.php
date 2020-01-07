@@ -97,7 +97,7 @@
 												<option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
 											</select>
 										</div>
-										<input type="hidden" name="produk" value="<?= $data->produk ?>">
+										<input type="hidden" name="produk" value="<?= $data->produk ?>" <?= $cabang_asal == $cabang_asal ? 'disabled' : '' ?>>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group mr-3 ml-3">
@@ -126,7 +126,7 @@
 												<option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
 											</select>
 										</div>
-										<input type="hidden" name="soa" value="<?= $data->soa ?>">
+										<input type="hidden" name="soa" value="<?= $data->soa ?>" <?= $cabang_asal == $cabang_asal ? 'disabled' : '' ?>>
 									</div>
 									<div class="col-md-6 event">
 										<div class="form-group ml-3 mr-3">
@@ -753,7 +753,6 @@
 									<?php } ?>
 								</div>
 								<form action="<?= base_url('Comment/save') ?>" method="post">
-									<input type="hidden" name="id_type" id="id_type" value="<?= $data->id_partner ?>">
 									<input type="hidden" name="ticket" id="ticket" value="<?= $ticket->id_ticket ?>">
 									<input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
 									<div class="form-group">
