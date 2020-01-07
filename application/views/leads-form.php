@@ -126,7 +126,7 @@
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 vendor">Pilih Data Partner</label>
                                     <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
@@ -391,12 +391,14 @@
                                 <td><?= $partner->nama_usaha ?></td>
                                 <td><?= $partner->kategori_produk ?></td>
                                 <td><?= $partner->telepon ?></td>
-                                <?php if ($partner->status == 'draft') { ?>
-                                    <span class="badge badge-secondary">Draft</span>
-                                <?php } ?>
-                                <?php if ($partner->status == 'lengkap') { ?>
-                                    <span class="badge badge-success">Lengkap</span>
-                                <?php } ?>
+                                <td>
+                                    <?php if ($partner->status == 'draft') { ?>
+                                        <span class="badge badge-secondary">Draft</span>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'lengkap') { ?>
+                                        <span class="badge badge-success">Lengkap</span>
+                                    <?php } ?>
+                                </td>
                                 <td>
                                     <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                                 </td>
