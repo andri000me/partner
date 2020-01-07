@@ -188,7 +188,27 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-6">
+									<div class="col-md-3">
+										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<div class="form-group text-size ml-3 mr-3">
+												<label>Apakah Sudah Funding?</label><br>
+												<div class="form-check form-check-inline mt-2">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+													<label class="form-check-label">
+														Sudah
+													</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+													<label class="form-check-label">
+														Belum
+													</label>
+												</div>
+											</div>
+										</fieldset>
+										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+									</div>
+									<div class="col-md-3">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div class="form-group ml-3 mr-3">
 												<label>Cross Branch?</label><br>
@@ -273,48 +293,6 @@
 											</div>
 											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
 										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="col-md-6">
-										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-											<div class="form-group text-size ml-3 mr-3">
-												<label>Apakah Sudah Funding?</label><br>
-												<div class="form-check form-check-inline mt-2">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
-													<label class="form-check-label">
-														Sudah
-													</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
-													<label class="form-check-label">
-														Belum
-													</label>
-												</div>
-											</div>
-										</fieldset>
-										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-									</div>
-									<div class="col-md-6">
-										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-											<div class="form-group ml-3 mr-3">
-												<label>Appeal NST</label><br>
-												<div class="form-check form-check-inline mt-2">
-													<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Ya' ? 'checked' : '' ?> required value="Ya">
-													<label class="form-check-label">
-														Ya
-													</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= $data->appeal_nst == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-													<label class="form-check-label">
-														Tidak
-													</label>
-												</div>
-											</div>
-										</fieldset>
-										<input type="hidden" name="appeal_nst" value="<?= $data->appeal_nst ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 								</div>
 								<div class="form-group mb-0 mt-2 float-right btn-maintain">
