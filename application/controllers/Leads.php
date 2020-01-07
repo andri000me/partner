@@ -83,7 +83,7 @@ class Leads extends CI_Controller
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
             'agents' => $this->agent_model->get($this->where),
-            'partners' => $this->partner_model->get($this->where)
+            'partners' => $this->partner_model->get_mapping($this->where)
         ];
         $this->template->load('template/index', 'leads-form', $data);
     }
@@ -99,7 +99,7 @@ class Leads extends CI_Controller
             'users' => $this->user_model->get_all(),
 
             'agents' => $this->agent_model->get($this->where),
-            'partners' => $this->partner_model->get($this->where)
+            'partners' => $this->partner_model->get_mapping($this->where)
         ];
         $this->template->load('template/index', 'leads-edit', $data);
     }
@@ -115,7 +115,7 @@ class Leads extends CI_Controller
             'users'         => $this->user_model->get_all(),
 
             'agents'        => $this->agent_model->get($this->where),
-            'partners'      => $this->partner_model->get($this->where),
+            'partners'      => $this->partner_model->get_mapping($this->where),
 
             'activities'    => $this->leads_activity->get($where),
             'comments'      => $this->comment_model->get($where),
@@ -162,7 +162,8 @@ class Leads extends CI_Controller
 
             'updated_at'            => date('Y-m-d H:i:s'),
 
-            'id_partner'            => !empty($post['id_partner'])          ? $post['id_partner'] : NULL,
+            'id_mapping'            => !empty($post['id_mapping'])          ? $post['id_mapping'] : NULL,
+            // 'id_partner'            => !empty($post['id_partner'])          ? $post['id_partner'] : NULL,
             'id_agent'              => !empty($post['id_agent'])            ? $post['id_agent'] : NULL
         ];
 
@@ -305,7 +306,7 @@ class Leads extends CI_Controller
                 'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
                 'agents' => $this->agent_model->get($this->where),
-                'partners' => $this->partner_model->get($this->where)
+                'partners' => $this->partner_model->get_mapping($this->where)
             ];
             $this->template->load('template/index', 'leads-form', $data);
         }
@@ -338,6 +339,10 @@ class Leads extends CI_Controller
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
             'updated_at'            => date('Y-m-d H:i:s'),
+
+            'id_mapping'            => !empty($post['id_mapping'])          ? $post['id_mapping'] : NULL,
+            // 'id_partner'            => !empty($post['id_partner'])          ? $post['id_partner'] : NULL,
+            'id_agent'              => !empty($post['id_agent'])            ? $post['id_agent'] : NULL
 
             //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
             // 'id_user'               => $this->fungsi->user_login()->id_user,
@@ -461,8 +466,8 @@ class Leads extends CI_Controller
 
             //ID Agent
             'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL,
-            //ID Partner
-            'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+            //ID Mapping Partner
+            'id_mapping'            => !empty($post['id_mapping']) ? $post['id_mapping'] : NULL,
 
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),

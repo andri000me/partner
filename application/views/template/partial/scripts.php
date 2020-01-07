@@ -43,37 +43,56 @@
         }
 
         $("input[name='cross_branch']").click(function() {
+            var sudah_funding = $("input[name='sudah_funding']:checked").val();
+
             var cross_branch = $(this).val();
             if (cross_branch == 'Ya') {
                 $('#hide').show();
                 $('.users').hide();
-                $('#pic_ttd, #surveyor').removeAttr('required');
-                $('#cabang_cross').attr('required', 'required');
+                if (sudah_funding == 'Sudah') {
+                    $('#cabang_cross').attr('required', 'required');
+                    $('#pic_ttd, #surveyor').removeAttr('required');
 
-                $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
-                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+                    $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+                    $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+                }
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
                 $(".users").show();
                 $("#cabang_cross").val("");
-                $('#pic_ttd, #surveyor').attr('required', 'required');
-                $('#cabang_cross').removeAttr('required');
+                if (sudah_funding == 'Sudah') {
+                    $('#cabang_cross').removeAttr('required');
+                    $('#pic_ttd, #surveyor').attr('required', 'required');
 
-                $("#surveyor, #pic_ttd").removeAttr('disabled');
-                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+                    $("#surveyor, #pic_ttd").removeAttr('disabled');
+                    $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+                }
                 show_pic_ttd();
+            }
+        })
+
+        if ($("input[name='sudah_funding']:checked").val() == 'Belum') {
+            $("#surveyor, #pic_ttd").removeAttr('required').attr('disabled', 'disabled');
+            $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+        } else {
+            $("#surveyor, #pic_ttd").attr('required', 'required').removeAttr('disabled');
+            $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+        }
+
+        $("input[name='sudah_funding']").click(function() {
+            var sudah_funding = $(this).val();
+            // alert(sudah_funding);
+            if (sudah_funding == 'Belum') {
+                $("#surveyor, #pic_ttd").removeAttr('required').attr('disabled', 'disabled');
+                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+            } else {
+                // $('#pic_ttd, #surveyor');
+                $("#surveyor, #pic_ttd").attr('required', 'required').removeAttr('disabled');
+                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
             }
         })
     })
 </script>
-
-<!-- // $("input[name='cross_branch']").click(function() {
-// if ($(this).val() == 'Ya') {
-
-// } else {
-
-// }
-// }) -->
 
 <script>
     /*  Wizard */
@@ -276,9 +295,9 @@
     // $("#form_mou").hide();
     // alert($('.ttd_pks').val());
     if ($("input[name='ttd_pks']:checked").val() == 'Ya') {
-        $("#form_mou").show();
+        $(".form_mou").show();
     } else {
-        $("#form_mou").hide();
+        $(".form_mou").hide();
     }
     //Update tanda tangan pks
     $(".ttd_pks").on('click', function() {

@@ -40,8 +40,8 @@
 								<input type="hidden" name="id_mapping_leads" id="id_mapping_leads" value="<?= $data->id_mapping_leads ?>">
 								<!-- ID Leads -->
 								<input type="hidden" name="id_leads" id="id_leads" value="<?= $data->id_leads ?>">
-								<!-- ID Partner -->
-								<input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
+								<!-- ID Mapping Partner -->
+								<input type="hidden" name="id_mapping" id="id_mapping" value="<?= $data->id_mapping ?>">
 								<!-- ID Agent -->
 								<input type="hidden" name="id_agent" id="id_agent" value="<?= $data->id_agent ?>">
 								<!-- ID User -->
@@ -860,9 +860,12 @@
 									<?php if ($partner->status == 'lengkap') { ?>
 										<span class="badge badge-success">Lengkap</span>
 									<?php } ?>
+									<?php if ($partner->status == '') { ?>
+										<span class="badge badge-secondary">Mapping</span>
+									<?php } ?>
 								</td>
 								<td>
-									<center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+									<center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_mapping_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
 								</td>
 							</tr>
 						<?php } ?>
@@ -989,7 +992,7 @@
 
 <script>
 	$("table").on('click', '.pilih-partner', function() {
-		$('#id_partner').val($(this).data('partner'));
+		$('#id_mapping').val($(this).data('partner'));
 		// $('#id_agent').val("");
 		$('#nama_vendor').val($(this).data('vendor'));
 		$('#data_partner').val($(this).data('vendor'));

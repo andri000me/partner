@@ -478,21 +478,24 @@
 
                                                             </td>
                                                             <td>
-                                                                <div class="form-group ml-3">
-                                                                    <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
-                                                                        <label class="form-check-label">
-                                                                            Ya
-                                                                        </label>
+                                                                <form action="#">
+                                                                    <div class="form-group ml-3">
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+                                                                            <label class="form-check-label">
+                                                                                Ya
+                                                                            </label>
+                                                                        </div>
+                                                                        <div class="form-check form-check-inline">
+                                                                            <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+                                                                            <label class="form-check-label">
+                                                                                Tidak
+                                                                            </label>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
-                                                                        <label class="form-check-label">
-                                                                            Tidak
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div id="form_mou" class="form-group ml-3">
+                                                                </form>
+
+                                                                <div id="" class="form-group ml-3 form_mou">
                                                                     <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                         <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
@@ -605,20 +608,22 @@
                                                         </td>
                                                         <td>
                                                             <div class="form-group ml-3">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
-                                                                    <label class="form-check-label">
-                                                                        Ya
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
-                                                                    <label class="form-check-label">
-                                                                        Tidak
-                                                                    </label>
-                                                                </div>
+                                                                <form action="#">
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
+                                                                        <label class="form-check-label">
+                                                                            Ya
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+                                                                        <label class="form-check-label">
+                                                                            Tidak
+                                                                        </label>
+                                                                    </div>
+                                                                </form>
                                                             </div>
-                                                            <div id="form_mou" class="form-group ml-3">
+                                                            <div id="" class="form-group ml-3 form_mou">
                                                                 <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
                                                                     <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                                                                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">

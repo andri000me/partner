@@ -23,8 +23,10 @@
                     <input type="hidden" id="id_mapping_leads" name="id_mapping_leads" value="<?= set_value('id_mapping_leads') ?>">
                     <!-- ID Agent -->
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
+                    <!-- ID Mapping Partner -->
+                    <input type="hidden" id="id_mapping" name="id_mapping" value="<?= set_value('id_mapping') ?>">
                     <!-- ID Partner -->
-                    <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
+                    <!-- <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>"> -->
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="row mb-3">
@@ -354,7 +356,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" id="search" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads" id="search" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_mapping ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -395,12 +397,15 @@
                                     <?php if ($partner->status == 'draft') { ?>
                                         <span class="badge badge-secondary">Draft</span>
                                     <?php } ?>
+                                    <?php if ($partner->status == '') { ?>
+                                        <span class="badge badge-secondary">Mapping</span>
+                                    <?php } ?>
                                     <?php if ($partner->status == 'lengkap') { ?>
                                         <span class="badge badge-success">Lengkap</span>
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_mapping_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -534,7 +539,7 @@
 
 <script>
     $("table").on('click', '.pilih-partner', function() {
-        $('#id_partner').val($(this).data('partner'));
+        $('#id_mapping').val($(this).data('partner'));
         // $('#id_agent').val("");
         $('#nama_vendor').val($(this).data('vendor'));
         $('#data_partner').val($(this).data('vendor'));
@@ -566,7 +571,7 @@
         $('#nama_event').val($(this).data('event'));
         $('#nama_konsumen').val($(this).data('nama'));
         $('#id_agent').val($(this).data('agent'));
-        $('#id_partner').val($(this).data('partner'));
+        $('#id_mapping').val($(this).data('partner'));
         $('#data_partner').val($(this).data('namapartner'));
         $('#data_agent').val($(this).data('namaagent'));
         $('#modal-leads').modal('hide');
