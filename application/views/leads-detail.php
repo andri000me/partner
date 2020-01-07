@@ -188,27 +188,7 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-3">
-										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-											<div class="form-group text-size ml-3 mr-3">
-												<label>Apakah Sudah Funding?</label><br>
-												<div class="form-check form-check-inline mt-2">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
-													<label class="form-check-label">
-														Sudah
-													</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
-													<label class="form-check-label">
-														Belum
-													</label>
-												</div>
-											</div>
-										</fieldset>
-										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-									</div>
-									<div class="col-md-3">
+									<div class="col-md-6">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div class="form-group ml-3 mr-3">
 												<label>Cross Branch?</label><br>
@@ -271,17 +251,6 @@
 								</div>
 								<div class="form-row">
 									<div class="col-md-12">
-										<label class="ml-3">Nilai Funding</label>
-										<div class="input-group flex-nowrap ml-3 mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
-											</div>
-											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="col-md-12">
 										<div class="form-group ml-3 mr-3">
 											<label>Follow Up By</label>
 											<select class="form-control" name="follow_up_by" id="follow_up_by" required <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
@@ -293,6 +262,37 @@
 											</select>
 											<input type="hidden" name="follow_up_by" value="<?= $data->follow_up_by ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-6">
+										<label class="ml-3">Nilai Funding</label>
+										<div class="input-group flex-nowrap ml-3 mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+											</div>
+											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<div class="form-group text-size ml-3 mr-3">
+												<label>Apakah Sudah Funding?</label><br>
+												<div class="form-check form-check-inline mt-2">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+													<label class="form-check-label">
+														Sudah
+													</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+													<label class="form-check-label">
+														Belum
+													</label>
+												</div>
+											</div>
+										</fieldset>
+										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 								</div>
 								<div class="form-group mb-0 mt-2 float-right btn-maintain">
