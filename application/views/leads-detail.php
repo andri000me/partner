@@ -276,7 +276,7 @@
 									</div>
 									<div class="col-md-6">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-											<div class="form-group text-size ml-3 mr-3">
+											<div class="form-group ml-3 mr-3">
 												<label>Apakah Sudah Funding?</label><br>
 												<div class="form-check form-check-inline mt-2">
 													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
