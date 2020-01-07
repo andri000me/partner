@@ -179,7 +179,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="mt-0 header-title mb-4">Timeline</h4>
-                <div class="overflow-auto" style="height: 705px;">
+                <div class="overflow-auto box-timeline">
                     <div class="tab-pane p-3" id="profile2" role="tabpanel">
                         <ol class="activity-feed mb-0">
                             <?php

@@ -12,7 +12,7 @@
 
 		<div class="card">
 			<div class="card-body">
-				<div id="hilang" style="height: 650px;">
+				<div id="hilang" class="loader-body">
 					<div id="loader"></div>
 					<div id="loadermobile"></div>
 				</div>
@@ -271,6 +271,17 @@
 								</div>
 								<div class="form-row">
 									<div class="col-md-12">
+										<label class="ml-3">Nilai Funding</label>
+										<div class="input-group flex-nowrap ml-3 mb-3">
+											<div class="input-group-prepend">
+												<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+											</div>
+											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
+										</div>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-12">
 										<div class="form-group ml-3 mr-3">
 											<label>Follow Up By</label>
 											<select class="form-control" name="follow_up_by" id="follow_up_by" required <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
@@ -281,17 +292,6 @@
 												<option <?= $data->follow_up_by == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
 											</select>
 											<input type="hidden" name="follow_up_by" value="<?= $data->follow_up_by ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="col-md-12">
-										<label class="ml-3">Nilai Funding</label>
-										<div class="input-group flex-nowrap ml-3 mb-3">
-											<div class="input-group-prepend">
-												<span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
-											</div>
-											<input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= $data->nilai_funding ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="3000000" aria-label="Username" aria-describedby="addon-wrapping">
 										</div>
 									</div>
 								</div>
