@@ -56,7 +56,7 @@
 
                         <div class="form-group">
                             <label for="username">Nomor Induk karyawan</label>
-                            <input type="text" class="form-control <?= $this->session->flashdata('akun_salah') ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= $this->session->flashdata('nik') ?>" placeholder="Mauskkan NIK" autofocus>
+                            <input type="text" class="form-control <?= $this->session->flashdata('akun_salah') ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= $this->session->flashdata('nik') ?>" placeholder="Masukkan NIK" autofocus>
                             <?= $this->session->flashdata('akun_salah') ?>
                         </div>
 

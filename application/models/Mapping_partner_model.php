@@ -7,7 +7,7 @@ class Mapping_partner_model extends CI_Model
     public function create($data)
     {
         $this->db->insert('mapping_partners', $data);
-        return $this->db->affected_rows();
+        return $this->db->insert_id();
     }
 
     public function update($data, $where)

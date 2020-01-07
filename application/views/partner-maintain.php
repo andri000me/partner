@@ -101,6 +101,13 @@
                                 </div>
                             </div>
                         <?php } ?>
+                        <?php foreach ($maintain->result() as $maintain) { ?>
+                            <div class="item" style="height:79px; width:120px;">
+                                <div class="zoom-gallery">
+                                    <a href="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"><img src="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>" alt="" style="height:79px; width:120px;"></a>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
 
                     <div class="card-contents">
@@ -270,56 +277,6 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
-                                        <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
-                                            <div class="inbox-wid">
-                                                <div class="inbox-item">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-
-                                                            </td>
-                                                            <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-
-                                                            </td>
-                                                            <td>
-                                                                <div class="form-group ml-3">
-                                                                    <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
-                                                                        <label class="form-check-label">
-                                                                            Ya
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-check form-check-inline">
-                                                                        <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
-                                                                        <label class="form-check-label">
-                                                                            Tidak
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div id="form_mou" class="form-group ml-3">
-                                                                    <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
-                                                                        <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
-                                                                        <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                                                        <div class="form-group mr-2">
-                                                                            <label>Form MOU</label>
-                                                                            <input type="file" pload_mou" class="filestyle" data-buttonname="btn-secondary">
-                                                                        </div>
-                                                                        <div class="form-group">
-                                                                            <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
                                     </div>
                                 </div>
 
@@ -390,56 +347,6 @@
                                                         <td></td>
                                                         <td>
                                                             <p class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></p>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                    <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
-                                        <div class="inbox-wid">
-                                            <div class="inbox-item">
-                                                <table>
-                                                    <tr>
-                                                        <td>
-
-                                                        </td>
-                                                        <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-
-                                                        </td>
-                                                        <td>
-                                                            <div class="form-group ml-3">
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?> value="Ya">
-                                                                    <label class="form-check-label">
-                                                                        Ya
-                                                                    </label>
-                                                                </div>
-                                                                <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input ttd_pks" type="radio" name="ttd_pks" <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?> value="Tidak">
-                                                                    <label class="form-check-label">
-                                                                        Tidak
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                            <div id="form_mou" class="form-group ml-3">
-                                                                <form action="<?= base_url('ticket/upload_mou/partners') ?>" method="post" enctype="multipart/form-data">
-                                                                    <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>">
-                                                                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                                                    <div class="form-group mr-2">
-                                                                        <label>Form MOU</label>
-                                                                        <input type="file" name="upload_mou" class="filestyle" data-buttonname="btn-secondary">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <button class="btn btn-success" id="btn_upload" type="submit">Upload</button>
-                                                                    </div>
-                                                                </form>
-                                                            </div>
                                                         </td>
                                                     </tr>
                                                 </table>

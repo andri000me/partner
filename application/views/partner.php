@@ -105,7 +105,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data->result() as $data) { ?>
+                        <?php foreach ($lengkap->result() as $data) { ?>
                             <tr class="clickable-row" data-id="<?= $data->id_mapping ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
                                 <td class="not-clickable">
                                     <div class="text-size"><?= $data->nama_usaha ?></div>

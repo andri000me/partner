@@ -30,4 +30,17 @@ class Partner_model extends CI_Model
         }
         return $this->db->get();
     }
+
+    //custom
+
+    public function get_mapping($where = NULL)
+    {
+        $this->db->select('*, mapping_partners.id_mapping as id_mapping_partner');
+        $this->db->from('partners');
+        $this->db->join('mapping_partners', 'mapping_partners.id_mapping = partners.id_mapping', 'right');
+        if ($where != null) {
+            $this->db->where($where);
+        }
+        return $this->db->get();
+    }
 }

@@ -30,7 +30,7 @@ class Fungsi
         else if ($level == 2 || $level == 3) {
             $where = ("cabang_penerima.id_branch = $id_branch AND pengirim != $id_user AND has_read = 1");
         } else {
-            $where = "id_notification IS NOT NULL AND pengirim != $id_user AND has_read = 1";
+            $where = "id_notification IS NULL";
         }
         $user_data = $this->ci->notification_model->get($where);
         return $user_data;

@@ -23,7 +23,7 @@ class Notification extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "notifications.penerima_cabang = " . $this->fungsi->user_login()->id_branch . " AND pengirim != " . $this->fungsi->user_login()->id_user;
         } else {
-            $this->where = "id_notification IS NOT NULL AND pengirim != " . $this->fungsi->user_login()->id_user;
+            $this->where = "id_notification IS NULL";
         }
     }
 

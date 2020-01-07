@@ -165,8 +165,24 @@ class Agent extends CI_Controller
             }
 
             //Memasukkan data ke database `Agents`
+
+
             $id = $this->agent_model->create($data);
 
+            if (isset($post['process'])) {
+                //Menambah antrian tiket untuk data Agent
+                $has_superior = $this->fungsi->user_login()->has_superior;
+                $ticket = [
+                    'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+                    'date_pending'  => date('Y-m-d H:i:s'),
+                    'date_created'  => date('Y-m-d H:i:s'),
+                    'date_modified'  => date('Y-m-d H:i:s'),
+                    'id_agent'      => $id,
+                    'id_user'       => $this->fungsi->user_login()->id_user,
+                    'id_branch'     => $this->fungsi->user_login()->id_branch
+                ];
+                $this->ticket_model->create($ticket);
+            }
             //Membuat history activity inputan data Agent
             $agent_activity = [
                 'activity' => 'Data Agent telah dibuat',
@@ -176,28 +192,6 @@ class Agent extends CI_Controller
             ];
 
             $this->agent_activity->create($agent_activity);
-
-            //Menambah antrian tiket untuk data Agent
-            $has_superior = $this->fungsi->user_login()->has_superior;
-            $ticket = [
-                'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-                'date_pending'  => date('Y-m-d H:i:s'),
-                'date_created'  => date('Y-m-d H:i:s'),
-                'date_modified'  => date('Y-m-d H:i:s'),
-                'id_agent'      => $id,
-                'id_user'       => $this->fungsi->user_login()->id_user,
-                'id_branch'     => $this->fungsi->user_login()->id_branch
-            ];
-            $id_ticket = $this->ticket_model->create($ticket);
-
-            //Notifikasi
-            // $notification = [
-            //     'pengirim'      => $this->fungsi->user_login()->id_user,
-            //     'type'          => 'Data Agent Baru',
-            //     'id_ticket'     => $id_ticket,
-            //     'created_at'    => date('Y-m-d H:i:s')
-            // ];
-            // $this->notification_model->create($notification);
 
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil disimpan. <a href='#'>Lihat Data</a>");

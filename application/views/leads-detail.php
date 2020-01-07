@@ -40,14 +40,16 @@
 								<input type="hidden" name="id_mapping_leads" id="id_mapping_leads" value="<?= $data->id_mapping_leads ?>">
 								<!-- ID Leads -->
 								<input type="hidden" name="id_leads" id="id_leads" value="<?= $data->id_leads ?>">
-								<!-- ID Partner -->
-								<input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
+								<!-- ID Mapping Partner -->
+								<input type="hidden" name="id_mapping" id="id_mapping" value="<?= $data->id_mapping ?>">
 								<!-- ID Agent -->
 								<input type="hidden" name="id_agent" id="id_agent" value="<?= $data->id_agent ?>">
 								<!-- ID User -->
 								<input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
 								<!-- ID Branch -->
 								<input type="hidden" name="id_branch" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+								<!-- ID Branch -->
+								<input type="hidden" id="id_cross_branch" value="<?= $data->cabang_cross ?>">
 								<!-- Post Redirect halaman ke form -->
 								<input type="hidden" name="redirect" value="<?= uri_string() ?>">
 								<?php $cabang_asal = $this->fungsi->user_login()->id_branch; ?>
@@ -213,7 +215,7 @@
 												<select class="form-control" name="cabang_cross" id="cabang_cross">
 													<option selected disabled value="">Pilih Cabang</option>
 													<?php foreach ($branches->result() as $branch) { ?>
-														<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+														<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $cabang_asal ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
 													<?php } ?>
 												</select>
 											</div>
@@ -319,10 +321,9 @@
 									<?php
 									$level = $this->fungsi->user_login()->level;
 									if (
-										($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && ($this->fungsi->user_login()->id_branch == $data->id_branch)
+										($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && (($this->fungsi->user_login()->id_branch == $data->id_branch) || $level == 4)
 									) {
 									?>
-										<?= $this->fungsi->user_login()->id_branch . ' = ' . $data->id_branch ?>
 										<a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
 									<?php } ?>
 									<?php if ($level == 4 && $ticket->status_approval == 2) { ?>
@@ -842,6 +843,7 @@
 							<th>Name Usaha</th>
 							<th>Kategori Produk</th>
 							<th>Telepon</th>
+							<th>Status</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -852,7 +854,18 @@
 								<td><?= $partner->kategori_produk ?></td>
 								<td><?= $partner->telepon ?></td>
 								<td>
-									<center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+									<?php if ($partner->status == 'draft') { ?>
+										<span class="badge badge-secondary">Draft</span>
+									<?php } ?>
+									<?php if ($partner->status == 'lengkap') { ?>
+										<span class="badge badge-success">Lengkap</span>
+									<?php } ?>
+									<?php if ($partner->status == '') { ?>
+										<span class="badge badge-secondary">Mapping</span>
+									<?php } ?>
+								</td>
+								<td>
+									<center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_mapping_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
 								</td>
 							</tr>
 						<?php } ?>
@@ -979,7 +992,7 @@
 
 <script>
 	$("table").on('click', '.pilih-partner', function() {
-		$('#id_partner').val($(this).data('partner'));
+		$('#id_mapping').val($(this).data('partner'));
 		// $('#id_agent').val("");
 		$('#nama_vendor').val($(this).data('vendor'));
 		$('#data_partner').val($(this).data('vendor'));

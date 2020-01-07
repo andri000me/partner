@@ -44,6 +44,7 @@ class Zip extends CI_Controller
                 $data->siup,
                 $data->logo_perusahaan,
                 $data->foto_usaha,
+                $data->foto_usaha_mapping,
                 $data->form_mou
             ];
         }

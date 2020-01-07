@@ -381,7 +381,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Catatan</label>
-                                                    <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"><?= $data->catatan ?></textarea>
+                                                    <textarea class="form-control text-size" name="keterangan_tambahan" id="keterangan_tambahan" value="<?= $data->keterangan_tambahan ?>" cols="30" rows="10" placeholder="isi jika anda informasi tambahan" style="height:107px;"><?= $data->keterangan_tambahan ?></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -596,6 +596,9 @@
         akhir_izin();
 
         $('.bd-example-modal-xl').modal('hide');
+
+        $('#nama_usaha').attr('readonly', 'readonly');
+        $('#reset').show()
     })
 </script>
 
@@ -657,12 +660,10 @@
 
 <script>
     $('#reset').hide()
-    $('#search').click(function() {
-        $('#reset').show()
-    })
     $('#reset').click(function() {
-        $('#nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
-        $('').hide();
+        $('#id_mapping, #nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
+        $('#reset').hide();
+        $('#nama_usaha').removeAttr('readonly');
     })
 </script>
 <!-- script -->
