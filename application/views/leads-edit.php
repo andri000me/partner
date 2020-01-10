@@ -95,10 +95,8 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa">
@@ -118,13 +116,24 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6 event">
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 event">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Event</label>
                                         <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $data->nama_event ?>" placeholder="Input Nama Event">
                                     </div>
                                 </div>
-                                <div class="col-md-6 form">
+                                <div class="col-md-12 form-agent">
+                                    <label class="ml-3 agent">Pilih Data Agent</label>
+                                    <div class="input-group ml-3 mb-3">
+                                        <input type="text" class="form-control text-size" name="data_agent" id="data_agent" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form">
                                     <label class="ml-3 travel">Pilih Data Travel</label>
                                     <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
                                     <label class="ml-3 vendor">Pilih Data Partner</label>
@@ -132,17 +141,6 @@
                                         <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6 form-agent">
-                                    <label class="ml-3 agent">Pilih Data Agent</label>
-                                    <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_agent" id="data_agent" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +156,7 @@
                                         <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Input Posisi">
                                     </div>
                                 </div>
-                                <div class="col-md-6 cabang">
+                                <div class="col-md-12 cabang">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Input Cabang">

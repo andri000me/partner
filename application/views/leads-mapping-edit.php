@@ -37,7 +37,7 @@
                             <div class="form-group mr-3 ml-3">
                                 <label>Produk</label>
                                 <select class="form-control text-size" name="produk" id="produk">
-                                    <option value="" selected>Kategori Produk</option>
+                                    <option value="" selected>Pilih Kategori Produk</option>
                                     <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
                                     <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
                                     <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
