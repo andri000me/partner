@@ -97,7 +97,7 @@
 												<option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
 											</select>
 										</div>
-										<input type="hidden" name="produk" value="<?= $data->produk ?>" <?= $cabang_asal == $cabang_asal ? 'disabled' : '' ?>>
+										<input type="hidden" name="produk" value="<?= $data->produk ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group mr-3 ml-3">
@@ -126,7 +126,7 @@
 												<option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
 											</select>
 										</div>
-										<input type="hidden" name="soa" value="<?= $data->soa ?>" <?= $cabang_asal == $cabang_asal ? 'disabled' : '' ?>>
+										<input type="hidden" name="soa" value="<?= $data->soa ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
 									<div class="col-md-6 event">
 										<div class="form-group ml-3 mr-3">
@@ -188,27 +188,7 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-3">
-										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-											<div class="form-group text-size ml-3 mr-3">
-												<label>Apakah Sudah Funding?</label><br>
-												<div class="form-check form-check-inline mt-2">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
-													<label class="form-check-label">
-														Sudah
-													</label>
-												</div>
-												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
-													<label class="form-check-label">
-														Belum
-													</label>
-												</div>
-											</div>
-										</fieldset>
-										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-									</div>
-									<div class="col-md-3">
+									<div class="col-md-6">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div class="form-group ml-3 mr-3">
 												<label>Cross Branch?</label><br>
@@ -230,11 +210,34 @@
 									</div>
 									<div class="col-md-6">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<div class="form-group text-size ml-3 mr-3">
+												<label>Apakah Sudah Funding?</label><br>
+												<div class="form-check form-check-inline mt-2">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+													<label class="form-check-label">
+														Sudah
+													</label>
+												</div>
+												<div class="form-check form-check-inline">
+													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+													<label class="form-check-label">
+														Belum
+													</label>
+												</div>
+											</div>
+										</fieldset>
+										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-12">
+										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div id="hide" class="form-group ml-3 mr-3">
 												<label>Pilih cabang</label>
 												<select class="form-control" name="cabang_cross" id="cabang_cross">
 													<option selected disabled value="">Pilih Cabang</option>
 													<?php foreach ($branches->result() as $branch) { ?>
+														<?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
 														<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $cabang_asal ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
 													<?php } ?>
 												</select>
@@ -247,7 +250,7 @@
 									<div class="col-md-6">
 										<div class="form-group ml-3 mr-3 pic_ttd">
 											<label>Pic Tanda Tangan</label>
-											<select class="form-control text-size" name="pic_ttd" id="pic_ttd" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+											<select class="form-control text-size" name="pic_ttd" id="pic_ttd" <?= ($cabang_asal == $data->id_branch || $data->sudah_funding == 'Belum') ? 'disabled' : '' ?>>
 												<option value="" selected>Pilih Pic Tanda Tangan</option>
 												<optgroup id="show_pic_ttd">
 
@@ -259,7 +262,7 @@
 									<div class="col-md-6">
 										<div class="form-group ml-3 mr-3 surveyor">
 											<label>Surveyor</label>
-											<select class="form-control text-size" name="surveyor" id="surveyor" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+											<select class="form-control text-size" name="surveyor" id="surveyor" <?= ($cabang_asal == $data->id_branch || $data->sudah_funding == 'Belum') ? 'disabled' : '' ?>>
 												<option value="" selected>Pilih Surveyor</option>
 												<optgroup id="show_surveyor">
 
@@ -716,18 +719,22 @@
 
 							<div class="tab-pane p-3" id="profile1" role="tabpanel">
 								<div class="box overflow-auto">
-									<?php foreach ($comments->result() as $comment) { ?>
-										<div class="media mb-1">
-											<a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
-												<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64" width="64">
-											</a>
-											<div class="media-body b">
-												<p class="mb-0"><b><?= $comment->name ?></b></p>
-												<p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
-												<p class="text-size mt-0"><?= $comment->comment ?></p>
+									<?php if ($comments->num_rows() > 0) { ?>
+										<?php foreach ($comments->result() as $comment) { ?>
+											<div class="media mb-1">
+												<a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
+													<img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64" width="64">
+												</a>
+												<div class="media-body b">
+													<p class="mb-0"><b><?= $comment->name ?></b></p>
+													<p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
+													<p class="text-size mt-0"><?= $comment->comment ?></p>
+												</div>
 											</div>
-										</div>
-										<hr>
+											<hr>
+										<?php } ?>
+									<?php } else { ?>
+										<h4 class="text-muted m-b-10 text-size">Tidak Ada Komentar</h4>
 									<?php } ?>
 								</div>
 								<form action="<?= base_url('Comment/save') ?>" method="post">

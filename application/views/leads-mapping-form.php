@@ -23,7 +23,7 @@
                     <!-- ID Agent -->
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
                     <!-- ID Partner -->
-                    <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
+                    <input type="hidden" id="id_mapping" name="id_mapping" value="<?= set_value('id_mapping') ?>">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group mr-3 ml-3">
@@ -159,6 +159,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <a href="<?= base_url('partner/create') ?>" class="btn btn-primary mb-2">Buat Data Partner +</a>
                 <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -179,12 +180,15 @@
                                     <?php if ($partner->status == 'draft') { ?>
                                         <span class="badge badge-secondary">Draft</span>
                                     <?php } ?>
+                                    <?php if ($partner->status == '') { ?>
+                                        <span class="badge badge-secondary">Mapping</span>
+                                    <?php } ?>
                                     <?php if ($partner->status == 'lengkap') { ?>
                                         <span class="badge badge-success">Lengkap</span>
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_mapping ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -234,7 +238,7 @@
 
 <script>
     $("table").on('click', '.pilih-partner', function() {
-        $('#id_partner').val($(this).data('partner'));
+        $('#id_mapping').val($(this).data('partner'));
         // $('#id_agent').val("");
         $('#data_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');

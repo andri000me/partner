@@ -402,13 +402,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -416,13 +416,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Buku Tabungan</label>
-                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>SIUP / TDP</label>
-                                                <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -430,13 +430,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Logo Perusahaan</label>
-                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Foto usaha</label>
-                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>

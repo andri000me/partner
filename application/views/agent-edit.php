@@ -287,7 +287,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" <?= $data->ktp ? '' : 'required' ?>>
                                                 <?php if ($data->ktp) { ?>
                                                     <div class="img-fluid mt-1">
                                                         <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->ktp) ?>" title="Foto Profile.">
@@ -300,7 +300,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
                                                 <?php if ($data->npwp) { ?>
                                                     <div class="img-fluid mt-1">
                                                         <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->npwp) ?>" title="Foto Profile.">
@@ -315,7 +315,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Buku Tabungan</label>
-                                                <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary" <?= $data->buku_tabungan ? '' : 'required' ?>>
                                                 <?php if ($data->buku_tabungan) { ?>
                                                     <div class="img-fluid mt-1">
                                                         <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" title="Foto Profile.">
@@ -328,7 +328,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Foto Selfie</label>
-                                                <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary" <?= $data->foto_selfie ? '' : 'required' ?>>
                                                 <?php if ($data->foto_selfie) { ?>
                                                     <div class="img-fluid mt-1">
                                                         <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" title="Foto Profile.">
@@ -362,7 +362,7 @@
                                 <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
                                 <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
                                 <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
-                                <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                                <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process">Simpan</button>
                             </div>
                             <!-- /bottom-wizard -->
                         </form>
@@ -374,7 +374,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!-- <div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -382,14 +382,14 @@
             </div>
             <div class="modal-body">
                 Terimakasih telah menyelesaikan tugas perjanjian kerjasama dengan partner potensial di daerah anda.
-                Tim HO akan memverifikasi data anda, dan informasinya akan diberikan melalui menu <a href="#" style="color: blue;">motification</a> di website ini.
+                Tim HO akan memverifikasi data anda, dan informasinya akan diberikan melalui menu <a href="#" style="color: blue;">notification</a> di website ini.
             </div>
             <div class="modal-footer">
-                <a href="<?= base_url('agent') ?>"><button class="btn btn-primary">OK</button></a>
+                <button href="<?= base_url('agent') ?>"><button class="btn btn-primary">OK</button></a>
             </div>
         </div>
     </div>
-</div>
+</!--> -->
 <!-- Modal -->
 
 <!-- Menghilangkan attr required untuk save sementara -->

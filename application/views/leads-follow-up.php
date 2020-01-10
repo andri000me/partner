@@ -13,7 +13,6 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Maintain Partner</h4>
                 <p class="text-muted m-b-30 text-size">Form ini digunakan untuk mencatat aktivitas maintain cabang anda.</p>
-
                 <form class="" action="<?= base_url('Leads_follow_up/save') ?>" method="post">
                     <!-- ID Partner -->
                     <input type="hidden" name="id_mapping_leads" value="<?= $data->mapping_id ?>">

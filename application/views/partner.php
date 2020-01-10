@@ -37,13 +37,13 @@
                             <th>Telepon</th>
                             <th>Email</th>
                             <th>Produk</th>
-                            <th>alamat</th>
+                            <th>Alamat</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($data->result() as $mapping) { ?>
-                            <tr class="clickable-row" data-href="detail-partnership.html">
+                            <tr>
                                 <td>
                                     <?= $mapping->nama_usaha ?>
                                 </td>
@@ -78,7 +78,7 @@
     </div> <!-- end col -->
 </div>
 
-<!-- Modal -->
+<!-- Modal Maintain -->
 <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
@@ -105,19 +105,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($lengkap->result() as $data) { ?>
-                            <tr class="clickable-row" data-id="<?= $data->id_mapping ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>">
+                        <?php foreach ($lengkap->result() as $maintain) { ?>
+                            <tr>
                                 <td class="not-clickable">
-                                    <div class="text-size"><?= $data->nama_usaha ?></div>
+                                    <div class="text-size"><?= $maintain->nama_usaha ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->kategori_produk ?></div>
+                                    <div class="text-size"><?= $maintain->kategori_produk ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->telepon ?></div>
+                                    <div class="text-size"><?= $maintain->telepon ?></div>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-primary text-size" href="<?= base_url('Maintain_partner/create/' . $data->id_partner) ?>">Maintain</a></center>
+                                    <center><a class="btn btn-primary text-size" href="<?= base_url('Maintain_partner/create/' . $maintain->id_partner) ?>">Maintain</a></center>
                                 </td>
                             </tr>
                         <?php } ?>

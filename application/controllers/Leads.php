@@ -436,10 +436,13 @@ class Leads extends CI_Controller
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
 
-        sleep(6);
-        redirect('Leads');
+        // sleep(6);
+        if (isset($post['draft'])) {
+            redirect($post['redirect']);
+        } else if (isset($post['process'])) {
+            redirect('leads');
+        }
     }
-
     public function update_detail()
     {
         $post = $this->input->post(NULL, TRUE);

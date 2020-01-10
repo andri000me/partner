@@ -823,7 +823,7 @@
                                                     <p class="inbox-item-author mt-0 mb-1"><i class="fas fa-download"></i>&nbsp;</p>
                                                 </td>
                                                 <td>
-                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="<?= base_url('zip/create_zip/' . $ticket->id_ticket . '/partners') ?>">Download Semua Lampiran</b></a></p>
+                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="<?= base_url('zip/partner/' . $data->id_partner) ?>">Download Semua Lampiran</b></a></p>
                                                 </td>
                                             </tr>
                                         </table>
@@ -834,21 +834,24 @@
 
                             <div class="tab-pane p-3" id="profile1" role="tabpanel">
                                 <div class="box overflow-auto">
-                                    <?php foreach ($comments->result() as $comment) { ?>
-                                        <div class="media mb-1">
-                                            <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
-                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
-                                            </a>
-                                            <div class="media-body b">
-                                                <p class="mb-0"><b><?= $comment->name ?></b></p>
-                                                <p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
-                                                <p class="text-size mt-0"><?= $comment->comment ?></p>
+                                    <?php if ($comments->num_rows() > 0) { ?>
+                                        <?php foreach ($comments->result() as $comment) { ?>
+                                            <div class="media mb-1">
+                                                <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
+                                                    <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
+                                                </a>
+                                                <div class="media-body b">
+                                                    <p class="mb-0"><b><?= $comment->name ?></b></p>
+                                                    <p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
+                                                    <p class="text-size mt-0"><?= $comment->comment ?></p>
+                                                </div>
                                             </div>
-                                        </div>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <h4 class="text-muted m-b-10 text-size">Tidak Ada Komentar</h4>
                                     <?php } ?>
                                 </div>
                                 <form action="<?= base_url('Comment/save') ?>" method="post">
-                                    <input type="hidden" name="id_type" id="id_type" value="<?= $data->id_partner ?>">
                                     <input type="hidden" name="ticket" id="ticket" value="<?= $ticket->id_ticket ?>">
                                     <input type="hidden" name="uri_string" id="uri_string" value="<?= uri_string() ?>">
                                     <div class="form-group">

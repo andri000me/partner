@@ -56,7 +56,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Cabang</label>
-                                        <input type="text" class="form-control" name="cabang" id="cabang" value="<?= $data->nama_cabang ?>" placeholder="">
+                                        <!-- <input type="text" class="form-control" name="cabang" id="cabang" value="<?= $data->nama_cabang ?>" placeholder=""> -->
+                                        <select class="form-control" name="cabang" id="cabang">
+                                            <option selected disabled value="">- Pilih Cabang -</option>
+                                            <?php foreach ($branches->result() as $branch) { ?>
+                                                <option <?= $branch->id_branch == $data->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

@@ -101,13 +101,13 @@ class Mapping_partner extends CI_Controller
             //Memasukkan data mapping ke database `partners`
             $id = $this->mapping_partner->create($data);
 
-            $data_partner = [
-                'id_mapping'    => $id,
-                'status'        => 'draft',
-                'created_at'    => date('Y-m-d H:i:s'),
-                'updated_at'    => date('Y-m-d H:i:s'),
-            ];
-            $this->partner_model->create($data_partner);
+            // $data_partner = [
+            //     'id_mapping'    => $id,
+            //     'status'        => 'draft',
+            //     'created_at'    => date('Y-m-d H:i:s'),
+            //     'updated_at'    => date('Y-m-d H:i:s'),
+            // ];
+            // $this->partner_model->create($data_partner);
 
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");

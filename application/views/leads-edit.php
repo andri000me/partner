@@ -29,6 +29,8 @@
                     <input type="hidden" name="id_mapping" id="id_mapping" value="<?= $data->id_mapping ?>">
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+                    <!-- Redirect -->
+                    <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="row mb-3">
                         <div class="col-md-12">
                             <h4 class="mt-0 header-title">Formulir Leads</h4>
@@ -199,12 +201,32 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Apakah Sudah Funding?</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
+                                            <label class="form-check-label">
+                                                Sudah
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : '' ?> required value="Belum">
+                                            <label class="form-check-label">
+                                                Belum
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
                                     <div id="hide" class="form-group ml-3 mr-3">
-                                        <label>Pilih cabang</label>
+                                        <label>Pilih Cabang</label>
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
-                                                <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
+                                                <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -260,23 +282,6 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Apakah Sudah Funding?</label><br>
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
-                                            <label class="form-check-label">
-                                                Sudah
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : '' ?> required value="Belum">
-                                            <label class="form-check-label">
-                                                Belum
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Appeal NST</label><br>
@@ -376,7 +381,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" id="search" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads" id="search" data-mapping="<?= $mapping->mapping_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_mapping ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -484,7 +489,7 @@
     source_leads();
     $('#soa').change(function() {
         source_leads();
-        $('#id_partner').val("");
+        $('#id_mapping').val("");
         $('#id_agent').val("");
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
@@ -567,7 +572,7 @@
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
-        // $('#id_partner').val("");
+        // $('#id_mapping').val("");
         // $('#nama_vendor').val($(this).data('nama'));
         $('#data_agent').val($(this).data('namaagent'));
         $('#modal-agent').modal('hide');
@@ -630,7 +635,7 @@
 <script>
     $('#reset').hide();
     $('#reset').click(function() {
-        $('#id_mapping_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
+        $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
         $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset').hide();
         $('#nama_konsumen').removeAttr('readonly');
     })

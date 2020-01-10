@@ -262,6 +262,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <a href="<?= base_url('partner/create') ?>" class="btn btn-primary mb-2">Buat Data Partner +</a>
                 <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -306,6 +307,7 @@
                     <h4 class="modal-title">Cari Data Agent</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
+                <a href="<?= base_url('agent/create') ?>" class="btn btn-primary mb-2">Buat Data Agent +</a>
                 <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
