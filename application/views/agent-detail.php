@@ -10,7 +10,7 @@
         </div>
         <div class="card">
             <div class="card-body">
-                <div id="hilang" style="height: 650px;">
+                <div id="hilang" class="loader-body">
                     <div id="loader"></div>
                     <div id="loadermobile"></div>
                 </div>

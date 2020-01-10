@@ -12,7 +12,7 @@
 
 		<div class="card">
 			<div class="card-body">
-				<div id="hilang" style="height: 650px;">
+				<div id="hilang" class="loader-body">
 					<div id="loader"></div>
 					<div id="loadermobile"></div>
 				</div>
@@ -53,41 +53,41 @@
 								<!-- Post Redirect halaman ke form -->
 								<input type="hidden" name="redirect" value="<?= uri_string() ?>">
 								<?php $cabang_asal = $this->fungsi->user_login()->id_branch; ?>
-								<div class="form-row">
+								<div class="form-row text-size">
 									<div class="col-md-12">
 										<div class="form-group ml-3 mr-3">
 											<label>Nama Konsumen</label>
-											<input type="text" class="form-control placement" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" maxlength="15">
+											<input type="text" class="form-control placement text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" maxlength="15">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-12">
+									<div class="col-md-12 text-size">
 										<div class="form-group ml-3 mr-3">
 											<label>Leads ID</label>
-											<input type="text" class="form-control placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" maxlength="15">
+											<input type="text" class="form-control placement text-size" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" maxlength="15">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-6">
+									<div class="col-md-6 text-size">
 										<div class="form-group ml-3 mr-3">
 											<label>ID KTP</label>
-											<input type="phone" class="form-control placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0786 6875 8725 3564" maxlength="16">
+											<input type="phone" class="form-control placement number-only text-size" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0786 6875 8725 3564" maxlength="16">
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="form-group ml-3 mr-3">
+										<div class="form-group ml-3 mr-3 text-size">
 											<label>Nomor Telepon / Whatsapp</label>
-											<input type="text" class="form-control placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0811977500" maxlength="15">
+											<input type="text" class="form-control placement number-only text-size" name="telepon" id="telepon" value="<?= $data->telepon ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0811977500" maxlength="15">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
 									<div class="col-md-6">
-										<div class="form-group mr-3 ml-3">
+										<div class="form-group mr-3 ml-3 text-size">
 											<label>Produk</label>
-											<select class="form-control" name="produk" id="produk" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<select class="form-control text-size" name="produk" id="produk" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 												<option selected>Pilih Kategori Produk</option>
 												<option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
 												<option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
@@ -99,18 +99,18 @@
 										</div>
 										<input type="hidden" name="produk" value="<?= $data->produk ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6 text-size">
 										<div class="form-group mr-3 ml-3">
 											<label>Detail Produk</label>
-											<input type="text" class="form-control" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="Detail produk">
+											<input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="Detail produk">
 										</div>
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-6">
+									<div class="col-md-6 text-size">
 										<div class="form-group mr-3 ml-3">
 											<label>Asal Aplikasi</label>
-											<select class="form-control" name="soa" id="soa" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<select class="form-control text-size" name="soa" id="soa" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 												<option value="" selected>Pilih Source Aplikasi</option>
 												<option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
 												<option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
@@ -128,13 +128,13 @@
 										</div>
 										<input type="hidden" name="soa" value="<?= $data->soa ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
-									<div class="col-md-6 event">
+									<div class="col-md-6 event text-size">
 										<div class="form-group ml-3 mr-3">
 											<label>Nama Event</label>
 											<input type="text" class="form-control text-size" value="<?= $data->nama_event ?>" name="nama_event" id="nama_event" placeholder="Input Nama Event">
 										</div>
 									</div>
-									<div class="col-md-6 form">
+									<div class="col-md-6 form text-size">
 										<label class="ml-3 travel">Pilih Data Travel</label>
 										<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
 										<label class="ml-3 vendor">Pilih Data Partner</label>
@@ -147,7 +147,7 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-6 form-agent">
+									<div class="col-md-6 form-agent text-size">
 										<label class="ml-3 agent">Pilih Data Agent</label>
 										<div class="input-group ml-3 mb-3">
 											<input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
@@ -156,13 +156,13 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6 nik">
+									<div class="col-md-6 nik text-size">
 										<div class="form-group ml-3 mr-3">
 											<label>NIK</label>
 											<input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="0786 6875 8725 3564" maxlength="16" />
 										</div>
 									</div>
-									<div class="col-md-6 posisi">
+									<div class="col-md-6 posisi text-size">
 										<div class="form-group ml-3 mr-3">
 											<label>Posisi</label>
 											<input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Posisi">
@@ -188,19 +188,19 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-6">
+									<div class="col-md-6 text-size">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div class="form-group ml-3 mr-3">
 												<label>Cross Branch?</label><br>
 												<div class="form-check form-check-inline mt-2">
-													<input class="form-check-input cross_branch" type="radio" name="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
-													<label class="form-check-label">
+													<input class="form-check-input cross_branch text-size" type="radio" name="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
+													<label class="form-check-label text-size">
 														Ya
 													</label>
 												</div>
 												<div class="form-check form-check-inline">
-													<input class="form-check-input cross_branch" type="radio" name="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-													<label class="form-check-label">
+													<input class="form-check-input cross_branch text-size" type="radio" name="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+													<label class="form-check-label text-size">
 														Tidak
 													</label>
 												</div>
@@ -208,19 +208,19 @@
 										</fieldset>
 										<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6 text-size">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-											<div class="form-group text-size ml-3 mr-3">
-												<label>Apakah Sudah Funding?</label><br>
+											<div class="form-group ml-3 mr-3">
+												<label>Sudah Funding?</label><br>
 												<div class="form-check form-check-inline mt-2">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
-													<label class="form-check-label">
+													<input class="form-check-input text-size" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+													<label class="form-check-label text-size">
 														Sudah
 													</label>
 												</div>
 												<div class="form-check form-check-inline">
-													<input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
-													<label class="form-check-label">
+													<input class="form-check-input text-size" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+													<label class="form-check-label text-size">
 														Belum
 													</label>
 												</div>
@@ -230,11 +230,11 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-12">
+									<div class="col-md-12 text-size">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div id="hide" class="form-group ml-3 mr-3">
 												<label>Pilih cabang</label>
-												<select class="form-control" name="cabang_cross" id="cabang_cross">
+												<select class="form-control text-size" name="cabang_cross" id="cabang_cross">
 													<option selected disabled value="">Pilih Cabang</option>
 													<?php foreach ($branches->result() as $branch) { ?>
 														<?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
@@ -247,7 +247,7 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-6">
+									<div class="col-md-6  text-size">
 										<div class="form-group ml-3 mr-3 pic_ttd">
 											<label>Pic Tanda Tangan</label>
 											<select class="form-control text-size" name="pic_ttd" id="pic_ttd" <?= ($cabang_asal == $data->id_branch || $data->sudah_funding == 'Belum') ? 'disabled' : '' ?>>
@@ -259,7 +259,7 @@
 											<input type="hidden" name="pic_ttd" value="<?= $data->pic_ttd ?>" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-md-6 text-size">
 										<div class="form-group ml-3 mr-3 surveyor">
 											<label>Surveyor</label>
 											<select class="form-control text-size" name="surveyor" id="surveyor" <?= ($cabang_asal == $data->id_branch || $data->sudah_funding == 'Belum') ? 'disabled' : '' ?>>
@@ -273,10 +273,10 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-12">
+									<div class="col-md-12 text-size">
 										<div class="form-group ml-3 mr-3">
 											<label>Follow Up By</label>
-											<select class="form-control" name="follow_up_by" id="follow_up_by" required <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+											<select class="form-control text-size" name="follow_up_by" id="follow_up_by" required <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 												<option selected disabled value="">Pilih Follow Up By</option>
 												<option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
 												<option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
