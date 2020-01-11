@@ -27,13 +27,13 @@
             <div class="card-body">
 
                 <h3 class="text-center m-0">
-                    <a href="index.html" class="logo logo-admin"><img src="assets/images/logo.png" height="30" alt="logo"></a>
+                    <img src="<?= base_url('template/assets/images/bfisyariah.png') ?>" style="width: 150px">
                 </h3>
 
                 <div class="p-3">
                     <h4 class="text-muted font-18 mb-3 text-center">Reset Password</h4>
                     <div class="alert alert-info text-center" role="alert">
-                        Masukan Email anda, maka password akan di kirim ke Email Anda!
+                        Masukan E-mail Anda, maka password akan dikirim ke E-mail Anda!
                     </div>
 
                     <form method="post" class="form-horizontal m-t-30" action="<?= base_url('Auth/lupa_password') ?>">

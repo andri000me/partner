@@ -25,8 +25,6 @@
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= set_value('id_agent') ?>">
                     <!-- ID Mapping Partner -->
                     <input type="hidden" id="id_mapping" name="id_mapping" value="<?= set_value('id_mapping') ?>">
-                    <!-- ID Partner -->
-                    <!-- <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>"> -->
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="row mb-3">
@@ -78,7 +76,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Produk</label>
-                                        <select class="form-control text-size" name="produk" id="produk">
+                                        <select class="form-control text-size" name="produk" id="produk" required>
                                             <option selected value="">Pilih Kategori Produk</option>
                                             <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
                                             <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
@@ -97,10 +95,10 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group mr-3 ml-3">
                                         <label>Asal Aplikasi</label>
-                                        <select class="form-control text-size" name="soa" id="soa">
+                                        <select class="form-control text-size" name="soa" id="soa" required>
                                             <option selected value="">Pilih Source Aplikasi</option>
                                             <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
                                             <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
@@ -117,31 +115,31 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6 event">
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12 event">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Event</label>
                                         <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
                                     </div>
                                 </div>
-                                <div class="col-md-6 form">
-                                    <label class="ml-3 travel">Pilih Data Travel</label>
-                                    <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-                                    <label class="ml-3 vendor">Pilih Data Partner</label>
-                                    <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6 form-agent">
+                                <div class="col-md-12 form-agent">
                                     <label class="ml-3 agent">Pilih Data Agent</label>
                                     <div class="input-group ml-3 mb-3">
                                         <input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                         <div class="input-group-append">
                                             <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 form">
+                                    <label class="ml-3 travel">Pilih Data Travel</label>
+                                    <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
+                                    <label class="ml-3 vendor">Pilih Data Partner</label>
+                                    <div class="input-group ml-3 mb-3">
+                                        <input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +155,7 @@
                                         <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= set_value('posisi_egc') ?>" placeholder="Input Posisi">
                                     </div>
                                 </div>
-                                <div class="col-md-6 cabang">
+                                <div class="col-md-12 cabang">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= set_value('cabang_egc') ?>" placeholder="Input Cabang">
@@ -197,11 +195,31 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Apakah Sudah Funding?</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
+                                            <label class="form-check-label">
+                                                Sudah
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Belum' ? 'checked' : '' ?> checked required value="Belum">
+                                            <label class="form-check-label">
+                                                Belum
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
                                     <div id="hide" class="form-group ml-3 mr-3">
-                                        <label>Pilih cabang</label>
+                                        <label>Pilih Cabang</label>
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
+                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
                                                 <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                             <?php } ?>
                                         </select>
@@ -258,23 +276,6 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Apakah Sudah Funding?</label><br>
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
-                                            <label class="form-check-label">
-                                                Sudah
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Belum' ? 'checked' : '' ?> checked required value="Belum">
-                                            <label class="form-check-label">
-                                                Belum
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Appeal NST</label><br>
@@ -464,7 +465,7 @@
     source_leads();
     $('#soa').change(function() {
         source_leads();
-        $('#id_partner').val("");
+        $('#id_mapping').val("");
         $('#id_agent').val("");
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
@@ -547,7 +548,7 @@
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
-        // $('#id_partner').val("");
+        // $('#id_mapping').val("");
         // $('#nama_vendor').val($(this).data('nama'));
         $('#data_agent').val($(this).data('namaagent'));
         $('#modal-agent').modal('hide');
@@ -586,7 +587,7 @@
 <script>
     $('#reset').hide();
     $('#reset').click(function() {
-        $('#id_mapping_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
+        $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
         $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset').hide();
         $('#nama_konsumen').removeAttr('readonly');
     })

@@ -25,13 +25,6 @@
             $('#cabang_cross').attr('required', 'required');
             $('#pic_ttd, #surveyor').removeAttr('required');
         }
-
-        //Jika form prospek cross branch 
-        // if ($("input[name='cross_branch']:checked").val() == 'Ya' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
-        //menon-aktifkan form surveyor & pic ttd
-        // $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
-        // $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
-        // }
         //Jika form prospek bukan cross branch (milik sendiri) 
         if ($("input[name='cross_branch']:checked").val() == 'Ya' && $("#id_branch").val() == $("#id_cabang_cross").val()) {
             //meng-aktifkan form surveyor & pic ttd
@@ -42,54 +35,48 @@
             $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
         }
 
-        $("input[name='cross_branch']").click(function() {
+        function sudah_funding() {
+
+            var cross_branch = $("input[name='cross_branch']:checked").val();
             var sudah_funding = $("input[name='sudah_funding']:checked").val();
 
-            var cross_branch = $(this).val();
             if (cross_branch == 'Ya') {
+
                 $('#hide').show();
                 $('.users').hide();
-                if (sudah_funding == 'Sudah' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
-                    $('#cabang_cross').attr('required', 'required');
-                    $('#pic_ttd, #surveyor').removeAttr('required');
 
-                    $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
-                    $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
-                }
+                $('#cabang_cross').attr('required', 'required');
+                $('#pic_ttd, #surveyor').removeAttr('required');
+
+                $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
             } else if (cross_branch == 'Tidak') {
                 $('#hide').hide();
                 $(".users").show();
-                $("#cabang_cross").val("");
-                if (sudah_funding == 'Sudah' && $("#id_branch").val() != $("#id_cabang_cross").val()) {
-                    $('#cabang_cross').removeAttr('required');
-                    $('#pic_ttd, #surveyor').attr('required', 'required');
 
+                $("#cabang_cross").val("");
+                $('#cabang_cross').removeAttr('required');
+                $('#pic_ttd, #surveyor').attr('required', 'required');
+
+                if (sudah_funding == 'Sudah') {
+                    // alert(sudah_funding);
                     $("#surveyor, #pic_ttd").removeAttr('disabled');
                     $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+                } else if (sudah_funding == 'Belum') {
+                    // alert(sudah_funding);
+                    $("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+                    $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled').val("");
                 }
                 show_pic_ttd();
             }
-        })
-
-        if ($("input[name='sudah_funding']:checked").val() == 'Belum') {
-            $("#surveyor, #pic_ttd").removeAttr('required').attr('disabled', 'disabled');
-            $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
-        } else {
-            $("#surveyor, #pic_ttd").attr('required', 'required').removeAttr('disabled');
-            $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
         }
 
-        $("input[name='sudah_funding']").click(function() {
-            var sudah_funding = $(this).val();
-            // alert(sudah_funding);
-            if (sudah_funding == 'Belum') {
-                $("#surveyor, #pic_ttd").removeAttr('required').attr('disabled', 'disabled');
-                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
-            } else {
-                // $('#pic_ttd, #surveyor');
-                $("#surveyor, #pic_ttd").attr('required', 'required').removeAttr('disabled');
-                $("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
-            }
+        if ($("#id_branch").val() != $("#id_cross_branch").val()) {
+            sudah_funding();
+        }
+
+        $("input[name='cross_branch'], input[name='sudah_funding']").click(function() {
+            sudah_funding();
         })
     })
 </script>
@@ -319,27 +306,11 @@
                 id_ticket: id_ticket
             },
             success: function(data) {
-                alert('Success, \n ID Tiket: ' + id_ticket + '\n TTD: ' + ttd_pks);
+                // alert('Success, \n ID Tiket: ' + id_ticket + '\n TTD: ' + ttd_pks);
                 // location.reload();
             }
         });
         // return false;
-    });
-
-    $('#submit_mou').submit(function(e) {
-        e.preventDefault();
-        $.ajax({
-            url: '<?= base_url('ticket/upload_mou'); ?>',
-            type: "post",
-            data: new FormData(this),
-            processData: false,
-            contentType: false,
-            cache: false,
-            async: false,
-            success: function(data) {
-                alert("Upload Image Berhasil.");
-            }
-        });
     });
 </script>
 

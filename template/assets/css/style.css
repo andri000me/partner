@@ -3734,6 +3734,11 @@ input[data-readonly] {
 	opacity: 0.5;
 }
 
+.pointer {
+	pointer-events: none;
+	background: #E9ECEF;
+}
+
 /* .dataTables_filter {
 	display: none;
 } */

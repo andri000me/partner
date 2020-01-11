@@ -403,7 +403,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>KTP</label>
-                                            <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
+                                            <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" <?= $data->ktp ? '' : 'required' ?>>
                                             <?php if ($data->ktp) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->ktp) ?>" title="Foto Profile.">
@@ -416,7 +416,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>NPWP</label>
-                                            <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
+                                            <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
                                             <?php if ($data->npwp) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->npwp) ?>" title="Foto Profile.">
@@ -431,7 +431,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>Buku Tabungan</label>
-                                            <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                            <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary" <?= $data->buku_tabungan_perusahaan ? '' : 'required' ?>>
                                             <?php if ($data->buku_tabungan_perusahaan) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" title="Foto Profile.">
@@ -444,7 +444,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>SIUP / TDP</label>
-                                            <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary">
+                                            <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary" <?= $data->siup ? '' : 'required' ?>>
                                             <?php if ($data->siup) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->siup) ?>" title="Foto Profile.">
@@ -459,7 +459,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>Logo Perusahaan</label>
-                                            <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
+                                            <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary" <?= $data->logo_perusahaan ? '' : 'required' ?>>
                                             <?php if ($data->logo_perusahaan) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" title="Foto Profile.">
@@ -472,7 +472,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>Foto usaha</label>
-                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary">
+                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" <?= $data->foto_usaha ? '' : 'required' ?>>
                                             <?php if ($data->foto_usaha_mapping) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">

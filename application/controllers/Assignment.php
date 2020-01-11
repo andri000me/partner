@@ -37,11 +37,11 @@ class Assignment extends CI_Controller
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $where_leads = "id_user = " . $this->fungsi->user_login()->id_user;
+            $where_leads = "cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND status = 'lengkap'";
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangnya dan memunculkan data cross-branch.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where_leads = "cabang_cross = " . $this->fungsi->user_login()->id_branch;
+            $where_leads = "cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND status = 'lengkap'";
         } else {
             $where_leads = 'id_leads IS NOT NULL';
         }

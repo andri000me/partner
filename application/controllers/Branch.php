@@ -42,14 +42,22 @@ class Branch extends CI_Controller
 
     public function update_superior()
     {
+        $this->load->model('ticket_model');
         $post = $this->input->post(NULL, TRUE);
 
-        $data = [
-            'has_superior' => $post['has_superior']
-        ];
+        $data = ['has_superior' => $post['has_superior']];
 
         $where = ['id_branch' => $post['id_branch']];
         $data = $this->branch_model->update($data, $where);
+
+        //Jika status tiket blum di approve/di reject, maka ketika status cabang diubah, status tiket akan berubah
+        // if ($this->ticket_model->get($where)->row()->status < 2) {
+        $ubah_status = [
+            'status' => $post['has_superior'] == 0 ? 2 : ($post['has_superior'] == 1 ? 1 : ($post['has_superior'] == 2 ? 0 : 2))
+        ];
+
+        $this->ticket_model->update($ubah_status, $where);
+        // }
         echo json_encode($data);
     }
 }

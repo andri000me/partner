@@ -59,7 +59,7 @@
                                         <?php } ?>
                                     </td>
                                     <td>
-                                        <div style="width: 80px;">
+                                        <div style="width: 100px;">
                                             <?= $notif->dibuat_pada ?>
                                         </div>
                                     </td>
@@ -111,7 +111,7 @@
                                         <?php } ?>
                                     </td>
                                     <td>
-                                        <div style="width: 80px;">
+                                        <div style="width: 100px;">
                                             <?= $notif->dibuat_pada ?>
                                         </div>
                                     </td>

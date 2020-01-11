@@ -61,4 +61,83 @@ class Zip extends CI_Controller
         $filename = "ID_Ticket_$data->id_ticket.zip";
         $this->zip->download($filename);
     }
+
+    public function agent($id)
+    {
+        $this->load->model('agent_model');
+
+        $where = ['agents.id_agent' => $id];
+        $data = $this->agent_model->get($where)->row();
+        $data_tiket = $this->ticket_model->get($where)->row();
+        $uploads = [
+            $data->ktp,
+            $data->npwp,
+            $data->buku_tabungan,
+            $data->foto_selfie,
+            $data->form_f100,
+
+            //form mou
+            $data_tiket->form_mou
+        ];
+
+        // $uploads[] = $data_tiket->form_f100;
+
+        foreach ($uploads as $upload => $file) {
+            if ($file != NULL || $file != '') {
+                ${'upload' . $upload} =  FCPATH . 'uploads/agents/' . $file;
+                $this->zip->read_file(${"upload" . $upload});
+            }
+            // echo $upload . $file . '<br>';
+        }
+        // Download
+        $filename = "ID_Agent_$data->id_agent.zip";
+        $this->zip->download($filename);
+    }
+
+    public function partner($id)
+    {
+        $this->load->model('partner_model');
+        $this->load->model('maintain_partner_model', 'maintain_partner');
+
+        $where = ['partners.id_partner' => $id];
+        $data = $this->partner_model->get($where)->row();
+        $data_tiket = $this->ticket_model->get($where)->row();
+        $data_maintain = $this->maintain_partner->get($where);
+
+        $uploads = [
+            $data->ktp,
+            $data->npwp,
+            $data->buku_tabungan_perusahaan,
+            $data->siup,
+            $data->logo_perusahaan,
+            $data->foto_usaha,
+
+            //form mou
+            $data_tiket->form_mou
+        ];
+
+        foreach ($uploads as $upload => $file) {
+            if ($file != NULL || $file != '') {
+                ${'upload' . $upload} =  FCPATH . 'uploads/partners/' . $file;
+                $this->zip->read_file(${"upload" . $upload});
+            }
+            // echo $upload . $file . '<br>';
+        }
+
+        if ($data_maintain->num_rows() > 0) {
+            $iteration = 0;
+            foreach ($data_maintain->result() as $file) {
+                ${'maintain' . $iteration} = FCPATH . 'uploads/maintains/' . $file->photo_activity;
+                $this->zip->read_file(${'maintain' . $iteration});
+                $iteration++;
+            }
+        }
+        // Download
+        $filename = "ID_Partner_$data->id_partner.zip";
+        $this->zip->download($filename);
+    }
+
+    public function leads()
+    {
+    }
 }

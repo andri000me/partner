@@ -16,9 +16,12 @@ class Profile extends CI_Controller
 
     public function index()
     {
+        $this->load->model('branch_model');
+
         $data = [
             'data' => $this->user_model->get($this->fungsi->user_login()->nik)->row(),
-            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
+            'branches' => $this->branch_model->get()
         ];
         $this->template->load('template/index', 'profile', $data);
     }
@@ -27,8 +30,8 @@ class Profile extends CI_Controller
     {
         $post = $this->input->post(null, TRUE);
         $data = [
-            'email' => $post['email']
-            // 'cabang' => $post['cabang'],
+            'email' => $post['email'],
+            'id_branch' => $post['cabang']
         ];
         //Konfigurasi Upload
         $config['upload_path']         = './uploads/foto_profil';
