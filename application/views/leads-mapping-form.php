@@ -262,6 +262,7 @@
         $('#nama_event').val("");
         $('#data_partner').val("");
         $('#data_agent').val("");
+        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
     })
 
     function source_leads() {
@@ -349,9 +350,7 @@
             $('#data_partner, #data_agent').removeAttr('required', 'required');
         }
     }
-</script>
 
-<script>
     $(".readonly").keydown(function(e) {
         e.preventDefault();
     });

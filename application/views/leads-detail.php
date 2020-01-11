@@ -107,87 +107,6 @@
 									</div>
 								</div>
 								<div class="form-row">
-									<div class="col-md-12 text-size">
-										<div class="form-group mr-3 ml-3">
-											<label>Asal Aplikasi</label>
-											<select class="form-control text-size" name="soa" id="soa" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-												<option value="" selected>Pilih Source Aplikasi</option>
-												<option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-												<option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-												<option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-												<option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-												<option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-												<option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-												<option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-												<option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-												<option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-												<option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-												<option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-												<option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
-											</select>
-										</div>
-										<input type="hidden" name="soa" value="<?= $data->soa ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-									</div>
-								</div>
-								<div class="form-row">
-									<div class="col-md-12 event text-size">
-										<div class="form-group ml-3 mr-3">
-											<label>Nama Event</label>
-											<input type="text" class="form-control text-size" value="<?= $data->nama_event ?>" name="nama_event" id="nama_event" placeholder="Input Nama Event">
-										</div>
-									</div>
-									<div class="col-md-12 form-agent text-size">
-										<label class="ml-3 agent">Pilih Data Agent</label>
-										<div class="input-group ml-3 mb-3">
-											<input type="text" class="form-control text-size" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-											<div class="input-group-append">
-												<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>><span class="ion-ios7-search-strong"></span></button>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-12 form text-size">
-										<label class="ml-3 travel">Pilih Data Travel</label>
-										<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-										<label class="ml-3 vendor">Pilih Data Partner</label>
-										<div class="input-group ml-3 mb-3">
-											<input type="text" class="form-control text-size" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-											<div class="input-group-append">
-												<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target="" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>><span class="ion-ios7-search-strong"></span></button>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-6 nik text-size">
-										<div class="form-group ml-3 mr-3">
-											<label>NIK</label>
-											<input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="0786 6875 8725 3564" maxlength="16" />
-										</div>
-									</div>
-									<div class="col-md-6 posisi text-size">
-										<div class="form-group ml-3 mr-3">
-											<label>Posisi</label>
-											<input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Posisi">
-										</div>
-									</div>
-									<div class="col-md-12 cabang">
-										<div class="form-group ml-3 mr-3">
-											<label>Cabang</label>
-											<input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Cabang">
-										</div>
-									</div>
-									<div class="col-md-6 kontrak-ro">
-										<div class="form-group ml-3 mr-3">
-											<label>Nomor Kontrak</label>
-											<input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="087883774" />
-										</div>
-									</div>
-									<div class="col-md-6 konsumen-ro">
-										<div class="form-group ml-3 mr-3">
-											<label>Nama Konsumen</label>
-											<input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Nama konsumen">
-										</div>
-									</div>
-								</div>
-								<div class="form-row">
 									<div class="col-md-6 text-size">
 										<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 											<div class="form-group ml-3 mr-3">
@@ -227,6 +146,87 @@
 											</div>
 										</fieldset>
 										<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-12 text-size">
+										<div class="form-group mr-3 ml-3">
+											<label>Asal Aplikasi</label>
+											<select class="form-control text-size" name="soa" id="soa" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+												<option value="" selected>Pilih Source Aplikasi</option>
+												<option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+												<option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+												<option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+												<option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+												<option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+												<option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+												<option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+												<option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+												<option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+												<option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+												<option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+												<option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+											</select>
+										</div>
+										<input type="hidden" name="soa" value="<?= $data->soa ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-12 event text-size">
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Event</label>
+											<input type="text" class="form-control text-size" value="<?= $data->nama_event ?>" name="nama_event" id="nama_event" placeholder="Input Nama Event">
+										</div>
+									</div>
+									<div class="col-md-12 form-agent text-size">
+										<label class="ml-3 agent">Pilih Data Agent</label>
+										<div class="input-group ml-3 mb-3">
+											<input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+											<div class="input-group-append">
+												<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>><span class="ion-ios7-search-strong"></span></button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-12 form text-size">
+										<label class="ml-3 travel">Pilih Data Travel</label>
+										<label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
+										<label class="ml-3 vendor">Pilih Data Partner</label>
+										<div class="input-group ml-3 mb-3">
+											<input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+											<div class="input-group-append">
+												<button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target="" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>><span class="ion-ios7-search-strong"></span></button>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6 nik text-size">
+										<div class="form-group ml-3 mr-3">
+											<label>NIK</label>
+											<input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="0786 6875 8725 3564" maxlength="16" />
+										</div>
+									</div>
+									<div class="col-md-6 posisi text-size">
+										<div class="form-group ml-3 mr-3">
+											<label>Posisi</label>
+											<input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Posisi">
+										</div>
+									</div>
+									<div class="col-md-12 cabang">
+										<div class="form-group ml-3 mr-3">
+											<label>Cabang</label>
+											<input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Cabang">
+										</div>
+									</div>
+									<div class="col-md-6 kontrak-ro">
+										<div class="form-group ml-3 mr-3">
+											<label>Nomor Kontrak</label>
+											<input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="087883774" />
+										</div>
+									</div>
+									<div class="col-md-6 konsumen-ro">
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Konsumen</label>
+											<input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Nama konsumen">
+										</div>
 									</div>
 								</div>
 								<div class="form-row">
@@ -907,6 +907,7 @@
 		$('#nama_event').val("");
 		$('#data_partner').val("");
 		$('#data_agent').val("");
+		$('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
 	})
 
 	function source_leads() {
@@ -915,16 +916,21 @@
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
 			$('#btn-data').attr('data-target', '#modal-partner');
 			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else if ($('#soa').val() == 'Tour & travel') {
 			$('.travel, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Travel')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
 		} else if ($('#soa').val() == 'Penyedia Jasa') {
 			$('.jasa, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
 		} else if ($('#soa').val() == 'Agent BA') {
 			$('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
@@ -932,46 +938,67 @@
 			$('#btn-data').attr('data-target', '#modal-partner')
 			$('#data_agent').attr('placeholder', 'Pilih Nama Agent')
 			$('#btn-data-agent').attr('data-target', '#modal-agent')
+			$('#data_partner, #data_agent').attr('required', 'required');
+			$('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
 		} else if ($('#soa').val() == 'EGC') {
 			$('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
 			$('#btn-data').attr('data-target', '#modal-partner');
+			$('#data_partner, #nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
+			$('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
 			$('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
 			$('#btn-data').attr('data-target', '#modal-partner');
+			$('#data_partner, #referral_konsumen, #nomor_kontrak').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
 		} else if ($('#soa').val() == 'Digital Marketing') {
 			$('.vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else if ($('#soa').val() == 'Website BFI Syariah') {
 			$('.vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else if ($('#soa').val() == 'Walk In') {
 			$('.vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else if ($('#soa').val() == 'Event Promotion') {
 			$('.event, .vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner, #nama_event').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else if ($('#soa').val() == 'Tele Marketing') {
 			$('.vendor, .form, .btn-data').show();
 			$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
 			$('#btn-data').attr('data-target', '#modal-partner')
+			$('#data_partner').attr('required', 'required');
+			$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
 			$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
 		} else {
 			$('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+			$('#data_partner, #data_agent').removeAttr('required', 'required');
 		}
 	}
+
+	$(".readonly").keydown(function(e) {
+		e.preventDefault();
+	});
 </script>
 
 <script>
