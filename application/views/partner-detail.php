@@ -383,7 +383,7 @@
                                                 <span class="date">Maintain <?= $maintain->tanggal_maintain ?></span>
                                                 <span class="activity-text"><?= $maintain->catatan ?></span>
                                                 <div class="img-fluid">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" title="Foto Profile.">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" title="Foto maintain partner.">
                                                         <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>">
                                                     </a>
                                                 </div>
