@@ -1,16 +1,25 @@
 <div class="row">
-    <div class="col-md-12 mt-5">
-        <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <!-- <div class="btn-kanan">
-                <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size">NST Assignment</button></a>
-            </div> -->
-        <?php } ?>
+    <div class="col-sm-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Assignment NST</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Assignment</a></li>
+                <li class="breadcrumb-item text-size active">Assignment NST</li>
+            </ol>
+        </div>
     </div>
+</div>
+<div class="row">
+    <!-- <div class="col-md-12 mt-5">
+        <?php if ($this->fungsi->user_login()->level != 4) { ?>
+            <div class="btn-kanan">
+                <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size">NST Assignment</button></a>
+            </div>
+        <?php } ?>
+    </div> -->
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">NST</h4>
-                <p class="text-muted m-b-30 text-size">Data NST</p>
                 <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
