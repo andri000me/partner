@@ -10,11 +10,11 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 mt-4">
-        <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <a href="#"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
-        <?php } ?>
-    </div>
+    <?php if ($this->fungsi->user_login()->level == 4) { ?>
+        <div class="col-md-12 mt-4">
+            <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
+        </div>
+    <?php } ?>
     <div class="col-md-12">
         <div class="card m-b-20">
             <div class="card-body">
@@ -23,32 +23,32 @@
                         <tr>
                             <th>Name Lengkap</th>
                             <th>Nomor Telepon / Whatsapp</th>
-                            <th>Asal Aplikasi</th>
+                            <th>Kota</th>
                             <th>Produk</th>
                             <th>Detail Produk</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data->result() as $mapping_leads) { ?>
+                        <?php foreach ($data->result() as $leads_assignemnt) { ?>
                             <tr>
                                 <td>
-                                    <?= $mapping_leads->nama_konsumen ?>
+                                    <?= $leads_assignemnt->nama ?>
                                 </td>
                                 <td>
-                                    <?= $mapping_leads->telepon ?>
+                                    <?= $leads_assignemnt->telepon ?>
                                 </td>
                                 <td>
-                                    <?= $mapping_leads->soa ?>
+                                    <?= $leads_assignemnt->kota ?>
                                 </td>
                                 <td>
-                                    <?= $mapping_leads->produk ?>
+                                    <?= $leads_assignemnt->produk ?>
                                 </td>
                                 <td>
-                                    <?= $mapping_leads->detail_produk ?>
+                                    <?= $leads_assignemnt->detail_produk ?>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Detail</a></center>
+                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
                                 </td>
                             </tr>
                         <?php } ?>
