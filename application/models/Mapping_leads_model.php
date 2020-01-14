@@ -29,7 +29,7 @@ class Mapping_leads_model extends CI_Model
         // $this->db->join("mapping_partners", "mapping_partners.id_mapping = partners.id_mapping", "left");
         // $this->db->join("agents", "agents.id_agent = A.id_agent", "left");
         // $this->db->join("branches", "branches.id_branch = A.id_branch", "inner");
-        // $this->db->join("users", "users.id_user = A.id_user", "inner");
+        $this->db->join("users", "users.id_user = A.id_user", "inner");
         $this->db->where("B.id_mapping_leads IS NULL");
         if ($where != null) {
             $this->db->where($where);

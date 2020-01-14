@@ -45,6 +45,9 @@
                                 <div class="text-size">Nomor KTP</div>
                             </th>
                             <th>
+                                <div class="text-size">Penginput</div>
+                            </th>
+                            <th>
                                 <div class="text-size">Action</div>
                             </th>
                         </tr>
@@ -68,6 +71,14 @@
                                     <div class="text-size"><?= $agent->no_ktp ?></div>
                                 </td>
                                 <td>
+                                    <div class="text-size"><?= $agent->name ?></div>
+                                    <select class="form-control penginput text-size" data-data="<?= $agent->id_agent ?>">
+                                        <?php foreach ($users->result() as $user) { ?>
+                                            <option value="<?= $user->id_user ?>" <?= $user->id_user == $agent->id_user ? 'selected' : '' ?>><?= $user->name ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </td>
+                                <td>
                                     <?php if ($agent->status == 'draft') { ?>
                                         <center><a class="btn btn-secondary text-size" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Lanjutkan</a></center>
                                     <?php } ?>
@@ -84,3 +95,28 @@
     </div> <!-- end col -->
 
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.penginput').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
+
+            alert('penginput: ' + penginput + ' data id: ' + data);
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_data/agent') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    alert('Success');
+                }
+            });
+            return false;
+        });
+    })
+</script>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Branch extends CI_Controller
+class Transfer_data extends CI_Controller
 {
     public $where;
 
@@ -24,6 +24,7 @@ class Branch extends CI_Controller
         $this->load->model('mapping_partner_model', 'mapping_partner');
 
         $this->load->library('form_validation');
+        $this->load->helper('fungsi');
 
         check_not_login();
     }
@@ -31,7 +32,8 @@ class Branch extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
+            'data' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
+            'branches' => $this->branch_model->get()
         ];
 
         $this->template->load('template/index', 'transfer-data', $data);
@@ -51,5 +53,28 @@ class Branch extends CI_Controller
         // $this->ticket_model->update($data, $where);
 
         redirect('branch');
+    }
+
+    public function update_data($transfer = NULL)
+    {
+        $post = $this->input->post(NULL, TRUE);
+
+        $where_data = ['id_agent' => $post['data']];
+        $data = ['id_user' => $post['penginput']];
+        if ($transfer == 'agent') {
+            $id = $this->agent_model->update($data, $where_data);
+        }
+        if ($transfer == 'mapping_leads') {
+            $id = $this->mapping_leads_model->update($data, $where_data);
+        }
+        if ($transfer == 'mapping_partner') {
+            $id = $this->mapping_partner_model->update($data, $where_data);
+        }
+        // $this->mapping_leads->update($data, $where);
+        // $this->mapping_partner->update($data, $where);
+
+
+        echo json_encode($id);
+        // redirect('branch');
     }
 }

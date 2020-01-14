@@ -68,6 +68,12 @@
                 <?php } ?>
 
                 <li>
+                    <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
+                        <i class="fas fa-sync"></i> <span> Transfer Data </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="<?= base_url('Ticket') ?>" class="waves-effect">
                         <i class="fas fa-ticket-alt"></i> <span> Tiket </span>
                     </a>

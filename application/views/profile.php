@@ -22,7 +22,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#edit-password" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-sync"></i></span>
+                                <span class="d-block d-sm-none"><i class="fas fa-exchange-alt"></i></span>
                                 <span class="d-none d-sm-block">Ganti Password</span>
                             </a>
                         </li>
@@ -46,18 +46,18 @@
                         <form action="<?= base_url('Profile/update') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3 text-size">
                                         <label>E-Mail</label>
                                         <div>
-                                            <input type="email" class="form-control" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" placeholder="Aisha@bfisyariah.id" />
+                                            <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" placeholder="Aisha@bfisyariah.id" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3 text-size">
                                         <label>Cabang</label>
                                         <!-- <input type="text" class="form-control" name="cabang" id="cabang" value="<?= $data->nama_cabang ?>" placeholder=""> -->
-                                        <select class="form-control" name="cabang" id="cabang">
+                                        <select class="form-control text-size" name="cabang" id="cabang">
                                             <option selected disabled value="">- Pilih Cabang -</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
                                                 <option <?= $branch->id_branch == $data->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
@@ -70,13 +70,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Foto</label>
-                                        <input type="file" name="foto" class="filestyle" data-buttonname="btn-secondary" placeholder="Silahkan Upload Foto Kegiatan">
+                                        <input type="file" name="foto" class="filestyle text-size" data-buttonname="btn-secondary" placeholder="Silahkan Upload Foto Kegiatan">
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group float-right mt-2">
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Submit</button>
+                                    <button class="btn btn-primary w-md waves-effect waves-light text-size" type="submit">Submit</button>
                                 </div>
                             </div>
                         </form>
@@ -91,26 +91,26 @@
                         <form action="<?= base_url('Auth/update_password') ?>" method="post">
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3 text-size">
                                         <label>Password</label>
                                         <div>
-                                            <input type="password" class="form-control" name="password" id="password" placeholder="Masukkan Sandi" minlength="4" required>
+                                            <input type="password" class="form-control text-size" name="password" id="password" placeholder="Masukkan Sandi" minlength="4" required>
                                         </div>
                                         <?= form_error('password')  ?>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-3 mr-3 text-size">
                                         <label>Password confirm</label>
                                         <div>
-                                            <input type="password" class="form-control" name="password_confirm" id="password_confirm" placeholder="Masukkan Sandi" minlength="4" required>
+                                            <input type="password" class="form-control text-size" name="password_confirm" id="password_confirm" placeholder="Masukkan Sandi" minlength="4" required>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group float-right mt-2">
                                 <div class="col-12   text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
+                                    <button class="btn btn-primary w-md waves-effect waves-light text-size" type="submit">Masuk</button>
                                 </div>
                             </div>
                         </form>

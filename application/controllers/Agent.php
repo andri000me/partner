@@ -18,16 +18,19 @@ class Agent extends CI_Controller
         $this->load->model('agent_activity_model', 'agent_activity');
         //Load Modul Comment
         $this->load->model('comment_model');
+        //Load Modul Users
+        $this->load->model('user_model');
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = ['agents.id_user' => $this->fungsi->user_login()->id_user];
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = ['agents.id_branch' => $this->fungsi->user_login()->id_branch];
         } else {
             $this->where = NULL;
         }
@@ -38,7 +41,8 @@ class Agent extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->agent_model->get($this->where)
+            'data' => $this->agent_model->get($this->where),
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
         ];
 
         $this->template->load('template/index', 'agent', $data);
