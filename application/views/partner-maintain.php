@@ -22,11 +22,11 @@
                     <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="form-group text-size ml-3 mr-3">
                         <label>Upload Foto Selfie Anda</label>
-                        <input type="file" name="photo_activity" class="filestyle" data-buttonname="btn-secondary">
+                        <input type="file" name="photo_activity" class="filestyle text-size" data-buttonname="btn-secondary text-size">
                     </div>
-                    <div class="form-group ml-3 mr-3">
+                    <div class="form-group ml-3 mr-3 text-size">
                         <label>Jenis Kegiatan</label>
-                        <select class="form-control" name="jenis_kegiatan" id="jenis_kegiatan">
+                        <select class="form-control text-size" name="jenis_kegiatan" id="jenis_kegiatan">
                             <option selected>Pilih Jenis Kegiatan</option>
                             <option value="Update produk">Update produk</option>
                             <option value="Presentasi">Presentasi</option>
@@ -35,16 +35,16 @@
                             <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
-                    <div class="form-group ml-3 mr-3">
+                    <div class="form-group ml-3 mr-3 text-size">
                         <label>Catatan</label>
-                        <textarea class="form-control" name="catatan" id="catatan" cols="30" rows="10" placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
+                        <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
                     </div>
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>
-                            <button type="cancle" class="btn btn-secondary waves-effect waves-light">
+                            <button type="cancle" class="btn btn-secondary waves-effect waves-light text-size">
                                 Batal
                             </button>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light">
+                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size">
                                 Simpan
                             </button>
                         </div>

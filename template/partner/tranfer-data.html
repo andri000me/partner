@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+        <meta content="Admin Dashboard" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+        <link href="../assets/plugins/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+        <link href="../assets/plugins/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <link href="../assets/plugins/css/select2.min.css" rel="stylesheet" type="text/css" />
+        <link href="../assets/plugins/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+        <link href="../assets/plugins/css/morris.css" rel="stylesheet" />
+
+        <link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
+        <link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="wrapper">
+
+                <div class="topbar">
+
+                        <!-- LOGO -->
+                        <div class="topbar-left">
+                            <a href="index.html" class="logo">
+                                <span>
+                                    <img src="<?= base_url('template/assets/images/logo-light.png') ?>" alt="" height="18">
+                                </span>
+                                <i>
+                                    <img src="<?= base_url('template/assets/images/logo-sm.png') ?>" alt="" height="22">
+                                </i>
+                            </a>
+                        </div>
+        
+                        <nav class="navbar-custom">
+        
+                            <ul class="navbar-right d-flex list-inline float-right mb-0">
+        
+                                <li class="dropdown notification-list">
+                                    <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                        <i class="ti-bell noti-icon"></i>
+                                        <span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+                                        <!-- item-->
+                                        <h6 class="dropdown-item-text">
+                                            Notifications (258)
+                                        </h6>
+                                        <div class="slimscroll notification-item-list">
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item active">
+                                                <div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+                                                <p class="notify-details">Your order is placed<span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
+                                            </a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                                <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+                                                <p class="notify-details">New Message received<span class="text-muted">You have 87 unread messages</span></p>
+                                            </a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                                <div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
+                                                <p class="notify-details">Your item is shipped<span class="text-muted">It is a long established fact that a reader will</span></p>
+                                            </a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                                <div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+                                                <p class="notify-details">Your order is placed<span class="text-muted">Dummy text of the printing and typesetting industry.</span></p>
+                                            </a>
+                                            <!-- item-->
+                                            <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                                <div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+                                                <p class="notify-details">New Message received<span class="text-muted">You have 87 unread messages</span></p>
+                                            </a>
+                                        </div>
+                                        <!-- All-->
+                                        <a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+                                            View all <i class="fi-arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="dropdown notification-list">
+                                    <div class="dropdown notification-list nav-pro-img">
+                                        <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                            <img src="<?= base_url('template/assets/images/users/user-4.jpg') ?>" alt="user" class="rounded-circle">
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                            <!-- item-->
+                                            <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i> Profile</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i class="mdi mdi-power text-danger"></i> Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+        
+                            </ul>
+        
+                            <ul class="list-inline menu-left mb-0">
+                                <li class="float-left">
+                                    <button class="button-menu-mobile open-left waves-effect">
+                                        <i class="mdi mdi-menu"></i>
+                                    </button>
+                                </li>
+                            </ul>
+        
+                        </nav>
+                    
+        
+                    </div>
+                    <!-- Top Bar End -->
+
+                    <!-- ========== Left Sidebar Start ========== -->
+                    <div class="left side-menu">
+                            <div class="slimscroll-menu" id="remove-scroll">
+            
+                                <!--- Sidemenu -->
+                                <div id="sidebar-menu">
+                                    <!-- Left Menu Start -->
+                                    <ul class="metismenu" id="side-menu">
+                                        <li class="menu-title">Informasi</li>
+                                        <li>
+                                            <a href="<?= base_url('Partner') ?>" class="waves-effect">
+                                                <i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
+                                            </a>
+                                        </li>
+                
+                                        <li>
+                                            <a href="profile.html" class="waves-effect">
+                                                <i class="mdi ion-person"></i><span> Profile </span>
+                                            </a>
+                                        </li>
+                
+                                        <li>
+                                            <a href="<?= base_url('') ?>" class="waves-effect">
+                                                <i class="ti-bell noti-icon"></i><span
+                                                    class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+                                                </span>
+                                            </a>
+                                        </li>
+                
+                                        <li class="menu-title">Aktivitas Cabang</li>
+                
+                                        <li>
+                                            <a href="tiket.html" class="waves-effect">
+                                                <i class="mdi ion-person"></i><span> Tiket </span>
+                                            </a>
+                                        </li>
+                
+                                        <li>
+                                            <a href="javascript:void(0);" class="waves-effect"><i
+                                                    class="mdi mdi-email-outline"></i><span> Leads <span
+                                                        class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                                                </span></a>
+                                            <ul class="submenu">
+                                                <li><a href="leads-mapping.html">Database</a></li>
+                                                <li><a href="leads.html">Prospect</a></li>
+                                            </ul>
+                                        </li>
+                
+                                        <li>
+                                            <a href="javascript:void(0);" class="waves-effect"><i
+                                                    class="mdi ion-person-stalker "></i><span> Kerjasama <span
+                                                        class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                                                </span></a>
+                                            <ul class="submenu">
+                                                <li><a href="mapping.html">Mapping Lokasi Partner</a></li>
+                                                <li><a href="partnership.html">Partnership</a></li>
+                                                <li><a href="agent.html">Agent / BA</a></li>
+                                            </ul>
+                                        </li>
+                
+                                        <li class="menu-title">Bantuan HO</li>
+                
+                                        <li>
+                                            <a href="<?= base_url('') ?>" class="waves-effect">
+                                                <i class="ion-headphone  noti-icon"></i><span> Product Support </span>
+                                            </a>
+                                        </li>
+                
+                                        <li>
+                                            <a href="<?= base_url('') ?>" class="waves-effect">
+                                                <i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Sidebar -->
+                                <div class="clearfix"></div>
+                            
+                            </div>
+                            <!-- Sidebar -left -->
+            
+                    </div>
+                <!-- Left Sidebar End -->
+
+                <div class="content-page">
+                        <!-- Start content -->
+                        <div class="content">
+                                <div class="container-fluid">
+
+                                        <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="page-title-box">
+                                                        <h4 class="page-title">Tranfer Data</h4>
+                                                        <ol class="breadcrumb">
+                                                            <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                                                            <li class="breadcrumb-item active">Tranfer Data</li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                                <div class="col-lg-12">
+                                                        <div class="card m-b-20">
+
+                                                                <div class="card-body">
+
+                                                                    <h4 class="mt-0 header-title">Table Data karyawan</h4>
+                                                                    <p class="text-muted m-b-30 text-size">Silahkan pilih karyawan yang datanya akan di tranfer.</p>
+
+                                                                    <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Nama</th>
+                                                                                <th>Nik</th>
+                                                                                <th>Jabatan</th>
+                                                                                <th>Cabang</th>
+                                                                                <th>Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            <?php foreach ($users->result() as $user) { ?>
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        Bambank
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        000007
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        CMS
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        Jakarta
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <center><a href="#" class="btn btn-secondary text-size" data-toggle="modal" data-target=".bs-example-modal-center">Pilih</a></center>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php } ?>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                
+                                                        </div>
+                                                </div>    
+                                        </div>
+
+                                        <div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title mt-0">Tranfer Data</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <div class="form-group ml-3 mr-3 text-center">
+                                                                    <label><h4>Pemilik data yang akan di tranfer</h4></label>
+                                                                    <input type="text" class="form-control text-size" name="" id="" value="bambank" required placeholder="bambank" readonly>
+                                                                    <?= form_error('nama_usaha'); ?>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <center><div class="fas fa-sync"></div></center>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group ml-3 mr-3 text-size text-center">
+                                                                    <label><h4>Penerima Data</h4></label>
+                                                                    <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+                                                                        <option selected disabled value="">Pilih Nama Penerima</option>
+                                                                        <!-- <?php foreach ($branches->result() as $branch) { ?>
+                                                                            <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
+                                                                            <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                                        <?php } ?> -->
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <center>
+                                                                    <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
+                                                                        Tranfer
+                                                                    </button>
+                                                                </center>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                </div>    
+                        </div>
+                        <!-- end content -->
+                </div>
+
+        </div>
+        <!-- END wrapper -->
+            
+
+        <!-- jQuery  -->
+        <script src="../assets/js/jquery.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/metisMenu.min.js"></script>
+        <script src="../assets/js/jquery.slimscroll.js"></script>
+        <script src="../assets/js/waves.min.js"></script>
+        <script>
+            function hanyaAngka(evt) {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                    return false;
+                    return true;
+                }
+            }
+        </script>
+
+        <script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
+
+        <!-- Plugins js -->
+        <script src="../assets/plugins/js/bootstrap-colorpicker.min.js"></script>
+        <script src="../assets/plugins/js/bootstrap-datepicker.js"></script>
+        <script src="../assets/plugins/js/select2.min.js"></script>
+        <script src="../assets/plugins/js/bootstrap-maxlength.min.js"></script>
+        <script src="../assets/plugins/js/bootstrap-filestyle.min.js"></script>
+        <script src="../assets/plugins/js/jquery.bootstrap-touchspin.min.js"></script>
+
+        <!-- Plugins Init js -->
+        <script src="../assets/pages/form-advanced.js"></script>
+
+        <!-- App js -->
+        <script src="../assets/js/app.js"></script>
+
+</body>
+
+</html>

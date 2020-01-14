@@ -34,7 +34,7 @@
                                     </td>
                                     <td style="width: 300px;">
                                         <div class="form-group mb-0">
-                                            <select class="form-control has_superior" name="has_superior[<?= $cabang->id_branch ?>]" data-id="<?= $cabang->id_branch ?>">
+                                            <select class="form-control has_superior text-size" name="has_superior[<?= $cabang->id_branch ?>]" data-id="<?= $cabang->id_branch ?>">
                                                 <option <?= $cabang->has_superior == 0 ? 'selected' : '' ?> value="0">Tidak Ada Head & Manager</option>
                                                 <option <?= $cabang->has_superior == 1 ? 'selected' : '' ?> value="1">Ada Head</option>
                                                 <option <?= $cabang->has_superior == 2 ? 'selected' : '' ?> value="2">Ada Head & Manager</option>
@@ -45,7 +45,7 @@
                             <?php }  ?>
                         </tbody>
                     </table>
-                    <button class="btn btn-primary float-right mt-2">Update</button>
+                    <button class="btn btn-primary float-right mt-2 text-size">Update</button>
                 </form>
             </div>
         </div>

@@ -126,7 +126,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Foto usaha</label>
-                                        <input type="file" name="foto_usaha_mapping" class="filestyle" data-buttonname="btn-secondary">
+                                        <input type="file" name="foto_usaha_mapping" class="filestyle text-size" data-buttonname="btn-secondary text-size">
                                     </div>
                                 </div>
                             </div>
