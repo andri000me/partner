@@ -24,30 +24,32 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>Nik</th>
+                            <th>NIK</th>
                             <th>Jabatan</th>
                             <th>Cabang</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                Bambank
-                            </td>
-                            <td>
-                                000007
-                            </td>
-                            <td>
-                                CMS
-                            </td>
-                            <td>
-                                Jakarta
-                            </td>
-                            <td>
-                                <center><a href="#" class="btn btn-secondary text-size" data-toggle="modal" data-target=".bs-example-modal-center">Pilih</a></center>
-                            </td>
-                        </tr>
+                        <?php foreach ($data->result() as $user) { ?>
+                            <tr>
+                                <td>
+                                    <?= $user->name ?>
+                                </td>
+                                <td>
+                                    <?= $user->nik ?>
+                                </td>
+                                <td>
+                                    <?= $user->jabatan ?>
+                                </td>
+                                <td>
+                                    <?= $user->nama_cabang ?>
+                                </td>
+                                <td>
+                                    <center><a href="#" class="btn btn-secondary text-size transfer" data-toggle="modal" data-target=".bs-example-modal-center" data-nama="<?= $user->name ?>" data-id="<?= $user->id_user ?>">Pilih</a></center>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -64,15 +66,17 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="<?= base_url('transfer_data/update') ?>" method="post">
+                    <!-- ID User -->
+                    <input type="hidden" id="id_user" name="id_user">
+
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group ml-3 mr-3 text-center">
                                 <label>
                                     <h4>Pemilik data yang akan di Transfer</h4>
                                 </label>
-                                <input type="text" class="form-control text-size" name="" id="" value="bambank" required placeholder="bambank" readonly>
-                                <?= form_error('nama_usaha'); ?>
+                                <input type="text" class="form-control text-size" id="nama_user" value="" required placeholder="bambank" readonly>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -85,12 +89,11 @@
                                 <label>
                                     <h4>Penerima Data</h4>
                                 </label>
-                                <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+                                <select class="form-control text-size" name="transfer_to" id="transfer_to">
                                     <option selected disabled value="">Pilih Nama Penerima</option>
-                                    <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                        <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                        <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                    <?php } ?> -->
+                                    <?php foreach ($data->result() as $user) { ?>
+                                        <option value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -107,3 +110,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $(".transfer").click(function() {
+            var id_user = $(this).data("id");
+            var nama_user = $(this).data("nama");
+
+            $("#id_user").val(id_user);
+            $("#nama_user").val(nama_user);
+        })
+    })
+</script>

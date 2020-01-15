@@ -66,12 +66,14 @@
                         </ul>
                     </li>
                 <?php } ?>
+                <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
 
-                <li>
-                    <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
-                        <i class="fas fa-sync"></i> <span> Transfer Data </span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
+                            <i class="fas fa-sync"></i> <span> Transfer Data </span>
+                        </a>
+                    </li>
+                <?php } ?>
 
                 <li>
                     <a href="<?= base_url('Ticket') ?>" class="waves-effect">

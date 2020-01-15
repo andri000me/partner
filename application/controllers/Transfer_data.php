@@ -42,17 +42,17 @@ class Transfer_data extends CI_Controller
     public function update()
     {
         $post = $this->input->post(NULL, TRUE);
+
         $data = ['id_user' => $post['transfer_to']];
         $where = ['id_user' => $post['id_user']];
 
-        $this->agent_model->update($data, $where);
-        $this->mapping_leads->update($data, $where);
-        $this->mapping_partner->update($data, $where);
+        $update_agent = $this->agent_model->update($data, $where);
+        $update_mapping_leads = $this->mapping_leads->update($data, $where);
+        $update_mapping_partner = $this->mapping_partner->update($data, $where);
 
-
-        // $this->ticket_model->update($data, $where);
-
-        redirect('branch');
+        if ($update_agent && $update_mapping_leads && $update_mapping_partner) {
+            redirect('transfer_data');
+        }
     }
 
     public function update_data($transfer = NULL)

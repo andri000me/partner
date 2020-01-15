@@ -13,6 +13,7 @@ class Agent_model extends CI_Model
     public function update($data, $where)
     {
         $this->db->update('agents', $data, $where);
+        return $this->db->affected_rows();
     }
 
     public function delete($where)
@@ -23,7 +24,7 @@ class Agent_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from('agents');
-        $this->db->join('users', 'users.id_user = agents.id_user', 'inner');
+        // $this->db->join('users', 'users.id_user = agents.id_user', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }
