@@ -20,6 +20,8 @@
                 <h4 class="mt-0 header-title">Table Data karyawan</h4>
                 <p class="text-muted m-b-30 text-size">Silahkan pilih karyawan yang datanya akan di Transfer.</p>
 
+                <a class="btn btn-primary" href="<?= base_url('transfer_data/create') ?>">Create +</a>
+
                 <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>

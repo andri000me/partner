@@ -30,4 +30,9 @@ class Leads_model extends CI_Model
         }
         return $this->db->get();
     }
+
+    public function query($query)
+    {
+        return $this->db->query($query);
+    }
 }

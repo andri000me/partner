@@ -64,41 +64,43 @@
                                     <th>SOA</th>
                                     <th>Produk</th>
                                     <th>Detail Produk</th>
-                                    <th>Nama Penerima</th>
+                                    <th>Penginput</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <?= $mapping_leads->nama_konsumen ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping_leads->telepon ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping_leads->soa ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping_leads->produk ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping_leads->detail_produk ?>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                <option selected disabled value="">Pilih Nama Penerima</option>
-                                                <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                <?php } ?> -->
-                                            </select>
-                                        </center>
-                                    </td>
-                                </tr>
+                                <?php foreach ($mapping_leads->result() as $data) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $data->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->telepon ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->soa ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->produk ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->detail_produk ?>
+                                        </td>
+                                        <td data-search="<?= $data->name ?>">
+                                            <center>
+                                                <select class="form-control text-size leads" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <option selected disabled value="">Pilih Penginput</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="tab-pane p-3" id="prospect" role="tabpanel">
                         <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -108,41 +110,43 @@
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
                                     <th>Funding</th>
-                                    <th>Nama Penerima</th>
+                                    <th>Penginput</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <?= $leads->nama_konsumen ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->leads_id ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->no_ktp ?>
-                                    </td>
-                                    <td>
-                                        <?= $leads->follow_up_by ?>
-                                    </td>
-                                    <td>
-                                        sudah / belum funding
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                <option selected disabled value="">Pilih Nama Penerima</option>
-                                                <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                <?php } ?> -->
-                                            </select>
-                                        </center>
-                                    </td>
-                                </tr>
+                                <?php foreach ($leads->result() as $data) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $data->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->leads_id ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->no_ktp ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->follow_up_by ?>
+                                        </td>
+                                        <td>
+                                            sudah / belum funding
+                                        </td>
+                                        <td data-search="<?= $data->name ?>">
+                                            <center>
+                                                <select class="form-control text-size leads" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <option selected disabled value="">Pilih Penginput</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="tab-pane p-3" id="mapping" role="tabpanel">
                         <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -153,44 +157,46 @@
                                     <th>Telepon</th>
                                     <th>E-mail</th>
                                     <th>Produk</th>
-                                    <th>Nama Penerima</th>
+                                    <th>Penginput</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="clickable-row" data-href="detail-partnership.html">
-                                    <td>
-                                        <?= $mapping->nama_usaha ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->bidang_usaha ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->alamat ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->telepon ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->email ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->kategori_produk ?>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                <option selected disabled value="">Pilih Nama Penerima</option>
-                                                <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                <?php } ?> -->
-                                            </select>
-                                        </center>
-                                    </td>
-                                </tr>
+                                <?php foreach ($mapping_partner->result() as $data) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $data->nama_usaha ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->bidang_usaha ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->alamat ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->telepon ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->email ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->kategori_produk ?>
+                                        </td>
+                                        <td data-search="<?= $data->name ?>">
+                                            <center>
+                                                <select class="form-control text-size partner" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <option selected disabled value="">Pilih Penginput</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="tab-pane p-3" id="partnership" role="tabpanel">
                         <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -201,44 +207,46 @@
                                     <th>Email</th>
                                     <th>Produk</th>
                                     <th>Alamat</th>
-                                    <th>Nama Penerima</th>
+                                    <th>Penginput</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <?= $mapping->nama_usaha ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->bidang_usaha ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->telepon ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->email ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->kategori_produk ?>
-                                    </td>
-                                    <td>
-                                        <?= $mapping->alamat ?>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                <option selected disabled value="">Pilih Nama Penerima</option>
-                                                <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                <?php } ?> -->
-                                            </select>
-                                        </center>
-                                    </td>
-                                </tr>
+                                <?php foreach ($partner->result() as $data) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $data->nama_usaha ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->bidang_usaha ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->telepon ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->email ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->kategori_produk ?>
+                                        </td>
+                                        <td>
+                                            <?= $data->alamat ?>
+                                        </td>
+                                        <td data-search="<?= $data->name ?>">
+                                            <center>
+                                                <select class="form-control text-size partner" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <option selected disabled value="">Pilih Penginput</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="tab-pane p-3" id="agent" role="tabpanel">
                         <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
@@ -259,39 +267,40 @@
                                         <div class="text-size">Nomor KTP</div>
                                     </th>
                                     <th>
-                                        <div class="text-size">Nama Penerima</div>
+                                        <div class="text-size">Penginput</div>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="clickable-row" data-href="detail-agent.html">
-                                    <td>
-                                        <div class="text-size"><?= $agent->nama_lengkap ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $agent->jenis_agent ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $agent->pekerjaan ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $agent->email ?></div>
-                                    </td>
-                                    <td>
-                                        <div class="text-size"><?= $agent->no_ktp ?></div>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                <option selected disabled value="">Pilih Nama Penerima</option>
-                                                <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                                <?php } ?> -->
-                                            </select>
-                                        </center>
-                                    </td>
-                                </tr>
+                                <?php foreach ($agent->result() as $data) { ?>
+                                    <tr>
+                                        <td>
+                                            <div class="text-size"><?= $data->nama_lengkap ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->jenis_agent ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->pekerjaan ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->email ?></div>
+                                        </td>
+                                        <td>
+                                            <div class="text-size"><?= $data->no_ktp ?></div>
+                                        </td>
+                                        <td data-search="<?= $data->name ?>">
+                                            <center>
+                                                <select class="form-control text-size agent" name="transfer_to" id="transfer_to" data-data="<?= $data->id_agent ?>">
+                                                    <option selected disabled value="">Pilih Penginput</option>
+                                                    <?php foreach ($users->result() as $user) { ?>
+                                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
@@ -326,7 +335,6 @@
                                     <h4>Pemilik data yang akan di tranfer</h4>
                                 </label>
                                 <input type="text" class="form-control text-size" name="" id="" value="bambank" required placeholder="bambank" readonly>
-                                <?= form_error('nama_usaha'); ?>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -339,12 +347,11 @@
                                 <label>
                                     <h4>Penerima Data</h4>
                                 </label>
-                                <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                    <option selected disabled value="">Pilih Nama Penerima</option>
-                                    <!-- <?php foreach ($branches->result() as $branch) { ?>
-                                    <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                    <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                    <?php } ?> -->
+                                <select class="form-control text-size" name="transfer_to" id="transfer_to">
+                                    <option selected disabled value="">Pilih Penginput</option>
+                                    <?php foreach ($users->result() as $user) { ?>
+                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -361,3 +368,70 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        $('.agent').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
+
+            alert('penginput: ' + penginput + ' data id: ' + data);
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_agent') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    alert('Success');
+                }
+            });
+            return false;
+        });
+
+        $('.leads').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
+
+            alert('penginput: ' + penginput + ' data id: ' + data);
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_leads') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    alert('Success');
+                }
+            });
+            return false;
+        });
+
+        $('.partner').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
+
+            alert('penginput: ' + penginput + ' data id: ' + data);
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_partner') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    alert('Success');
+                }
+            });
+            return false;
+        });
+    })
+</script>

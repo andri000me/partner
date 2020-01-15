@@ -110,7 +110,7 @@ class Leads_assignment extends CI_Controller
             'cabang'            => $post['cabang'],
             'produk'            => $post['produk'],
             'detail_produk'     => $post['detail_produk'],
-            'nilai_pembiayaan'  => $post['nilai_pembiayaan'],
+            'nilai_pembiayaan'  => str_replace(",", "", $post['nilai_pembiayaan']),
             'assign_to'         => $post['assign_to'],
             'status'            => $post['status'],
             'catatan'           => $post['catatan'],
