@@ -18,16 +18,19 @@ class Agent extends CI_Controller
         $this->load->model('agent_activity_model', 'agent_activity');
         //Load Modul Comment
         $this->load->model('comment_model');
+        //Load Modul Users
+        $this->load->model('user_model');
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = ['agents.id_user' => $this->fungsi->user_login()->id_user];
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = ['agents.id_branch' => $this->fungsi->user_login()->id_branch];
         } else {
             $this->where = NULL;
         }
@@ -38,7 +41,8 @@ class Agent extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->agent_model->get($this->where)
+            'data' => $this->agent_model->get($this->where),
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
         ];
 
         $this->template->load('template/index', 'agent', $data);
@@ -205,6 +209,16 @@ class Agent extends CI_Controller
     public function update()
     {
         $post = $this->input->post(NULL, TRUE);
+
+
+        $original_value = $this->agent_model->get(['id_agent' => $post['id_agent']])->row();
+        $this->form_validation->set_rules('email', 'Alamat E-mail', ($post['email'] != $original_value->email) ? 'is_unique[agents.email]' : '', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti alamat e-mail']);
+        $this->form_validation->set_rules('telepon', 'Nomor Telepon', ($post['telepon'] != $original_value->telepon) ? 'is_unique[agents.telepon]' : '', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', ($post['no_ktp'] != $original_value->no_ktp) ? 'is_unique[agents.no_ktp]' : '', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor KTP']);
+        $this->form_validation->set_rules('no_npwp', 'NPWP', ($post['no_npwp'] != $original_value->no_npwp) ? 'is_unique[agents.no_npwp]' : '', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti NPWP']);
+        // $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor rekening']);
+
+        $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 
         $data = [
             'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : NULL,

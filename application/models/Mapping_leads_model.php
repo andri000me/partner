@@ -13,6 +13,7 @@ class Mapping_leads_model extends CI_Model
     public function update($data, $where)
     {
         $this->db->update('mapping_leads', $data, $where);
+        return $this->db->affected_rows();
     }
 
     public function delete($where)
@@ -35,5 +36,10 @@ class Mapping_leads_model extends CI_Model
             $this->db->where($where);
         }
         return $this->db->get();
+    }
+
+    public function query($query)
+    {
+        return $this->db->query($query);
     }
 }

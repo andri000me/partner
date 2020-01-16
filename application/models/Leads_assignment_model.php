@@ -1,38 +1,32 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Agent_model extends CI_Model
+class Leads_assignment_model extends CI_Model
 {
 
     public function create($data)
     {
-        $this->db->insert('agents', $data);
+        $this->db->insert('leads_assignments', $data);
         return $this->db->insert_id();
     }
 
     public function update($data, $where)
     {
-        $this->db->update('agents', $data, $where);
-        return $this->db->affected_rows();
+        $this->db->update('leads_assignments', $data, $where);
     }
 
     public function delete($where)
     {
-        $this->db->delete('agents', $where);
+        $this->db->delete('leads_assignments', $where);
     }
 
     public function get($where = NULL)
     {
-        $this->db->from('agents');
-        // $this->db->join('users', 'users.id_user = agents.id_user', 'inner');
+        $this->db->from('leads_assignments');
+        $this->db->join('branches', 'branches.id_branch = leads_assignments.cabang', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }
         return $this->db->get();
-    }
-
-    public function query($query)
-    {
-        return $this->db->query($query);
     }
 }

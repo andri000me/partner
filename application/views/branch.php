@@ -32,7 +32,7 @@
                                     <td>
                                         <?= $cabang->nama_cabang ?>
                                     </td>
-                                    <td style="width: 300px;">
+                                    <td style="width: 300px;" data-search="<?= ($cabang->has_superior == 0 ? 'Tidak Ada Head & Manager' : ($cabang->has_superior == 1 ? 'Ada Head' : ($cabang->has_superior == 2 ? 'Ada Head & Manager' : ''))) ?>">
                                         <div class="form-group mb-0">
                                             <select class="form-control has_superior text-size" name="has_superior[<?= $cabang->id_branch ?>]" data-id="<?= $cabang->id_branch ?>">
                                                 <option <?= $cabang->has_superior == 0 ? 'selected' : '' ?> value="0">Tidak Ada Head & Manager</option>

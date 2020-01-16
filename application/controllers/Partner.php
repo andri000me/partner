@@ -241,18 +241,7 @@ class Partner extends CI_Controller
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
             $id_ticket = $this->ticket_model->create($ticket);
-
-            //Notifikasi
-            // $notification = [
-            //     'pengirim'      => $this->fungsi->user_login()->id_user,
-            //     'type'          => 'Data Partner Baru',
-            //     'id_ticket'    => $id_ticket,
-            //     'created_at'    => date('Y-m-d H:i:s')
-            // ];
-            // $this->notification_model->create($notification);
         }
-
-
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Partner berhasil disimpan. <a href='#'>Lihat Data</a>");

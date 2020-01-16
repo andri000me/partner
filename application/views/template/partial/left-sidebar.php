@@ -55,7 +55,7 @@
                     </li>
 
                 <?php } ?>
-                <?php if ($this->fungsi->user_login()->level < 4) { ?>
+                <?php if ($this->fungsi->user_login()->level < 5) { ?>
 
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="far fa-clipboard"></i><span> Assignment <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
@@ -66,12 +66,14 @@
                         </ul>
                     </li>
                 <?php } ?>
+                <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
 
-                <li>
-                    <a href="#" class="waves-effect">
-                        <i class="fas fa-sync"></i> <span> Tranfer Data </span>
-                    </a>
-                </li>
+                    <li>
+                        <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
+                            <i class="fas fa-sync"></i> <span> Transfer Data </span>
+                        </a>
+                    </li>
+                <?php } ?>
 
                 <li>
                     <a href="<?= base_url('Ticket') ?>" class="waves-effect">

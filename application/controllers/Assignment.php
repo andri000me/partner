@@ -11,8 +11,8 @@ class Assignment extends CI_Controller
 
         // Load Modul Leads
         $this->load->model('leads_model');
-        // Load Modul Leads Database
-        $this->load->model('mapping_leads_model', 'mapping_leads');
+        // Load Modul Leads Assignment
+        $this->load->model('leads_assignment_model', 'leads_assignment');
         //Load Modul NST
         $this->load->model('nst_model');
 
@@ -56,10 +56,17 @@ class Assignment extends CI_Controller
         $this->template->load('template/index', 'assignment-lead-prospect', $data);
     }
 
+    // Leads Assignment
     public function leads()
     {
+        if ($this->fungsi->user_login()->level < 4) {
+            $where = "assign_to = " . $this->fungsi->user_login()->id_branch;
+        } else {
+            $where = 'id_leads_assignment IS NOT NULL';
+        }
+
         $data = [
-            'data' => $this->mapping_leads->get($this->where)
+            'data' => $this->leads_assignment->get($where)
         ];
 
         $this->template->load('template/index', 'assignment-lead-database', $data);
