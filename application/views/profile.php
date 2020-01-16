@@ -45,7 +45,7 @@
 
                         <form action="<?= base_url('Profile/update') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3 text-size">
                                         <label>E-Mail</label>
                                         <div>
@@ -53,7 +53,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3 text-size">
                                         <label>Cabang</label>
                                         <!-- <input type="text" class="form-control" name="cabang" id="cabang" value="<?= $data->nama_cabang ?>" placeholder=""> -->
@@ -65,9 +65,7 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group text-size ml-3 mr-3">
                                         <label>Foto</label>
                                         <input type="file" name="foto" class="filestyle text-size" data-buttonname="btn-secondary" placeholder="Silahkan Upload Foto Kegiatan">

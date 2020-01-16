@@ -766,7 +766,7 @@
 					<h4 class="modal-title">Cari Data Leads</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>
@@ -823,7 +823,7 @@
 					<h4 class="modal-title">Cari Data Partner</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>Name Usaha</th>
@@ -872,7 +872,7 @@
 					<h4 class="modal-title">Cari Data Agent</h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
-				<table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+				<table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 					<thead>
 						<tr>
 							<th>Nama Lengkap</th>

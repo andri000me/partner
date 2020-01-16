@@ -69,7 +69,7 @@
                                             <?php if ($leads->status == 'draft') { ?>
                                                 <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
                                             <?php } else if ($leads->status == 'lengkap') { ?>
-                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
+                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size" style="width: 90px;">Detail</a></center>
                                             <?php } ?>
                                         </td>
                                     </tr>

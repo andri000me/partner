@@ -66,7 +66,7 @@
                                     <?php if ($mapping->status == 'draft') { ?>
                                         <center><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
                                     <?php } else if ($mapping->status == 'lengkap') { ?>
-                                        <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>" class="btn btn-primary text-size">Detail</a></center>
+                                        <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>" class="btn btn-primary text-size" style="width: 90px;">Detail</a></center>
                                     <?php } ?>
                                 </td>
                             </tr>
