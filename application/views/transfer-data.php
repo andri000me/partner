@@ -48,7 +48,7 @@
                                     <?= $user->nama_cabang ?>
                                 </td>
                                 <td>
-                                    <center><a href="#" class="btn btn-secondary text-size transfer" data-toggle="modal" data-target=".bs-example-modal-center" data-nama="<?= $user->name ?>" data-id="<?= $user->id_user ?>">Pilih</a></center>
+                                    <center><a href="#" class="btn btn-secondary text-size transfer" data-toggle="modal" data-target=".bs-example-modal-center" data-nama="<?= $user->name ?>" data-id="<?= $user->id_user ?>">Transfer Semua</a></center>
                                 </td>
                             </tr>
                         <?php } ?>

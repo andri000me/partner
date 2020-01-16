@@ -45,9 +45,6 @@
                                 <div class="text-size">Nomor KTP</div>
                             </th>
                             <th>
-                                <div class="text-size">Penginput</div>
-                            </th>
-                            <th>
                                 <div class="text-size">Action</div>
                             </th>
                         </tr>
@@ -69,14 +66,6 @@
                                 </td>
                                 <td>
                                     <div class="text-size"><?= $agent->no_ktp ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $agent->name ?></div>
-                                    <select class="form-control penginput text-size" data-data="<?= $agent->id_agent ?>">
-                                        <?php foreach ($users->result() as $user) { ?>
-                                            <option value="<?= $user->id_user ?>" <?= $user->id_user == $agent->id_user ? 'selected' : '' ?>><?= $user->name ?></option>
-                                        <?php } ?>
-                                    </select>
                                 </td>
                                 <td>
                                     <?php if ($agent->status == 'draft') { ?>
