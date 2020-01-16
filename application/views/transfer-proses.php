@@ -53,6 +53,7 @@
                     </li>
                 </ul>
 
+
                 <!-- Tab panes -->
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="database" role="tabpanel">
@@ -87,7 +88,7 @@
                                         </td>
                                         <td data-search="<?= $data->name ?>">
                                             <center>
-                                                <select class="form-control text-size leads" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                <select class="form-control text-size leads" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                     <option selected disabled value="">Pilih Penginput</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -133,7 +134,7 @@
                                         </td>
                                         <td data-search="<?= $data->name ?>">
                                             <center>
-                                                <select class="form-control text-size leads" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                <select class="form-control text-size leads" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                     <option selected disabled value="">Pilih Penginput</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -183,7 +184,7 @@
                                         </td>
                                         <td data-search="<?= $data->name ?>">
                                             <center>
-                                                <select class="form-control text-size partner" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                <select class="form-control text-size partner" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                     <option selected disabled value="">Pilih Penginput</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -233,7 +234,7 @@
                                         </td>
                                         <td data-search="<?= $data->name ?>">
                                             <center>
-                                                <select class="form-control text-size partner" name="transfer_to" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                <select class="form-control text-size partner" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                     <option selected disabled value="">Pilih Penginput</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -291,7 +292,7 @@
                                         </td>
                                         <td data-search="<?= $data->name ?>">
                                             <center>
-                                                <select class="form-control text-size agent" name="transfer_to" id="transfer_to" data-data="<?= $data->id_agent ?>">
+                                                <select class="form-control text-size agent" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
                                                     <option selected disabled value="">Pilih Penginput</option>
                                                     <?php foreach ($users->result() as $user) { ?>
                                                         <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -319,63 +320,13 @@
     </div>
 </div>
 
-<div class="modal fade bs-example-modal-center" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mt-0">Tranfer Data</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            </div>
-            <div class="modal-body">
-                <form action="">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group ml-3 mr-3 text-center">
-                                <label>
-                                    <h4>Pemilik data yang akan di tranfer</h4>
-                                </label>
-                                <input type="text" class="form-control text-size" name="" id="" value="bambank" required placeholder="bambank" readonly>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <center>
-                                <div class="fas fa-sync"></div>
-                            </center>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group ml-3 mr-3 text-size text-center">
-                                <label>
-                                    <h4>Penerima Data</h4>
-                                </label>
-                                <select class="form-control text-size" name="transfer_to" id="transfer_to">
-                                    <option selected disabled value="">Pilih Penginput</option>
-                                    <?php foreach ($users->result() as $user) { ?>
-                                        <option <?= $user->id_user == $data->id_user ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <center>
-                                <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-                                    Tranfer
-                                </button>
-                            </center>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
     $(document).ready(function() {
         $('.agent').on('change', function() {
             var data = $(this).data('data');
             var penginput = $(this).val();
 
-            alert('penginput: ' + penginput + ' data id: ' + data);
+            // alert('penginput: ' + penginput + ' data id: ' + data);
 
             $.ajax({
                 type: "POST",
@@ -396,7 +347,7 @@
             var data = $(this).data('data');
             var penginput = $(this).val();
 
-            alert('penginput: ' + penginput + ' data id: ' + data);
+            // alert('penginput: ' + penginput + ' data id: ' + data);
 
             $.ajax({
                 type: "POST",
@@ -417,7 +368,7 @@
             var data = $(this).data('data');
             var penginput = $(this).val();
 
-            alert('penginput: ' + penginput + ' data id: ' + data);
+            // alert('penginput: ' + penginput + ' data id: ' + data);
 
             $.ajax({
                 type: "POST",

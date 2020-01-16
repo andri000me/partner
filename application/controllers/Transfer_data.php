@@ -130,6 +130,30 @@ class Transfer_data extends CI_Controller
         }
     }
 
+    public function update_transfer()
+    {
+        $post = $this->input->post(NULL, TRUE);
+
+        $leads = $post['leads_transfer'];
+        $partner = $post['partner_transfer'];
+        $agent = $post['agent_transfer'];
+
+        foreach ($leads as $key => $val) {
+            // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
+            $this->mapping_leads->update(['id_user' => $val], ['id_mapping_leads' => $key]);
+        }
+
+        foreach ($partner as $key => $val) {
+            // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
+            $this->mapping_partner->update(['id_user' => $val], ['id_mapping_leads' => $key]);
+        }
+
+        foreach ($leads as $key => $val) {
+            // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
+            $this->mapping_leads->update(['id_user' => $val], ['id_mapping_leads' => $key]);
+        }
+    }
+
     public function update_agent()
     {
         $post = $this->input->post(NULL, TRUE);
