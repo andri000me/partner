@@ -29,202 +29,204 @@
                                 <!-- Post Redirect halaman ke form -->
                                 <input type="hidden" name="redirect" value="<?= uri_string() ?>">
 
-                                <div class="form-group ml-3 mr-3">
-                                    <label class="text-size">Nama Usaha</label>
-                                    <input type="text" class="form-control text-size" name="nama_lengkap" id="nama_lengkap" value="<?= $data->nama_lengkap ?>" required placeholder="Aisha Putri" />
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">E-Mail</label>
-                                            <div>
-                                                <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
+                                <div class="ml-3 mr-3">
+                                    <div class="form-group">
+                                        <label class="text-size">Nama Usaha</label>
+                                        <input type="text" class="form-control text-size" name="nama_lengkap" id="nama_lengkap" value="<?= $data->nama_lengkap ?>" required placeholder="Aisha Putri" />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">E-Mail</label>
+                                                <div>
+                                                    <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Nomor Telepon</label>
+                                                <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="109788398364" maxlength="15" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Nomor Telepon</label>
-                                            <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="109788398364" maxlength="15" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Tanggal Lahir</label>
-                                            <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" required placeholder="19 / 10 / 1927" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Nomor KTP</label>
-                                            <input type="text" class="form-control placement text-size number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Pekerjaan</label>
-                                            <input type="text" class="form-control text-size" name="pekerjaan" id="pekerjaan" value="<?= $data->pekerjaan ?>" required placeholder="Pilih Pekerjaan" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Jenis Pekerjaan</label>
-                                            <input type="text" class="form-control text-size" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= $data->jenis_pekerjaan ?>" required placeholder="Pekerja Rumah tangga" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group ml-3 mr-3">
-                                    <label class="text-size">Jenis Agent / BA</label>
-                                    <select class="form-control text-size" name="jenis_agent" id="jenis_agent" required>
-                                        <option selected disabled value="">Pilih Jenis Agent / BA</option>
-                                        <option <?= $data->jenis_agent == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
-                                        <option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
-                                        <option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
-                                    </select>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Status Kepemilikan Rumah</label>
-                                            <select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
-                                                <option selected disabled value="">Rumah Milik Siapa?</option>
-                                                <option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
-                                                <option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
-                                                <option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
-                                                <option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="ml-3">income Per bulan saat ini</label>
-                                        <div class="input-group flex-nowrap ml-3 mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Tanggal Lahir</label>
+                                                <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" required placeholder="19 / 10 / 1927" />
                                             </div>
-                                            <input type="text" class="form-control text-size mr-4 number-only" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Apakah Punya Pinjaman?</label><br>
-                                            <div class="form-check form-check-inline mt-2 text-size">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" <?= $data->punya_pinjaman == 'Ya' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Ya
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline text-size">
-                                                <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" <?= $data->punya_pinjaman == 'Tidak' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Tidak
-                                                </label>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Nomor KTP</label>
+                                                <input type="text" class="form-control placement text-size number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Terdaftar Sebagai Agen travel / Lainnya?</label><br>
-                                            <div class="form-check form-check-inline mt-2 text-size">
-                                                <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" <?= $data->afiliasi_travel == 'Ya' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Ya
-                                                </label>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Pekerjaan</label>
+                                                <input type="text" class="form-control text-size" name="pekerjaan" id="pekerjaan" value="<?= $data->pekerjaan ?>" required placeholder="Pilih Pekerjaan" />
                                             </div>
-                                            <div class="form-check form-check-inline text-size">
-                                                <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Tidak" <?= $data->afiliasi_travel == 'Tidak' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Tidak
-                                                </label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Jenis Pekerjaan</label>
+                                                <input type="text" class="form-control text-size" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= $data->jenis_pekerjaan ?>" required placeholder="Pekerja Rumah tangga" />
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Terdaftar Sebagai Agen BFI Finance?</label><br>
-                                            <div class="form-check form-check-inline mt-2 text-size">
-                                                <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" <?= $data->agent_konvensional == 'Ya' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Ya
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline text-size">
-                                                <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Tidak" <?= $data->agent_konvensional == 'Tidak' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Tidak
-                                                </label>
+                                    <div class="form-group">
+                                        <label class="text-size">Jenis Agent / BA</label>
+                                        <select class="form-control text-size" name="jenis_agent" id="jenis_agent" required>
+                                            <option selected disabled value="">Pilih Jenis Agent / BA</option>
+                                            <option <?= $data->jenis_agent == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
+                                            <option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
+                                            <option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Status Kepemilikan Rumah</label>
+                                                <select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
+                                                    <option selected disabled value="">Rumah Milik Siapa?</option>
+                                                    <option <?= $data->status_kepemilikan_rumah == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+                                                    <option <?= $data->status_kepemilikan_rumah == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+                                                    <option <?= $data->status_kepemilikan_rumah == 'Kontrak' ? 'selected' : '' ?> value="Kontrak">Kontrak</option>
+                                                    <option <?= $data->status_kepemilikan_rumah == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
+                                                </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Ada hubungan dengan karyawan BFI Finance?</label><br>
-                                            <div class="form-check form-check-inline mt-2 text-size">
-                                                <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" <?= $data->hubungan_karyawan_bfi == 'Ada' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Ada
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline text-size">
-                                                <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Tidak Ada" <?= $data->hubungan_karyawan_bfi == 'Tidak Ada' ? 'checked' : '' ?> required>
-                                                <label class="form-check-label">
-                                                    Tidak Ada
-                                                </label>
+                                        <div class="col-md-6 mb-3">
+                                            <label>income Per bulan saat ini</label>
+                                            <div class="input-group flex-nowrap">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                </div>
+                                                <input type="text" class="form-control text-size number-only" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-group ml-3 mr-3">
-                                    <label class="text-size">Apakah pernah menjadi konsumen BFI Finance?</label><br>
-                                    <div class="form-check form-check-inline mt-2 text-size">
-                                        <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" <?= $data->konsumen_bfi == 'Pernah' ? 'checked' : '' ?> required>
-                                        <label class="form-check-label">
-                                            Pernah
-                                        </label>
-                                    </div>
-                                    <div class="form-check form-check-inline text-size">
-                                        <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Tidak Pernah" <?= $data->konsumen_bfi == 'Tidak Pernah' ? 'checked' : '' ?> required>
-                                        <label class="form-check-label">
-                                            Tidak Pernah
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="form-group ml-3 mr-3">
-                                    <label class="text-size">Nomor NPWP</label>
-                                    <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Rekening Bank</label>
-                                            <input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Apakah Punya Pinjaman?</label><br>
+                                                <div class="form-check form-check-inline mt-2 text-size">
+                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" <?= $data->punya_pinjaman == 'Ya' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Ya
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline text-size">
+                                                    <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Tidak" <?= $data->punya_pinjaman == 'Tidak' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Tidak
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Terdaftar Sebagai Agen travel / Lainnya?</label><br>
+                                                <div class="form-check form-check-inline mt-2 text-size">
+                                                    <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" <?= $data->afiliasi_travel == 'Ya' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Ya
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline text-size">
+                                                    <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Tidak" <?= $data->afiliasi_travel == 'Tidak' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Tidak
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Nama Bank</label>
-                                            <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Terdaftar Sebagai Agen BFI Finance?</label><br>
+                                                <div class="form-check form-check-inline mt-2 text-size">
+                                                    <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" <?= $data->agent_konvensional == 'Ya' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Ya
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline text-size">
+                                                    <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Tidak" <?= $data->agent_konvensional == 'Tidak' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Tidak
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Ada hubungan dengan karyawan BFI Finance?</label><br>
+                                                <div class="form-check form-check-inline mt-2 text-size">
+                                                    <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" <?= $data->hubungan_karyawan_bfi == 'Ada' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Ada
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline text-size">
+                                                    <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Tidak Ada" <?= $data->hubungan_karyawan_bfi == 'Tidak Ada' ? 'checked' : '' ?> required>
+                                                    <label class="form-check-label">
+                                                        Tidak Ada
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Cabang Bank</label>
-                                            <input type=" text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
+                                    <div class="form-group">
+                                        <label class="text-size">Apakah pernah menjadi konsumen BFI Finance?</label><br>
+                                        <div class="form-check form-check-inline mt-2 text-size">
+                                            <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" <?= $data->konsumen_bfi == 'Pernah' ? 'checked' : '' ?> required>
+                                            <label class="form-check-label">
+                                                Pernah
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline text-size">
+                                            <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Tidak Pernah" <?= $data->konsumen_bfi == 'Tidak Pernah' ? 'checked' : '' ?> required>
+                                            <label class="form-check-label">
+                                                Tidak Pernah
+                                            </label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label class="text-size">Nama Pemilik</label>
-                                            <input type=" text" class="form-control text-size" name="atas_nama" id="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anto Hoed">
+                                    <div class="form-group">
+                                        <label class="text-size">Nomor NPWP</label>
+                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Rekening Bank</label>
+                                                <input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Nama Bank</label>
+                                                <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Cabang Bank</label>
+                                                <input type=" text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-size">Nama Pemilik</label>
+                                                <input type=" text" class="form-control text-size" name="atas_nama" id="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anto Hoed">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

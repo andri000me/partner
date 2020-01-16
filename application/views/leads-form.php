@@ -35,261 +35,265 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Leads ID</label>
-                                        <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" maxlength="15">
-                                        <?= form_error('leads_id') ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <label class="ml-3">Nama Konsumen</label>
-                                    <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                            <button class="btn btn-primary mr-4 text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                            <div class="ml-3 mr-3">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Leads ID</label>
+                                            <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" maxlength="15">
+                                            <?= form_error('leads_id') ?>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>ID KTP</label>
-                                        <input type="phone" class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
-                                        <?= form_error('no_ktp') ?>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Handphone/Whatsapp</label>
-                                        <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
-                                        <?= form_error('telepon') ?>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group mr-3 ml-3">
-                                        <label>Produk</label>
-                                        <select class="form-control text-size" name="produk" id="produk" required>
-                                            <option selected value="">Pilih Kategori Produk</option>
-                                            <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                            <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                            <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                            <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                            <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-                                            <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group mr-3 ml-3">
-                                        <label>Detail Produk</label>
-                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Paket Umroh ABC Quad" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group mr-3 ml-3">
-                                        <label>Asal Aplikasi</label>
-                                        <select class="form-control text-size" name="soa" id="soa" required>
-                                            <option selected value="">Pilih Source Aplikasi</option>
-                                            <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                            <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                            <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                            <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                            <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                            <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                            <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                            <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                            <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                            <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                            <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12 event">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nama Event</label>
-                                        <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 form-agent">
-                                    <label class="ml-3 agent">Pilih Data Agent</label>
-                                    <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 form">
-                                    <label class="ml-3 travel">Pilih Data Travel</label>
-                                    <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-                                    <label class="ml-3 vendor">Pilih Data Partner</label>
-                                    <div class="input-group ml-3 mb-3">
-                                        <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 nik">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 posisi">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Posisi</label>
-                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= set_value('posisi_egc') ?>" placeholder="Input Posisi">
-                                    </div>
-                                </div>
-                                <div class="col-md-12 cabang">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Cabang</label>
-                                        <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= set_value('cabang_egc') ?>" placeholder="Input Cabang">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 kontrak-ro">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" />
-                                    </div>
-                                </div>
-                                <div class="col-md-6 konsumen-ro">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="form-row mb-3">
+                                    <div class="col-md-12">
                                         <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger text-size" type="button" id="reset">x</button>
+                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>ID KTP</label>
+                                            <input type="phone" class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                            <?= form_error('no_ktp') ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Handphone/Whatsapp</label>
+                                            <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
+                                            <?= form_error('telepon') ?>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Produk</label>
+                                            <select class="form-control text-size" name="produk" id="produk" required>
+                                                <option selected value="">Pilih Kategori Produk</option>
+                                                <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Detail Produk</label>
+                                            <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Paket Umroh ABC Quad" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Asal Aplikasi</label>
+                                            <select class="form-control text-size" name="soa" id="soa" required>
+                                                <option selected value="">Pilih Source Aplikasi</option>
+                                                <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                                <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                                <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                                <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                                <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                                <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                                <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                                <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                                <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                                <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                                <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                                <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12 event">
+                                        <div class="form-group">
+                                            <label>Nama Event</label>
+                                            <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 form-agent mb-3">
+                                        <label class="gent">Pilih Data Agent</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 form mb-3">
+                                        <label class="travel">Pilih Data Travel</label>
+                                        <label class="jasa">Pilih Data Penyedia Jasa</label>
+                                        <label class="vendor">Pilih Data Partner</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 nik">
+                                        <div class="form-group">
+                                            <label>NIK</label>
+                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 posisi">
+                                        <div class="form-group">
+                                            <label>Posisi</label>
+                                            <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= set_value('posisi_egc') ?>" placeholder="Input Posisi">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 cabang">
+                                        <div class="form-group">
+                                            <label>Cabang</label>
+                                            <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= set_value('cabang_egc') ?>" placeholder="Input Cabang">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 kontrak-ro">
+                                        <div class="form-group">
+                                            <label>Nomor Kontrak</label>
+                                            <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 konsumen-ro">
+                                        <div class="form-group">
+                                            <label>Nama Konsumen</label>
+                                            <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Cross Branch?</label><br>
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= set_value('cross_branch') == 'Ya' ? 'checked' : '' ?> required value="Ya">
-                                            <label class="form-check-label">
-                                                Ya
-                                            </label>
+                            <div class="ml-3 mr-3">
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group text-size">
+                                            <label>Cross Branch?</label><br>
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= set_value('cross_branch') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                <label class="form-check-label">
+                                                    Ya
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= set_value('cross_branch') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                <label class="form-check-label">
+                                                    Tidak
+                                                </label>
+                                            </div>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= set_value('cross_branch') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-                                            <label class="form-check-label">
-                                                Tidak
-                                            </label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-size">
+                                            <label>Apakah Sudah Funding?</label><br>
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
+                                                <label class="form-check-label">
+                                                    Sudah
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Belum' ? 'checked' : '' ?> checked required value="Belum">
+                                                <label class="form-check-label">
+                                                    Belum
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Apakah Sudah Funding?</label><br>
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Sudah' ? 'checked' : '' ?> required value="Sudah">
-                                            <label class="form-check-label">
-                                                Sudah
-                                            </label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="sudah_funding" id="sudah_funding" <?= set_value('sudah_funding') == 'Belum' ? 'checked' : '' ?> checked required value="Belum">
-                                            <label class="form-check-label">
-                                                Belum
-                                            </label>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div id="hide" class="form-group">
+                                            <label>Pilih Cabang</label>
+                                            <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+                                                <option selected disabled value="">Pilih Cabang</option>
+                                                <?php foreach ($branches->result() as $branch) { ?>
+                                                    <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
+                                                    <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div id="hide" class="form-group ml-3 mr-3">
-                                        <label>Pilih Cabang</label>
-                                        <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                            <option selected disabled value="">Pilih Cabang</option>
-                                            <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row users">
-                                <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Pic Tanda Tangan</label>
-                                        <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
-                                            <option value="" selected>Pilih PIC Tanda tangan</option>
-                                            <optgroup id="show_pic_ttd">
+                                <div class="form-row users">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Pic Tanda Tangan</label>
+                                            <select class="form-control text-size" name="pic_ttd" id="pic_ttd">
+                                                <option value="" selected>Pilih PIC Tanda tangan</option>
+                                                <optgroup id="show_pic_ttd">
 
-                                            </optgroup>
-                                        </select>
+                                                </optgroup>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Surveyor</label>
-                                        <select class="form-control text-size" name="surveyor" id="surveyor">
-                                            <option value="" selected>Pilih Surveyor</option>
-                                            <optgroup id="show_surveyor">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Surveyor</label>
+                                            <select class="form-control text-size" name="surveyor" id="surveyor">
+                                                <option value="" selected>Pilih Surveyor</option>
+                                                <optgroup id="show_surveyor">
 
-                                            </optgroup>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Follow Up By</label>
-                                        <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
-                                            <option selected disabled value="">Pilih Follow Up By</option>
-                                            <option <?= set_value('follow_up_by') == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
-                                            <option <?= set_value('follow_up_by') == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
-                                            <option <?= set_value('follow_up_by') == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
-                                            <option <?= set_value('follow_up_by') == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <label class="ml-3">Nilai Funding</label>
-                                    <div class="input-group flex-nowrap ml-3 mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                </optgroup>
+                                            </select>
                                         </div>
-                                        <input type="text" class="form-control text-size mr-4 number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= set_value('nilai_funding') ?>" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Appeal NST</label><br>
-                                        <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= set_value('appeal_nst') == 'Ya' ? 'checked' : '' ?> required value="Ya">
-                                            <label class="form-check-label">
-                                                Ya
-                                            </label>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Follow Up By</label>
+                                            <select class="form-control text-size" name="follow_up_by" id="follow_up_by" required>
+                                                <option selected disabled value="">Pilih Follow Up By</option>
+                                                <option <?= set_value('follow_up_by') == 'Kunjungan' ? 'selected' : '' ?> value="Kunjungan">Kunjungan</option>
+                                                <option <?= set_value('follow_up_by') == 'Telepon' ? 'selected' : '' ?> value="Telepon">Telepon</option>
+                                                <option <?= set_value('follow_up_by') == 'Whatsapp' ? 'selected' : '' ?> value="Whatsapp">Whatsapp</option>
+                                                <option <?= set_value('follow_up_by') == 'Email' ? 'selected' : '' ?> value="Email">Email</option>
+                                            </select>
                                         </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= set_value('appeal_nst') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-                                            <label class="form-check-label">
-                                                Tidak
-                                            </label>
+                                    </div>
+                                </div>
+                                <div class="form-row mb-3">
+                                    <div class="col-md-12">
+                                        <label>Nilai Funding</label>
+                                        <div class="input-group flex-nowrap">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                            </div>
+                                            <input type="text" class="form-control text-size number-only" name="nilai_funding" id="nilai_funding" data-type="currency" value="<?= set_value('nilai_funding') ?>" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group text-size">
+                                            <label>Appeal NST</label><br>
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= set_value('appeal_nst') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                <label class="form-check-label">
+                                                    Ya
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="appeal_nst" id="appeal_nst" <?= set_value('appeal_nst') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                <label class="form-check-label">
+                                                    Tidak
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -30,104 +30,108 @@
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <div class="form-group mr-3 ml-3">
-                                <label>Nama Konsumen</label>
-                                <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" />
-                            </div>
-                            <div class="form-group mr-3 ml-3">
-                                <label>Produk</label>
-                                <select class="form-control text-size" name="produk" id="produk">
-                                    <option value="" selected>Pilih Kategori Produk</option>
-                                    <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                    <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                    <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                    <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                    <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-                                    <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
-                                </select>
-                            </div>
-                            <div class="form-group mr-3 ml-3">
-                                <label>Detail Produk</label>
-                                <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
-                            </div>
-                            <div class="form-group mr-3 ml-3">
-                                <label>Handphone/Whatsapp</label>
-                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon_mapping ?>" required placeholder="0811977500" maxlength="15" />
-                                <?= form_error('telepon') ?>
+                            <div class="ml-3 mr-3">
+                                <div class="form-group">
+                                    <label>Nama Konsumen</label>
+                                    <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Produk</label>
+                                    <select class="form-control text-size" name="produk" id="produk">
+                                        <option value="" selected>Pilih Kategori Produk</option>
+                                        <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                        <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                        <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                        <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                        <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                        <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Detail Produk</label>
+                                    <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Handphone/Whatsapp</label>
+                                    <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon_mapping ?>" required placeholder="0811977500" maxlength="15" />
+                                    <?= form_error('telepon') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group mr-3 ml-3">
-                                <label>SOA</label>
-                                <select class="form-control text-size" name="soa" id="soa" required>
-                                    <option value="" selected>Pilih Source Aplikasi</option>
-                                    <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                    <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                    <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                    <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                    <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                    <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                    <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                    <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                    <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                    <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                    <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                    <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
-                                </select>
-                            </div>
-                            <div class="form-group ml-3 mr-3 event">
-                                <label>Nama Event</label>
-                                <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $data->nama_event ?>" placeholder="Nama Event">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 nik">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>NIK</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" maxlength="6" />
+                            <div class="ml-3 mr-3">
+                                <div class="form-group">
+                                    <label>SOA</label>
+                                    <select class="form-control text-size" name="soa" id="soa" required>
+                                        <option value="" selected>Pilih Source Aplikasi</option>
+                                        <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                        <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                        <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                        <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                        <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                        <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                        <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                        <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                        <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
+                                        <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                        <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                        <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                    </select>
+                                </div>
+                                <div class="form-group event">
+                                    <label>Nama Event</label>
+                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $data->nama_event ?>" placeholder="Nama Event">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 nik">
+                                        <div class="form-group">
+                                            <label>NIK</label>
+                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" maxlength="6" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 cabang">
+                                        <div class="form-group">
+                                            <label>Cabang</label>
+                                            <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Nama Cabang">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6 cabang">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>Cabang</label>
-                                        <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Nama Cabang">
+                                <div class="posisi">
+                                    <div class="form-group">
+                                        <label>Posisi</label>
+                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Nama Jabatan / Posisi">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="posisi">
-                                <div class="form-group ml-3 mr-3">
-                                    <label>Posisi</label>
-                                    <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Nama Jabatan / Posisi">
-                                </div>
-                            </div>
-                            <div class="kontrak-ro">
-                                <div class="form-group ml-3 mr-3">
-                                    <label>Nomor Kontrak</label>
-                                    <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
-                                </div>
-                            </div>
-                            <div class="konsumen-ro">
-                                <div class="form-group ml-3 mr-3">
-                                    <label>Nama Konsumen</label>
-                                    <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
-                                </div>
-                            </div>
-                            <div class="form-agent">
-                                <label class="ml-3 agent">Pilih Data Agent</label>
-                                <div class="input-group ml-3 mb-3">
-                                    <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                <div class="kontrak-ro">
+                                    <div class="form-group">
+                                        <label>Nomor Kontrak</label>
+                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form">
-                                <label class="ml-3 vendor">Pilih Data Partner</label>
-                                <label class="ml-3 travel">Pilih Data Travel</label>
-                                <label class="ml-3 jasa">Pilih Data Penyedia Jasa</label>
-                                <div class="input-group ml-3 mb-3">
-                                    <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary btn-data mr-4 text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                <div class="konsumen-ro">
+                                    <div class="form-group">
+                                        <label>Nama Konsumen</label>
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
+                                    </div>
+                                </div>
+                                <div class="form-agent mb-3">
+                                    <label class="agent">Pilih Data Agent</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form mb-3">
+                                    <label class=" vendor">Pilih Data Partner</label>
+                                    <label class=" travel">Pilih Data Travel</label>
+                                    <label class=" jasa">Pilih Data Penyedia Jasa</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
