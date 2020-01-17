@@ -35,10 +35,10 @@
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="ml-3 mr-3">
+                            <div class="">
                                 <div class="form-row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Leads ID</label>
                                             <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" maxlength="15">
                                             <?= form_error('leads_id') ?>
@@ -47,26 +47,28 @@
                                 </div>
                                 <div class="form-row mb-3">
                                     <div class="col-md-12">
-                                        <label>Nama Konsumen</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                                        <div class="ml-3 mr-3">
+                                            <label>Nama Konsumen</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-danger text-size" type="button" id="reset">x</button>
+                                                    <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>ID KTP</label>
                                             <input type="phone" class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
                                             <?= form_error('no_ktp') ?>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3 ml-3 mr-3">
                                             <label>Handphone/Whatsapp</label>
                                             <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                             <?= form_error('telepon') ?>
@@ -75,7 +77,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Produk</label>
                                             <select class="form-control text-size" name="produk" id="produk" required>
                                                 <option selected value="">Pilih Kategori Produk</option>
@@ -89,7 +91,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Detail Produk</label>
                                             <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Paket Umroh ABC Quad" />
                                         </div>
@@ -97,7 +99,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Asal Aplikasi</label>
                                             <select class="form-control text-size" name="soa" id="soa" required>
                                                 <option selected value="">Pilih Source Aplikasi</option>
@@ -119,57 +121,61 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-12 event">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Nama Event</label>
                                             <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= set_value('nama_event') ?>" placeholder="Input Nama Event">
                                         </div>
                                     </div>
                                     <div class="col-md-12 form-agent mb-3">
-                                        <label class="gent">Pilih Data Agent</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        <div class="ml-3 mr-3">
+                                            <label class="gent">Pilih Data Agent</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= set_value('data_agent') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 form mb-3">
-                                        <label class="travel">Pilih Data Travel</label>
-                                        <label class="jasa">Pilih Data Penyedia Jasa</label>
-                                        <label class="vendor">Pilih Data Partner</label>
-                                        <div class="input-group">
-                                            <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                        <div class="ml-3 mr-3">
+                                            <label class="travel">Pilih Data Travel</label>
+                                            <label class="jasa">Pilih Data Penyedia Jasa</label>
+                                            <label class="vendor">Pilih Data Partner</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= set_value('data_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6 nik">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>NIK</label>
                                             <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 posisi">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Posisi</label>
                                             <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= set_value('posisi_egc') ?>" placeholder="Input Posisi">
                                         </div>
                                     </div>
                                     <div class="col-md-12 cabang">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Cabang</label>
                                             <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= set_value('cabang_egc') ?>" placeholder="Input Cabang">
                                         </div>
                                     </div>
                                     <div class="col-md-6 kontrak-ro">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Nomor Kontrak</label>
                                             <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 konsumen-ro">
-                                        <div class="form-group">
+                                        <div class="form-group ml-3 mr-3">
                                             <label>Nama Konsumen</label>
                                             <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
                                         </div>

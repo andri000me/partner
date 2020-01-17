@@ -119,20 +119,22 @@ class Transfer_data extends CI_Controller
         $this->template->load('template/index', 'transfer-proses', $data);
     }
 
+    // transfer semua data
     public function update()
     {
         $post = $this->input->post(NULL, TRUE);
 
+        $where = ['id_user' => $post['transfer_from']];
         $data = ['id_user' => $post['transfer_to']];
-        $where = ['id_user' => $post['id_user']];
 
         $update_agent = $this->agent_model->update($data, $where);
         $update_mapping_leads = $this->mapping_leads->update($data, $where);
         $update_mapping_partner = $this->mapping_partner->update($data, $where);
 
-        if ($update_agent && $update_mapping_leads && $update_mapping_partner) {
-            redirect('transfer_data');
-        }
+        // if ($update_agent > 0 || $update_mapping_leads > 0 || $update_mapping_partner > 0) {
+        // echo $update_agent . ' ' . $update_mapping_leads . ' ' . $update_mapping_partner;
+        redirect('transfer_data');
+        // }
     }
 
     public function update_transfer()
@@ -144,17 +146,14 @@ class Transfer_data extends CI_Controller
         $agent = $post['agent_transfer'];
 
         foreach ($leads as $key => $val) {
-            // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
             $this->mapping_leads->update(['id_user' => $val], ['id_mapping_leads' => $key]);
         }
 
         foreach ($partner as $key => $val) {
-            // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
             $this->mapping_partner->update(['id_user' => $val], ['id_mapping' => $key]);
         }
 
         foreach ($agent as $key => $val) {
-            // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
             $this->agent_model->update(['id_user' => $val], ['id_agent' => $key]);
         }
 

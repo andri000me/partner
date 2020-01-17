@@ -9,8 +9,8 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">NST</h4>
-                <p class="text-muted m-b-30 text-size">Data NST</p>
+                <h4 class="mt-0 header-title">Table Data NST</h4>
+                <!-- <p class="text-muted m-b-30 text-size"></p> -->
                 <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>

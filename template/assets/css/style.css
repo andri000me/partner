@@ -3935,7 +3935,7 @@ input[data-readonly] {
 
 	.boxx {
 		width: 300px;
-		height: 125px;
+		max-height: 125px;
 	}
 
 	.boxxx {

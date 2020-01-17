@@ -41,10 +41,10 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="ml-3 mr-3">
+                                            <div class="">
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Nama Lengkap</label>
                                                             <input type="text" class="form-control text-size <?= form_error('nama_lengkap') ? 'is-invalid' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= $data->nama_lengkap ?>" required placeholder="Aisha Putri" />
                                                         </div>
@@ -52,7 +52,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>E-Mail</label>
                                                             <div>
                                                                 <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
@@ -61,7 +61,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Nomor Telepon</label>
                                                             <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="09788398364" maxlength="15" />
                                                             <?= form_error('telepon'); ?>
@@ -70,13 +70,13 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Tanggal Lahir</label>
                                                             <input type="date" class="form-control text-size <?= form_error('tanggal_lahir') ? 'is-invalid' : '' ?>" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" required placeholder="19 / 10 / 1927" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Nomor KTP</label>
                                                             <input type="text" class="form-control text-size <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
                                                             <?= form_error('no_ktp'); ?>
@@ -85,7 +85,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Pekerjaan</label>
                                                             <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= $data->pekerjaan ?>" required placeholder="Pilih Pekerjaan" /> -->
                                                             <select class="form-control text-size <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
@@ -97,7 +97,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Jenis Pekerjaan</label>
                                                             <input type="text" class="form-control text-size <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= $data->jenis_pekerjaan ?>" required placeholder="Pekerja Rumah tangga" />
                                                         </div>
@@ -105,7 +105,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Jenis Agent / BA</label>
                                                             <select class="form-control text-size <?= form_error('jenis_agent') ? 'is-invalid' : '' ?>" name="jenis_agent" id="jenis_agent" required>
                                                                 <option selected disabled value="">Pilih Jenis Agent / BA</option>
@@ -118,7 +118,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Status Kepemilikan Rumah</label>
                                                             <select class="form-control text-size <?= form_error('') ? 'is-invalid' : 'status_kepemilikan_rumah' ?>" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
                                                                 <option selected disabled value="">Rumah Milik Siapa?</option>
@@ -132,12 +132,14 @@
                                                 </div>
                                                 <div class="form-row mb-3">
                                                     <div class="col-md-12">
-                                                        <label>income Per bulan saat ini</label>
-                                                        <div class="input-group flex-nowrap">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                        <div class="ml-3 mr-3">
+                                                            <label>income Per bulan saat ini</label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                                </div>
+                                                                <input type="text" class="form-control text-size number-only  <?= form_error('income') ? 'is-invalid' : '' ?>" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                                             </div>
-                                                            <input type="text" class="form-control text-size number-only  <?= form_error('income') ? 'is-invalid' : '' ?>" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                                         </div>
                                                     </div>
                                                 </div>

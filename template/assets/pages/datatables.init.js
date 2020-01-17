@@ -9,7 +9,7 @@ $(document).ready(function () {
 			bLengthChange: false,
 			language: {
 				search: '',
-				searchPlaceholder: "Cari Data"
+				searchPlaceholder: "Cari Data Disini"
 			}
 		}),
 		$("#datatable-buttons")
@@ -18,7 +18,7 @@ $(document).ready(function () {
 			pagingType: "simple",
 			lengthChange: !1,
 			language: {
-				searchPlaceholder: "Cari Data"
+				searchPlaceholder: "Cari Data Disini"
 			},
 			buttons: ["copy", "excel", "pdf", "colvis"]
 		})
@@ -38,7 +38,7 @@ $(document).ready(function () {
 		bLengthChange: false,
 		language: {
 			search: '',
-			searchPlaceholder: "Cari Data"
+			searchPlaceholder: "Cari Data Disini"
 		},
 		"lengthMenu": [5, 40, 60, 80, 100],
 		"pageLength": 5,

@@ -82,8 +82,8 @@
                                 <label>
                                     <h4>Nama pemilik data yang datanya akan di Transfer</h4>
                                 </label>
-                                <select class="form-control text-size" name="nama_user" id="nama_user">
-                                    <option selected disabled value="">Pilih Nama Penerima</option>
+                                <select class="form-control text-size" name="transfer_from" id="transfer_from">
+                                    <option selected disabled value="">Pilih Nama Pemilik</option>
                                     <?php foreach ($data->result() as $user) { ?>
                                         <option value="<?= $user->id_user ?>"><?= $user->name ?></option>
                                     <?php } ?>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="col-md-12">
                             <center>
-                                <div class="fas fa-sync"></div>
+                                <div class="fas fa-sync fa-3x"></div>
                             </center>
                         </div>
                         <div class="col-md-12">

@@ -148,21 +148,9 @@
                             </table>
                         </div>
 
-                    <div class="tab-pane p-3" id="mapping" role="tabpanel">
-                        <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th>Nama Usaha</th>
-                                    <th>Bidang Usaha</th>
-                                    <th>Alamat</th>
-                                    <th>Telepon</th>
-                                    <th>E-mail</th>
-                                    <th>Produk</th>
-                                    <th>Penginput</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($mapping_partner->result() as $data) { ?>
+                        <div class="tab-pane p-3" id="mapping" role="tabpanel">
+                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
                                     <tr>
                                         <th>Nama Usaha</th>
                                         <th>Bidang Usaha</th>
@@ -318,6 +306,7 @@
                             </table>
                         </div>
                     </div>
+
                     <div class="form-group mb-0 float-right mt-3 mr-3">
                         <a href="<?= base_url('transfer_data') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
                         <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">

@@ -189,10 +189,10 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="ml-3 mr-3">
+                                            <div class="">
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Barang Yang Dijual</label>
                                                             <input type="text" class="form-control text-size" name="barang_jual" id="barang_jual" name="barang_jual" value="<?= set_value('barang_jual') ?>" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
                                                         </div>
@@ -200,7 +200,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Sosial Media / Website</label>
                                                             <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" value="<?= set_value('sosial_media') ?>" placeholder="https://www.instagram.com/bfisyariah">
                                                         </div>
@@ -208,7 +208,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
                                                             <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
                                                                 <option selected disabled value="">Pilih Jenis Pembayaran</option>
@@ -221,16 +221,18 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6 mb-3">
-                                                        <label>Omset Perbulan</label>
-                                                        <div class="input-group flex-nowrap">
-                                                            <div class="input-group-prepend">
-                                                                <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                        <div class="ml-3 mr-3">
+                                                            <label>Omset Perbulan</label>
+                                                            <div class="input-group flex-nowrap">
+                                                                <div class="input-group-prepend">
+                                                                    <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                                </div>
+                                                                <input type="text" class="form-control text-size number-only" name="omset" id="omset" data-type="currency" value="<?= set_value('omset') ?>" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                                             </div>
-                                                            <input type="text" class="form-control text-size number-only" name="omset" id="omset" data-type="currency" value="<?= set_value('omset') ?>" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Jumlah Cabang</label>
                                                             <input type="text" class="form-control text-size number-only" name="jumlah_cabang" id="jumlah_cabang" value="<?= set_value('jumlah_cabang') ?>" required placeholder="5">
                                                         </div>
@@ -238,13 +240,13 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Rekening Bank</label>
                                                             <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="0468 6587 6587 45" maxlength="16">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Nama Bank</label>
                                                             <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="Bank Mandiri">
                                                         </div>
@@ -252,13 +254,13 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Cabang Bank</label>
                                                             <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= set_value('cabang_bank') ?>" required placeholder="Cabang Karawaci">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Atas Nama</label>
                                                             <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= set_value('atas_nama') ?>" required placeholder="Anton Hoed">
                                                         </div>
@@ -266,7 +268,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Pernah Melakukan Promosi?</label><br>
                                                             <div class="form-check form-check-inline mt-2">
                                                                 <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= set_value('pernah_promosi') == 'Ya' ? 'checked' : '' ?> required value="Ya">
@@ -283,7 +285,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group">
+                                                        <div class="form-group ml-3 mr-3">
                                                             <label>Ada Project Yang Sedang Berjalan?</label><br>
                                                             <div class="form-check form-check-inline mt-2">
                                                                 <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= set_value('on_going_project') == 'Ada' ? 'checked' : '' ?> required value="Ada">
