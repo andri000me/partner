@@ -612,7 +612,13 @@
 </script>
 
 <script>
+    // alert($("#id_mapping_leads").val());
     $('#reset').hide();
+    if ($("#id_mapping_leads").val()) {
+        $('#nama_konsumen').attr('readonly', 'readonly');
+        $('#reset').show();
+    }
+
     $('#reset').click(function() {
         $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen').val("");
         $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset').hide();

@@ -472,7 +472,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size ml-3 mr-3">
                                             <label>Foto usaha</label>
-                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" <?= $data->foto_usaha ? '' : 'required' ?>>
+                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" <?= ($data->foto_usaha || $data->foto_usaha_mapping) ? '' : 'required' ?>>
                                             <?php if ($data->foto_usaha_mapping) { ?>
                                                 <div class="img-fluid mt-1">
                                                     <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">

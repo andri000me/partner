@@ -67,6 +67,7 @@ class Transfer_data extends CI_Controller
                 INNER JOIN users ON users.id_user = agents.id_user
                 INNER JOIN branches ON branches.id_branch = agents.id_branch
                 WHERE $this->where
+                ORDER BY agents.id_user ASC
             "
             ),
 
@@ -77,6 +78,7 @@ class Transfer_data extends CI_Controller
                 INNER JOIN users ON users.id_user = mapping_partners.id_user
                 INNER JOIN branches ON branches.id_branch = mapping_partners.id_branch
                 WHERE $this->where AND partners.id_mapping IS NULL
+                ORDER BY mapping_partners.id_user ASC
             "
             ),
 
@@ -87,6 +89,7 @@ class Transfer_data extends CI_Controller
                 INNER JOIN users ON users.id_user = mapping_partners.id_user
                 INNER JOIN branches ON branches.id_branch = mapping_partners.id_branch
                 WHERE $this->where
+                ORDER BY mapping_partners.id_user ASC
             "
             ),
 
@@ -97,6 +100,7 @@ class Transfer_data extends CI_Controller
                 INNER JOIN users ON users.id_user = mapping_leads.id_user
                 INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
                 WHERE $this->where AND leads.id_mapping_leads IS NULL
+                ORDER BY mapping_leads.id_user ASC
             "
             ),
 
@@ -107,6 +111,7 @@ class Transfer_data extends CI_Controller
                 INNER JOIN users ON users.id_user = mapping_leads.id_user
                 INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
                 WHERE $this->where
+                ORDER BY mapping_leads.id_user ASC
             "
             )
         ];
@@ -145,13 +150,15 @@ class Transfer_data extends CI_Controller
 
         foreach ($partner as $key => $val) {
             // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
-            $this->mapping_partner->update(['id_user' => $val], ['id_mapping_leads' => $key]);
+            $this->mapping_partner->update(['id_user' => $val], ['id_mapping' => $key]);
         }
 
-        foreach ($leads as $key => $val) {
+        foreach ($agent as $key => $val) {
             // $this->branch_model->update(['has_superior' => $val], ['id_branch' => $branches]);
-            $this->mapping_leads->update(['id_user' => $val], ['id_mapping_leads' => $key]);
+            $this->agent_model->update(['id_user' => $val], ['id_agent' => $key]);
         }
+
+        redirect('transfer_data');
     }
 
     public function update_agent()
