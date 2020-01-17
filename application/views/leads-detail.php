@@ -108,48 +108,6 @@
 										</div>
 									</div>
 									<div class="form-row">
-										<div class="col-md-6 text-size">
-											<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-												<div class="form-group ml-3 mr-3">
-													<label>Cross Branch?</label><br>
-													<div class="form-check form-check-inline mt-2">
-														<input class="form-check-input cross_branch text-size" type="radio" name="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
-														<label class="form-check-label text-size">
-															Ya
-														</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input class="form-check-input cross_branch text-size" type="radio" name="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-														<label class="form-check-label text-size">
-															Tidak
-														</label>
-													</div>
-												</div>
-											</fieldset>
-											<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-										</div>
-										<div class="col-md-6 text-size ml-3 mr-3">
-											<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-												<div class="form-group">
-													<label>Sudah Funding?</label><br>
-													<div class="form-check form-check-inline mt-2">
-														<input class="form-check-input text-size" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
-														<label class="form-check-label text-size">
-															Sudah
-														</label>
-													</div>
-													<div class="form-check form-check-inline">
-														<input class="form-check-input text-size" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
-														<label class="form-check-label text-size">
-															Belum
-														</label>
-													</div>
-												</div>
-											</fieldset>
-											<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
-										</div>
-									</div>
-									<div class="form-row">
 										<div class="col-md-12 text-size">
 											<div class="form-group ml-3 mr-3">
 												<label>Asal Aplikasi</label>
@@ -232,6 +190,48 @@
 												<label>Nama Konsumen</label>
 												<input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="Input Nama konsumen">
 											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="col-md-6 text-size">
+											<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+												<div class="form-group ml-3 mr-3">
+													<label>Cross Branch?</label><br>
+													<div class="form-check form-check-inline mt-2">
+														<input class="form-check-input cross_branch text-size" type="radio" name="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
+														<label class="form-check-label text-size">
+															Ya
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input cross_branch text-size" type="radio" name="cross_branch" <?= $data->cross_branch == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+														<label class="form-check-label text-size">
+															Tidak
+														</label>
+													</div>
+												</div>
+											</fieldset>
+											<input type="hidden" name="cross_branch" value="<?= $data->cross_branch ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+										</div>
+										<div class="col-md-6 text-size">
+											<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+												<div class="form-group ml-3 mr-3">
+													<label>Sudah Funding?</label><br>
+													<div class="form-check form-check-inline mt-2">
+														<input class="form-check-input text-size" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Sudah' ? 'checked' : ''  ?> required value="Sudah">
+														<label class="form-check-label text-size">
+															Sudah
+														</label>
+													</div>
+													<div class="form-check form-check-inline">
+														<input class="form-check-input text-size" type="radio" name="sudah_funding" id="sudah_funding" <?= $data->sudah_funding == 'Belum' ? 'checked' : ''  ?> required value="Belum">
+														<label class="form-check-label text-size">
+															Belum
+														</label>
+													</div>
+												</div>
+											</fieldset>
+											<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 										</div>
 									</div>
 									<div class="form-row">
