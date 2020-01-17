@@ -148,9 +148,21 @@
                             </table>
                         </div>
 
-                        <div class="tab-pane p-3" id="mapping" role="tabpanel">
-                            <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                <thead>
+                    <div class="tab-pane p-3" id="mapping" role="tabpanel">
+                        <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>Nama Usaha</th>
+                                    <th>Bidang Usaha</th>
+                                    <th>Alamat</th>
+                                    <th>Telepon</th>
+                                    <th>E-mail</th>
+                                    <th>Produk</th>
+                                    <th>Penginput</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($mapping_partner->result() as $data) { ?>
                                     <tr>
                                         <th>Nama Usaha</th>
                                         <th>Bidang Usaha</th>

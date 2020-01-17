@@ -8,64 +8,48 @@
 						ini.</p>
 					<form class="" method="post" action="<?= base_url('nst/save') ?>">
 						<div class="form-row">
-							<div class="col-md-6 mb-3">
-								<label class="ml-3">Leads ID</label>
-								<div class="input-group ml-3 mr-3">
-									<input type="search" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
-									<div class="input-group-append mr-4">
-										<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads"><span class="ion-ios7-search-strong"></span></button>
+							<div class="col-md-6">
+								<div class="ml-3 mr-3">
+									<label>Leads ID</label>
+									<div class="input-group mb-3">
+										<input type="text" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
+										<div class="input-group-append">
+											<button class="btn btn-danger text-size" type="button" id="reset">x</button>
+											<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads"><span class="ion-ios7-search-strong"></span></button>
+										</div>
+									</div>
+									<?= form_error('leads_id') ?>
+									<div class="form-group">
+										<label>Cabang</label>
+										<input type="text" class="form-control" name="cabang" id="cabang" required value="" placeholder="Cabang" readonly />
+									</div>
+									<div class="form-group">
+										<label>Kategori produk</label>
+										<input type="text" class="form-control" name="kategori_produk" id="produk" required value="" placeholder="Kategori produk" readonly />
 									</div>
 								</div>
-								<?= form_error('leads_id') ?>
 							</div>
 							<div class="col-md-6">
-								<div class="form-group ml-3 mr-3">
-									<label>Requester</label>
-									<div>
-										<input type="text" class="form-control" name="requester" id="requester" parsley-type="requester" required value="" placeholder="Requester" readonly />
+								<div class="ml-3 mr-3">
+									<div class="form-group">
+										<label>Requester</label>
+										<div>
+											<input type="text" class="form-control" name="requester" id="requester" parsley-type="requester" required value="" placeholder="Requester" readonly />
+										</div>
+									</div>
+									<div class="form-group">
+										<label>Nama konsumen</label>
+										<input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required value="" placeholder="Nama Konsumen" readonly />
 									</div>
 								</div>
 							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-6">
-								<div class="form-group ml-3 mr-3">
-									<label>Cabang</label>
-									<input type="text" class="form-control" name="cabang" id="cabang" required value="" placeholder="Cabang" readonly />
+							<div class="col-md-12">
+								<div class="form-group mb-0 float-right ml-3 mr-3">
+									<a href="mapping.html" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
+									<button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
+										Simpan
+									</button>
 								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="form-group ml-3 mr-3">
-									<label>Nama konsumen</label>
-									<input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required value="" placeholder="Nama Konsumen" readonly />
-								</div>
-							</div>
-						</div>
-						<div class="form-row">
-							<div class="col-md-6">
-								<fieldset disabled>
-									<div class="form-group ml-3 mr-3">
-										<label>Kategori Produk</label>
-										<select class="form-control <?= form_error('kategori_produk') ? 'is-invalid' : '' ?>" name="kategori_produk" id="produk">
-											<option selected value="">Pilih Kategori Produk</option>
-											<option <?= set_value('kategori_produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-											<option <?= set_value('kategori_produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-											<option <?= set_value('kategori_produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-											<option <?= set_value('kategori_produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-											<option <?= set_value('kategori_produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-											<option <?= set_value('kategori_produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
-										</select>
-										<?= form_error('kategori_produk'); ?>
-									</div>
-								</fieldset>
-							</div>
-						</div>
-						<div class="form-group mb-0 float-right ml-3 mr-3">
-							<div>
-								<a href="mapping.html" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
-								<button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-									Simpan
-								</button>
 							</div>
 						</div>
 					</form>
@@ -636,8 +620,11 @@
 							<tr>
 								<td><?= $lead->nama_konsumen ?></td>
 								<td><?= $lead->leads_id ?></td>
-								<td><button class="btn btn-primary pilih-leads" data-id="<?= $lead->id_leads ?>" data-konsumen="<?= $lead->nama_konsumen ?>" data-leads="<?= $lead->leads_id ?>" data-requester="<?= $lead->name ?>" data-cabang="<?= $lead->nama_cabang ?>" data-produk="<?= $lead->produk ?>">
-										Pilih</button></td>
+								<td>
+									<center>
+										<button class="btn btn-primary pilih-leads" id="search" data-id="<?= $lead->id_leads ?>" data-konsumen="<?= $lead->nama_konsumen ?>" data-leads="<?= $lead->leads_id ?>" data-requester="<?= $lead->name ?>" data-cabang="<?= $lead->nama_cabang ?>" data-produk="<?= $lead->produk ?>">Pilih</button>
+									</center>
+								</td>
 							</tr>
 						<?php } ?>
 					</tbody>
@@ -663,5 +650,18 @@
 		$('#produk').val(produk);
 
 		$('.modal-leads').modal('hide');
+	})
+</script>
+
+<script>
+	$('#reset').hide()
+	$('#search').click(function() {
+		$('#reset').show()
+		$('#leads_id').attr('readonly', 'readonly');
+	})
+	$('#reset').click(function() {
+		$('#leads_id, #cabang, #produk, #requester, #nama_konsumen').val("");
+		$('#reset').hide();
+		$('#leads_id').removeAttr('readonly');
 	})
 </script>

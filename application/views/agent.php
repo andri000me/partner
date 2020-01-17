@@ -72,7 +72,7 @@
                                         <center><a class="btn btn-secondary text-size" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Lanjutkan</a></center>
                                     <?php } ?>
                                     <?php if ($agent->status == 'lengkap') { ?>
-                                        <center><a class="btn btn-primary text-size" href="<?= base_url('Agent/detail/' . $agent->id_agent) ?>">Detail</a></center>
+                                        <center><a class="btn btn-primary text-size" href="<?= base_url('Agent/detail/' . $agent->id_agent) ?>" style="width: 90px;">Detail</a></center>
                                     <?php } ?>
                                 </td>
                             </tr>

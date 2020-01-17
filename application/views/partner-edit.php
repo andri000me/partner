@@ -43,69 +43,71 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-row">
-                                            <div class="col-md-12 mb-3">
-                                                <label class="ml-3">Nama Usaha</label>
-                                                <div class="input-group ml-3">
-                                                    <input type="search" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= $data->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                    <div class="input-group-append mr-4">
-                                                        <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                                        <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                        <div class="ml-3 mr-3">
+                                            <div class="form-row">
+                                                <div class="col-md-12 mb-3">
+                                                    <label>Nama Usaha</label>
+                                                    <div class="input-group">
+                                                        <input type="search" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= $data->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-danger text-size" type="button" id="reset">x</button>
+                                                            <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>E-Mail</label>
-                                                    <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>E-Mail</label>
+                                                        <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Nomor Telepon / WhatsApp</label>
-                                                    <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Nomor Telepon / WhatsApp</label>
+                                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="EG 0811977500" maxlength="15" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Kategori Produk</label>
-                                                    <select class="form-control text-size" name="kategori_produk" id="kategori_produk" required>
-                                                        <option selected disabled value="">Pilih Kategori Produk</option>
-                                                        <option <?= $data->kategori_produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                                        <option <?= $data->kategori_produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                                        <option <?= $data->kategori_produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                                        <option <?= $data->kategori_produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                                        <option <?= $data->kategori_produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-                                                        <option <?= $data->kategori_produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
-                                                    </select>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Kategori Produk</label>
+                                                        <select class="form-control text-size" name="kategori_produk" id="kategori_produk" required>
+                                                            <option selected disabled value="">Pilih Kategori Produk</option>
+                                                            <option <?= $data->kategori_produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                            <option <?= $data->kategori_produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                            <option <?= $data->kategori_produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                            <option <?= $data->kategori_produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                            <option <?= $data->kategori_produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                            <option <?= $data->kategori_produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Bidang Usaha</label>
-                                                    <input type="text" class="form-control text-size" name="bidang_usaha" id="bidang_usaha" value="<?= $data->bidang_usaha ?>" required placeholder="Garmen / Percetakan / Lainnya" />
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Bidang Usaha</label>
+                                                        <input type="text" class="form-control text-size" name="bidang_usaha" id="bidang_usaha" value="<?= $data->bidang_usaha ?>" required placeholder="Garmen / Percetakan / Lainnya" />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Bentuk Usaha</label>
-                                                    <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
-                                                        <option selected value="">Pilih Bentuk Usaha</option>
-                                                        <option <?= $data->bentuk_usaha == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
-                                                        <option <?= $data->bentuk_usaha == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
-                                                        <option <?= $data->bentuk_usaha == 'CV' ? 'selected' : '' ?> value="CV">CV</option>
-                                                        <option <?= $data->bentuk_usaha == 'PT' ? 'selected' : '' ?> value="PT">PT</option>
-                                                    </select>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Bentuk Usaha</label>
+                                                        <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
+                                                            <option selected value="">Pilih Bentuk Usaha</option>
+                                                            <option <?= $data->bentuk_usaha == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
+                                                            <option <?= $data->bentuk_usaha == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
+                                                            <option <?= $data->bentuk_usaha == 'CV' ? 'selected' : '' ?> value="CV">CV</option>
+                                                            <option <?= $data->bentuk_usaha == 'PT' ? 'selected' : '' ?> value="PT">PT</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,113 +190,115 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Barang Yang Dijual</label>
-                                                    <input type="text" class="form-control text-size" name="barang_jual" id="barang_jual" name="barang_jual" value="<?= $data->barang_jual ?>" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Sosial Media / Website</label>
-                                                    <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" value="<?= $data->sosial_media ?>" required placeholder="https://www.instagram.com/bfisyariah">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
-                                                    <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
-                                                        <option selected disabled value="">Pilih Jenis Pembayaran</option>
-                                                        <option <?= $data->jenis_pembayaran == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
-                                                        <option <?= $data->jenis_pembayaran == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
-                                                        <option <?= $data->jenis_pembayaran == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <label class="ml-3">Omset Perbulan</label>
-                                                <div class="input-group flex-nowrap ml-3 mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
-                                                    </div>
-                                                    <input type="text" class="form-control text-size mr-4 number-only" name="omset" id="omset" value="<?= $data->omset ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Jumlah Cabang</label>
-                                                    <input type="text" class="form-control text-size number-only" name="jumlah_cabang" id="jumlah_cabang" value="<?= $data->jumlah_cabang ?>" required placeholder="5">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Pernah Melakukan Promosi?</label><br>
-                                                    <div class="form-check form-check-inline mt-2">
-                                                        <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $data->pernah_promosi == 'Ya' ? 'checked' : '' ?> required value="Ya">
-                                                        <label class="form-check-label">
-                                                            Ya
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline ml-3 mr-3">
-                                                        <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $data->pernah_promosi == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-                                                        <label class="form-check-label">
-                                                            Tidak
-                                                        </label>
+                                        <div class="ml-3 mr-3">
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Barang Yang Dijual</label>
+                                                        <input type="text" class="form-control text-size" name="barang_jual" id="barang_jual" name="barang_jual" value="<?= $data->barang_jual ?>" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Ada Project Yang Sedang Berjalan?</label><br>
-                                                    <div class="form-check form-check-inline mt-2">
-                                                        <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $data->on_going_project == 'Ada' ? 'checked' : '' ?> required value="Ada">
-                                                        <label class="form-check-label">
-                                                            Ada
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $data->on_going_project == 'Tidak Ada' ? 'checked' : '' ?> required value="Tidak Ada">
-                                                        <label class="form-check-label">
-                                                            Tidak Ada
-                                                        </label>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Sosial Media / Website</label>
+                                                        <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" value="<?= $data->sosial_media ?>" required placeholder="https://www.instagram.com/bfisyariah">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Rekening Bank</label>
-                                                    <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
+                                                        <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
+                                                            <option selected disabled value="">Pilih Jenis Pembayaran</option>
+                                                            <option <?= $data->jenis_pembayaran == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
+                                                            <option <?= $data->jenis_pembayaran == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
+                                                            <option <?= $data->jenis_pembayaran == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Nama Bank</label>
-                                                    <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
+                                            <div class="form-row">
+                                                <div class="col-md-6 mb-3">
+                                                    <label>Omset Perbulan</label>
+                                                    <div class="input-group flex-nowrap">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                                        </div>
+                                                        <input type="text" class="form-control text-size number-only" name="omset" id="omset" value="<?= $data->omset ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Jumlah Cabang</label>
+                                                        <input type="text" class="form-control text-size number-only" name="jumlah_cabang" id="jumlah_cabang" value="<?= $data->jumlah_cabang ?>" required placeholder="5">
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Cabang Bank</label>
-                                                    <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Rekening Bank</label>
+                                                        <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Nama Bank</label>
+                                                        <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group ml-3 mr-3">
-                                                    <label>Atas Nama</label>
-                                                    <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anton Hoed">
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Cabang Bank</label>
+                                                        <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Atas Nama</label>
+                                                        <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anton Hoed">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Pernah Melakukan Promosi?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $data->pernah_promosi == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                            <label class="form-check-label">
+                                                                Ya
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= $data->pernah_promosi == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                            <label class="form-check-label">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>Ada Project Yang Sedang Berjalan?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $data->on_going_project == 'Ada' ? 'checked' : '' ?> required value="Ada">
+                                                            <label class="form-check-label">
+                                                                Ada
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= $data->on_going_project == 'Tidak Ada' ? 'checked' : '' ?> required value="Tidak Ada">
+                                                            <label class="form-check-label">
+                                                                Tidak Ada
+                                                            </label>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

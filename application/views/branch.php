@@ -15,7 +15,7 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <form action="<?= base_url('branch/update') ?>" method="post">
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>ID Cabang</th>
@@ -26,8 +26,8 @@
                         <tbody>
                             <?php foreach ($data->result() as $cabang) { ?>
                                 <tr>
-                                    <td style="width: 90px">
-                                        <center><?= $cabang->id_branch ?></center>
+                                    <td style="width: 30px">
+                                        <?= $cabang->id_branch ?>
                                     </td>
                                     <td>
                                         <?= $cabang->nama_cabang ?>

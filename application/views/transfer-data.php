@@ -11,16 +11,20 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="mb-2 btn-kanan">
+            <a class="btn btn-primary text-size" href="<?= base_url('transfer_data/create') ?>">Transfer Perdata</a>
+            <a href="#" class="btn btn-secondary text-size transfer ml-1" data-toggle="modal" data-target=".bs-example-modal-center">Transfer Semua Data</a>
+        </div>
+    </div>
 
-    <div class="col-lg-12">
+    <div class=" col-lg-12">
         <div class="card m-b-20">
 
             <div class="card-body">
 
                 <h4 class="mt-0 header-title">Table Data karyawan</h4>
-                <p class="text-muted m-b-30 text-size">Silahkan pilih karyawan yang datanya akan di Transfer.</p>
-
-                <a class="btn btn-primary" href="<?= base_url('transfer_data/create') ?>">Create +</a>
+                <p class="text-muted m-b-30 text-size">Tekan tombol Transfer Perdata untuk memindahkan data tertentu atau Tekan tombol transfer Semua Data untuk memindahkan semua data.</p>
 
                 <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -29,7 +33,7 @@
                             <th>NIK</th>
                             <th>Jabatan</th>
                             <th>Cabang</th>
-                            <th>Action</th>
+                            <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -47,9 +51,9 @@
                                 <td>
                                     <?= $user->nama_cabang ?>
                                 </td>
-                                <td>
-                                    <center><a href="#" class="btn btn-secondary text-size transfer" data-toggle="modal" data-target=".bs-example-modal-center" data-nama="<?= $user->name ?>" data-id="<?= $user->id_user ?>">Pilih</a></center>
-                                </td>
+                                <!-- <td>
+                                    <center><a href="#" class="btn btn-secondary text-size transfer" data-toggle="modal" data-target=".bs-example-modal-center" data-nama="<?= $user->name ?>" data-id="<?= $user->id_user ?>">Transfer Semua</a></center>
+                                </td> -->
                             </tr>
                         <?php } ?>
                     </tbody>
@@ -74,11 +78,16 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="form-group ml-3 mr-3 text-center">
+                            <div class="form-group ml-3 mr-3 text-size text-center">
                                 <label>
-                                    <h4>Pemilik data yang akan di Transfer</h4>
+                                    <h4>Nama pemilik data yang datanya akan di Transfer</h4>
                                 </label>
-                                <input type="text" class="form-control text-size" id="nama_user" value="" required placeholder="bambank" readonly>
+                                <select class="form-control text-size" name="nama_user" id="nama_user">
+                                    <option selected disabled value="">Pilih Nama Penerima</option>
+                                    <?php foreach ($data->result() as $user) { ?>
+                                        <option value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                    <?php } ?>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -89,7 +98,7 @@
                         <div class="col-md-12">
                             <div class="form-group ml-3 mr-3 text-size text-center">
                                 <label>
-                                    <h4>Penerima Data</h4>
+                                    <h4>Nama penerima Data</h4>
                                 </label>
                                 <select class="form-control text-size" name="transfer_to" id="transfer_to">
                                     <option selected disabled value="">Pilih Nama Penerima</option>
@@ -101,8 +110,8 @@
                         </div>
                         <div class="col-md-12">
                             <center>
-                                <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-                                    Transfer
+                                <button type="submit" class="btn btn-primary waves-effect waves-light text-size mt-2">
+                                    Transfer Data
                                 </button>
                             </center>
                         </div>
