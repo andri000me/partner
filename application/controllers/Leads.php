@@ -576,11 +576,8 @@ class Leads extends CI_Controller
 
     public function get_leads($id)
     {
-        $where = ['leads.leads_id' => $id];
-        $data = $this->leads_model->get($where);
-
-        $check['exist'] = $data->num_rows();
-        echo json_encode($check);
+        $where = ['leads.id_leads' => $id];
+        echo json_encode($this->leads_model->get($where)->row());
     }
 
     // Form Valdation

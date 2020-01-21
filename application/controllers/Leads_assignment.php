@@ -9,6 +9,7 @@ class Leads_assignment extends CI_Controller
         parent::__construct();
         $this->load->model('leads_assignment_model', 'leads_assignment');
         $this->load->model('branch_model');
+        $this->load->model('notification_model');
 
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
@@ -53,8 +54,6 @@ class Leads_assignment extends CI_Controller
         $this->form_validation->set_rules('telepon', 'Nomor Telepon', 'is_unique[leads_assignments.telepon]', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
 
         if ($this->form_validation->run() != FALSE) {
-
-
             $data = [
                 'nama'              => $post['nama'],
                 'telepon'           => $post['telepon'],
@@ -78,11 +77,24 @@ class Leads_assignment extends CI_Controller
 
             $this->leads_assignment->create($data);
 
+            //Notifikasi
+            $notification = [
+                'pengirim'          => $this->fungsi->user_login()->id_user,
+                'penerima_cabang'   => $post['assign_to'],
+                'type'              => 'Tele Assignment oleh',
+                // 'id_ticket'         => $id_ticket,
+                'created_at'        => date('Y-m-d H:i:s')
+            ];
+            $this->notification_model->create($notification);
+
             $this->session->set_flashdata("berhasil_simpan", "Data Leads Assigment berhasil disimpan. <a href='#'>Lihat Data</a>");
 
             redirect('Assignment/leads');
         } else {
-            $this->template->load('template/index', 'leads-assignment-form');
+            $data = [
+                'branches' => $this->branch_model->get()
+            ];
+            $this->template->load('template/index', 'tele-admin-form', $data);
         }
     }
 

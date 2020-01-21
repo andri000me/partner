@@ -239,10 +239,10 @@
 											<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 												<div id="hide" class="form-group ml-3 mr-3">
 													<label>Pilih cabang</label>
-													<select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+													<select class="form-control text-size" name="cabang_cross" id="cabang_cross" <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
 														<option selected disabled value="">Pilih Cabang</option>
 														<?php foreach ($branches->result() as $branch) { ?>
-															<?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
+															<?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch && $cabang_asal == $data->id_branch) continue; ?>
 															<option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $cabang_asal ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
 														<?php } ?>
 													</select>

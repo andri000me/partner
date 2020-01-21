@@ -7,6 +7,7 @@ class Auth extends CI_Controller
 
 		$this->load->library('form_validation');
 		$this->load->model('user_model');
+		$this->load->model('branch_model');
 
 		$this->load->helper('fungsi');
 	}
@@ -17,6 +18,50 @@ class Auth extends CI_Controller
 		check_already_login();
 
 		$this->load->view('login');
+	}
+
+	// Halaman Daftar Akun
+	public function daftar_akun()
+	{
+		$data['branches'] = $this->branch_model->get();
+		$this->load->view('register', $data);
+	}
+
+	//method proses pendaftaran akun user
+	public function process_daftar()
+	{
+		$post = $this->input->post(null, TRUE);
+
+		$this->load->library('form_validation');
+		$this->form_validation->set_error_delimiters('<div class="text text-danger">', '</div>');
+
+		$this->form_validation->set_rules('nik', 'NIK', 'trim|required|min_length[6]|max_length[7]|is_unique[users.nik]', ['is_unique' => 'NIK sudah dipakai']);
+		$this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required', ['required' => 'Nama Lengkap Wajib diisi']);
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]', ['is_unique' => 'Email sudah dipakai']);
+		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]', ['required' => 'Kata Sandi Wajib diisi']);
+		$this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required|matches[password]', ['matches' => 'Konfirmasi Kata Sandi wajib sama', 'required' => 'Konfirmasi Kata Sandi wajib diisi']);
+		$this->form_validation->set_rules('id_branch', 'ID Cabang', 'trim|required', ['required' => 'Cabang Wajib diisi']);
+
+		if ($this->form_validation->run() != FALSE) {
+			$data = [
+				'name' 		=> $post['name'],
+				'nik' 		=> $post['nik'],
+				'email' 	=> $post['email'],
+				'password' 	=> md5($post['password']),
+				'id_branch' => $post['id_branch'],
+				'level' 	=> $post['jabatan'],
+				'jabatan' 	=> $post['jabatan'] == '1' ? 'CMS' : ($post['jabatan'] == '2' ? 'Sharia Head' : ($post['jabatan'] == '3' ? 'Sharia Manager' : ($post['jabatan'] == '4' ? 'Administrator' : ''))),
+				'is_active' => 1
+			];
+
+			//process daftar akun user
+			$this->user_model->add($data);
+			$this->session->set_flashdata("berhasil_register", "<div class='text text-success'>Berhasil daftar, silahkan login.</div>");
+			redirect('auth');
+		} else {
+			$data['branches'] = $this->branch_model->get();
+			$this->load->view('register', $data);
+		}
 	}
 
 	//Halaman reset password
