@@ -74,10 +74,10 @@ class User extends CI_Controller
         $data = [
             'nik'       => $post['nik'],
             'name'      => $post['name'],
-            'email'     => $post['email'],
+            // 'email'     => $post['email'],
             'level'     => $post['jabatan'],
             'jabatan'   => $post['jabatan'] == '1' ? 'CMS' : ($post['jabatan'] == '2' ? 'Sharia Head' : ($post['jabatan'] == '3' ? 'Sharia Manager' : ($post['jabatan'] == '4' ? 'Administrator' : ''))),
-            'cabang'    => $post['cabang'],
+            'id_branch'    => $post['id_branch'],
             'is_active' => $post['is_active'],
         ];
         $where = ['id_user' => $post['id_user']];
@@ -103,8 +103,8 @@ class User extends CI_Controller
             'id_user' => $post['id_user']
         ];
 
-        $this->user_model->update($data, $where);
+        echo json_encode($this->user_model->update($data, $where));
 
-        redirect('user');
+        // redirect('user');
     }
 }

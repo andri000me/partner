@@ -39,6 +39,19 @@
                                                 <option <?= $cabang->has_superior == 1 ? 'selected' : '' ?> value="1">Ada Head</option>
                                                 <option <?= $cabang->has_superior == 2 ? 'selected' : '' ?> value="2">Ada Head & Manager</option>
                                             </select>
+                                            <?php
+                                        $this->db->from("users");
+                                        $this->db->join("branches", "branches.id_branch = users.id_branch", "inner");
+                                        $this->db->where("branches.id_branch = " . $cabang->id_branch . " AND level = 2");
+                                        $head = $this->db->get();
+
+                                        $this->db->from("users");
+                                        $this->db->join("branches", "branches.id_branch = users.id_branch", "inner");
+                                        $this->db->where("branches.id_branch = " . $cabang->id_branch . " AND level = 3");
+                                        $manager = $this->db->get();
+                                        ?>
+                                        <span>Manager: <?php foreach ($manager->result() as $nama) echo $nama->name . ', '  ?></span><br>
+                                        <span>Head: <?php foreach ($head->result() as $nama) echo $nama->name . ', '  ?> </span>
                                         </div>
                                     </td>
                                 </tr>
