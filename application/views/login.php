@@ -73,7 +73,8 @@
 
                         <div class="form-group m-t-10 mb-0 row">
                             <div class="col-12 m-t-20">
-                                <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Password? </a>
+                                <!-- <a href="<?= base_url('Auth/lupa_password') ?>" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Password? </a> -->
+                                <a onclick="return alert('Untuk saat ini reset password dilakukan oleh HO, silahkan hubungi HO untuk reset password')" href="#" class="text-muted"><i class="mdi mdi-lock"></i> Lupa Password?</a>
                             </div>
                         </div>
                     </div>

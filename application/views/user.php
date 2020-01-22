@@ -125,8 +125,10 @@
                                         </label>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-primary" id="reset_password">Reset Password</button>
+                                </div>
                             </div>
-
                     </div>
                 </div>
 
@@ -145,7 +147,7 @@
 <script>
     $(document).ready(function() {
         var foto = "<?= base_url('uploads/foto_profil/') ?>";
-        $(".detail-user").click(function() {
+        $(".table").on('click', '.detail-user', function() {
             $("#id_user").val($(this).data('id'));
             $("#nik").val($(this).data('nik'));
             $("#name").val($(this).data('name'));
@@ -167,7 +169,7 @@
                     id_user: id_user
                 },
                 success: function(data) {
-                    alert('Password si ' + $("#name").val() + ' telah diubah');
+                    alert('Password si ' + $("#name").val() + ' telah diubah menjadi "bfisyariah" ');
                 }
             });
         })

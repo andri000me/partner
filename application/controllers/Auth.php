@@ -20,14 +20,6 @@ class Auth extends CI_Controller
 		$this->load->view('login');
 	}
 
-	// Halaman Daftar Akun
-	public function daftar_akun()
-	{
-		$data['branches'] = $this->branch_model->get();
-		$this->template->load('template/index', 'register', $data);
-	}
-
-
 	//Halaman reset password
 	public function lupa_password()
 	{

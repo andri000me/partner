@@ -30,6 +30,13 @@ class User extends CI_Controller
         $this->template->load('template/index', 'user', $data);
     }
 
+    // Halaman Daftar Akun
+    public function create()
+    {
+        $data['branches'] = $this->branch_model->get();
+        $this->template->load('template/index', 'register', $data);
+    }
+
     //method proses pendaftaran akun user
     public function save()
     {
@@ -40,7 +47,7 @@ class User extends CI_Controller
 
         $this->form_validation->set_rules('nik', 'NIK', 'trim|required|min_length[6]|max_length[7]|is_unique[users.nik]', ['is_unique' => 'NIK sudah dipakai']);
         $this->form_validation->set_rules('name', 'Nama Lengkap', 'trim|required', ['required' => 'Nama Lengkap Wajib diisi']);
-        $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]', ['is_unique' => 'Email sudah dipakai']);
+        // $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[users.email]', ['is_unique' => 'Email sudah dipakai']);
         $this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]', ['required' => 'Kata Sandi Wajib diisi']);
         $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required|matches[password]', ['matches' => 'Konfirmasi Kata Sandi wajib sama', 'required' => 'Konfirmasi Kata Sandi wajib diisi']);
         $this->form_validation->set_rules('id_branch', 'ID Cabang', 'trim|required', ['required' => 'Cabang Wajib diisi']);
@@ -49,7 +56,7 @@ class User extends CI_Controller
             $data = [
                 'name'         => $post['name'],
                 'nik'         => $post['nik'],
-                'email'     => $post['email'],
+                // 'email'     => $post['email'],
                 'password'     => md5($post['password']),
                 'id_branch' => $post['id_branch'],
                 'level'     => $post['jabatan'],
@@ -60,10 +67,10 @@ class User extends CI_Controller
             //process daftar akun user
             $this->user_model->add($data);
             $this->session->set_flashdata("berhasil_register", "<div class='text text-success'>Berhasil daftar, silahkan login.</div>");
-            redirect('auth');
+            redirect('user');
         } else {
             $data['branches'] = $this->branch_model->get();
-            $this->load->view('register', $data);
+            $this->template->load('template/index', 'register', $data);
         }
     }
 
