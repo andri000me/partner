@@ -11,12 +11,11 @@
 </div>
 
 <div class="row">
-    <!-- <div class="col-md-12">
+    <div class="col-md-12">
         <div class="mb-2 btn-kanan">
-            <a class="btn btn-primary text-size" href="<?= base_url('transfer_data/create') ?>">Transfer Perdata</a>
-            <a href="#" class="btn btn-secondary text-size transfer ml-1" data-toggle="modal" data-target=".bs-example-modal-center">Transfer Semua Data</a>
+            <a class="btn btn-primary text-size" href="<?= base_url('auth/daftar_akun') ?>">Tambah User</a>
         </div>
-    </div> -->
+    </div>
 
     <div class=" col-lg-12">
         <div class="card m-b-20">
@@ -82,7 +81,7 @@
                         <form action="">
                             <div class="ml-3 mr-3 mt-3">
                                 <div class="form-group">
-                                    <label>NIK</label>
+                                    <label>Nomor Induk Karyawan</label>
                                     <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" maxlength="6" />
                                 </div>
                                 <div class="form-group">
@@ -90,14 +89,7 @@
                                     <input type="text" class="form-control text-size" name="nama" id="nama" required placeholder="Ibrahim Ahmad" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="text-size">E-Mail</label>
-                                    <div>
-                                        <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
-                                        <?= form_error('email'); ?>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-size">jabatan</label>
+                                    <label class="text-size">Jabatan</label>
                                     <select class="form-control text-size <?= form_error('kategori_produk') ? 'is-invalid' : '' ?>" name="kategori_produk" id="kategori_produk" required>
                                         <option selected value="">Pilih Jabatan</option>
                                         <option value="CMS">CMS</option>
@@ -132,6 +124,13 @@
                                         </label>
                                     </div>
                                 </div>
+                                <!-- <div class="form-group">
+                                    <label class="text-size">E-Mail</label>
+                                    <div>
+                                        <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
+                                        <?= form_error('email'); ?>
+                                    </div>
+                                </div> -->
                             </div>
 
                     </div>

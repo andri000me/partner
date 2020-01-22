@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="m-t-40 text-center">
-                        <p>Belum punya akun ? <a href="<?= base_url('auth/daftar_akun') ?>" class="text-primary"> Daftar yuk </a> </p>
+                        <!-- <p>Belum punya akun ? <a href="<?= base_url('auth/daftar_akun') ?>" class="text-primary"> Daftar yuk </a> </p> -->
                         <p>2019 BFI Syariah. Crafted with by Themesbrand</p>
                     </div>
 
