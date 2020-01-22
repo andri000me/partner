@@ -156,4 +156,9 @@ class Ticket extends CI_Controller
             redirect($this->input->post('redirect'));
         }
     }
+
+    public function test()
+    {
+        $this->load->view('test');
+    }
 }

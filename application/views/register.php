@@ -32,7 +32,7 @@
                     <p class="text-muted text-center">Masuk untuk menggunakan <i>Sysroad</i></p>
                     <?= $this->session->flashdata('berhasil_register') ?>
 
-                    <form method="post" class="form-horizontal m-t-30" action="<?= base_url('Auth/process_daftar') ?>" autocomplete="off">
+                    <form method="post" class="form-horizontal m-t-30" action="<?= base_url('User/save') ?>" autocomplete="off">
 
                         <div class="form-group">
                             <label for="nik">Nomor Induk Karyawan</label>
