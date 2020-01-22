@@ -44,6 +44,9 @@
                                         <?php if ($notif->type == 'Cross Branch oleh') { ?>
                                             <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
+                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                            <span class="fas fa-flag mr-2"></span></span><?= $notif->cabang_asal ?>
+                                        <?php } ?>
                                     </td>
                                     <td>
                                         <div style="width:450px;">
@@ -73,6 +76,9 @@
                                         <?php if ($notif->partner_id != NULL) { ?>
                                             <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
+                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -95,6 +101,9 @@
                                         <?php } ?>
                                         <?php if ($notif->type == 'Cross Branch oleh') { ?>
                                             <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                            <span class="fas fa-flag mr-2"></span></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                     </td>
                                     <td>
@@ -124,6 +133,9 @@
                                         <?php } ?>
                                         <?php if ($notif->partner_id != NULL) { ?>
                                             <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                     </td>
                                 </tr>

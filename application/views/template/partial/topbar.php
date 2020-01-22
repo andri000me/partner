@@ -59,6 +59,12 @@
                                     <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type . ' ' . $notifikasi->nama_pengirim ?><br>ID Tiket #<?= $notifikasi->id_ticket ?></span></p>
                                 </a>
                             <?php } ?>
+                            <?php if ($notifikasi->type == 'Tele Assignment oleh') { ?>
+                                <a href="<?= base_url('assignment/leads') ?>" class="dropdown-item notify-item notifikasi" data-id="<?= $notifikasi->id_notification ?>">
+                                    <div class=" notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+                                    <p class="notify-details">Notifikasi Baru<span class="text-muted"><?= $notifikasi->type . ' ' . $notifikasi->nama_pengirim ?><br></span></p>
+                                </a>
+                            <?php } ?>
                         <?php }
                     } else { ?>
                         <center><span class="text-muted ml-4">Tidak ada notfikasi!</span></center>

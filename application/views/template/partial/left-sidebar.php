@@ -24,6 +24,12 @@
                             <i class="fas fa-code-branch"></i><span>Branch </span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="<?= base_url('user') ?>" class="waves-effect">
+                            <i class="fas fa-users"></i><span>User </span>
+                        </a>
+                    </li>
                 <?php } ?>
 
                 <li>

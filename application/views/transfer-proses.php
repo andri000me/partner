@@ -110,7 +110,7 @@
                                         <th>Leads ID</th>
                                         <th>Nomor KTP</th>
                                         <th>Follow Up By</th>
-                                        <th>Funding</th>
+                                        <th>Sudah Funding?</th>
                                         <th>Penginput</th>
                                     </tr>
                                 </thead>
@@ -130,7 +130,7 @@
                                                 <?= $data->follow_up_by ?>
                                             </td>
                                             <td>
-                                                sudah / belum funding
+                                                <?= $data->sudah_funding ?>
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
@@ -337,7 +337,7 @@
                     penginput: penginput
                 },
                 success: function(data) {
-                    alert('Success');
+                    // alert('Success');
                 }
             });
             return false;
@@ -358,7 +358,7 @@
                     penginput: penginput
                 },
                 success: function(data) {
-                    alert('Success');
+                    // alert('Success');
                 }
             });
             return false;
@@ -379,7 +379,7 @@
                     penginput: penginput
                 },
                 success: function(data) {
-                    alert('Success');
+                    // alert('Success');
                 }
             });
             return false;

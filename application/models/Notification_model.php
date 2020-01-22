@@ -35,6 +35,7 @@ class Notification_model extends CI_Model
         $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
         $this->db->join('leads', 'leads.id_leads = tickets.id_leads', 'left');
+        // $this->db->join('leads_assignments', 'assignto.id_leads = tickets.id_leads', 'left');
 
         // Pengirim Notifikasi
         $this->db->join('users as user_pengirim', 'user_pengirim.id_user = notifications.pengirim', 'left');
@@ -44,6 +45,7 @@ class Notification_model extends CI_Model
         $this->db->join('branches as cabang_penerima', 'cabang_penerima.id_branch = notifications.penerima_cabang', 'left');
         // cross branch Notifikasi
         $this->db->join('branches as cross', 'cross.id_branch = tickets.id_branch', 'left');
+        // cross branch Notifikasi
         if ($where != null) {
             $this->db->where($where);
         }

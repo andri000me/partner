@@ -51,9 +51,8 @@
 
                     <div class=" p-3">
                         <h4 class="text-muted font-18 m-b-5 text-center">Assalamualaikum!</h4>
-                        <p class="text-muted text-center">Masuk untuk menggunakan <i>Sysroad</i></p>
-
-
+                        <p class="text-muted text-center">Silahkan isi dengan data yang valid.</p>
+                        <?= $this->session->flashdata('berhasil_register') ?>
                         <div class="form-group">
                             <label for="username">Nomor Induk karyawan</label>
                             <input type="text" class="form-control <?= $this->session->flashdata('akun_salah') ? 'is-invalid' : '' ?>" id="nik" name="nik" value="<?= $this->session->flashdata('nik') ?>" placeholder="Masukkan NIK" autofocus>
@@ -67,7 +66,7 @@
                         </div>
 
                         <div class="form-group row m-t-20">
-                            <div class="col-12   text-center">
+                            <div class="col-12  text-center">
                                 <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Masuk</button>
                             </div>
                         </div>
@@ -80,7 +79,7 @@
                     </div>
 
                     <div class="m-t-40 text-center">
-                        <p>Belum punya akun ? <a href="#" class="text-primary"> Daftar yuk </a> </p>
+                        <p>Belum punya akun ? <a href="<?= base_url('auth/daftar_akun') ?>" class="text-primary"> Daftar yuk </a> </p>
                         <p>2019 BFI Syariah. Crafted with by Themesbrand</p>
                     </div>
 

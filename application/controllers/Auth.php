@@ -7,6 +7,7 @@ class Auth extends CI_Controller
 
 		$this->load->library('form_validation');
 		$this->load->model('user_model');
+		$this->load->model('branch_model');
 
 		$this->load->helper('fungsi');
 	}
@@ -18,6 +19,14 @@ class Auth extends CI_Controller
 
 		$this->load->view('login');
 	}
+
+	// Halaman Daftar Akun
+	public function daftar_akun()
+	{
+		$data['branches'] = $this->branch_model->get();
+		$this->load->view('register', $data);
+	}
+
 
 	//Halaman reset password
 	public function lupa_password()
@@ -113,7 +122,7 @@ class Auth extends CI_Controller
 		$row = $query->row();
 
 		//cek login
-		if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password) {
+		if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password && $row->is_active == 1) {
 			$params = [
 				'id_user' => $row->id_user,
 				'id_branch' => $row->id_branch,
@@ -131,6 +140,10 @@ class Auth extends CI_Controller
 			$this->user_model->login_log($login_log);
 
 			echo "<script>window.location='" . site_url("ticket") . "'</script>";
+		} else if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password && $row->is_active == 0) {
+			$this->session->set_flashdata("password_salah", "<div class='text text-danger'>Akun ditemukan namun belum di-aktivasi, silahkan hubungi HO untuk aktivasi.</div>");
+			$this->session->set_flashdata("nik", $nik);
+			redirect('Auth');
 		} else if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password != $password) {
 			$this->session->set_flashdata("password_salah", "<div class='text text-danger'>Password Anda Salah.</div>");
 			$this->session->set_flashdata("nik", $nik);
