@@ -18,9 +18,10 @@ $(document).ready(function () {
 			pagingType: "simple",
 			lengthChange: !1,
 			language: {
+				search: '',
 				searchPlaceholder: "Cari Data Disini"
 			},
-			buttons: ["copy", "excel", "pdf", "colvis"]
+			buttons: ["pdf", "excel", "colvis"]
 		})
 		.buttons()
 		.container()
