@@ -24,7 +24,7 @@ class Auth extends CI_Controller
 	public function daftar_akun()
 	{
 		$data['branches'] = $this->branch_model->get();
-		$this->load->view('register', $data);
+		$this->template->load('template/index', 'register', $data);
 	}
 
 

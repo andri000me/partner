@@ -11,12 +11,11 @@
 </div>
 
 <div class="row">
-    <!-- <div class="col-md-12">
+    <div class="col-md-12">
         <div class="mb-2 btn-kanan">
-            <a class="btn btn-primary text-size" href="<?= base_url('transfer_data/create') ?>">Transfer Perdata</a>
-            <a href="#" class="btn btn-secondary text-size transfer ml-1" data-toggle="modal" data-target=".bs-example-modal-center">Transfer Semua Data</a>
+            <a class="btn btn-primary text-size" href="<?= base_url('user/create') ?>">Tambah User</a>
         </div>
-    </div> -->
+    </div>
 
     <div class=" col-lg-12">
         <div class="card m-b-20">
@@ -85,19 +84,12 @@
                             <input type="hidden" name="id_user" id="id_user">
                             <div class="ml-3 mr-3 mt-3">
                                 <div class="form-group">
-                                    <label>NIK</label>
+                                    <label>Nomor Induk Karyawan</label>
                                     <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" maxlength="6" />
                                 </div>
                                 <div class="form-group">
                                     <label>Nama</label>
                                     <input type="text" class="form-control text-size" name="name" id="name" required placeholder="Ibrahim Ahmad" />
-                                </div>
-                                <div class="form-group">
-                                    <label class="text-size">E-Mail</label>
-                                    <div>
-                                        <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" required placeholder="Aisha@bfisyariah.id" />
-                                        <?= form_error('email'); ?>
-                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="text-size">Jabatan</label>
@@ -108,7 +100,6 @@
                                         <option value="3">Sharia Manager</option>
                                         <option value="4">Admin Tele</option>
                                     </select>
-                                    <?= form_error('kategori_produk'); ?>
                                 </div>
                                 <div class="form-group">
                                     <label>Cabang</label>
@@ -133,9 +124,6 @@
                                             Aktif
                                         </label>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="reset_password">Reset Password</button>
                                 </div>
                             </div>
 
@@ -179,7 +167,7 @@
                     id_user: id_user
                 },
                 success: function(data) {
-                    alert('Password si '+ $("#name").val() +' telah diubah');
+                    alert('Password si ' + $("#name").val() + ' telah diubah');
                 }
             });
         })
