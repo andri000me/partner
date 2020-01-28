@@ -49,7 +49,7 @@
                                             <option <?= set_value('id_branch') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                         <?php } ?>
                                     </select>
-                                    <?= form_error('name') ?>
+                                    <?= form_error('id_branch') ?>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                             <div class="ml-3 mr-3">
                                 <div class="form-group">
                                     <label for="nik">Nomor Induk Karyawan</label>
-                                    <input type="text" class="form-control <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan">
+                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" maxlength="6" minlength="6">
                                     <?= form_error('nik') ?>
                                 </div>
                                 <div class="form-group">
