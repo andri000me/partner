@@ -29,12 +29,14 @@
                             <th>NIK</th>
                             <th>Jabatan</th>
                             <th>Cabang</th>
+                            <th>Status</th>
                             <th>Aksi</th>
                             <!-- <th>Action</th> -->
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($users->result() as $user) { ?>
+                            <?php if ($user->id_user == $this->fungsi->user_login()->id_user) continue; ?>
                             <tr>
                                 <td>
                                     <?= $user->name ?>
@@ -49,9 +51,18 @@
                                     <?= $user->nama_cabang ?>
                                 </td>
                                 <td>
+                                    <?= $user->is_active == 0 ? 'Non-Aktif' : 'Aktif' ?>
+                                </td>
+                                <td>
                                     <center>
-                                        <button class="btn btn-primary text-size detail-user" data-toggle="modal" data-target="#myModal" data-id="<?= $user->id_user ?>" data-name="<?= $user->name ?>" data-email="<?= $user->email ?>" data-nik="<?= $user->nik ?>" data-level="<?= $user->level ?>" data-branch="<?= $user->id_branch ?>" data-foto="<?= $user->foto ?>" data-active="<?= $user->is_active ?>" data-tanggal="<?= $user->tanggal_daftar ?>">
-                                            Detail</button>
+                                        <a class="btn btn-primary text-size detail-user" style="color: white;" data-toggle="modal" data-target="#myModal" data-id="<?= $user->id_user ?>" data-name="<?= $user->name ?>" data-email="<?= $user->email ?>" data-nik="<?= $user->nik ?>" data-level="<?= $user->level ?>" data-branch="<?= $user->id_branch ?>" data-foto="<?= $user->foto ?>" data-active="<?= $user->is_active ?>" data-tanggal="<?= $user->tanggal_daftar ?>">
+                                            Detail
+                                        </a>
+                                        <!-- <form method="post" action="<?= base_url('User/del') ?>">
+
+                                            <input type="hidden" name="user_id" value="<?= $user->id_user ?>">
+                                            <button class="btn btn-danger ml-1" onclick="return confirm('Apakah Anda yakin Menghapus data ini?')">Hapus</button>
+                                        </form> -->
                                     </center>
                                 </td>
                             </tr>
@@ -73,19 +84,13 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <center>
-                            <div class="">
-                                <img id="foto_profil" class="rounded-circle" src="" data-holder-rendered="true" width="200px" height="200px">
-                            </div>
-                        </center>
-
                         <form method="post" action="<?= base_url('User/update') ?>">
                             <!-- ID User -->
                             <input type="hidden" name="id_user" id="id_user">
                             <div class="ml-3 mr-3 mt-3">
                                 <div class="form-group">
                                     <label>Nomor Induk Karyawan</label>
-                                    <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" maxlength="6" />
+                                    <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" minlength="6" maxlength="7" />
                                 </div>
                                 <div class="form-group">
                                     <label>Nama</label>
@@ -98,7 +103,8 @@
                                         <option value="1">CMS</option>
                                         <option value="2">Sharia Head</option>
                                         <option value="3">Sharia Manager</option>
-                                        <option value="4">Admin Tele</option>
+                                        <option value="4">Administrator</option>
+                                        <option value="5">Admin Tele</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -126,7 +132,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button type="button" class="btn btn-primary" id="reset_password">Reset Password</button>
+                                    <button type="button" class="btn btn-warning" id="reset_password">Reset Password</button>
                                 </div>
                             </div>
                     </div>

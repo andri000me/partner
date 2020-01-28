@@ -44,16 +44,6 @@
                                 <input type="text" class="form-control" name="kota" id="kota" value="<?= $data->kota ?>" required placeholder="Jakarta" <?= $data->assign_to == $this->fungsi->user_login()->id_branch ? 'readonly' : '' ?> />
                             </div>
                             <div class="form-group mr-3 ml-3">
-                                <label>Cabang</label>
-                                <select class="form-control text-size" name="cabang" id="cabang" <?= $data->assign_to == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
-                                    <option selected disabled value="">Pilih Cabang</option>
-                                    <?php foreach ($branches->result() as $branch) { ?>
-                                        <option <?= $data->cabang == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                    <?php } ?>
-                                </select>
-                                <input type="hidden" name="cabang" value="<?= $data->cabang ?>" <?= $data->assign_to != $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
-                            </div>
-                            <div class="form-group mr-3 ml-3">
                                 <label>Produk</label>
                                 <select class="form-control" name="produk" id="produk" <?= $data->assign_to == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
                                     <option selected>Kategori Prouk</option>

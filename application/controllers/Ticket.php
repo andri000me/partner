@@ -7,6 +7,7 @@ class Ticket extends CI_Controller
 
     public function __construct()
     {
+
         parent::__construct();
         $this->load->model('ticket_model');
         $this->load->model('notification_model');

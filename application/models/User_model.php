@@ -42,7 +42,7 @@ class User_model extends CI_Model
     // Delete User
     public function del($id)
     {
-        $this->db->where('user_id', $id);
+        $this->db->where('id_user', $id);
         $this->db->delete('users');
     }
 
@@ -59,5 +59,16 @@ class User_model extends CI_Model
     public function login_log($data)
     {
         $this->db->insert('login_log', $data);
+    }
+
+    public function last_activity($id_user)
+    {
+        $this->db->select("*, TIMESTAMPDIFF(day, login_date, now()) as terakhir");
+        $this->db->from("login_log");
+        $this->db->where("id_user = $id_user");
+        $this->db->order_by("login_date", "DESC");
+        $this->db->limit(1);
+
+        return $this->db->get();
     }
 }

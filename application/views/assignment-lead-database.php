@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="row">
-    <?php if ($this->fungsi->user_login()->level == 4) { ?>
+    <?php if ($this->fungsi->user_login()->level == 5) { ?>
         <div class="col-md-12 mt-4">
             <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
         </div>

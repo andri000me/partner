@@ -70,6 +70,8 @@
                                             <a href="<?= base_url('partner/detail/' . $ticket->id_partner) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } else if ($ticket->id_leads != NULL) { ?>
                                             <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size">Detail</a>
+                                        <?php } else if ($ticket->id_nst != NULL) { ?>
+                                            <a href="<?= base_url('nst/') ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } ?>
                                         <!-- <button class="btn btn-primary">Detail</button> -->
                                     </center>

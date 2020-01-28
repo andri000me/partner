@@ -23,7 +23,7 @@ class Leads_assignment_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from('leads_assignments');
-        $this->db->join('branches', 'branches.id_branch = leads_assignments.cabang', 'inner');
+        $this->db->join('branches', 'branches.id_branch = leads_assignments.id_branch', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }
