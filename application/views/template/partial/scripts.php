@@ -341,7 +341,7 @@
                 id_branch: id_branch
             },
             success: function(data) {
-                alert('Success, \n ID Branch: ' + id_branch + '\n Status: ' + has_superior);
+                // alert('Success, \n ID Branch: ' + id_branch + '\n Status: ' + has_superior);
             }
         });
         // return false;

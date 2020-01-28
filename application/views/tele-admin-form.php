@@ -39,16 +39,6 @@
                                 <label>Kota</label>
                                 <input type="text" class="form-control" name="kota" id="kota" value="<?= set_value('kota') ?>" required placeholder="Jakarta" />
                             </div>
-                            <div class="form-group mr-3 ml-3 text-size">
-                                <label>Cabang</label>
-                                <select class="form-control text-size" name="cabang" id="cabang">
-                                    <option selected disabled value="">Pilih Cabang</option>
-                                    <?php foreach ($branches->result() as $branch) { ?>
-                                        <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                        <option <?= set_value('cabang') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                    <?php } ?>
-                                </select>
-                            </div>
                             <div class="form-group mr-3 ml-3">
                                 <label>Produk</label>
                                 <select class="form-control text-size" name="produk" id="produk">

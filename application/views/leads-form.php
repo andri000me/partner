@@ -635,17 +635,3 @@
         $('#nama_konsumen').removeAttr('readonly');
     })
 </script>
-
-<script>
-    // Another way to bind the event
-    $(window).bind('beforeunload', function() {
-        if (unsaved) {
-            return "Ada perubahan yang telah dilakukan di halaman ini. Apakah Anda yakin meninggalkan halaman ini dan membatalkan semua perubahan atau tetap di halaman ini?";
-        }
-    });
-
-    // Monitor dynamic inputs
-    $(document).on('change', ':input', function() { //triggers change in all input fields including text type
-        unsaved = true;
-    });
-</script>

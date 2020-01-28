@@ -36,20 +36,10 @@
                                         <option <?= set_value('jabatan') == '1' ? 'selected' : '' ?> value="1">CMS</option>
                                         <option <?= set_value('jabatan') == '2' ? 'selected' : '' ?> value="2">Sharia Head</option>
                                         <option <?= set_value('jabatan') == '3' ? 'selected' : '' ?> value="3">Sharia Manager</option>
-                                        <option <?= set_value('jabatan') == '4' ? 'selected' : '' ?> value="4">Admin Tele</option>
+                                        <option <?= set_value('jabatan') == '4' ? 'selected' : '' ?> value="4">Administrator</option>
+                                        <option <?= set_value('jabatan') == '5' ? 'selected' : '' ?> value="5">Admin Tele</option>
                                     </select>
                                     <?= form_error('name') ?>
-                                </div>
-                                <div class="form-group">
-                                    <label for="id_branch">Cabang</label>
-                                    <select class="form-control" name="id_branch" id="id_branch">
-                                        <option selected disabled value="">Pilih Cabang</option>
-                                        <?php foreach ($branches->result() as $branch) {  ?>
-                                            <?php if ($branch->id_branch == 46)  continue; ?>
-                                            <option <?= set_value('id_branch') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <?= form_error('id_branch') ?>
                                 </div>
                             </div>
                         </div>
@@ -57,24 +47,19 @@
                             <div class="ml-3 mr-3">
                                 <div class="form-group">
                                     <label for="nik">Nomor Induk Karyawan</label>
-                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" maxlength="6" minlength="6">
+                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" minlength="6" maxlength="7">
                                     <?= form_error('nik') ?>
                                 </div>
                                 <div class="form-group">
-                                    <label for="password">Kata Sandi</label>
-                                    <input type="password" class="form-control <?= form_error('password') ? 'has-error' : '' ?>" id="password" name="password" placeholder="Kata Sandi">
-                                    <?= form_error('password') ?>
+                                    <label for="id_branch">Cabang</label>
+                                    <select class="form-control" name="id_branch" id="id_branch">
+                                        <option selected disabled value="">Pilih Cabang</option>
+                                        <?php foreach ($branches->result() as $branch) {  ?>
+                                            <option <?= set_value('id_branch') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <?= form_error('id_branch') ?>
                                 </div>
-                                <div class="form-group">
-                                    <label for="passconf">Konfirmasi Kata Sandi</label>
-                                    <input type="password" class="form-control <?= form_error('passconf') ? 'has-error' : '' ?>" id="passconf" name="passconf" placeholder="Konfirmasi Kata Sandi">
-                                    <?= form_error('passconf') ?>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="email">E-mail</label>
-                                    <input type="email" class="form-control <?= form_error('email') ? 'has-error' : '' ?>" id="email" name="email" value="<?= set_value('email') ?>" placeholder="E-mail">
-                                    <?= form_error('email') ?>
-                                </div> -->
                             </div>
                         </div>
                         <div class="col-md-12">

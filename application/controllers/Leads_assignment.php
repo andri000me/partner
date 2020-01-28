@@ -58,7 +58,7 @@ class Leads_assignment extends CI_Controller
                 'nama'              => $post['nama'],
                 'telepon'           => $post['telepon'],
                 'kota'              => $post['kota'],
-                'cabang'            => $post['cabang'],
+                // 'cabang'            => $post['cabang'],
                 'produk'            => $post['produk'],
                 'detail_produk'     => $post['detail_produk'],
                 'nilai_pembiayaan'  => str_replace(",", "", $post['nilai_pembiayaan']),
@@ -72,6 +72,7 @@ class Leads_assignment extends CI_Controller
 
                 //ID User yang mencatat leads follow up
                 'id_user' => $this->fungsi->user_login()->id_user,
+                'id_branch' => $this->fungsi->user_login()->id_branch
             ];
 
 
@@ -119,7 +120,6 @@ class Leads_assignment extends CI_Controller
             'nama'              => $post['nama'],
             'telepon'           => $post['telepon'],
             'kota'              => $post['kota'],
-            'cabang'            => $post['cabang'],
             'produk'            => $post['produk'],
             'detail_produk'     => $post['detail_produk'],
             'nilai_pembiayaan'  => str_replace(",", "", $post['nilai_pembiayaan']),
