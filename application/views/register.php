@@ -85,16 +85,9 @@
                             <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
-                                        <label>Product Support</label><br>
-                                        <input type="checkbox" name="product_support_active" id="product_support" switch="none" value="1" />
-                                        <label for="product_support" data-on-label="On" data-off-label="Off"></label>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
-                                        <label>NST</label><br>
-                                        <input type="checkbox" name="nst_active" id="nst" switch="none" value="1" />
-                                        <label for="nst" data-on-label="On" data-off-label="Off"></label>
+                                        <label>Kerjasama</label><br>
+                                        <input type="checkbox" name="kerjasama_active" id="kerjasama" switch="none" />
+                                        <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -104,8 +97,6 @@
                                         <label for="assignment" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Transfer Data</label><br>
@@ -113,11 +104,27 @@
                                         <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
-                                        <label>Kerjasama</label><br>
-                                        <input type="checkbox" name="kerjasama_active" id="kerjasama" switch="none" value="1" />
-                                        <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
+                                        <label>Approval Bonus</label><br>
+                                        <input type="checkbox" name="approval_bonus_active" id="approval_bonus" switch="none" />
+                                        <label for="approval_bonus" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Product Support</label><br>
+                                        <input type="checkbox" name="product_support_active" id="product_support" switch="none" />
+                                        <label for="product_support" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>NST</label><br>
+                                        <input type="checkbox" name="nst_active" id="nst" switch="none" />
+                                        <label for="nst" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                             </div>

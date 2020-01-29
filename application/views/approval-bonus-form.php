@@ -29,7 +29,7 @@
                                     <div class="ml-3 mr-3">
                                         <label>Lead ID</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-size" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" >
+                                            <input type="text" class="form-control text-size" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345">
                                             <div class="input-group-append">
                                                 <button class="btn btn-danger text-size" type="button" id="reset">x</button>
                                                 <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
@@ -44,7 +44,7 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="nama_cabang" id="nama_cabang" value="<?= set_value('nama_cabang') ?>" placeholder="Cabang" readonly>
-                                        <input type="hidden" id="cabang" name="cabang" value="<?= set_value('cabang') ?>" >
+                                        <input type="hidden" id="cabang" name="cabang" value="<?= set_value('cabang') ?>">
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Requester</label>
                                         <input type="text" class="form-control text-size" name="nama_requester" id="nama_requester" value="<?= set_value('nama_requester') ?>" placeholder="Requester" value="<?= set_value('requester') ?>" readonly>
-                                        <input type="hidden" id="requester" name="requester" value="<?= set_value('requester') ?>" >
+                                        <input type="hidden" id="requester" name="requester" value="<?= set_value('requester') ?>">
                                     </div>
                                 </div>
                             </div>
@@ -116,7 +116,7 @@
                                 <input type="text" class="form-control text-size" name="nama_bank" id="nama_bank" value="<?= set_value('nama_bank') ?>" required placeholder="Nomor Rekening" />
                             </div>
                             <div class="form-group ml-3 mr-3">
-                                <label>NPWP</label>
+                                <label>Nomor NPWP</label>
                                 <input type="text" class="form-control text-size placement number-only" name="npwp" id="npwp" value="<?= set_value('npwp') ?>" required placeholder="NPWP" minlength="15" maxlength="15" />
                             </div>
                             <div class="form-group text-size ml-3 mr-3">

@@ -40,7 +40,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group ml-3 mr-3">
                                             <label>Leads ID</label>
-                                            <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" maxlength="15">
+                                            <input type="text" class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS123456" minlength="16" maxlength="16">
                                             <?= form_error('leads_id') ?>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group ml-3 mr-3">
                                             <label>ID KTP</label>
-                                            <input type="phone" class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                            <input type="phone" class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="0786687587253564" minlength="16" maxlength="16" />
                                             <?= form_error('no_ktp') ?>
                                         </div>
                                     </div>
@@ -153,7 +153,7 @@
                                     <div class="col-md-6 nik">
                                         <div class="form-group ml-3 mr-3">
                                             <label>NIK</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
+                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>" placeholder="072104" minlength="6" maxlength="7" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 posisi">
@@ -171,7 +171,7 @@
                                     <div class="col-md-6 kontrak-ro">
                                         <div class="form-group ml-3 mr-3">
                                             <label>Nomor Kontrak</label>
-                                            <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" />
+                                            <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" minlength="10" maxlength="10" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 konsumen-ro">

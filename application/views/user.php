@@ -118,28 +118,19 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size">
-                                            <label>Status</label><br>
-                                            <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="is_active" required value="0">
-                                                <label class="form-check-label">
-                                                    Non Aktif
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="is_active" required value="1">
-                                                <label class="form-check-label">
-                                                    Aktif
-                                                </label>
-                                            </div>
-                                        </div>
+                                <div class="form-group text-size">
+                                    <label>Status</label><br>
+                                    <div class="form-check form-check-inline mt-2">
+                                        <input class="form-check-input" type="radio" name="is_active" required value="0">
+                                        <label class="form-check-label">
+                                            Non Aktif
+                                        </label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group float-right mt-3">
-                                            <button type="button" class="btn btn-warning" id="reset_password">Reset Password</button>
-                                        </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="is_active" required value="1">
+                                        <label class="form-check-label">
+                                            Aktif
+                                        </label>
                                     </div>
                                 </div>
 
@@ -199,12 +190,19 @@
                                         <div class="form-row">
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
+                                                    <label>Approval Bonus</label><br>
+                                                    <input type="checkbox" name="approval_bonus" id="approval_bonus" switch="none" />
+                                                    <label for="approval_bonus" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
                                                     <label>Transfer Data</label><br>
                                                     <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
                                                     <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Product Support</label><br>
                                                     <input type="checkbox" name="product_support" id="product_support" switch="none" />
@@ -213,6 +211,11 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+
+
+                                <div class="form-group mt-3">
+                                    <button type="button" class="btn btn-info" id="reset_password">Reset Password</button>
                                 </div>
 
                             </div>

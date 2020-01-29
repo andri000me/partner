@@ -92,7 +92,7 @@
                                     <div class="form-group ml-3 mr-3 text-size">
                                         <label>Password</label>
                                         <div>
-                                            <input type="password" class="form-control text-size" name="password" id="password" placeholder="Masukkan Sandi" minlength="4" required>
+                                            <input type="password" class="form-control text-size" name="password" id="password" placeholder="Masukkan Sandi" minlength="6" required>
                                         </div>
                                         <?= form_error('password')  ?>
                                     </div>
@@ -101,7 +101,7 @@
                                     <div class="form-group ml-3 mr-3 text-size">
                                         <label>Password confirm</label>
                                         <div>
-                                            <input type="password" class="form-control text-size" name="password_confirm" id="password_confirm" placeholder="Masukkan Sandi" minlength="4" required>
+                                            <input type="password" class="form-control text-size" name="password_confirm" id="password_confirm" placeholder="Masukkan Sandi" minlength="6" required>
                                         </div>
                                     </div>
                                 </div>

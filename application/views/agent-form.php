@@ -77,7 +77,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group ml-3 mr-3">
                                                             <label>Nomor KTP</label>
-                                                            <input type="text" class="form-control text-size <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement number-only" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="1234567891234567" maxlength="16" />
+                                                            <input type="text" class="form-control text-size <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement number-only" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="1234567891234567" minlength="16" maxlength="16" />
                                                             <?= form_error('no_ktp'); ?>
                                                         </div>
                                                     </div>
@@ -241,7 +241,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Nomor NPWP</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement number-only" name="no_npwp" id="no_npwp" value="<?= set_value('no_npwp') ?>" required placeholder="1234567891234567" maxlength="15" />
+                                                        <input type="text" class="form-control text-size <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement number-only" name="no_npwp" id="no_npwp" value="<?= set_value('no_npwp') ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
                                                         <?= form_error('no_npwp'); ?>
                                                     </div>
                                                 </div>
@@ -250,7 +250,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Rekening Bank</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                        <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
                                                         <?= form_error('rekening_bank'); ?>
                                                     </div>
                                                 </div>

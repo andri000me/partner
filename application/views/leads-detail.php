@@ -54,14 +54,6 @@
 								<input type="hidden" name="redirect" value="<?= uri_string() ?>">
 								<?php $cabang_asal = $this->fungsi->user_login()->id_branch; ?>
 								<div class="">
-									<div class="form-row text-size">
-										<div class="col-md-12">
-											<div class="form-group ml-3 mr-3">
-												<label>Nama Konsumen</label>
-												<input type="text" class="form-control placement text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" maxlength="15">
-											</div>
-										</div>
-									</div>
 									<div class="form-row">
 										<div class="col-md-12 text-size">
 											<div class="form-group ml-3 mr-3">
@@ -70,11 +62,19 @@
 											</div>
 										</div>
 									</div>
+									<div class="form-row text-size">
+										<div class="col-md-12">
+											<div class="form-group ml-3 mr-3">
+												<label>Nama Konsumen</label>
+												<input type="text" class="form-control placement text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" minlength="16" maxlength="16">
+											</div>
+										</div>
+									</div>
 									<div class="form-row">
 										<div class="col-md-6 text-size">
 											<div class="form-group ml-3 mr-3">
 												<label>ID KTP</label>
-												<input type="phone" class="form-control placement number-only text-size" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0786 6875 8725 3564" maxlength="16">
+												<input type="phone" class="form-control placement number-only text-size" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0786 6875 8725 3564" minlength="16" maxlength="16">
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -164,7 +164,7 @@
 										<div class="col-md-6 nik text-size">
 											<div class="form-group ml-3 mr-3">
 												<label>NIK</label>
-												<input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="0786 6875 8725 3564" maxlength="16" />
+												<input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="072104" minlength="6" maxlength="7" />
 											</div>
 										</div>
 										<div class="col-md-6 posisi text-size">
@@ -182,7 +182,7 @@
 										<div class="col-md-6 kontrak-ro">
 											<div class="form-group ml-3 mr-3">
 												<label>Nomor Kontrak</label>
-												<input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="087883774" />
+												<input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> placeholder="0878837741" minlength="10" maxlength="10" />
 											</div>
 										</div>
 										<div class="col-md-6 konsumen-ro">
