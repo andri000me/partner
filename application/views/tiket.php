@@ -72,6 +72,8 @@
                                             <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } else if ($ticket->id_nst != NULL) { ?>
                                             <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size">Detail</a>
+                                        <?php } else if ($ticket->id_approval_bonus != NULL) { ?>
+                                            <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size">Detail</a>
                                         <?php } ?>
                                         <!-- <button class="btn btn-primary">Detail</button> -->
                                     </center>

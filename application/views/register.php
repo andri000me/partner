@@ -63,21 +63,21 @@
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Branch</label><br>
-                                        <input type="checkbox" name="branch" id="branch" switch="none" />
+                                        <input type="checkbox" name="branch_active" id="branch" switch="none" value="1" />
                                         <label for="branch" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>User</label><br>
-                                        <input type="checkbox" name="user" id="user" switch="none" />
+                                        <input type="checkbox" name="user_active" id="user" switch="none" value="1" />
                                         <label for="user" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Leads</label><br>
-                                        <input type="checkbox" name="leads" id="leads" switch="none" />
+                                        <input type="checkbox" name="leads_active" id="leads" switch="none" value="1" />
                                         <label for="leads" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
@@ -86,21 +86,21 @@
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Product Support</label><br>
-                                        <input type="checkbox" name="product_support" id="product_support" switch="none" />
+                                        <input type="checkbox" name="product_support_active" id="product_support" switch="none" value="1" />
                                         <label for="product_support" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NST</label><br>
-                                        <input type="checkbox" name="nst" id="nst" switch="none" />
+                                        <input type="checkbox" name="nst_active" id="nst" switch="none" value="1" />
                                         <label for="nst" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Assignment</label><br>
-                                        <input type="checkbox" name="assignment" id="assignment" switch="none" />
+                                        <input type="checkbox" name="assignment_active" id="assignment" switch="none" value="1" />
                                         <label for="assignment" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
@@ -109,14 +109,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Transfer Data</label><br>
-                                        <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
+                                        <input type="checkbox" name="transfer_data_active" id="Transfer_data" switch="none" value="1" />
                                         <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Kerjasama</label><br>
-                                        <input type="checkbox" name="kerjasama" id="kerjasama" switch="none" />
+                                        <input type="checkbox" name="kerjasama_active" id="kerjasama" switch="none" value="1" />
                                         <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>

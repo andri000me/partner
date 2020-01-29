@@ -35,4 +35,13 @@ class Fungsi
         $user_data = $this->ci->notification_model->get($where);
         return $user_data;
     }
+
+    function module()
+    {
+        $this->ci->load->model('module_model');
+
+        $id_user = $this->ci->session->userdata('id_user');
+        $module = $this->ci->module_model->get(['id_user' => $id_user])->row();
+        return $module;
+    }
 }

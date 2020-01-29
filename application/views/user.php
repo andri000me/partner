@@ -154,7 +154,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Branch</label><br>
-                                                    <input type="checkbox" name="branch" id="branch" switch="none" />
+                                                    <input type="checkbox" name="branch" id="branch" switch="none"/>
                                                     <label for="branch" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
@@ -244,6 +244,9 @@
             $("input:radio[name=is_active]")[$(this).data('active')].checked = true;
             $("#reset_password").data('id', $(this).data('id'));
             $("#foto_profil").attr('src', foto + $(this).data('foto'));
+
+            //Module
+            
         });
 
         $("#reset_password").click(function() {

@@ -13,6 +13,9 @@ class User extends CI_Controller
 
         //Load Modul User
         $this->load->model('user_model');
+        
+        //Load Modul Module
+        $this->load->model('module_model');
 
         $this->load->library('form_validation');
         $this->load->helper('fungsi');
@@ -73,8 +76,23 @@ class User extends CI_Controller
             ];
 
             //process daftar akun user
-            $this->user_model->add($data);
+            $id_user = $this->user_model->add($data);
             $this->session->set_flashdata("berhasil_register", "<div class='text text-success'>Berhasil daftar, silahkan login.</div>");
+
+            $data_modul =[
+                'branch_active' => isset($post['branch_active']) ? 1 : 0,
+                'user_active' => isset($post['user_active']) ? 1 : 0,
+                'leads_active' => isset($post['leads_active']) ? 1 : 0,
+                'product_active' => isset($post['product_support_active']) ? 1 : 0,
+                'nst_active' => isset($post['nst_active']) ? 1 : 0,
+                'assignment_active' => isset($post['assignment_active']) ? 1 : 0,
+                'transfer_active' => isset($post['transfer_data_active']) ? 1 : 0,
+                'kerjasama_active' => isset($post['kerjasama_active']) ? 1 : 0,
+                'id_user' => $id_user
+            ];
+
+            $this->module_model->create($data_modul);
+
             redirect('user');
         } else {
             $data['branches'] = $this->branch_model->get();
@@ -98,6 +116,19 @@ class User extends CI_Controller
         $where = ['id_user' => $post['id_user']];
 
         $this->user_model->update($data, $where);
+
+        $data_modul =[
+            'branch_active' => isset($post['branch_active']) ? 1 : 0,
+            'user_active' => isset($post['user_active']) ? 1 : 0,
+            'leads_active' => isset($post['leads_active']) ? 1 : 0,
+            'product_active' => isset($post['product_support_active']) ? 1 : 0,
+            'nst_active' => isset($post['nst_active']) ? 1 : 0,
+            'assignment_active' => isset($post['assignment_active']) ? 1 : 0,
+            'transfer_active' => isset($post['transfer_data_active']) ? 1 : 0,
+            'kerjasama_active' => isset($post['kerjasama_active']) ? 1 : 0
+        ];
+
+        $this->module_model->update($data_modul, $where);
 
         // $login_log = [
         //     'login_date' => date('Y-m-d H:i:s'),

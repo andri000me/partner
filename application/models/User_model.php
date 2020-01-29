@@ -31,6 +31,7 @@ class User_model extends CI_Model
     public function add($data)
     {
         $this->db->insert('users', $data);
+        return $this->db->insert_id();
     }
 
     // Update User

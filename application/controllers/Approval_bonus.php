@@ -60,7 +60,7 @@ class Approval_bonus extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $where = 'mapping_leads.id_branch = '. $this->fungsi->user_login()->id_branch;
         } else {
-            $where = 'mapping_leads IS NOT NULL';
+            $where = 'mapping_leads.id_mapping_leads IS NOT NULL';
         }
 
         $get_leads =
@@ -97,7 +97,7 @@ class Approval_bonus extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $where = 'mapping_leads.id_branch = '. $this->fungsi->user_login()->id_branch;
         } else {
-            $where = 'mapping_leads IS NOT NULL';
+            $where = 'mapping_leads.id_mapping_leads IS NOT NULL';
         }
 
         $get_leads =

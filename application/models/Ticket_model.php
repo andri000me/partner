@@ -50,6 +50,7 @@ class Ticket_model extends CI_Model
             WHEN tickets.id_agent IS NOT NULL THEN 'Agent'
             WHEN tickets.id_leads IS NOT NULL THEN 'Leads'
             WHEN tickets.id_nst IS NOT NULL THEN 'NST'
+            WHEN tickets.id_approval_bonus IS NOT NULL THEN 'Approval Bonus'
         END) as aktivitas_cabang 
         ");
         $this->db->from('tickets');
