@@ -86,7 +86,7 @@
                                     <div class="col-md-6 nik">
                                         <div class="form-group">
                                             <label>NIK</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" maxlength="6" />
+                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" minlength="6" maxlength="7" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 cabang">
@@ -105,7 +105,7 @@
                                 <div class="kontrak-ro">
                                     <div class="form-group">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" minlength="10" maxlength="10" />
                                     </div>
                                 </div>
                                 <div class="konsumen-ro">

@@ -104,7 +104,7 @@
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Nomor Rekening</label>
-                                <input type="text" class="form-control text-size placement number-only" name="no_rekening" id="no_rekening" value="<?= set_value('no_rekening') ?>" required placeholder="Nomor Rekening" minlength="16" maxlength="16" />
+                                <input type="text" class="form-control text-size placement number-only" name="no_rekening" id="no_rekening" value="<?= set_value('no_rekening') ?>" required placeholder="Nomor Rekening" minlength="10" maxlength="16" />
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Atas Nama</label>
@@ -115,7 +115,7 @@
                                 <input type="text" class="form-control text-size" name="nama_bank" id="nama_bank" value="<?= set_value('nama_bank') ?>" required placeholder="Nomor Rekening" />
                             </div>
                             <div class="form-group ml-3 mr-3">
-                                <label>NPWP</label>
+                                <label>Nomor NPWP</label>
                                 <input type="text" class="form-control text-size placement number-only" name="npwp" id="npwp" value="<?= set_value('npwp') ?>" required placeholder="NPWP" minlength="15" maxlength="15" />
                             </div>
                             <div class="form-group text-size ml-3 mr-3">

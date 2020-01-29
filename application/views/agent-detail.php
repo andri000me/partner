@@ -60,7 +60,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label class="text-size">Nomor KTP</label>
-                                                <input type="text" class="form-control placement text-size number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" maxlength="16" />
+                                                <input type="text" class="form-control placement text-size number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" minlength="16" maxlength="16" />
                                             </div>
                                         </div>
                                     </div>
@@ -201,13 +201,13 @@
                                     </div>
                                     <div class="form-group ml-3 mr-3">
                                         <label class="text-size">Nomor NPWP</label>
-                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="1234567891234567" maxlength="15" />
+                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label class="text-size">Rekening Bank</label>
-                                                <input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="0468 6587 6587 45" maxlength="16">
+                                                <input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
                                             </div>
                                         </div>
                                         <div class="col-md-6">

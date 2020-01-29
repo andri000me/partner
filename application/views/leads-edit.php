@@ -44,7 +44,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group ml-3 mr-3">
                                             <label>Leads ID</label>
-                                            <input type="text" class="form-control text-size placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="009377736433744" maxlength="15">
+                                            <input type="text" class="form-control text-size placement" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="202001SLOS123456" minlength="16" maxlength="16">
                                         </div>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group ml-3 mr-3">
                                             <label>ID KTP</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786 6875 8725 3564" maxlength="16" />
+                                            <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0786687587253564" minlength="16" maxlength="16" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -154,7 +154,7 @@
                                     <div class="col-md-6 nik">
                                         <div class="form-group ml-3 mr-3">
                                             <label>NIK</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="0786 6875 8725 3564" maxlength="16" />
+                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" minlength="6" maxlength="7" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 posisi">
@@ -172,7 +172,7 @@
                                     <div class="col-md-6 kontrak-ro">
                                         <div class="form-group ml-3 mr-3">
                                             <label>Nomor Kontrak</label>
-                                            <input type="phone" class="form-control text-size number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" />
+                                            <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 konsumen-ro">
