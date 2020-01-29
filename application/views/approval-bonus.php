@@ -11,9 +11,11 @@
 </div>
 
 <div class="row">
+<?php if ($this->fungsi->user_login()->level < 4) { ?>
     <div class="col-md-12">
         <a href="<?= base_url('approval_bonus/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data</button></a>
     </div>
+    <?php } ?>
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
@@ -33,37 +35,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="clickable-row" data-href="detail-partnership.html">
+                    <?php foreach($data->result() as $approval){ ?>
+                        <tr>
                             <td>
-                                1
+                                <?= $approval->id_ticket ?>
                             </td>
                             <td>
-                                ibrahim Ahmad
+                                <?= $approval->name ?>
                             </td>
                             <td>
-                                BSD
+                                <?= $approval->nama_cabang ?>
                             </td>
                             <td>
-                                227
+                                <?= $approval->leads_id ?>
                             </td>
                             <td>
-                                Don Aria Sbada
+                                <?= $approval->nama_konsumen ?>
                             </td>
                             <td>
-                                My Ihram
+                                <?= $approval->produk ?>
                             </td>
                             <td>
-                                27 - 01 - 2020
+                                <?= $approval->tanggal_diubah ?>
                             </td>
                             <td>
                                 <center>
-                                    <h6><span class="badge badge-success">Disetujui</span></h6><br>
-                                    <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                <?php if ($approval->status == 0) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span></h6>
+                                        <?php } else if ($approval->status == 1) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span></h6>
+                                        <?php } else if ($approval->status == 2) { ?>
+                                            <h6><span class="badge badge-secondary">Pending</span></h6>
+                                        <?php } else if ($approval->status == 3) { ?>
+                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                        <?php } else if ($approval->status == 4) { ?>
+                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                        <?php } else if ($approval->status == 5) { ?>
+                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                        <?php } ?>
+                                    </center>
                                 </center>
                             </td>
                             <td>
-                                <center><a href="#" class="btn btn-secondary text-size">Detail</a></center>
+                                <center><a href="<?= base_url('approval_bonus/edit/'. $approval->id_approval_bonus) ?>" class="btn btn-secondary text-size">Detail</a></center>
                             </td>
+                    <?php } ?>
                         </tr>
                     </tbody>
                 </table>
