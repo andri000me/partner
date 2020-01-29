@@ -51,7 +51,9 @@
                                     <?= $user->nama_cabang ?>
                                 </td>
                                 <td>
-                                    <?= $user->is_active == 0 ? 'Non-Aktif' : 'Aktif' ?>
+                                    <center>
+                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger">Non Aktif</span></h6>' : '<h6><span class="badge badge-success">Aktif</span></h6>' ?>
+                                    </center>
                                 </td>
                                 <td>
                                     <center>
@@ -116,24 +118,103 @@
                                         <?php } ?>
                                     </select>
                                 </div>
-                                <div class="form-group text-size">
-                                    <label>Status</label><br>
-                                    <div class="form-check form-check-inline mt-2">
-                                        <input class="form-check-input" type="radio" name="is_active" required value="0">
-                                        <label class="form-check-label">
-                                            Non Aktif
-                                        </label>
+                                <div class="form-row">
+                                    <div class="col-md-6">
+                                        <div class="form-group text-size">
+                                            <label>Status</label><br>
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input" type="radio" name="is_active" required value="0">
+                                                <label class="form-check-label">
+                                                    Non Aktif
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="is_active" required value="1">
+                                                <label class="form-check-label">
+                                                    Aktif
+                                                </label>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="is_active" required value="1">
-                                        <label class="form-check-label">
-                                            Aktif
-                                        </label>
+                                    <div class="col-md-6">
+                                        <div class="form-group float-right mt-3">
+                                            <button type="button" class="btn btn-warning" id="reset_password">Reset Password</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-warning" id="reset_password">Reset Password</button>
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row mb-2">
+                                            <div class="col-md-12 ">
+                                                <h5>Pengaturan Halaman</h5>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Branch</label><br>
+                                                    <input type="checkbox" name="branch" id="branch" switch="none" />
+                                                    <label for="branch" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>User</label><br>
+                                                    <input type="checkbox" name="user" id="user" switch="none" />
+                                                    <label for="user" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Leads</label><br>
+                                                    <input type="checkbox" name="leads" id="leads" switch="none" />
+                                                    <label for="leads" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Kerjasama</label><br>
+                                                    <input type="checkbox" name="kerjasama" id="kerjasama" switch="none" />
+                                                    <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Assignment</label><br>
+                                                    <input type="checkbox" name="assignment" id="assignment" switch="none" />
+                                                    <label for="assignment" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>NST</label><br>
+                                                    <input type="checkbox" name="nst" id="nst" switch="none" />
+                                                    <label for="nst" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Transfer Data</label><br>
+                                                    <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
+                                                    <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Product Support</label><br>
+                                                    <input type="checkbox" name="product_support" id="product_support" switch="none" />
+                                                    <label for="product_support" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+
                             </div>
                     </div>
                 </div>

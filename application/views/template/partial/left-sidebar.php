@@ -87,6 +87,11 @@
                             <i class="fas fa-ticket-alt"></i> <span> Tiket </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('approval_bonus') ?>" class="waves-effect">
+                            <i class="fas fa-ticket-alt"></i> <span> Approval Bonus </span>
+                        </a>
+                    </li>
 
                     <li class="menu-title">Bantuan HO</li>
 

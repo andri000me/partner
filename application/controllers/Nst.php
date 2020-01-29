@@ -72,7 +72,8 @@ class Nst extends CI_Controller
                 WHERE nst.id_nst = $id";
 
         $data = [
-            'data' => $this->nst_model->query($get_leads)->row()
+            'data'      => $this->nst_model->query($get_leads)->row(),
+            'ticket'    => $this->ticket_model->get(['nst.id_nst' => $id])->row()
         ];
         $this->template->load('template/index', 'nst-edit', $data);
         // echo json_encode($this->nst_model->query($get_leads)->row());
@@ -95,6 +96,21 @@ class Nst extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
+
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/nst';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
+
+
+            if (!$this->upload->do_upload('ktp')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+            } else {
+                $data['ktp'] = $this->upload->data('file_name');
+            }
 
             $id = $this->nst_model->create($data);
 

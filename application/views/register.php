@@ -30,6 +30,21 @@
                                     <?= form_error('name') ?>
                                 </div>
                                 <div class="form-group">
+                                    <label for="nik">Nomor Induk Karyawan</label>
+                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" minlength="6" maxlength="7">
+                                    <?= form_error('nik') ?>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id_branch">Cabang</label>
+                                    <select class="form-control" name="id_branch" id="id_branch">
+                                        <option selected disabled value="">Pilih Cabang</option>
+                                        <?php foreach ($branches->result() as $branch) {  ?>
+                                            <option <?= set_value('id_branch') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <?= form_error('id_branch') ?>
+                                </div>
+                                <div class="form-group">
                                     <label for="jabatan">Jabatan</label>
                                     <select class="form-control" name="jabatan" id="jabatan">
                                         <option selected disabled value="">Pilih Jabatan</option>
@@ -44,21 +59,66 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="ml-3 mr-3">
-                                <div class="form-group">
-                                    <label for="nik">Nomor Induk Karyawan</label>
-                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" minlength="6" maxlength="7">
-                                    <?= form_error('nik') ?>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Branch</label><br>
+                                        <input type="checkbox" name="branch" id="branch" switch="none" />
+                                        <label for="branch" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="id_branch">Cabang</label>
-                                    <select class="form-control" name="id_branch" id="id_branch">
-                                        <option selected disabled value="">Pilih Cabang</option>
-                                        <?php foreach ($branches->result() as $branch) {  ?>
-                                            <option <?= set_value('id_branch') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <?= form_error('id_branch') ?>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>User</label><br>
+                                        <input type="checkbox" name="user" id="user" switch="none" />
+                                        <label for="user" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Leads</label><br>
+                                        <input type="checkbox" name="leads" id="leads" switch="none" />
+                                        <label for="leads" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Product Support</label><br>
+                                        <input type="checkbox" name="product_support" id="product_support" switch="none" />
+                                        <label for="product_support" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>NST</label><br>
+                                        <input type="checkbox" name="nst" id="nst" switch="none" />
+                                        <label for="nst" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Assignment</label><br>
+                                        <input type="checkbox" name="assignment" id="assignment" switch="none" />
+                                        <label for="assignment" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Transfer Data</label><br>
+                                        <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
+                                        <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Kerjasama</label><br>
+                                        <input type="checkbox" name="kerjasama" id="kerjasama" switch="none" />
+                                        <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
