@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <a href="<?= base_url('#') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data</button></a>
+        <a href="<?= base_url('approval_bonus/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data</button></a>
     </div>
     <div class="col-12">
         <div class="card m-b-20">
@@ -62,7 +62,7 @@
                                 </center>
                             </td>
                             <td>
-                                <center><a href="<?= base_url('Mapping_partner/edit/' . $mapping->mapping_id) ?>" class="btn btn-secondary text-size">Detail</a></center>
+                                <center><a href="#" class="btn btn-secondary text-size">Detail</a></center>
                             </td>
                         </tr>
                     </tbody>
