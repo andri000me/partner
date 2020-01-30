@@ -49,10 +49,10 @@
                                     <select class="form-control" name="jabatan" id="jabatan">
                                         <option selected disabled value="">Pilih Jabatan</option>
                                         <option <?= set_value('jabatan') == '1' ? 'selected' : '' ?> value="1">CMS</option>
-                                        <option <?= set_value('jabatan') == '2' ? 'selected' : '' ?> value="2">Sharia Head</option>
-                                        <option <?= set_value('jabatan') == '3' ? 'selected' : '' ?> value="3">Sharia Manager</option>
-                                        <option <?= set_value('jabatan') == '4' ? 'selected' : '' ?> value="4">Administrator</option>
-                                        <option <?= set_value('jabatan') == '5' ? 'selected' : '' ?> value="5">Admin Tele</option>
+                                        <option <?= set_value('jabatan') == '2' ? 'selected' : '' ?> value="2">Head</option>
+                                        <option <?= set_value('jabatan') == '4' ? 'selected' : '' ?> value="3">Manager</option>
+                                        <option <?= set_value('jabatan') == '3' ? 'selected' : '' ?> value="4">Head HO</option>
+                                        <option <?= set_value('jabatan') == '5' ? 'selected' : '' ?> value="5">Admini HO</option>
                                     </select>
                                     <?= form_error('name') ?>
                                 </div>
@@ -99,7 +99,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
-                                        <label>Transfer Data</label><br>
+                                        <label>Transfer Data User</label><br>
                                         <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
                                         <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
                                     </div>

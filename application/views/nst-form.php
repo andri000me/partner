@@ -27,10 +27,6 @@
 										<label>Kategori produk</label>
 										<input type="text" class="form-control" name="kategori_produk" id="produk" required value="" placeholder="Kategori produk" readonly />
 									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="ml-3 mr-3">
 									<div class="form-group">
 										<label>Requester</label>
 										<div>
@@ -43,8 +39,32 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="ml-3 mr-3">
+									<div class="form-group text-size">
+										<label>Data Lampiran</label>
+										<input type="file" name="lampiran_1" class="filestyle" data-buttonname="btn-secondary">
+									</div>
+									<div class="form-group text-size">
+										<label>Data Lampiran</label>
+										<input type="file" name="lampiran_2" class="filestyle" data-buttonname="btn-secondary">
+									</div>
+									<div class="form-group text-size">
+										<label>Data Lampiran</label>
+										<input type="file" name="lampiran_3" class="filestyle" data-buttonname="btn-secondary">
+									</div>
+									<div class="form-group text-size">
+										<label>Data Lampiran</label>
+										<input type="file" name="lampiran_4" class="filestyle" data-buttonname="btn-secondary">
+									</div>
+									<div class="form-group text-size">
+										<label>Data Lampiran</label>
+										<input type="file" name="lampiran_5" class="filestyle" data-buttonname="btn-secondary">
+									</div>
+								</div>
+							</div>
 							<div class="col-md-12">
-								<div class="form-group mb-0 float-right ml-3 mr-3">
+								<div class="form-group mb-0 float-right mt-5 ml-3 mr-3">
 									<a href="mapping.html" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
 									<button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
 										Simpan
