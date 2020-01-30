@@ -1,0 +1,83 @@
+08:42:31  [main] 	Initializing Control Panel
+08:42:31  [main] 	Windows Version:  Home  64-bit
+08:42:31  [main] 	XAMPP Version: 7.4.1
+08:42:31  [main] 	Control Panel Version: 3.2.4  [ Compiled: Jun 5th 2019 ]
+08:42:31  [main] 	You are not running with administrator rights! This will work for
+08:42:31  [main] 	most application stuff but whenever you do something with services
+08:42:31  [main] 	there will be a security dialogue or things will break! So think 
+08:42:31  [main] 	about running this application with administrator rights!
+08:42:31  [main] 	XAMPP Installation Directory: "c:\xampp\"
+08:42:31  [main] 	Checking for prerequisites
+08:42:33  [main] 	All prerequisites found
+08:42:33  [main] 	Initializing Modules
+08:42:34  [main] 	Starting Check-Timer
+08:42:34  [main] 	Control Panel Ready
+08:42:35  [Apache] 	Attempting to start Apache app...
+08:42:35  [mysql] 	Attempting to start MySQL app...
+08:42:36  [Apache] 	Status change detected: running
+08:42:36  [mysql] 	Status change detected: running
+08:50:10  [main] 	Deinitializing Modules
+08:50:10  [main] 	Deinitializing Control Panel
+
+09:11:55  [main] 	Initializing Control Panel
+09:11:55  [main] 	Windows Version:  Home  64-bit
+09:11:55  [main] 	XAMPP Version: 7.4.1
+09:11:55  [main] 	Control Panel Version: 3.2.4  [ Compiled: Jun 5th 2019 ]
+09:11:55  [main] 	You are not running with administrator rights! This will work for
+09:11:55  [main] 	most application stuff but whenever you do something with services
+09:11:55  [main] 	there will be a security dialogue or things will break! So think 
+09:11:55  [main] 	about running this application with administrator rights!
+09:11:55  [main] 	XAMPP Installation Directory: "c:\xampp\"
+09:11:55  [main] 	Checking for prerequisites
+09:11:56  [main] 	All prerequisites found
+09:11:56  [main] 	Initializing Modules
+09:11:56  [Apache] 	XAMPP Apache is already running on port 80
+09:11:56  [Apache] 	XAMPP Apache is already running on port 443
+09:11:56  [mysql] 	XAMPP MySQL is already running on port 3306
+09:11:56  [main] 	Starting Check-Timer
+09:11:56  [main] 	Control Panel Ready
+09:11:57  [main] 	Deinitializing Modules
+09:11:57  [main] 	Deinitializing Control Panel
+
+08:52:21  [main] 	Initializing Control Panel
+08:52:21  [main] 	Windows Version:  Home  64-bit
+08:52:21  [main] 	XAMPP Version: 7.4.1
+08:52:21  [main] 	Control Panel Version: 3.2.4  [ Compiled: Jun 5th 2019 ]
+08:52:21  [main] 	You are not running with administrator rights! This will work for
+08:52:21  [main] 	most application stuff but whenever you do something with services
+08:52:21  [main] 	there will be a security dialogue or things will break! So think 
+08:52:21  [main] 	about running this application with administrator rights!
+08:52:21  [main] 	XAMPP Installation Directory: "c:\xampp\"
+08:52:21  [main] 	Checking for prerequisites
+08:52:22  [main] 	All prerequisites found
+08:52:22  [main] 	Initializing Modules
+08:52:22  [main] 	Starting Check-Timer
+08:52:22  [main] 	Control Panel Ready
+08:52:24  [Apache] 	Attempting to start Apache app...
+08:52:24  [Apache] 	Status change detected: running
+08:52:24  [mysql] 	Attempting to start MySQL app...
+08:52:25  [mysql] 	Status change detected: running
+11:02:48  [main] 	Deinitializing Modules
+11:02:48  [main] 	Deinitializing Control Panel
+
+11:26:39  [main] 	Initializing Control Panel
+11:26:39  [main] 	Windows Version:  Home  64-bit
+11:26:39  [main] 	XAMPP Version: 7.4.1
+11:26:39  [main] 	Control Panel Version: 3.2.4  [ Compiled: Jun 5th 2019 ]
+11:26:39  [main] 	You are not running with administrator rights! This will work for
+11:26:39  [main] 	most application stuff but whenever you do something with services
+11:26:39  [main] 	there will be a security dialogue or things will break! So think 
+11:26:39  [main] 	about running this application with administrator rights!
+11:26:39  [main] 	XAMPP Installation Directory: "c:\xampp\"
+11:26:39  [main] 	Checking for prerequisites
+11:26:40  [main] 	All prerequisites found
+11:26:40  [main] 	Initializing Modules
+11:26:40  [main] 	Starting Check-Timer
+11:26:40  [main] 	Control Panel Ready
+11:26:44  [Apache] 	Attempting to start Apache app...
+11:26:45  [mysql] 	Attempting to start MySQL app...
+11:26:45  [Apache] 	Status change detected: running
+11:26:45  [mysql] 	Status change detected: running
+12:35:14  [main] 	Deinitializing Modules
+12:35:14  [main] 	Deinitializing Control Panel
+

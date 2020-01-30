@@ -103,10 +103,10 @@
                                     <select class="form-control text-size" name="jabatan" id="jabatan" required>
                                         <option selected value="">Pilih Jabatan</option>
                                         <option value="1">CMS</option>
-                                        <option value="2">Head</option>
-                                        <option value="3">Manager</option>
-                                        <option value="4">Head HO</option>
-                                        <option value="5">Admin HO</option>
+                                        <option value="2">Sharia Head</option>
+                                        <option value="3">Sharia Manager</option>
+                                        <option value="4">Administrator</option>
+                                        <option value="5">Admin Tele</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -145,21 +145,21 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Branch</label><br>
-                                                    <input type="checkbox" name="branch" id="branch" switch="none"/>
+                                                    <input type="checkbox" name="branch_active" id="branch" switch="none" />
                                                     <label for="branch" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>User</label><br>
-                                                    <input type="checkbox" name="user" id="user" switch="none" />
+                                                    <input type="checkbox" name="user_active" id="user" switch="none" />
                                                     <label for="user" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Leads</label><br>
-                                                    <input type="checkbox" name="leads" id="leads" switch="none" />
+                                                    <input type="checkbox" name="leads_active" id="leads" switch="none" />
                                                     <label for="leads" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
@@ -168,21 +168,21 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Kerjasama</label><br>
-                                                    <input type="checkbox" name="kerjasama" id="kerjasama" switch="none" />
+                                                    <input type="checkbox" name="kerjasama_active" id="kerjasama" switch="none" />
                                                     <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Assignment</label><br>
-                                                    <input type="checkbox" name="assignment" id="assignment" switch="none" />
+                                                    <input type="checkbox" name="assignment_active" id="assignment" switch="none" />
                                                     <label for="assignment" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>NST</label><br>
-                                                    <input type="checkbox" name="nst" id="nst" switch="none" />
+                                                    <input type="checkbox" name="nst_active" id="nst" switch="none" />
                                                     <label for="nst" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
@@ -191,29 +191,27 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Approval Bonus</label><br>
-                                                    <input type="checkbox" name="approval_bonus" id="approval_bonus" switch="none" />
+                                                    <input type="checkbox" name="approval_bonus_active" id="approval_bonus" switch="none" />
                                                     <label for="approval_bonus" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
-                                                    <label>Transfer Data User</label><br>
-                                                    <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
-                                                    <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
+                                                    <label>Transfer Data</label><br>
+                                                    <input type="checkbox" name="transfer_data_active" id="transfer_data" switch="none" />
+                                                    <label for="transfer_data" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Product Support</label><br>
-                                                    <input type="checkbox" name="product_support" id="product_support" switch="none" />
+                                                    <input type="checkbox" name="product_support_active" id="product_support" switch="none" />
                                                     <label for="product_support" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div class="form-group mt-3">
                                     <button type="button" class="btn btn-info" id="reset_password">Reset Password</button>
                                 </div>
@@ -248,8 +246,45 @@
             $("#reset_password").data('id', $(this).data('id'));
             $("#foto_profil").attr('src', foto + $(this).data('foto'));
 
+            var id_user = $(this).data('id');
             //Module
-            
+            $.ajax({
+                type: 'POST',
+                url: '<?= base_url('User/get_module/') ?>' + id_user,
+                dataType: 'json',
+                data: {
+                    id_user: id_user
+                },
+                success: function(data) {
+                    if (data.branch_active == 1) {
+                        $("#branch").prop('checked', true);
+                    }
+                    if (data.user_active == 1) {
+                        $("#user").prop('checked', true);
+                    }
+                    if (data.leads_active == 1) {
+                        $("#leads").prop('checked', true);
+                    }
+                    if (data.kerjasama_active == 1) {
+                        $("#kerjasama").prop('checked', true);
+                    }
+                    if (data.assignment_active == 1) {
+                        $("#assignment").prop('checked', true);
+                    }
+                    if (data.nst_active == 1) {
+                        $("#nst").prop('checked', true);
+                    }
+                    if (data.transfer_active == 1) {
+                        $("#transfer_data").prop('checked', true);
+                    }
+                    if (data.product_active == 1) {
+                        $("#product_support").prop('checked', true);
+                    }
+                    if (data.approval_bonus_active == 1) {
+                        $("#approval_bonus").prop('checked', true);
+                    }
+                }
+            });
         });
 
         $("#reset_password").click(function() {

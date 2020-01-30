@@ -25,14 +25,14 @@
                         </a>
                     </li>
 
-                    <?php } ?>
+                <?php } ?>
                 <?php if ($this->fungsi->module()->user_active == 1) { ?>
                     <li>
                         <a href="<?= base_url('user') ?>" class="waves-effect">
                             <i class="fas fa-users"></i><span>User </span>
                         </a>
                     </li>
-                    <?php } ?>
+                <?php } ?>
 
                 <li>
                     <a href="<?= base_url('notification') ?>" class="waves-effect">
@@ -62,21 +62,21 @@
                             <li><a href="<?= base_url('agent') ?>">Agent / BA</a></li>
                         </ul>
                     </li>
-                    <?php } ?>
+                <?php } ?>
 
-                
+
 
                 <?php if ($this->fungsi->module()->assignment_active == 1) { ?>
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="far fa-clipboard"></i><span> Assignment <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
-                    <ul class="submenu">
-                        <li><a href="<?= base_url('assignment/leads') ?>">Leads Database</a></li>
+                    <li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="far fa-clipboard"></i><span> Assignment <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                        <ul class="submenu">
+                            <li><a href="<?= base_url('assignment/leads') ?>">Leads Database</a></li>
                             <li><a href="<?= base_url('assignment/prospect') ?>">Leads Prospect</a></li>
                             <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li>
-                    </ul>
-                </li>
+                        </ul>
+                    </li>
                 <?php } ?>
-                <?php if ($this->fungsi->module()->transfer_active == 1 ) { ?>
+                <?php if ($this->fungsi->module()->transfer_active == 1) { ?>
 
                     <li>
                         <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
@@ -87,30 +87,32 @@
 
                 <li>
                     <a href="<?= base_url('Ticket') ?>" class="waves-effect">
-                            <i class="fas fa-ticket-alt"></i> <span> Tiket </span>
-                        </a>
-                    </li>
+                        <i class="fas fa-ticket-alt"></i> <span> Tiket </span>
+                    </a>
+                </li>
+                <?php if ($this->fungsi->module()->approval_bonus_active == 1) { ?>
                     <li>
                         <a href="<?= base_url('approval_bonus') ?>" class="waves-effect">
                             <i class="fas fa-ticket-alt"></i> <span> Approval Bonus </span>
                         </a>
                     </li>
-                    
-                    <li class="menu-title">Bantuan HO</li>
-                    
-                    <?php if ($this->fungsi->module()->product_active == 1) { ?>
+                <?php } ?>
+
+                <li class="menu-title">Bantuan HO</li>
+
+                <?php if ($this->fungsi->module()->product_active == 1) { ?>
                     <li>
                         <a href="<?= base_url('product_support') ?>" class="waves-effect">
                             <i class="ion-headphone  noti-icon"></i><span> Product Support </span>
                         </a>
                     </li>
-                    <?php } ?>
+                <?php } ?>
 
-                    <li>
-                        <a href="<?= base_url('nst') ?>" class="waves-effect">
-                            <i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
-                        </a>
-                    </li>
+                <li>
+                    <a href="<?= base_url('nst') ?>" class="waves-effect">
+                        <i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
+                    </a>
+                </li>
             </ul>
         </div>
         <!-- Sidebar -->
