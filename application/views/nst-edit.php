@@ -54,7 +54,7 @@
                                         <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
                                     <?php } ?>
                                     <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
-                                        <a class="btn btn-danger text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+                                        <button type="button" class="btn btn-danger text-size" data-toggle="modal" data-target="#modal">Reject</button>
                                     <?php } ?>
                                 </div>
                             </div>
@@ -65,3 +65,36 @@
         </div>
     </div>
 </div>
+
+<!-- modal reject -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Alasan Reject</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group">
+                        <label class="text-size">Alasan reject</label>
+                        <select class="form-control text-size" name="alasan" id="alasan" required>
+                            <option selected value="">Pilih Alasan</option>
+                            <option value="Administration">Administration</option>
+                            <option value="Capacity">Capacity</option>
+                            <option value="Pefindo">Pefindo</option>
+                            <option value="Others">Others</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Simpan</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal reject -->
