@@ -103,10 +103,10 @@
                                     <select class="form-control text-size" name="jabatan" id="jabatan" required>
                                         <option selected value="">Pilih Jabatan</option>
                                         <option value="1">CMS</option>
-                                        <option value="2">Sharia Head</option>
-                                        <option value="3">Sharia Manager</option>
-                                        <option value="4">Administrator</option>
-                                        <option value="5">Admin Tele</option>
+                                        <option value="2">Head</option>
+                                        <option value="3">Manager</option>
+                                        <option value="4">Head HO</option>
+                                        <option value="5">Admin HO</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -197,7 +197,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
-                                                    <label>Transfer Data</label><br>
+                                                    <label>Transfer Data User</label><br>
                                                     <input type="checkbox" name="transfer_data_active" id="transfer_data" switch="none" />
                                                     <label for="transfer_data" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
@@ -212,6 +212,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div class="form-group mt-3">
                                     <button type="button" class="btn btn-info" id="reset_password">Reset Password</button>
                                 </div>
