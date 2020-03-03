@@ -26,17 +26,17 @@
                             <div class="ml-3 mr-3">
                                 <div class="form-group">
                                     <label for="name">Nama Lengkap</label>
-                                    <input type="text" class="form-control <?= form_error('name') ? 'has-error' : '' ?>" id="name" name="name" value="<?= set_value('name') ?>" placeholder="Nama Lengkap">
+                                    <input type="text" class="form-control <?= form_error('name') ? 'has-error' : '' ?>" id="name" name="name" required value="<?= set_value('name') ?>" placeholder="Nama Lengkap">
                                     <?= form_error('name') ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="nik">Nomor Induk Karyawan</label>
-                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" minlength="6" maxlength="7">
+                                    <input type="text" class="form-control placement text-size number-only <?= form_error('nik') ? 'has-error' : '' ?>" id="nik" name="nik" required value="<?= set_value('nik') ?>" placeholder="Nomor Induk Karyawan" minlength="6" maxlength="7">
                                     <?= form_error('nik') ?>
                                 </div>
                                 <div class="form-group">
                                     <label for="id_branch">Cabang</label>
-                                    <select class="form-control" name="id_branch" id="id_branch">
+                                    <select class="form-control" name="id_branch" id="id_branch" required>
                                         <option selected disabled value="">Pilih Cabang</option>
                                         <?php foreach ($branches->result() as $branch) {  ?>
                                             <option <?= set_value('id_branch') == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
@@ -46,15 +46,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="jabatan">Jabatan</label>
-                                    <select class="form-control" name="jabatan" id="jabatan">
+                                    <select class="form-control" name="jabatan" id="jabatan" required>
                                         <option selected disabled value="">Pilih Jabatan</option>
                                         <option <?= set_value('jabatan') == '1' ? 'selected' : '' ?> value="1">CMS</option>
                                         <option <?= set_value('jabatan') == '2' ? 'selected' : '' ?> value="2">Head</option>
-                                        <option <?= set_value('jabatan') == '4' ? 'selected' : '' ?> value="3">Manager</option>
-                                        <option <?= set_value('jabatan') == '3' ? 'selected' : '' ?> value="4">Head HO</option>
-                                        <option <?= set_value('jabatan') == '5' ? 'selected' : '' ?> value="5">Admini HO</option>
+                                        <option <?= set_value('jabatan') == '3' ? 'selected' : '' ?> value="3">Manager</option>
+                                        <option <?= set_value('jabatan') == '4' ? 'selected' : '' ?> value="4">Admin HO</option>
+                                        <option <?= set_value('jabatan') == '5' ? 'selected' : '' ?> value="5">Head HO</option>
                                     </select>
-                                    <?= form_error('name') ?>
+                                    <?= form_error('jabatan') ?>
                                 </div>
                             </div>
                         </div>
@@ -63,22 +63,22 @@
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Branch</label><br>
-                                        <input type="checkbox" name="branch" id="branch" switch="none" />
-                                        <label for="branch" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="branch_active" id="branch_active" switch="none" />
+                                        <label for="branch_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>User</label><br>
-                                        <input type="checkbox" name="user" id="user" switch="none" />
-                                        <label for="user" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="user_active" id="user_active" switch="none" />
+                                        <label for="user_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Leads</label><br>
-                                        <input type="checkbox" name="leads" id="leads" switch="none" />
-                                        <label for="leads" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="leads_active" id="leads_active" switch="none" />
+                                        <label for="leads_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                             </div>
@@ -86,22 +86,22 @@
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Kerjasama</label><br>
-                                        <input type="checkbox" name="kerjasama" id="kerjasama" switch="none" />
-                                        <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="kerjasama_active" id="kerjasama_active" switch="none" />
+                                        <label for="kerjasama_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Assignment</label><br>
-                                        <input type="checkbox" name="assignment" id="assignment" switch="none" />
-                                        <label for="assignment" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="assignment_active" id="assignment_active" switch="none" />
+                                        <label for="assignment_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Transfer Data User</label><br>
-                                        <input type="checkbox" name="transfer_data" id="Transfer_data" switch="none" />
-                                        <label for="Transfer_data" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="transfer_data_active" id="Transfer_data_active" switch="none" />
+                                        <label for="Transfer_data_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                             </div>
@@ -109,22 +109,31 @@
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Approval Bonus</label><br>
-                                        <input type="checkbox" name="approval_bonus" id="approval_bonus" switch="none" />
-                                        <label for="approval_bonus" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="approval_bonus_active" id="approval_bonus_active" switch="none" />
+                                        <label for="approval_bonus_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Product Support</label><br>
-                                        <input type="checkbox" name="product_support" id="product_support" switch="none" />
-                                        <label for="product_support" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="product_support_active" id="product_support_active" switch="none" />
+                                        <label for="product_support_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group ml-3 mr-3">
                                         <label>NST</label><br>
-                                        <input type="checkbox" name="nst" id="nst" switch="none" />
-                                        <label for="nst" data-on-label="On" data-off-label="Off"></label>
+                                        <input type="checkbox" name="nst_active" id="nst_active" switch="none" />
+                                        <label for="nst_active" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-4">
+                                    <div class="form-group ml-3 mr-3">
+                                        <label>Tiket</label><br>
+                                        <input type="checkbox" name="ticket_active" id="ticket_active" switch="none" />
+                                        <label for="ticket_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
                             </div>

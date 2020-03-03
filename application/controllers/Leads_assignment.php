@@ -28,6 +28,7 @@ class Leads_assignment extends CI_Controller
     }
 
     //Form Create Leads Assignment
+    // Halaman form untuk assign Leads ke cabang
     public function create()
     {
         $data = [
@@ -41,8 +42,8 @@ class Leads_assignment extends CI_Controller
     {
         $where = ['id_leads_assignment' => $id];
         $data = [
-            'data' => $this->leads_assignment->get($where)->row(),
-            'branches' => $this->branch_model->get()
+            'data'      => $this->leads_assignment->get($where)->row(),
+            'branches'  => $this->branch_model->get()
         ];
         $this->template->load('template/index', 'tele-admin-edit', $data);
     }
@@ -88,7 +89,7 @@ class Leads_assignment extends CI_Controller
             ];
             $this->notification_model->create($notification);
 
-            $this->session->set_flashdata("berhasil_simpan", "Data Leads Assigment berhasil disimpan. <a href='#'>Lihat Data</a>");
+            $this->session->set_flashdata("berhasil_simpan", "<div class='alert alert-success'>Data Leads Assignment berhasil disimpan.</div>");
 
             redirect('Assignment/leads');
         } else {
@@ -139,7 +140,17 @@ class Leads_assignment extends CI_Controller
 
         $this->leads_assignment->update($data, $where);
 
-        $this->session->set_flashdata("berhasil_simpan", "Data Leads Assigment berhasil diupdate. <a href='#'>Lihat Data</a>");
+        //Notifikasi
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            'penerima_cabang'   => $post['assign_to'],
+            'type'              => 'Tele Assignment oleh',
+            // 'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+        $this->notification_model->create($notification);
+
+        $this->session->set_flashdata("berhasil_simpan", "<div class='alert alert-success'>Data Leads Assignment berhasil diupdate.</div>");
 
         redirect($post['redirect']);
         // } else {

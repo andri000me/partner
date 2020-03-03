@@ -4,8 +4,8 @@
             <h4 class="page-title">Tele Admin Form</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Assignment</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Lead</a></li>
-                <li class="breadcrumb-item active">Tele Admin Form</li>
+                <li class="breadcrumb-item"><a href="<?= base_url('assignment/leads') ?>">Lead Database</a></li>
+                <li class="breadcrumb-item active">Assignment Leads Edit</li>
             </ol>
         </div>
     </div>
@@ -16,8 +16,8 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Tele Admin Form</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda dalam memaintain partner anda.</p>
-
+                <p class="text-muted m-b-30 text-size">Lorem Ipsum Dolor Sit Amet.</p>
+                <?= $this->session->flashdata("berhasil_simpan"); ?>
                 <form action="<?= base_url('leads_assignment/update') ?>" method="post">
                     <!-- ID User -->
                     <input type="hidden" name="id_user" id="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
@@ -71,13 +71,13 @@
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label>Assign To</label>
-                                <select class="form-control text-size" name="assign_to" id="assign_to" <?= $data->assign_to == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
+                                <select class="form-control text-size" name="assign_to" id="assign_to" <?= $this->fungsi->user_login()->level < 4 ? 'disabled' : '' ?>>
                                     <option selected disabled value="">Pilih Cabang</option>
                                     <?php foreach ($branches->result() as $branch) { ?>
-                                        <option <?= $data->assign_to == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                        <option <?= $data->assign_to == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang == 'Head Office' ? 'Head Office (Tele)' : $branch->nama_cabang ?></option>
                                     <?php } ?>
                                 </select>
-                                <input type="hidden" name="assign_to" value="<?= $data->assign_to ?>" <?= $data->assign_to != $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
+                                <input type="hidden" name="assign_to" value="<?= $data->assign_to ?>" <?= $this->fungsi->user_login()->level >= 4 ? 'disabled' : '' ?>>
                             </div>
                             <div class="form-group mr-3 ml-3">
                                 <label>Status</label>

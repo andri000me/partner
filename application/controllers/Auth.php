@@ -113,10 +113,10 @@ class Auth extends CI_Controller
 		$query = $this->user_model->login($nik);
 		$row = $query->row();
 
-		$aktivitas_terakhir = $this->user_model->last_activity($row->id_user)->row();
+		// $aktivitas_terakhir = $this->user_model->last_activity($row->id_user)->row();
 
 		//cek login
-		if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password && $row->is_active == 1 && $aktivitas_terakhir->terakhir <= 7) {
+		if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password && $row->is_active == 1) {
 			$params = [
 				'id_user' => $row->id_user,
 				'id_branch' => $row->id_branch,
@@ -136,10 +136,6 @@ class Auth extends CI_Controller
 
 			echo "<script>window.location='" . site_url("profile") . "'</script>";
 		} else if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password && $row->is_active == 0) {
-			$this->session->set_flashdata("password_salah", "<div class='text text-danger'>Akun ditemukan namun belum di-aktivasi, silahkan hubungi HO untuk aktivasi.</div>");
-			$this->session->set_flashdata("nik", $nik);
-			redirect('Auth');
-		} else if ($query->num_rows() > 0 && ($row->nik == $nik || $row->email == $nik) && $row->password == $password && $row->is_active == 1 && $aktivitas_terakhir->terakhir >= 7) {
 			$this->session->set_flashdata("password_salah", "<div class='text text-danger'>Akun ditemukan namun belum di-aktivasi, silahkan hubungi HO untuk aktivasi.</div>");
 			$this->session->set_flashdata("nik", $nik);
 			redirect('Auth');

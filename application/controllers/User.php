@@ -72,7 +72,7 @@ class User extends CI_Controller
                 'password'     => md5('bfisyariah'),
                 'id_branch' => $post['id_branch'],
                 'level'     => $post['jabatan'],
-                'jabatan'   => $post['jabatan'] == '1' ? 'CMS' : ($post['jabatan'] == '2' ? 'Sharia Head' : ($post['jabatan'] == '3' ? 'Sharia Manager' : ($post['jabatan'] == '4' ? 'Administrator' : ($post['jabatan'] == '5' ? 'Admin Tele' : '')))),
+                'jabatan'   => $post['jabatan'] == '1' ? 'CMS' : ($post['jabatan'] == '2' ? 'Sharia Head' : ($post['jabatan'] == '3' ? 'Sharia Manager' : ($post['jabatan'] == '4' ? 'Admin HO' : ($post['jabatan'] == '5' ? 'Head HO' : '')))),
                 'is_active' => 1
             ];
 
@@ -90,6 +90,7 @@ class User extends CI_Controller
                 'transfer_active' => isset($post['transfer_data_active']) ? 1 : 0,
                 'kerjasama_active' => isset($post['kerjasama_active']) ? 1 : 0,
                 'approval_bonus_active' => isset($post['approval_bonus_active']) ? 1 : 0,
+                'ticket_active' => isset($post['ticket_active']) ? 1 : 0,
                 'id_user' => $id_user
             ];
 
@@ -111,7 +112,7 @@ class User extends CI_Controller
             'name'      => $post['name'],
             // 'email'     => $post['email'],
             'level'     => $post['jabatan'],
-            'jabatan'   => $post['jabatan'] == '1' ? 'CMS' : ($post['jabatan'] == '2' ? 'Sharia Head' : ($post['jabatan'] == '3' ? 'Sharia Manager' : ($post['jabatan'] == '4' ? 'Administrator' : ($post['jabatan'] == '5' ? 'Admin Tele' : '')))),
+            'jabatan'   => $post['jabatan'] == '1' ? 'CMS' : ($post['jabatan'] == '2' ? 'Sharia Head' : ($post['jabatan'] == '3' ? 'Sharia Manager' : ($post['jabatan'] == '4' ? 'Admin HO' : ($post['jabatan'] == '5' ? 'Head HO' : '')))),
             'id_branch'    => $post['id_branch'],
             'is_active' => $post['is_active'],
         ];
@@ -128,7 +129,8 @@ class User extends CI_Controller
             'assignment_active' => isset($post['assignment_active']) ? 1 : 0,
             'transfer_active' => isset($post['transfer_data_active']) ? 1 : 0,
             'kerjasama_active' => isset($post['kerjasama_active']) ? 1 : 0,
-            'approval_bonus_active' => isset($post['approval_bonus_active']) ? 1 : 0
+            'approval_bonus_active' => isset($post['approval_bonus_active']) ? 1 : 0,
+            'ticket_active' => isset($post['ticket_active']) ? 1 : 0
         ];
 
         $this->module_model->update($data_modul, $where);

@@ -509,7 +509,7 @@
             $('.vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
             $('#btn-data').attr('data-target', '#modal-partner');
-            $('#data_partner').attr('required', 'required');
+            // $('#data_partner').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'Tour & travel') {
@@ -532,56 +532,56 @@
             $('#btn-data').attr('data-target', '#modal-partner')
             $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
             $('#btn-data-agent').attr('data-target', '#modal-agent')
-            $('#data_partner, #data_agent').attr('required', 'required');
+            // $('#data_partner, #data_agent').attr('required', 'required');
             $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
             $('#btn-data').attr('data-target', '#modal-partner');
-            $('#data_partner, #nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
+            $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
             $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
             $('#btn-data').attr('data-target', '#modal-partner');
-            $('#data_partner, #referral_konsumen, #nomor_kontrak').attr('required', 'required');
+            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
         } else if ($('#soa').val() == 'Digital Marketing') {
             $('.vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
+            // $('#data_partner').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'Website BFI Syariah') {
             $('.vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
+            // $('#data_partner').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'Walk In') {
             $('.vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
+            // $('#data_partner').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'Event Promotion') {
             $('.event, .vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner, #nama_event').attr('required', 'required');
+            // $('#data_partner, #nama_event').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'Tele Marketing') {
             $('.vendor, .form, .btn-data').show();
             $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
+            // $('#data_partner').attr('required', 'required');
             $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else {

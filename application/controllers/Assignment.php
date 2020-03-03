@@ -43,7 +43,7 @@ class Assignment extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $where_leads = "cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND status = 'lengkap'";
         } else {
-            $where_leads = 'id_leads IS NOT NULL';
+            $where_leads = "id_leads IS NOT NULL AND status = 'lengkap'";
         }
         $data = [
             'data' => $this->leads_model->get($where_leads),
@@ -67,8 +67,14 @@ class Assignment extends CI_Controller
 
         $data = [
             'data' => $this->leads_assignment->get($where),
-            'belum_update' => $this->leads_assignment->get("status IS NULL AND " . $where),
-            'sudah_update' => $this->leads_assignment->get("status IS NOT NULL AND " . $where)
+
+            //Mengambil data assignment dari Tele ke Cabang
+            'belum_update' => $this->leads_assignment->get("status IS NULL AND assign_to != 46 AND " . $where),
+            'sudah_update' => $this->leads_assignment->get("status IS NOT NULL AND assign_to != 46 AND " . $where),
+
+            //Mengambil data assignment dari HO ke Tele
+            'belum_update_tele' => $this->leads_assignment->get("status IS NULL AND assign_to = 46"),
+            'sudah_update_tele' => $this->leads_assignment->get("status IS NOT NULL AND assign_to = 46")
         ];
 
         $this->template->load('template/index', 'assignment-lead-database', $data);

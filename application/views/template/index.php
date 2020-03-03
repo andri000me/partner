@@ -70,7 +70,7 @@
             </div>
 
             <footer class="footer mt-5">
-                <p class="text-size">2019 BFI Syariah. Crafted with by Themesbrand</p>
+                <p class="text-size"><?= date('Y') ?> BFI Syariah</p>
             </footer>
 
         </div>
