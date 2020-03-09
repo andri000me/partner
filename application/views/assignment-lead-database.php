@@ -10,7 +10,7 @@
     </div>
 </div>
 <div class="row">
-    <?php if ($this->fungsi->user_login()->level == 5) { ?>
+    <?php if ($this->fungsi->user_login()->level > 3) { ?>
         <div class="col-md-12 mt-4">
             <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
         </div>
@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($data->result() as $leads_assignemnt) { ?>
+                                <?php foreach ($belum_update->result() as $leads_assignemnt) { ?>
                                     <tr>
                                         <td>
                                             <?= $leads_assignemnt->nama ?>
@@ -86,7 +86,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($data->result() as $leads_assignemnt) { ?>
+                                <?php foreach ($sudah_update->result() as $leads_assignemnt) { ?>
                                     <tr>
                                         <td>
                                             <?= $leads_assignemnt->nama ?>

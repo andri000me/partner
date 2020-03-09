@@ -66,7 +66,9 @@ class Assignment extends CI_Controller
         }
 
         $data = [
-            'data' => $this->leads_assignment->get($where)
+            'data' => $this->leads_assignment->get($where),
+            'belum_update' => $this->leads_assignment->get("status IS NULL AND " . $where),
+            'sudah_update' => $this->leads_assignment->get("status IS NOT NULL AND " . $where)
         ];
 
         $this->template->load('template/index', 'assignment-lead-database', $data);
