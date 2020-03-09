@@ -72,7 +72,7 @@
                         <ul class="submenu">
                             <li><a href="<?= base_url('assignment/leads') ?>">Leads Database</a></li>
                             <li><a href="<?= base_url('assignment/prospect') ?>">Leads Prospect</a></li>
-                            <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li>
+                            <!-- <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li> -->
                         </ul>
                     </li>
                 <?php } ?>

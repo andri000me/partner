@@ -89,7 +89,7 @@
                                     <option <?= $data->status == 'Tidak Valid' ? 'selected' : '' ?> value="Tidak Valid">Tidak Valid</option>
                                     <option <?= $data->status == 'Tidak Memenuhi Klasifikasi' ? 'selected' : '' ?> value="Tidak Memenuhi Klasifikasi">Tidak Memenuhi Klasifikasi</option>
                                 </select>
-                                <input type="hidden" name="status" value="<?= $data->assign_to ?>" <?= $data->assign_to == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
+                                <input type="hidden" name="status" value="<?= $data->status ?>" <?= $data->assign_to == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?>>
                             </div>
                             <div class="form-group ml-3 mr-3">
                                 <label class="text-size">Catatan</label>

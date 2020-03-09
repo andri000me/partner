@@ -103,7 +103,7 @@
                                             <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Tele Assignment oleh') { ?>
-                                            <span class="fas fa-flag mr-2"></span></span><?= $notif->cabang_asal ?>
+                                            <span class="fas fa-clipboard mr-2"></span></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                     </td>
                                     <td>
