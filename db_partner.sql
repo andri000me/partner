@@ -1,7 +1,7 @@
 -- --------------------------------------------------------
--- Host:                         partner.bfisyariah.id
--- Server version:               10.2.30-MariaDB - MariaDB Server
--- Server OS:                    Linux
+-- Host:                         127.0.0.1
+-- Server version:               10.4.11-MariaDB - mariadb.org binary distribution
+-- Server OS:                    Win64
 -- HeidiSQL Version:             10.3.0.5771
 -- --------------------------------------------------------
 
@@ -12,11 +12,11 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 
--- Dumping database structure for u5487321_partner
-CREATE DATABASE IF NOT EXISTS `u5487321_partner` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `u5487321_partner`;
+-- Dumping database structure for db_partner
+CREATE DATABASE IF NOT EXISTS `db_partner` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `db_partner`;
 
--- Dumping structure for table u5487321_partner.agents
+-- Dumping structure for table db_partner.agents
 CREATE TABLE IF NOT EXISTS `agents` (
   `id_agent` int(11) NOT NULL AUTO_INCREMENT,
   `nama_lengkap` varchar(255) DEFAULT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE IF NOT EXISTS `agents` (
   KEY `id_branch` (`id_branch`)
 ) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1 COMMENT='Tabel Agent';
 
--- Dumping data for table u5487321_partner.agents: ~11 rows (approximately)
+-- Dumping data for table db_partner.agents: ~14 rows (approximately)
 /*!40000 ALTER TABLE `agents` DISABLE KEYS */;
 INSERT INTO `agents` (`id_agent`, `nama_lengkap`, `jenis_kelamin`, `telepon`, `email`, `tanggal_lahir`, `no_ktp`, `no_npwp`, `pekerjaan`, `jenis_pekerjaan`, `jenis_agent`, `status_kepemilikan_rumah`, `income`, `punya_pinjaman`, `afiliasi_travel`, `agent_konvensional`, `hubungan_karyawan_bfi`, `konsumen_bfi`, `rekening_bank`, `nama_bank`, `cabang_bank`, `atas_nama`, `ktp`, `npwp`, `buku_tabungan`, `foto_selfie`, `form_f100`, `status`, `created_at`, `updated_at`, `id_user`, `id_branch`) VALUES
 	(32, 'Hasnah', 'NULL', '081241965933', 'hasnahsaja66@gmail.com', '1970/9/22', '7371094202700009', '642846976805000', 'Freelance', 'Marketing Travel', 'Syariah Agent', 'Milik Sendiri', 3000000, 'Tidak', 'Ya', 'Ya', 'Tidak Ada', 'Tidak Pernah', '0458795256', 'Bank BNI', 'Mattoangin', 'Hasnah', 'WhatsApp_Image_2019-10-12_at_10.16.30.jpeg', 'WhatsApp_Image_2019-10-12_at_10.16.30(2).jpeg', 'WhatsApp_Image_2019-10-12_at_10.16.30(1).jpeg', 'WhatsApp_Image_2019-10-12_at_10.16.301.jpeg', 'PKS_BA_HASNAH.pdf', 'lengkap', '2020-02-03 12:35:53', '2020-02-03 12:35:53', 165, 22),
@@ -77,7 +77,7 @@ INSERT INTO `agents` (`id_agent`, `nama_lengkap`, `jenis_kelamin`, `telepon`, `e
 	(45, 'Akhmad saryono', 'NULL', '085218169089', 'akhmadsaryono0@gmail.com', '1970-02-15', '3215131502700005', '357769744433000', 'Swasta', 'Jualan kacamat', 'Syariah Agent', 'Milik Sendiri', 1000000, 'Tidak', 'Tidak', 'Tidak', 'Tidak Ada', 'Tidak Pernah', '3780124848', 'BCA', 'Cikampek', 'Akhmad saryono', 'IMG-20200122-WA0031.jpg', 'IMG-20200122-WA0029.jpg', 'IMG-20200122-WA0032.jpg', 'IMG_20191130_102036.jpg', 'F-100_akhmad_saryono.pdf', 'lengkap', '2020-02-14 10:20:50', '2020-02-14 10:20:50', 203, 17);
 /*!40000 ALTER TABLE `agents` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.agent_activities
+-- Dumping structure for table db_partner.agent_activities
 CREATE TABLE IF NOT EXISTS `agent_activities` (
   `id_agent_activity` int(11) NOT NULL AUTO_INCREMENT,
   `activity` text NOT NULL,
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `agent_activities` (
   CONSTRAINT `agent_activities_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=latin1 COMMENT='Tabel Agent Activities';
 
--- Dumping data for table u5487321_partner.agent_activities: ~11 rows (approximately)
+-- Dumping data for table db_partner.agent_activities: ~17 rows (approximately)
 /*!40000 ALTER TABLE `agent_activities` DISABLE KEYS */;
 INSERT INTO `agent_activities` (`id_agent_activity`, `activity`, `date_activity`, `id_agent`, `id_user`) VALUES
 	(68, 'Data Agent telah dibuat', '2020-02-03 12:35:53', 32, 165),
@@ -113,7 +113,7 @@ INSERT INTO `agent_activities` (`id_agent_activity`, `activity`, `date_activity`
 	(84, 'Data Agent telah dibuat', '2020-02-14 10:20:54', 45, 203);
 /*!40000 ALTER TABLE `agent_activities` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.approval_bonuses
+-- Dumping structure for table db_partner.approval_bonuses
 CREATE TABLE IF NOT EXISTS `approval_bonuses` (
   `id_approval_bonus` int(11) NOT NULL AUTO_INCREMENT,
   `leads_id` varchar(16) NOT NULL DEFAULT '',
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `approval_bonuses` (
   UNIQUE KEY `leads_id` (`leads_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table u5487321_partner.approval_bonuses: ~2 rows (approximately)
+-- Dumping data for table db_partner.approval_bonuses: ~3 rows (approximately)
 /*!40000 ALTER TABLE `approval_bonuses` DISABLE KEYS */;
 INSERT INTO `approval_bonuses` (`id_approval_bonus`, `leads_id`, `requester`, `cabang`, `nama_konsumen`, `tanggal_dibuat`, `produk`, `sumber_lead`, `nama_pemberi_lead`, `nomor_kontrak`, `nomor_rekening`, `atas_nama`, `nama_bank`, `npwp`, `upload_file`, `created_at`, `updated_at`, `id_user`, `id_branch`) VALUES
 	(4, '202001SLOS19920', 164, 7, 'Romli Saputra', '2020-01-16 15:12:02', 'My Talim', 'Walk In', NULL, '0000000000', '0000000000000000', 'Romli', 'BCA', '000000000000000', NULL, '2020-01-29 09:44:31', '2020-01-29 10:47:31', 164, 7),
@@ -146,7 +146,7 @@ INSERT INTO `approval_bonuses` (`id_approval_bonus`, `leads_id`, `requester`, `c
 	(6, '201910SLOS001906', 0, 0, '', '0000-00-00 00:00:00', '', '', NULL, '7481910043', '1330014054308', 'FISKA MENTALIS', 'MANDIRI', '320108680195000', NULL, '2020-02-13 09:33:52', '2020-02-13 09:33:52', 50, 6);
 /*!40000 ALTER TABLE `approval_bonuses` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.branches
+-- Dumping structure for table db_partner.branches
 CREATE TABLE IF NOT EXISTS `branches` (
   `id_branch` int(3) NOT NULL AUTO_INCREMENT,
   `nama_cabang` varchar(40) DEFAULT NULL,
@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS `branches` (
   PRIMARY KEY (`id_branch`)
 ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC COMMENT='Tabel Cabang';
 
--- Dumping data for table u5487321_partner.branches: ~46 rows (approximately)
+-- Dumping data for table db_partner.branches: ~46 rows (approximately)
 /*!40000 ALTER TABLE `branches` DISABLE KEYS */;
 INSERT INTO `branches` (`id_branch`, `nama_cabang`, `has_superior`) VALUES
 	(1, 'Balikpapan Syariah', '2'),
@@ -205,7 +205,7 @@ INSERT INTO `branches` (`id_branch`, `nama_cabang`, `has_superior`) VALUES
 	(46, 'Head Office', '0');
 /*!40000 ALTER TABLE `branches` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.comments
+-- Dumping structure for table db_partner.comments
 CREATE TABLE IF NOT EXISTS `comments` (
   `id_comment` int(11) NOT NULL AUTO_INCREMENT,
   `comment` text NOT NULL,
@@ -222,11 +222,11 @@ CREATE TABLE IF NOT EXISTS `comments` (
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1718 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC COMMENT='Tabel Komentar';
 
--- Dumping data for table u5487321_partner.comments: ~0 rows (approximately)
+-- Dumping data for table db_partner.comments: ~0 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.leads
+-- Dumping structure for table db_partner.leads
 CREATE TABLE IF NOT EXISTS `leads` (
   `id_leads` int(11) NOT NULL AUTO_INCREMENT,
   `leads_id` varchar(255) DEFAULT NULL,
@@ -258,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `leads` (
   CONSTRAINT `leads_ibfk_3` FOREIGN KEY (`pic_ttd`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Prospek';
 
--- Dumping data for table u5487321_partner.leads: ~9 rows (approximately)
+-- Dumping data for table db_partner.leads: ~24 rows (approximately)
 /*!40000 ALTER TABLE `leads` DISABLE KEYS */;
 INSERT INTO `leads` (`id_leads`, `leads_id`, `no_ktp`, `follow_up_by`, `cross_branch`, `cabang_cross`, `surveyor`, `pic_ttd`, `appeal_nst`, `nilai_funding`, `sudah_funding`, `status`, `ktp`, `selfie_foto`, `foto_penyedia_jasa`, `foto_usaha`, `created_at`, `updated_at`, `id_mapping_leads`) VALUES
 	(62, '202001SLOS19921', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Belum', 'draft', NULL, NULL, NULL, NULL, '2020-01-16 16:07:07', '2020-01-16 16:07:07', 61),
@@ -287,7 +287,7 @@ INSERT INTO `leads` (`id_leads`, `leads_id`, `no_ktp`, `follow_up_by`, `cross_br
 	(85, '202002SLOS001361', '6303024309870000', 'Telepon', 'Tidak', NULL, NULL, NULL, NULL, NULL, 'Belum', 'draft', NULL, NULL, NULL, NULL, '2020-02-20 16:17:28', '2020-02-20 16:17:28', 205);
 /*!40000 ALTER TABLE `leads` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.leads_activities
+-- Dumping structure for table db_partner.leads_activities
 CREATE TABLE IF NOT EXISTS `leads_activities` (
   `id_lead_activity` int(11) NOT NULL AUTO_INCREMENT,
   `activity` text NOT NULL,
@@ -297,7 +297,7 @@ CREATE TABLE IF NOT EXISTS `leads_activities` (
   PRIMARY KEY (`id_lead_activity`)
 ) ENGINE=InnoDB AUTO_INCREMENT=212 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Activities';
 
--- Dumping data for table u5487321_partner.leads_activities: ~10 rows (approximately)
+-- Dumping data for table db_partner.leads_activities: ~38 rows (approximately)
 /*!40000 ALTER TABLE `leads_activities` DISABLE KEYS */;
 INSERT INTO `leads_activities` (`id_lead_activity`, `activity`, `date_activity`, `id_leads`, `id_user`) VALUES
 	(174, 'Data leads telah dibuat', '2020-01-16 16:07:07', 62, 11),
@@ -340,7 +340,7 @@ INSERT INTO `leads_activities` (`id_lead_activity`, `activity`, `date_activity`,
 	(211, 'Data leads telah dibuat', '2020-02-20 16:17:28', 85, 186);
 /*!40000 ALTER TABLE `leads_activities` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.leads_assignments
+-- Dumping structure for table db_partner.leads_assignments
 CREATE TABLE IF NOT EXISTS `leads_assignments` (
   `id_leads_assignment` int(11) NOT NULL AUTO_INCREMENT,
   `nama` varchar(255) DEFAULT NULL,
@@ -358,9 +358,9 @@ CREATE TABLE IF NOT EXISTS `leads_assignments` (
   `id_branch` int(11) DEFAULT NULL COMMENT 'Foreign Key id branch',
   PRIMARY KEY (`id_leads_assignment`),
   UNIQUE KEY `telepon` (`telepon`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table u5487321_partner.leads_assignments: ~8 rows (approximately)
+-- Dumping data for table db_partner.leads_assignments: ~9 rows (approximately)
 /*!40000 ALTER TABLE `leads_assignments` DISABLE KEYS */;
 INSERT INTO `leads_assignments` (`id_leads_assignment`, `nama`, `telepon`, `kota`, `produk`, `detail_produk`, `nilai_pembiayaan`, `assign_to`, `status`, `catatan`, `created_at`, `updated_at`, `id_user`, `id_branch`) VALUES
 	(1, 'Ibrahim', '08780997580521', 'Tangerang', 'My Faedah', 'Berfaedah', 125000000000, 2, 'Tidak Valid', 'Bismillah', NULL, '2020-01-15 16:34:14', '1', 1),
@@ -370,10 +370,11 @@ INSERT INTO `leads_assignments` (`id_leads_assignment`, `nama`, `telepon`, `kota
 	(6, 'Pipil', '085658748484', 'Tangerang', 'My CarS', 'Mazda 2 Type R', 350000000, 42, '42', '', '2020-02-05 15:13:17', '2020-02-05 15:13:25', '234', 46),
 	(7, 'Pipil', '0856987465853', 'Tangerang', 'My Talim', 'Kuliah', 350000000, 1, 'Tidak tertarik', 'Hanya tanya saja', '2020-02-05 15:14:03', '2020-02-05 15:14:53', '234', 46),
 	(8, 'rapi irawan', '081202021513', 'bogor', 'My Hajat', 'wo natasha', 40000000, 6, '6', '', '2020-02-06 13:49:24', '2020-02-06 13:49:55', '234', 46),
-	(9, 'yogi', '0812124578121', 'bogor', 'My Hajat', 'wo natasha', 40000000, 6, NULL, NULL, '2020-02-06 13:52:44', '2020-02-06 13:52:44', '234', 46);
+	(9, 'yogi', '0812124578121', 'bogor', 'My Hajat', 'wo natasha', 40000000, 46, NULL, NULL, '2020-02-06 13:52:44', '2020-02-06 13:52:44', '234', 46),
+	(10, 'Mba Rara', '087808892622', 'Jawa', 'My Talim', 'My Talim', 7000000, 7, 'Pilih Status', 'Belum diisi apa2', '2020-03-03 11:13:48', '2020-03-03 15:58:05', '17', 46);
 /*!40000 ALTER TABLE `leads_assignments` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.leads_follow_up
+-- Dumping structure for table db_partner.leads_follow_up
 CREATE TABLE IF NOT EXISTS `leads_follow_up` (
   `id_leads_follow_up` int(11) NOT NULL AUTO_INCREMENT,
   `follow_up_by` varchar(255) DEFAULT NULL COMMENT 'Kunjungan, Whatsapp, Telepon dll',
@@ -388,7 +389,7 @@ CREATE TABLE IF NOT EXISTS `leads_follow_up` (
   CONSTRAINT `leads_follow_up_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Follow Up';
 
--- Dumping data for table u5487321_partner.leads_follow_up: ~10 rows (approximately)
+-- Dumping data for table db_partner.leads_follow_up: ~29 rows (approximately)
 /*!40000 ALTER TABLE `leads_follow_up` DISABLE KEYS */;
 INSERT INTO `leads_follow_up` (`id_leads_follow_up`, `follow_up_by`, `date_follow_up`, `catatan`, `id_mapping_leads`, `id_user`) VALUES
 	(105, 'Kunjungan', '2020-01-16 16:16:01', NULL, 61, 11),
@@ -422,7 +423,7 @@ INSERT INTO `leads_follow_up` (`id_leads_follow_up`, `follow_up_by`, `date_follo
 	(133, 'Kunjungan', '2020-02-19 08:12:37', NULL, 145, 137);
 /*!40000 ALTER TABLE `leads_follow_up` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.login_log
+-- Dumping structure for table db_partner.login_log
 CREATE TABLE IF NOT EXISTS `login_log` (
   `id_login_log` int(11) NOT NULL AUTO_INCREMENT,
   `login_date` datetime NOT NULL,
@@ -431,9 +432,9 @@ CREATE TABLE IF NOT EXISTS `login_log` (
   PRIMARY KEY (`id_login_log`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=991 DEFAULT CHARSET=latin1 COMMENT='Table Catatan login User';
+) ENGINE=InnoDB AUTO_INCREMENT=1009 DEFAULT CHARSET=latin1 COMMENT='Table Catatan login User';
 
--- Dumping data for table u5487321_partner.login_log: ~466 rows (approximately)
+-- Dumping data for table db_partner.login_log: ~978 rows (approximately)
 /*!40000 ALTER TABLE `login_log` DISABLE KEYS */;
 INSERT INTO `login_log` (`id_login_log`, `login_date`, `id_user`, `keterangan`) VALUES
 	(1, '0000-00-00 00:00:00', 26, ''),
@@ -1395,10 +1396,28 @@ INSERT INTO `login_log` (`id_login_log`, `login_date`, `id_user`, `keterangan`) 
 	(987, '2020-03-02 14:23:40', 244, 'login'),
 	(988, '2020-03-02 14:40:49', 181, 'login'),
 	(989, '2020-03-02 14:41:26', 17, 'login'),
-	(990, '2020-03-02 14:42:00', 181, 'login');
+	(990, '2020-03-02 14:42:00', 181, 'login'),
+	(991, '2020-03-03 10:06:59', 17, 'login'),
+	(992, '2020-03-03 11:19:52', 244, 'login'),
+	(993, '2020-03-03 13:44:27', 247, 'login'),
+	(994, '2020-03-03 13:51:10', 247, 'login'),
+	(995, '2020-03-03 13:52:38', 17, 'login'),
+	(996, '2020-03-03 14:14:42', 247, 'login'),
+	(997, '2020-03-03 14:28:25', 17, 'login'),
+	(998, '2020-03-03 15:54:13', 17, 'login'),
+	(999, '2020-03-03 16:00:08', 247, 'login'),
+	(1000, '2020-03-03 16:50:55', 244, 'login'),
+	(1001, '2020-03-04 08:32:12', 247, 'login'),
+	(1002, '2020-03-04 08:53:31', 247, 'login'),
+	(1003, '2020-03-04 08:54:41', 247, 'login'),
+	(1004, '2020-03-04 09:09:05', 17, 'login'),
+	(1005, '2020-03-04 09:37:56', 247, 'login'),
+	(1006, '2020-03-04 13:24:12', 247, 'login'),
+	(1007, '2020-03-09 08:49:12', 247, 'login'),
+	(1008, '2020-03-09 09:47:56', 17, 'login');
 /*!40000 ALTER TABLE `login_log` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.maintain_partners
+-- Dumping structure for table db_partner.maintain_partners
 CREATE TABLE IF NOT EXISTS `maintain_partners` (
   `id_maintain` int(11) NOT NULL AUTO_INCREMENT,
   `date_maintain` datetime DEFAULT NULL,
@@ -1413,7 +1432,7 @@ CREATE TABLE IF NOT EXISTS `maintain_partners` (
   CONSTRAINT `maintain_partners_ibfk_1` FOREIGN KEY (`id_partner`) REFERENCES `partners` (`id_partner`)
 ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 COMMENT='Tabel Partner Maintain';
 
--- Dumping data for table u5487321_partner.maintain_partners: ~0 rows (approximately)
+-- Dumping data for table db_partner.maintain_partners: ~3 rows (approximately)
 /*!40000 ALTER TABLE `maintain_partners` DISABLE KEYS */;
 INSERT INTO `maintain_partners` (`id_maintain`, `date_maintain`, `photo_activity`, `jenis_kegiatan`, `catatan`, `created_at`, `updated_at`, `id_partner`) VALUES
 	(20, '2020-02-03 11:23:41', NULL, 'Pilih Jenis Kegiatan', '', '2020-02-03 11:23:41', '2020-02-03 11:23:41', 69),
@@ -1421,7 +1440,7 @@ INSERT INTO `maintain_partners` (`id_maintain`, `date_maintain`, `photo_activity
 	(22, '2020-02-04 09:43:22', 'selfie.jpeg', 'Follow Up Leads', '', '2020-02-04 09:43:22', '2020-02-04 09:43:22', 75);
 /*!40000 ALTER TABLE `maintain_partners` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.mapping_leads
+-- Dumping structure for table db_partner.mapping_leads
 CREATE TABLE IF NOT EXISTS `mapping_leads` (
   `id_mapping_leads` int(11) NOT NULL AUTO_INCREMENT,
   `nama_konsumen` varchar(255) DEFAULT NULL,
@@ -1454,7 +1473,7 @@ CREATE TABLE IF NOT EXISTS `mapping_leads` (
   CONSTRAINT `mapping_leads_ibfk_4` FOREIGN KEY (`id_agent`) REFERENCES `agents` (`id_agent`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Database';
 
--- Dumping data for table u5487321_partner.mapping_leads: ~132 rows (approximately)
+-- Dumping data for table db_partner.mapping_leads: ~172 rows (approximately)
 /*!40000 ALTER TABLE `mapping_leads` DISABLE KEYS */;
 INSERT INTO `mapping_leads` (`id_mapping_leads`, `nama_konsumen`, `telepon`, `soa`, `produk`, `detail_produk`, `nama_event`, `nama_partner`, `nama_agent`, `created_at`, `updated_at`, `id_branch`, `id_user`, `id_mapping`, `id_agent`, `nik_egc`, `posisi_egc`, `cabang_egc`, `nomor_kontrak`, `referral_konsumen`, `foto_usaha`) VALUES
 	(61, 'Eko Supriatman', '089828302802', 'Direct Selling', 'My CarS', 'Mobil ku', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-16 14:51:42', '2020-01-16 16:16:01', 7, 164, 37, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -1631,7 +1650,7 @@ INSERT INTO `mapping_leads` (`id_mapping_leads`, `nama_konsumen`, `telepon`, `so
 	(236, 'rodiyah', '085813461677', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-03-02 09:15:03', '2020-03-02 09:15:03', 26, 63, 138, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 /*!40000 ALTER TABLE `mapping_leads` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.mapping_partners
+-- Dumping structure for table db_partner.mapping_partners
 CREATE TABLE IF NOT EXISTS `mapping_partners` (
   `id_mapping` int(11) NOT NULL AUTO_INCREMENT,
   `nama_usaha` varchar(255) NOT NULL,
@@ -1655,7 +1674,7 @@ CREATE TABLE IF NOT EXISTS `mapping_partners` (
   CONSTRAINT `mapping_partners_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=294 DEFAULT CHARSET=latin1 COMMENT='Tabel Partner Mapping';
 
--- Dumping data for table u5487321_partner.mapping_partners: ~62 rows (approximately)
+-- Dumping data for table db_partner.mapping_partners: ~200 rows (approximately)
 /*!40000 ALTER TABLE `mapping_partners` DISABLE KEYS */;
 INSERT INTO `mapping_partners` (`id_mapping`, `nama_usaha`, `bidang_usaha`, `bentuk_usaha`, `alamat`, `telepon`, `email`, `kategori_produk`, `catatan`, `foto_usaha_mapping`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
 	(37, 'CV Perseketuan Komanditer', 'Percetakan', 'Perorangan', 'Jl. nusantara 12', '089828302802', 'cv@gmail.com', 'My Safar', 'mantep', 'steam_error_2.PNG', '2020-01-16 14:08:58', '2020-01-16 14:08:58', 7, 11),
@@ -1860,7 +1879,7 @@ INSERT INTO `mapping_partners` (`id_mapping`, `nama_usaha`, `bidang_usaha`, `ben
 	(293, 'Kelurahan panjang jiwo', 'Kelurahan', 'Perorangan', 'Jl. Raya Saronojiwo No.45, Panjang Jiwo', '08733539876', 'kelurahanpanjangjiwo@gmail.com', 'My Ihram', '', 'images_(3).jpeg', '2020-02-29 10:37:33', '2020-02-29 10:37:33', 41, 139);
 /*!40000 ALTER TABLE `mapping_partners` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.modules
+-- Dumping structure for table db_partner.modules
 CREATE TABLE IF NOT EXISTS `modules` (
   `branch_active` int(1) NOT NULL DEFAULT 0,
   `user_active` int(1) DEFAULT 0,
@@ -1871,223 +1890,226 @@ CREATE TABLE IF NOT EXISTS `modules` (
   `transfer_active` int(1) DEFAULT 0,
   `product_active` int(1) DEFAULT 0,
   `approval_bonus_active` int(1) DEFAULT 0,
+  `ticket_active` int(1) DEFAULT 0,
   `id_user` int(11) DEFAULT 0,
   UNIQUE KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table u5487321_partner.modules: ~193 rows (approximately)
+-- Dumping data for table db_partner.modules: ~205 rows (approximately)
 /*!40000 ALTER TABLE `modules` DISABLE KEYS */;
-INSERT INTO `modules` (`branch_active`, `user_active`, `leads_active`, `kerjasama_active`, `assignment_active`, `nst_active`, `transfer_active`, `product_active`, `approval_bonus_active`, `id_user`) VALUES
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 124),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 174),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 192),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 154),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 155),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 156),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 157),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 159),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 220),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 30),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 35),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 186),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 118),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 131),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 153),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 123),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 158),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 160),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 163),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 173),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 188),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 209),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 50),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 53),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 64),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 26),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 32),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 60),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 61),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 62),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 164),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 185),
-	(0, 0, 0, 0, 1, 1, 0, 1, 1, 227),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 231),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 107),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 169),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 170),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 41),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 54),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 55),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 113),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 114),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 152),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 179),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 200),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 47),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 48),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 65),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 199),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 219),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 86),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 88),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 162),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 202),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 119),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 127),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 134),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 79),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 80),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 183),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 44),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 45),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 191),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 31),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 176),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 177),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 178),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 59),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 121),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 125),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 126),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 147),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 203),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 204),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 92),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 99),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 103),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 116),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 212),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 66),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 67),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 180),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 196),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 197),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 128),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 145),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 165),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 167),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 201),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 230),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 132),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 146),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 150),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 70),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 75),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 182),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 140),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 141),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 142),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 143),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 189),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 211),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 40),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 42),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 63),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 161),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 194),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 71),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 72),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 73),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 108),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 148),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 149),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 187),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 83),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 100),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 101),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 208),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 122),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 135),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 136),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 137),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 144),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 38),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 95),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 96),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 97),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 98),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 117),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 133),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 151),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 195),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 109),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 110),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 111),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 198),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 89),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 90),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 112),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 115),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 84),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 85),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 210),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 74),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 76),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 77),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 29),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 34),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 36),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 37),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 193),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 104),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 105),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 106),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 171),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 46),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 58),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 82),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 190),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 207),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 120),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 129),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 130),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 138),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 139),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 49),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 51),
-	(0, 0, 1, 1, 0, 1, 0, 0, 0, 52),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 56),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 232),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 68),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 78),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 102),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 33),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 205),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 206),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 28),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 91),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 93),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 94),
-	(0, 0, 0, 0, 1, 0, 0, 0, 0, 1),
-	(0, 0, 0, 0, 1, 1, 0, 1, 0, 2),
-	(1, 1, 1, 1, 1, 1, 1, 1, 1, 11),
-	(0, 0, 0, 0, 0, 1, 0, 0, 0, 16),
-	(1, 1, 0, 0, 0, 1, 0, 0, 1, 17),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 23),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 168),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 172),
-	(0, 0, 0, 0, 1, 1, 0, 0, 1, 181),
-	(0, 0, 0, 0, 0, 0, 0, 0, 1, 184),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 233),
-	(0, 0, 1, 0, 1, 0, 0, 0, 0, 234),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 235),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 236),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 237),
-	(0, 0, 1, 1, 1, 1, 0, 1, 1, 238),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 239),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 240),
-	(0, 0, 1, 1, 1, 1, 1, 1, 1, 241),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 242),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 243),
-	(0, 1, 0, 0, 1, 0, 0, 0, 0, 244),
-	(0, 0, 0, 0, 0, 0, 0, 0, 0, 245);
+INSERT INTO `modules` (`branch_active`, `user_active`, `leads_active`, `kerjasama_active`, `assignment_active`, `nst_active`, `transfer_active`, `product_active`, `approval_bonus_active`, `ticket_active`, `id_user`) VALUES
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 124),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 174),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 192),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 154),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 155),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 156),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 157),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 159),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 220),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 30),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 35),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 186),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 118),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 131),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 153),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 123),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 158),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 160),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 163),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 173),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 188),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 209),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 50),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 53),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 64),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 26),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 32),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 60),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 61),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 62),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 164),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 185),
+	(0, 0, 0, 0, 1, 1, 0, 1, 1, 1, 227),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 231),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 107),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 169),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 170),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 41),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 54),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 55),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 113),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 114),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 152),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 179),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 200),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 47),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 48),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 65),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 199),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 219),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 86),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 88),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 162),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 202),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 119),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 127),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 134),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 79),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 80),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 183),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 44),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 45),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 191),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 31),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 176),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 177),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 178),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 59),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 121),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 125),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 126),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 147),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 203),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 204),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 92),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 99),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 103),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 116),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 212),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 66),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 67),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 180),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 196),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 197),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 128),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 145),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 165),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 167),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 201),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 230),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 132),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 146),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 150),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 70),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 75),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 182),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 140),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 141),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 142),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 143),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 189),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 211),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 40),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 42),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 63),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 161),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 194),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 71),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 72),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 73),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 108),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 148),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 149),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 187),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 83),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 100),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 101),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 208),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 122),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 135),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 136),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 137),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 144),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 38),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 95),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 96),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 97),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 98),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 117),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 133),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 151),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 195),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 109),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 110),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 111),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 198),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 89),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 90),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 112),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 115),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 84),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 85),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 210),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 74),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 76),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 77),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 29),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 34),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 36),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 37),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 193),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 104),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 105),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 106),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 171),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 46),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 58),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 82),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 190),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 207),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 120),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 129),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 130),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 138),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 139),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 49),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 51),
+	(0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 52),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 56),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 232),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 68),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 78),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 102),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 33),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 205),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 206),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 28),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 91),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 93),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 94),
+	(0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1),
+	(0, 0, 0, 0, 1, 1, 0, 1, 0, 1, 2),
+	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11),
+	(0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 16),
+	(1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 17),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 23),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 168),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 172),
+	(0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 181),
+	(0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 184),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 233),
+	(0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 234),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 235),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 236),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 237),
+	(0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 238),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 239),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 240),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 241),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 242),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 243),
+	(0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 244),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 245),
+	(0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 246),
+	(0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 247);
 /*!40000 ALTER TABLE `modules` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.notifications
+-- Dumping structure for table db_partner.notifications
 CREATE TABLE IF NOT EXISTS `notifications` (
   `id_notification` int(11) NOT NULL AUTO_INCREMENT,
   `has_read` enum('0','1') DEFAULT '0',
-  `type` enum('Disetujui oleh Head','Disetujui oleh Manager','Disetujui oleh Admin HO','Komentar oleh','Ditolak oleh','Ditanda tangan oleh','Cross Branch oleh') DEFAULT NULL,
+  `type` enum('Disetujui oleh Head','Disetujui oleh Manager','Disetujui oleh Admin HO','Komentar oleh','Ditolak oleh','Ditanda tangan oleh','Cross Branch oleh','Tele Assignment oleh') DEFAULT NULL,
   `created_at` varchar(255) DEFAULT NULL,
   `penerima` int(11) DEFAULT NULL COMMENT 'id_user penerima',
   `penerima_cabang` int(11) DEFAULT NULL COMMENT 'id_cabang penerima',
@@ -2100,9 +2122,9 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`penerima`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`pengirim`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_3` FOREIGN KEY (`id_ticket`) REFERENCES `tickets` (`id_ticket`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=307 DEFAULT CHARSET=latin1 COMMENT='Tabel Notifikasi';
+) ENGINE=InnoDB AUTO_INCREMENT=311 DEFAULT CHARSET=latin1 COMMENT='Tabel Notifikasi';
 
--- Dumping data for table u5487321_partner.notifications: ~44 rows (approximately)
+-- Dumping data for table db_partner.notifications: ~50 rows (approximately)
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 INSERT INTO `notifications` (`id_notification`, `has_read`, `type`, `created_at`, `penerima`, `penerima_cabang`, `pengirim`, `id_ticket`) VALUES
 	(261, '1', 'Cross Branch oleh', '2020-01-16 16:16:01', NULL, 2, 11, 95),
@@ -2111,12 +2133,12 @@ INSERT INTO `notifications` (`id_notification`, `has_read`, `type`, `created_at`
 	(264, '1', 'Disetujui oleh Admin HO', '2020-01-27 11:39:47', 26, 7, 1, 97),
 	(265, '1', 'Disetujui oleh Admin HO', '2020-01-27 11:40:04', 11, 46, 1, 98),
 	(266, '0', 'Ditanda tangan oleh', '2020-01-27 11:57:29', 11, 46, 11, 98),
-	(267, '0', 'Ditanda tangan oleh', '2020-01-29 17:12:15', 11, 7, 11, 94),
-	(268, '0', 'Ditanda tangan oleh', '2020-01-29 17:12:35', 11, 7, 11, 94),
-	(269, '0', 'Ditanda tangan oleh', '2020-01-29 17:12:43', 11, 7, 11, 94),
-	(270, '0', 'Ditanda tangan oleh', '2020-01-29 17:13:02', 11, 7, 11, 94),
-	(271, '0', 'Ditanda tangan oleh', '2020-01-29 17:13:12', 11, 7, 11, 94),
-	(272, '0', 'Ditanda tangan oleh', '2020-01-29 17:13:12', 11, 7, 11, 94),
+	(267, '1', 'Ditanda tangan oleh', '2020-01-29 17:12:15', 11, 7, 11, 94),
+	(268, '1', 'Ditanda tangan oleh', '2020-01-29 17:12:35', 11, 7, 11, 94),
+	(269, '1', 'Ditanda tangan oleh', '2020-01-29 17:12:43', 11, 7, 11, 94),
+	(270, '1', 'Ditanda tangan oleh', '2020-01-29 17:13:02', 11, 7, 11, 94),
+	(271, '1', 'Ditanda tangan oleh', '2020-01-29 17:13:12', 11, 7, 11, 94),
+	(272, '1', 'Ditanda tangan oleh', '2020-01-29 17:13:12', 11, 7, 11, 94),
 	(273, '0', 'Cross Branch oleh', '2020-01-30 09:32:07', NULL, NULL, 11, 100),
 	(274, '0', '', '2020-01-30 09:32:34', NULL, NULL, 11, 101),
 	(275, '1', 'Ditanda tangan oleh', '2020-02-03 11:44:35', 111, 33, 111, 106),
@@ -2150,10 +2172,14 @@ INSERT INTO `notifications` (`id_notification`, `has_read`, `type`, `created_at`
 	(303, '0', 'Ditanda tangan oleh', '2020-02-12 10:16:30', 186, 3, 186, 129),
 	(304, '0', 'Ditanda tangan oleh', '2020-02-12 10:16:40', 186, 3, 186, 129),
 	(305, '0', 'Cross Branch oleh', '2020-02-13 16:08:30', NULL, NULL, 35, 135),
-	(306, '0', 'Cross Branch oleh', '2020-02-13 16:32:45', NULL, NULL, 186, 137);
+	(306, '0', 'Cross Branch oleh', '2020-02-13 16:32:45', NULL, NULL, 186, 137),
+	(307, '0', '', '2020-03-03 11:13:48', NULL, 46, 17, NULL),
+	(308, '0', '', '2020-03-03 14:28:55', NULL, 46, 17, NULL),
+	(309, '0', '', '2020-03-03 14:29:05', NULL, 46, 17, NULL),
+	(310, '1', 'Tele Assignment oleh', '2020-03-03 15:58:05', NULL, 7, 17, NULL);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.nst
+-- Dumping structure for table db_partner.nst
 CREATE TABLE IF NOT EXISTS `nst` (
   `id_nst` int(11) NOT NULL AUTO_INCREMENT,
   `leads_id` varchar(255) DEFAULT NULL,
@@ -2172,14 +2198,14 @@ CREATE TABLE IF NOT EXISTS `nst` (
   CONSTRAINT `nst_ibfk_3` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COMMENT='Tabel NST';
 
--- Dumping data for table u5487321_partner.nst: ~1 rows (approximately)
+-- Dumping data for table db_partner.nst: ~2 rows (approximately)
 /*!40000 ALTER TABLE `nst` DISABLE KEYS */;
 INSERT INTO `nst` (`id_nst`, `leads_id`, `upload_file`, `alasan_reject`, `created_at`, `updated_at`, `id_user`, `id_branch`) VALUES
 	(6, '202001SLOS12345', NULL, NULL, '2020-01-30 09:32:34', '2020-01-30 09:32:34', 11, 46),
 	(7, '202002SLOS000540', '', NULL, '2020-02-11 10:35:14', '2020-02-11 10:35:14', 144, 30);
 /*!40000 ALTER TABLE `nst` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.partners
+-- Dumping structure for table db_partner.partners
 CREATE TABLE IF NOT EXISTS `partners` (
   `id_partner` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pemilik` varchar(255) DEFAULT 'NULL',
@@ -2221,9 +2247,9 @@ CREATE TABLE IF NOT EXISTS `partners` (
   PRIMARY KEY (`id_partner`),
   UNIQUE KEY `rekening_bank` (`rekening_bank`),
   KEY `id_mapping` (`id_mapping`)
-) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1 COMMENT='Tabel Partner';
+) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=latin1 COMMENT='Tabel Partner';
 
--- Dumping data for table u5487321_partner.partners: ~15 rows (approximately)
+-- Dumping data for table db_partner.partners: ~34 rows (approximately)
 /*!40000 ALTER TABLE `partners` DISABLE KEYS */;
 INSERT INTO `partners` (`id_partner`, `nama_pemilik`, `kelurahan`, `kecamatan`, `provinsi`, `kode_pos`, `hobi`, `geotagging`, `jumlah_karyawan`, `tahun_berdiri`, `barang_jual`, `sosial_media`, `status_tempat_usaha`, `jenis_pembayaran`, `omset`, `jumlah_cabang`, `pernah_promosi`, `punya_pinjaman`, `on_going_project`, `punya_jumlah_plafond`, `punya_giro_cek`, `keterangan_tambahan`, `rekening_bank`, `cabang_bank`, `nama_bank`, `atas_nama`, `akhir_izin`, `ktp`, `npwp`, `buku_tabungan_perusahaan`, `siup`, `logo_perusahaan`, `foto_usaha`, `status`, `created_at`, `updated_at`, `id_mapping`) VALUES
 	(61, 'Maulana Yusuf ', 'Pagesangan', 'Pagesangan', 'Nusa Tenggara Barat', '123456', 'Bulutangkis', NULL, 90, '1978', 'Percetakan, ATK', 'cv.com', 'Milik Sendiri', 'Kredit Konvensional', '90000000', 15, 'Ya', 'Tidak', 'Ada', 'Tidak', 'Tidak', 'Bank Mandi Sendiri', '046803848288483', 'Cabang Mataram', 'Bank Mandi Sendiri', 'Maulana Yusuf ', '2025', 'solusi.PNG', 'Alia_Go.png', 'aaa1.JPG', 'Logo-Abhinaya-Tour.png', 'download_(4).jpg', NULL, 'lengkap', '2020-01-16 14:14:23', '2020-01-29 17:12:18', 37),
@@ -2258,10 +2284,11 @@ INSERT INTO `partners` (`id_partner`, `nama_pemilik`, `kelurahan`, `kecamatan`, 
 	(90, 'RYAN DARMAWAN', 'kertak hanyar', 'kertak hanyar', 'kalimantan selatan', '72320', 'UMROH', NULL, 100, '2019', 'jasa umroh', 'smart umroh', 'Sewa', 'Kredit Syariah', '150000000', 2, 'Ya', 'Tidak', 'Ada', 'Tidak', 'Ya', NULL, '1230000007700', 'jatinegara', 'mandiri', 'PT DREAM TOUR AND TRAVEL', '2023', 'KTP2.jpeg', 'NPWP1.jpeg', 'BUTAB1.jpeg', 'NPWP2.jpeg', 'KTP3.jpeg', 'NPWP3.jpeg', 'lengkap', '2020-02-13 16:07:30', '2020-02-13 16:07:30', 201),
 	(91, 'Zahra Chatalya', 'Alalak Utara', 'Banjarmasin Utara', 'Kalimantan Selatan', '70125', 'Masak', NULL, 1, '2005', 'Makanan dan Minuman', 'IG : ZahraHalizzah', 'Milik Sendiri', 'Tunai', '5000000', 1, 'Ya', 'Tidak', 'Ada', 'Tidak', 'Tidak', NULL, '0306840829', 'Banjarmasin', 'BNI', 'Zahra Chatalya', NULL, 'KTP_PEMILIK.jpeg', 'Dapur_Ummy_Catering.pdf', 'BUTAB2.jpeg', 'SKU.jpeg', 'dapur_ummy.png', 'SKU1.jpeg', 'lengkap', '2020-02-13 16:31:47', '2020-02-13 16:31:47', 202),
 	(92, 'RUSLY WIJAYA', 'LALOLARA', 'KAMBU', 'SULAWESI TENGGARA', '93231', 'MEMANCING', NULL, 2, '2010', 'SEPEDA POLYGON', 'https://www.polygonbikes.com/id', 'Milik Sendiri', 'Kredit Konvensional', '30000000', 1, 'Ya', 'Ya', 'Tidak Ada', 'Ya', 'Ya', 'DISTRIBUTOR SEPEDA POLYGON', '1620000156988', 'KCU KENDARI WUA WUA', 'MANDIRI', 'RUSLY WIJAYA', NULL, 'KTP4.jpeg', 'NPWP4.jpeg', 'COVER_REK_TABUNGAN.jpeg', 'SIUP1.jpeg', 'WhatsApp_Image_2020-02-14_at_11.03.26.jpeg', 'WhatsApp_Image_2020-02-14_at_12.22.02.jpeg', 'lengkap', '2020-02-14 13:15:08', '2020-02-14 13:15:08', 205),
-	(93, NULL, 'MERUYA ILIR', 'KEMBANGAN', 'JAKARTA BARAT', '11620', NULL, NULL, 5, '2019', NULL, NULL, 'Sewa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'draft', '2020-02-27 17:39:01', '2020-02-27 17:39:01', 275);
+	(93, NULL, 'MERUYA ILIR', 'KEMBANGAN', 'JAKARTA BARAT', '11620', NULL, NULL, 5, '2019', NULL, NULL, 'Sewa', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'draft', '2020-02-27 17:39:01', '2020-02-27 17:39:01', 275),
+	(94, NULL, 'asdas', 'asdsad', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'draft', '2020-03-09 09:43:53', '2020-03-09 09:43:53', 39);
 /*!40000 ALTER TABLE `partners` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.partner_activities
+-- Dumping structure for table db_partner.partner_activities
 CREATE TABLE IF NOT EXISTS `partner_activities` (
   `id_partner_activity` int(11) NOT NULL AUTO_INCREMENT,
   `activity` text NOT NULL,
@@ -2272,9 +2299,9 @@ CREATE TABLE IF NOT EXISTS `partner_activities` (
   KEY `id_user` (`id_user`),
   KEY `id_partner` (`id_partner`),
   CONSTRAINT `partner_activities_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=162 DEFAULT CHARSET=latin1 COMMENT='Tabel Partner Activities';
+) ENGINE=InnoDB AUTO_INCREMENT=163 DEFAULT CHARSET=latin1 COMMENT='Tabel Partner Activities';
 
--- Dumping data for table u5487321_partner.partner_activities: ~34 rows (approximately)
+-- Dumping data for table db_partner.partner_activities: ~58 rows (approximately)
 /*!40000 ALTER TABLE `partner_activities` DISABLE KEYS */;
 INSERT INTO `partner_activities` (`id_partner_activity`, `activity`, `date_activity`, `id_partner`, `id_user`) VALUES
 	(105, 'Data Partner telah dibuat', '2020-01-16 14:14:23', 61, 11),
@@ -2333,10 +2360,11 @@ INSERT INTO `partner_activities` (`id_partner_activity`, `activity`, `date_activ
 	(158, 'Data Partner telah dibuat', '2020-02-13 16:07:31', 90, 35),
 	(159, 'Data Partner telah dibuat', '2020-02-13 16:31:47', 91, 186),
 	(160, 'Data Partner telah dibuat', '2020-02-14 13:15:08', 92, 103),
-	(161, 'Data Partner telah dibuat', '2020-02-27 17:39:01', 93, 63);
+	(161, 'Data Partner telah dibuat', '2020-02-27 17:39:01', 93, 63),
+	(162, 'Data Partner telah dibuat', '2020-03-09 09:43:53', 94, 247);
 /*!40000 ALTER TABLE `partner_activities` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.tickets
+-- Dumping structure for table db_partner.tickets
 CREATE TABLE IF NOT EXISTS `tickets` (
   `id_ticket` int(11) NOT NULL AUTO_INCREMENT,
   `ttd_pks` enum('Ya','Tidak','Belum') NOT NULL DEFAULT 'Belum',
@@ -2377,7 +2405,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   CONSTRAINT `tickets_ibfk_7` FOREIGN KEY (`id_nst`) REFERENCES `nst` (`id_nst`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=140 DEFAULT CHARSET=latin1 COMMENT='Tabel Tiket';
 
--- Dumping data for table u5487321_partner.tickets: ~23 rows (approximately)
+-- Dumping data for table db_partner.tickets: ~46 rows (approximately)
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
 INSERT INTO `tickets` (`id_ticket`, `ttd_pks`, `date_pending`, `date_approved_by_head`, `date_approved_by_manager`, `date_inprogress`, `date_rejected`, `date_completed`, `date_verified_ttd`, `status`, `id_partner`, `id_agent`, `id_leads`, `id_nst`, `id_user`, `id_branch`, `completed_by`, `verified_by`, `form_mou`, `date_created`, `date_modified`, `id_approval_bonus`) VALUES
 	(94, 'Ya', '2020-01-29 17:12:18', NULL, NULL, NULL, NULL, '2020-01-27 11:39:41', '2020-01-29 17:13:20', 2, 61, NULL, NULL, NULL, 11, 7, 1, 11, 'Database_Partnership_-_User_.pdf', NULL, '2020-01-29 17:12:18', NULL),
@@ -2428,7 +2456,7 @@ INSERT INTO `tickets` (`id_ticket`, `ttd_pks`, `date_pending`, `date_approved_by
 	(139, 'Belum', '2020-02-14 13:15:08', NULL, NULL, NULL, NULL, NULL, NULL, 1, 92, NULL, NULL, NULL, 103, 19, NULL, NULL, NULL, '2020-02-14 13:15:08', '2020-02-14 13:15:08', NULL);
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.users
+-- Dumping structure for table db_partner.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL DEFAULT '',
@@ -2445,9 +2473,9 @@ CREATE TABLE IF NOT EXISTS `users` (
   UNIQUE KEY `nik` (`nik`),
   KEY `id_branch` (`id_branch`),
   CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=246 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC COMMENT='Tabel User';
+) ENGINE=InnoDB AUTO_INCREMENT=248 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC COMMENT='Tabel User';
 
--- Dumping data for table u5487321_partner.users: ~192 rows (approximately)
+-- Dumping data for table db_partner.users: ~203 rows (approximately)
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id_user`, `name`, `nik`, `email`, `password`, `level`, `jabatan`, `is_active`, `id_branch`, `tanggal_daftar`, `foto`) VALUES
 	(1, 'Sunia Berlianti', '082735', '', 'b32c3ea483b375b79e01ffc404316070', 4, 'Admin HO', 1, 46, '2019-08-16 16:36:16', 'bfi_syariah.jpg'),
@@ -2651,10 +2679,11 @@ INSERT INTO `users` (`id_user`, `name`, `nik`, `email`, `password`, `level`, `ja
 	(242, 'Topik Muchtarom', '008504', '', 'b32c3ea483b375b79e01ffc404316070', 3, 'Sharia Manager', 1, 31, '2020-02-05 10:56:13', NULL),
 	(243, 'Permadi Sonjaya', '9020352', '', 'b32c3ea483b375b79e01ffc404316070', 1, 'CMS', 1, 2, '2020-02-05 16:27:05', NULL),
 	(244, 'Gede Laroiba', '079551', '', 'b32c3ea483b375b79e01ffc404316070', 4, 'Admin Tele', 1, 46, '2020-02-05 16:50:18', NULL),
-	(245, 'Ardian P Dirgantara', '9020396', '', 'b32c3ea483b375b79e01ffc404316070', 1, 'CMS', 1, 38, '2020-02-07 10:25:17', NULL);
+	(245, 'Ardian P Dirgantara', '9020396', '', 'b32c3ea483b375b79e01ffc404316070', 1, 'CMS', 1, 38, '2020-02-07 10:25:17', NULL),
+	(247, 'Ibrahim Ahmad Jabar', '9999999', '', 'b32c3ea483b375b79e01ffc404316070', 2, 'Sharia Head', 1, 7, '2020-03-03 13:43:43', NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
--- Dumping structure for table u5487321_partner.userss
+-- Dumping structure for table db_partner.userss
 CREATE TABLE IF NOT EXISTS `userss` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(40) NOT NULL DEFAULT '',
@@ -2673,7 +2702,7 @@ CREATE TABLE IF NOT EXISTS `userss` (
   KEY `id_branch` (`id_branch`)
 ) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table u5487321_partner.userss: ~0 rows (approximately)
+-- Dumping data for table db_partner.userss: ~0 rows (approximately)
 /*!40000 ALTER TABLE `userss` DISABLE KEYS */;
 /*!40000 ALTER TABLE `userss` ENABLE KEYS */;
 
