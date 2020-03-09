@@ -255,7 +255,8 @@ class Leads extends CI_Controller
             if (isset($post['process'])) {
                 //Menambah ke antrian tiket
                 $ticket = [
-                    'status'        => 0,
+                    // 'status'        => 0,
+                    'status'        => 2,
                     'date_pending'  => date('Y-m-d H:i:s'),
                     'date_created'  => date('Y-m-d H:i:s'),
                     'date_modified'  => date('Y-m-d H:i:s'),
@@ -385,7 +386,8 @@ class Leads extends CI_Controller
 
             //Menambah antrian ke tiket
             $ticket = [
-                'status'        => 0,
+                // 'status'        => 0,
+                'status'        => 2,
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'date_created'  => date('Y-m-d H:i:s'),
                 'date_modified' => date('Y-m-d H:i:s'),
@@ -546,7 +548,8 @@ class Leads extends CI_Controller
         //Meng-update antrian tiket untuk data Leads
         $has_superior = $this->fungsi->user_login()->has_superior;
         $ticket = [
-            'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            'status'        => 2,
             'date_pending'  => date('Y-m-d H:i:s'),
             // 'date_created'  => date('Y-m-d H:i:s'),
             'date_modified'  => date('Y-m-d H:i:s')

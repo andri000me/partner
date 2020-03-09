@@ -70,7 +70,7 @@ class Mapping_partner extends CI_Controller
                 'bentuk_usaha'          => $post['bentuk_usaha'],
                 'alamat'                => $post['alamat'],
                 'telepon'               => $post['telepon'],
-                'email'                 => $post['email'],
+                'email'                 => isset($post['email']) ? $post['email'] : NULL,
                 'kategori_produk'       => $post['kategori_produk'],
                 'catatan'               => $post['catatan'],
 
@@ -110,7 +110,7 @@ class Mapping_partner extends CI_Controller
             // $this->partner_model->create($data_partner);
 
             //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");
+            $this->session->set_flashdata("berhasil_simpan", "Data Mapping Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
             redirect('Mapping_partner');
         } else {
@@ -136,7 +136,7 @@ class Mapping_partner extends CI_Controller
                 'bentuk_usaha'          => $post['bentuk_usaha'],
                 'alamat'                => $post['alamat'],
                 'telepon'               => $post['telepon'],
-                'email'                 => $post['email'],
+                'email'                 => isset($post['email']) ? $post['email'] : NULL,
                 'kategori_produk'       => $post['kategori_produk'],
                 'catatan'               => $post['catatan'],
 

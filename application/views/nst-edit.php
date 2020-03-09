@@ -46,6 +46,13 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
+                                <h3>Lampiran</h3>
+                                <?php
+                                $uploads =  explode(",", $data->upload_file);
+                                foreach ($uploads as $upload) {
+                                ?>
+                                    <a href="<?= base_url('uploads/nst/' . $upload) ?>"><?= $upload ?></a>
+                                <?php } ?>
                                 <div class="form-group mb-0 float-right ml-3 mr-3">
                                     <?php
                                     $level = $this->fungsi->user_login()->level;

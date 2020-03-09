@@ -89,7 +89,7 @@
                     $name = $this->fungsi->user_login()->name;
                     $trim = explode(' ', trim($name));
                     ?>
-                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i><?= $trim[0] . ' ' . $trim[1] ?></a>
+                    <a class="dropdown-item" href="<?= base_url('Profile') ?>"><i class="mdi mdi-account-circle m-r-5"></i><?= $trim[0] ?></a>
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i class="mdi mdi-power text-danger"></i> Logout</a>
                 </div>

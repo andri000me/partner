@@ -13,11 +13,9 @@
 
 <div class="row">
     <div class="col-md-12">
-        <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <div class="btn-kanan mb-2">
-                <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input Prospect</button></a>
-            </div>
-        <?php } ?>
+        <div class="btn-kanan mb-2">
+            <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input Prospect</button></a>
+        </div>
     </div>
     <div class="col-12">
         <div class="card m-b-20">

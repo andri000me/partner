@@ -29,13 +29,13 @@ class Partner extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "id_partner IS NOT NULL";
         }
 
         check_not_login();
@@ -43,10 +43,10 @@ class Partner extends CI_Controller
 
     public function index()
     {
-        $merge = array_merge($this->where, ['status' => 'lengkap']);
+        // $merge = array_merge($this->where, ['status' => 'lengkap']);
         $data = [
             'data' => $this->partner_model->get($this->where),
-            'lengkap' => $this->partner_model->get($merge)
+            'lengkap' => $this->partner_model->get("status = 'lengkap' AND " . $this->where)
         ];
 
         $this->template->load('template/index', 'partner', $data);
@@ -92,6 +92,14 @@ class Partner extends CI_Controller
     public function save()
     {
         $post = $this->input->post(NULL, TRUE);
+
+
+        // $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
+
+        // $this->form_validation->set_rules('telepon', 'Telepon', 'is_unique[mapping_partners.telepon]', ['is_unique' => 'Nomor telepon sudah terdaftar, mohon ganti nomor telepon']);
+        // $this->form_validation->set_rules('email', 'Email', 'valid_email|is_unique[mapping_partners.email]', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti Alamat E-mail']);
+
+        // if ($this->form_validation->run() != FALSE) {
         // meng-update data mapping jika berubah
         $data_mapping = [
             'nama_usaha'        => $post['nama_usaha'],
@@ -232,7 +240,8 @@ class Partner extends CI_Controller
             //Menambah antrian tiket untuk data Agent
             $has_superior = $this->fungsi->user_login()->has_superior;
             $ticket = [
-                'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+                // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+                'status'        => 2,
                 'date_pending'  => date('Y-m-d H:i:s'),
                 'date_created'  => date('Y-m-d H:i:s'),
                 'date_modified'  => date('Y-m-d H:i:s'),
@@ -249,6 +258,14 @@ class Partner extends CI_Controller
             sleep(6);
             redirect('Partner');
         }
+        // } else {
+        //     $data = [
+        //         'data' => $this->partner_model->get(),
+        //         'mappings' => $this->mapping_partner->get($this->where)
+        //     ];
+
+        //     $this->template->load('template/index', 'partner-form', $data);
+        // }
     }
 
     public function update()
@@ -362,7 +379,8 @@ class Partner extends CI_Controller
             $data['status'] = 'lengkap';
 
             $ticket = [
-                'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+                // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+                'status'        => 2,
                 'date_pending'  => date('Y-m-d H:i:s'),
                 // 'date_created'  => date('Y-m-d H:i:s'),
                 'date_modified'  => date('Y-m-d H:i:s'),
@@ -466,7 +484,8 @@ class Partner extends CI_Controller
         //Meng-update antrian tiket untuk data Agent
         $has_superior = $this->fungsi->user_login()->has_superior;
         $ticket = [
-            'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
+            'status'        => 2,
             'date_pending'  => date('Y-m-d H:i:s'),
             // 'date_created'  => date('Y-m-d H:i:s'),
             'date_modified'  => date('Y-m-d H:i:s'),

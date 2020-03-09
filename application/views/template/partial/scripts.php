@@ -439,7 +439,7 @@
             success: function(data) {
                 $("#surveyor").val(data.surveyor);
                 $("#pic_ttd").val(data.pic_ttd);
-                alert(data.surveyor + ' ' + data.pic_ttd);
+                // alert(data.surveyor + ' ' + data.pic_ttd);
             }
         });
     }

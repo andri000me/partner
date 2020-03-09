@@ -83,8 +83,7 @@
                     <div class="tab-pane p-3" id="edit-password" role="tabpanel">
                         <div class="ml-3">
                             <h4 class="mt-0 header-title">Ganti password</h4>
-                            <p class="text-muted m-b-30 text-size">Pastikan password yang anda ganti memiliki
-                                satu huruf kapital dan kombinasi nomor.</p>
+                            <p class="text-muted m-b-30 text-size">Pastikan password yang anda ganti memiliki satu huruf kapital dan kombinasi nomor.</p>
                         </div>
                         <form action="<?= base_url('Auth/update_password') ?>" method="post">
                             <div class="form-row">

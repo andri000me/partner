@@ -72,7 +72,7 @@
                         <ul class="submenu">
                             <li><a href="<?= base_url('assignment/leads') ?>">Leads Database</a></li>
                             <li><a href="<?= base_url('assignment/prospect') ?>">Leads Prospect</a></li>
-                            <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li>
+                            <!-- <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li> -->
                         </ul>
                     </li>
                 <?php } ?>
@@ -85,24 +85,27 @@
                     </li>
                 <?php } ?>
 
-                <li>
-                    <a href="<?= base_url('Ticket') ?>" class="waves-effect">
-                        <i class="fas fa-ticket-alt"></i> <span> Tiket </span>
-                    </a>
-                </li>
-                <?php if ($this->fungsi->module()->approval_bonus_active == 1) { ?>
+                <?php if ($this->fungsi->module()->ticket_active == 1) { ?>
                     <li>
-                        <a href="<?= base_url('approval_bonus') ?>" class="waves-effect">
-                            <i class="fas fa-ticket-alt"></i> <span> Approval Bonus </span>
+                        <a href="<?= base_url('Ticket') ?>" class="waves-effect">
+                            <i class="fas fa-ticket-alt"></i> <span> Tiket Antrian Umum </span>
                         </a>
                     </li>
                 <?php } ?>
 
                 <li class="menu-title">Bantuan HO</li>
 
+                <?php if ($this->fungsi->module()->approval_bonus_active == 1) { ?>
+                    <li>
+                        <a href="<?= base_url('approval_bonus') ?>" class="waves-effect">
+                            <i class="fas fa-star"></i> <span> Approval Bonus </span>
+                        </a>
+                    </li>
+                <?php } ?>
+
                 <?php if ($this->fungsi->module()->product_active == 1) { ?>
                     <li>
-                        <a href="<?= base_url('product_support') ?>" class="waves-effect">
+                        <a href="http://helpdesk.bfisyariah.id/" class="waves-effect">
                             <i class="ion-headphone  noti-icon"></i><span> Product Support </span>
                         </a>
                     </li>

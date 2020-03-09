@@ -105,12 +105,21 @@ class Nst extends CI_Controller
             $config['max_height']           = 0;
             $this->load->library('upload', $config);
 
-
-            if (!$this->upload->do_upload('ktp')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['ktp'] = $this->upload->data('file_name');
+            $lampiran_arr = [];
+            for ($i = 1; $i <= 5; $i++) {
+                // if (!empty($_FILES['lampiran' . $i]['name'])) {
+                if ($this->upload->do_upload('lampiran' . $i)) {
+                    // $lampiran_arr[] = $_FILES['lampiran' . $i]['name'];
+                    $lampiran_arr[] = $this->upload->data('file_name');
+                } else {
+                    $this->upload->display_errors();
+                }
+                // }
             }
+
+            // $data['upload_file'] = $lampiran_arr;
+            $comma = implode(",", $lampiran_arr);
+            $data['upload_file'] =  $comma;
 
             $id = $this->nst_model->create($data);
 
@@ -126,15 +135,6 @@ class Nst extends CI_Controller
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
             $id_ticket = $this->ticket_model->create($ticket);
-
-            //Notifikasi
-            $notification = [
-                'pengirim'      => $this->fungsi->user_login()->id_user,
-                'type'          => 'Data NST Baru',
-                'id_ticket'     => $id_ticket,
-                'created_at'    => date('Y-m-d H:i:s')
-            ];
-            $this->notification_model->create($notification);
 
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data NST berhasil disimpan. <a href='#'>Lihat Data</a>");

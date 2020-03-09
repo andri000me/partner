@@ -6,7 +6,7 @@
 					<h4 class="mt-0 header-title">Form NST</h4>
 					<p class="text-muted m-b-30 text-size">Cari data menggunakan tombol search di bawah
 						ini.</p>
-					<form class="" method="post" action="<?= base_url('nst/save') ?>">
+					<form class="" method="post" action="<?= base_url('nst/save') ?>" enctype="multipart/form-data">
 						<div class="form-row">
 							<div class="col-md-6">
 								<div class="ml-3 mr-3">
@@ -27,10 +27,6 @@
 										<label>Kategori produk</label>
 										<input type="text" class="form-control" name="kategori_produk" id="produk" required value="" placeholder="Kategori produk" readonly />
 									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="ml-3 mr-3">
 									<div class="form-group">
 										<label>Requester</label>
 										<div>
@@ -43,8 +39,18 @@
 									</div>
 								</div>
 							</div>
+							<div class="col-md-6">
+								<div class="ml-3 mr-3">
+									<?php for ($i = 1; $i <= 5; $i++) { ?>
+										<div class="form-group text-size">
+											<label>Data Lampiran</label>
+											<input type="file" name="lampiran<?= $i ?>" class="filestyle" data-buttonname="btn-secondary">
+										</div>
+									<?php } ?>
+								</div>
+							</div>
 							<div class="col-md-12">
-								<div class="form-group mb-0 float-right ml-3 mr-3">
+								<div class="form-group mb-0 float-right mt-5 ml-3 mr-3">
 									<a href="mapping.html" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
 									<button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
 										Simpan

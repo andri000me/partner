@@ -63,7 +63,7 @@ class Ticket extends CI_Controller
         if ($this->fungsi->user_login()->level == 2) {
             $data = [
                 'date_approved_by_head' => date('Y-m-d H:i:s'),
-                'status' => 1
+                'status' => 2
             ];
 
             $notification = $this->notification($id_ticket, 'Disetujui oleh Head');

@@ -60,6 +60,7 @@
                                                         <div class="form-group">
                                                             <label>E-Mail</label>
                                                             <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
+                                                            <?= form_error("email") ?>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -68,6 +69,7 @@
                                                         <div class="form-group">
                                                             <label>Nomor Telepon / WhatsApp</label>
                                                             <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
+                                                            <?= form_error("telepon") ?>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -36,7 +36,6 @@
                     </thead>
                     <tbody>
                         <?php foreach ($users->result() as $user) { ?>
-                            <?php if ($user->id_user == $this->fungsi->user_login()->id_user) continue; ?>
                             <tr>
                                 <td>
                                     <?= $user->name ?>
@@ -92,7 +91,7 @@
                             <div class="ml-3 mr-3 mt-3">
                                 <div class="form-group">
                                     <label>Nomor Induk Karyawan</label>
-                                    <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" minlength="6" maxlength="7" />
+                                    <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" minlength="6" maxlength="7" autocomplete="off" />
                                 </div>
                                 <div class="form-group">
                                     <label>Nama</label>
@@ -103,10 +102,10 @@
                                     <select class="form-control text-size" name="jabatan" id="jabatan" required>
                                         <option selected value="">Pilih Jabatan</option>
                                         <option value="1">CMS</option>
-                                        <option value="2">Sharia Head</option>
-                                        <option value="3">Sharia Manager</option>
-                                        <option value="4">Administrator</option>
-                                        <option value="5">Admin Tele</option>
+                                        <option value="2">Head</option>
+                                        <option value="3">Manager</option>
+                                        <option value="4">Admin HO</option>
+                                        <option value="5">Head HO</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -197,7 +196,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
-                                                    <label>Transfer Data</label><br>
+                                                    <label>Transfer Data User</label><br>
                                                     <input type="checkbox" name="transfer_data_active" id="transfer_data" switch="none" />
                                                     <label for="transfer_data" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
@@ -210,8 +209,19 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Tiket</label><br>
+                                                    <input type="checkbox" name="ticket_active" id="ticket" switch="none" />
+                                                    <label for="ticket" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
+
                                 <div class="form-group mt-3">
                                     <button type="button" class="btn btn-info" id="reset_password">Reset Password</button>
                                 </div>
@@ -282,6 +292,9 @@
                     }
                     if (data.approval_bonus_active == 1) {
                         $("#approval_bonus").prop('checked', true);
+                    }
+                    if (data.ticket_active == 1) {
+                        $("#ticket").prop('checked', true);
                     }
                 }
             });
