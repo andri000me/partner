@@ -83,7 +83,7 @@ class Leads_assignment extends CI_Controller
             $notification = [
                 'pengirim'          => $this->fungsi->user_login()->id_user,
                 'penerima_cabang'   => $post['assign_to'],
-                'type'              => 'Tele Assignment oleh',
+                'type'              => 'Leads Assignment oleh',
                 // 'id_ticket'         => $id_ticket,
                 'created_at'        => date('Y-m-d H:i:s')
             ];
@@ -144,7 +144,7 @@ class Leads_assignment extends CI_Controller
         $notification = [
             'pengirim'          => $this->fungsi->user_login()->id_user,
             'penerima_cabang'   => $post['assign_to'],
-            'type'              => 'Tele Assignment oleh',
+            'type'              => 'Leads Assignment oleh',
             // 'id_ticket'         => $id_ticket,
             'created_at'        => date('Y-m-d H:i:s')
         ];

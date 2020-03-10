@@ -62,7 +62,7 @@ class Transfer_data extends CI_Controller
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
             'agent' => $this->agent_model->query(
-                "SELECT * 
+                "SELECT *, agents.id_user as user_id 
                 FROM agents
                 INNER JOIN users ON users.id_user = agents.id_user
                 INNER JOIN branches ON branches.id_branch = agents.id_branch
@@ -72,7 +72,7 @@ class Transfer_data extends CI_Controller
             ),
 
             'mapping_partner' => $this->mapping_partner->query(
-                "SELECT * , mapping_partners.id_mapping as mapping_id_partner
+                "SELECT * , mapping_partners.id_mapping as mapping_id_partner, mapping_partners.id_user as user_id 
                 FROM mapping_partners
                 LEFT JOIN partners ON partners.id_mapping = mapping_partners.id_mapping
                 INNER JOIN users ON users.id_user = mapping_partners.id_user
@@ -83,7 +83,7 @@ class Transfer_data extends CI_Controller
             ),
 
             'partner' => $this->partner_model->query(
-                "SELECT *, mapping_partners.id_mapping as mapping_id_partner
+                "SELECT *, mapping_partners.id_mapping as mapping_id_partner, mapping_partners.id_user as user_id 
                 FROM partners
                 INNER JOIN mapping_partners ON mapping_partners.id_mapping = partners.id_mapping
                 INNER JOIN users ON users.id_user = mapping_partners.id_user
@@ -94,7 +94,7 @@ class Transfer_data extends CI_Controller
             ),
 
             'mapping_leads' => $this->mapping_leads->query(
-                "SELECT *, mapping_leads.id_mapping_leads as mapping_id_leads
+                "SELECT *, mapping_leads.id_mapping_leads as mapping_id_leads, mapping_leads.id_user as user_id 
                 FROM mapping_leads
                 LEFT JOIN leads ON leads.id_mapping_leads = mapping_leads.id_mapping_leads
                 INNER JOIN users ON users.id_user = mapping_leads.id_user
@@ -105,7 +105,7 @@ class Transfer_data extends CI_Controller
             ),
 
             'leads' => $this->leads_model->query(
-                "SELECT *, mapping_leads.id_mapping_leads as mapping_id_leads
+                "SELECT *, mapping_leads.id_mapping_leads as mapping_id_leads, mapping_leads.id_user as user_id 
                 FROM leads
                 INNER JOIN mapping_leads ON leads.id_mapping_leads = mapping_leads.id_mapping_leads
                 INNER JOIN users ON users.id_user = mapping_leads.id_user

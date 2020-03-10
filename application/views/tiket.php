@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Table Tiket</h4>
                 <p class="text-muted m-b-30 text-size">Tiket di bawah.</p>
-                <table id="" class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Tiket</th>

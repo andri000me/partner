@@ -35,7 +35,7 @@ class Partner extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = "id_partner IS NOT NULL";
+            $this->where = "id_partner IS NOT NULL AND status = 'lengkap'";
         }
 
         check_not_login();

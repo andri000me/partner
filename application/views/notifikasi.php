@@ -24,6 +24,8 @@
                                     <td colspan="5" style="text-align:center"><b>Tidak ada notifikasi!</b></td>
                                 </tr>
                             <?php } ?>
+
+                            <!-- Hari ini -->
                             <?php if ($today->num_rows() > 0) { ?>
                                 <tr>
                                     <td colspan="5"><b>Hari ini</b></td>
@@ -44,7 +46,7 @@
                                         <?php if ($notif->type == 'Cross Branch oleh') { ?>
                                             <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                        <?php if ($notif->type == 'Leads Assignment oleh') { ?>
                                             <span class="fas fa-clipboard mr-2"></span></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                     </td>
@@ -76,12 +78,14 @@
                                         <?php if ($notif->partner_id != NULL) { ?>
                                             <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                        <?php if ($notif->type == 'Leads Assignment oleh') { ?>
                                             <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>
+
+                            <!-- Sebelumnya -->
                             <?php if ($earlier->num_rows() > 0) { ?>
                                 <tr>
                                     <td colspan="5"><b>Sebelumnya</b></td>
@@ -102,7 +106,7 @@
                                         <?php if ($notif->type == 'Cross Branch oleh') { ?>
                                             <span class="fas fa-code-branch mr-2"></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                        <?php if ($notif->type == 'Leads Assignment oleh') { ?>
                                             <span class="fas fa-clipboard mr-2"></span></span><?= $notif->cabang_asal ?>
                                         <?php } ?>
                                     </td>
@@ -134,7 +138,7 @@
                                         <?php if ($notif->partner_id != NULL) { ?>
                                             <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
-                                        <?php if ($notif->type == 'Tele Assignment oleh') { ?>
+                                        <?php if ($notif->type == 'Leads Assignment oleh') { ?>
                                             <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                     </td>
