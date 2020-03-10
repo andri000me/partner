@@ -4,28 +4,39 @@ $(document).ready(function () {
 	});
 
 	$(".datatable").DataTable({
-		responsive: true,
-		pagingType: "simple",
-		bLengthChange: false,
+			responsive: true,
+			pagingType: "simple",
+			bLengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			}
+		}),
+		$("#datatable-buttons")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
+
+	$('.datatable-buttons').DataTable({
+		dom: 'Bfrtip',
 		language: {
 			search: '',
 			searchPlaceholder: "Cari Data Disini"
-		}
-	}),
-		$("#datatable-buttons")
-			.DataTable({
-				responsive: true,
-				pagingType: "simple",
-				lengthChange: !1,
-				language: {
-					search: '',
-					searchPlaceholder: "Cari Data Disini"
-				},
-				buttons: ["pdf", "excel", "colvis"]
-			})
-			.buttons()
-			.container()
-			.appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
+		},
+		buttons: [
+			'excel', 'pdf', 'colvis'
+		]
+	});
 });
 
 $(document).ready(function () {
