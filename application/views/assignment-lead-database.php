@@ -41,8 +41,8 @@
                         <ul class="nav nav-tabs mt-2" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#belum-update" role="tab">
-                                    <span class="d-block d-sm-none">Belum Update</span>
-                                    <span class="d-none d-sm-block">Belum Update</span>
+                                    <span class="d-block d-sm-none">Belum Update <?= $belum_update->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update->num_rows()  : '' ?></span></span>
+                                    <span class="d-none d-sm-block">Belum Update <?= $belum_update->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update->num_rows()  : '' ?></span></span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -139,8 +139,8 @@
                         <ul class="nav nav-tabs mt-2" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#belum-update-tele" role="tab">
-                                    <span class="d-block d-sm-none">Belum Update</span>
-                                    <span class="d-none d-sm-block">Belum Update</span>
+                                    <span class="d-block d-sm-none">Belum Update <?= $belum_update_tele->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update_tele->num_rows()  : '' ?></span></span>
+                                    <span class="d-none d-sm-block">Belum Update <?= $belum_update_tele->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update_tele->num_rows()  : '' ?></span></span>
                                 </a>
                             </li>
                             <li class="nav-item">

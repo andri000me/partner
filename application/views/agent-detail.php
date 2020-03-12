@@ -263,37 +263,82 @@
                     <div class="owl-carousel owl-theme">
                         <?php if ($data->ktp) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->ktp)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->ktp ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->npwp) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->npwp)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->npwp ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->buku_tabungan) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->buku_tabungan)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->buku_tabungan ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->buku_tabungan ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->foto_selfie) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->foto_selfie)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_selfie ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->foto_selfie ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->form_f100) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->form_f100)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->form_f100 ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->form_f100 ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                     </div>
@@ -339,7 +384,7 @@
 
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
                                                             </td>
                                                             <td>
 
@@ -373,7 +418,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
