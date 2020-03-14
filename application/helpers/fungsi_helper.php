@@ -97,6 +97,6 @@ function get_extension($file)
     $explode = explode(".", $file);
     $ext = end($explode);
     $image_extension = ["jpeg", "jpg", "png", "gif", "tiff"];
-    $valid_image = in_array($ext, $image_extension);
+    $valid_image = in_array(strtolower($ext), $image_extension);
     return $valid_image ? $valid_image : false;
 }
