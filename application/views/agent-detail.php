@@ -235,7 +235,7 @@
                                 <div class="form-group mb-0 mt-2 float-right btn-maintain">
                                     <?php
                                     $level = $this->fungsi->user_login()->level;
-                                    if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+                                    if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2) || ($level == 5 && $ticket->status_approval == 5))) {
                                     ?>
                                         <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
                                     <?php } ?>
@@ -341,6 +341,22 @@
                                 <?php } ?>
                             </div>
                         <?php } ?>
+                        <?php if ($ticket->form_mou) { ?>
+                            <div class="item" style="height:79px; width:120px;">
+                                <?php if (get_extension($ticket->form_mou)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
                     </div>
 
                     <div class="card-contents">
@@ -440,7 +456,8 @@
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
                                     <div class="boxxx overflow-auto">
-                                        <?php if ($ticket->status_approval == 5) { ?>
+                                        <!-- Terverifikasi -->
+                                        <?php if ($ticket->status_approval >= 5) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -467,6 +484,34 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                        <?php }
+                                        if ($ticket->status_approval == 6) { ?>
+                                            <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-primary"><b>Teraktivasi</b></p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_activated ?></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
+                                                            </td>
+                                                            <td>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         <?php } else { ?>
                                             <div class="inbox-wid hide">
                                                 <div class="inbox-item">
@@ -484,6 +529,7 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
+                                        <!-- Tanda Tangan PKS -->
                                         <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
@@ -505,6 +551,21 @@
                                                                 <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                             </td>
                                                             <td></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -568,7 +629,7 @@
 
                                 <div class="mobile mt-2">
                                     <h6 class="header-title mb-0">STATUS PARTNER</h6>
-                                    <?php if ($ticket->status_approval == 5) { ?>
+                                    <?php if ($ticket->status_approval >= 5) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table class="text-size">
@@ -590,6 +651,34 @@
                                                         <td></td>
                                                         <td>
                                                             <p class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    <?php }
+                                    if ($ticket->status_approval == 6) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-primary"><b>Teraktivasi</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_activated ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
+                                                        </td>
+                                                        <td>
                                                         </td>
                                                     </tr>
                                                 </table>

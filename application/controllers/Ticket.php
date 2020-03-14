@@ -77,13 +77,22 @@ class Ticket extends CI_Controller
             $notification = $this->notification($id_ticket, 'Disetujui oleh Manager');
         }
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
-        else if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
+        else if ($this->fungsi->user_login()->level == 4) {
             $data = [
                 'date_completed'    => date('Y-m-d H:i:s'),
                 'status'            => 5,
                 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
             $notification = $this->notification($id_ticket, 'Disetujui oleh Admin HO');
+        }
+        //Jika Head HO yang menekan tombol approve, maka tiket sudah diaktivasi oleh Head HO
+        else if ($this->fungsi->user_login()->level == 5) {
+            $data = [
+                'date_activated'    => date('Y-m-d H:i:s'),
+                'status'            => 6,
+                'activated_by'      => $this->fungsi->user_login()->id_user
+            ];
+            $notification = $this->notification($id_ticket, 'Diaktivasi oleh Head HO');
         }
         $this->ticket_model->update($data, $where);
 
@@ -104,6 +113,7 @@ class Ticket extends CI_Controller
             ];
             $notification = $this->notification($id_ticket, 'Ditolak oleh');
         }
+
         $where = ['id_ticket' => $id_ticket];
         $this->ticket_model->update($data, $where);
 
@@ -153,6 +163,14 @@ class Ticket extends CI_Controller
             $data['form_mou'] = $this->upload->data('file_name');
             $where = ['id_ticket' => $this->input->post('id_ticket')];
             $this->ticket_model->update($data, $where);
+
+            //Jika data tiket sudah diapprove namun belum di upload form pks, maka ketika user upload form mou, tiket kembali ke status `pending`
+            $id_ticket = $this->ticket_model->get(['id_ticket' => $this->input->post('id_ticket')])->row();
+            // echo $id_ticket->status_ticket;
+            if ($id_ticket->status_ticket == 5 || $id_ticket->status_ticket == 6) {
+                $data_ticket = ['status' => 2];
+                $this->ticket_model->update($data_ticket, ['id_ticket' => $this->input->post('id_ticket')]);
+            }
 
             redirect($this->input->post('redirect'));
         }

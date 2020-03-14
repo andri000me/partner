@@ -41,6 +41,14 @@
                     </a>
                 </li>
 
+                <?php if ($this->fungsi->module()->ticket_active == 1) { ?>
+                    <li>
+                        <a href="<?= base_url('Ticket') ?>" class="waves-effect">
+                            <i class="fas fa-ticket-alt"></i> <span> Daftar Antrian </span>
+                        </a>
+                    </li>
+                <?php } ?>
+
                 <li class="menu-title">Aktivitas Cabang</li>
 
                 <?php if ($this->fungsi->module()->leads_active == 1) { ?>
@@ -57,8 +65,8 @@
                     <li>
                         <a href="javascript:void(0);" class="waves-effect"><i class="far fa-handshake"></i><span> Kerjasama <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url('mapping_partner') ?>">Mapping Lokasi Partner</a></li>
-                            <li><a href="<?= base_url('partner') ?>">Partnership</a></li>
+                            <li><a href="<?= base_url('mapping_partner') ?>">Mapping Merchant</a></li>
+                            <li><a href="<?= base_url('partner') ?>">Daftar Merchant</a></li>
                             <li><a href="<?= base_url('agent') ?>">Agent / BA</a></li>
                         </ul>
                     </li>
@@ -81,14 +89,6 @@
                     <li>
                         <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
                             <i class="fas fa-sync"></i> <span> Transfer Data </span>
-                        </a>
-                    </li>
-                <?php } ?>
-
-                <?php if ($this->fungsi->module()->ticket_active == 1) { ?>
-                    <li>
-                        <a href="<?= base_url('Ticket') ?>" class="waves-effect">
-                            <i class="fas fa-ticket-alt"></i> <span> Tiket Antrian Umum </span>
                         </a>
                     </li>
                 <?php } ?>
