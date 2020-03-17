@@ -123,6 +123,7 @@
                                             <th>Nik</th>
                                             <th>Jabatan</th>
                                             <th>Cabang</th>
+                                            <th>Status</th>
                                             <!-- <th>Action</th> -->
                                         </tr>
                                     </thead>
@@ -141,10 +142,11 @@
                                                 <td>
                                                     <?= $user->nama_cabang ?>
                                                 </td>
-                                                <!-- <td>
-                                                    <center><a href="#" class="btn btn-secondary text-size">Edit</a></center>
-                                                </td> -->
-                                                <!-- <td></td> -->
+                                                <td>
+                                                    <center>
+                                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger">Non Aktif</span></h6>' : '<h6><span class="badge badge-success">Aktif</span></h6>' ?>
+                                                    </center>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

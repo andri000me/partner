@@ -1,4 +1,4 @@
-﻿# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
+# Host: localhost  (Version 5.5.5-10.4.6-MariaDB)
 # Date: 2020-03-14 11:52:20
 # Generator: MySQL-Front 6.1  (Build 1.26)
 

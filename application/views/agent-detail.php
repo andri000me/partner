@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-8">
         <div class="page-title-box">
-            <h4 class="page-title">Timeline Maintain</h4>
+            <h4 class="page-title">Agent</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Helpdesk</a></li>
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item text-size active">Timeline Maintain</li>
+                <li class="breadcrumb-item text-size"><a href="#">Helpdesk</a></li>
+                <li class="breadcrumb-item text-size"><a href="#">Kerjasama</a></li>
+                <li class="breadcrumb-item text-size active">Agent Detail</li>
             </ol>
         </div>
         <div class="card">
@@ -457,7 +457,7 @@
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
                                     <div class="boxxx overflow-auto">
                                         <!-- Terverifikasi -->
-                                        <?php if ($ticket->status_approval >= 5) { ?>
+                                        <?php if ($ticket->status_approval == 5) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -485,7 +485,7 @@
                                                 </div>
                                             </div>
                                         <?php }
-                                        if ($ticket->status_approval == 6) { ?>
+                                        else if ($ticket->status_approval == 6) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -561,7 +561,7 @@
                                                     <table>
                                                         <tr>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
@@ -629,7 +629,7 @@
 
                                 <div class="mobile mt-2">
                                     <h6 class="header-title mb-0">STATUS PARTNER</h6>
-                                    <?php if ($ticket->status_approval >= 5) { ?>
+                                    <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table class="text-size">
@@ -657,7 +657,7 @@
                                             </div>
                                         </div>
                                     <?php }
-                                    if ($ticket->status_approval == 6) { ?>
+                                    else if ($ticket->status_approval == 6) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -727,6 +727,21 @@
                                                 </table>
                                             </div>
                                         </div>
+                                    <?php } else { ?>
+                                        <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                     <?php } ?>
                                     <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">
