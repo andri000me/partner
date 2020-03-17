@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Tiket</h4>
+            <h4 class="page-title">Daftar Tiket</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item active">Tiket</li>
+                <li class="breadcrumb-item active">Daftar Tiket</li>
             </ol>
         </div>
     </div>
@@ -14,9 +14,26 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Table Tiket</h4>
-                <p class="text-muted m-b-30 text-size">Tiket di bawah.</p>
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <h4 class="header-title mb-3">Table Daftar Tiket</h4>
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Sort Table By : </label>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option selected>All</option>
+                                <option>Disetujui</option>
+                                <option>Ditolak</option>
+                                <option>Diaktivasi</option>
+                                <option>In Progress</option>
+                                <option>Pending HO</option>
+                                <option>Menunggu Persetujuan Head</option>
+                                <option>Menunggu Persetujuan Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- <p class="text-muted m-b-30 text-size">Tiket di bawah.</p> -->
+                <table id="" class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Tiket</th>
@@ -51,7 +68,7 @@
                                         <?php } else if ($ticket->status_approval == 1) { ?>
                                             <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span></h6>
                                         <?php } else if ($ticket->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending</span></h6>
+                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
                                         <?php } else if ($ticket->status_approval == 3) { ?>
                                             <h6><span class="badge badge-warning">In Progress</span></h6>
                                         <?php } else if ($ticket->status_approval == 4) { ?>

@@ -44,7 +44,7 @@
                 <?php if ($this->fungsi->module()->ticket_active == 1) { ?>
                     <li>
                         <a href="<?= base_url('Ticket') ?>" class="waves-effect">
-                            <i class="fas fa-ticket-alt"></i> <span> Daftar Antrian </span>
+                            <i class="fas fa-ticket-alt"></i> <span> Daftar Tiket </span>
                         </a>
                     </li>
                 <?php } ?>

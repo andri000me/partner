@@ -34,10 +34,10 @@
                         <tr>
                             <th>Nama Usaha</th>
                             <th>Bidang Usaha</th>
-                            <th>Telepon</th>
-                            <th>Email</th>
                             <th>Produk</th>
                             <th>Alamat</th>
+                            <th>Email</th>
+                            <th>Telepon</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -51,16 +51,16 @@
                                     <?= $mapping->bidang_usaha ?>
                                 </td>
                                 <td>
-                                    <?= $mapping->telepon ?>
+                                    <?= $mapping->kategori_produk ?>
+                                </td>
+                                <td>
+                                    <?= $mapping->alamat ?>
                                 </td>
                                 <td>
                                     <?= $mapping->email ?>
                                 </td>
                                 <td>
-                                    <?= $mapping->kategori_produk ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->alamat ?>
+                                    <?= $mapping->telepon ?>
                                 </td>
                                 <td>
                                     <?php if ($mapping->status == 'draft') { ?>
