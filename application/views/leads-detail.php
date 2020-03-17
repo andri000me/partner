@@ -404,7 +404,7 @@
 
 															</td>
 															<td>
-																<p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+																<p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
 															</td>
 															<td>
 
@@ -437,7 +437,7 @@
 														<tr>
 															<td></td>
 															<td>
-																<p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+																<p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
 															</td>
 														</tr>
 														<tr>

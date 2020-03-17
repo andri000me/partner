@@ -26,6 +26,7 @@ class Agent_activity_model extends CI_Model
         $this->db->from('agent_activities');
         $this->db->join('agents', 'agents.id_agent = agent_activities.id_agent', 'inner');
         $this->db->join('users', 'users.id_user = agent_activities.id_user', 'inner');
+        $this->db->join('branches', 'branches.id_branch = users.id_branch', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }

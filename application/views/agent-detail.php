@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-md-8">
         <div class="page-title-box">
-            <h4 class="page-title">Timeline Maintain</h4>
+            <h4 class="page-title">Agent</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Helpdesk</a></li>
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item text-size active">Timeline Maintain</li>
+                <li class="breadcrumb-item text-size"><a href="#">Helpdesk</a></li>
+                <li class="breadcrumb-item text-size"><a href="#">Kerjasama</a></li>
+                <li class="breadcrumb-item text-size active">Agent Detail</li>
             </ol>
         </div>
         <div class="card">
@@ -235,7 +235,7 @@
                                 <div class="form-group mb-0 mt-2 float-right btn-maintain">
                                     <?php
                                     $level = $this->fungsi->user_login()->level;
-                                    if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+                                    if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2) || ($level == 5 && $ticket->status_approval == 5))) {
                                     ?>
                                         <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
                                     <?php } ?>
@@ -263,37 +263,98 @@
                     <div class="owl-carousel owl-theme">
                         <?php if ($data->ktp) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->ktp)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->ktp ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->npwp) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->npwp)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->npwp ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->buku_tabungan) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->buku_tabungan)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->buku_tabungan ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->buku_tabungan ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->foto_selfie) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->foto_selfie)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_selfie ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->foto_selfie ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                         <?php if ($data->form_f100) { ?>
                             <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
+                                <?php if (get_extension($data->form_f100)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->form_f100 ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $data->form_f100 ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
+                            </div>
+                        <?php } ?>
+                        <?php if ($ticket->form_mou) { ?>
+                            <div class="item" style="height:79px; width:120px;">
+                                <?php if (get_extension($ticket->form_mou)) { ?>
+                                    <div class="zoom-gallery">
+                                        <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>" alt="" style="height:79px; width:120px;"></a>
+                                    </div>
+                                <?php } else { ?>
+                                    <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>">
+                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
+                                            <i class="fa fa-file fa-5x"></i>
+                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
+                                        </div>
+                                    </a>
+                                <?php } ?>
                             </div>
                         <?php } ?>
                     </div>
@@ -339,7 +400,7 @@
 
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
                                                             </td>
                                                             <td>
 
@@ -373,7 +434,7 @@
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $activity->name ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -395,6 +456,7 @@
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
                                     <div class="boxxx overflow-auto">
+                                        <!-- Terverifikasi -->
                                         <?php if ($ticket->status_approval == 5) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
@@ -422,6 +484,34 @@
                                                     </table>
                                                 </div>
                                             </div>
+                                        <?php }
+                                        else if ($ticket->status_approval == 6) { ?>
+                                            <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-primary"><b>Teraktivasi</b></p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_activated ?></p>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
+                                                            </td>
+                                                            <td>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         <?php } else { ?>
                                             <div class="inbox-wid hide">
                                                 <div class="inbox-item">
@@ -439,6 +529,7 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
+                                        <!-- Tanda Tangan PKS -->
                                         <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
@@ -460,6 +551,21 @@
                                                                 <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                             </td>
                                                             <td></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        <?php } else { ?>
+                                            <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                            </td>
                                                         </tr>
                                                     </table>
                                                 </div>
@@ -550,6 +656,34 @@
                                                 </table>
                                             </div>
                                         </div>
+                                    <?php }
+                                    else if ($ticket->status_approval == 6) { ?>
+                                        <div class="inbox-wid">
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-primary"><b>Teraktivasi</b></p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_activated ?></p>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
+                                                        </td>
+                                                        <td>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
                                     <?php } else { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
@@ -593,6 +727,21 @@
                                                 </table>
                                             </div>
                                         </div>
+                                    <?php } else { ?>
+                                        <div class="inbox-wid">
+                                                <div class="inbox-item">
+                                                    <table>
+                                                        <tr>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                            </td>
+                                                            <td>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
                                     <?php } ?>
                                     <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">

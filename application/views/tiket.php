@@ -58,6 +58,8 @@
                                             <h6><span class="badge badge-danger">Ditolak</span></h6>
                                         <?php } else if ($ticket->status_approval == 5) { ?>
                                             <h6><span class="badge badge-success">Disetujui</span></h6>
+                                        <?php } else if ($ticket->status_approval == 6) { ?>
+                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
                                         <?php } ?>
                                     </center>
                                 </td>

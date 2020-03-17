@@ -62,7 +62,7 @@ class Leads extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $where_leads = "id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $where_leads = 'id_leads IS NOT NULL';
+            $where_leads = 'id_leads IS NOT NULL AND status = "lengkap"';
         }
         $data = [
             'data' => $this->leads_model->get($where_leads),

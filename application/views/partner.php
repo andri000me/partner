@@ -17,18 +17,18 @@
             <a href="#"><button class="btn btn-success ml-3 mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a> -->
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan mb-2">
-                <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size">Rekrut Partner</button></a>
-                <a href="#"><button class="btn btn-success ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a>
+                <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size">Rekrut Merchant</button></a>
+                <a href="#"><button class="btn btn-success ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Merchant</button></a>
             </div>
         <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Table Partnership</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang
+                <h4 class="mt-0 header-title">Merchant Data Table</h4>
+                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon Merchant yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
-                    memudahkan anda dalam memaintain partner anda.</p>
+                    memudahkan anda dalam memaintain Merchant anda.</p>
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -84,7 +84,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <div class="modal-header mb-2">
-                    <h6 class="modal-title">Cari Data Partner</h6>
+                    <h6 class="modal-title">Cari Data Merchant</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

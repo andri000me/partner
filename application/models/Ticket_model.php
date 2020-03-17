@@ -24,12 +24,13 @@ class Ticket_model extends CI_Model
     {
         $this->db->select("
         *,
-        
+        tickets.status as status_ticket,
         users.id_user as user_id,
         branches.id_branch as branch_id,
         users.name as requester,
         tickets.status as status_approval,
         user_completed.name as nama_user_completed, 
+        user_activated.name as nama_user_activated, 
         user_verified_ttd.name as nama_user_verified,
         partners.ktp as ktp_partner,
         agents.ktp as ktp_agent,
@@ -42,6 +43,7 @@ class Ticket_model extends CI_Model
         DATE_FORMAT(date_inprogress, '%d %b, %Y') as tanggal_inprogress,
         DATE_FORMAT(date_rejected, '%d %b, %Y') as tanggal_rejected,
         DATE_FORMAT(date_completed, '%d %b, %Y') as tanggal_completed,
+        DATE_FORMAT(date_activated, '%d %b, %Y') as tanggal_activated,
         DATE_FORMAT(date_verified_ttd, '%d %b, %Y') as tanggal_verified_ttd,
         DATE_FORMAT(tickets.date_created, '%d %b %Y') as tanggal_dibuat,
         DATE_FORMAT(tickets.date_modified, '%d %b %Y %H:%i:%s') as tanggal_diubah,
@@ -66,6 +68,8 @@ class Ticket_model extends CI_Model
         $this->db->join('users', 'users.id_user = tickets.id_user', 'left');
         // Join Table `Users` (untuk id_user siapa yang meng-approve data tiket)
         $this->db->join('users as user_completed', 'user_completed.id_user = tickets.completed_by', 'left');
+        // Join Table `Users` (untuk id_user siapa yang meng-approve data tiket)
+        $this->db->join('users as user_activated', 'user_activated.id_user = tickets.activated_by', 'left');
         // Join Table `Users` (untuk id_user siapa yang memverikasi tanda tangan)
         $this->db->join('users as user_verified_ttd', 'user_verified_ttd.id_user = tickets.verified_by', 'left');
         // Join Table `Branches`

@@ -24,7 +24,7 @@ class Zip extends CI_Controller
     // Create zip
     public function create_zip($id_ticket, $folder)
     {
-        +$where = ['id_ticket' => $id_ticket];
+        $where = ['id_ticket' => $id_ticket];
         $data = $this->ticket_model->get($where)->row();
         if ($folder == 'agents') {
             $uploads = [
