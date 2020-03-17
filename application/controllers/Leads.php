@@ -52,6 +52,21 @@ class Leads extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
@@ -276,6 +291,10 @@ class Leads extends CI_Controller
                 ];
                 $this->notification_model->create($notification);
 
+                //Membuat notifikasi tiket baru untuk Admin
+                $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
+                $this->notification_model->create($notification_admin);
+
                 //Leads Follow Up
                 $data_leads_follow_up = [
                     'follow_up_by' => $post['follow_up_by'],
@@ -397,7 +416,11 @@ class Leads extends CI_Controller
             ];
             $id_ticket = $this->ticket_model->create($ticket);
 
-            //Notifikasi
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
+
+            //Notifikasi Cross Branch
             $notification = [
                 'pengirim'          => $this->fungsi->user_login()->id_user,
                 'penerima_cabang'   => $post['cabang_cross'],
@@ -434,6 +457,10 @@ class Leads extends CI_Controller
         ];
 
         $this->leads_activity->create($leads_activity);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
@@ -558,6 +585,10 @@ class Leads extends CI_Controller
         ];
         $where_ticket = ['id_ticket' => $post['id_ticket']];
         $this->ticket_model->update($ticket, $where_ticket);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");

@@ -41,6 +41,21 @@ class Partner extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         // $merge = array_merge($this->where, ['status' => 'lengkap']);
@@ -250,6 +265,10 @@ class Partner extends CI_Controller
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
             $id_ticket = $this->ticket_model->create($ticket);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
         }
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -388,7 +407,11 @@ class Partner extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
         }
 
         //Memasukkan data mapping ke database `partners`
@@ -480,6 +503,10 @@ class Partner extends CI_Controller
         ];
 
         $this->partner_activity->create($partner_activity);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Meng-update antrian tiket untuk data Agent
         $has_superior = $this->fungsi->user_login()->has_superior;

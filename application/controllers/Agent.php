@@ -38,6 +38,21 @@ class Agent extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         $data = [
@@ -186,7 +201,12 @@ class Agent extends CI_Controller
                     'id_user'       => $this->fungsi->user_login()->id_user,
                     'id_branch'     => $this->fungsi->user_login()->id_branch
                 ];
-                $this->ticket_model->create($ticket);
+                $id_ticket = $this->ticket_model->create($ticket);
+
+                //Membuat notifikasi tiket baru untuk Admin
+                $notification = $this->notification($id_ticket, 'Tiket Baru');
+                $this->notification_model->create($notification);
+
             }
             //Membuat history activity inputan data Agent
             $agent_activity = [
@@ -311,7 +331,11 @@ class Agent extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
         }
         $where = ['id_agent' => $post['id_agent']];
         //Memasukkan data ke database `Agents`
@@ -326,6 +350,10 @@ class Agent extends CI_Controller
         ];
 
         $this->agent_activity->create($agent_activity);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diubah. <a href='#'>Lihat Data</a>");
@@ -383,6 +411,10 @@ class Agent extends CI_Controller
         ];
 
         $this->agent_activity->create($agent_activity);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Meng-update antrian tiket untuk data Agent
         $has_superior = $this->fungsi->user_login()->has_superior;

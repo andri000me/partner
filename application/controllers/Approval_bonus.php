@@ -41,6 +41,21 @@ class Approval_bonus extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         $data = [
@@ -187,6 +202,10 @@ class Approval_bonus extends CI_Controller
             ];
             $id_ticket = $this->ticket_model->create($ticket);
 
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
+
             redirect('approval_bonus');
         } else {
             $get_leads =
@@ -257,6 +276,10 @@ class Approval_bonus extends CI_Controller
 
             $where = ['leads_id' => $post['leads_id']];
             $id = $this->approval_bonus->update($data, $where);
+
+            //Membuat notifikasi Perubahan Data untuk Admin
+            $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+            $this->notification_model->create($notification);
 
             redirect('approval_bonus');
     }
