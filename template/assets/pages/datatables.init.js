@@ -10,13 +10,18 @@ $(document).ready(function () {
 			language: {
 				search: '',
 				searchPlaceholder: "Cari Data Disini"
-			}
+			},
 		}),
+
 		$("#datatable-buttons")
 		.DataTable({
 			responsive: true,
 			pagingType: "simple",
 			lengthChange: false,
+			"columnDefs": [{
+				"visible": false,
+				"targets": [3, 4]
+			}],
 			language: {
 				search: '',
 				searchPlaceholder: "Cari Data Disini"
@@ -25,18 +30,42 @@ $(document).ready(function () {
 		})
 		.buttons()
 		.container()
-		.appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
+		.appendTo(".col-md-6:eq(0)");
+
+	$("#datatable-agent")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
+			"columnDefs": [{
+				"visible": false,
+				"targets": 3
+			}],
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(0)");
 
 	$('.datatable-buttons').DataTable({
-		dom: 'Bfrtip',
-		language: {
-			search: '',
-			searchPlaceholder: "Cari Data Disini"
-		},
-		buttons: [
-			'excel', 'pdf', 'colvis'
-		]
-	});
+			responsive: true,
+			pagingType: "simple",
+			bLengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: [
+				'pdf', 'excel', 'colvis'
+			]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(0)");
 });
 
 $(document).ready(function () {

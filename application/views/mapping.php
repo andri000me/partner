@@ -27,10 +27,10 @@
                         <tr>
                             <th>Nama Usaha</th>
                             <th>Bidang Usaha</th>
-                            <th>Alamat</th>
-                            <th>Telepon</th>
-                            <th>E-mail</th>
                             <th>Produk</th>
+                            <th>Alamat</th>
+                            <th>E-mail</th>
+                            <th>Telepon</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -44,16 +44,16 @@
                                     <?= $mapping->bidang_usaha ?>
                                 </td>
                                 <td>
-                                    <?= $mapping->alamat ?>
+                                    <?= $mapping->kategori_produk ?>
                                 </td>
                                 <td>
-                                    <?= $mapping->telepon ?>
+                                    <?= $mapping->alamat ?>
                                 </td>
                                 <td>
                                     <?= $mapping->email ?>
                                 </td>
                                 <td>
-                                    <?= $mapping->kategori_produk ?>
+                                    <?= $mapping->telepon ?>
                                 </td>
                                 <td>
                                     <center><a href="<?= base_url('Mapping_partner/edit/' . $mapping->mapping_id) ?>" class="btn btn-secondary text-size">Detail</a></center>

@@ -209,15 +209,27 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-row">
-                                                    <div class="col-md-12">
+                                                    <div class="col-md-12 mb-1">
+                                                        <label class="ml-3 mr-3">Apa Saja Jenis Pembayaran Yang Diterima</label>
                                                         <div class="form-group ml-3 mr-3">
-                                                            <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
-                                                            <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran" id="inlineCheckbox1" value="option1">
+                                                                <label class="form-check-label" for="inlineCheckbox1">tunai</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran" id="inlineCheckbox1" value="option1">
+                                                                <label class="form-check-label" for="inlineCheckbox1">Cicilan Konvensional</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran" id="inlineCheckbox1" value="option1">
+                                                                <label class="form-check-label" for="inlineCheckbox1">Cicilan Syariah</label>
+                                                            </div>
+                                                            <!-- <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
                                                                 <option selected disabled value="">Pilih Jenis Pembayaran</option>
                                                                 <option <?= set_value('jenis_pembayaran') == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
                                                                 <option <?= set_value('jenis_pembayaran') == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
                                                                 <option <?= set_value('jenis_pembayaran') == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
-                                                            </select>
+                                                            </select> -->
                                                         </div>
                                                     </div>
                                                 </div>
@@ -378,6 +390,23 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
+                                                    <div class="form-group ml-3 mr-3">
+                                                        <label>Apakah Sudah MOU?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input mou" type="radio" name="mou" id="mou" <?= set_value('mou') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                            <label class="form-check-label">
+                                                                Ya
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input mou" type="radio" name="mou" id="mou" <?= set_value('mou') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                            <label class="form-check-label">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
                                                     <div id="disable" class="form-group ml-3 mr-3">
                                                         <label>Tahun Berakhir Izin Usaha</label>
                                                         <input type="text" class="form-control placement text-size number-only" name="akhir_izin" id="akhir_izin" value="<?= set_value('akhir_izin') ?>" placeholder="2016" minlength="4" maxlength="4">
@@ -388,7 +417,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Catatan</label>
-                                                        <textarea class="form-control text-size" name="keterangan_tambahan" id="keterangan_tambahan" cols="30" rows="10" value="<?= set_value('keterangan_tambahan') ?>" placeholder="isi jika anda informasi tambahan" style="height:107px;"></textarea>
+                                                        <textarea class="form-control text-size" name="keterangan_tambahan" id="keterangan_tambahan" cols="30" rows="10" value="<?= set_value('keterangan_tambahan') ?>" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -445,6 +474,14 @@
                                             <div class="form-group text-size ml-3 mr-3">
                                                 <label>Foto usaha</label>
                                                 <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div id="lampiran_mou" class="form-group text-size ml-3 mr-3">
+                                                <label>Lampiran MOU</label>
+                                                <input type="file" name="foto_mou" class="filestyle" data-buttonname="btn-secondary" required="">
                                             </div>
                                         </div>
                                     </div>
@@ -629,6 +666,21 @@
         $('#id_mapping, #nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
         $('#reset').hide();
         $('#nama_usaha').removeAttr('readonly');
+    })
+</script>
+
+<script>
+    $('#lampiran_mou').hide();
+
+    $(".mou").click(function() {
+        var radioValue = $("input[name='mou']:checked").val();
+        if (radioValue == 'Tidak') {
+            $("#lampiran_mou").hide();
+            $('#foto_mou').attr('required', '');
+        } else if (radioValue == 'Ya') {
+            $("#lampiran_mou").show()
+            $('#foto_mou').attr('required', 'required');
+        }
     })
 </script>
 
