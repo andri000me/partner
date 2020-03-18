@@ -17,20 +17,26 @@
                 <div style="display:none;" id="myDiv" class="animate-bottom">
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#home2" role="tab">
+                            <a class="nav-link active" data-toggle="tab" href="#partner" role="tab">
                                 <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
                                 <span class="d-none d-sm-block">Data partner</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#profile2" role="tab">
+                            <a class="nav-link" data-toggle="tab" href="#timeline" role="tab">
                                 <span class="d-block d-sm-none"><i class="ion-ios7-checkmark-outline"></i></span>
                                 <span class="d-none d-sm-block">Data Maintain</span>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#lampiran" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-file-alt"></i></span>
+                                <span class="d-none d-sm-block">Data Lampiran</span>
+                            </a>
+                        </li>
                     </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active p-3" id="home2" role="tabpanel">
+                        <div class="tab-pane active p-3" id="partner" role="tabpanel">
                             <form class=" text-size" action="<?= base_url('Partner/update_detail') ?>" method="post">
                                 <!-- ID Ticket -->
                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
@@ -58,7 +64,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Nomor Telepon / WhatsApp</label>
-                                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
+                                                <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977300" maxlength="15" />
                                                 <?= form_error('telepon') ?>
                                             </div>
                                         </div>
@@ -377,7 +383,7 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="tab-pane p-3" id="profile2" role="tabpanel">
+                        <div class="tab-pane p-3" id="timeline" role="tabpanel">
                             <h4 class="mt-0 header-title mb-4">Timeline Maintain</h4>
                             <ol class="activity-feed mb-0">
                                 <?php if ($maintains->num_rows() > 0) {
@@ -400,153 +406,178 @@
                                 <?php } ?>
                             </ol>
                         </div>
+                        <div class="tab-pane p-3" id="lampiran" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
+                                    <div class="owl-carousel owl-theme">
+                                        <?php if ($data->ktp) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->ktp)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>"><img src="<?= base_url('uploads/partners/' . $data->ktp) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->ktp ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->npwp) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->npwp)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>"><img src="<?= base_url('uploads/partners/' . $data->npwp) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->npwp ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->buku_tabungan_perusahaan) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>"><img src="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->buku_tabungan_perusahaan ?>">
+                                                            <i class=" fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->buku_tabungan_perusahaan ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->siup) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->siup)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->siup) ?>"><img src="<?= base_url('uploads/partners/' . $data->siup) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->siup) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->siup ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->siup ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->logo_perusahaan) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->logo_perusahaan)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>"><img src="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->logo_perusahaan ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->logo_perusahaan ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->foto_usaha_mapping) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->foto_usaha_mapping)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->foto_usaha_mapping ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->foto_usaha_mapping ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->foto_usaha) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->foto_usaha)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->foto_usaha ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->foto_usaha ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php foreach ($maintains->result() as $maintain) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <div class="zoom-gallery">
+                                                    <a href="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"><img src="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                </div>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($ticket->form_mou) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($ticket->form_mou)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12">
+                                    <form action="">
+                                        <h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
+                                        <div class="form-group element text-size ml-3 mr-3">
+                                            <label>Lampirkan Data</label><br>
+                                            <input type="file" name="tambah_lampiran" id="upload_file1" required>
+                                        </div>
+                                        <hr>
+                                        <div id="moreImageUpload"></div>
+                                        <div class="clear"></div>
+                                        <div id="moreImageUploadLink" style="display:none;" class="float-right">
+                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">tambah Form lampiran</a>
+                                            <button class="btn btn-primary mr-3">Simpan</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
     <div class="col-lg-4">
         <div class="sticky">
             <div class="card height">
                 <div class="card-body">
-                    <div class="owl-carousel owl-theme">
-                        <?php if ($data->ktp) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->ktp)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>"><img src="<?= base_url('uploads/partners/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->ktp ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->npwp) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->npwp)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>"><img src="<?= base_url('uploads/partners/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->npwp ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->buku_tabungan_perusahaan) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>"><img src="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->buku_tabungan_perusahaan ?>">
-                                            <i class=" fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->buku_tabungan_perusahaan ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->siup) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->siup)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->siup) ?>"><img src="<?= base_url('uploads/partners/' . $data->siup) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->siup) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->siup ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->siup ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->logo_perusahaan) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->logo_perusahaan)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>"><img src="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->logo_perusahaan ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->logo_perusahaan ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->foto_usaha_mapping) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->foto_usaha_mapping)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_usaha_mapping ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->foto_usaha_mapping ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->foto_usaha) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->foto_usaha)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_usaha ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->foto_usaha ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php foreach ($maintains->result() as $maintain) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <div class="zoom-gallery">
-                                    <a href="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"><img src="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>" alt="" style="height:79px; width:120px;"></a>
-                                </div>
-                            </div>
-                        <?php } ?>
-                        <?php if ($ticket->form_mou) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($ticket->form_mou)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-
                     <div class="card-contents">
                         <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                             <li class="nav-item">

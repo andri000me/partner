@@ -20,7 +20,7 @@
         <div class="card m-b-20">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Table List Approval Bonus</h4>
-                <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Ticket</th>

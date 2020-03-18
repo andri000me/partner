@@ -18,6 +18,66 @@ $(document).ready(function () {
 			responsive: true,
 			pagingType: "simple",
 			lengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(0)");
+
+	$("#datatable-buttons-1")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(2)");
+
+	$("#datatable-buttons-2")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(4)");
+
+	$("#datatable-buttons-3")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(6)");
+
+	$("#datatable-kerjasama")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
 			"columnDefs": [{
 				"visible": false,
 				"targets": [3, 4]
@@ -51,21 +111,18 @@ $(document).ready(function () {
 		.container()
 		.appendTo(".col-md-6:eq(0)");
 
-	$('.datatable-buttons').DataTable({
-			responsive: true,
-			pagingType: "simple",
-			bLengthChange: false,
-			language: {
-				search: '',
-				searchPlaceholder: "Cari Data Disini"
-			},
-			buttons: [
-				'pdf', 'excel', 'colvis'
-			]
-		})
-		.buttons()
-		.container()
-		.appendTo(".col-md-6:eq(0)");
+	// $('.datatable-buttons').DataTable({
+	// 	responsive: true,
+	// 	pagingType: "simple",
+	// 	bLengthChange: false,
+	// 	language: {
+	// 		search: '',
+	// 		searchPlaceholder: "Cari Data Disini"
+	// 	},
+	// 	buttons: [
+	// 		'pdf', 'excel', 'colvis'
+	// 	]
+	// })
 });
 
 $(document).ready(function () {

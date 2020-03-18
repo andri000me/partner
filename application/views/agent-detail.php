@@ -15,8 +15,22 @@
                     <div id="loadermobile"></div>
                 </div>
                 <div style="display:none;" id="myDiv" class="animate-bottom">
+                    <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#agent" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block">Data partner</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#lampiran" role="tab">
+                                <span class="d-block d-sm-none"><i class="far fa-file-alt"></i></span>
+                                <span class="d-none d-sm-block">Data Lampiran</span>
+                            </a>
+                        </li>
+                    </ul>
                     <div class="tab-content">
-                        <div class="tab-pane active p-3" id="home2" role="tabpanel">
+                        <div class="tab-pane active p-3" id="agent" role="tabpanel">
                             <form class="" action="<?= base_url('Agent/update_detail') ?>" method="post">
                                 <!-- ID Ticket -->
                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
@@ -250,6 +264,129 @@
                                 </div>
                             </form>
                         </div>
+                        <div class="tab-pane p-3" id="lampiran" role="tabpanel">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
+                                    <div class="owl-carousel owl-theme">
+                                        <?php if ($data->ktp) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->ktp)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->ktp ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->npwp) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->npwp)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->npwp ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->buku_tabungan) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->buku_tabungan)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->buku_tabungan ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->buku_tabungan ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->foto_selfie) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->foto_selfie)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->foto_selfie ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->foto_selfie ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($data->form_f100) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->form_f100)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->form_f100 ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->form_f100 ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <?php if ($ticket->form_mou) { ?>
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($ticket->form_mou)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="col-md-12">
+                                    <form action="">
+                                        <h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
+                                        <div class="form-group element text-size ml-3 mr-3">
+                                            <label>Lampirkan Data</label><br>
+                                            <input type="file" name="tambah_lampiran" id="upload_file1" required>
+                                        </div>
+                                        <hr>
+                                        <div id="moreImageUpload"></div>
+                                        <div class="clear"></div>
+                                        <div id="moreImageUploadLink" style="display:none;" class="float-right">
+                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">tambah Form lampiran</a>
+                                            <button class="btn btn-primary mr-3">Simpan</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -260,105 +397,6 @@
         <div class="sticky">
             <div class="card height">
                 <div class="card-body">
-                    <div class="owl-carousel owl-theme">
-                        <?php if ($data->ktp) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->ktp)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>"><img src="<?= base_url('uploads/agents/' . $data->ktp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/agents/' . $data->ktp) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->ktp ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->npwp) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->npwp)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>"><img src="<?= base_url('uploads/agents/' . $data->npwp) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/agents/' . $data->npwp) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->npwp ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->buku_tabungan) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->buku_tabungan)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>"><img src="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/agents/' . $data->buku_tabungan) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->buku_tabungan ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->buku_tabungan ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->foto_selfie) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->foto_selfie)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>"><img src="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/agents/' . $data->foto_selfie) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_selfie ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->foto_selfie ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($data->form_f100) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($data->form_f100)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>"><img src="<?= base_url('uploads/agents/' . $data->form_f100) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/agents/' . $data->form_f100) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->form_f100 ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $data->form_f100 ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                        <?php if ($ticket->form_mou) { ?>
-                            <div class="item" style="height:79px; width:120px;">
-                                <?php if (get_extension($ticket->form_mou)) { ?>
-                                    <div class="zoom-gallery">
-                                        <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>" alt="" style="height:79px; width:120px;"></a>
-                                    </div>
-                                <?php } else { ?>
-                                    <a href="<?= base_url('uploads/agents/' . $ticket->form_mou) ?>">
-                                        <div class="card text-center" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
-                                            <i class="fa fa-file fa-5x"></i>
-                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
-                                        </div>
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        <?php } ?>
-                    </div>
-
                     <div class="card-contents">
                         <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                             <li class="nav-item">
@@ -484,8 +522,7 @@
                                                     </table>
                                                 </div>
                                             </div>
-                                        <?php }
-                                        else if ($ticket->status_approval == 6) { ?>
+                                        <?php } else if ($ticket->status_approval == 6) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
                                                     <table>
@@ -656,8 +693,7 @@
                                                 </table>
                                             </div>
                                         </div>
-                                    <?php }
-                                    else if ($ticket->status_approval == 6) { ?>
+                                    <?php } else if ($ticket->status_approval == 6) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -729,19 +765,19 @@
                                         </div>
                                     <?php } else { ?>
                                         <div class="inbox-wid">
-                                                <div class="inbox-item">
-                                                    <table>
-                                                        <tr>
-                                                            <td>
-                                                                <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
-                                                            </td>
-                                                            <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
-                                                            </td>
-                                                        </tr>
-                                                    </table>
-                                                </div>
+                                            <div class="inbox-item">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
+                                                        </td>
+                                                        <td>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                        </td>
+                                                    </tr>
+                                                </table>
                                             </div>
+                                        </div>
                                     <?php } ?>
                                     <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
                                         <div class="inbox-wid">

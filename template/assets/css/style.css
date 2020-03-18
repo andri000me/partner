@@ -3852,7 +3852,8 @@ input[data-readonly] {
 	.sticky {
 		position: fixed;
 		z-index: 1;
-		width: 545px;
+		width: 546px;
+		margin-top: -18px;
 	}
 
 	.btn-kanan {

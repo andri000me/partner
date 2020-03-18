@@ -455,3 +455,34 @@
         }
     })
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("input[id^='upload_file']").each(function() {
+            var id = parseInt(this.id.replace("upload_file", ""));
+            $("#upload_file" + id).change(function() {
+                if ($("#upload_file" + id).val() != "") {
+                    $("#moreImageUploadLink").show();
+                }
+            });
+        });
+    });
+
+    $(document).ready(function() {
+        var upload_number = 2;
+        $('#attachMore').click(function() {
+            //add more file
+            var moreUploadTag = '';
+            moreUploadTag += '<div class="form-group element text-size ml-3 mr-3"><label for="upload_file"' + upload_number + '>Lampirkan Data ' + '</label>' + '<br>';
+            moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran"/>' + '<br><br>';
+            moreUploadTag += ' <a class="btn btn-danger" href="javascript:del_file(' + upload_number + ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' + '</a></div>' + '<hr>';
+            $('<dl id="delete_file' + upload_number + '">' + moreUploadTag + '</dl>').fadeIn('slow').appendTo('#moreImageUpload');
+            upload_number++;
+        });
+    });
+
+    function del_file(eleId) {
+        var ele = document.getElementById("delete_file" + eleId);
+        ele.parentNode.removeChild(ele);
+    }
+</script>

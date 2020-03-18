@@ -119,7 +119,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
                                         </div>
                                     </div>
                                 </div>
@@ -130,7 +130,7 @@
                                     <div class="input-group">
                                         <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><span class="ion-ios7-search-strong"></span></button>
+                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target="">Cari</button>
                                         </div>
                                     </div>
                                 </div>
