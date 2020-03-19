@@ -14,18 +14,22 @@ class Mapping_leads extends CI_Controller
         $this->load->model('agent_model');
         $this->load->model('leads_follow_up_model');
 
+        $this->load->model('branch_model');
+        $this->load->model('user_model');
+
+
         $this->load->helper('fungsi');
         $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "id_user IS NOT NULL";
         }
 
         check_not_login();
@@ -34,7 +38,7 @@ class Mapping_leads extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->mapping_leads->get($this->where)
+            'data' => $this->mapping_leads->get('mapping_leads.' . $this->where)
         ];
 
         $this->template->load('template/index', 'leads-mapping', $data);
@@ -42,8 +46,9 @@ class Mapping_leads extends CI_Controller
 
     public function create()
     {
+
         $data = [
-            'agents' => $this->agent_model->get($this->where),
+            'agents' => $this->agent_model->get('agents.' . $this->where),
             'partners' => $this->partner_model->get($this->where)
         ];
         $this->template->load('template/index', 'leads-mapping-form', $data);
@@ -52,7 +57,7 @@ class Mapping_leads extends CI_Controller
     public function edit($id)
     {
         $data = [
-            'data' => $this->mapping_leads->get(['A.id_mapping_leads' => $id])->row(),
+            'data' => $this->mapping_leads->get(['mapping_leads.id_mapping_leads' => $id])->row(),
             'agents' => $this->agent_model->get($this->where),
             'partners' => $this->partner_model->get($this->where),
             'follow_up' => $this->leads_follow_up_model->get(['mapping_leads.id_mapping_leads' => $id])

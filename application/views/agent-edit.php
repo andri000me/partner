@@ -293,11 +293,20 @@
                                                 <label>KTP</label>
                                                 <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" <?= $data->ktp ? '' : 'required' ?>>
                                                 <?php if ($data->ktp) { ?>
-                                                    <div class="img-fluid mt-1">
-                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->ktp) ?>" title="Foto Profile.">
-                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->ktp) ?>" width="100" height="100">
-                                                        </a>
-                                                    </div>
+                                                    <?php if (get_extension($data->ktp)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->ktp) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->ktp) ?>" width="100" height="100">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->ktp ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->ktp ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </div>
                                         </div>
@@ -306,11 +315,20 @@
                                                 <label>NPWP</label>
                                                 <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
                                                 <?php if ($data->npwp) { ?>
-                                                    <div class="img-fluid mt-1">
-                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->npwp) ?>" title="Foto Profile.">
-                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->npwp) ?>" width="100" height="100">
-                                                        </a>
-                                                    </div>
+                                                    <?php if (get_extension($data->npwp)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->npwp) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->npwp) ?>" width="100" height="100">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->npwp ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->npwp ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </div>
                                         </div>
@@ -321,11 +339,20 @@
                                                 <label>Buku Tabungan</label>
                                                 <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary" <?= $data->buku_tabungan ? '' : 'required' ?>>
                                                 <?php if ($data->buku_tabungan) { ?>
-                                                    <div class="img-fluid mt-1">
-                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" title="Foto Profile.">
-                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" width="100" height="100">
-                                                        </a>
-                                                    </div>
+                                                    <?php if (get_extension($data->buku_tabungan)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->buku_tabungan) ?>" width="100" height="100">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->buku_tabungan ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->buku_tabungan ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </div>
                                         </div>
@@ -334,11 +361,20 @@
                                                 <label>Foto Selfie</label>
                                                 <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary" <?= $data->foto_selfie ? '' : 'required' ?>>
                                                 <?php if ($data->foto_selfie) { ?>
-                                                    <div class="img-fluid mt-1">
-                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" title="Foto Profile.">
-                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" width="100" height="100">
-                                                        </a>
-                                                    </div>
+                                                    <?php if (get_extension($data->foto_selfie)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->foto_selfie) ?>" width="100" height="100">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_selfie ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->foto_selfie) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->foto_selfie ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </div>
                                         </div>
@@ -349,11 +385,20 @@
                                                 <label>Form F100</label>
                                                 <input type="file" name="form_f100" class="filestyle" data-buttonname="btn-secondary">
                                                 <?php if ($data->form_f100) { ?>
-                                                    <div class="img-fluid mt-1">
-                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->form_f100) ?>" title="Foto Profile.">
-                                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->form_f100) ?>" width="100" height="100">
-                                                        </a>
-                                                    </div>
+                                                    <?php if (get_extension($data->foto_selfie)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/agents/' .   $data->form_f100) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= base_url('uploads/agents/' .   $data->form_f100) ?>" width="100" height="100">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_selfie ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->foto_selfie) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->foto_selfie ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
                                                 <?php } ?>
                                             </div>
                                         </div>

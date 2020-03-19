@@ -351,10 +351,6 @@ class Agent extends CI_Controller
 
         $this->agent_activity->create($agent_activity);
 
-        //Membuat notifikasi Perubahan Data untuk Admin
-        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
-        $this->notification_model->create($notification);
-
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diubah. <a href='#'>Lihat Data</a>");
 

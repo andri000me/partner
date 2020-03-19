@@ -38,11 +38,11 @@ class Leads extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = NULL;
         }
@@ -71,11 +71,11 @@ class Leads extends CI_Controller
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $where_leads = "id_user = " . $this->fungsi->user_login()->id_user;
+            $where_leads = "users.id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangnya dan memunculkan data cross-branch.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where_leads = "id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
+            $where_leads = "branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
         } else {
             $where_leads = 'id_leads IS NOT NULL AND status = "lengkap"';
         }
@@ -93,7 +93,7 @@ class Leads extends CI_Controller
     public function create()
     {
         $data = [
-            'mappings' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get('mapping_leads.' . $this->where),
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
