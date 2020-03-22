@@ -50,8 +50,8 @@
                                                     <div class="input-group">
                                                         <input type="search" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= $data->nama_usaha ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                         <div class="input-group-append">
-                                                            <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                                            <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                            <button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
+                                                            <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl">Cari</button>
                                                         </div>
                                                     </div>
                                                 </div>

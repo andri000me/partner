@@ -44,7 +44,7 @@ class Leads extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "id_user IS NOT NULL";
         }
 
         // $cross_branch = $this->fungsi->user_login()->id_branch;
@@ -109,7 +109,7 @@ class Leads extends CI_Controller
         $where = ['leads.id_leads' => $id];
         $data = [
             'data' => $this->leads_model->get($where)->row(),
-            'mappings' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get("mapping_leads." .$this->where),
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(),
 
@@ -125,7 +125,7 @@ class Leads extends CI_Controller
 
         $data = [
             'data'          => $this->leads_model->get($where)->row(),
-            'mappings'      => $this->mapping_leads->get($this->where),
+            'mappings'      => $this->mapping_leads->get("mapping_leads." .$this->where),
             'branches'      => $this->branch_model->get(),
             'users'         => $this->user_model->get_all(),
 

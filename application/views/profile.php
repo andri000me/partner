@@ -116,7 +116,7 @@
                         <div class="tab-pane p-3" id="data-anggota" role="tabpanel">
                             <div class="ml-3 mr-3">
                                 <h4 class="mt-0 header-title">Table List Karyawan</h4>
-                                <table class="datatable table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons-1" class="table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>

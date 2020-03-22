@@ -44,4 +44,16 @@ class Fungsi
         $module = $this->ci->module_model->get(['id_user' => $id_user])->row();
         return $module;
     }
+
+    function check_duplicate($field, $value)
+    {
+        // if($id == NULL){
+            $check = $this->partner_model->get("$field = '$value'");
+            if($check->num_rows() == 0){
+                echo 'available';
+            } else {
+                echo 'not available';
+            } 
+        // }
+    } 
 }

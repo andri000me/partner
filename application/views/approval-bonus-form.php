@@ -31,8 +31,8 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345">
                                             <div class="input-group-append">
-                                                <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                                                <button class="btn btn-danger text-size" type="button" id="reset">hapus</button>
+                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads">Cari</button>
                                             </div>
                                             <?= form_error('leads_id') ?>
                                         </div>

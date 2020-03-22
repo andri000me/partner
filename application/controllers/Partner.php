@@ -273,7 +273,7 @@ class Partner extends CI_Controller
 
             if (!$this->upload->do_upload('foto_mou')) {
                 $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-                if(!empty($post['foto_mou'])){
+                if (!empty($post['foto_mou'])) {
                     $ticket['form_mou'] = $post['foto_mou'];
                 }
             } else {
@@ -296,14 +296,6 @@ class Partner extends CI_Controller
             sleep(6);
             redirect('Partner');
         }
-        // } else {
-        //     $data = [
-        //         'data' => $this->partner_model->get(),
-        //         'mappings' => $this->mapping_partner->get($this->where)
-        //     ];
-
-        //     $this->template->load('template/index', 'partner-form', $data);
-        // }
     }
 
     public function update()
@@ -564,5 +556,77 @@ class Partner extends CI_Controller
 
 
         redirect($post['redirect']);
+    }
+
+    public function tambah_lampiran()
+    {
+
+        $post = $this->input->post(NULL, TRUE);
+
+        $data = [];
+
+        $lampiran_arr = [];
+
+        //Count total file
+        $countfiles = count($_FILES['tambah_lampiran']['name']);
+
+        //Looping all files
+        for ($i = 0; $i < $countfiles; $i++) {
+            if (!empty($_FILES['tambah_lampiran']['name'][$i])) {
+                $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
+
+
+
+                //Konfigurasi Upload
+                $config['upload_path']         = './uploads/partners';
+                $config['allowed_types']        = '*';
+                $config['max_size']             = 0;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
+                // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
+
+                // Load upload library
+                $this->load->library('upload', $config);
+
+                // File upload
+                if ($this->upload->do_upload('file')) {
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+
+
+                    // Initialize array
+                    $data['filenames'][] = $filename;
+
+                    $lampiran_arr[] = $filename;
+                }
+            }
+        }
+
+
+
+        $comma = implode(",", $lampiran_arr);
+        $data_partner['lampiran_tambahan'] = $comma;
+        $where = ['id_partner' => $post['id_partner']];
+        $this->partner_model->update($data_partner, $where);
+
+        redirect($post['redirect']);
+    }
+
+    //check duplicate
+    public function check_duplicate($field, $value)
+    {
+        // if($id == NULL){
+        $check = $this->partner_model->get("$field = '$value'");
+        if ($check->num_rows() == 0) {
+            echo 'available';
+        } else {
+            echo 'not available';
+        }
+        // }
     }
 }

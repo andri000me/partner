@@ -30,7 +30,7 @@
             </div>
             <div class="tab-content">
                 <div class="tab-pane active p-3" id="belum-funding" role="tabpanel">
-                    <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>Nama</th>
@@ -68,7 +68,7 @@
                     </table>
                 </div>
                 <div class="tab-pane p-3" id="sudah-funding" role="tabpanel">
-                    <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable-buttons-1" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>Nama</th>

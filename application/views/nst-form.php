@@ -14,8 +14,8 @@
 									<div class="input-group mb-3">
 										<input type="text" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" aria-label="Recipient's username" aria-describedby="button-addon2">
 										<div class="input-group-append">
-											<button class="btn btn-danger text-size" type="button" id="reset">x</button>
-											<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads"><span class="ion-ios7-search-strong"></span></button>
+											<button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
+											<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads">Cari</button>
 										</div>
 									</div>
 									<?= form_error('leads_id') ?>

@@ -431,4 +431,78 @@ class Agent extends CI_Controller
 
         redirect($post['redirect']);
     }
+
+    public function tambah_lampiran()
+    {
+
+        $post = $this->input->post(NULL, TRUE);
+        
+        $data = [];
+
+        $lampiran_arr = [];
+
+        //Count total file
+        $countfiles = count($_FILES['tambah_lampiran']['name']);
+
+        //Looping all files
+        for($i = 0; $i < $countfiles; $i++){
+            if(!empty($_FILES['tambah_lampiran']['name'][$i])){
+                $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
+
+               
+
+                //Konfigurasi Upload
+                $config['upload_path']         = './uploads/agents';
+                $config['allowed_types']        = '*';
+                $config['max_size']             = 0;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
+                // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
+                
+                // Load upload library
+                $this->load->library('upload', $config);
+
+                // File upload
+                if($this->upload->do_upload('file')){
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+
+                    
+                    // Initialize array
+                    $data['filenames'][] = $filename;
+
+                    $lampiran_arr[] = $filename;
+                }
+            }
+        }
+
+
+
+        $comma = implode(",", $lampiran_arr);
+        $data_agent['lampiran_tambahan'] = $comma;
+        $where = ['id_agent' => $post['id_agent']];
+        $this->agent_model->update($data_agent, $where);
+        
+        redirect($post['redirect']);
+    }
+
+    private function set_upload_options()
+    {   
+        //upload an image options
+        $config = [];
+        //Konfigurasi Upload
+        $config['upload_path']         = './uploads/agents';
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 0;
+        $config['max_width']            = 0;
+        $config['max_height']           = 0;
+        // $config['overwrite']            = FALSE; 
+
+        return $config;
+    }
 }

@@ -39,6 +39,7 @@
     <!-- jQuery  -->
     <script src="<?= base_url('template/assets/js/jquery.min.js') ?>"></script>
     <script src="<?= base_url('template/assets/js/common_scripts_min.js') ?>"></script>
+    <!-- <script src="<?= base_url('https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js') ?>"></!--> -->
 
     <!-- Magnific popup -->
     <link href="<?= base_url('template/assets/plugins/css/magnific-popup.css') ?>" rel="stylesheet" type="text/css">

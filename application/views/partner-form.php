@@ -49,8 +49,8 @@
                                                         <div class="input-group">
                                                             <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= set_value('nama_usaha') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                             <div class="input-group-append">
-                                                                <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                                                <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><span class="ion-ios7-search-strong"></span></button>
+                                                                <button class="btn btn-danger text-size" type="button" id="reset">hapus</button>
+                                                                <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl">Cari</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -61,6 +61,7 @@
                                                             <label>E-Mail</label>
                                                             <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
                                                             <?= form_error("email") ?>
+                                                            <div id="email-availabilty"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -70,6 +71,7 @@
                                                             <label>Nomor Telepon / WhatsApp</label>
                                                             <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                                             <?= form_error("telepon") ?>
+                                                            <div id="telepon-availabilty"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -687,6 +689,38 @@
     $(".mou").click(function() {
         mou();
     })
+</script>
+
+<!-- check duplicate -->
+<script>
+$(document).ready(function(){
+    function check_availabilty(field, selector, target, message){
+        var value = $(selector).val();
+        if(value != ''){
+            $.ajax({
+                url: '<?= base_url('partner/check_duplicate/') ?>' + field + '/' +value,
+                method: 'POST',
+                data: {field:value},
+                dataType: 'text',
+                success: function(data){
+                    if(data == 'available'){
+                        $(selector).removeClass("is-invalid");
+                        $(target).html("<span class='text text-success'>"+ message +" Tersedia!</span>");
+                    } else {
+                        $(selector).val("").addClass("is-invalid");
+                        $(target).html("<span class='text text-danger'>"+ message + " '" + value +"' sudah dipakai!</span>");
+                    }
+                }
+            })
+        }
+    }
+    $("#telepon").blur(function(){
+        check_availabilty("telepon","#telepon", "#telepon-availabilty", "Nomor telepon ini");
+    })
+    $("#email").blur(function(){
+        check_availabilty("email","#email", "#email-availabilty", "Email ini");
+    })
+})
 </script>
 
 

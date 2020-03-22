@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+	<meta content="Admin Dashboard" name="description" />
+	<meta content="Themesbrand" name="author" />
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+	<link rel="stylesheet" href="../assets/plugins/css/morris.css">
+
+	<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+
+	<!-- DataTables -->
+	<link href="../assets/plugins/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<!-- Responsive datatable examples -->
+	<link href="../assets/plugins/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<!-- Begin page -->
+	<div id="wrapper">
+
+		<div class="topbar">
+
+			<!-- LOGO -->
+			<div class="topbar-left">
+				<a href="index.html" class="logo">
+					<span>
+						<img src="<?= base_url('template/assets/images/logo-light.png') ?>" alt="" height="18">
+					</span>
+					<i>
+						<img src="<?= base_url('template/assets/images/logo-sm.png') ?>" alt="" height="22">
+					</i>
+				</a>
+			</div>
+
+			<nav class="navbar-custom">
+
+				<ul class="navbar-right d-flex list-inline float-right mb-0">
+
+					<li class="dropdown notification-list">
+						<a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="false" aria-expanded="false">
+							<i class="ti-bell noti-icon"></i>
+							<span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+							<!-- item-->
+							<h6 class="dropdown-item-text">
+								Notifications (258)
+							</h6>
+							<div class="slimscroll notification-item-list">
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item active">
+									<div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
+									<p class="notify-details">Your item is shipped<span class="text-muted">It is a long
+											established fact that a reader will</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+							</div>
+							<!-- All-->
+							<a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+								View all <i class="fi-arrow-right"></i>
+							</a>
+						</div>
+					</li>
+					<li class="dropdown notification-list">
+						<div class="dropdown notification-list nav-pro-img">
+							<a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown"
+								href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<img src="<?= base_url('template/assets/images/users/user-4.jpg') ?>" alt="user"
+									class="rounded-circle">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+								<!-- item-->
+								<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i>
+									Profile</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i
+										class="mdi mdi-power text-danger"></i> Logout</a>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+				<ul class="list-inline menu-left mb-0">
+					<li class="float-left">
+						<button class="button-menu-mobile open-left waves-effect">
+							<i class="mdi mdi-menu"></i>
+						</button>
+					</li>
+				</ul>
+
+			</nav>
+
+
+		</div>
+		<!-- Top Bar End -->
+
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left side-menu">
+			<div class="slimscroll-menu" id="remove-scroll">
+				<!--- Sidemenu -->
+				<div id="sidebar-menu">
+					<!-- Left Menu Start -->
+					<ul class="metismenu" id="side-menu">
+						<li class="menu-title">Informasi</li>
+						<li>
+							<a href="<?= base_url('Partner') ?>" class="waves-effect">
+								<i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="profile.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Profile </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ti-bell noti-icon"></i><span
+									class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+								</span>
+							</a>
+						</li>
+
+						<li class="menu-title">Aktivitas Cabang</li>
+
+						<li>
+							<a href="tiket.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Tiket </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi mdi-email-outline"></i><span> Leads <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="leads-mapping.html">Database</a></li>
+								<li><a href="leads.html">Prospect</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi ion-person-stalker "></i><span> Kerjasama <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="mapping.html">Mapping Lokasi Partner</a></li>
+								<li><a href="partnership.html">Partnership</a></li>
+								<li><a href="agent.html">Agent / BA</a></li>
+							</ul>
+						</li>
+
+						<li class="menu-title">Bantuan HO</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-headphone  noti-icon"></i><span> Product Support </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Sidebar -->
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+		<!-- Left Sidebar End -->
+
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="page-title-box">
+								<h4 class="page-title">Input Produk</h4>
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+									<li class="breadcrumb-item active">Input Produk</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+
+					<form action="" method="post" class="text-size">
+						<div class="row">
+							<div class="col-lg-8">
+								<div class="card m-b-20">
+									<div class="card-body">
+										<div class="ml-3">
+											<h4 class="mt-0 header-title">Form Konsumen</h4>
+											<p class="text-muted m-b-30 text-size"></p>
+										</div>
+
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Konsumen</label>
+											<input type="text" class="form-control text-size" name="nama" id="nama"
+												placeholder="Mayang Madana Lalitya" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jenis Konsumen</label>
+											<select class="form-control text-size" name="jenis_konsumen"
+												id="jenis_konsumen" required>
+												<option selected disabled value="">Pilih Jenis Konsumen</option>
+												<option value="Internal">Internal (Karyawan)</option>
+												<option value="Eksternal">Eksternal</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Input Produk</label>
+											<select class="form-control text-size" name="input_produk" id="input_produk"
+												required>
+												<option selected disabled value="">Pilih Input Produk</option>
+												<option value="My Ta'lim">My Ta'lim</option>
+												<option value="My Hajat">My Hajat</option>
+												<option value="My Ihram">My Ihram</option>
+												<option value="My Safar">My Safar</option>
+												<option value="My Faedah">My Faedah</option>
+												<option value="My Cars">My Cars</option>
+												<option value="Input Paket">Input Paket</option>
+											</select>
+										</div>
+
+									</div>
+								</div>
+
+								<div class="card m-b-20" id="talim">
+									<div class="card-body">
+										<div class="ml-3">
+											<h4 class="mt-0 header-title">Form My Ta'lim</h4>
+											<p class="text-muted m-b-30 text-size"></p>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+
+							<div class="col-lg-4">
+								<div class="card m-b-20">
+									<div class="card-body">
+										<div class="ml-3">
+											<h4 class="mt-0 header-title">Approval Bonus Form</h4>
+											<p class="text-muted m-b-30 text-size"></p>
+										</div>
+										<div class="form-group text-size ml-3 mr-3">
+											<label>KTP</label>
+											<input type="file" name="ktp" class="filestyle"
+												data-buttonname="btn-secondary" required>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+			<!-- end content -->
+		</div>
+
+	</div>
+	<!-- END wrapper -->
+
+
+
+
+	<!-- jQuery  -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/metisMenu.min.js"></script>
+	<script src="../assets/js/jquery.slimscroll.js"></script>
+	<script src="../assets/js/waves.min.js"></script>
+
+	<script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
+
+	<!-- Required datatable js -->
+	<script src="../assets/plugins/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugins/js/dataTables.bootstrap4.min.js"></script>
+	<!-- Buttons examples -->
+	<script src="../assets/plugins/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/plugins/js/buttons.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/js/jszip.min.js"></script>
+	<script src="../assets/plugins/js/pdfmake.min.js"></script>
+	<script src="../assets/plugins/js/vfs_fonts.js"></script>
+	<script src="../assets/plugins/js/buttons.html5.min.js"></script>
+	<script src="../assets/plugins/js/buttons.print.min.js"></script>
+	<script src="../assets/plugins/js/buttons.colVis.min.js"></script>
+	<!-- Responsive examples -->
+	<script src="../assets/plugins/js/dataTables.responsive.min.js"></script>
+	<script src="../assets/plugins/js/responsive.bootstrap4.min.js"></script>
+
+	<!-- Datatable init js -->
+	<script src="../assets/pages/datatables.init.js"></script>
+
+	<!--Morris Chart-->
+	<script src="../assets/plugins/js/morris.min.js"></script>
+	<script src="../assets/plugins/js/raphael-min.js"></script>
+	<script src="../assets/pages/dashboard.js"></script>
+
+	<!-- App js -->
+	<script src="../assets/js/app.js"></script>
+
+	<script>
+		$('#talim', '#hajat', '#ihram', '#safar', '#faedah', '#cars', '#paket').hide();
+
+		$('#input_produk').change(function () {
+			if ($('#input_produk').val() == "My Ta'lim") {
+				$('#talim').show();
+				$('').hide();
+			} else if ($('#input_produk').val() == '') {
+				$('').show();
+				$('').hide();
+			} else if ($('#input_produk').val() == '') {
+				$('').show();
+				$('').hide();
+			}
+		})
+
+	</script>
+
+</body>
+
+</html>

@@ -31,10 +31,10 @@
                                     <div class="ml-3 mr-3">
                                         <label>Lead ID</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-size" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="202001SLOS12345" >
+                                            <input type="text" class="form-control text-size" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="202001SLOS12345">
                                             <div class="input-group-append">
-                                                <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><span class="ion-ios7-search-strong"></span></button>
+                                                <button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
+                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads">Cari</button>
                                             </div>
                                             <?= form_error('leads_id') ?>
                                         </div>
@@ -46,7 +46,7 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="nama_cabang" id="nama_cabang" value="<?= $data->nama_cabang ?>" placeholder="Cabang" readonly>
-                                        <input type="hidden" id="cabang" name="cabang" value="<?= $data->cabang ?>" >
+                                        <input type="hidden" id="cabang" name="cabang" value="<?= $data->cabang ?>">
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Requester</label>
                                         <input type="text" class="form-control text-size" name="requester" id="requester" value="<?= $data->name ?>" placeholder="Requester" readonly>
-                                        <input type="hidden" id="requester" name="requester" value="<?= $data->requester ?>" >
+                                        <input type="hidden" id="requester" name="requester" value="<?= $data->requester ?>">
                                     </div>
                                 </div>
                             </div>
@@ -128,20 +128,20 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                    <?php
+                        <?php
                         $level = $this->fungsi->user_login()->level;
-                        if (($level != 1) && (($level == 2 && $data->status== 0) || ($level == 3 && $data->status== 1) || ($level == 4 && $data->status== 2))) {
+                        if (($level != 1) && (($level == 2 && $data->status == 0) || ($level == 3 && $data->status == 1) || ($level == 4 && $data->status == 2))) {
                         ?>
                             <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $data->id_ticket) ?>">Approve</a>
                         <?php } ?>
-                        <?php if ($level == 4 && $data->status== 2) { ?>
+                        <?php if ($level == 4 && $data->status == 2) { ?>
                             <a class="btn btn-danger text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $data->id_ticket) ?>">Reject</a>
                         <?php } ?>
                         <a href="<?= base_url('mapping_leads') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
-                                    <?php if ($level < 4) { ?>
-                        <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-                            Simpan
-                        </button>
+                        <?php if ($level < 4) { ?>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
+                                Simpan
+                            </button>
                         <?php } ?>
                     </div>
                 </form>

@@ -54,7 +54,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active p-3" id="belum-update" role="tabpanel">
-                                <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Name Lengkap</th>
@@ -92,7 +92,7 @@
                                 </table>
                             </div>
                             <div class="tab-pane p-3" id="sudah-update" role="tabpanel">
-                                <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons-1" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Name Lengkap</th>
@@ -152,7 +152,7 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane p-3 active" id="belum-update-tele" role="tabpanel">
-                                <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons-2" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Name Lengkap</th>
@@ -190,7 +190,7 @@
                                 </table>
                             </div>
                             <div class="tab-pane p-3" id="sudah-update-tele" role="tabpanel">
-                                <table class="datatable-buttons table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons-3" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Name Lengkap</th>
