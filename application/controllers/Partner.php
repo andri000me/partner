@@ -606,9 +606,6 @@ class Partner extends CI_Controller
                 }
             }
         }
-
-
-
         $comma = implode(",", $lampiran_arr);
         $data_partner['lampiran_tambahan'] = $comma;
         $where = ['id_partner' => $post['id_partner']];

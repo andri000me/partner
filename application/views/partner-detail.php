@@ -553,6 +553,7 @@
                                     <h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
                                     <div class="owl-carousel owl-theme">
                                         <?php if ($data->ktp) { ?>
+                                        <!-- KTP -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->ktp)) { ?>
                                             <div class="zoom-gallery">
@@ -572,6 +573,7 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->npwp) { ?>
+                                        <!-- NPWP -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->npwp)) { ?>
                                             <div class="zoom-gallery">
@@ -591,6 +593,7 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->buku_tabungan_perusahaan) { ?>
+                                        <!-- Buku Tabungan Perusahaan -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
                                             <div class="zoom-gallery">
@@ -613,6 +616,7 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->siup) { ?>
+                                        <!-- SIUP -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->siup)) { ?>
                                             <div class="zoom-gallery">
@@ -632,6 +636,7 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->logo_perusahaan) { ?>
+                                        <!-- Logo Perusahaan -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->logo_perusahaan)) { ?>
                                             <div class="zoom-gallery">
@@ -651,6 +656,7 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->foto_usaha_mapping) { ?>
+                                        <!-- Foto Usaha Mapping -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->foto_usaha_mapping)) { ?>
                                             <div class="zoom-gallery">
@@ -671,6 +677,7 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->foto_usaha) { ?>
+                                        <!-- Foto Usaha -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($data->foto_usaha)) { ?>
                                             <div class="zoom-gallery">
@@ -689,6 +696,7 @@
                                             <?php } ?>
                                         </div>
                                         <?php } ?>
+                                        <!-- Foto Maintain -->
                                         <?php foreach ($maintains->result() as $maintain) { ?>
                                         <div class="item" style="height:150px; width:300px;">
                                             <div class="zoom-gallery">
@@ -700,10 +708,13 @@
                                         </div>
                                         <?php } ?>
                                         <?php if ($data->lampiran_tambahan) { ?>
+                                        <!-- Lampiran Tambahan -->
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php
-                                                $uploads =  explode(",", $data->lampiran_tambahan);
-                                                foreach ($uploads as $upload) {
+                                                $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+                                                foreach ($lampiran_tambahan as $upload) {
+                                                    echo $upload;
+
                                                 ?>
                                             <?php if (get_extension($upload)) { ?>
                                             <div class="zoom-gallery">
@@ -714,7 +725,7 @@
                                             <?php } else { ?>
                                             <a href="<?= base_url('uploads/partners/' . $upload) ?>">
                                                 <div class="card text-center" style="height: 150px; width: 300px"
-                                                    data-toggle="tooltip" title="<?= $data->lampiran_tambahan ?>">
+                                                    data-toggle="tooltip" title="<?= $data->upload ?>">
                                                     <i class="fa fa-file fa-5x"></i>
                                                 </div>
                                             </a>
@@ -722,6 +733,7 @@
                                             <?php } ?>
                                         </div>
                                         <?php } ?>
+                                        <!-- Form MOU -->
                                         <?php if ($ticket->form_mou) { ?>
                                         <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($ticket->form_mou)) { ?>
