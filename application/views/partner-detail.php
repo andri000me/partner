@@ -552,16 +552,16 @@
                                 <div class="col-md-12">
                                     <form action="">
                                         <h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
-                                        <div class="form-group element text-size ml-3 mr-3">
+                                        <div class="form-group element text-size">
                                             <label>Lampirkan Data</label><br>
                                             <input type="file" name="tambah_lampiran" id="upload_file1" required>
                                         </div>
                                         <hr>
                                         <div id="moreImageUpload"></div>
                                         <div class="clear"></div>
-                                        <div id="moreImageUploadLink" style="display:none;" class="float-right">
+                                        <div id="moreImageUploadLink" class="float-right mt-3">
                                             <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">tambah Form lampiran</a>
-                                            <button class="btn btn-primary mr-3">Simpan</button>
+                                            <button class="btn btn-primary">Simpan</button>
                                         </div>
 
                                     </form>
