@@ -21,7 +21,9 @@
                 </div>
                 <form class="text-size" action="<?= base_url('approval_bonus/update') ?>" method="post">
                     <!-- ID Agent -->
-                    <input type="hidden" id="id_approval_bonus" name="id_approval_bonus" value="<?= $data->id_approval_bonus ?>">
+                    <input type="hidden" id="id_approval_bonus" name="id_approval_bonus" value="<?= $data->id_approval_bonus ?>" >
+                    <!-- ID Ticket -->
+                    <input type="hidden" id="id_ticket" name="id_ticket" value="<?= $data->id_ticket ?>" >
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-row mb-3">

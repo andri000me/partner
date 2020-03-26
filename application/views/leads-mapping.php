@@ -32,6 +32,8 @@
                             <th>SOA</th>
                             <th>Produk</th>
                             <th>Detail Produk</th>
+                            <th>Requester</th>
+                            <th>Cabang</th>
                             <th>Lihat Data</th>
                         </tr>
                     </thead>
@@ -52,6 +54,12 @@
                                 </td>
                                 <td>
                                     <?= $mapping_leads->detail_produk ?>
+                                </td>
+                                <td>
+                                    <?= $mapping_leads->name ?>
+                                </td>
+                                <td>
+                                    <?= $mapping_leads->nama_cabang ?>
                                 </td>
                                 <td>
                                     <center><a class="btn btn-secondary text-size" href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Detail</a></center>

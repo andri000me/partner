@@ -38,6 +38,21 @@ class Agent extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         $data = [
@@ -186,7 +201,12 @@ class Agent extends CI_Controller
                     'id_user'       => $this->fungsi->user_login()->id_user,
                     'id_branch'     => $this->fungsi->user_login()->id_branch
                 ];
-                $this->ticket_model->create($ticket);
+                $id_ticket = $this->ticket_model->create($ticket);
+
+                //Membuat notifikasi tiket baru untuk Admin
+                $notification = $this->notification($id_ticket, 'Tiket Baru');
+                $this->notification_model->create($notification);
+
             }
             //Membuat history activity inputan data Agent
             $agent_activity = [
@@ -311,7 +331,11 @@ class Agent extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+            $id_ticket = $this->ticket_model->create($ticket);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
         }
         $where = ['id_agent' => $post['id_agent']];
         //Memasukkan data ke database `Agents`
@@ -384,6 +408,10 @@ class Agent extends CI_Controller
 
         $this->agent_activity->create($agent_activity);
 
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
+
         //Meng-update antrian tiket untuk data Agent
         $has_superior = $this->fungsi->user_login()->has_superior;
         $ticket = [
@@ -402,5 +430,79 @@ class Agent extends CI_Controller
         $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diupdate. <a href='#'>Lihat Data</a>");
 
         redirect($post['redirect']);
+    }
+
+    public function tambah_lampiran()
+    {
+
+        $post = $this->input->post(NULL, TRUE);
+        
+        $data = [];
+
+        $lampiran_arr = [];
+
+        //Count total file
+        $countfiles = count($_FILES['tambah_lampiran']['name']);
+
+        //Looping all files
+        for($i = 0; $i < $countfiles; $i++){
+            if(!empty($_FILES['tambah_lampiran']['name'][$i])){
+                $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
+
+               
+
+                //Konfigurasi Upload
+                $config['upload_path']         = './uploads/agents';
+                $config['allowed_types']        = '*';
+                $config['max_size']             = 0;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
+                // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
+                
+                // Load upload library
+                $this->load->library('upload', $config);
+
+                // File upload
+                if($this->upload->do_upload('file')){
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+
+                    
+                    // Initialize array
+                    $data['filenames'][] = $filename;
+
+                    $lampiran_arr[] = $filename;
+                }
+            }
+        }
+
+
+
+        $comma = implode(",", $lampiran_arr);
+        $data_agent['lampiran_tambahan'] = $comma;
+        $where = ['id_agent' => $post['id_agent']];
+        $this->agent_model->update($data_agent, $where);
+        
+        redirect($post['redirect']);
+    }
+
+    private function set_upload_options()
+    {   
+        //upload an image options
+        $config = [];
+        //Konfigurasi Upload
+        $config['upload_path']         = './uploads/agents';
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 0;
+        $config['max_width']            = 0;
+        $config['max_height']           = 0;
+        // $config['overwrite']            = FALSE; 
+
+        return $config;
     }
 }

@@ -41,6 +41,21 @@ class Partner extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         // $merge = array_merge($this->where, ['status' => 'lengkap']);
@@ -146,7 +161,7 @@ class Partner extends CI_Controller
             'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'hobi'                  => !empty($post['hobi'])                    ? $post['hobi'] : NULL,
-            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
+            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? implode(",", $post['jenis_pembayaran']) : NULL,
             'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
             'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
             'pernah_promosi'        => !empty($post['pernah_promosi'])          ? $post['pernah_promosi'] : NULL,
@@ -159,8 +174,8 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
-            'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
-            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
+            'sudah_mou'            => !empty($post['sudah_mou'])                ? $post['sudah_mou'] : NULL,
+
 
             //Timestamp
             'created_at' => date('Y-m-d H:i:s'),
@@ -215,6 +230,11 @@ class Partner extends CI_Controller
             $data['foto_usaha'] = $this->upload->data('file_name');
         }
 
+        if (!$this->upload->do_upload('foto_mou')) {
+            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+        } else {
+            $data['foto_mou'] = $this->upload->data('file_name');
+        }
 
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
@@ -246,10 +266,28 @@ class Partner extends CI_Controller
                 'date_created'  => date('Y-m-d H:i:s'),
                 'date_modified'  => date('Y-m-d H:i:s'),
                 'id_partner'    => $id,
+
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
+
+            if (!$this->upload->do_upload('foto_mou')) {
+                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+                if (!empty($post['foto_mou'])) {
+                    $ticket['form_mou'] = $post['foto_mou'];
+                }
+            } else {
+                $ticket['form_mou'] = $this->upload->data('file_name');
+                $ticket['ttd_pks'] = 'Ya';
+                $ticket['date_verified_ttd'] = date('Y-m-d H:i:s');
+                $ticket['verified_by'] = $this->fungsi->user_login()->id_user;
+            }
+
             $id_ticket = $this->ticket_model->create($ticket);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
         }
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -258,14 +296,6 @@ class Partner extends CI_Controller
             sleep(6);
             redirect('Partner');
         }
-        // } else {
-        //     $data = [
-        //         'data' => $this->partner_model->get(),
-        //         'mappings' => $this->mapping_partner->get($this->where)
-        //     ];
-
-        //     $this->template->load('template/index', 'partner-form', $data);
-        // }
     }
 
     public function update()
@@ -304,7 +334,7 @@ class Partner extends CI_Controller
             'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
-            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
+            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? implode(",", $post['jenis_pembayaran']) : NULL,
             'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
 
             //Stage 2
@@ -319,8 +349,8 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
-            'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
-            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
+            'sudah_mou'            => !empty($post['sudah_mou'])                ? $post['sudah_mou'] : NULL,
+
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
@@ -371,6 +401,12 @@ class Partner extends CI_Controller
             $data['foto_usaha'] = $this->upload->data('file_name');
         }
 
+        if (!$this->upload->do_upload('foto_mou')) {
+            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+        } else {
+            $data['foto_mou'] = $this->upload->data('file_name');
+        }
+
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
         } else if (isset($post['process'])) {
@@ -388,7 +424,25 @@ class Partner extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->ticket_model->create($ticket);
+
+            if ($post['sudah_mou'] == "Ya") {
+                if (!$this->upload->do_upload('foto_mou')) {
+                    $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+                } else {
+                    $ticket['form_mou'] = $this->upload->data('file_name');
+                    $ticket['ttd_pks'] = 'Ya';
+                    $ticket['form_mou'] = $post['foto_mou'];
+                    $ticket['date_verified_ttd'] = date('Y-m-d H:i:s');
+                    $ticket['verified_by'] = $this->fungsi->user_login()->id_user;
+                }
+            }
+
+
+            $id_ticket = $this->ticket_model->create($ticket);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
         }
 
         //Memasukkan data mapping ke database `partners`
@@ -402,6 +456,7 @@ class Partner extends CI_Controller
             'id_partner'    => $post['id_partner'],
             'id_user'       => $post['id_user']
         ];
+
         $this->partner_activity->create($partner_activity);
 
         if ($id) {
@@ -446,7 +501,7 @@ class Partner extends CI_Controller
             'barang_jual'           => !empty($post['barang_jual'])             ? $post['barang_jual'] : NULL,
             'sosial_media'          => !empty($post['sosial_media'])            ? $post['sosial_media'] : NULL,
             'hobi'                  => !empty($post['hobi'])                    ? $post['hobi'] : NULL,
-            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? $post['jenis_pembayaran'] : NULL,
+            'jenis_pembayaran'      => !empty($post['jenis_pembayaran'])        ? implode(",", $post['jenis_pembayaran']) : NULL,
             'omset'                 => !empty($post['omset'])                   ? str_replace(",", "", $post['omset']) : NULL,
             'jumlah_cabang'         => !empty($post['jumlah_cabang'])           ? $post['jumlah_cabang'] : NULL,
             'pernah_promosi'        => !empty($post['pernah_promosi'])          ? $post['pernah_promosi'] : NULL,
@@ -459,8 +514,8 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
-            'akhir_izin'            => !empty($post['akhir_izin'])              ? $post['akhir_izin'] : NULL,
-            'keterangan_tambahan'   => !empty($post['keterangan_tambahan'])     ? $post['keterangan_tambahan'] : NULL,
+            'sudah_mou'            => !empty($post['sudah_mou'])                ? $post['sudah_mou'] : NULL,
+
 
             //Timestamp
             // 'created_at' => date('Y-m-d H:i:s'),
@@ -481,6 +536,10 @@ class Partner extends CI_Controller
 
         $this->partner_activity->create($partner_activity);
 
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
+
         //Meng-update antrian tiket untuk data Agent
         $has_superior = $this->fungsi->user_login()->has_superior;
         $ticket = [
@@ -497,5 +556,74 @@ class Partner extends CI_Controller
 
 
         redirect($post['redirect']);
+    }
+
+    public function tambah_lampiran()
+    {
+
+        $post = $this->input->post(NULL, TRUE);
+
+        $data = [];
+
+        $lampiran_arr = [];
+
+        //Count total file
+        $countfiles = count($_FILES['tambah_lampiran']['name']);
+
+        //Looping all files
+        for ($i = 0; $i < $countfiles; $i++) {
+            if (!empty($_FILES['tambah_lampiran']['name'][$i])) {
+                $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
+
+
+
+                //Konfigurasi Upload
+                $config['upload_path']         = './uploads/partners';
+                $config['allowed_types']        = '*';
+                $config['max_size']             = 0;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
+                // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
+
+                // Load upload library
+                $this->load->library('upload', $config);
+
+                // File upload
+                if ($this->upload->do_upload('file')) {
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+
+
+                    // Initialize array
+                    $data['filenames'][] = $filename;
+
+                    $lampiran_arr[] = $filename;
+                }
+            }
+        }
+        $comma = implode(",", $lampiran_arr);
+        $data_partner['lampiran_tambahan'] = $comma;
+        $where = ['id_partner' => $post['id_partner']];
+        $this->partner_model->update($data_partner, $where);
+
+        redirect($post['redirect']);
+    }
+
+    //check duplicate
+    public function check_duplicate($field, $value)
+    {
+        // if($id == NULL){
+        $check = $this->partner_model->get("$field = '$value'");
+        if ($check->num_rows() == 0) {
+            echo 'available';
+        } else {
+            echo 'not available';
+        }
+        // }
     }
 }

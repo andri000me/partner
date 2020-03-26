@@ -61,6 +61,7 @@
                                                             <label>E-Mail</label>
                                                             <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
                                                             <?= form_error("email") ?>
+                                                            <div id="email-availabilty"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -70,6 +71,7 @@
                                                             <label>Nomor Telepon / WhatsApp</label>
                                                             <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                                             <?= form_error("telepon") ?>
+                                                            <div id="telepon-availabilty"></div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -213,16 +215,16 @@
                                                         <label class="ml-3 mr-3">Apa Saja Jenis Pembayaran Yang Diterima</label>
                                                         <div class="form-group ml-3 mr-3">
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran" id="inlineCheckbox1" value="option1">
-                                                                <label class="form-check-label" for="inlineCheckbox1">tunai</label>
+                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox1" value="Tunai">
+                                                                <label class="form-check-label" for="inlineCheckbox1">Tunai</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran" id="inlineCheckbox1" value="option1">
-                                                                <label class="form-check-label" for="inlineCheckbox1">Cicilan Konvensional</label>
+                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox2" value="Cicilan Konvensional">
+                                                                <label class="form-check-label" for="inlineCheckbox2">Cicilan Konvensional</label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran" id="inlineCheckbox1" value="option1">
-                                                                <label class="form-check-label" for="inlineCheckbox1">Cicilan Syariah</label>
+                                                                <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox3" value="Cicilan Syariah">
+                                                                <label class="form-check-label" for="inlineCheckbox3">Cicilan Syariah</label>
                                                             </div>
                                                             <!-- <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
                                                                 <option selected disabled value="">Pilih Jenis Pembayaran</option>
@@ -393,13 +395,13 @@
                                                     <div class="form-group ml-3 mr-3">
                                                         <label>Apakah Sudah MOU?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input mou" type="radio" name="mou" id="mou" <?= set_value('mou') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                            <input class="form-check-input mou" type="radio" name="sudah_mou" <?= set_value('sudah_mou') == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                             <label class="form-check-label">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input mou" type="radio" name="mou" id="mou" <?= set_value('mou') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                            <input class="form-check-input mou" type="radio" name="sudah_mou" <?= set_value('sudah_mou') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                             <label class="form-check-label">
                                                                 Tidak
                                                             </label>
@@ -481,7 +483,7 @@
                                         <div class="col-md-6">
                                             <div id="lampiran_mou" class="form-group text-size ml-3 mr-3">
                                                 <label>Lampiran MOU</label>
-                                                <input type="file" name="foto_mou" class="filestyle" data-buttonname="btn-secondary" required="">
+                                                <input type="file" name="foto_mou" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
@@ -671,9 +673,10 @@
 
 <script>
     $('#lampiran_mou').hide();
+    mou()
 
-    $(".mou").click(function() {
-        var radioValue = $("input[name='mou']:checked").val();
+    function mou() {
+        var radioValue = $("input[name='sudah_mou']:checked").val();
         if (radioValue == 'Tidak') {
             $("#lampiran_mou").hide();
             $('#foto_mou').attr('required', '');
@@ -681,7 +684,43 @@
             $("#lampiran_mou").show()
             $('#foto_mou').attr('required', 'required');
         }
+    }
+
+    $(".mou").click(function() {
+        mou();
     })
+</script>
+
+<!-- check duplicate -->
+<script>
+$(document).ready(function(){
+    function check_availabilty(field, selector, target, message){
+        var value = $(selector).val();
+        if(value != ''){
+            $.ajax({
+                url: '<?= base_url('partner/check_duplicate/') ?>' + field + '/' +value,
+                method: 'POST',
+                data: {field:value},
+                dataType: 'text',
+                success: function(data){
+                    if(data == 'available'){
+                        $(selector).removeClass("is-invalid");
+                        $(target).html("<span class='text text-success'>"+ message +" Tersedia!</span>");
+                    } else {
+                        $(selector).val("").addClass("is-invalid");
+                        $(target).html("<span class='text text-danger'>"+ message + " '" + value +"' sudah dipakai!</span>");
+                    }
+                }
+            })
+        }
+    }
+    $("#telepon").blur(function(){
+        check_availabilty("telepon","#telepon", "#telepon-availabilty", "Nomor telepon ini");
+    })
+    $("#email").blur(function(){
+        check_availabilty("email","#email", "#email-availabilty", "Email ini");
+    })
+})
 </script>
 
 

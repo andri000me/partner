@@ -38,13 +38,13 @@ class Leads extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "id_user IS NOT NULL";
         }
 
         // $cross_branch = $this->fungsi->user_login()->id_branch;
@@ -52,15 +52,30 @@ class Leads extends CI_Controller
         check_not_login();
     }
 
+    //Notification Method
+    private function notification($id_ticket, $message)
+    {
+        $notification = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => 46,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $notification;
+    }
+
     public function index()
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $where_leads = "id_user = " . $this->fungsi->user_login()->id_user;
+            $where_leads = "users.id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangnya dan memunculkan data cross-branch.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where_leads = "id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
+            $where_leads = "branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
         } else {
             $where_leads = 'id_leads IS NOT NULL AND status = "lengkap"';
         }
@@ -78,7 +93,7 @@ class Leads extends CI_Controller
     public function create()
     {
         $data = [
-            'mappings' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get('mapping_leads.' . $this->where),
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
@@ -94,7 +109,7 @@ class Leads extends CI_Controller
         $where = ['leads.id_leads' => $id];
         $data = [
             'data' => $this->leads_model->get($where)->row(),
-            'mappings' => $this->mapping_leads->get($this->where),
+            'mappings' => $this->mapping_leads->get("mapping_leads." .$this->where),
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(),
 
@@ -110,7 +125,7 @@ class Leads extends CI_Controller
 
         $data = [
             'data'          => $this->leads_model->get($where)->row(),
-            'mappings'      => $this->mapping_leads->get($this->where),
+            'mappings'      => $this->mapping_leads->get("mapping_leads." .$this->where),
             'branches'      => $this->branch_model->get(),
             'users'         => $this->user_model->get_all(),
 
@@ -276,6 +291,10 @@ class Leads extends CI_Controller
                 ];
                 $this->notification_model->create($notification);
 
+                //Membuat notifikasi tiket baru untuk Admin
+                $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
+                $this->notification_model->create($notification_admin);
+
                 //Leads Follow Up
                 $data_leads_follow_up = [
                     'follow_up_by' => $post['follow_up_by'],
@@ -397,7 +416,11 @@ class Leads extends CI_Controller
             ];
             $id_ticket = $this->ticket_model->create($ticket);
 
-            //Notifikasi
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification);
+
+            //Notifikasi Cross Branch
             $notification = [
                 'pengirim'          => $this->fungsi->user_login()->id_user,
                 'penerima_cabang'   => $post['cabang_cross'],
@@ -434,6 +457,10 @@ class Leads extends CI_Controller
         ];
 
         $this->leads_activity->create($leads_activity);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
@@ -558,6 +585,10 @@ class Leads extends CI_Controller
         ];
         $where_ticket = ['id_ticket' => $post['id_ticket']];
         $this->ticket_model->update($ticket, $where_ticket);
+
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");

@@ -39,9 +39,7 @@ class Maintain_partner extends CI_Controller
             'ticket'        => $this->ticket_model->get($where)->row(),
             'maintains'      => $this->maintain_model->get($where),
             'activities'    => $this->partner_activity->get($where),
-            'comments'      => $this->comment_model->get($where),
-
-            
+            'comments'      => $this->comment_model->get($where)
         ];
 
         $this->template->load('template/index', 'partner-maintain', $data);

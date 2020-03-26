@@ -208,15 +208,27 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 mb-1">
+                                                    <label class="ml-3 mr-3">Apa Saja Jenis Pembayaran Yang Diterima</label>
                                                     <div class="form-group ml-3 mr-3">
-                                                        <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
-                                                        <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
-                                                            <option selected disabled value="">Pilih Jenis Pembayaran</option>
-                                                            <option <?= $data->jenis_pembayaran == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
-                                                            <option <?= $data->jenis_pembayaran == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
-                                                            <option <?= $data->jenis_pembayaran == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
-                                                        </select>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox1" <?= in_array('Tunai', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Tunai">
+                                                            <label class="form-check-label" for="inlineCheckbox1">Tunai</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox2" <?= in_array('Cicilan Konvensional', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Konvensional">
+                                                            <label class="form-check-label" for="inlineCheckbox2">Cicilan Konvensional</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox3" <?= in_array('Cicilan Syariah', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Syariah">
+                                                            <label class="form-check-label" for="inlineCheckbox3">Cicilan Syariah</label>
+                                                        </div>
+                                                        <!-- <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
+                                                                <option selected disabled value="">Pilih Jenis Pembayaran</option>
+                                                                <option <?= set_value('jenis_pembayaran') == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
+                                                                <option <?= set_value('jenis_pembayaran') == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
+                                                                <option <?= set_value('jenis_pembayaran') == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
+                                                            </select> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -377,6 +389,23 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Apakah Sudah MOU?</label><br>
+                                                    <div class="form-check form-check-inline mt-2">
+                                                        <input class="form-check-input mou" type="radio" name="sudah_mou" <?= $data->sudah_mou == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                        <label class="form-check-label">
+                                                            Ya
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input mou" type="radio" name="sudah_mou" <?= $data->sudah_mou == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                        <label class="form-check-label">
+                                                            Tidak
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
                                                 <div id="disable" class="form-group ml-3 mr-3">
                                                     <label>Tahun Berakhir Izin Usaha</label>
                                                     <input type="text" class="form-control placement text-size number-only" name="akhir_izin" id="akhir_izin" value="<?= $data->akhir_izin ?>" placeholder="2016" minlength="4" maxlength="4">
@@ -411,11 +440,20 @@
                                             <label>KTP</label>
                                             <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" <?= $data->ktp ? '' : 'required' ?>>
                                             <?php if ($data->ktp) { ?>
-                                                <div class="img-fluid mt-1">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->ktp) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->ktp) ?>" style="width: 150px; height: 150px;">
-                                                    </a>
-                                                </div>
+                                                <?php if (get_extension($data->ktp)) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->ktp) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->ktp) ?>" style="width: 150px; height: 150px;">
+                                                        </a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->ktp ?>">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -424,11 +462,20 @@
                                             <label>NPWP</label>
                                             <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
                                             <?php if ($data->npwp) { ?>
-                                                <div class="img-fluid mt-1">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->npwp) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->npwp) ?>" style="width: 150px; height: 150px;">
-                                                    </a>
-                                                </div>
+                                                <?php if (get_extension($data->npwp)) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->npwp) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->npwp) ?>" style="width: 150px; height: 150px;">
+                                                        </a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->npwp ?>">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -439,11 +486,20 @@
                                             <label>Buku Tabungan</label>
                                             <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary" <?= $data->buku_tabungan_perusahaan ? '' : 'required' ?>>
                                             <?php if ($data->buku_tabungan_perusahaan) { ?>
-                                                <div class="img-fluid mt-1">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" style="width: 150px; height: 150px;">
-                                                    </a>
-                                                </div>
+                                                <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->buku_tabungan_perusahaan) ?>" style="width: 150px; height: 150px;">
+                                                        </a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->buku_tabungan_perusahaan ?>">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->buku_tabungan_perusahaan ?></span> -->
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -452,11 +508,20 @@
                                             <label>SIUP / TDP</label>
                                             <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary" <?= $data->siup ? '' : 'required' ?>>
                                             <?php if ($data->siup) { ?>
-                                                <div class="img-fluid mt-1">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->siup) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->siup) ?>" style="width: 150px; height: 150px;">
-                                                    </a>
-                                                </div>
+                                                <?php if (get_extension($data->siup)) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->siup) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->siup) ?>" style="width: 150px; height: 150px;">
+                                                        </a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->siup ?>">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->siup) ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->siup ?></span> -->
+                                                        </a>
+                                                    </div>
+                                                <?php } ?>
                                             <?php } ?>
                                         </div>
                                     </div>
@@ -467,39 +532,83 @@
                                             <label>Logo Perusahaan</label>
                                             <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary" <?= $data->logo_perusahaan ? '' : 'required' ?>>
                                             <?php if ($data->logo_perusahaan) { ?>
-                                                <div class="img-fluid mt-1">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" style="width: 150px; height: 150px;">
-                                                    </a>
-                                                </div>
-                                            <?php } ?>
+                                                <?php if (get_extension($data->logo_perusahaan)) { ?>
+                                                    <div class="img-fluid mt-1">
+                                                        <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" title="Foto Profile.">
+                                                            <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->logo_perusahaan) ?>" style="width: 150px; height: 150px;">
+                                                        </a>
+                                                    </div>
+                                                    <div class="img-fluid mt-1">
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->logo_perusahaan ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->logo_perusahaan ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                                    </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Foto usaha</label>
+                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" <?= ($data->foto_usaha || $data->foto_usaha_mapping) ? '' : 'required' ?>>
+                                                <?php if ($data->foto_usaha_mapping) { ?>
+                                                    <?php if (get_extension($data->foto_usaha_mapping)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" style="width: 150px; height: 150px;">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_usaha_mapping ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->foto_usaha_mapping ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size ml-3 mr-3">
-                                            <label>Foto usaha</label>
-                                            <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" <?= ($data->foto_usaha || $data->foto_usaha_mapping) ? '' : 'required' ?>>
-                                            <?php if ($data->foto_usaha_mapping) { ?>
-                                                <div class="img-fluid mt-1">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" title="Foto Profile.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_usaha_mapping) ?>" style="width: 150px; height: 150px;">
-                                                    </a>
-                                                </div>
-                                            <?php } ?>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div id="lampiran_mou" class="form-group text-size ml-3 mr-3">
+                                                <label>Lampiran MOU</label>
+                                                <input type="file" name="foto_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="hidden" name="foto_mou" <?= ($data->foto_mou == '' || $data->foto_mou == NULL) ? "disabled" : "value='$data->foto_mou'"  ?>>
+                                                <?php if ($data->foto_mou) { ?>
+                                                    <?php if (get_extension($data->foto_mou)) { ?>
+                                                        <div class="img-fluid mt-1">
+                                                            <a class="image-popup-vertical-fit" href="<?= base_url('uploads/partners/' .   $data->foto_mou) ?>" title="Foto Profile.">
+                                                                <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/partners/' .   $data->foto_mou) ?>" style="width: 150px; height: 150px;">
+                                                            </a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <div class="card text-center mt-2" style="height: 79px; width: 120px" data-toggle="tooltip" title="<?= $data->foto_mou ?>">
+                                                            <a href="<?= base_url('uploads/partners/' . $data->foto_mou) ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"><?= $data->foto_mou ?></span> -->
+                                                            </a>
+                                                        </div>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- /step-->
                             </div>
-                            <!-- /step-->
-                        </div>
-                        <!-- /middle-wizard -->
-                        <div class="form-group mb-0 float-right mt-3 mr-3">
-                            <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                            <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
-                            <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
-                            <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
-                        </div>
-                        <!-- /bottom-wizard -->
+                            <!-- /middle-wizard -->
+                            <div class="form-group mb-0 float-right mt-3 mr-3">
+                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
+                                <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
+                                <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
+                                <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                            </div>
+                            <!-- /bottom-wizard -->
                     </form>
                 </div>
             </div>
@@ -670,6 +779,26 @@
         $('#id_mapping, #nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan').val("");
         $('#reset').hide();
         $('#nama_usaha').removeAttr('readonly');
+    })
+</script>
+
+<script>
+    $('#lampiran_mou').hide();
+    mou();
+
+    function mou() {
+        var radioValue = $("input[name='sudah_mou']:checked").val();
+        if (radioValue == 'Tidak') {
+            $("#lampiran_mou").hide();
+            $('#foto_mou').attr('required', '');
+        } else if (radioValue == 'Ya') {
+            $("#lampiran_mou").show()
+            $('#foto_mou').attr('required', 'required');
+        }
+    }
+
+    $(".mou").click(function() {
+        mou();
     })
 </script>
 <!-- script -->

@@ -34,7 +34,13 @@
                             <?php foreach ($today->result() as $notif) { ?>
                                 <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
                                     <td>
-                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan oleh') { ?>
+                                        <?php if ($notif->type == 'Tiket Baru') { ?>
+                                            <span class="fas fa-ticket-alt"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Perubahan Data') { ?>
+                                            <span class="fas fa-pencil-alt"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan oleh' || $notif->type == 'Diaktivasi oleh Head HO') { ?>
                                             <span class="far fa-check-circle"></span>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Komentar oleh') { ?>
@@ -58,6 +64,9 @@
                                     <td>
                                         <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
                                             <span class="badge-success badge">Approved</span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Diaktivasi oleh Head HO') { ?>
+                                            <span class="badge-primary badge">Activated</span>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Ditolak oleh') { ?>
                                             <span class="badge-danger badge">Reject</span>
@@ -94,7 +103,13 @@
                             <?php foreach ($earlier->result() as $notif) { ?>
                                 <tr class="<?= $notif->has_read == 0 ? 'table-warning' : '' ?>">
                                     <td>
-                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan oleh') { ?>
+                                        <?php if ($notif->type == 'Tiket Baru') { ?>
+                                            <span class="fas fa-ticket-alt"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Perubahan Data') { ?>
+                                            <span class="fas fa-pencil-alt"></span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan oleh' || $notif->type == 'Diaktivasi oleh Head HO') { ?>
                                             <span class="far fa-check-circle"></span>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Komentar oleh') { ?>
@@ -118,6 +133,9 @@
                                     <td>
                                         <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
                                             <span class="badge-success badge">Approved</span>
+                                        <?php } ?>
+                                        <?php if ($notif->type == 'Diaktivasi oleh Head HO') { ?>
+                                            <span class="badge-primary badge">Activated</span>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Ditolak oleh') { ?>
                                             <span class="badge-danger badge">Reject</span>

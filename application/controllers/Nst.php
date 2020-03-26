@@ -45,14 +45,15 @@ class Nst extends CI_Controller
 
     public function create()
     {
-        $get_leads = "SELECT *, leads.leads_id as lead_id FROM leads
+        $get_leads = "SELECT *, leads.leads_id as lead_id 
+        FROM leads
         INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
         INNER JOIN users ON users.id_user = mapping_leads.id_user 
         INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
         LEFT JOIN nst ON nst.leads_id = leads.leads_id
         WHERE users.id_user = " . $this->fungsi->user_login()->id_user . "
-        AND nst.leads_id IS NULL
-        AND branches.id_branch = " . $this->fungsi->user_login()->id_branch;
+        AND branches.id_branch = " . $this->fungsi->user_login()->id_branch . "
+        AND nst.leads_id IS NULL";
 
         $data = [
             'leads' => $this->nst_model->query($get_leads)

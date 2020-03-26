@@ -23,15 +23,15 @@ class Mapping_leads_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->select("*, A.id_mapping_leads as mapping_id, A.telepon as telepon_mapping");
-        $this->db->from("mapping_leads A");
-        $this->db->join("leads B", "A.id_mapping_leads = B.id_mapping_leads", "left");
+        $this->db->select("*, mapping_leads.id_mapping_leads as mapping_id, mapping_leads.telepon as telepon_mapping");
+        $this->db->from("mapping_leads");
+        $this->db->join("leads", "mapping_leads.id_mapping_leads = leads.id_mapping_leads", "left");
         // $this->db->join("partners", "partners.id_partner = A.id_partner", "left");
         // $this->db->join("mapping_partners", "mapping_partners.id_mapping = partners.id_mapping", "left");
         // $this->db->join("agents", "agents.id_agent = A.id_agent", "left");
-        // $this->db->join("branches", "branches.id_branch = A.id_branch", "inner");
-        // $this->db->join("users", "users.id_user = A.id_user", "inner");
-        $this->db->where("B.id_mapping_leads IS NULL");
+        $this->db->join("branches", "branches.id_branch = mapping_leads.id_branch", "inner");
+        $this->db->join("users", "users.id_user = mapping_leads.id_user", "inner");
+        $this->db->where("leads.id_mapping_leads IS NULL");
         if ($where != null) {
             $this->db->where($where);
         }

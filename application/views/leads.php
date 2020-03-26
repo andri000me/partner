@@ -45,6 +45,8 @@
                                     <th>Leads ID</th>
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
+                                    <th>Requester</th>
+                                    <th>Cabang</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -62,6 +64,12 @@
                                         </td>
                                         <td>
                                             <?= $leads->follow_up_by ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->name ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->nama_cabang ?>
                                         </td>
                                         <td>
                                             <?php if ($leads->status == 'draft') { ?>
@@ -83,6 +91,8 @@
                                     <th>Leads ID</th>
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
+                                    <th>Requester</th>
+                                    <th>Cabang</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -100,6 +110,12 @@
                                         </td>
                                         <td>
                                             <?= $leads->follow_up_by ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->name ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->nama_cabang ?>
                                         </td>
                                         <td>
                                             <?php if ($leads->status == 'draft') { ?>

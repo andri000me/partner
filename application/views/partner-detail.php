@@ -151,7 +151,8 @@
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Status Tempat Usaha</label>
                                                 <select class="form-control text-size" name="status_tempat_usaha" id="status_tempat_usaha" required>
-                                                    <option selected disabled value="">Pilih Status Tempat usaha</option>
+                                                    <option selected disabled value="">Pilih Status Tempat usaha
+                                                    </option>
                                                     <option <?= $data->status_tempat_usaha == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
                                                     <option <?= $data->status_tempat_usaha == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
                                                     <option <?= $data->status_tempat_usaha == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
@@ -219,12 +220,27 @@
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
                                                 <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox1" <?= in_array('Tunai', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Tunai">
+                                                    <label class="form-check-label" for="inlineCheckbox1">Tunai</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox2" <?= in_array('Cicilan Konvensional', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Konvensional">
+                                                    <label class="form-check-label" for="inlineCheckbox2">Cicilan
+                                                        Konvensional</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox3" <?= in_array('Cicilan Syariah', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Syariah">
+                                                    <label class="form-check-label" for="inlineCheckbox3">Cicilan
+                                                        Syariah</label>
+                                                </div>
+                                                <!-- <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
                                                 <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
                                                     <option selected disabled value="">Pilih Jenis Pembayaran</option>
                                                     <option <?= $data->jenis_pembayaran == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
                                                     <option <?= $data->jenis_pembayaran == 'Kredit Konvensional' ? 'selected' : '' ?> value="Kredit Konvensional">Kredit Konvensional</option>
                                                     <option <?= $data->jenis_pembayaran == 'Kredit Syariah' ? 'selected' : '' ?> value="Kredit Syariah">Kredit Syariah</option>
-                                                </select>
+                                                </select> -->
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -412,6 +428,7 @@
                                     <h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
                                     <div class="owl-carousel owl-theme">
                                         <?php if ($data->ktp) { ?>
+                                            <!-- KTP -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->ktp)) { ?>
                                                     <div class="zoom-gallery">
@@ -428,6 +445,7 @@
                                             </div>
                                         <?php } ?>
                                         <?php if ($data->npwp) { ?>
+                                            <!-- NPWP -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->npwp)) { ?>
                                                     <div class="zoom-gallery">
@@ -444,6 +462,7 @@
                                             </div>
                                         <?php } ?>
                                         <?php if ($data->buku_tabungan_perusahaan) { ?>
+                                            <!-- Buku Tabungan Perusahaan -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
                                                     <div class="zoom-gallery">
@@ -460,6 +479,7 @@
                                             </div>
                                         <?php } ?>
                                         <?php if ($data->siup) { ?>
+                                            <!-- SIUP -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->siup)) { ?>
                                                     <div class="zoom-gallery">
@@ -476,6 +496,7 @@
                                             </div>
                                         <?php } ?>
                                         <?php if ($data->logo_perusahaan) { ?>
+                                            <!-- Logo Perusahaan -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->logo_perusahaan)) { ?>
                                                     <div class="zoom-gallery">
@@ -492,6 +513,7 @@
                                             </div>
                                         <?php } ?>
                                         <?php if ($data->foto_usaha_mapping) { ?>
+                                            <!-- Foto Usaha Mapping -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->foto_usaha_mapping)) { ?>
                                                     <div class="zoom-gallery">
@@ -508,6 +530,7 @@
                                             </div>
                                         <?php } ?>
                                         <?php if ($data->foto_usaha) { ?>
+                                            <!-- Foto Usaha -->
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($data->foto_usaha)) { ?>
                                                     <div class="zoom-gallery">
@@ -523,6 +546,7 @@
                                                 <?php } ?>
                                             </div>
                                         <?php } ?>
+                                        <!-- Foto Maintain -->
                                         <?php foreach ($maintains->result() as $maintain) { ?>
                                             <div class="item" style="height:150px; width:300px;">
                                                 <div class="zoom-gallery">
@@ -530,6 +554,30 @@
                                                 </div>
                                             </div>
                                         <?php } ?>
+                                        <?php if ($data->lampiran_tambahan) { ?>
+                                            <!-- Lampiran Tambahan -->
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php
+                                                $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+                                                foreach ($lampiran_tambahan as $upload) {
+                                                    echo $upload;
+
+                                                ?>
+                                                    <?php if (get_extension($upload)) { ?>
+                                                        <div class="zoom-gallery">
+                                                            <a href="<?= base_url('uploads/partners/' . $upload) ?>"><img src="<?= base_url('uploads/partners/' . $upload) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <a href="<?= base_url('uploads/partners/' . $upload) ?>">
+                                                            <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->upload ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                            </div>
+                                                        </a>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
+                                        <!-- Form MOU -->
                                         <?php if ($ticket->form_mou) { ?>
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($ticket->form_mou)) { ?>
@@ -550,20 +598,21 @@
                                     <hr>
                                 </div>
                                 <div class="col-md-12">
-                                    <form action="">
+                                    <form action="<?= base_url('partner/tambah_lampiran') ?>" method="POST" enctype="multipart/form-data">
+                                        <input type="hidden" name="id_partner" value="<?= $data->id_partner ?>">
+                                        <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                         <h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
                                         <div class="form-group element text-size">
                                             <label>Lampirkan Data</label><br>
-                                            <input type="file" name="tambah_lampiran" id="upload_file1" required>
+                                            <input type="file" name="tambah_lampiran[]" id="upload_file1" required>
                                         </div>
                                         <hr>
                                         <div id="moreImageUpload"></div>
                                         <div class="clear"></div>
-                                        <div id="moreImageUploadLink" class="float-right mt-3">
+                                        <div id="moreImageUploadLink" style="display:none;" class="float-right">
                                             <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">tambah Form lampiran</a>
-                                            <button class="btn btn-primary">Simpan</button>
+                                            <button class="btn btn-primary mr-3">Simpan</button>
                                         </div>
-
                                     </form>
                                 </div>
                             </div>
@@ -608,10 +657,12 @@
                                                                 <p class="inbox-item-author mt-0 mb-0"><i class="dripicons-clock"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size"><b><?= $activity->activity ?></b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size">
+                                                                    <b><?= $activity->activity ?></b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-date text-muted mt-1 text-size"><?= $activity->tanggal_activity ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 text-size">
+                                                                    <?= $activity->tanggal_activity ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -619,7 +670,10 @@
 
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">
+                                                                    Oleh&nbsp;&nbsp;<?= $activity->name ?>
+                                                                    (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?>
+                                                                </p>
                                                             </td>
                                                             <td>
 
@@ -647,19 +701,24 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="dripicons-clock"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1"><b><?= $activity->activity ?></b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1">
+                                                                    <b><?= $activity->activity ?></b></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $activity->name ?> (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">
+                                                                    Oleh&nbsp;&nbsp;<?= $activity->name ?>
+                                                                    (<?= $activity->jabatan ?>) - <?= $activity->nama_cabang ?>
+                                                                </p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0"><?= $activity->tanggal_activity ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0">
+                                                                    <?= $activity->tanggal_activity ?></p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -685,17 +744,20 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success"><b>Terverifikasi</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success">
+                                                                    <b>Terverifikasi</b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_completed ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
+                                                                    <?= $ticket->tanggal_completed ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">
+                                                                    Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
                                                             </td>
                                                             <td>
                                                             </td>
@@ -713,17 +775,20 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-primary"><b>Teraktivasi</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-primary">
+                                                                    <b>Teraktivasi</b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_activated ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
+                                                                    <?= $ticket->tanggal_activated ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">
+                                                                    Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
                                                             </td>
                                                             <td>
                                                             </td>
@@ -740,7 +805,8 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size  text-danger"><b>Belum Diverifikasi</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size  text-danger">
+                                                                    <b>Belum Diverifikasi</b></p>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -757,16 +823,19 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-success">
+                                                                    <b>Sudah tanda tangan Kerjasama</b></p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                                <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
+                                                                    <?= $ticket->tanggal_verified_ttd ?></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td></td>
                                                             <td>
-                                                                <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                                <p class="inbox-item-text text-muted mb-0 text-size">
+                                                                    Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -782,7 +851,8 @@
                                                                 <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 text-size text-danger">
+                                                                    <b>Belum tanda tangan Kerjasama</b></p>
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -798,7 +868,8 @@
 
                                                             </td>
                                                             <td>
-                                                                <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
+                                                                <p class="inbox-item-author mt-0 mb-1 ml-3 text-size">
+                                                                    <b>Kerjasama?</b></p>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -855,19 +926,22 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Terverifikasi</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-success">
+                                                                <b>Terverifikasi</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
+                                                            <p class="inbox-item-text text-muted mb-0">
+                                                                Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_completed ?></p>
+                                                            <p class="inbox-item-text text-muted">
+                                                                <?= $ticket->tanggal_completed ?></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -883,17 +957,20 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-primary"><b>Teraktivasi</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-primary">
+                                                                <b>Teraktivasi</b></p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size"><?= $ticket->tanggal_activated ?></p>
+                                                            <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
+                                                                <?= $ticket->tanggal_activated ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0 text-size">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
+                                                            <p class="inbox-item-text text-muted mb-0 text-size">
+                                                                Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?></p>
                                                         </td>
                                                         <td>
                                                         </td>
@@ -910,7 +987,8 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-danger"><b>Belum Diverifikasi</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-danger"><b>Belum
+                                                                    Diverifikasi</b></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -926,19 +1004,22 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-account-check"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Sudah tanda tangan Kerjasama</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-success"><b>Sudah
+                                                                    tanda tangan Kerjasama</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted mb-0">Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
+                                                            <p class="inbox-item-text text-muted mb-0">
+                                                                Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td></td>
                                                         <td>
-                                                            <p class="inbox-item-text text-muted"><?= $ticket->tanggal_verified_ttd ?></p>
+                                                            <p class="inbox-item-text text-muted">
+                                                                <?= $ticket->tanggal_verified_ttd ?></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -953,7 +1034,8 @@
                                                             <p class="inbox-item-author mt-0 mb-1"><i class="mdi mdi-timer-sand"></i>&nbsp;</p>
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-danger"><b>Belum tanda tangan Kerjasama</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 text-size text-danger">
+                                                                <b>Belum tanda tangan Kerjasama</b></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -969,7 +1051,8 @@
 
                                                         </td>
                                                         <td>
-                                                            <p class="inbox-item-author mt-0 mb-1 ml-3 text-size"><b>Kerjasama?</b></p>
+                                                            <p class="inbox-item-author mt-0 mb-1 ml-3 text-size">
+                                                                <b>Kerjasama?</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1023,7 +1106,8 @@
                                                     <p class="inbox-item-author mt-0 mb-1"><i class="fas fa-download"></i>&nbsp;</p>
                                                 </td>
                                                 <td>
-                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="<?= base_url('zip/partner/' . $data->id_partner) ?>">Download Semua Lampiran</b></a></p>
+                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="<?= base_url('zip/partner/' . $data->id_partner) ?>">Download
+                                                                Semua Lampiran</b></a></p>
                                                 </td>
                                             </tr>
                                         </table>
