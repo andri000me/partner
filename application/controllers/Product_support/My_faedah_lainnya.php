@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class My_safar extends CI_Controller
+class My_faedah_lainnya extends CI_Controller
 {
     public $where;
 
@@ -50,22 +50,6 @@ class My_safar extends CI_Controller
 
     public function save()
     {
-        $post = $this->input->post(null, TRUE);
-
-        $data = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'jenis_konsumen'        => $post['jenis_konsumen'],
-            'nama_travel'            => $post['nama_travel'],
-
-            //Timestamp
-            'created_at'            => date('Y-m-d H:i:s'),
-            'updated_at'            => date('Y-m-d H:i:s'),
-
-            'id_user'               => $this->fungsi->user_login()->id_user,
-            'id_branch'             => $this->fungsi->user_login()->id_branch
-        ];
-
-        $this->product_support->create('my_safar', $data);
     }
 
     public function update()
