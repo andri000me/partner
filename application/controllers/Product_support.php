@@ -7,6 +7,6 @@ class Product_support extends CI_Controller
 
     public function index()
     {
-        $this->template->load('template/index', 'product_support');
+        $this->template->load('template/index', 'product_support/input-produk-form');
     }
 }

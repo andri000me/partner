@@ -52,3 +52,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 $route['default_controller'] = 'profile';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+// $route['product_support/my_talim/save'] = 'Ps_my_talim/save';
+// $route['product_support/my_talim/update'] = 'Ps_my_talim/update';
