@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+	<meta content="Admin Dashboard" name="description" />
+	<meta content="Themesbrand" name="author" />
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+	<link rel="stylesheet" href="../assets/plugins/css/morris.css">
+
+	<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+
+	<!-- DataTables -->
+	<link href="../assets/plugins/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<!-- Responsive datatable examples -->
+	<link href="../assets/plugins/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<!-- Begin page -->
+	<div id="wrapper">
+
+		<div class="topbar">
+
+			<!-- LOGO -->
+			<div class="topbar-left">
+				<a href="index.html" class="logo">
+					<span>
+						<img src="<?= base_url('template/assets/images/logo-light.png') ?>" alt="" height="18">
+					</span>
+					<i>
+						<img src="<?= base_url('template/assets/images/logo-sm.png') ?>" alt="" height="22">
+					</i>
+				</a>
+			</div>
+
+			<nav class="navbar-custom">
+
+				<ul class="navbar-right d-flex list-inline float-right mb-0">
+
+					<li class="dropdown notification-list">
+						<a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="false" aria-expanded="false">
+							<i class="ti-bell noti-icon"></i>
+							<span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+							<!-- item-->
+							<h6 class="dropdown-item-text">
+								Notifications (258)
+							</h6>
+							<div class="slimscroll notification-item-list">
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item active">
+									<div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
+									<p class="notify-details">Your item is shipped<span class="text-muted">It is a long
+											established fact that a reader will</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+							</div>
+							<!-- All-->
+							<a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+								View all <i class="fi-arrow-right"></i>
+							</a>
+						</div>
+					</li>
+					<li class="dropdown notification-list">
+						<div class="dropdown notification-list nav-pro-img">
+							<a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown"
+								href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<img src="<?= base_url('template/assets/images/users/user-4.jpg') ?>" alt="user"
+									class="rounded-circle">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+								<!-- item-->
+								<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i>
+									Profile</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i
+										class="mdi mdi-power text-danger"></i> Logout</a>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+				<ul class="list-inline menu-left mb-0">
+					<li class="float-left">
+						<button class="button-menu-mobile open-left waves-effect">
+							<i class="mdi mdi-menu"></i>
+						</button>
+					</li>
+				</ul>
+
+			</nav>
+
+
+		</div>
+		<!-- Top Bar End -->
+
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left side-menu">
+			<div class="slimscroll-menu" id="remove-scroll">
+				<!--- Sidemenu -->
+				<div id="sidebar-menu">
+					<!-- Left Menu Start -->
+					<ul class="metismenu" id="side-menu">
+						<li class="menu-title">Informasi</li>
+						<li>
+							<a href="<?= base_url('Partner') ?>" class="waves-effect">
+								<i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="profile.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Profile </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ti-bell noti-icon"></i><span
+									class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+								</span>
+							</a>
+						</li>
+
+						<li class="menu-title">Aktivitas Cabang</li>
+
+						<li>
+							<a href="tiket.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Tiket </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi mdi-email-outline"></i><span> Leads <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="leads-mapping.html">Database</a></li>
+								<li><a href="leads.html">Prospect</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi ion-person-stalker "></i><span> Kerjasama <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="mapping.html">Mapping Lokasi Partner</a></li>
+								<li><a href="partnership.html">Partnership</a></li>
+								<li><a href="agent.html">Agent / BA</a></li>
+							</ul>
+						</li>
+
+						<li class="menu-title">Bantuan HO</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-headphone  noti-icon"></i><span> Product Support </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Sidebar -->
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+		<!-- Left Sidebar End -->
+
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-lg-8">
+							<div class="page-title-box">
+								<h4 class="page-title">Partner</h4>
+								<ol class="breadcrumb text-size">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
+									<li class="breadcrumb-item active">Partner</li>
+								</ol>
+							</div>
+							<div class="card">
+								<div class="card-body">
+									<!-- <div id="hilang" class="loader-body">
+										<div id="loader"></div>
+										<div id="loadermobile"></div>
+									</div> -->
+									<!-- <div style="display:none;" id="myDiv" class="animate-bottom"> -->
+									<ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+										<li class="nav-item">
+											<a class="nav-link active" data-toggle="tab" href="#partner" role="tab">
+												<span class="d-block d-sm-none"><i class="far fa-user"></i></span>
+												<span class="d-none d-sm-block">Data partner</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" data-toggle="tab" href="#timeline" role="tab">
+												<span class="d-block d-sm-none"><i
+														class="ion-ios7-checkmark-outline"></i></span>
+												<span class="d-none d-sm-block">Data Maintain</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" data-toggle="tab" href="#lampiran" role="tab">
+												<span class="d-block d-sm-none"><i class="far fa-file-alt"></i></span>
+												<span class="d-none d-sm-block">Data Lampiran</span>
+											</a>
+										</li>
+									</ul>
+									<div class="tab-content">
+										<div class="tab-pane active p-3" id="partner" role="tabpanel">
+											<form class=" text-size" action="<?= base_url('Partner/update_detail') ?>"
+												method="post">
+
+												<div class="form-group ml-3 mr-3">
+													<label>Nama Konsumen</label>
+													<input type="text" class="form-control text-size"
+														name="nama_konsumen" id="nama_konsumen"
+														placeholder="Mayang Madana Lalitya" required />
+												</div>
+												<div class="form-group ml-3 mr-3">
+													<label>Jenis Konsumen</label>
+													<select class="form-control text-size" name="jenis_konsumen"
+														id="jenis_konsumen" required>
+														<option selected disabled value="">Pilih Jenis Konsumen</option>
+														<option value="Internal">Internal (Karyawan)</option>
+														<option value="Eksternal">Eksternal</option>
+													</select>
+												</div>
+												<div class="form-group ml-3 mr-3">
+													<label>Input Produk</label>
+													<input type="text" class="form-control text-size"
+														name="input_produk" id="input_produk" value="My Safar" required
+														readonly />
+												</div>
+												<!-- <div class="form-group ml-3 mr-3">
+													<label>Input Produk</label>
+													<select class="form-control text-size" name="input_produk"
+														id="input_produk" required>
+														<option selected value="">Pilih Input Produk</option>
+														<option value="My Ta'lim">My Ta'lim</option>
+														<option value="My Hajat">My Hajat</option>
+														<option value="My Ihram">My Ihram</option>
+														<option value="My Safar">My Safar</option>
+														<option value="My Faedah">My Faedah</option>
+														<option value="My Cars">My Cars</option>
+														<option value="Input Paket">Input Paket</option>
+													</select>
+												</div> -->
+												<div class="form-group ml-3 mr-3">
+													<label>Nama Travel</label>
+													<input type="text" class="form-control text-size safar"
+														name="nama_travel" id="nama_travel" placeholder="Nama Travel" />
+												</div>
+
+												<div class="form-group mb-0 mt-2 float-right btn-maintain">
+													<a class="btn btn-info text-size"
+														onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')"
+														href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+													<a class="btn btn-danger text-size"
+														onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')"
+														href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+													<button type="submit"
+														onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')"
+														class="btn btn-primary waves-effect waves-light text-size">
+														Simpan
+													</button>
+												</div>
+											</form>
+										</div>
+										<div class="tab-pane p-3" id="timeline" role="tabpanel">
+											<h4 class="mt-0 header-title mb-4">Timeline Maintain</h4>
+											<ol class="activity-feed mb-0">
+												<li class="feed-item  text-size">
+													<div class="feed-item-list">
+														<span class="date">Maintain
+															<?= $maintain->tanggal_maintain ?></span>
+														<span class="activity-text"><?= $maintain->catatan ?></span>
+														<div class="img-fluid">
+															<a class="image-popup-vertical-fit"
+																href="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>"
+																title="Foto maintain partner.">
+																<img class="d-flex align-self-start rounded mr-3 img-fluid"
+																	alt=""
+																	src="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>">
+															</a>
+														</div>
+													</div>
+												</li>
+												<p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
+											</ol>
+										</div>
+										<div class="tab-pane p-3" id="lampiran" role="tabpanel">
+											<div class="row">
+												<div class="col-md-12">
+													<h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
+													<div class="owl-carousel owl-theme">
+														<!-- KTP -->
+														<div class="item" style="height:150px; width:300px;">
+
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->ktp) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->ktp) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a href="<?= base_url('uploads/partners/' . $data->ktp) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip" title="<?= $data->ktp ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->ktp ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- NPWP -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->npwp) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->npwp) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $data->npwp) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip" title="<?= $data->npwp ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->npwp ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- Buku Tabungan Perusahaan -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip"
+																	title="<?= $data->buku_tabungan_perusahaan ?>">
+																	<i class=" fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->buku_tabungan_perusahaan ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- SIUP -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->siup) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->siup) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $data->siup) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip" title="<?= $data->siup ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->siup ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- Logo Perusahaan -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip"
+																	title="<?= $data->logo_perusahaan ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->logo_perusahaan ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- Foto Usaha Mapping -->
+														<div class="item" style="height:150px; width:300px;">
+															<?php if (get_extension($data->foto_usaha_mapping)) { ?>
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $data->foto_usaha_mapping) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip"
+																	title="<?= $data->foto_usaha_mapping ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->foto_usaha_mapping ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- Foto Usaha -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip"
+																	title="<?= $data->foto_usaha ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $data->foto_usaha ?></span> -->
+																</div>
+															</a>
+														</div>
+														<!-- Foto Maintain -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"><img
+																		src="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+														</div>
+														<!-- Lampiran Tambahan -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $upload) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $upload) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a href="<?= base_url('uploads/partners/' . $upload) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip" title="<?= $data->upload ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																</div>
+															</a>
+														</div>
+														<!-- Form MOU -->
+														<div class="item" style="height:150px; width:300px;">
+															<div class="zoom-gallery">
+																<a
+																	href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>"><img
+																		src="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>"
+																		alt="" style="height:150px; width:300px;"></a>
+															</div>
+															<a
+																href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>">
+																<div class="card text-center"
+																	style="height: 150px; width: 300px"
+																	data-toggle="tooltip"
+																	title="<?= $ticket->form_mou ?>">
+																	<i class="fa fa-file fa-5x"></i>
+																	<!-- <span class="small"><?= $ticket->form_mou ?></span> -->
+																</div>
+															</a>
+														</div>
+													</div>
+													<hr>
+												</div>
+												<div class="col-md-12">
+													<form action="<?= base_url('partner/tambah_lampiran') ?>"
+														method="POST" enctype="multipart/form-data">
+														<input type="hidden" name="id_partner"
+															value="<?= $data->id_partner ?>">
+														<input type="hidden" name="redirect"
+															value="<?= uri_string() ?>">
+														<h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
+														<div class="form-group element text-size">
+															<label>Lampirkan Data</label><br>
+															<input type="file" name="tambah_lampiran[]"
+																id="upload_file1" required>
+														</div>
+														<hr>
+														<div id="moreImageUpload"></div>
+														<div class="clear"></div>
+														<div id="moreImageUploadLink" style="display:none;"
+															class="float-right">
+															<a class="btn btn-secondary mr-1" href="javascript:void(0);"
+																id="attachMore">tambah
+																Form lampiran</a>
+															<button class="btn btn-primary mr-3">Simpan</button>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- </div> -->
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="sticky">
+								<div class="card height">
+									<div class="card-body">
+										<div class="card-contents">
+											<ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+												<li class="nav-item">
+													<a class="nav-link active" data-toggle="tab" href="#home1"
+														role="tab">
+														<span class="d-block d-sm-none"><i
+																class="far fa-newspaper"></i></span>
+														<span class="d-none d-sm-block">Status</span>
+													</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
+														<span class="d-block d-sm-none"><i
+																class="far fa-comment-dots"></i></span>
+														<span class="d-none d-sm-block">Comment</span>
+													</a>
+												</li>
+											</ul>
+
+											<div class="tab-content">
+												<div class="tab-pane active p-3" id="home1" role="tabpanel">
+													<h6 class="header-title mt-0 mb-0 web">AKTIVITAS TERAKHIR</h6>
+													<div class="boxx overflow-auto web">
+														<?php if ($activities->num_rows() > 0) {
+															foreach ($activities->result() as $activity) { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table class="text-size">
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-0"><i
+																					class="dripicons-clock"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 text-size">
+																				<b><?= $activity->activity ?></b></p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-date text-muted mt-1 text-size">
+																				<?= $activity->tanggal_activity ?></p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-text text-muted mb-0 text-size">
+																				Oleh&nbsp;&nbsp;<?= $activity->name ?>
+																				(<?= $activity->jabatan ?>) -
+																				<?= $activity->nama_cabang ?>
+																			</p>
+																		</td>
+																		<td>
+
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php
+															}
+														} else { ?>
+														<p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
+														<?php } ?>
+													</div>
+
+													<h6 class="header-title mt-0 mb-0 mobile">AKTIVITAS TERAKHIR</h6>
+													<div class="boxx mobile">
+														<?php if ($activities->num_rows() > 0) {
+															foreach ($activities->result() as $activity) { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table class="text-size">
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1"><i
+																					class="dripicons-clock"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1">
+																				<b><?= $activity->activity ?></b></p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>
+																			<p
+																				class="inbox-item-text text-muted mb-0 text-size">
+																				Oleh&nbsp;&nbsp;<?= $activity->name ?>
+																				(<?= $activity->jabatan ?>) -
+																				<?= $activity->nama_cabang ?>
+																			</p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>
+																			<p class="inbox-item-text text-muted mb-0">
+																				<?= $activity->tanggal_activity ?></p>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php
+															}
+														} else { ?>
+														<p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
+														<?php } ?>
+													</div>
+
+													<div class="web mt-2">
+														<h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
+														<div class="boxxx overflow-auto">
+															<!-- Terverifikasi -->
+															<?php if ($ticket->status_approval == 5) { ?>
+															<div class="inbox-wid">
+																<div class="inbox-item">
+																	<table>
+																		<tr>
+																			<td>
+																				<p class="inbox-item-author mt-0 mb-1">
+																					<i
+																						class="mdi mdi-account-check"></i>&nbsp;
+																				</p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-author mt-0 mb-1 text-size text-success">
+																					<b>Terverifikasi</b></p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-date text-muted mt-1 mb-0 text-size">
+																					<?= $ticket->tanggal_completed ?>
+																				</p>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-text text-muted mb-0 text-size">
+																					Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?>
+																				</p>
+																			</td>
+																			<td>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+															<?php } else
+															if ($ticket->status_approval == 6) { ?>
+															<div class="inbox-wid">
+																<div class="inbox-item">
+																	<table>
+																		<tr>
+																			<td>
+																				<p class="inbox-item-author mt-0 mb-1">
+																					<i
+																						class="mdi mdi-account-check"></i>&nbsp;
+																				</p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-author mt-0 mb-1 text-size text-primary">
+																					<b>Teraktivasi</b></p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-date text-muted mt-1 mb-0 text-size">
+																					<?= $ticket->tanggal_activated ?>
+																				</p>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-text text-muted mb-0 text-size">
+																					Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?>
+																				</p>
+																			</td>
+																			<td>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+															<?php } else { ?>
+															<div class="inbox-wid hide">
+																<div class="inbox-item">
+																	<table>
+																		<tr>
+																			<td>
+																				<p class="inbox-item-author mt-0 mb-1">
+																					<i
+																						class="mdi mdi-timer-sand"></i>&nbsp;
+																				</p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-author mt-0 mb-1 text-size  text-danger">
+																					<b>Belum Diverifikasi</b></p>
+																			</td>
+																			<td></td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+															<?php } ?>
+															<?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
+															<div class="inbox-wid">
+																<div class="inbox-item">
+																	<table>
+																		<tr>
+																			<td>
+																				<p class="inbox-item-author mt-0 mb-1">
+																					<i
+																						class="mdi mdi-account-check"></i>&nbsp;
+																				</p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-author mt-0 mb-1 text-size text-success">
+																					<b>Sudah tanda tangan Kerjasama</b>
+																				</p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-date text-muted mt-1 mb-0 text-size">
+																					<?= $ticket->tanggal_verified_ttd ?>
+																				</p>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td></td>
+																			<td>
+																				<p
+																					class="inbox-item-text text-muted mb-0 text-size">
+																					Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?>
+																				</p>
+																			</td>
+																			<td></td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+															<?php } else { ?>
+															<div class="inbox-wid">
+																<div class="inbox-item">
+																	<table>
+																		<tr>
+																			<td>
+																				<p class="inbox-item-author mt-0 mb-1">
+																					<i
+																						class="mdi mdi-timer-sand"></i>&nbsp;
+																				</p>
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-author mt-0 mb-1 text-size text-danger">
+																					<b>Belum tanda tangan Kerjasama</b>
+																				</p>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+															<?php } ?>
+															<?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+															<div class="inbox-wid">
+																<div class="inbox-item">
+																	<table>
+																		<tr>
+																			<td>
+
+																			</td>
+																			<td>
+																				<p
+																					class="inbox-item-author mt-0 mb-1 ml-3 text-size">
+																					<b>Kerjasama?</b></p>
+																			</td>
+																		</tr>
+																		<tr>
+																			<td>
+
+																			</td>
+																			<td>
+																				<form action="#">
+																					<div class="form-group ml-3">
+																						<div
+																							class="form-check form-check-inline">
+																							<input
+																								class="form-check-input ttd_pks"
+																								type="radio"
+																								name="ttd_pks"
+																								<?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?>
+																								value="Ya">
+																							<label
+																								class="form-check-label">
+																								Ya
+																							</label>
+																						</div>
+																						<div
+																							class="form-check form-check-inline">
+																							<input
+																								class="form-check-input ttd_pks"
+																								type="radio"
+																								name="ttd_pks"
+																								<?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?>
+																								value="Tidak">
+																							<label
+																								class="form-check-label">
+																								Tidak
+																							</label>
+																						</div>
+																					</div>
+																				</form>
+																				<div id=""
+																					class="form-group ml-3 form_mou">
+																					<form
+																						action="<?= base_url('ticket/upload_mou/partners') ?>"
+																						method="post"
+																						enctype="multipart/form-data">
+																						<input type="hidden"
+																							name="id_ticket"
+																							value="<?= $ticket->id_ticket ?>">
+																						<input type="hidden"
+																							name="redirect"
+																							value="<?= uri_string() ?>">
+																						<div class="form-group mr-2">
+																							<label>Form MOU</label>
+																							<input type="file"
+																								name="upload_mou"
+																								class="filestyle"
+																								data-buttonname="btn-secondary">
+																						</div>
+																						<div class="form-group">
+																							<button
+																								class="btn btn-success"
+																								id="btn_upload"
+																								type="submit">Upload</button>
+																						</div>
+																					</form>
+																				</div>
+																			</td>
+																		</tr>
+																	</table>
+																</div>
+															</div>
+															<?php } ?>
+														</div>
+													</div>
+
+													<div class="mobile mt-2">
+														<h6 class="header-title mb-0">STATUS PARTNER</h6>
+														<?php if ($ticket->status_approval == 5) { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table class="text-size">
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1"><i
+																					class="mdi mdi-account-check"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 text-success">
+																				<b>Terverifikasi</b></p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>
+																			<p class="inbox-item-text text-muted mb-0">
+																				Oleh&nbsp;&nbsp;<?= $ticket->nama_user_completed ?>
+																			</p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>
+																			<p class="inbox-item-text text-muted">
+																				<?= $ticket->tanggal_completed ?></p>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php } else
+														if ($ticket->status_approval == 6) { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table>
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1"><i
+																					class="mdi mdi-account-check"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 text-size text-primary">
+																				<b>Teraktivasi</b></p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-date text-muted mt-1 mb-0 text-size">
+																				<?= $ticket->tanggal_activated ?></p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-text text-muted mb-0 text-size">
+																				Oleh&nbsp;&nbsp;<?= $ticket->nama_user_activated ?>
+																			</p>
+																		</td>
+																		<td>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php } else { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table class="text-size">
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1"><i
+																					class="mdi mdi-timer-sand"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 text-danger">
+																				<b>Belum
+																					Diverifikasi</b></p>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php } ?>
+														<?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table class="text-size">
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1"><i
+																					class="mdi mdi-account-check"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 text-success">
+																				<b>Sudah
+																					tanda tangan Kerjasama</b></p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>
+																			<p class="inbox-item-text text-muted mb-0">
+																				Oleh&nbsp;&nbsp;<?= $ticket->nama_user_verified ?>
+																			</p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td></td>
+																		<td>
+																			<p class="inbox-item-text text-muted">
+																				<?= $ticket->tanggal_verified_ttd ?></p>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php } else { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table>
+																	<tr>
+																		<td>
+																			<p class="inbox-item-author mt-0 mb-1"><i
+																					class="mdi mdi-timer-sand"></i>&nbsp;
+																			</p>
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 text-size text-danger">
+																				<b>Belum tanda tangan Kerjasama</b></p>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php } ?>
+														<?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+														<div class="inbox-wid">
+															<div class="inbox-item">
+																<table>
+																	<tr>
+																		<td>
+
+																		</td>
+																		<td>
+																			<p
+																				class="inbox-item-author mt-0 mb-1 ml-3 text-size">
+																				<b>Kerjasama?</b></p>
+																		</td>
+																	</tr>
+																	<tr>
+																		<td>
+
+																		</td>
+																		<td>
+																			<form action="#">
+																				<div class="form-group ml-3">
+																					<div
+																						class="form-check form-check-inline">
+																						<input
+																							class="form-check-input ttd_pks"
+																							type="radio" name="ttd_pks"
+																							<?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?>
+																							value="Ya">
+																						<label class="form-check-label">
+																							Ya
+																						</label>
+																					</div>
+																					<div
+																						class="form-check form-check-inline">
+																						<input
+																							class="form-check-input ttd_pks"
+																							type="radio" name="ttd_pks"
+																							<?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?>
+																							value="Tidak">
+																						<label class="form-check-label">
+																							Tidak
+																						</label>
+																					</div>
+																				</div>
+																			</form>
+																			<div id="" class="form-group ml-3 form_mou">
+																				<form
+																					action="<?= base_url('ticket/upload_mou/partners') ?>"
+																					method="post"
+																					enctype="multipart/form-data">
+																					<input type="hidden"
+																						name="id_ticket"
+																						value="<?= $ticket->id_ticket ?>">
+																					<input type="hidden" name="redirect"
+																						value="<?= uri_string() ?>">
+																					<div class="form-group mr-2">
+																						<label>Form MOU</label>
+																						<input type="file"
+																							name="upload_mou"
+																							class="filestyle"
+																							data-buttonname="btn-secondary">
+																					</div>
+																					<div class="form-group">
+																						<button class="btn btn-success"
+																							id="btn_upload"
+																							type="submit">Upload</button>
+																					</div>
+																				</form>
+																			</div>
+																		</td>
+																	</tr>
+																</table>
+															</div>
+														</div>
+														<?php } ?>
+													</div>
+
+													<h4 class="header-title mt-2 mb-0">LAMPIRAN</h4>
+													<div class="inbox-wid">
+														<div class="inbox-item">
+															<table>
+																<tr>
+																	<td>
+																		<p class="inbox-item-author mt-0 mb-1"><i
+																				class="fas fa-download"></i>&nbsp;</p>
+																	</td>
+																	<td>
+																		<p
+																			class="inbox-item-author mt-0 mb-1 text-size">
+																			<b><a
+																					href="<?= base_url('zip/partner/' . $data->id_partner) ?>">Download
+																					Semua Lampiran</b></a></p>
+																	</td>
+																</tr>
+															</table>
+
+														</div>
+													</div>
+												</div>
+
+												<div class="tab-pane p-3" id="profile1" role="tabpanel">
+													<div class="box overflow-auto">
+														<?php if ($comments->num_rows() > 0) { ?>
+														<?php foreach ($comments->result() as $comment) { ?>
+														<div class="media mb-1">
+															<a class="image-popup-vertical-fit"
+																href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>"
+																title="Foto Profile.">
+																<img class="d-flex align-self-start rounded mr-3" alt=""
+																	src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>"
+																	height="64">
+															</a>
+															<div class="media-body b">
+																<p class="mb-0"><b><?= $comment->name ?></b></p>
+																<p class="text-size mt-0 mb-0"><?= $comment->tanggal ?>
+																</p>
+																<p class="text-size mt-0"><?= $comment->comment ?></p>
+															</div>
+														</div>
+														<?php } ?>
+														<?php } else { ?>
+														<h4 class="text-muted m-b-10 text-size">Tidak Ada Komentar</h4>
+														<?php } ?>
+													</div>
+													<form action="<?= base_url('Comment/save') ?>" method="post">
+														<input type="hidden" name="ticket" id="ticket"
+															value="<?= $ticket->id_ticket ?>">
+														<input type="hidden" name="uri_string" id="uri_string"
+															value="<?= uri_string() ?>">
+														<div class="form-group">
+															<label>Comment</label>
+															<textarea class="form-control" name="comment" id="comment"
+																cols="30" rows="10" required
+																placeholder="tulis comment disini"
+																style="height:80px;"></textarea>
+														</div>
+														<button
+															class="btn btn-primary waves-effect waves-light float-right"
+															type="submit" name="process">Kirim</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end content -->
+		</div>
+
+	</div>
+	<!-- END wrapper -->
+
+
+
+
+	<!-- jQuery  -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/metisMenu.min.js"></script>
+	<script src="../assets/js/jquery.slimscroll.js"></script>
+	<script src="../assets/js/waves.min.js"></script>
+
+	<script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
+
+	<!-- Required datatable js -->
+	<script src="../assets/plugins/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugins/js/dataTables.bootstrap4.min.js"></script>
+	<!-- Buttons examples -->
+	<script src="../assets/plugins/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/plugins/js/buttons.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/js/jszip.min.js"></script>
+	<script src="../assets/plugins/js/pdfmake.min.js"></script>
+	<script src="../assets/plugins/js/vfs_fonts.js"></script>
+	<script src="../assets/plugins/js/buttons.html5.min.js"></script>
+	<script src="../assets/plugins/js/buttons.print.min.js"></script>
+	<script src="../assets/plugins/js/buttons.colVis.min.js"></script>
+	<!-- Responsive examples -->
+	<script src="../assets/plugins/js/dataTables.responsive.min.js"></script>
+	<script src="../assets/plugins/js/responsive.bootstrap4.min.js"></script>
+
+	<!-- Datatable init js -->
+	<script src="../assets/pages/datatables.init.js"></script>
+
+	<!--Morris Chart-->
+	<script src="../assets/plugins/js/morris.min.js"></script>
+	<script src="../assets/plugins/js/raphael-min.js"></script>
+	<script src="../assets/pages/dashboard.js"></script>
+
+	<!-- App js -->
+	<script src="../assets/js/app.js"></script>
+
+
+</body>
+
+</html>

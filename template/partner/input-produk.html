@@ -402,7 +402,7 @@
 														id="reset">hapus</button>
 													<button class="btn btn-primary text-size" type="button"
 														id="button-addon2" data-toggle="modal"
-														data-target=".bd-example-modal-xl">Cari</button>
+														data-target="#modal-partner">Cari</button>
 												</div>
 											</div>
 										</div>
@@ -1514,6 +1514,62 @@
 
 					</div>
 
+
+					<!-- Modal partner -->
+					<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog"
+						aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+						<div class="modal-dialog modal-xl">
+							<div class="modal-content">
+								<div class="modal-body">
+									<div class="modal-header mb-2">
+										<h4 class="modal-title">Cari Data Partner</h4>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<table id=""
+										class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+										style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+										<thead>
+											<tr>
+												<th>Name Usaha</th>
+												<th>Kategori Produk</th>
+												<th>Telepon</th>
+												<th>Status</th>
+												<th>Aksi</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php foreach ($partners->result() as $partner) { ?>
+											<tr>
+												<td><?= $partner->nama_usaha ?></td>
+												<td><?= $partner->kategori_produk ?></td>
+												<td><?= $partner->telepon ?></td>
+												<td>
+													<?php if ($partner->status == 'draft') { ?>
+													<span class="badge badge-secondary">Draft</span>
+													<?php } ?>
+													<?php if ($partner->status == '') { ?>
+													<span class="badge badge-secondary">Mapping</span>
+													<?php } ?>
+													<?php if ($partner->status == 'lengkap') { ?>
+													<span class="badge badge-success">Lengkap</span>
+													<?php } ?>
+												</td>
+												<td>
+													<center><button class="btn btn-primary pilih-partner"
+															data-partner="<?= $partner->id_mapping_partner ?>"
+															data-vendor="<?= $partner->nama_usaha ?>">Pilih</button>
+													</center>
+												</td>
+											</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Modal partner -->
+
 					<!-- <div class="row submit">
 							<div class="col-lg-8">
 								<div class="card">
@@ -1737,6 +1793,17 @@
 			}
 		})
 		// my faedah
+
+		$('#reset').hide();
+		if ($("#id_mapping_leads").val()) {
+			$('#nama_konsumen').attr('readonly', 'readonly');
+			$('#reset').show();
+		}
+
+		$('#reset').click(function () {
+			$('').val("");
+			$('').removeAttr('readonly');
+		})
 
 	</script>
 
