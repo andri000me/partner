@@ -26,26 +26,32 @@
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon partner yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
                     memudahkan anda dalam memaintain partner anda.</p>
-                <table id="datatable-agent" class="table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-agent" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>
-                                <div class="text-size">Nama Usaha</div>
+                                Nama Usaha
                             </th>
                             <th>
-                                <div class="text-size">Jenis Agent</div>
+                                Jenis Agent
                             </th>
                             <th>
-                                <div class="text-size">Pekerjaan</div>
+                                Pekerjaan
                             </th>
                             <th>
-                                <div class="text-size">E-mail</div>
+                                E-mail
                             </th>
                             <th>
-                                <div class="text-size">Nomor KTP</div>
+                                Nomor KTP
                             </th>
                             <th>
-                                <div class="text-size">Action</div>
+                                Status
+                            </th>
+                            <th>
+                                PKS
+                            </th>
+                            <th>
+                                Action
                             </th>
                         </tr>
                     </thead>
@@ -53,19 +59,37 @@
                         <?php foreach ($data->result() as $agent) { ?>
                             <tr class="clickable-row" data-href="detail-agent.html">
                                 <td>
-                                    <div class="text-size"><?= $agent->nama_lengkap ?></div>
+                                    <?= $agent->nama_lengkap ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $agent->jenis_agent ?></div>
+                                    <?= $agent->jenis_agent ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $agent->pekerjaan ?></div>
+                                    <?= $agent->pekerjaan ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $agent->email ?></div>
+                                    <?= $agent->email ?>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $agent->no_ktp ?></div>
+                                    <?= $agent->no_ktp ?>
+                                </td>
+                                <td>
+                                    <center>
+                                        <h6><span class="badge badge-success">Terverifikasi</span></h6>
+                                        <br>
+                                        <h6><span class="badge badge-primary">Teraktivasi</span></h6>
+                                        <br>
+                                        <h6><span class="badge badge-danger">Belum Terverifikasi</span></h6>
+                                    </center>
+                                </td>
+                                <td>
+                                    <center>
+                                        <h6><span class="badge badge-success">Sudah Tanda Tangan
+                                                Kerjasama</span></h6>
+                                        <br>
+                                        <h6><span class="badge badge-danger">Belum Tanda Tangan
+                                                Kerjasama</span></h6>
+                                    </center>
                                 </td>
                                 <td>
                                     <?php if ($agent->status == 'draft') { ?>
