@@ -234,6 +234,9 @@
 											<input type="hidden" name="sudah_funding" value="<?= $data->sudah_funding ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 										</div>
 									</div>
+
+									<hr class="mb-4" style="border-top: 1px dashed #34495e;">
+
 									<div class="form-row">
 										<div class="col-md-12 text-size">
 											<fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
