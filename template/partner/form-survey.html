@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+	<meta content="Admin Dashboard" name="description" />
+	<meta content="Themesbrand" name="author" />
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+	<link rel="stylesheet" href="../assets/plugins/css/morris.css">
+
+	<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+
+	<!-- DataTables -->
+	<link href="../assets/plugins/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<!-- Responsive datatable examples -->
+	<link href="../assets/plugins/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+	<!-- Begin page -->
+	<div id="wrapper">
+
+		<div class="topbar">
+
+			<!-- LOGO -->
+			<div class="topbar-left">
+				<a href="index.html" class="logo">
+					<span>
+						<img src="<?= base_url('template/assets/images/logo-light.png') ?>" alt="" height="18">
+					</span>
+					<i>
+						<img src="<?= base_url('template/assets/images/logo-sm.png') ?>" alt="" height="22">
+					</i>
+				</a>
+			</div>
+
+			<nav class="navbar-custom">
+
+				<ul class="navbar-right d-flex list-inline float-right mb-0">
+
+					<li class="dropdown notification-list">
+						<a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="false" aria-expanded="false">
+							<i class="ti-bell noti-icon"></i>
+							<span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+							<!-- item-->
+							<h6 class="dropdown-item-text">
+								Notifications (258)
+							</h6>
+							<div class="slimscroll notification-item-list">
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item active">
+									<div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
+									<p class="notify-details">Your item is shipped<span class="text-muted">It is a long
+											established fact that a reader will</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+							</div>
+							<!-- All-->
+							<a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+								View all <i class="fi-arrow-right"></i>
+							</a>
+						</div>
+					</li>
+					<li class="dropdown notification-list">
+						<div class="dropdown notification-list nav-pro-img">
+							<a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown"
+								href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<img src="<?= base_url('template/assets/images/users/user-4.jpg') ?>" alt="user"
+									class="rounded-circle">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+								<!-- item-->
+								<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i>
+									Profile</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i
+										class="mdi mdi-power text-danger"></i> Logout</a>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+				<ul class="list-inline menu-left mb-0">
+					<li class="float-left">
+						<button class="button-menu-mobile open-left waves-effect">
+							<i class="mdi mdi-menu"></i>
+						</button>
+					</li>
+				</ul>
+
+			</nav>
+
+
+		</div>
+		<!-- Top Bar End -->
+
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left side-menu">
+			<div class="slimscroll-menu" id="remove-scroll">
+				<!--- Sidemenu -->
+				<div id="sidebar-menu">
+					<!-- Left Menu Start -->
+					<ul class="metismenu" id="side-menu">
+						<li class="menu-title">Informasi</li>
+						<li>
+							<a href="<?= base_url('Partner') ?>" class="waves-effect">
+								<i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="profile.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Profile </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ti-bell noti-icon"></i><span
+									class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+								</span>
+							</a>
+						</li>
+
+						<li class="menu-title">Aktivitas Cabang</li>
+
+						<li>
+							<a href="tiket.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Tiket </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi mdi-email-outline"></i><span> Leads <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="leads-mapping.html">Database</a></li>
+								<li><a href="leads.html">Prospect</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi ion-person-stalker "></i><span> Kerjasama <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="mapping.html">Mapping Lokasi Partner</a></li>
+								<li><a href="partnership.html">Partnership</a></li>
+								<li><a href="agent.html">Agent / BA</a></li>
+							</ul>
+						</li>
+
+						<li class="menu-title">Bantuan HO</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-headphone  noti-icon"></i><span> Product Support </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Sidebar -->
+				<div class="clearfix"></div>
+
+			</div>
+		</div>
+		<!-- Left Sidebar End -->
+
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="container-fluid">
+
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="page-title-box">
+								<h4 class="page-title">Input Produk</h4>
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+									<li class="breadcrumb-item active">Input Produk</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card m-b-20">
+								<div class="card-body">
+									<div class="ml-3">
+										<h4 class="mt-0 header-title">Form Konsumen</h4>
+										<p class="text-muted m-b-30 text-size"></p>
+									</div>
+
+									<form action="#">
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Pemohon</label>
+											<input type="text" class="form-control text-size" name="nama_pemohon"
+												id="nama_pemohon" placeholder="Nama Pemohon" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Status Pemohon</label>
+											<select class="form-control text-size" name="status_pemohon"
+												id="status_pemohon" required>
+												<option selected value="">Pilih Status Pemohon</option>
+												<option value="New Customer">New Customer</option>
+												<option value="RO Expire">RO Expire</option>
+												<option value="RO Active">RO Active</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nomor Kontrak</label>
+											<input type="text" class="form-control text-size number-only"
+												name="nomor_kontrak" id="nomor_kontrak" placeholder="Nomor Kontrak"
+												required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Pasangan Pemohon</label>
+											<input type="text" class="form-control text-size"
+												name="nama_pasangan_pemohon" id="nama_pasangan_pemohon"
+												placeholder="Nama Pasangan Pemohon" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Barang / Jasa yang Dipesan</label>
+											<input type="text" class="form-control text-size" name="barang_jasa"
+												id="barang_jasa" placeholder="Barang / Jasa yang Dipesan" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Toko Supplier</label>
+											<input type="text" class="form-control text-size" name="nama_toko_supplier"
+												id="nama_toko_supplier" placeholder="Nama Toko Supplier" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kategori Penjual</label><br>
+											<div class="form-check form-check-inline mt-2">
+												<input class="form-check-input renovasi" type="radio"
+													name="kategori_penjual" id="kategori_penjual"
+													value="Badan Hukum (PT/CV?Yayasan)">
+												<label class="form-check-label">
+													Badan Hukum (PT/CV?Yayasan)
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input renovasi" type="radio"
+													name="kategori_penjual" id="kategori_penjual"
+													value="Perorangan / UD">
+												<label class="form-check-label">
+													Perorangan / UD
+												</label>
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Lama Pengalaman Usaha</label>
+											<input type="text" class="form-control text-size"
+												name="lama_pengalaman_usaha" id="lama_pengalaman_usaha"
+												placeholder="8 Tahun" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Omset Supplier per Bulan</label>
+											<select class="form-control text-size" name="omset_supplier_perbulan"
+												id="omset_supplier_perbulan" required>
+												<option selected value="">Pilih Omset Supplier per bulan</option>
+												<option value="Kurang dari 100 Juta">Kurang dari 100 Juta</option>
+												<option value="100 - 200 Juta">100 - 200 Juta</option>
+												<option value="250 - 500 Juta">250 - 500 Juta</option>
+												<option value="500 Juta - 1 Miliar">500 Juta - 1 Miliar</option>
+												<option value="1 - 2,5 Miliar">1 - 2,5 Miliar</option>
+												<option value="Lebih dari 2,5 Miliar">Lebih dari 2,5 Miliar</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Source of Application (SOA)</label>
+											<select class="form-control text-size" name="soa" id="soa" required>
+												<option selected value="">Pilih Source of Application (SOA)</option>
+												<option value="Internal BFI">Internal BFI</option>
+												<option value="Supplier">Supplier</option>
+												<option value="Agent">Agent</option>
+												<option value="CGC / EGC">CGC / EGC</option>
+												<option value="Lainnya">Lainnya</option>
+											</select>
+										</div>
+										<input type="text" class="form-control text-size" name="soa_lainnya"
+											id="soa_lainnya" placeholder="Lainnya" />
+										<div class="form-group ml-3 mr-3">
+											<label>Nama PIC Supplier</label>
+											<input type="text" class="form-control text-size" name="nama_pic_supplier"
+												id="nama_pic_supplier" placeholder="Nama PIC Supplier" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Posisi / Jabatan</label>
+											<input type="text" class="form-control text-size" name="posisi_jabatan"
+												id="posisi_jabatan" placeholder="Posisi / Jabatan" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Lengkap</label>
+											<input type="text" class="form-control text-size" name="nama_lengkap"
+												id="nama_lengkap" placeholder="Nama Lengkap" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>RT / RW</label>
+											<input type="text" class="form-control text-size" name="rt_rw" id="rt_rw"
+												placeholder="RT / RW" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kelurahan</label>
+											<input type="text" class="form-control text-size" name="kelurahan"
+												id="kelurahan" placeholder="Kelurahan" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kecamatan</label>
+											<input type="text" class="form-control text-size" name="kecamatan"
+												id="kecamatan" placeholder="Kecamatan" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kabupaten / Kota</label>
+											<input type="text" class="form-control text-size" name="kabupaten_kota"
+												id="kabupaten_kota" placeholder="Kabupaten / Kota" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kode Pos</label>
+											<input type="text" class="form-control text-size number_only placement"
+												name="kode_pos" id="kode_pos" placeholder="Kode Pos" minlength="5"
+												maxlength="5" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nomor Rekening</label>
+											<input type="text" class="form-control text-size number-only"
+												name="nomor_rekening" id="nomor_rekening" placeholder="Nomor Rekening"
+												required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Atas Nama</label>
+											<input type="text" class="form-control text-size" name="atas_nama_bank"
+												id="atas_nama_bank" placeholder="Atas Nama" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Bank</label>
+											<input type="text" class="form-control text-size" name="nama_bank"
+												id="nama_bank" placeholder="Nama Bank" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Cabang</label>
+											<input type="text" class="form-control text-size" name="nama_cabang"
+												id="nama_cabang" placeholder="Nama Cabang" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nomor NPWP</label>
+											<input type="text" class="form-control text-size number-only placement"
+												name="nomor_npwp" id="nomor_npwp" placeholder="Nomor NPWP"
+												minlength="15" maxlength="15" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Atas Nama</label>
+											<input type="text" class="form-control text-size" name="atas_nama_npwp"
+												id="atas_nama_npwp" placeholder="Atas Nama" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nomor Telepon / WA</label>
+											<input type="phone" class="form-control text-size number-only"
+												name="telepon" id="telepon" placeholder="Nomor Telepon / Whatsapp"
+												required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Email</label>
+											<input type="email" class="form-control text-size" name="email" id="email"
+												placeholder="Email" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Website</label>
+											<input type="text" class="form-control text-size" name="webhsite"
+												id="webhsite" placeholder="Website" required />
+										</div>
+
+									</form>
+								</div>
+								<!-- Upload -->
+
+							</div>
+
+
+							<!-- Modal partner -->
+							<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog"
+								aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-xl">
+									<div class="modal-content">
+										<div class="modal-body">
+											<div class="modal-header mb-2">
+												<h4 class="modal-title">Cari Data Partner</h4>
+												<button type="button" class="close"
+													data-dismiss="modal">&times;</button>
+											</div>
+											<table id=""
+												class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+												style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+												<thead>
+													<tr>
+														<th>Name Usaha</th>
+														<th>Kategori Produk</th>
+														<th>Telepon</th>
+														<th>Status</th>
+														<th>Aksi</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php foreach ($partners->result() as $partner) { ?>
+													<tr>
+														<td><?= $partner->nama_usaha ?></td>
+														<td><?= $partner->kategori_produk ?></td>
+														<td><?= $partner->telepon ?></td>
+														<td>
+															<?php if ($partner->status == 'draft') { ?>
+															<span class="badge badge-secondary">Draft</span>
+															<?php } ?>
+															<?php if ($partner->status == '') { ?>
+															<span class="badge badge-secondary">Mapping</span>
+															<?php } ?>
+															<?php if ($partner->status == 'lengkap') { ?>
+															<span class="badge badge-success">Lengkap</span>
+															<?php } ?>
+														</td>
+														<td>
+															<center><button class="btn btn-primary pilih-partner"
+																	data-partner="<?= $partner->id_mapping_partner ?>"
+																	data-vendor="<?= $partner->nama_usaha ?>">Pilih</button>
+															</center>
+														</td>
+													</tr>
+													<?php } ?>
+												</tbody>
+											</table>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Modal partner -->
+
+							<!-- <div class="row submit">
+							<div class="col-lg-8">
+								<div class="card">
+									<div class="card-body">
+										<div class="row">
+											<div class="col-lg-10">
+												<div class="alert alert-secondary mb-0" role="alert">
+													Sebelum Menyimpan Data Pastikan Semua telah Terisi Dengan Benar
+												</div>
+											</div>
+											<div class="col-lg-2">
+												<div class="form-group float-right mt-1 mb-0">
+													<a href="#"
+														class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
+													<button type="submit"
+														class="btn btn-primary waves-effect waves-light text-size ml-1">
+														Simpan
+													</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div> -->
+						</div>
+					</div>
+					<!-- end content -->
+				</div>
+
+			</div>
+			<!-- END wrapper -->
+
+
+
+
+			<!-- jQuery  -->
+			<script src="../assets/js/jquery.min.js"></script>
+			<script src="../assets/js/bootstrap.bundle.min.js"></script>
+			<script src="../assets/js/metisMenu.min.js"></script>
+			<script src="../assets/js/jquery.slimscroll.js"></script>
+			<script src="../assets/js/waves.min.js"></script>
+
+			<script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
+
+			<!-- Required datatable js -->
+			<script src="../assets/plugins/js/jquery.dataTables.min.js"></script>
+			<script src="../assets/plugins/js/dataTables.bootstrap4.min.js"></script>
+			<!-- Buttons examples -->
+			<script src="../assets/plugins/js/dataTables.buttons.min.js"></script>
+			<script src="../assets/plugins/js/buttons.bootstrap4.min.js"></script>
+			<script src="../assets/plugins/js/jszip.min.js"></script>
+			<script src="../assets/plugins/js/pdfmake.min.js"></script>
+			<script src="../assets/plugins/js/vfs_fonts.js"></script>
+			<script src="../assets/plugins/js/buttons.html5.min.js"></script>
+			<script src="../assets/plugins/js/buttons.print.min.js"></script>
+			<script src="../assets/plugins/js/buttons.colVis.min.js"></script>
+			<!-- Responsive examples -->
+			<script src="../assets/plugins/js/dataTables.responsive.min.js"></script>
+			<script src="../assets/plugins/js/responsive.bootstrap4.min.js"></script>
+
+			<!-- Datatable init js -->
+			<script src="../assets/pages/datatables.init.js"></script>
+
+			<!--Morris Chart-->
+			<script src="../assets/plugins/js/morris.min.js"></script>
+			<script src="../assets/plugins/js/raphael-min.js"></script>
+			<script src="../assets/pages/dashboard.js"></script>
+
+			<!-- App js -->
+			<script src="../assets/js/app.js"></script>
+
+			<script>
+				// input produk
+				$('.talim, .hajat, .ihram, .safar, .faedah, .cars, .paket, .upload').hide();
+
+				$('#input_produk').change(function () {
+					if ($('#input_produk').val() == "My Ta'lim") {
+						$('.talim, .upload').show();
+						$('.talim').attr('required', 'required');
+						$('.hajat, .ihram, .safar, .faedah, .cars, .paket').removeAttr('required', ' ');
+						$('.hajat, .ihram, .safar, .faedah, .cars, .paket').val("");
+						$('.hajat, .ihram, .safar, .faedah, .cars, .paket').hide();
+					} else if ($('#input_produk').val() == 'My Hajat') {
+						$('.hajat, .upload').show();
+						$('.hajat').attr('required', 'required');
+						$('.talim, .ihram, .safar, .faedah, .cars, .paket').removeAttr('required', ' ');
+						$('.talim, .ihram, .safar, .faedah, .cars, .paket').val("");
+						$('.talim, .ihram, .safar, .faedah, .cars, .paket').hide();
+					} else if ($('#input_produk').val() == 'My Ihram') {
+						$('.ihram, .upload').show();
+						$('.ihram').attr('required', 'required');
+						$('.talim, .hajat, .safar, .faedah, .cars, .paket').removeAttr('required', ' ');
+						$('.talim, .hajat, .safar, .faedah, .cars, .paket').val("");
+						$('.talim, .hajat, .safar, .faedah, .cars, .paket').hide();
+					} else if ($('#input_produk').val() == 'My Safar') {
+						$('.safar, .upload').show();
+						$('.safar').attr('required', 'required');
+						$('.talim, .hajat, .ihram, .faedah, .cars, .paket').removeAttr('required', ' ');
+						$('.talim, .hajat, .ihram, .faedah, .cars, .paket').val("");
+						$('.talim, .hajat, .ihram, .faedah, .cars, .paket').hide();
+					} else if ($('#input_produk').val() == 'My Faedah') {
+						$('.faedah, .upload').show();
+						$('.faedah').attr('required', 'required');
+						$('.talim, .hajat, .ihram, .safar, .cars, .paket').removeAttr('required', ' ');
+						$('.talim, .hajat, .ihram, .safar, .cars, .paket').val("");
+						$('.talim, .hajat, .ihram, .safar, .cars, .paket').hide();
+					} else if ($('#input_produk').val() == 'My Cars') {
+						$('.cars, .upload').show();
+						$('.cars').attr('required', 'required');
+						$('.talim, .hajat, .ihram, .safar, .faedah, .paket').removeAttr('required', ' ');
+						$('.talim, .hajat, .ihram, .safar, .faedah, .paket').val("");
+						$('.talim, .hajat, .ihram, .safar, .faedah, .paket').hide();
+					} else if ($('#input_produk').val() == 'Input Paket') {
+						$('.paket, .upload').show();
+						$('.paket').attr('required', 'required');
+						$('.talim, .hajat, .ihram, .safar, .faedah, .cars').removeAttr('required', ' ');
+						$('.talim, .hajat, .ihram, .safar, .faedah, .cars').val("");
+						$('.talim, .hajat, .ihram, .safar, .faedah, .cars').hide();
+					} else {
+						$('.talim, .hajat, .ihram, .safar, .faedah, .cars, .paket, .upload').hide();
+						$('.talim, .hajat, .ihram, .safar, .faedah, .cars, .paket, .upload').val("");
+					}
+
+				})
+				// input produk
+
+				// my hajat
+				$('.renovasi, .sewa, .wedding, .usaha, .lainnya').hide();
+
+				$('#kategori_myhajat').change(function () {
+					if ($('#kategori_myhajat').val() == "Renovasi Rumah") {
+						$('.renovasi').show();
+						$('.renovasi').attr('required', 'required');
+						$('.sewa, .wedding, .usaha, .lainnya').removeAttr('required', ' ');
+						$('.sewa, .wedding, .usaha, .lainnya').val("");
+						$('.sewa, .wedding, .usaha, .lainnya').hide();
+					} else if ($('#kategori_myhajat').val() == 'Sewa bangunan (Rumah / Ruko)') {
+						$('.sewa').show();
+						$(' .sewa').attr('required', 'required');
+						$('.renovasi, .wedding, .usaha, .lainnya').removeAttr('required', ' ');
+						$('.renovasi, .wedding, .usaha, .lainnya').val("");
+						$('.renovasi, .wedding, .usaha, .lainnya').hide();
+					} else if ($('#kategori_myhajat').val() == 'Wedding Organizer') {
+						$('.wedding').show();
+						$('.wedding').attr('required', 'required');
+						$('.renovasi, .sewa, .usaha, .lainnya').removeAttr('required', ' ');
+						$('.renovasi, .sewa, .usaha, .lainnya').val("");
+						$('.renovasi, .sewa, .usaha, .lainnya').hide();
+					} else if ($('#kategori_myhajat').val() == 'Usaha franchise') {
+						$('.usaha').show();
+						$(' .usaha').attr('required', 'required');
+						$('.renovasi, .sewa, .wedding, .lainnya').removeAttr('required', ' ');
+						$('.renovasi, .sewa, .wedding, .lainnya').val("");
+						$('.renovasi, .sewa, .wedding, .lainnya').hide();
+					} else if ($('#kategori_myhajat').val() == 'Lainnya') {
+						$('.lainnya').show();
+						$(' .lainnya').attr('required', 'required');
+						$('.renovasi, .sewa, .wedding, .usaha').removeAttr('required', ' ');
+						$('.renovasi, .sewa, .wedding, .usaha').val("");
+						$('.renovasi, .sewa, .wedding, .usaha').hide();
+					} else {
+						$('.renovasi, .sewa, .wedding, .usaha, .lainnya').hide();
+						$('.renovasi, .sewa, .wedding, .usaha, .lainnya').val("");
+					}
+
+				})
+				// my hajat
+
+				// my faedah
+				$('.bangunan, .elektronik, .barang_modal, .qurban, .other').hide();
+
+				$('#kategori_myfaedah').change(function () {
+					if ($('#kategori_myfaedah').val() == "Bahan Matrial bangunan") {
+						$('.bangunan').show();
+						$('.bangunan').attr('required', 'required');
+						$('.elektronik, .barang_modal, .qurban, .other').removeAttr('required', ' ');
+						$('.elektronik, .barang_modal, .qurban, .other').val("");
+						$('.elektronik, .barang_modal, .qurban, .other').hide();
+					} else if ($('#kategori_myfaedah').val() == 'Elektronik') {
+						$('.elektronik').show();
+						$('.elektronik').attr('required', 'required');
+						$('.bangunan, .barang_modal, .qurban, .other').removeAttr('required', ' ');
+						$('.bangunan, .barang_modal, .qurban, .other').val("");
+						$('.bangunan, .barang_modal, .qurban, .other').hide();
+					} else if ($('#kategori_myfaedah').val() == 'Barang Modal') {
+						$('.barang_modal').show();
+						$('.barang_modal').attr('required', 'required');
+						$('.bangunan, .elektronik, .qurban, .other').removeAttr('required', ' ');
+						$('.bangunan, .elektronik, .qurban, .other').val("");
+						$('.bangunan, .elektronik, .qurban, .other').hide();
+					} else if ($('#kategori_myfaedah').val() == 'Hewan Qurban') {
+						$('.qurban').show();
+						$('.qurban').attr('required', 'required');
+						$('.bangunan, .elektronik, .barang_modal, .other').removeAttr('required', ' ');
+						$('.bangunan, .elektronik, .barang_modal, .other').val("");
+						$('.bangunan, .elektronik, .barang_modal, .other').hide();
+					} else if ($('#kategori_myfaedah').val() == 'Lainnya') {
+						$('.other').show();
+						$('.other').attr('required', 'required');
+						$('.bangunan, .elektronik, .barang_modal, .qurban').removeAttr('required', ' ');
+						$('.bangunan, .elektronik, .barang_modal, .qurban').val("");
+						$('.bangunan, .elektronik, .barang_modal, .qurban').hide();
+					} else {
+						$('.bangunan, .elektronik, .barang_modal, .qurban, .other').hide();
+						$('.bangunan, .elektronik, .barang_modal, .qurban, .other').val("");
+					}
+				})
+
+				$('#other_jenis_barang_elektronik').hide();
+
+				$('#jenis_barang_elektronik').change(function () {
+					if ($('#jenis_barang_elektronik').val() == "Others") {
+						$('#other_jenis_barang_elektronik').show();
+						$('#other_jenis_barang_elektronik').attr('required', 'required');
+						$('').val("");
+					} else {
+						$('#other_jenis_barang_elektronik').hide();
+						$('#other_jenis_barang_elektronik').removeAttr('required', ' ');
+						$('').val("");
+					}
+				})
+				// my faedah
+
+				$('#reset').hide();
+				if ($("#id_mapping_leads").val()) {
+					$('#nama_konsumen').attr('readonly', 'readonly');
+					$('#reset').show();
+				}
+
+				$('#reset').click(function () {
+					$('').val("");
+					$('').removeAttr('readonly');
+				})
+
+			</script>
+
+			<script type="text/javascript">
+				$(document).ready(function () {
+					$("input[id^='upload_file']").each(function () {
+						var id = parseInt(this.id.replace("upload_file", ""));
+						$("#upload_file" + id).change(function () {
+							if ($("#upload_file" + id).val() != "") {
+								$("#moreImageUploadLink").show();
+							}
+						});
+					});
+				});
+
+				$(document).ready(function () {
+					var upload_number = 2;
+					$('#attachMore').click(function () {
+						//add more file
+						var moreUploadTag = '';
+						moreUploadTag +=
+							'<div class="form-group element text-size"><label for="upload_file"' +
+							upload_number + '>Lampirkan Data ' + '</label>' + '<br>';
+						moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran"/>';
+						moreUploadTag += ' <a class="btn btn-secondary float-right" href="javascript:del_file(' +
+							upload_number +
+							')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' +
+							'</a></div>' + '<hr>';
+						$('<dl id="delete_file' + upload_number + '">' + moreUploadTag + '</dl>').fadeIn('slow')
+							.appendTo('#moreImageUpload');
+						upload_number++;
+					});
+				});
+
+				function del_file(eleId) {
+					var ele = document.getElementById("delete_file" + eleId);
+					ele.parentNode.removeChild(ele);
+				}
+
+			</script>
+
+</body>
+
+</html>

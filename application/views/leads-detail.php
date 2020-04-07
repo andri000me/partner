@@ -30,6 +30,12 @@
 								<span class="d-none d-sm-block">History Follow Up</span>
 							</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link" data-toggle="tab" href="#lam" role="tab">
+								<span class="d-block d-sm-none"><i class="far fa-file-alt"></i></span>
+								<span class="d-none d-sm-block">Data Lampiran</span>
+							</a>
+						</li>
 					</ul>
 					<div class="tab-content">
 						<div class="tab-pane active p-3" id="home2" role="tabpanel">
@@ -69,18 +75,18 @@
 												<input type="text" class="form-control placement text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" minlength="16" maxlength="16">
 											</div>
 										</div>
-									</div>
-									<div class="form-row">
-										<div class="col-md-6 text-size">
-											<div class="form-group ml-3 mr-3">
-												<label>ID KTP</label>
-												<input type="phone" class="form-control placement number-only text-size" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0786 6875 8725 3564" minlength="16" maxlength="16">
-											</div>
-										</div>
 										<div class="col-md-6">
 											<div class="form-group text-size ml-3 mr-3">
 												<label>Nomor Telepon / Whatsapp</label>
 												<input type="text" class="form-control placement number-only text-size" name="telepon" id="telepon" value="<?= $data->telepon ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0811977500" maxlength="15">
+											</div>
+										</div>
+									</div>
+									<div class="form-row">
+										<div class="col-md-12 text-size">
+											<div class="form-group ml-3 mr-3">
+												<label>ID KTP</label>
+												<input type="phone" class="form-control placement number-only text-size" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0786 6875 8725 3564" minlength="16" maxlength="16">
 											</div>
 										</div>
 									</div>
@@ -235,7 +241,7 @@
 										</div>
 									</div>
 
-									<hr class="mb-4" style="border-top: 1px dashed #34495e;">
+									<hr class="mb-4" style="border-top: 2px dashed #34495e;">
 
 									<div class="form-row">
 										<div class="col-md-12 text-size">
@@ -281,7 +287,7 @@
 										</div>
 									</div>
 									<div class="form-row">
-										<div class="col-md-12 text-size">
+										<div class="col-md-6 text-size">
 											<div class="form-group ml-3 mr-3">
 												<label>Follow Up By</label>
 												<select class="form-control text-size" name="follow_up_by" id="follow_up_by" required <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
@@ -294,9 +300,7 @@
 												<input type="hidden" name="follow_up_by" value="<?= $data->follow_up_by ?>" <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
 											</div>
 										</div>
-									</div>
-									<div class="form-row mb-3">
-										<div class="col-md-12">
+										<div class="col-md-6">
 											<div class="ml-3 mr-3">
 												<label>Nilai Funding</label>
 												<div class="input-group flex-nowrap">
@@ -356,6 +360,36 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="tab-pane p-3" id="lam" role="tabpanel">
+							<div class="row">
+								<div class="col-md-12">
+									<h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
+
+
+									<hr>
+								</div>
+								<div class="col-md-12">
+									<form action="" method="POST" enctype="multipart/form-data">
+										<input type="hidden" name="id_partner" value="">
+										<input type="hidden" name="redirect" value="">
+										<h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
+										<div class="form-group element text-size">
+											<label>Lampirkan Data</label><br>
+											<input type="file" name="tambah_lampiran[]" id="upload_file1" required>
+										</div>
+										<hr>
+										<div id="moreImageUpload"></div>
+										<div class="clear"></div>
+										<div id="moreImageUploadLink" style="display:none;" class="float-right">
+											<a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">tambah Form lampiran</a>
+											<button class="btn btn-primary mr-3">Simpan</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
