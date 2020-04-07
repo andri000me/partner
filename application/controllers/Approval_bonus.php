@@ -29,11 +29,11 @@ class Approval_bonus extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['approval_bonuses.id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "approval_bonuses.id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['approval_bonuses.id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "approval_bonuses.id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = NULL;
         }
@@ -59,10 +59,9 @@ class Approval_bonus extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->approval_bonus->get_ticket($this->where)
+            'data' => $this->approval_bonus->get($this->where)
         ];
         $this->template->load('template/index', 'approval-bonus', $data);
-        // $this->template->load('template/index', 'approval-bonus');
     }
 
     public function create()

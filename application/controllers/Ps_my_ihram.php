@@ -71,8 +71,18 @@ class Ps_my_ihram extends CI_Controller
     {
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $where = ['id_my_ihram' => $id];
+        $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
+        $data = [
+            'data' => $this->ps_model->get("my_ihram", $where)->row(),
+            'ticket' => $this->ps_ticket->get($where)->row(),
+            'activities' => $this->ps_activity->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+            'comments'      => $this->comment_model->get("ps_tickets.id_ps_ticket = $id_ps_ticket")
+        ];
+        // echo $id_ps_ticket;
+        $this->template->load('template/index', 'product_support/input-produk-detail-ihram', $data);
     }
 
     public function save()
@@ -160,10 +170,12 @@ class Ps_my_ihram extends CI_Controller
         $id_ps_ticket = $this->ps_ticket->update($ps_ticket, $where);
 
         // Activity
-        $this->activity('Data My Talim telah dirubah', $id_ps_ticket);
+        $this->activity('Data My Ihram telah dirubah', $post['id_ps_ticket']);
 
         //Notification
-        $this->notification($id_ps_ticket, 'Data Tiket Product Support Dirubah');
+        $this->notification($post['id_ps_ticket'], 'Data Tiket Product Support Dirubah');
+
+        redirect($post['redirect']);
     }
 
     public function upload_file()

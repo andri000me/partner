@@ -23,9 +23,7 @@ class Approval_bonus_model extends CI_Model
 
     public function get($where = NULL)
     {
-
         $this->db->from('approval_bonuses');
-        // $this->db->join('users', 'users.id_user = approval_bonuses.id_user', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }

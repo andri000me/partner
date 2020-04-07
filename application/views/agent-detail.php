@@ -531,7 +531,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-comment-dots"></i></span>
-                                    <span class="d-none d-sm-block">Comment</span>
+                                    <span class="d-none d-sm-block">Comment <span class="badge badge-secondary"><?= $comments->num_rows() ?></span></span>
                                 </a>
                             </li>
                         </ul>

@@ -219,14 +219,25 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `id_partner` int(11) DEFAULT NULL,
   `id_leads` int(11) DEFAULT NULL,
   `id_ticket` int(11) DEFAULT NULL,
+  `id_ps_ticket` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_comment`),
   KEY `id_user` (`id_user`),
   KEY `id_partner` (`id_agent`),
+  KEY `FK_comments_ps_tickets` (`id_ps_ticket`),
+  CONSTRAINT `FK_comments_ps_tickets` FOREIGN KEY (`id_ps_ticket`) REFERENCES `ps_tickets` (`id_ps_ticket`) ON UPDATE CASCADE,
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=1718 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC COMMENT='Tabel Komentar';
+) ENGINE=InnoDB AUTO_INCREMENT=1725 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC COMMENT='Tabel Komentar';
 
--- Dumping data for table db_partner.comments: ~0 rows (approximately)
+-- Dumping data for table db_partner.comments: ~7 rows (approximately)
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` (`id_comment`, `comment`, `date`, `has_read`, `id_user`, `id_agent`, `id_partner`, `id_leads`, `id_ticket`, `id_ps_ticket`) VALUES
+	(1718, 'gvhg', '2020-04-02 15:03:42', 0, 247, NULL, NULL, NULL, 146, NULL),
+	(1719, 'oke', '2020-04-06 18:39:55', 0, 247, NULL, NULL, NULL, NULL, 10),
+	(1720, 'oke apa? ', '2020-04-06 18:41:23', 0, 247, NULL, NULL, NULL, NULL, 10),
+	(1721, 'asd', '2020-04-06 19:22:34', 0, 247, NULL, NULL, NULL, NULL, 11),
+	(1722, 'asd', '2020-04-06 20:00:29', 0, 247, NULL, NULL, NULL, NULL, 11),
+	(1723, 'asd', '2020-04-06 20:00:45', 0, 247, NULL, NULL, NULL, NULL, 11),
+	(1724, 'aint givin\' u no rate', '2020-04-06 20:00:57', 0, 247, NULL, NULL, NULL, NULL, 11);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.leads
@@ -259,7 +270,7 @@ CREATE TABLE IF NOT EXISTS `leads` (
   CONSTRAINT `leads_ibfk_1` FOREIGN KEY (`cabang_cross`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `leads_ibfk_2` FOREIGN KEY (`surveyor`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `leads_ibfk_3` FOREIGN KEY (`pic_ttd`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Prospek';
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Prospek';
 
 -- Dumping data for table db_partner.leads: ~24 rows (approximately)
 /*!40000 ALTER TABLE `leads` DISABLE KEYS */;
@@ -287,7 +298,8 @@ INSERT INTO `leads` (`id_leads`, `leads_id`, `no_ktp`, `follow_up_by`, `cross_br
 	(82, '202002SLOS000709', '1671135411840002', 'Kunjungan', 'Tidak', NULL, NULL, NULL, 'Ya', 14600000, 'Belum', 'draft', NULL, NULL, NULL, NULL, '2020-02-12 10:25:04', '2020-02-12 10:25:04', 180),
 	(83, '202002SLOS000818', '6371014105010013', 'Kunjungan', 'Tidak', NULL, NULL, NULL, 'Tidak', 34600000, 'Belum', 'lengkap', NULL, NULL, NULL, NULL, '2020-02-13 15:54:45', '2020-02-13 16:08:30', 181),
 	(84, '202002SLOS000831', '6371041903840006', 'Kunjungan', 'Tidak', NULL, NULL, NULL, 'Tidak', 15000000, 'Belum', 'lengkap', NULL, NULL, NULL, NULL, '2020-02-13 16:16:05', '2020-02-13 16:32:45', 182),
-	(85, '202002SLOS001361', '6303024309870000', 'Telepon', 'Tidak', NULL, NULL, NULL, NULL, NULL, 'Belum', 'draft', NULL, NULL, NULL, NULL, '2020-02-20 16:17:28', '2020-02-20 16:17:28', 205);
+	(85, '202002SLOS001361', '6303024309870000', 'Telepon', 'Tidak', NULL, NULL, NULL, NULL, NULL, 'Belum', 'draft', NULL, NULL, NULL, NULL, '2020-02-20 16:17:28', '2020-02-20 16:17:28', 205),
+	(86, '202001SLOS199983', '8902183012938012', 'Kunjungan', 'Ya', 7, NULL, NULL, 'Ya', 9000000, 'Sudah', 'lengkap', NULL, NULL, NULL, NULL, '2020-04-02 14:46:37', '2020-04-02 14:46:37', 160);
 /*!40000 ALTER TABLE `leads` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.leads_activities
@@ -298,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `leads_activities` (
   `id_leads` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id_lead_activity`)
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Activities';
+) ENGINE=InnoDB AUTO_INCREMENT=214 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Activities';
 
 -- Dumping data for table db_partner.leads_activities: ~38 rows (approximately)
 /*!40000 ALTER TABLE `leads_activities` DISABLE KEYS */;
@@ -341,7 +353,8 @@ INSERT INTO `leads_activities` (`id_lead_activity`, `activity`, `date_activity`,
 	(209, 'Perubahan pada data leads', '2020-02-19 08:12:08', 77, 137),
 	(210, 'Perubahan pada data leads', '2020-02-19 08:12:37', 77, 137),
 	(211, 'Data leads telah dibuat', '2020-02-20 16:17:28', 85, 186),
-	(212, 'Perubahan pada data leads', '2020-03-17 15:05:04', 64, 247);
+	(212, 'Perubahan pada data leads', '2020-03-17 15:05:04', 64, 247),
+	(213, 'Data leads telah dibuat', '2020-04-02 14:46:38', 86, 17);
 /*!40000 ALTER TABLE `leads_activities` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.leads_assignments
@@ -391,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `leads_follow_up` (
   KEY `id_user` (`id_user`),
   CONSTRAINT `leads_follow_up_ibfk_1` FOREIGN KEY (`id_mapping_leads`) REFERENCES `mapping_leads` (`id_mapping_leads`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `leads_follow_up_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=135 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Follow Up';
+) ENGINE=InnoDB AUTO_INCREMENT=136 DEFAULT CHARSET=latin1 COMMENT='Tabel Leads Follow Up';
 
 -- Dumping data for table db_partner.leads_follow_up: ~29 rows (approximately)
 /*!40000 ALTER TABLE `leads_follow_up` DISABLE KEYS */;
@@ -425,8 +438,226 @@ INSERT INTO `leads_follow_up` (`id_leads_follow_up`, `follow_up_by`, `date_follo
 	(131, 'Kunjungan', '2020-02-13 16:32:45', NULL, 182, 186),
 	(132, 'Kunjungan', '2020-02-19 08:12:08', NULL, 145, 137),
 	(133, 'Kunjungan', '2020-02-19 08:12:37', NULL, 145, 137),
-	(134, 'Kunjungan', '2020-03-17 15:05:04', NULL, 67, 247);
+	(134, 'Kunjungan', '2020-03-17 15:05:04', NULL, 67, 247),
+	(135, 'Kunjungan', '2020-04-02 14:46:38', NULL, 160, 17);
 /*!40000 ALTER TABLE `leads_follow_up` ENABLE KEYS */;
+
+-- Dumping structure for table db_partner.leads_full
+CREATE TABLE IF NOT EXISTS `leads_full` (
+  `id_leads` int(11) NOT NULL AUTO_INCREMENT,
+  `nama_konsumen` varchar(255) DEFAULT NULL,
+  `telepon` varchar(255) DEFAULT NULL,
+  `soa` varchar(255) DEFAULT NULL,
+  `produk` varchar(255) DEFAULT NULL,
+  `detail_produk` text DEFAULT NULL,
+  `nama_event` varchar(255) DEFAULT NULL COMMENT 'Nama Event wajib diisi jika SOA event dipilih',
+  `nama_partner` varchar(255) DEFAULT NULL COMMENT 'Nama Partner',
+  `nama_agent` varchar(255) DEFAULT NULL COMMENT 'Nama Agent',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `nik_egc` varchar(10) DEFAULT NULL COMMENT 'Khusus SOA EGC',
+  `posisi_egc` varchar(255) DEFAULT NULL COMMENT 'Khusus SOA EGC',
+  `cabang_egc` varchar(255) DEFAULT NULL COMMENT 'Khusus SOA EGC',
+  `nomor_kontrak` varchar(255) DEFAULT NULL COMMENT 'Khusus SOA CGC & RO',
+  `referral_konsumen` varchar(255) DEFAULT NULL COMMENT 'Nama Konsumen CGC & RO',
+  `foto_usaha` varchar(255) DEFAULT NULL COMMENT 'Form Upload File',
+  `leads_id` varchar(255) DEFAULT NULL,
+  `no_ktp` varchar(255) DEFAULT NULL,
+  `follow_up_by` varchar(255) DEFAULT NULL COMMENT 'Kunjungan / Telepon / Whatsapp / Email',
+  `cross_branch` varchar(255) DEFAULT 'Yes / No',
+  `cabang_cross` int(3) DEFAULT NULL COMMENT 'Foreign key cabang dari table branches',
+  `surveyor` int(11) DEFAULT NULL COMMENT 'Foreign key id_user dari table users',
+  `pic_ttd` int(11) DEFAULT NULL COMMENT 'Foreign key id_user dari table users',
+  `appeal_nst` varchar(255) DEFAULT NULL COMMENT 'ya/tidak',
+  `nilai_funding` bigint(20) DEFAULT NULL,
+  `sudah_funding` enum('Belum','Sudah') DEFAULT 'Belum',
+  `status` enum('draft','lengkap') DEFAULT NULL,
+  `ktp` varchar(255) DEFAULT NULL COMMENT 'Upload File',
+  `selfie_foto` varchar(255) DEFAULT NULL COMMENT 'Upload File',
+  `foto_penyedia_jasa` varchar(255) DEFAULT NULL COMMENT 'Upload File',
+  `id_mapping` int(11) DEFAULT NULL COMMENT 'ID Mapping Partner',
+  `id_agent` int(11) DEFAULT NULL,
+  `id_user` int(3) DEFAULT NULL,
+  `id_branch` int(3) DEFAULT NULL,
+  PRIMARY KEY (`id_leads`)
+) ENGINE=InnoDB AUTO_INCREMENT=237 DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table db_partner.leads_full: ~172 rows (approximately)
+/*!40000 ALTER TABLE `leads_full` DISABLE KEYS */;
+INSERT INTO `leads_full` (`id_leads`, `nama_konsumen`, `telepon`, `soa`, `produk`, `detail_produk`, `nama_event`, `nama_partner`, `nama_agent`, `created_at`, `updated_at`, `nik_egc`, `posisi_egc`, `cabang_egc`, `nomor_kontrak`, `referral_konsumen`, `foto_usaha`, `leads_id`, `no_ktp`, `follow_up_by`, `cross_branch`, `cabang_cross`, `surveyor`, `pic_ttd`, `appeal_nst`, `nilai_funding`, `sudah_funding`, `status`, `ktp`, `selfie_foto`, `foto_penyedia_jasa`, `id_mapping`, `id_agent`, `id_user`, `id_branch`) VALUES
+	(61, 'Eko Supriatman', '089828302802', 'Direct Selling', 'My CarS', 'Mobil ku', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-16 14:51:42', '2020-01-16 16:16:01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 164, 7),
+	(65, 'bambank', '089828302802', 'CGC', 'My Hajat', 'Mobil ku', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-16 16:11:13', '2020-01-16 16:11:13', NULL, NULL, NULL, '3213213', 'ibera', NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 164, 7),
+	(67, 'bambank', '089828302802', 'CGC', 'My Safar', 'Mobil ku', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-16 16:15:22', '2020-03-17 15:05:04', NULL, NULL, NULL, '3213213', 'ibera', NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 164, 7),
+	(68, 'Muhammad Rashford', '085698765874', 'Walk In', 'My CarS', 'Ferarri', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-17 11:15:26', '2020-01-24 10:01:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 11, 7),
+	(69, 'Indra Rukmana', '089827812123', 'Tour & travel', 'My Ihram', 'Paket Umroh + Al-Aqsa', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-17 14:45:20', '2020-01-17 14:45:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 164, 7),
+	(70, 'John Patricia', '0812100000000', 'Direct Selling', 'My Faedah', 'barang modal', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-17 16:15:23', '2020-01-24 10:02:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 11, 7),
+	(71, 'Ahmad Martial', '082532165487', 'Tour & travel', 'My Ihram', 'Berangkat 1 Februari', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-17 16:15:56', '2020-01-24 10:01:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 11, 7),
+	(72, 'Haryadi', '085329666333', 'Tour & travel', 'My Ihram', 'Paket Abhinaya Quad', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-17 16:16:10', '2020-01-24 10:20:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 11, 7),
+	(73, 'Mantap Sip', '081234521111', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'CV Perseketuan Komanditer', NULL, '2020-01-17 16:25:20', '2020-01-17 16:25:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 37, NULL, 11, 7),
+	(74, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-27 09:08:24', '2020-01-27 09:08:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 84, 36),
+	(75, 'Leni Kurniawati', '087719941666', 'Tour & travel', 'My Ihram', 'Umroh 9 Hari Reguler', NULL, NULL, NULL, '2020-01-28 09:03:50', '2020-01-28 09:03:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 67, 20),
+	(76, 'Yaman', '081213670949', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-28 17:57:54', '2020-01-28 17:57:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(77, 'ganjar widati', '083894526250', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-28 17:59:03', '2020-01-28 17:59:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(78, 'Eliah', '085211504783', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-28 17:59:55', '2020-01-28 17:59:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(79, 'yayuk', '085773346212', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-28 18:00:28', '2020-01-28 18:00:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(80, 'mariyatul kibtiyah', '081299037281', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-28 18:01:11', '2020-01-28 18:01:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(81, 'ibu marlini', '081383637996', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-29 17:35:33', '2020-01-29 17:35:33', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(82, 'ibu iis', '083877277188', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-29 17:36:21', '2020-01-29 17:36:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(83, 'ibu fatimah', '082113388562', 'Digital Marketing', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-01-29 17:37:21', '2020-01-29 17:37:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(84, 'bu elvi', '087886265693', 'Digital Marketing', 'My Ihram', 'Umrah', NULL, NULL, NULL, '2020-01-29 17:38:34', '2020-01-29 17:38:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 161, 26),
+	(85, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-30 09:25:18', '2020-01-30 09:25:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 125, 17),
+	(86, 'Rahmat Ujang', '081265498754', 'Tour & travel', 'My Ihram', 'Paket Abhinaya', NULL, 'PT Aria Dahlan', NULL, '2020-01-30 09:32:07', '2020-01-30 09:32:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 42, NULL, 11, 46),
+	(87, NULL, NULL, 'Tour & travel', 'My Ihram', NULL, NULL, NULL, NULL, '2020-02-02 00:27:02', '2020-02-02 00:27:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 165, 22),
+	(88, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-02-02 00:27:17', '2020-02-02 00:27:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 165, 22),
+	(89, 'H. Idrus', '081297944044', 'Penyedia Jasa', 'My Faedah', 'Material Bangunan', NULL, 'UD Aneka Griya', NULL, '2020-02-02 02:14:03', '2020-02-02 08:00:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 78, NULL, 90, 34),
+	(90, 'Asmad Affandi', '085782674405', 'EGC', 'My Hajat', 'pernikahan', NULL, 'sanggar rias sasha', NULL, '2020-02-03 10:59:45', '2020-02-05 11:17:24', '077337', 'Customer service', 'meruya', NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 71, NULL, 63, 26),
+	(91, 'Hendri', '0811557384', 'Digital Marketing', 'My Faedah', 'Bahan Bangunan', NULL, 'UD Aneka Griya', NULL, '2020-02-03 16:42:32', '2020-02-03 16:42:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 78, NULL, 90, 34),
+	(92, 'eni', '081215064850', 'Direct Selling', 'My Faedah', 'material', NULL, 'TB ABADI JAYA JOGLO', NULL, '2020-02-03 17:45:25', '2020-02-03 17:45:25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 93, NULL, 63, 26),
+	(93, 'resha', '081369775123', 'Penyedia Jasa', 'My Hajat', 'pernikahan', NULL, 'netty salon & modiste', NULL, '2020-02-03 17:55:05', '2020-02-03 17:55:05', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(94, 'pak zaenal', '085779743791', 'Direct Selling', 'My Hajat', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-03 18:17:28', '2020-02-03 18:17:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(95, 'SUHARDA ', '085236225673', 'Digital Marketing', 'My Faedah', 'BAHAN BANGUNAN ', NULL, NULL, NULL, '2020-02-03 22:10:24', '2020-02-03 22:10:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 116, 19),
+	(96, 'Anna', '085709836246', 'Penyedia Jasa', 'My Hajat', 'Pernikahan', NULL, 'Jegeg Bridal', NULL, '2020-02-03 22:53:27', '2020-02-03 22:53:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(97, 'Cesiera', '081288713788', 'Penyedia Jasa', 'My Faedah', 'Pernikahan', NULL, 'Sarana Hajat Cipta WO', NULL, '2020-02-03 22:58:06', '2020-02-03 22:58:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(98, 'Eva', '081514298092', 'Penyedia Jasa', 'My Faedah', 'Pernikahan', NULL, 'Tiga Dara WO', NULL, '2020-02-03 22:59:29', '2020-02-03 22:59:29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(99, 'Fajar', '085794448902', 'Penyedia Jasa', 'My Faedah', 'Pernikahan', NULL, 'Tiga Dara WO', NULL, '2020-02-03 23:00:41', '2020-02-03 23:00:41', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(100, 'Fatia', '085779687018', 'Penyedia Jasa', 'My Ihram', 'Pernikahan', NULL, 'Tiga Dara WO', NULL, '2020-02-03 23:01:47', '2020-02-03 23:01:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(101, 'Iin', '081380370134', 'Direct Selling', 'My Hajat', 'Renovasi Rumah', NULL, 'PT. Bona Pasogit Jaya', NULL, '2020-02-03 23:05:20', '2020-02-03 23:05:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(102, 'Rukiyah', '085695324051', 'Agent BA', 'My Ihram', 'Aryati Umrah 13 Hari By Srilankan - Quad', NULL, 'Alindra Mutiara Hati Travel', 'Fiki Ekowati', '2020-02-03 23:13:34', '2020-02-03 23:13:34', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 207, 40),
+	(103, 'Nafiatul Amalia', '081329469469', 'Agent BA', 'My Hajat', 'Renovasi Rumah Jasa Tukang', NULL, 'Musyafak', 'Darmanto', '2020-02-04 09:00:40', '2020-02-04 09:51:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 105, 35, 67, 20),
+	(104, 'abdul rohim', '081211405791', 'Direct Selling', 'My Faedah', 'my faedah', NULL, 'netty salon & modiste', NULL, '2020-02-04 09:02:59', '2020-02-04 09:02:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(105, 'panca', '0895333461151', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-04 09:33:23', '2020-02-04 09:33:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(106, 'dewi pradita', '085695627270', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-04 09:34:20', '2020-02-04 09:34:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(107, 'rachmi anggita', '081513006372', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-04 09:35:24', '2020-02-04 09:35:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(108, 'miftah', '081385968015', 'Direct Selling', 'My Hajat', 'pernikahgan', NULL, 'netty salon & modiste', NULL, '2020-02-04 09:36:10', '2020-02-04 09:36:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(109, 'AINUNZAKI', '085397407809', 'Direct Selling', 'My Faedah', 'BARANG ELEKTRONIK', NULL, 'MULTI MEDIA MANDIRI CV', NULL, '2020-02-04 13:23:30', '2020-02-04 13:23:30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 86, NULL, 212, 19),
+	(110, 'IKHO WULANDARI TALIB', '085255214551', 'Direct Selling', 'My Faedah', 'BARANG ELEKTRONIK HP XIOMI BLACK SHARK', NULL, 'MULTI MEDIA MANDIRI CV', NULL, '2020-02-04 13:25:44', '2020-02-04 15:03:22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 86, NULL, 212, 19),
+	(111, 'MAS PUTRI INTAN', '085241601570', 'EGC', 'My Talim', 'pembiayaan sekolah', NULL, 'LAS SURYA ANUGRAH', NULL, '2020-02-04 16:47:00', '2020-02-04 16:47:00', '006356', 'Branch NDF Car Head', 'Kendari', NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 106, NULL, 103, 19),
+	(112, 'SUCI SHAUMIANINGTYAS', '082136460930', 'Walk In', 'My Talim', 'UANG MASUK MADRASAH MUALLIMIN MUHAMMADIYAH', NULL, 'madrasah muallimin muhammadiyah yogyakarta', NULL, '2020-02-04 17:00:21', '2020-02-04 17:11:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 107, NULL, 94, 45),
+	(113, 'ibu iis', '08128154085', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:27:27', '2020-02-04 17:27:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(114, 'hj nani', '08561055580', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:28:15', '2020-02-04 17:28:15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(115, 'ibu yumani', '087887204491', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:29:11', '2020-02-04 17:29:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(116, 'ibu hj dewi', '08561694375', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:29:52', '2020-02-04 17:29:52', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(117, 'ibu hj yowana', '089682798767', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:30:32', '2020-02-04 17:30:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(118, 'hj zaitun', '081382308189', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:31:08', '2020-02-04 17:31:08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(119, 'ibu tartini', '082111148639', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:31:47', '2020-02-04 17:31:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(120, 'ibu astuti', '081519230256', 'Direct Selling', 'My Ihram', 'my faedah', NULL, 'PT WISATA HATI', NULL, '2020-02-04 17:32:21', '2020-02-04 17:32:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(121, 'BAYU PERMANA', '085643883477', 'Direct Selling', 'My Hajat', 'pernikahan', NULL, 'netty salon & modiste', NULL, '2020-02-04 17:42:45', '2020-02-04 17:42:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(122, 'CANDRA', '085894268200', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-04 17:45:00', '2020-02-04 17:45:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(123, 'SITI MUNIROH', '0785710241299', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-04 17:45:47', '2020-02-04 17:45:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(124, 'RISKI HAMDANI', '081261039132', 'Direct Selling', 'My Hajat', 'pernikahan', NULL, 'netty salon & modiste', NULL, '2020-02-04 17:46:59', '2020-02-04 17:46:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(125, 'NITA NURMANI', '089603016516', 'Direct Selling', 'My Hajat', 'PERNIKAHAN', NULL, 'netty salon & modiste', NULL, '2020-02-04 17:48:12', '2020-02-04 17:48:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(126, 'PARMI SUMIYATI', '087774616825', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-04 17:50:12', '2020-02-04 17:50:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(127, 'MUHAMAD RAMLI', '082398021868', 'Digital Marketing', 'My Hajat', 'SEWA RUKO', NULL, 'ABRAR HAJI', NULL, '2020-02-05 07:50:38', '2020-02-05 08:03:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 115, NULL, 186, 3),
+	(128, 'YELBY TOLOLIU', '082199338798', 'Digital Marketing', 'My Faedah', 'MATERIAL', NULL, 'DEPO MAKMUR', NULL, '2020-02-05 09:36:26', '2020-02-05 09:36:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 120, NULL, 36, 38),
+	(129, 'MINTU', '081247406858', 'Walk In', 'My Faedah', 'MATERIAL BANGUNAN', NULL, 'DEPO MAKMUR', NULL, '2020-02-05 09:38:48', '2020-02-05 09:38:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 120, NULL, 36, 38),
+	(130, 'LILIK JUNAIDI', '081396473459', 'Digital Marketing', 'My Ihram', 'UMROH SUAMI ISTERI', NULL, NULL, NULL, '2020-02-05 10:27:37', '2020-02-05 10:27:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 241, 25),
+	(131, 'EFF', '083183951874', 'Digital Marketing', 'My Ihram', 'UMROH', NULL, NULL, NULL, '2020-02-05 10:29:31', '2020-02-05 10:29:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 241, 25),
+	(132, 'R PILIANG', '08126435368', 'Digital Marketing', 'My Ihram', 'UMROH', NULL, NULL, NULL, '2020-02-05 10:30:19', '2020-02-05 10:30:19', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 241, 25),
+	(133, 'MAYANTI', '085370104253', 'Digital Marketing', 'My Ihram', 'UMROH ', NULL, NULL, NULL, '2020-02-05 10:31:03', '2020-02-05 10:31:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 241, 25),
+	(134, 'Rai Ade', '089575484815', 'Digital Marketing', 'My Safar', 'Paket Turki', NULL, 'CV Radio Dalam', NULL, '2020-02-05 15:11:14', '2020-02-05 15:12:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 234, 46),
+	(135, 'pak muhammad', '085362922286', 'Direct Selling', 'My Faedah', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-05 17:17:08', '2020-02-05 17:17:08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(136, 'ektri agustin', '085691662238', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-05 17:25:27', '2020-02-05 17:25:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(137, 'syahrul', '089670737073', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-05 17:26:15', '2020-02-05 17:26:15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(138, 'samsir irawan', '08176042891', 'Direct Selling', 'My Hajat', 'pendidikan', NULL, 'netty salon & modiste', NULL, '2020-02-05 17:27:13', '2020-02-05 17:27:13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(139, 'lilih ', '081212426422', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-05 17:27:44', '2020-02-05 17:27:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(140, 'edi prasta', '081219251114', 'Direct Selling', 'My Faedah', 'renovasi', NULL, 'TB ABADI JAYA JOGLO', NULL, '2020-02-05 17:28:23', '2020-02-05 17:28:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 93, NULL, 63, 26),
+	(141, 'evawani elisa', '085781315394', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-05 17:29:04', '2020-02-05 17:29:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(142, 'NUR ', '083847339681', 'Direct Selling', 'My Hajat', 'PERNIKAHAN', NULL, 'netty salon & modiste', NULL, '2020-02-05 17:29:36', '2020-02-05 17:29:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(143, 'irma', '08568870570', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-05 17:30:03', '2020-02-05 17:30:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(144, 'LISNAHYATI', '08158720402', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-05 17:30:31', '2020-02-05 17:30:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(145, 'Udi syahril', '085368656004', 'Agent BA', 'My Ihram', 'UMROH BAROKAH FEBRUARI', NULL, 'PT. Marco Tour Travel', 'Sukiyanto pangestu', '2020-02-06 09:14:11', '2020-02-19 08:12:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 142, 37, 137, 30),
+	(146, 'winto', '085269892627', 'Direct Selling', 'My Faedah', 'Mesin Fotocopy', NULL, NULL, NULL, '2020-02-06 09:16:38', '2020-02-06 09:16:38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 144, 30),
+	(147, 'yuristian', '083803784241', 'Agent BA', 'My Ihram', 'umroh', NULL, 'PT.Taqwa Cahaya Semesta', 'Nurmala Dewi', '2020-02-06 09:25:31', '2020-02-06 09:25:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 144, NULL, 135, 30),
+	(148, 'dalilah', '08127879605', 'Agent BA', 'My Ihram', 'umroh ', NULL, NULL, NULL, '2020-02-06 09:26:51', '2020-02-06 09:26:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 144, 30),
+	(149, 'Rasim', '081317003032', 'Agent BA', 'My Ihram', 'Umroh', NULL, 'PT.RUMAHA INSAN BAROKAH', 'Titin Sumarni', '2020-02-06 10:33:58', '2020-02-06 10:33:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 149, 40, 135, 30),
+	(150, 'tika', '085691982688', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-06 17:21:33', '2020-02-06 17:21:33', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(151, 'suryo sulistiyo', '0811138369', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-06 17:23:23', '2020-02-06 17:23:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(152, 'ibu maryati', '081381476699', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-06 17:34:32', '2020-02-06 17:34:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(153, 'ibu amilah', '081208148017', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-06 17:35:04', '2020-02-06 17:35:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(154, 'Hilda', '081254675173', 'Digital Marketing', 'My Faedah', 'Interior Design', NULL, 'Faira Interior', NULL, '2020-02-07 07:32:15', '2020-02-07 07:32:15', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 152, NULL, 90, 34),
+	(155, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-02-07 10:32:20', '2020-02-07 10:32:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 136, 30),
+	(156, 'pak muchlis', '085814830370', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-07 18:11:06', '2020-02-07 18:11:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(157, 'iskandar', '08996992646', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-07 18:12:16', '2020-02-07 18:12:16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(158, 'Yoyok', '081324029055', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:31:07', '2020-02-10 09:31:07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(159, 'Finny', '081395686915', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:31:43', '2020-02-10 09:31:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(160, 'Abdul kutali', '081324243080', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:32:24', '2020-04-02 14:46:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(161, 'Ade supajs', '085221329996', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:33:04', '2020-02-10 09:33:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(162, 'Ibnu', '082320868227', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:33:47', '2020-02-10 09:33:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(163, 'Mumu zainal', '082315741727', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:34:53', '2020-02-10 09:34:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(164, 'Ios sutihat', '081224495223', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:35:54', '2020-02-10 09:35:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(165, 'wiwinto', '085269892627', 'Direct Selling', 'My Faedah', 'Mesin Fotocopy', NULL, 'PD BERKAT JAYA', NULL, '2020-02-10 17:33:14', '2020-02-10 18:20:25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 187, NULL, 144, 30),
+	(166, 'ibu ambar', '081288508288', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-10 17:55:21', '2020-02-10 17:55:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(167, 'pak marko', '081210000773', 'Direct Selling', 'My Faedah', 'pendidikan', NULL, 'PT WISATA HATI', NULL, '2020-02-10 17:56:06', '2020-02-10 17:56:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(168, 'pak gunawan', '082110654265', 'Direct Selling', 'My Ihram', 'PERNIKAHAN', NULL, 'PT WISATA HATI', NULL, '2020-02-10 17:56:57', '2020-02-10 17:56:57', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(169, 'pak azam', '089646477135', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-10 17:57:51', '2020-02-10 17:57:51', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(170, 'Satria Raswanda', '082175892434', 'Direct Selling', 'My Faedah', 'Bahan Bangunan', NULL, NULL, NULL, '2020-02-11 11:58:02', '2020-02-11 11:58:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 144, 30),
+	(171, 'Dewi Sartika', '081258445003', 'Digital Marketing', 'My Faedah', 'Catering', NULL, 'Audira Salon', NULL, '2020-02-11 13:11:06', '2020-02-11 13:11:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 188, NULL, 90, 34),
+	(172, 'diah', '089654915966', 'Direct Selling', 'My Ihram', 'PERNIKAHAN', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-11 19:45:26', '2020-02-11 19:45:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(173, 'aji ramadhan', '08987088645', 'Direct Selling', 'My Hajat', 'PERNIKAHAN', NULL, 'Sanggar Rias shasha', NULL, '2020-02-11 19:46:46', '2020-02-11 19:46:46', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 183, NULL, 63, 26),
+	(174, 'yoni', '087888333321', 'Direct Selling', 'My Ihram', 'Umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-11 19:48:40', '2020-02-11 19:48:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(175, 'pak ikhsan', '081345665434', 'Direct Selling', 'My Faedah', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-11 19:55:58', '2020-02-11 19:55:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(176, 'pak suorapto', '087774383180', 'Direct Selling', 'My Faedah', 'my faedah', NULL, 'PT WISATA HATI', NULL, '2020-02-11 19:57:18', '2020-02-11 19:57:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(177, 'pak iwan', '081287831213', 'Direct Selling', 'My Faedah', 'my faedah', NULL, 'PT WISATA HATI', NULL, '2020-02-11 19:57:56', '2020-02-11 19:57:56', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(178, 'hendra', '082110734932', 'Direct Selling', 'My Faedah', 'my faedah', NULL, 'PT WISATA HATI', NULL, '2020-02-11 19:58:48', '2020-02-11 19:58:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(179, 'pak ridwan', '081212782758', 'Direct Selling', 'My Faedah', 'my faedah', NULL, 'PT WISATA HATI', NULL, '2020-02-11 19:59:59', '2020-02-11 19:59:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(180, 'Elly Hartati', '085709387054', 'Direct Selling', 'My Faedah', 'paket usaha telur gulung & es bubble', NULL, NULL, NULL, '2020-02-12 10:25:04', '2020-02-12 10:25:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 144, 30),
+	(181, 'RIZKA EMELIA', '083132720524', 'Agent BA', 'My Ihram', 'UMROH', NULL, 'SMART UMROH/DREAM TOUR AND TRAVEL', 'TYAS KUSUMANINGRUM', '2020-02-13 15:54:45', '2020-02-13 16:08:30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 201, 44, 35, 3),
+	(182, 'FARIED BUDIMAN', '081250424200', 'Agent BA', 'My Faedah', 'CATERING', NULL, 'Dapoer Ummy', 'Erlinawati, SE', '2020-02-13 16:16:05', '2020-02-13 16:32:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 202, 42, 186, 3),
+	(183, 'johan saputra', '082123962423', 'Direct Selling', 'My Faedah', 'barang', NULL, 'TB ABADI JAYA JOGLO', NULL, '2020-02-13 17:23:54', '2020-02-13 17:23:54', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 93, NULL, 63, 26),
+	(184, 'chairul anam', '089603579033', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-13 17:34:17', '2020-02-13 17:34:17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(185, 'Rois', '08225823766', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-18 09:00:26', '2020-02-18 09:00:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(186, 'Misriyah', '081398011455', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-18 17:25:36', '2020-02-18 17:25:36', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(187, 'Saumi', '081383348774', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-18 17:26:28', '2020-02-18 17:26:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(188, 'Neneng', '082112637583', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'Sanggar Rias shasha', NULL, '2020-02-18 17:27:40', '2020-02-18 17:27:40', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 183, NULL, 63, 26),
+	(189, 'Nursanti', '085717349181', 'Direct Selling', 'My Safar', 'Jasa', NULL, 'netty salon & modiste', NULL, '2020-02-18 17:28:24', '2020-02-18 17:28:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(190, 'Hartati', '0895340614399', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-18 17:29:49', '2020-02-18 17:29:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(191, 'Heny afriani', '081289290586', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-18 17:30:55', '2020-02-18 17:30:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(192, 'Nurmawati', '081289952729', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'netty salon & modiste', NULL, '2020-02-18 17:31:44', '2020-02-18 17:31:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(193, 'Nana suhana', '081326219244', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-18 17:32:30', '2020-02-18 17:32:30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(194, 'Hakimah', '081316569130', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'netty salon & modiste', NULL, '2020-02-18 17:33:26', '2020-02-18 17:33:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(195, 'Siti rohimah', '081958187184', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-18 17:34:06', '2020-02-18 17:34:06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(196, 'Wasrim', '089651207442', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'netty salon & modiste', NULL, '2020-02-18 17:34:39', '2020-02-18 17:34:39', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(197, 'Rini nurhaniyah', '081574650517', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-18 17:35:18', '2020-02-18 17:35:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(198, 'Hilza', '081287224625', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'Sanggar Rias shasha', NULL, '2020-02-19 17:23:03', '2020-02-19 17:23:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 183, NULL, 63, 26),
+	(199, 'Umar', '081398830506', 'Direct Selling', 'My Faedah', 'Barang material', NULL, 'TB ABADI JAYA JOGLO', NULL, '2020-02-19 17:24:00', '2020-02-19 17:24:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 93, NULL, 63, 26),
+	(200, 'Siti maryam', '08158810289', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-20 15:59:47', '2020-02-20 15:59:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(201, 'Abdullah cholil', '0811926120', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-20 16:00:29', '2020-02-20 16:00:29', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(202, 'Hamdi', '087876087861', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'Sanggar Rias shasha', NULL, '2020-02-20 16:01:03', '2020-02-20 16:01:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 183, NULL, 63, 26),
+	(203, 'Siti nurjannah', '08567811872', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-20 16:01:58', '2020-02-20 16:01:58', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(204, 'Rizkia marisa', '08122115903', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-20 16:02:37', '2020-02-20 16:02:37', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(205, 'SITI RAMLAH', '082354799493', 'Agent BA', 'My Ihram', 'UMROH', NULL, NULL, NULL, '2020-02-20 16:17:27', '2020-02-20 16:17:27', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, NULL, NULL, 186, 3),
+	(206, 'Rahmat hidayat', '085263633744', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-22 08:10:03', '2020-02-22 08:10:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(207, 'Salbiah', '081266814575', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-22 08:10:35', '2020-02-22 08:10:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(208, 'Taufik', '085715105483', 'Direct Selling', 'My Hajat', 'Jasa', NULL, 'netty salon & modiste', NULL, '2020-02-22 08:11:10', '2020-02-22 08:11:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(209, 'Sarman', '081334141850', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-22 08:12:13', '2020-02-22 08:12:13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(210, 'Hasan basri', '081381375491', 'Direct Selling', 'My Faedah', 'Barang material', NULL, 'TB ABADI JAYA JOGLO', NULL, '2020-02-22 08:12:49', '2020-02-22 08:12:49', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 93, NULL, 63, 26),
+	(211, 'Wahyu', '082115872424', 'Direct Selling', 'My Ihram', 'Umroh', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-22 08:13:32', '2020-02-22 08:13:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(212, 'nur', '0812115872424', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-24 17:40:12', '2020-02-24 17:40:12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(213, 'aji', '0895609484851', 'Direct Selling', 'My Hajat', 'jasa', NULL, 'netty salon & modiste', NULL, '2020-02-24 17:40:48', '2020-02-24 17:40:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 96, NULL, 63, 26),
+	(214, 'yarsi', '081212421558', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-24 17:43:14', '2020-02-24 17:43:14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(215, 'siti nurjanah', '08787873198', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT IMAN ARAFAH TRAVEL', NULL, '2020-02-27 17:47:04', '2020-02-27 17:47:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 275, NULL, 63, 26),
+	(216, 'wulandani', '08118400988', 'Direct Selling', 'My Faedah', 'barang', NULL, 'TB ABADI JAYA JOGLO', NULL, '2020-02-27 17:47:50', '2020-02-27 17:47:50', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 93, NULL, 63, 26),
+	(217, 'dewi', '081288894659', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-02-27 17:49:09', '2020-02-27 17:49:09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(218, 'ari', '082213792870', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:34:48', '2020-02-28 08:34:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(219, 'salsabila', '081286605369', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:36:22', '2020-02-28 08:36:22', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(220, 'fiko prakoso', '081288332426', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:37:18', '2020-02-28 08:37:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(221, 'faris', '082298073137', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:39:43', '2020-02-28 08:39:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(222, 'faris', '082198073137', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:41:35', '2020-02-28 08:41:35', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(223, 'vika amelia', '085716299980', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:42:44', '2020-02-28 08:42:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(224, 'Dea', '085775805562', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:43:20', '2020-02-28 08:43:20', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(225, 'aulia julian', '085921528565', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:44:32', '2020-02-28 08:44:32', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(226, 'Naufal', '085939876477', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:45:16', '2020-02-28 08:45:16', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(227, 'ahmad syarif', '085945664210', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT WISATA HATI', NULL, '2020-02-28 08:46:47', '2020-02-28 08:46:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
+	(228, 'sayi', '081807825572', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-03-02 09:08:59', '2020-03-02 09:08:59', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(229, 'kartika', '081219007966', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-03-02 09:09:48', '2020-03-02 09:09:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(230, 'aan mulyani', '08129140944', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-03-02 09:10:45', '2020-03-02 09:10:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(231, 'yulianti', '085320724807', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-03-02 09:11:24', '2020-03-02 09:11:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(232, 'maya', '0877220042800', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT IMAN ARAFAH TRAVEL', NULL, '2020-03-02 09:12:24', '2020-03-02 09:12:24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 275, NULL, 63, 26),
+	(233, 'nahrowiyah', '083897002864', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-03-02 09:13:08', '2020-03-02 09:13:08', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26),
+	(234, 'umi laila', '082110646480', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-03-02 09:13:48', '2020-03-02 09:13:48', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(235, 'andi warman', '085890622792', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT IMAN ARAFAH TRAVEL', NULL, '2020-03-02 09:14:25', '2020-03-02 09:14:25', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 275, NULL, 63, 26),
+	(236, 'rodiyah', '085813461677', 'Direct Selling', 'My Ihram', 'jasa', NULL, 'PT BAITULLOH KOTA INTAN WISATA', NULL, '2020-03-02 09:15:03', '2020-03-02 09:15:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Yes / No', NULL, NULL, NULL, NULL, NULL, 'Belum', NULL, NULL, NULL, NULL, 138, NULL, 63, 26);
+/*!40000 ALTER TABLE `leads_full` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.login_log
 CREATE TABLE IF NOT EXISTS `login_log` (
@@ -437,9 +668,9 @@ CREATE TABLE IF NOT EXISTS `login_log` (
   PRIMARY KEY (`id_login_log`),
   KEY `id_user` (`id_user`),
   CONSTRAINT `login_log_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=1050 DEFAULT CHARSET=latin1 COMMENT='Table Catatan login User';
+) ENGINE=InnoDB AUTO_INCREMENT=1059 DEFAULT CHARSET=latin1 COMMENT='Table Catatan login User';
 
--- Dumping data for table db_partner.login_log: ~997 rows (approximately)
+-- Dumping data for table db_partner.login_log: ~996 rows (approximately)
 /*!40000 ALTER TABLE `login_log` DISABLE KEYS */;
 INSERT INTO `login_log` (`id_login_log`, `login_date`, `id_user`, `keterangan`) VALUES
 	(1, '0000-00-00 00:00:00', 26, ''),
@@ -1460,7 +1691,16 @@ INSERT INTO `login_log` (`id_login_log`, `login_date`, `id_user`, `keterangan`) 
 	(1046, '2020-03-27 22:52:13', 247, 'login'),
 	(1047, '2020-03-30 13:25:10', 247, 'login'),
 	(1048, '2020-03-31 15:53:55', 247, 'login'),
-	(1049, '2020-04-01 11:54:58', 247, 'login');
+	(1049, '2020-04-01 11:54:58', 247, 'login'),
+	(1050, '2020-04-02 14:44:39', 17, 'login'),
+	(1051, '2020-04-02 14:47:02', 17, 'login'),
+	(1052, '2020-04-02 14:47:18', 247, 'login'),
+	(1053, '2020-04-03 12:31:30', 247, 'login'),
+	(1054, '2020-04-05 19:42:15', 247, 'login'),
+	(1055, '2020-04-06 02:39:34', 247, 'login'),
+	(1056, '2020-04-06 11:07:24', 247, 'login'),
+	(1057, '2020-04-06 11:25:45', 17, 'login'),
+	(1058, '2020-04-06 16:50:15', 247, 'login');
 /*!40000 ALTER TABLE `login_log` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.maintain_partners
@@ -1617,7 +1857,7 @@ INSERT INTO `mapping_leads` (`id_mapping_leads`, `nama_konsumen`, `telepon`, `so
 	(157, 'iskandar', '08996992646', 'Direct Selling', 'My Ihram', 'umrah', NULL, 'PT WISATA HATI', NULL, '2020-02-07 18:12:16', '2020-02-07 18:12:16', NULL, NULL, NULL, NULL, NULL, NULL, 52, NULL, 161, 26),
 	(158, 'Yoyok', '081324029055', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:31:07', '2020-02-10 09:31:07', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
 	(159, 'Finny', '081395686915', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:31:43', '2020-02-10 09:31:43', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
-	(160, 'Abdul kutali', '081324243080', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:32:24', '2020-02-10 09:32:24', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
+	(160, 'Abdul kutali', '081324243080', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:32:24', '2020-04-02 14:46:37', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
 	(161, 'Ade supajs', '085221329996', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:33:04', '2020-02-10 09:33:04', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
 	(162, 'Ibnu', '082320868227', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:33:47', '2020-02-10 09:33:47', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
 	(163, 'Mumu zainal', '082315741727', 'Direct Selling', 'My Ihram', 'Jasa', NULL, 'PT. Ahsan Mandiri Utama', NULL, '2020-02-10 09:34:53', '2020-02-10 09:34:53', NULL, NULL, NULL, NULL, NULL, NULL, 103, NULL, 63, 26),
@@ -1977,7 +2217,7 @@ INSERT INTO `modules` (`branch_active`, `user_active`, `leads_active`, `kerjasam
 	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 60),
 	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 61),
 	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 62),
-	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 247),
+	(0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 247),
 	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 32),
 	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 107),
 	(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 169),
@@ -2173,9 +2413,9 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   CONSTRAINT `notifications_ibfk_1` FOREIGN KEY (`penerima`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_2` FOREIGN KEY (`pengirim`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `notifications_ibfk_3` FOREIGN KEY (`id_ticket`) REFERENCES `tickets` (`id_ticket`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=346 DEFAULT CHARSET=latin1 COMMENT='Tabel Notifikasi';
+) ENGINE=InnoDB AUTO_INCREMENT=371 DEFAULT CHARSET=latin1 COMMENT='Tabel Notifikasi';
 
--- Dumping data for table db_partner.notifications: ~70 rows (approximately)
+-- Dumping data for table db_partner.notifications: ~93 rows (approximately)
 /*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 INSERT INTO `notifications` (`id_notification`, `has_read`, `type`, `created_at`, `penerima`, `penerima_cabang`, `pengirim`, `id_ticket`, `id_ps_ticket`) VALUES
 	(261, '1', 'Cross Branch oleh', '2020-01-16 16:16:01', NULL, 2, 11, 2, NULL),
@@ -2252,7 +2492,32 @@ INSERT INTO `notifications` (`id_notification`, `has_read`, `type`, `created_at`
 	(342, '0', 'Tiket Product Support Baru', '2020-03-31 15:58:31', NULL, 46, 247, NULL, 11),
 	(343, '0', 'Tiket Product Support Baru', '2020-04-01 11:56:47', NULL, 46, 247, NULL, 12),
 	(344, '0', 'Tiket Product Support Baru', '2020-04-01 12:00:03', NULL, 46, 247, NULL, 13),
-	(345, '0', 'Tiket Product Support Baru', '2020-04-01 12:18:23', NULL, 46, 247, NULL, 14);
+	(345, '0', 'Tiket Product Support Baru', '2020-04-01 12:18:23', NULL, 46, 247, NULL, 14),
+	(346, '1', 'Cross Branch oleh', '2020-04-02 14:46:38', NULL, 7, 17, 146, NULL),
+	(347, '0', 'Tiket Baru', '2020-04-02 14:46:38', NULL, 46, 17, 146, NULL),
+	(348, '0', 'Komentar oleh', '2020-04-02 15:03:42', 17, 46, 247, 146, NULL),
+	(349, '0', 'Tiket Product Support Baru', '2020-04-03 12:35:43', NULL, 46, 247, NULL, 15),
+	(350, '0', 'Tiket Product Support Baru', '2020-04-03 12:37:46', NULL, 46, 247, NULL, 16),
+	(351, '0', 'Tiket Product Support Baru', '2020-04-05 19:47:30', NULL, 46, 247, NULL, 19),
+	(352, '0', 'Tiket Product Support Baru', '2020-04-05 20:15:26', NULL, 46, 247, NULL, 20),
+	(353, '0', 'Tiket Product Support Baru', '2020-04-05 20:16:45', NULL, 46, 247, NULL, 21),
+	(354, '0', 'Tiket Product Support Baru', '2020-04-05 20:24:31', NULL, 46, 247, NULL, 22),
+	(355, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 18:16:29', NULL, 46, 247, NULL, NULL),
+	(356, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 18:17:04', NULL, 46, 247, NULL, NULL),
+	(357, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 18:17:32', NULL, 46, 247, NULL, NULL),
+	(358, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 18:20:45', NULL, 46, 247, NULL, 10),
+	(359, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 18:39:47', NULL, 46, 247, NULL, 10),
+	(360, '0', 'Komentar oleh', '2020-04-06 18:39:55', NULL, NULL, 247, NULL, NULL),
+	(361, '0', 'Komentar oleh', '2020-04-06 18:41:23', NULL, NULL, 247, NULL, NULL),
+	(362, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 19:19:16', NULL, 46, 247, NULL, NULL),
+	(363, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 19:19:49', NULL, 46, 247, NULL, NULL),
+	(364, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 19:20:53', NULL, 46, 247, NULL, 11),
+	(365, '0', 'Komentar oleh', '2020-04-06 20:00:45', NULL, NULL, 247, NULL, 11),
+	(366, '0', 'Komentar oleh', '2020-04-06 20:00:57', NULL, NULL, 247, NULL, 11),
+	(367, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 20:44:26', NULL, 46, 247, NULL, 11),
+	(368, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 20:44:43', NULL, 46, 247, NULL, 11),
+	(369, '0', 'Tiket Product Support Baru', '2020-04-06 22:01:00', NULL, 46, 247, NULL, 23),
+	(370, '0', 'Data Tiket Product Support Dirubah', '2020-04-06 23:54:54', NULL, 46, 247, NULL, NULL);
 /*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.nst
@@ -2475,9 +2740,9 @@ CREATE TABLE IF NOT EXISTS `ps_activities` (
   KEY `FK_ps_activities_users` (`id_user`),
   CONSTRAINT `FK_ps_activities_ps_tickets` FOREIGN KEY (`id_ps_ticket`) REFERENCES `ps_tickets` (`id_ps_ticket`),
   CONSTRAINT `FK_ps_activities_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_partner.ps_activities: ~8 rows (approximately)
+-- Dumping data for table db_partner.ps_activities: ~26 rows (approximately)
 /*!40000 ALTER TABLE `ps_activities` DISABLE KEYS */;
 INSERT INTO `ps_activities` (`id_ps_activitiy`, `activity`, `date_activity`, `id_user`, `id_ps_ticket`) VALUES
 	(2, 'Data My Talim telah dibuat', '2020-03-30 13:32:26', 247, 5),
@@ -2487,12 +2752,30 @@ INSERT INTO `ps_activities` (`id_ps_activitiy`, `activity`, `date_activity`, `id
 	(7, 'Data My Cars telah dibuat', '2020-03-31 15:58:31', 247, 11),
 	(8, 'Data My Hajat Franchise telah dibuat', '2020-04-01 11:56:47', 247, 12),
 	(9, 'Data My Hajat Franchise telah dibuat', '2020-04-01 12:00:03', 247, 13),
-	(10, 'Data My Hajat Renovasi telah dibuat', '2020-04-01 12:18:23', 247, 14);
+	(10, 'Data My Hajat Renovasi telah dibuat', '2020-04-01 12:18:23', 247, 14),
+	(11, 'Data My Hajat Sewa telah dibuat', '2020-04-03 12:35:43', 247, 15),
+	(12, 'Data My Hajat Lainnya telah dibuat', '2020-04-03 12:37:46', 247, 16),
+	(13, 'Data My Faedah modal telah dibuat', '2020-04-05 19:47:30', 247, 19),
+	(14, 'Data My Faedah Qurban telah dibuat', '2020-04-05 20:15:26', 247, 20),
+	(15, 'Data My Faedah Qurban telah dibuat', '2020-04-05 20:16:44', 247, 21),
+	(16, 'Data My Faedah Lainnya telah dibuat', '2020-04-05 20:24:31', 247, 22),
+	(17, 'Data My Ihram telah dirubah', '2020-04-06 18:16:29', 247, NULL),
+	(18, 'Data My Ihram telah dirubah', '2020-04-06 18:17:04', 247, NULL),
+	(19, 'Data My Ihram telah dirubah', '2020-04-06 18:17:31', 247, NULL),
+	(20, 'Data My Ihram telah dirubah', '2020-04-06 18:20:45', 247, 10),
+	(21, 'Data My Ihram telah dirubah', '2020-04-06 18:39:47', 247, 10),
+	(22, 'Data My Cars telah dirubah', '2020-04-06 19:19:16', 247, NULL),
+	(23, 'Data My Cars telah dirubah', '2020-04-06 19:19:49', 247, NULL),
+	(24, 'Data My Cars telah dirubah', '2020-04-06 19:20:53', 247, 11),
+	(25, 'Data My Cars telah dirubah', '2020-04-06 20:44:26', 247, 11),
+	(26, 'Data My Cars telah dirubah', '2020-04-06 20:44:43', 247, 11),
+	(27, 'Data My Safar telah dibuat', '2020-04-06 22:01:00', 247, 23),
+	(28, 'Data My Safar telah dirubah', '2020-04-06 23:54:53', 247, NULL);
 /*!40000 ALTER TABLE `ps_activities` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_cars
 CREATE TABLE IF NOT EXISTS `ps_my_cars` (
-  `id_mycars` int(11) NOT NULL AUTO_INCREMENT,
+  `id_my_cars` int(11) NOT NULL AUTO_INCREMENT,
   `nama_konsumen` varchar(255) NOT NULL DEFAULT '',
   `jenis_konsumen` varchar(255) NOT NULL DEFAULT '',
   `nama_penyedia` varchar(255) NOT NULL DEFAULT '',
@@ -2513,7 +2796,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_cars` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_branch` int(11) DEFAULT 0,
   `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_mycars`),
+  PRIMARY KEY (`id_my_cars`),
   KEY `FK_ps_my_cars_branches` (`id_branch`),
   KEY `FK_ps_my_cars_users` (`id_user`),
   CONSTRAINT `FK_ps_my_cars_branches` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -2522,12 +2805,12 @@ CREATE TABLE IF NOT EXISTS `ps_my_cars` (
 
 -- Dumping data for table db_partner.ps_my_cars: ~5 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_cars` DISABLE KEYS */;
-INSERT INTO `ps_my_cars` (`id_mycars`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `kategori_penyedia`, `kategori_aset`, `lama_usaha`, `kepemilikan_tempat`, `jumlah_stok`, `tipe_kendaraan`, `jenis_kendaraan`, `tahun`, `warna_kendaraan`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
+INSERT INTO `ps_my_cars` (`id_my_cars`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `kategori_penyedia`, `kategori_aset`, `lama_usaha`, `kepemilikan_tempat`, `jumlah_stok`, `tipe_kendaraan`, `jenis_kendaraan`, `tahun`, `warna_kendaraan`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
 	(34, 'HJ HASNAH', 'Eksternal', 'M ADNAN HANAFI', 'Non-Authorized', 'Pemilik Langsung', 'Used Car', '1', 'Milik Sendiri', 1, 'SUZUKI AV1414F SDX (4x2) M/T', 'Mobil', '2015', 'PUTIH METALIK', 136000000, 'Penjual bukan showroom tapi perorangan.unit milik sendiri.foto unit,saat di depan samsat dan di depan rumah', 'Form_Pengajuan.pdf', '2019-09-03 15:17:36', '2019-09-04 15:44:25', 44, 33),
 	(35, 'Ahmad Lahaming', 'Eksternal', 'Muhammad Algafiqi', 'Non-Authorized', 'Pemilik Langsung', 'Used Car', '-', 'Milik Sendiri', 1, 'TM2FX 4X2 M/T', 'SUZUKI IGNIS ', '2017', 'Abu Abu', 120000000, '', 'WhatsApp_Image_2019-11-14_at_09.57.32(2).jpeg', '2019-11-14 09:17:34', '2019-11-14 09:17:34', 22, 165),
 	(36, 'PUTRA TES TRAINING', 'Eksternal', 'SHOWROOM IKHLAS BERAMAL', 'Non-Authorized', 'Showroom dengan izin usaha', 'Used Car', '2 TAHUN', 'Milik Sendiri', 10, 'AVANZA', 'MINIBUS', '2009', 'PINK', 250000000, 'SUDAH PINDAH KEPEMILIKAN 2 KALI', 'download.jpg', '2019-12-12 10:49:47', '2019-12-12 10:49:47', 38, 36),
 	(37, 'HATOGUAN SIBARANI', 'Eksternal', 'WAWAN SETIAWAN', 'Non-Authorized', 'Penjual Perorangan', 'Used Car', '5 TAHUN', 'Milik Sendiri', 2, 'TOYOTA AVANZA VELOZ', 'TOYOTA AVANZA VELOZ', '2009', 'PUTIH', 124000000, 'DATA LAIN AKAN DISIMPAN DI FTP\r\nkurang kuitansi jual beli', 'FORM_PENGAJUAN.pdf', '2020-02-05 17:46:48', '2020-02-06 09:56:04', 32, 151),
-	(38, 'Ibrahim', 'Eksternal', 'Uno Game', 'Authorized', '', 'New Car', '5 Tahun', 'Milik Sendiri', 8, 'Matic', '', '2020-03-10', 'Biru', 981, 'okeokeokeoe', 'u5487321_partner_(1)3.sql,Leads-HD23.xlsx', '2020-03-31 15:58:31', '2020-03-31 15:58:31', 7, 247);
+	(38, 'Ibrahim', 'Eksternal', 'Uno Game', 'Authorized', '', 'Used Car', '5 asd', 'Sewa', 8, 'Matic', '', '2020-03-10', 'Biru', 981, 'okeokeokeoe', 'u5487321_partner_(1)3.sql,Leads-HD23.xlsx', '2020-03-31 15:58:31', '2020-04-06 20:44:42', 7, 247);
 /*!40000 ALTER TABLE `ps_my_cars` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_faedah_bangunan
@@ -2540,7 +2823,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_faedah_bangunan` (
   `tujuan_pembelian` varchar(255) NOT NULL DEFAULT '',
   `lokasi_pembangunan` varchar(255) NOT NULL DEFAULT '',
   `luas_bangunan` varchar(255) DEFAULT '',
-  `waktu_pelaksanaan` varchar(255) NOT NULL DEFAULT '',
+  `estimasi_pembangunan` varchar(255) NOT NULL DEFAULT '',
   `nilai_pembiayaan` bigint(20) NOT NULL DEFAULT 0,
   `informasi_tambahan` text DEFAULT NULL,
   `upload_file` varchar(255) NOT NULL DEFAULT '',
@@ -2554,7 +2837,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_faedah_bangunan` (
 
 -- Dumping data for table db_partner.ps_my_faedah_bangunan: ~313 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_faedah_bangunan` DISABLE KEYS */;
-INSERT INTO `ps_my_faedah_bangunan` (`id_myfaedah_bangunan`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `tujuan_pembelian`, `lokasi_pembangunan`, `luas_bangunan`, `waktu_pelaksanaan`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`, `id_mapping`) VALUES
+INSERT INTO `ps_my_faedah_bangunan` (`id_myfaedah_bangunan`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `tujuan_pembelian`, `lokasi_pembangunan`, `luas_bangunan`, `estimasi_pembangunan`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`, `id_mapping`) VALUES
 	(2, 'Desmayanti', 'Eksternal', 'CV Indo Group (Indo Super Grosir)', 'Modern Store/Supermarket', 'Konsumtif', 'Jl. Megasari II RT 01/ RW 09 Desa Sawahgede Kec Cianjur Kab Cianjur', '12x10', '30 Hari', 21377000, 'CV. Indo Group Sudah PKS\r\nPembelian:\r\nKeramik, Closet, tangki air, water heater, wash tafel, dll', 'KTP1.pdf', '2019-08-26 15:15:56', '2019-08-27 09:55:28', 39, 105, NULL),
 	(3, 'SUMAIYAH', 'Eksternal', 'TB. WILLY JAYA', 'Toko/Agen', 'Konsumtif', 'RUMAH', '5X12', '30Hari', 21970000, 'Belum ada ttd BM karena BM sedang sakit dan di rawat di rumah sakit.', 'KTP_PEMOHON6.jpg', '2019-08-29 08:55:14', '2019-08-30 10:36:01', 23, 146, NULL),
 	(4, 'Windy Nadia Septiani', 'Eksternal', 'UD Surya', 'Penjual Perorangan', 'Konsumtif', 'Tambak Segaran VIII/9', '167 meter persegi', '1 bulan', 39169000, 'Bahan bangunan akan digunakan untuk keperluan renovasi rumah tinggal orang tua.', 'Dokumen_Pengajuan_(Windy_Nadia_S).odt', '2019-08-29 10:37:10', '2019-08-29 11:41:03', 41, 138, NULL),
@@ -2886,7 +3169,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_faedah_lainnya` (
   `id_branch` int(11) NOT NULL DEFAULT 0,
   `id_mapping` int(11) DEFAULT NULL COMMENT 'FK id mapping partner',
   PRIMARY KEY (`id_myfaedah_lainnya`)
-) ENGINE=InnoDB AUTO_INCREMENT=195 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table db_partner.ps_my_faedah_lainnya: ~194 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_faedah_lainnya` DISABLE KEYS */;
@@ -3084,12 +3367,15 @@ INSERT INTO `ps_my_faedah_lainnya` (`id_myfaedah_lainnya`, `nama_konsumen`, `jen
 	(191, 'DIAN MUHTIAR LANGI', 'Eksternal', 'TIGADARA CATERING', 'Toko/Agen', 30000000, '', 'DATA_KONSUMEN46.pdf', NULL, NULL, 0, 0, NULL),
 	(192, 'Widayanti', 'Eksternal', 'Helmi Fauzi', 'Penjual Perorangan', 20000000, 'Pembuatan Kanopi dan Pagar, RAB Terlampir', '1._Bukti_Kepemilikan_RUmah2.pdf', NULL, NULL, 0, 0, NULL),
 	(193, 'Gilang Rahmat', 'Eksternal', 'Trisnawati', '', 40320000, 'Pengajuan pembiayaan plafon pvc a.n gilang rahmat', 'ceklist_gilang.pdf', NULL, NULL, 0, 0, NULL),
-	(194, 'RAKHMAT NIRWANSYAH', 'Eksternal', 'AGUS TEKNIK', 'Penjual Perorangan', 13895000, 'FILE LAIN ADA DI FTP', 'KK_KONS5.jpg', NULL, NULL, 0, 0, NULL);
+	(194, 'RAKHMAT NIRWANSYAH', 'Eksternal', 'AGUS TEKNIK', 'Penjual Perorangan', 13895000, 'FILE LAIN ADA DI FTP', 'KK_KONS5.jpg', NULL, NULL, 0, 0, NULL),
+	(195, 'My Faedah Lainnya', 'Eksternal', 'My Faedah Lainnya', 'Toko / AGEN', 0, 'My Faedah Lainnya', '11278554.jpg,green-valley-in-tuscany2.jpg,Telltale_Games_3_10_2020_11_06_55_PM2.png', '2020-04-05 20:22:29', '2020-04-05 20:22:29', 247, 7, NULL),
+	(196, 'My Faedah Lainnya', 'Eksternal', 'My Faedah Lainnya', 'Toko / AGEN', 0, 'My Faedah Lainnya', '11278555.jpg,green-valley-in-tuscany3.jpg,Telltale_Games_3_10_2020_11_06_55_PM3.png', '2020-04-05 20:24:13', '2020-04-05 20:24:13', 247, 7, NULL),
+	(197, 'My Faedah Lainnya', 'Eksternal', 'My Faedah Lainnya', 'Toko / AGEN', 0, 'My Faedah Lainnya', '11278556.jpg,green-valley-in-tuscany4.jpg,Telltale_Games_3_10_2020_11_06_55_PM4.png', '2020-04-05 20:24:31', '2020-04-05 20:24:31', 247, 7, NULL);
 /*!40000 ALTER TABLE `ps_my_faedah_lainnya` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_faedah_modal
 CREATE TABLE IF NOT EXISTS `ps_my_faedah_modal` (
-  `id_modal` int(11) NOT NULL AUTO_INCREMENT,
+  `id_myfaedah_modal` int(11) NOT NULL AUTO_INCREMENT,
   `nama_konsumen` varchar(255) NOT NULL DEFAULT '',
   `jenis_konsumen` varchar(255) NOT NULL DEFAULT '',
   `nama_penyedia` varchar(255) NOT NULL DEFAULT '',
@@ -3104,12 +3390,12 @@ CREATE TABLE IF NOT EXISTS `ps_my_faedah_modal` (
   `id_user` int(11) NOT NULL,
   `id_branch` int(11) NOT NULL DEFAULT 0,
   `id_mapping` int(11) DEFAULT NULL COMMENT 'FK id mapping partner',
-  PRIMARY KEY (`id_modal`)
-) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`id_myfaedah_modal`)
+) ENGINE=InnoDB AUTO_INCREMENT=171 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table db_partner.ps_my_faedah_modal: ~165 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_faedah_modal` DISABLE KEYS */;
-INSERT INTO `ps_my_faedah_modal` (`id_modal`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `tujuan_pembelian`, `jenis_barang`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_user`, `id_branch`, `id_mapping`) VALUES
+INSERT INTO `ps_my_faedah_modal` (`id_myfaedah_modal`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `tujuan_pembelian`, `jenis_barang`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_user`, `id_branch`, `id_mapping`) VALUES
 	(1, 'LUNAWATIE, S.Pd', 'Eksternal', 'PT PENDA KATAPI SEJAHTERA', 'Toko/Agen', 'Produktif', 'TABUNG LPG', 39790000, '', 'DATA_KONSUMEN2.pdf', NULL, NULL, 0, 0, NULL),
 	(2, 'YUSRI AHYA M S.Pd', 'Eksternal', 'PT SEJAHTERA ABADI TRADA', 'Authorized Distributor', 'Produktif', 'MESIB DT40 SUZUKI', 416000000, '', 'FORM_YUSRI_AHYA.pdf', NULL, NULL, 0, 0, NULL),
 	(4, 'Nofrita SE', 'Eksternal', 'Yulmaizi', 'Penjual Perorangan', 'Produktif', 'Beras', 6050000, 'Konsumen membeli beras ke perorangan untuk dijual kembali', 'FORM_PENGAJUAN_PEMBIAYAAN3.pdf', NULL, NULL, 0, 0, NULL),
@@ -3274,12 +3560,15 @@ INSERT INTO `ps_my_faedah_modal` (`id_modal`, `nama_konsumen`, `jenis_konsumen`,
 	(164, 'Gani Junianda', 'Eksternal', 'PT. Adijaya Makmur Sejahtera', '', 'Produktif', 'Plavon', 76500000, '', 'FPP41.pdf', NULL, NULL, 0, 0, NULL),
 	(165, 'ilham nugroho', 'Eksternal', 'agus hariadi', 'Toko/Agen', 'Produktif', 'splicer AI9 ', 40000000, 'pembelian splicer  ai9 alat untuk menyambung kabel ', 'barang_yg_dibeli.pdf', NULL, NULL, 0, 0, NULL),
 	(166, 'RANI FEBRIANI', 'Eksternal', 'SOPIAH COLLECTION', 'Penjual Perorangan', 'Konsumtif', 'PAKAIAN JADI ', 40000000, 'PEMBELIAN PAKAIAN JADI ', 'DATA_KONSUMEN10.zip', NULL, NULL, 0, 0, NULL),
-	(167, 'atma prayoga', 'Eksternal', 'adi riyanto', 'Penjual Perorangan', 'Produktif', 'PAKET USAHA AIR ISI ULANG GALON', 17500000, 'data KONSUMEN DAN SUPPLIER lengkap ada di FTP nama Folder ATMA PRAYOGA', 'fpp_atma.pdf', NULL, NULL, 0, 0, NULL);
+	(167, 'atma prayoga', 'Eksternal', 'adi riyanto', 'Penjual Perorangan', 'Produktif', 'PAKET USAHA AIR ISI ULANG GALON', 17500000, 'data KONSUMEN DAN SUPPLIER lengkap ada di FTP nama Folder ATMA PRAYOGA', 'fpp_atma.pdf', NULL, NULL, 0, 0, NULL),
+	(168, 'Aris Munandar', 'Eksternal', 'Modal', 'Toko / AGEN', 'Konsumtif', 'Modal', 21312321, 'asdasd', 'MW-CAMPAIGN-TOUT2.jpg', '2020-04-05 19:46:28', '2020-04-05 19:46:28', 247, 7, NULL),
+	(169, 'Aris Munandar', 'Eksternal', 'Modal', 'Toko / AGEN', 'Konsumtif', 'Modal', 21312321, 'asdasd', 'MW-CAMPAIGN-TOUT3.jpg', '2020-04-05 19:47:02', '2020-04-05 19:47:02', 247, 7, NULL),
+	(170, 'Aris Munandar', 'Eksternal', 'Modal', 'Toko / AGEN', 'Konsumtif', 'Modal', 21312321, 'asdasd', 'MW-CAMPAIGN-TOUT4.jpg', '2020-04-05 19:47:30', '2020-04-05 19:47:30', 247, 7, NULL);
 /*!40000 ALTER TABLE `ps_my_faedah_modal` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_faedah_qurban
 CREATE TABLE IF NOT EXISTS `ps_my_faedah_qurban` (
-  `id_qurban` int(11) NOT NULL AUTO_INCREMENT,
+  `id_myfaedah_qurban` int(11) NOT NULL AUTO_INCREMENT,
   `nama_konsumen` varchar(255) NOT NULL DEFAULT '',
   `jenis_konsumen` varchar(255) NOT NULL DEFAULT '',
   `nama_penyedia` varchar(255) NOT NULL DEFAULT '',
@@ -3296,13 +3585,15 @@ CREATE TABLE IF NOT EXISTS `ps_my_faedah_qurban` (
   `id_user` int(11) NOT NULL,
   `id_branch` int(11) NOT NULL DEFAULT 0,
   `id_mapping` int(11) DEFAULT NULL COMMENT 'FK id mapping partner',
-  PRIMARY KEY (`id_qurban`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`id_myfaedah_qurban`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- Dumping data for table db_partner.ps_my_faedah_qurban: ~0 rows (approximately)
+-- Dumping data for table db_partner.ps_my_faedah_qurban: ~3 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_faedah_qurban` DISABLE KEYS */;
-INSERT INTO `ps_my_faedah_qurban` (`id_qurban`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `lama_usaha`, `tujuan_pembelian`, `jenis_hewan`, `jumlah_hewan`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_user`, `id_branch`, `id_mapping`) VALUES
-	(1, 'NURHAYANI', 'Eksternal', 'NURHAYATI', 'Penjual Perorangan', '5 tahun', 'Produktif', 'KAMBING', 6, 10000000, 'tujuan pembelian kambing untuk pengembangbiakan ternak kambing\r\nHewan Ternak (KAMBING)\r\n1 ekor kambing jantan umur 3 tahun, total harga 3.000.000\r\n1 ekor kambing betina umur 2,5 tahun, total harga 2.500.000\r\n2 ekor kambing umur 1 tahun, total harga 3.000.000\r\n2 ekor kambing umur 6 bulan, total harga 1.500.000\r\njumlah harga keseluruhan Rp. 10.000.000', 'FORM_PENGAJUAN_PEMBIAYAAN2.pdf', NULL, NULL, 0, 0, NULL);
+INSERT INTO `ps_my_faedah_qurban` (`id_myfaedah_qurban`, `nama_konsumen`, `jenis_konsumen`, `nama_penyedia`, `jenis_penyedia`, `lama_usaha`, `tujuan_pembelian`, `jenis_hewan`, `jumlah_hewan`, `nilai_pembiayaan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_user`, `id_branch`, `id_mapping`) VALUES
+	(1, 'NURHAYANI', 'Eksternal', 'NURHAYATI', 'Penjual Perorangan', '5 tahun', 'Produktif', 'KAMBING', 6, 10000000, 'tujuan pembelian kambing untuk pengembangbiakan ternak kambing\r\nHewan Ternak (KAMBING)\r\n1 ekor kambing jantan umur 3 tahun, total harga 3.000.000\r\n1 ekor kambing betina umur 2,5 tahun, total harga 2.500.000\r\n2 ekor kambing umur 1 tahun, total harga 3.000.000\r\n2 ekor kambing umur 6 bulan, total harga 1.500.000\r\njumlah harga keseluruhan Rp. 10.000.000', 'FORM_PENGAJUAN_PEMBIAYAAN2.pdf', NULL, NULL, 0, 0, NULL),
+	(4, 'Qurban', 'Eksternal', 'Qurbam', 'Authorized Distributor', '5 Thun', 'Konsumtif', 'Sapi', 55, 0, 'asdasdsad', '', '2020-04-05 20:15:26', '2020-04-05 20:15:26', 247, 7, NULL),
+	(5, 'Qurban 2', 'Eksternal', 'Qurban 2', 'Penjual Perorangan', '4 Tahun', 'Konsumtif', 'Sapi', 90, 0, 'Qurban 2', 'aa_gym1.PNG,11278551.jpg,bfi_syariah.jpg,Call-of-Duty®_-Modern-Warfare®_20191030221021.jpg', '2020-04-05 20:16:44', '2020-04-05 20:16:44', 247, 7, NULL);
 /*!40000 ALTER TABLE `ps_my_faedah_qurban` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_hajat_franchise
@@ -3333,7 +3624,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_hajat_franchise` (
   CONSTRAINT `FK_ps_my_hajat_franchise_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_partner.ps_my_hajat_franchise: ~14 rows (approximately)
+-- Dumping data for table db_partner.ps_my_hajat_franchise: ~12 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_hajat_franchise` DISABLE KEYS */;
 INSERT INTO `ps_my_hajat_franchise` (`id_franchise`, `nama_konsumen`, `jenis_konsumen`, `nama_franchise`, `jumlah_cabang`, `jenis_franchise`, `tahun_berdiri_franchise`, `harga_franchise`, `jangka_waktu_franchise`, `sosial_media`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`, `id_mapping`) VALUES
 	(11, 'MOCH ASMUNASIR', 'Eksternal', 'PT BERLIAN INTERNASIONAL TEKNOLOGI', 20, 'Makanan dan Minuman', '2013', 36000000, 'Selamanya', 'braderhud.com', 'PT BERLIAN INTERNASIONAL TEKNOLOGI merupakan perusahaan Waralaba (Franchise) yang bergerak di dalam bidang Kuliner (Minuman Kesehatan) sejak tahun 2014', 'DATA_KONSUMEN.pdf', '2019-08-19 12:36:20', '2019-08-19 12:36:20', 6, 50, NULL),
@@ -3368,7 +3659,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_hajat_lainnya` (
   `id_branch` int(11) NOT NULL DEFAULT 0,
   `id_mapping` int(11) DEFAULT NULL COMMENT 'FK id mapping partner',
   PRIMARY KEY (`id_myhajat_lainnya`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_partner.ps_my_hajat_lainnya: ~59 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_hajat_lainnya` DISABLE KEYS */;
@@ -3431,7 +3722,8 @@ INSERT INTO `ps_my_hajat_lainnya` (`id_myhajat_lainnya`, `nama_konsumen`, `jenis
 	(68, 'Mochamad Qoyum', 'Internal', 'Een Suhendi', 'Perorangan', 19180000, '', 'DATA_QOYUM.pdf', NULL, NULL, 0, 0, NULL),
 	(69, 'ANDRI YAHRINI', 'Eksternal', 'bengkel las lian jaya', '', 40000000, '', 'ceklis(1).pdf', NULL, NULL, 0, 0, NULL),
 	(70, 'asmad', 'Eksternal', 'sutono', '', 17000000, 'pembiayaan untuk ongkos tukang selama 20 hari Rp 17.000.000 \r\ndata yang dilampirkan fpp, form checklist, form survey cabang, form perjanjian penyedia jasa, form verifikasi penyedia jasa, form rab, foto pic bfi dengan penyedia jasa dan konsumen.\r\ndata konsumen terkait ktp suami istri, kk, rincian penghasilan, rekening listrik, akta jual beli rumah, foto usaha, foto rumah yg mau dibangun.\r\ndata ph3 terkait ktp, kk, cover tabungan.', 'data_konsumen56.pdf', NULL, NULL, 0, 0, NULL),
-	(71, 'RAKHMAT NIRWANSYAH', 'Eksternal', 'AGUS TEKNIK', '', 5000000, 'FILE YANG LAIN ADA DI FTP', 'Form_Verifikasi_Dan_Survey_2.pdf', NULL, NULL, 0, 0, NULL);
+	(71, 'RAKHMAT NIRWANSYAH', 'Eksternal', 'AGUS TEKNIK', '', 5000000, 'FILE YANG LAIN ADA DI FTP', 'Form_Verifikasi_Dan_Survey_2.pdf', NULL, NULL, 0, 0, NULL),
+	(72, 'Morgan Jones', 'Internal', 'Morgan Jones', 'Badan Usaha', 123123123, 'Morgan', 'Annotation_2020-04-03_013343.png,Annotation_2020-03-26_095155.png', '2020-04-03 12:37:46', '2020-04-03 12:37:46', 247, 7, NULL);
 /*!40000 ALTER TABLE `ps_my_hajat_lainnya` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_hajat_renovasi
@@ -3457,7 +3749,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_hajat_renovasi` (
   PRIMARY KEY (`id_renovasi`)
 ) ENGINE=InnoDB AUTO_INCREMENT=274 DEFAULT CHARSET=latin1;
 
--- Dumping data for table db_partner.ps_my_hajat_renovasi: ~246 rows (approximately)
+-- Dumping data for table db_partner.ps_my_hajat_renovasi: ~245 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_hajat_renovasi` DISABLE KEYS */;
 INSERT INTO `ps_my_hajat_renovasi` (`id_renovasi`, `nama_konsumen`, `jenis_konsumen`, `nama_vendor`, `jenis_vendor`, `jenis_pekerjaan`, `bagian_bangunan`, `luas_bangunan`, `jumlah_pekerja`, `estimasi_waktu`, `nilai_pembiayaan`, `informasi_tambahan`, `created_at`, `updated_at`, `upload_file`, `id_user`, `id_branch`, `id_mapping`) VALUES
 	(25, 'KARMILA MUCHSIN', 'Eksternal', 'CV KIEBESY PUTRA MANDIRI', 'Badan Usaha', 'Badan Usaha', 'Ganti struktur bangunan lt 1 menjadi lt 2', '50M2', '5 Orang', '19 Agustus 2019', 40000000, 'Pengajuan Renovai An Karmila Muchsin', NULL, NULL, 'Form_pengajuan-Reduced.pdf', 0, 0, NULL),
@@ -3720,17 +4012,17 @@ CREATE TABLE IF NOT EXISTS `ps_my_hajat_sewa` (
   `biaya_tahunan` bigint(20) NOT NULL DEFAULT 0 COMMENT 'Biaya Sewa per Tahun',
   `informasi_tambahan` text DEFAULT NULL,
   `upload_file` varchar(255) DEFAULT NULL,
-  `date_created` timestamp NULL DEFAULT NULL,
-  `date_modified` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` varchar(255) DEFAULT NULL,
   `id_branch` int(11) DEFAULT 0,
   `id_user` int(11) DEFAULT NULL,
   `id_mapping` int(11) DEFAULT NULL COMMENT 'FK id mapping partner',
   PRIMARY KEY (`id_sewa`)
-) ENGINE=InnoDB AUTO_INCREMENT=144 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=145 DEFAULT CHARSET=latin1;
 
 -- Dumping data for table db_partner.ps_my_hajat_sewa: ~126 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_hajat_sewa` DISABLE KEYS */;
-INSERT INTO `ps_my_hajat_sewa` (`id_sewa`, `nama_konsumen`, `jenis_konsumen`, `nama_pemilik`, `jenis_pemilik`, `hubungan_pemohon`, `luas_panjang`, `biaya_tahunan`, `informasi_tambahan`, `upload_file`, `date_created`, `date_modified`, `id_branch`, `id_user`, `id_mapping`) VALUES
+INSERT INTO `ps_my_hajat_sewa` (`id_sewa`, `nama_konsumen`, `jenis_konsumen`, `nama_pemilik`, `jenis_pemilik`, `hubungan_pemohon`, `luas_panjang`, `biaya_tahunan`, `informasi_tambahan`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`, `id_mapping`) VALUES
 	(16, 'Andreas', 'Eksternal', 'Rudi hartono', 'Perorangan', 'Orang lain', '77 m', 15000000, 'Komsumen sewa rumah an andreas. Pbb belum balik nama an salani. Tapi ada SHM an Rudi Hartono', 'form_andreas.pdf', '2019-08-22 15:17:06', '2019-08-22 15:17:06', 0, NULL, NULL),
 	(17, 'ZUMAROTUL MUKAROMAH', 'Eksternal', 'NODYA WIDOWATI', 'Perorangan', 'ORANG LAIN', '86m2', 10000000, 'Konsumen berencana untuk sewa ruko selama 2 tahun, sehingga total pengajuan pembiayaannya 20.000.000', 'DATA_KONSUMEN_ZUMAROTUL_MUKAROMAH.pdf', '2019-08-23 09:03:19', '2019-08-23 09:03:19', 0, NULL, NULL),
 	(18, 'ZUMAROTUL MUKAROMAH', 'Eksternal', 'NODYA WIDOWATI', 'Perorangan', 'ORANG LAIN', '86m2', 10000000, 'Konsumen berencana untuk sewa ruko selama 2 tahun, sehingga total pengajuan pembiayaannya 20.000.000, tenor 24 bulan ', 'DATA_KONSUMEN_ZUMAROTUL_MUKAROMAH1.pdf', '2019-08-23 09:49:05', '2019-08-23 09:49:05', 0, NULL, NULL),
@@ -3856,7 +4148,8 @@ INSERT INTO `ps_my_hajat_sewa` (`id_sewa`, `nama_konsumen`, `jenis_konsumen`, `n
 	(140, 'CEPI CANDRA FIRDAUS', 'Eksternal', 'Yanti Susanti', 'Perorangan', 'Orang Lain', '6 X 10', 15000000, 'Pemohon Mengajukan Pembiayaan  untuk sewa Bangunan untuk jangka waktu 2 Tahun ( Rp. 30.000.000 )', 'VERIFIKASI_SURVEI_Cepi_Candra_Firdaus.pdf', '2020-03-21 11:54:36', '2020-03-21 11:54:36', 0, NULL, NULL),
 	(141, 'Riva Bidadari', 'Eksternal', 'Muhammad Surya Fahri', '', 'Orang lain', '2,5 m x 2 m', 17000000, '   Sewa 1 unit kios usaha tenor 12 tahun ', 'Berkas_Riva_Bidadari2.zip', '2020-03-23 08:45:29', '2020-03-24 10:30:44', 0, NULL, NULL),
 	(142, 'Ernawati', 'Eksternal', 'Heru Irianto', 'Perorangan', 'Orang lain', '112 meter persegi', 25000000, 'Konsumen menyewa ruko untuk usaha warung sembako', 'Form_Checklist_Ernawati.pdf', '2020-03-23 13:18:06', '2020-03-23 13:18:06', 0, NULL, NULL),
-	(143, 'ernawati', 'Eksternal', 'Heru Irianto', 'Perorangan', 'Orang lain', '112 meter persegi', 25000000, 'Data konsumen dan bkr sudah ada ka teri', 'Ernawati_DK.pdf', '2020-03-23 15:45:28', '2020-03-23 15:45:28', 0, NULL, NULL);
+	(143, 'ernawati', 'Eksternal', 'Heru Irianto', 'Perorangan', 'Orang lain', '112 meter persegi', 25000000, 'Data konsumen dan bkr sudah ada ka teri', 'Ernawati_DK.pdf', '2020-03-23 15:45:28', '2020-03-23 15:45:28', 0, NULL, NULL),
+	(144, 'Negan', 'Eksternal', 'Negan', 'Perorangan', 'Saudara', '23 x 24', 1221312312312, 'negan', '11278552.jpg,green-valley-in-tuscany.jpg,bfi_syariah2.jpg', '2020-04-03 12:35:43', '2020-04-03 12:35:43', 7, 247, NULL);
 /*!40000 ALTER TABLE `ps_my_hajat_sewa` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_hajat_wedding
@@ -4311,7 +4604,7 @@ INSERT INTO `ps_my_hajat_wedding` (`id_wedding`, `nama_konsumen`, `jenis_konsume
 
 -- Dumping structure for table db_partner.ps_my_ihram
 CREATE TABLE IF NOT EXISTS `ps_my_ihram` (
-  `id_myihram` int(11) NOT NULL AUTO_INCREMENT,
+  `id_my_ihram` int(11) NOT NULL AUTO_INCREMENT,
   `nama_konsumen` varchar(40) NOT NULL DEFAULT '',
   `jenis_konsumen` varchar(40) NOT NULL DEFAULT '',
   `nama_travel` varchar(255) NOT NULL DEFAULT '',
@@ -4324,7 +4617,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_ihram` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `id_branch` int(11) NOT NULL DEFAULT 0,
   `id_user` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_myihram`),
+  PRIMARY KEY (`id_my_ihram`),
   KEY `FK_ps_my_ihram_branches` (`id_branch`),
   KEY `FK_ps_my_ihram_users` (`id_user`),
   CONSTRAINT `FK_ps_my_ihram_branches` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON DELETE NO ACTION ON UPDATE CASCADE,
@@ -4333,7 +4626,7 @@ CREATE TABLE IF NOT EXISTS `ps_my_ihram` (
 
 -- Dumping data for table db_partner.ps_my_ihram: ~1,514 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_ihram` DISABLE KEYS */;
-INSERT INTO `ps_my_ihram` (`id_myihram`, `nama_konsumen`, `jenis_konsumen`, `nama_travel`, `nomor_ktp`, `nama_paket`, `tanggal_keberangkatan`, `link_paket`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
+INSERT INTO `ps_my_ihram` (`id_my_ihram`, `nama_konsumen`, `jenis_konsumen`, `nama_travel`, `nomor_ktp`, `nama_paket`, `tanggal_keberangkatan`, `link_paket`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
 	(12, 'Hj Baiq Dewi Fitriana', 'Eksternal', 'Mudahan Tilah', '', '', NULL, '', 'WhatsApp_Image_2019-08-13_at_07.28.13.jpeg', '2019-08-20 16:59:48', '2019-08-20 17:10:30', 24, NULL),
 	(13, 'abdul fakih', 'Eksternal', 'BS Tour n travel', '', '', NULL, '', 'BROSUR.jpg', '2019-08-21 15:59:03', '2019-08-21 16:32:00', 42, NULL),
 	(14, 'AGUS ANDRIYANSYAH', 'Eksternal', 'ALTUR WISATA MULYA', '', '', NULL, '', 'BROSUR1.jpg', '2019-08-21 16:06:26', '2019-08-21 16:50:06', 42, NULL),
@@ -5847,12 +6140,12 @@ INSERT INTO `ps_my_ihram` (`id_myihram`, `nama_konsumen`, `jenis_konsumen`, `nam
 	(1524, 'Endah Suwangsih', 'Eksternal', 'PT Fidya Tour And Travel', '3204104811650001', 'Paket Hasanah ', '2020-05-26', 'https://fidyatour.com/', 'PAket_Fidya_23_Juta.jpeg', '2020-03-09 11:51:50', '2020-03-09 11:51:50', 5, NULL),
 	(1525, 'RISWANTO', 'Eksternal', 'PT MEDIA AMANAH INTERNASIONAL', '1802126512060001', 'EASY UMROH', '2020-03-29', 'www.bfi syariah.co.id', 'Itenerary_Media_Amanah_Internasional_29_MARET_20201.odt', '2020-03-10 09:20:10', '2020-03-10 09:20:10', 1, NULL),
 	(1526, 'suyati', 'Eksternal', 'PY IMPRESSA MEDIA WISATA', '3313104505800004', 'PAKET UMROH RAMADHAN MAIS', '2020-04-23', 'PAKET UMROH RAMADHAN MAIS', 'KTP_ISTRI17.jpg', '2020-03-11 15:07:22', '2020-03-13 09:21:42', 37, NULL),
-	(1529, 'Robby Badra', 'Internal', '', '1723912789182131', 'Travelova', '2020-03-10', 'www.travel.com', 'OneSheetReport_-_Copy.xlsx,fifa3.deskthemepack,Leads-HD2-Rev1.xlsx,KTP_Ibrahim_1x.zip,budi_luhur2.jpg', '2020-03-30 15:22:59', '2020-03-30 15:22:59', 7, NULL);
+	(1529, 'Robby Badra Mahesa', 'Internal', 'Traveolva', '9999999999999999', 'Traveloks', '2020-03-10', 'www.traveloks.com', 'OneSheetReport_-_Copy.xlsx,fifa3.deskthemepack,Leads-HD2-Rev1.xlsx,KTP_Ibrahim_1x.zip,budi_luhur2.jpg', '2020-03-30 15:22:59', '2020-04-06 18:39:47', 7, NULL);
 /*!40000 ALTER TABLE `ps_my_ihram` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_safar
 CREATE TABLE IF NOT EXISTS `ps_my_safar` (
-  `id_mysafar` int(11) NOT NULL AUTO_INCREMENT,
+  `id_my_safar` int(11) NOT NULL AUTO_INCREMENT,
   `nama_konsumen` varchar(40) NOT NULL DEFAULT '',
   `jenis_konsumen` varchar(40) NOT NULL DEFAULT '',
   `nama_travel` varchar(255) NOT NULL DEFAULT '',
@@ -5861,12 +6154,12 @@ CREATE TABLE IF NOT EXISTS `ps_my_safar` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `id_branch` int(11) NOT NULL DEFAULT 0,
   `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_mysafar`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+  PRIMARY KEY (`id_my_safar`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- Dumping data for table db_partner.ps_my_safar: ~29 rows (approximately)
 /*!40000 ALTER TABLE `ps_my_safar` DISABLE KEYS */;
-INSERT INTO `ps_my_safar` (`id_mysafar`, `nama_konsumen`, `jenis_konsumen`, `nama_travel`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
+INSERT INTO `ps_my_safar` (`id_my_safar`, `nama_konsumen`, `jenis_konsumen`, `nama_travel`, `upload_file`, `created_at`, `updated_at`, `id_branch`, `id_user`) VALUES
 	(12, 'CUCU NURMAYANTI', 'Eksternal', 'PT. DIVA PRATAMA KARYA', 'ALL_DATA_TOUR_2.pdf', '2019-08-27 15:45:12', '2019-08-27 14:27:24', 39, 106),
 	(13, 'HAMBA ALLAH', 'Eksternal', 'PT. ALIF BERKAH AMANAH WISATA TOUR & TRAVEL', 'ABA_Wisata_-_Itinerary_Umroh_9_Hari_22_OKT_2019.pdf', '2019-09-03 16:19:08', '2019-09-03 10:26:38', 39, 106),
 	(14, 'DEWI DAMAYANTI PRIBUDI', 'Eksternal', 'RIKOLA', 'IMG_20180419_155053.jpg', '2019-09-09 10:56:23', '2019-09-06 13:21:25', 35, 115),
@@ -5895,7 +6188,8 @@ INSERT INTO `ps_my_safar` (`id_mysafar`, `nama_konsumen`, `jenis_konsumen`, `nam
 	(37, 'Nama', 'Eksternal', 'PT ATINA RAHMATAKA WISATA', 'IMG-20200205-WA0021.jpg', '2020-02-05 13:30:26', '2020-02-05 13:30:26', 26, 40),
 	(38, 'NAMA', 'Eksternal', 'PT TRIPURI', 'BEST_OF_TURKEY_05_APRIL.pdf', '2020-02-06 10:18:04', '2020-02-06 10:18:04', 26, 40),
 	(39, 'Nama', 'Eksternal', 'PT ATINA RAHMATAKA WISATA', 'Safar_madina.jpg', '2020-02-13 17:58:59', '2020-02-13 17:58:59', 26, 40),
-	(40, 'Vienna Diva Agnetha', 'Eksternal', 'PT Kawan Visi Indonesia', 'Data_Konsumen.pdf', '2020-03-12 08:41:44', '2020-03-12 08:41:44', 5, 158);
+	(40, 'Vienna Diva Agnetha', 'Eksternal', 'PT Kawan Visi Indonesia', 'Data_Konsumen.pdf', '2020-03-12 08:41:44', '2020-03-12 08:41:44', 5, 158),
+	(41, 'My Safar', 'Eksternal', 'My Safar', 'WIN_20200129_11_12_02_Pro.jpg', '2020-04-06 22:01:00', '2020-04-06 22:01:00', 7, 247);
 /*!40000 ALTER TABLE `ps_my_safar` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.ps_my_talim
@@ -6002,6 +6296,7 @@ CREATE TABLE IF NOT EXISTS `ps_tickets` (
   `id_my_faedah_bangunan` int(11) DEFAULT NULL,
   `id_my_faedah_modal` int(11) DEFAULT NULL,
   `id_my_faedah_qurban` int(11) DEFAULT NULL,
+  `id_my_faedah_lainnya` int(11) DEFAULT NULL,
   `id_my_hajat_franchise` int(11) DEFAULT NULL,
   `id_my_hajat_lainnya` int(11) DEFAULT NULL,
   `id_my_hajat_renovasi` int(11) DEFAULT NULL,
@@ -6035,37 +6330,48 @@ CREATE TABLE IF NOT EXISTS `ps_tickets` (
   KEY `FK_ps_tickets_ps_my_ihram` (`id_my_ihram`),
   KEY `FK_ps_tickets_ps_my_talim` (`id_my_talim`),
   KEY `FK_ps_tickets_ps_my_safar` (`id_my_safar`),
+  KEY `FK_ps_tickets_ps_my_faedah_lainnya` (`id_my_faedah_lainnya`),
   CONSTRAINT `FK_ps_tickets_branches` FOREIGN KEY (`id_branch`) REFERENCES `branches` (`id_branch`) ON UPDATE CASCADE,
-  CONSTRAINT `FK_ps_tickets_ps_my_cars` FOREIGN KEY (`id_my_cars`) REFERENCES `ps_my_cars` (`id_mycars`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_ps_tickets_ps_my_cars` FOREIGN KEY (`id_my_cars`) REFERENCES `ps_my_cars` (`id_my_cars`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_faedah_bangunan` FOREIGN KEY (`id_my_faedah_bangunan`) REFERENCES `ps_my_faedah_bangunan` (`id_myfaedah_bangunan`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `FK_ps_tickets_ps_my_faedah_modal` FOREIGN KEY (`id_my_faedah_modal`) REFERENCES `ps_my_faedah_modal` (`id_modal`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `FK_ps_tickets_ps_my_faedah_qurban` FOREIGN KEY (`id_my_faedah_qurban`) REFERENCES `ps_my_faedah_qurban` (`id_qurban`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_ps_tickets_ps_my_faedah_lainnya` FOREIGN KEY (`id_my_faedah_lainnya`) REFERENCES `ps_my_faedah_lainnya` (`id_myfaedah_lainnya`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_ps_tickets_ps_my_faedah_modal` FOREIGN KEY (`id_my_faedah_modal`) REFERENCES `ps_my_faedah_modal` (`id_myfaedah_modal`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_ps_tickets_ps_my_faedah_qurban` FOREIGN KEY (`id_my_faedah_qurban`) REFERENCES `ps_my_faedah_qurban` (`id_myfaedah_qurban`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_hajat_franchise` FOREIGN KEY (`id_my_hajat_franchise`) REFERENCES `ps_my_hajat_franchise` (`id_franchise`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_hajat_lainnya` FOREIGN KEY (`id_my_hajat_lainnya`) REFERENCES `ps_my_hajat_lainnya` (`id_myhajat_lainnya`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_hajat_renovasi` FOREIGN KEY (`id_my_hajat_renovasi`) REFERENCES `ps_my_hajat_renovasi` (`id_renovasi`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_hajat_sewa` FOREIGN KEY (`id_my_hajat_sewa`) REFERENCES `ps_my_hajat_sewa` (`id_sewa`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_hajat_wedding` FOREIGN KEY (`id_my_hajat_wedding`) REFERENCES `ps_my_hajat_wedding` (`id_wedding`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `FK_ps_tickets_ps_my_ihram` FOREIGN KEY (`id_my_ihram`) REFERENCES `ps_my_ihram` (`id_myihram`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `FK_ps_tickets_ps_my_safar` FOREIGN KEY (`id_my_safar`) REFERENCES `ps_my_safar` (`id_mysafar`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_ps_tickets_ps_my_ihram` FOREIGN KEY (`id_my_ihram`) REFERENCES `ps_my_ihram` (`id_my_ihram`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_ps_tickets_ps_my_safar` FOREIGN KEY (`id_my_safar`) REFERENCES `ps_my_safar` (`id_my_safar`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_ps_my_talim` FOREIGN KEY (`id_my_talim`) REFERENCES `ps_my_talim` (`id_my_talim`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_users_2` FOREIGN KEY (`verified_by`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_users_3` FOREIGN KEY (`completed_by`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE,
   CONSTRAINT `FK_ps_tickets_users_4` FOREIGN KEY (`activated_by`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table db_partner.ps_tickets: ~9 rows (approximately)
+-- Dumping data for table db_partner.ps_tickets: ~18 rows (approximately)
 /*!40000 ALTER TABLE `ps_tickets` DISABLE KEYS */;
-INSERT INTO `ps_tickets` (`id_ps_ticket`, `date_pending`, `date_approved_by_head`, `date_approved_by_manager`, `date_inprogress`, `date_rejected`, `date_completed`, `date_activated`, `date_verified_ttd`, `status`, `id_my_cars`, `id_my_faedah_bangunan`, `id_my_faedah_modal`, `id_my_faedah_qurban`, `id_my_hajat_franchise`, `id_my_hajat_lainnya`, `id_my_hajat_renovasi`, `id_my_hajat_sewa`, `id_my_hajat_wedding`, `id_my_ihram`, `id_my_talim`, `id_my_safar`, `verified_by`, `completed_by`, `activated_by`, `created_at`, `updated_at`, `id_user`, `id_branch`) VALUES
-	(3, '2020-03-27 23:17:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 112, NULL, NULL, NULL, NULL, '2020-03-27 23:17:11', '2020-03-27 23:17:11', 247, 7),
-	(5, '2020-03-30 13:32:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 114, NULL, NULL, NULL, NULL, '2020-03-30 13:32:26', '2020-03-30 13:32:26', 247, 7),
-	(6, '2020-03-30 14:28:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 115, NULL, NULL, NULL, NULL, '2020-03-30 14:28:44', '2020-03-30 14:28:44', 247, 7),
-	(7, '2020-03-30 14:29:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 116, NULL, NULL, NULL, NULL, '2020-03-30 14:29:11', '2020-03-30 14:29:11', 247, 7),
-	(10, '2020-03-30 15:23:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1529, NULL, NULL, NULL, NULL, NULL, '2020-03-30 15:23:00', '2020-03-30 15:23:00', 247, 7),
-	(11, '2020-03-31 15:58:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-31 15:58:31', '2020-03-31 15:58:31', 247, 7),
-	(12, '2020-04-01 11:56:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, 24, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-01 11:56:47', '2020-04-01 11:56:47', 247, 7),
-	(13, '2020-04-01 12:00:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-01 12:00:03', '2020-04-01 12:00:03', 247, 7),
-	(14, '2020-04-01 12:18:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, 273, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-01 12:18:23', '2020-04-01 12:18:23', 247, 7);
+INSERT INTO `ps_tickets` (`id_ps_ticket`, `date_pending`, `date_approved_by_head`, `date_approved_by_manager`, `date_inprogress`, `date_rejected`, `date_completed`, `date_activated`, `date_verified_ttd`, `status`, `id_my_cars`, `id_my_faedah_bangunan`, `id_my_faedah_modal`, `id_my_faedah_qurban`, `id_my_faedah_lainnya`, `id_my_hajat_franchise`, `id_my_hajat_lainnya`, `id_my_hajat_renovasi`, `id_my_hajat_sewa`, `id_my_hajat_wedding`, `id_my_ihram`, `id_my_talim`, `id_my_safar`, `verified_by`, `completed_by`, `activated_by`, `created_at`, `updated_at`, `id_user`, `id_branch`) VALUES
+	(3, '2020-03-27 23:17:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 112, NULL, NULL, NULL, NULL, '2020-03-27 23:17:11', '2020-03-27 23:17:11', 247, 7),
+	(5, '2020-03-30 13:32:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 114, NULL, NULL, NULL, NULL, '2020-03-30 13:32:26', '2020-03-30 13:32:26', 247, 7),
+	(6, '2020-03-30 14:28:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 115, NULL, NULL, NULL, NULL, '2020-03-30 14:28:44', '2020-03-30 14:28:44', 247, 7),
+	(7, '2020-03-30 14:29:11', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 116, NULL, NULL, NULL, NULL, '2020-03-30 14:29:11', '2020-03-30 14:29:11', 247, 7),
+	(10, '2020-04-06 18:39:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1529, NULL, NULL, NULL, NULL, NULL, '2020-03-30 15:23:00', '2020-04-06 18:39:47', 247, 7),
+	(11, '2020-04-06 20:44:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 38, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-31 15:58:31', '2020-04-06 20:44:43', 247, 7),
+	(12, '2020-04-01 11:56:47', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, 24, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-01 11:56:47', '2020-04-01 11:56:47', 247, 7),
+	(13, '2020-04-01 12:00:03', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, 25, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-01 12:00:03', '2020-04-01 12:00:03', 247, 7),
+	(14, '2020-04-01 12:18:23', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 273, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-01 12:18:23', '2020-04-01 12:18:23', 247, 7),
+	(15, '2020-04-03 12:35:43', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 144, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-03 12:35:43', '2020-04-03 12:35:43', 247, 7),
+	(16, '2020-04-03 12:37:46', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, 72, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-03 12:37:46', '2020-04-03 12:37:46', 247, 7),
+	(17, '2020-04-05 19:46:28', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 168, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-05 19:46:28', '2020-04-05 19:46:28', 247, 7),
+	(18, '2020-04-05 19:47:02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 169, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-05 19:47:02', '2020-04-05 19:47:02', 247, 7),
+	(19, '2020-04-05 19:47:30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 170, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-05 19:47:30', '2020-04-05 19:47:30', 247, 7),
+	(20, '2020-04-05 20:15:26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, 4, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-05 20:15:26', '2020-04-05 20:15:26', 247, 7),
+	(21, '2020-04-05 20:16:44', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, 5, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-05 20:16:44', '2020-04-05 20:16:44', 247, 7),
+	(22, '2020-04-05 20:24:31', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, 197, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-05 20:24:31', '2020-04-05 20:24:31', 247, 7),
+	(23, '2020-04-06 22:01:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 41, NULL, NULL, NULL, '2020-04-06 22:01:00', '2020-04-06 22:01:00', 247, 7);
 /*!40000 ALTER TABLE `ps_tickets` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.tickets
@@ -6111,7 +6417,7 @@ CREATE TABLE IF NOT EXISTS `tickets` (
   CONSTRAINT `tickets_ibfk_5` FOREIGN KEY (`id_leads`) REFERENCES `leads` (`id_leads`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_6` FOREIGN KEY (`verified_by`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `tickets_ibfk_7` FOREIGN KEY (`id_nst`) REFERENCES `nst` (`id_nst`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=146 DEFAULT CHARSET=latin1 COMMENT='Tabel Tiket';
+) ENGINE=InnoDB AUTO_INCREMENT=147 DEFAULT CHARSET=latin1 COMMENT='Tabel Tiket';
 
 -- Dumping data for table db_partner.tickets: ~52 rows (approximately)
 /*!40000 ALTER TABLE `tickets` DISABLE KEYS */;
@@ -6167,7 +6473,8 @@ INSERT INTO `tickets` (`id_ticket`, `ttd_pks`, `date_pending`, `date_approved_by
 	(49, 'Belum', '2020-03-17 14:21:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, 46, NULL, NULL, 247, NULL, 7, NULL, NULL, NULL, NULL, '2020-03-17 14:21:55', '2020-03-17 14:21:55'),
 	(50, 'Belum', '2020-03-17 15:05:04', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 64, NULL, 247, NULL, 7, NULL, NULL, NULL, NULL, '2020-03-17 15:05:04', '2020-03-17 15:05:04'),
 	(51, 'Ya', '2020-03-18 16:03:41', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 97, NULL, NULL, NULL, 247, NULL, 7, NULL, NULL, NULL, 'wetransfer-8706081.zip', NULL, '2020-03-18 16:03:41'),
-	(52, 'Ya', '2020-03-18 16:47:46', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 98, NULL, NULL, NULL, 247, NULL, 7, NULL, NULL, NULL, NULL, '2020-03-18 16:47:46', '2020-03-18 16:47:46');
+	(52, 'Ya', '2020-03-18 16:47:46', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, 98, NULL, NULL, NULL, 247, NULL, 7, NULL, NULL, NULL, NULL, '2020-03-18 16:47:46', '2020-03-18 16:47:46'),
+	(146, 'Belum', '2020-04-02 14:46:38', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 2, NULL, NULL, 86, NULL, 17, NULL, 46, NULL, NULL, NULL, NULL, '2020-04-02 14:46:38', '2020-04-02 14:46:38');
 /*!40000 ALTER TABLE `tickets` ENABLE KEYS */;
 
 -- Dumping structure for table db_partner.users

@@ -16,6 +16,7 @@ class Ps_my_cars extends CI_Controller
         $this->load->model('comment_model');
         //Load Modul Users
         $this->load->model('user_model');
+        $this->load->model('partner_model');
 
         //Load Modul Product Support
         $this->load->model('ps_model');
@@ -72,8 +73,19 @@ class Ps_my_cars extends CI_Controller
     {
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $where = ['id_my_cars' => $id];
+        $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
+        $data = [
+            'data' => $this->ps_model->get("my_cars", $where)->row(),
+            'ticket' => $this->ps_ticket->get($where)->row(),
+            'activities' => $this->ps_activity->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+            'comments'      => $this->comment_model->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+
+            'partners'      => $this->partner_model->get_mapping($this->where)
+        ];
+        $this->template->load('template/index', 'product_support/input-produk-detail-cars', $data);
     }
 
     public function save()
@@ -137,18 +149,18 @@ class Ps_my_cars extends CI_Controller
         $data = [
             'nama_konsumen'                 => $post['nama_konsumen'],
             'jenis_konsumen'                => $post['jenis_konsumen'],
-            'nama_penyedia'                 => $post['nama_penyedia_mycars'],
-            'jenis_penyedia'                => $post['jenis_penyedia_mycars'],
+            'nama_penyedia'                 => $post['nama_penyedia'],
+            'jenis_penyedia'                => $post['jenis_penyedia'],
             'kategori_aset'                 => $post['kategori_aset'],
-            'lama_usaha'                    => $post['lama_usaha_mycars'],
+            'lama_usaha'                    => $post['lama_usaha'],
             'kepemilikan_tempat'            => $post['kepemilikan_tempat'],
             'jumlah_stok'                   => $post['jumlah_stok'],
             'tipe_kendaraan'                => $post['tipe_kendaraan'],
             // 'jenis_kendaraan'               => $post['jenis_kendaraan'],
             'tahun'                         => $post['tahun'],
             'warna_kendaraan'               => $post['warna_kendaraan'],
-            'nilai_pembiayaan'              => $post['nilai_pembiayaan_mycars'],
-            'informasi_tambahan'            => $post['informasi_tambahan_mycars'],
+            'nilai_pembiayaan'              => $post['nilai_pembiayaan'],
+            'informasi_tambahan'            => $post['informasi_tambahan'],
 
             // 'created_at'                    => date('Y-m-d H:i:s'),
             'updated_at'                   => date('Y-m-d H:i:s'),
@@ -175,10 +187,10 @@ class Ps_my_cars extends CI_Controller
         $id_ps_ticket = $this->ps_ticket->update($ps_ticket, $where);
 
         // Activity
-        $this->activity('Data My Cars telah dirubah', $id_ps_ticket);
+        $this->activity('Data My Cars telah dirubah', $post['id_ps_ticket']);
 
         //Notification
-        $this->notification($id_ps_ticket, 'Data Tiket Product Support Dirubah');
+        $this->notification($post['id_ps_ticket'], 'Data Tiket Product Support Dirubah');
     }
 
     public function tambah_lampiran()

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Ps_my_hajat_franchise extends CI_Controller
+class Ps_my_hajat_sewa extends CI_Controller
 {
     public $where;
 
@@ -82,9 +82,16 @@ class Ps_my_hajat_franchise extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $data = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'jenis_konsumen'        => $post['jenis_konsumen'],
-            'informasi_tambahan'    => $post['informasi_tambahan'],
+            'nama_konsumen'             => $post['nama_konsumen'],
+            'jenis_konsumen'            => $post['jenis_konsumen'],
+            'nama_pemilik'              => $post['nama_pemilik'],
+            'jenis_pemilik'             => $post['jenis_pemilik'],
+            'hubungan_pemohon'          => $post['hubungan_pemohon'],
+            'luas_panjang'              => $post['luas_panjang'],
+            'biaya_tahunan'             => $post['biaya_tahunan'],
+            'luas_panjang'              => $post['luas_panjang'],
+            'biaya_tahunan'             => str_replace(",","", $post['biaya_tahunan']),
+            'informasi_tambahan'        => $post['informasi_tambahan_sewa'],
 
             //Timestamp
             'created_at'            => date('Y-m-d H:i:s'),
@@ -125,17 +132,16 @@ class Ps_my_hajat_franchise extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $data = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'jenis_konsumen'        => $post['jenis_konsumen'],
-            'pendidikan'            => $post['pendidikan'],
-            'nama_siswa'            => $post['nama_siswa'],
-            'nama_lembaga'          => $post['nama_lembaga'],
-            'tahun_berdiri'         => $post['tahun_berdiri'],
-            'akreditasi'            => $post['akreditasi'],
-            'periode'               => $post['periode'],
-            'tujuan_pembiayaan'     => $post['tujuan_pembiayaan'],
-            'nilai_pembiayaan'      => str_replace(",", "", $post['nilai_pembiayaan']),
-            'informasi_tambahan'    => $post['informasi_tambahan'],
+            'nama_konsumen'             => $post['nama_konsumen'],
+            'jenis_konsumen'            => $post['jenis_konsumen'],
+            'nama_pemilik'              => $post['nama_pemilik'],
+            'jenis_pemilik'             => $post['jenis_pemilik'],
+            'hubungan_pemohon'          => $post['hubungan_pemohon'],
+            'luas_panjang'              => $post['luas_panjang'],
+            'biaya_tahunan'             => $post['biaya_tahunan'],
+            'luas_panjang'              => $post['luas_panjang'],
+            'biaya_tahunan'             => str_replace(",","", $post['biaya_tahunan']),
+            'informasi_tambahan'        => $post['informasi_tambahan_sewa'],
 
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
@@ -192,7 +198,7 @@ class Ps_my_hajat_franchise extends CI_Controller
 
 
                 //Konfigurasi Upload
-                $config['upload_path']         = './uploads/my_hajat_sewa';
+                $config['upload_path']         = './uploads/my_hajat';
                 $config['allowed_types']        = '*';
                 $config['max_size']             = 0;
                 $config['max_width']            = 0;

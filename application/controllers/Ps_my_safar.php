@@ -19,14 +19,16 @@ class Ps_my_safar extends CI_Controller
 
         //Load Modul Product Support
         $this->load->model('ps_model');
+        //Load Modul Product Support Activity
+        $this->load->model('ps_activity_model', 'ps_activity');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "id_user = $this->fungsi->user_login()->id_user";
+            $this->where = "id_user = ". $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia Head/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "id_branch = $this->fungsi->user_login()->id_branch";
+            $this->where = "id_branch = ". $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = "1";
         }
@@ -69,8 +71,17 @@ class Ps_my_safar extends CI_Controller
     {
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $where = ['id_my_safar' => $id];
+        $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
+        $data = [
+            'data' => $this->ps_model->get("my_safar", $where)->row(),
+            'ticket' => $this->ps_ticket->get($where)->row(),
+            'activities' => $this->ps_activity->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+            'comments'      => $this->comment_model->get("ps_tickets.id_ps_ticket = $id_ps_ticket")
+        ];
+        $this->template->load('template/index', 'product_support/input-produk-detail-safar', $data);
     }
 
     public function save()
@@ -80,7 +91,7 @@ class Ps_my_safar extends CI_Controller
         $data = [
             'nama_konsumen'         => $post['nama_konsumen'],
             'jenis_konsumen'        => $post['jenis_konsumen'],
-            'nama_travel'            => $post['nama_travel'],
+            'nama_travel'            => $post['nama_travel_safar'],
 
             //Timestamp
             'created_at'            => date('Y-m-d H:i:s'),
@@ -149,10 +160,10 @@ class Ps_my_safar extends CI_Controller
         $id_ps_ticket = $this->ps_ticket->update($ps_ticket, $where);
 
         // Activity
-        $this->activity('Data My Safar telah dirubah', $id_ps_ticket);
+        $this->activity('Data My Safar telah dirubah', $post['id_ps_ticket']);
 
         //Notification
-        $this->notification($id_ps_ticket, 'Data Tiket Product Support Dirubah');
+        $this->notification($post['id_ps_ticket'], 'Data Tiket Product Support Dirubah');
     }
 
     public function upload_file()
