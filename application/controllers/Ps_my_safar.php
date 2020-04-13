@@ -73,7 +73,7 @@ class Ps_my_safar extends CI_Controller
 
     public function edit($id)
     {
-        $where = ['id_my_safar' => $id];
+        $where = ['ps_my_safar.id_my_safar' => $id];
         $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
         $data = [
             'data' => $this->ps_model->get("my_safar", $where)->row(),

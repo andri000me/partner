@@ -35,7 +35,7 @@ class Partner extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = "id_partner IS NOT NULL AND status = 'lengkap'";
+            $this->where = "id_mapping IS NOT NULL and partners.status = 'lengkap'";
         }
 
         check_not_login();
@@ -60,8 +60,8 @@ class Partner extends CI_Controller
     {
         // $merge = array_merge($this->where, ['status' => 'lengkap']);
         $data = [
-            'data' => $this->partner_model->get($this->where),
-            'lengkap' => $this->partner_model->get("status = 'lengkap' AND " . $this->where)
+            'data' => $this->partner_model->get("mapping_partners.".$this->where),
+            'lengkap' => $this->partner_model->get("partners.status = 'lengkap' AND " . "mapping_partners.".$this->where)
         ];
 
         $this->template->load('template/index', 'partner', $data);
@@ -71,7 +71,7 @@ class Partner extends CI_Controller
     {
         $data = [
             'data' => $this->partner_model->get(),
-            'mappings' => $this->mapping_partner->get($this->where)
+            'mappings' => $this->mapping_partner->get("mapping_partners.".$this->where)
         ];
 
         $this->template->load('template/index', 'partner-form', $data);
@@ -83,7 +83,7 @@ class Partner extends CI_Controller
 
         $data = [
             'data' => $this->partner_model->get($where)->row(),
-            'mappings' => $this->mapping_partner->get($this->where)
+            'mappings' => $this->mapping_partner->get("mapping_partners.".$this->where)
         ];
 
         $this->template->load('template/index', 'partner-edit', $data);

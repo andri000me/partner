@@ -73,8 +73,17 @@ class Ps_my_hajat_sewa extends CI_Controller
     {
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $where = ['ps_my_hajat_sewa.id_my_hajat_sewa' => $id];
+        $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
+        $data = [
+            'data' => $this->ps_model->get("my_hajat_sewa", $where)->row(),
+            'ticket' => $this->ps_ticket->get($where)->row(),
+            'activities' => $this->ps_activity->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+            'comments'      => $this->comment_model->get("ps_tickets.id_ps_ticket = $id_ps_ticket")
+        ];
+        $this->template->load('template/index', 'product_support/input-produk-detail-hajat-sewa', $data);
     }
 
     public function save()
@@ -141,7 +150,7 @@ class Ps_my_hajat_sewa extends CI_Controller
             'biaya_tahunan'             => $post['biaya_tahunan'],
             'luas_panjang'              => $post['luas_panjang'],
             'biaya_tahunan'             => str_replace(",","", $post['biaya_tahunan']),
-            'informasi_tambahan'        => $post['informasi_tambahan_sewa'],
+            'informasi_tambahan'        => $post['informasi_tambahan'],
 
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
@@ -168,10 +177,12 @@ class Ps_my_hajat_sewa extends CI_Controller
         $id_ps_ticket = $this->ps_ticket->update($ps_ticket, $where);
 
         // Activity
-        $this->activity('Data My Hajat Sewa telah dirubah', $id_ps_ticket);
+        $this->activity('Data My Hajat Sewa telah dirubah', $post['id_ps_ticket']);
 
         //Notification
-        $this->notification($id_ps_ticket, 'Data Tiket Product Support Dirubah');
+        $this->notification($post['id_ps_ticket'], 'Data Tiket Product Support Dirubah');
+
+        redirect($post['redirect']);
     }
 
     public function upload_file()

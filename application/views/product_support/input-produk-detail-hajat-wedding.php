@@ -5,7 +5,7 @@
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Input Produk</a></li>
-                <li class="breadcrumb-item active">My Safar</li>
+                <li class="breadcrumb-item active">My Hajat Wedding</li>
             </ol>
         </div>
         <div class="card">
@@ -26,10 +26,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="partner" role="tabpanel">
-                        <form class=" text-size" action="<?= base_url('ps_my_safar/update') ?>" method="post">
-                            <input type="hidden" name="id_my_safar" value="<?= $data->id_my_safar ?>">
-                            <input type="hidden" name="id_ps_ticket" value="<?= $ticket->id_ps_ticket ?>">
-                            <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                        <form class=" text-size" action="#" method="post">
                             <div class="form-group ml-3 mr-3">
                                 <label>Nama Konsumen</label>
                                 <input type="text" class="form-control text-size" name="nama_konsumen"
@@ -50,23 +47,93 @@
                             <div class="form-group ml-3 mr-3">
                                 <label>Input Produk</label>
                                 <input type="text" class="form-control text-size" name="input_produk" id="input_produk"
-                                    value="My Safar" required readonly />
+                                    value="My Hajat" required readonly />
                             </div>
                             <div class="form-group ml-3 mr-3">
-                                <label>Nama Travel</label>
-                                <input type="text" class="form-control text-size safar" name="nama_travel"
-                                    value="<?= $data->nama_travel ?>" id="nama_travel" placeholder="Nama Travel" />
+                                <label>kategori My Hajat</label>
+                                <select class="form-control text-size hajat" name="kategori_myhajat"
+                                    id="kategori_myhajat" disabled>
+                                    <option value="">Pilih Kategori My hajat</option>
+                                    <option value="Renovasi Rumah">Renovasi Rumah</option>
+                                    <option value="Sewa bangunan (Rumah / Ruko)">Sewa bangunan
+                                        (Rumah / Ruko)
+                                    </option>
+                                    <option selected value="Wedding Organizer">Wedding Organizer</option>
+                                    <option value="Usaha franchise">Usaha franchise</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
                             </div>
-
-
+                            <div class="ml-3 mr-3 mb-3">
+                                <label>Nama Wedding Organizer</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control text-size wedding" name="nama_wo"
+                                        value="<?= $data->nama_wo ?>" id="nama_wo" placeholder="Nama Pemilik"
+                                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-danger text-size" type="button" id="reset">hapus</button>
+                                        <button class="btn btn-primary text-size" type="button" id="button-addon2"
+                                            data-toggle="modal" data-target=".bd-example-modal-xl">Cari</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group ml-3 mr-3">
+                                <label>Jenis Wedding Organizer</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input wedding" type="radio" name="jenis_wo"
+                                        <?= $data->jenis_wo == 'Perorangan' ? 'checked' : '' ?> id="jenis_wo"
+                                        value="Perorangan">
+                                    <label class="form-check-label">
+                                        Perorangan
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input wedding" type="radio" name="jenis_wo"
+                                        <?= $data->jenis_wo == 'Badan Usaha' ? 'checked' : '' ?> id="jenis_wo"
+                                        value="Badan Usaha">
+                                    <label class="form-check-label">
+                                        Badan Usaha
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="ml-3 mr-3 mb-3">
+                                <label>Jumlah Biaya Acara</label>
+                                <div class="input-group flex-nowrap">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
+                                    </div>
+                                    <input type="text" class="form-control text-size number-only wedding"
+                                        name="jumlah_biaya" value="<?= $data->jumlah_biaya ?>" id="jumlah_biaya"
+                                        data-type="currency" placeholder="Jumlah Biaya" aria-label="Username"
+                                        aria-describedby="addon-wrapping">
+                                </div>
+                            </div>
+                            <div class="form-group ml-3 mr-3">
+                                <label>Jumlah Undangan</label>
+                                <input type="text" class="form-control text-size wedding" name="jumlah_undangan"
+                                    value="<?= $data->jumlah_undangan ?>" id="jumlah_undangan"
+                                    placeholder="Jumlah Undangan" />
+                            </div>
+                            <div class="form-group ml-3 mr-3">
+                                <label>Akun Sosial Media WO</label>
+                                <input type="text" class="form-control text-size wedding" name="sosial_media"
+                                    value="<?= $data->sosial_media ?>" id="sosial_media"
+                                    placeholder="Contoh : ( facebook : syariahbfi | instagram : @syariahbfi )" />
+                            </div>
+                            <div class="form-group ml-3 mr-3">
+                                <label>Informasi Tambahan</label>
+                                <textarea class="form-control text-size wedding" name="informasi_tambahan"
+                                    id="informasi_tambahan" cols="30" rows="10"
+                                    placeholder="isi jika anda informasi tambahan"
+                                    style="height:110px;"><?= $data->informasi_tambahan ?></textarea>
+                            </div>
 
                             <div class="form-group mb-0 mt-2 float-right btn-maintain">
                                 <a class="btn btn-info text-size"
                                     onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')"
-                                    href="<?= base_url('ticket/approve_status/' . $ticket->id_ps_ticket) ?>">Approve</a>
+                                    href="<?= base_url('ps_ticket/approve_status/' . $ticket->id_ps_ticket) ?>">Approve</a>
                                 <a class="btn btn-danger text-size"
                                     onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')"
-                                    href="<?= base_url('ticket/reject_status/' . $ticket->id_ps_ticket) ?>">Reject</a>
+                                    href="<?= base_url('ps_ticket/reject_status/' . $ticket->id_ps_ticket) ?>">Reject</a>
                                 <button type="submit"
                                     onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')"
                                     class="btn btn-primary waves-effect waves-light text-size">
@@ -90,14 +157,14 @@
                                     <div class="item" style="height:150px; width:300px;">
                                         <?php if (get_extension($upload)) { ?>
                                         <div class="zoom-gallery">
-                                            <a href="<?= base_url('uploads/my_safar/' . $upload) ?>"><img
-                                                    src="<?= base_url('uploads/my_safar/' . $upload) ?>" alt=""
+                                            <a href="<?= base_url('uploads/my_hajat/' . $upload) ?>"><img
+                                                    src="<?= base_url('uploads/my_hajat/' . $upload) ?>" alt=""
                                                     style="height:150px; width:300px;"></a>
                                         </div>
                                         <?php } else { ?>
-                                        <a href="<?= base_url('uploads/my_safar/' . $upload) ?>">
+                                        <a href="<?= base_url('uploads/my_hajat/' . $upload) ?>">
                                             <div class="card text-center" style="height: 150px; width: 300px"
-                                                data-toggle="tooltip" title="<?= $data->upload ?>">
+                                                data-toggle="tooltip" title="<?= $upload ?>">
                                                 <i class="fa fa-file fa-5x"></i>
                                             </div>
                                         </a>
@@ -109,9 +176,10 @@
                                 <hr>
                             </div>
                             <div class="col-md-12">
-                                <form action="<?= base_url('ps_my_safar/tambah_lampiran') ?>" method="POST"
+                                <form action="<?= base_url('ps_my_hajat_wedding/upload_file') ?>" method="POST"
                                     enctype="multipart/form-data">
-                                    <input type="hidden" name="id_my_safar" value="<?= $data->id_my_safar ?>">
+                                    <input type="hidden" name="id_my_hajat_wedding"
+                                        value="<?= $data->id_my_hajat_wedding ?>">
                                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                     <h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
                                     <div class="form-group element text-size">
@@ -452,7 +520,7 @@
                                                 <td>
                                                     <p class="inbox-item-author mt-0 mb-1 text-size">
                                                         <b><a
-                                                                href="<?= base_url('zip/my_safar/' . $data->id_my_safar) ?>">Download
+                                                                href="<?= base_url('zip/my_hajat_wedding/' . $data->id_my_hajat_wedding) ?>">Download
                                                                 Semua Lampiran</b></a></p>
                                                 </td>
                                             </tr>

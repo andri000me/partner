@@ -32,7 +32,7 @@ class Agent extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = ['agents.id_branch' => $this->fungsi->user_login()->id_branch];
         } else {
-            $this->where = "status = 'lengkap'";
+            $this->where = "agents.status = 'lengkap'";
         }
 
         check_not_login();

@@ -288,8 +288,8 @@
                         </div>
                         <div class="form-group ml-3 mr-3">
                             <label>Luas X Panjang</label>
-                            <input type="text" class="form-control text-size sewa" name="luas_panjang"
-                                id="luas_panjang" placeholder="Luas X Panjang" />
+                            <input type="text" class="form-control text-size sewa" name="luas_panjang" id="luas_panjang"
+                                placeholder="Luas X Panjang" />
                         </div>
                         <div class="ml-3 mr-3 mb-3">
                             <label>Biaya Sewa Pertahun</label>
@@ -336,16 +336,16 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input wedding" type="radio" name="jenis_wo" id="jenis_wo"
-                                    value="Bandan Usaha">
+                                    value="Badan Usaha">
                                 <label class="form-check-label">
-                                    Bandan Usaha
+                                    Badan Usaha
                                 </label>
                             </div>
                         </div>
                         <div class="form-group ml-3 mr-3">
                             <label>Lama Berdiri</label>
-                            <input type="text" class="form-control text-size wedding" name="lama_berdiri_wo"
-                                id="lama_berdiri_wo" placeholder="Lama Berdiri" />
+                            <input type="text" class="form-control text-size wedding" name="lama_berdiri"
+                                id="lama_berdiri" placeholder="Lama Berdiri" />
                         </div>
                         <div class="ml-3 mr-3 mb-3">
                             <label>Jumlah biaya Acara</label>
@@ -583,8 +583,8 @@
 
                     <div class="form-group ml-3 mr-3">
                         <label>Nama Travel</label>
-                        <input type="text" class="form-control text-size safar" name="nama_travel_safar" id="nama_travel_safar"
-                            placeholder="Nama Travel" />
+                        <input type="text" class="form-control text-size safar" name="nama_travel_safar"
+                            id="nama_travel_safar" placeholder="Nama Travel" />
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3 web">
                         <!-- <a href="#"
@@ -662,13 +662,13 @@
                         </div>
                         <div class="form-group ml-3 mr-3">
                             <label>Lokasi Yang Akan Dibangun / Direnovasi</label>
-                            <input type="text" class="form-control text-size bangunan" name="lokasi_pembangunan" id="lokasi_pembangunan"
-                                placeholder="Lokasi Yang Akan Dibangun / Direnovasi" />
+                            <input type="text" class="form-control text-size bangunan" name="lokasi_pembangunan"
+                                id="lokasi_pembangunan" placeholder="Lokasi Yang Akan Dibangun / Direnovasi" />
                         </div>
                         <div class="form-group ml-3 mr-3">
                             <label>Estimasi Waktu Pelaksanaan</label>
-                            <input type="text" class="form-control text-size bangunan" name="estimasi_pembangunan" id="estimasi_pembangunan"
-                                placeholder="Estimasi Waktu Pelaksanaan" />
+                            <input type="text" class="form-control text-size bangunan" name="estimasi_pembangunan"
+                                id="estimasi_pembangunan" placeholder="Estimasi Waktu Pelaksanaan" />
                         </div>
                         <div class="ml-3 mr-3 mb-3">
                             <label>Nilai Pengajuan Pembiayaan</label>
@@ -836,8 +836,8 @@
                                     <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
                                 </div>
                                 <input type="text" class="form-control text-size number-only barang_modal"
-                                    name="nilai_pembiayaan_modal" id="nilai_pengajuan_pembiayaan"
-                                    data-type="currency" placeholder="Nilai Pengajuan Pembiayaan" aria-label="Username"
+                                    name="nilai_pembiayaan_modal" id="nilai_pengajuan_pembiayaan" data-type="currency"
+                                    placeholder="Nilai Pengajuan Pembiayaan" aria-label="Username"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
@@ -877,8 +877,8 @@
                         </div>
                         <div class="form-group ml-3 mr-3">
                             <label>Lama Usaha</label>
-                            <input type="text" class="form-control text-size qurban" name="lama_usaha_qurban" id="lama_usaha_qurban"
-                                placeholder="Lama Usaha" />
+                            <input type="text" class="form-control text-size qurban" name="lama_usaha_qurban"
+                                id="lama_usaha_qurban" placeholder="Lama Usaha" />
                         </div>
                         <div class="form-group ml-3 mr-3">
                             <label>Tujuan Pembelian Barang</label><br>
@@ -914,8 +914,8 @@
                                     <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
                                 </div>
                                 <input type="text" class="form-control text-size number-only qurban"
-                                    name="nilai_pengajuan_pembiayaan" id="nilai_pembiayaan_qurban"
-                                    data-type="currency" placeholder="Nilai Pengajuan Pembiayaan" aria-label="Username"
+                                    name="nilai_pengajuan_pembiayaan" id="nilai_pembiayaan_qurban" data-type="currency"
+                                    placeholder="Nilai Pengajuan Pembiayaan" aria-label="Username"
                                     aria-describedby="addon-wrapping">
                             </div>
                         </div>
@@ -932,9 +932,10 @@
                         <div class="ml-3 mr-3 mb-3">
                             <label>Nama Penyedia Barang</label>
                             <div class="input-group">
-                                <input type="text" class="form-control text-size other" name="nama_penyedia_myfaedah_lainnya"
-                                    id="nama_penyedia_barang" placeholder="Nama Vendor"
-                                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <input type="text" class="form-control text-size other"
+                                    name="nama_penyedia_myfaedah_lainnya" id="nama_penyedia_barang"
+                                    placeholder="Nama Vendor" aria-label="Recipient's username"
+                                    aria-describedby="button-addon2">
                                 <div class="input-group-append">
                                     <button class="btn btn-danger text-size" type="button" id="reset">hapus</button>
                                     <button class="btn btn-primary text-size" type="button" id="button-addon2"
@@ -956,15 +957,17 @@
                         <div class="form-group ml-3 mr-3">
                             <label>Tujuan Pembelian Barang</label><br>
                             <div class="form-check form-check-inline mt-2">
-                                <input class="form-check-input other" type="radio" name="tujuan_pembelian_myfaedah_lainnya"
-                                    id="tujuan_pembelian_barang" value="Konsumtif">
+                                <input class="form-check-input other" type="radio"
+                                    name="tujuan_pembelian_myfaedah_lainnya" id="tujuan_pembelian_barang"
+                                    value="Konsumtif">
                                 <label class="form-check-label">
                                     Konsumtif
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input other" type="radio" name="tujuan_pembelian_myfaedah_lainnya"
-                                    id="tujuan_pembelian_barang" value="Produktif">
+                                <input class="form-check-input other" type="radio"
+                                    name="tujuan_pembelian_myfaedah_lainnya" id="tujuan_pembelian_barang"
+                                    value="Produktif">
                                 <label class="form-check-label">
                                     Produktif
                                 </label>

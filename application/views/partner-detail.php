@@ -219,20 +219,22 @@
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox1" <?= in_array('Tunai', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Tunai">
-                                                    <label class="form-check-label" for="inlineCheckbox1">Tunai</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox2" <?= in_array('Cicilan Konvensional', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Konvensional">
-                                                    <label class="form-check-label" for="inlineCheckbox2">Cicilan
-                                                        Konvensional</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox3" <?= in_array('Cicilan Syariah', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Syariah">
-                                                    <label class="form-check-label" for="inlineCheckbox3">Cicilan
-                                                        Syariah</label>
+                                                <label class="mt-1">Apa Saja Jenis Pembayaran Yang Diterima</label><br>
+                                                <div class="mt-2">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox1" <?= in_array('Tunai', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Tunai">
+                                                        <label class="form-check-label" for="inlineCheckbox1">Tunai</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox2" <?= in_array('Cicilan Konvensional', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Konvensional">
+                                                        <label class="form-check-label" for="inlineCheckbox2">Cicilan
+                                                            Konvensional</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox3" <?= in_array('Cicilan Syariah', explode(',', $data->jenis_pembayaran)) ? 'checked' : '' ?> value="Cicilan Syariah">
+                                                        <label class="form-check-label" for="inlineCheckbox3">Cicilan
+                                                            Syariah</label>
+                                                    </div>
                                                 </div>
                                                 <!-- <label>Apa Saja Jenis Pembayaran Yang Diterima</label>
                                                 <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">

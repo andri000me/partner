@@ -49,7 +49,7 @@ class Mapping_leads extends CI_Controller
 
         $data = [
             'agents' => $this->agent_model->get('agents.' . $this->where),
-            'partners' => $this->partner_model->get($this->where)
+            'partners' => $this->partner_model->get('mapping_partners.'.$this->where)
         ];
         $this->template->load('template/index', 'leads-mapping-form', $data);
     }
@@ -58,8 +58,8 @@ class Mapping_leads extends CI_Controller
     {
         $data = [
             'data' => $this->mapping_leads->get(['mapping_leads.id_mapping_leads' => $id])->row(),
-            'agents' => $this->agent_model->get($this->where),
-            'partners' => $this->partner_model->get($this->where),
+            'agents' => $this->agent_model->get('agents.'. $this->where),
+            'partners' => $this->partner_model->get('mapping_partners.'.$this->where),
             'follow_up' => $this->leads_follow_up_model->get(['mapping_leads.id_mapping_leads' => $id])
         ];
         $this->template->load('template/index', 'leads-mapping-edit', $data);
@@ -114,8 +114,8 @@ class Mapping_leads extends CI_Controller
             redirect('Mapping_leads');
         } else {
             $data = [
-                'agents' => $this->agent_model->get($this->where),
-                'partners' => $this->partner_model->get($this->where),
+                'agents' => $this->agent_model->get('agents.'. $this->where),
+                'partners' => $this->partner_model->get('mapping_partners.'.$this->where),
             ];
             $this->template->load('template/index', 'leads-mapping-form', $data);
         }

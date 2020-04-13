@@ -73,7 +73,7 @@ class Ps_my_ihram extends CI_Controller
 
     public function edit($id)
     {
-        $where = ['id_my_ihram' => $id];
+        $where = ['ps_my_ihram.id_my_ihram' => $id];
         $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
         $data = [
             'data' => $this->ps_model->get("my_ihram", $where)->row(),

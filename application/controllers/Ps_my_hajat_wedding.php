@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Ps_my_hajat_franchise extends CI_Controller
+class Ps_my_hajat_wedding extends CI_Controller
 {
     public $where;
 
@@ -73,8 +73,17 @@ class Ps_my_hajat_franchise extends CI_Controller
     {
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $where = ['ps_my_hajat_wedding.id_my_hajat_wedding' => $id];
+        $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
+        $data = [
+            'data' => $this->ps_model->get("my_hajat_wedding", $where)->row(),
+            'ticket' => $this->ps_ticket->get($where)->row(),
+            'activities' => $this->ps_activity->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+            'comments'      => $this->comment_model->get("ps_tickets.id_ps_ticket = $id_ps_ticket")
+        ];
+        $this->template->load('template/index', 'product_support/input-produk-detail-hajat-wedding', $data);
     }
 
     public function save()
@@ -82,13 +91,16 @@ class Ps_my_hajat_franchise extends CI_Controller
         $post = $this->input->post(null, TRUE);
 
         $data = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'jenis_konsumen'        => $post['jenis_konsumen'],
-            'nama_wo'               => $post['nama_wo'],
-            'jenis_wo'               => $post['jenis_wo'],
-            'lama_berdiri'               => $post['lama_berdiri'],
+            'nama_konsumen'     => $post['nama_konsumen'],
+            'jenis_konsumen'    => $post['jenis_konsumen'],
+            'nama_wo'           => $post['nama_wo'],
+            'jenis_wo'          => $post['jenis_wo'],
+            'lama_berdiri'      => $post['lama_berdiri'],
+            'jumlah_biaya'      => str_replace(",", "", $post['jumlah_biaya']),
+            'jumlah_undangan'   => $post['jumlah_undangan'],
+            'sosial_media'      => $post['sosial_media_wo'],
 
-            'informasi_tambahan'    => $post['informasi_tambahan'],
+            'informasi_tambahan'    => $post['informasi_tambahan_wo'],
 
             //Timestamp
             'created_at'            => date('Y-m-d H:i:s'),
@@ -148,6 +160,8 @@ class Ps_my_hajat_franchise extends CI_Controller
             // 'id_user'               => $this->fungsi->user_login()->id_user,
             // 'id_branch'             => $this->fungsi->user_login()->id_branch
         ];
+        $data['upload_file'] = $this->upload_file();
+        
         $where = ['id_my_hajat_wedding' => $post['id_my_hajat_wedding']];
         $id = $this->ps_model->update('my_hajat_wedding', $data, $where);
 
@@ -196,7 +210,7 @@ class Ps_my_hajat_franchise extends CI_Controller
 
 
                 //Konfigurasi Upload
-                $config['upload_path']         = './uploads/my_hajat_wedding';
+                $config['upload_path']         = './uploads/my_hajat';
                 $config['allowed_types']        = '*';
                 $config['max_size']             = 0;
                 $config['max_width']            = 0;

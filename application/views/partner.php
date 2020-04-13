@@ -16,10 +16,12 @@
         <!-- <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary mb-4">Rekrut Partner</button></a>
             <a href="#"><button class="btn btn-success ml-3 mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a> -->
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <div class="btn-kanan mb-2">
-                <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size">Rekrut Merchant</button></a>
-                <a href="#"><button class="btn btn-success ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Merchant</button></a>
-            </div>
+        <div class="btn-kanan mb-2">
+            <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size">Rekrut
+                    Merchant</button></a>
+            <a href="#"><button class="btn btn-success ml-1 text-size" data-toggle="modal"
+                    data-target=".bd-example-modal-xl">Maintain Merchant</button></a>
+        </div>
         <?php } ?>
     </div>
     <div class="col-12">
@@ -29,7 +31,8 @@
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk mendata calon Merchant yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar
                     memudahkan anda dalam memaintain Merchant anda.</p>
-                <table id="datatable-kerjasama" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-kerjasama" class="table table-striped table-bordered dt-responsive wrap text-size"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Usaha</th>
@@ -45,51 +48,59 @@
                     </thead>
                     <tbody>
                         <?php foreach ($data->result() as $mapping) { ?>
-                            <tr>
-                                <td>
-                                    <?= $mapping->nama_usaha ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->bidang_usaha ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->kategori_produk ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->alamat ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->email ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->telepon ?>
-                                </td>
-                                <td>
-                                    <center>
-                                        <h6><span class="badge badge-success">Terverifikasi</span></h6>
-                                        <br>
-                                        <h6><span class="badge badge-primary">Teraktivasi</span></h6>
-                                        <br>
-                                        <h6><span class="badge badge-danger">Belum Terverifikasi</span></h6>
-                                    </center>
-                                </td>
-                                <td>
-                                    <center>
-                                        <h6><span class="badge badge-success">Sudah Tanda Tangan
-                                                Kerjasama</span></h6>
-                                        <br>
-                                        <h6><span class="badge badge-danger">Belum Tanda Tangan
-                                                Kerjasama</span></h6>
-                                    </center>
-                                </td>
-                                <td>
-                                    <?php if ($mapping->status == 'draft') { ?>
-                                        <center><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
-                                    <?php } else if ($mapping->status == 'lengkap') { ?>
-                                        <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>" class="btn btn-primary text-size" style="width: 90px;">Detail</a></center>
+                        <tr>
+                            <td>
+                                <?= $mapping->nama_usaha ?>
+                            </td>
+                            <td>
+                                <?= $mapping->bidang_usaha ?>
+                            </td>
+                            <td>
+                                <?= $mapping->kategori_produk ?>
+                            </td>
+                            <td>
+                                <?= $mapping->alamat ?>
+                            </td>
+                            <td>
+                                <?= $mapping->email ?>
+                            </td>
+                            <td>
+                                <?= $mapping->telepon ?>
+                            </td>
+                            <td>
+                                <center>
+                                    <?php if($mapping->status_ticket == 5){ ?>
+                                    <h6><span class="badge badge-success">Terverifikasi</span></h6>
+                                    <?php } else if($mapping->status_ticket == 6) { ?>
+                                    <h6><span class="badge badge-primary">Teraktivasi</span></h6>
+                                    <?php } else if($mapping->status_ticket == 4){ ?>
+                                    <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                    <?php } else if($mapping->status_ticket < 4){ ?>
+                                    <h6><span class="badge badge-secondary">Belum Terverifikasi</span></h6>
                                     <?php } ?>
-                                </td>
-                            </tr>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <?php if($mapping->ttd_pks == 'Ya'){ ?>
+                                    <h6><span class="badge badge-success">Sudah Tanda Tangan
+                                            Kerjasama</span></h6>
+                                    <?php } else { ?>
+                                    <h6><span class="badge badge-danger">Belum Tanda Tangan
+                                            Kerjasama</span></h6>
+                                    <?php } ?>
+                                </center>
+                            </td>
+                            <td>
+                                <?php if ($mapping->status == 'draft') { ?>
+                                <center><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>"
+                                        class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                <?php } else if ($mapping->status == 'lengkap') { ?>
+                                <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>"
+                                        class="btn btn-primary text-size" style="width: 90px;">Detail</a></center>
+                                <?php } ?>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -99,7 +110,8 @@
 </div>
 
 <!-- Modal Maintain -->
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
@@ -107,7 +119,9 @@
                     <h6 class="modal-title">Cari Data Merchant</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id=""
+                    class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>
@@ -126,20 +140,22 @@
                     </thead>
                     <tbody>
                         <?php foreach ($lengkap->result() as $maintain) { ?>
-                            <tr>
-                                <td class="not-clickable">
-                                    <div class="text-size"><?= $maintain->nama_usaha ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $maintain->kategori_produk ?></div>
-                                </td>
-                                <td>
-                                    <div class="text-size"><?= $maintain->telepon ?></div>
-                                </td>
-                                <td>
-                                    <center><a class="btn btn-primary text-size" href="<?= base_url('Maintain_partner/create/' . $maintain->id_partner) ?>">Maintain</a></center>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td class="not-clickable">
+                                <div class="text-size"><?= $maintain->nama_usaha ?></div>
+                            </td>
+                            <td>
+                                <div class="text-size"><?= $maintain->kategori_produk ?></div>
+                            </td>
+                            <td>
+                                <div class="text-size"><?= $maintain->telepon ?></div>
+                            </td>
+                            <td>
+                                <center><a class="btn btn-primary text-size"
+                                        href="<?= base_url('Maintain_partner/create/' . $maintain->id_partner) ?>">Maintain</a>
+                                </center>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>

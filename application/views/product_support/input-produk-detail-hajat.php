@@ -54,20 +54,6 @@
                                 <label>Input Produk</label>
                                 <input type="text" class="form-control text-size" name="input_produk" id="input_produk" value="My Hajat" required readonly />
                             </div>
-                            <!-- <div class="form-group ml-3 mr-3">
-													<label>Input Produk</label>
-													<select class="form-control text-size" name="input_produk"
-														id="input_produk" required>
-														<option selected value="">Pilih Input Produk</option>
-														<option value="My Ta'lim">My Ta'lim</option>
-														<option value="My Hajat">My Hajat</option>
-														<option value="My Ihram">My Ihram</option>
-														<option value="My Safar">My Safar</option>
-														<option value="My Faedah">My Faedah</option>
-														<option value="My Cars">My Cars</option>
-														<option value="Input Paket">Input Paket</option>
-													</select>
-												</div> -->
                             <div class="form-group ml-3 mr-3">
                                 <label>kategori My Hajat</label>
                                 <select class="form-control text-size hajat" name="kategori_myhajat" id="kategori_myhajat" required>

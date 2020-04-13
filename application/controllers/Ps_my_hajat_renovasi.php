@@ -73,8 +73,17 @@ class Ps_my_hajat_renovasi extends CI_Controller
     {
     }
 
-    public function edit()
+    public function edit($id)
     {
+        $where = ['ps_my_hajat_renovasi.id_my_hajat_renovasi' => $id];
+        $id_ps_ticket = $this->ps_ticket->get($where)->row()->id_ps_ticket;
+        $data = [
+            'data' => $this->ps_model->get("my_hajat_renovasi", $where)->row(),
+            'ticket' => $this->ps_ticket->get($where)->row(),
+            'activities' => $this->ps_activity->get("ps_tickets.id_ps_ticket = $id_ps_ticket"),
+            'comments'      => $this->comment_model->get("ps_tickets.id_ps_ticket = $id_ps_ticket")
+        ];
+        $this->template->load('template/index', 'product_support/input-produk-detail-hajat-renovasi', $data);
     }
 
     public function save()
@@ -137,8 +146,8 @@ class Ps_my_hajat_renovasi extends CI_Controller
         $data = [
             'nama_konsumen'                => $post['nama_konsumen'],
             'jenis_konsumen'               => $post['jenis_konsumen'],
-            'nama_vendor'                  => $post['nama_vendor_renovasi'],
-            'jenis_vendor'                 => $post['jenis_vendor_renovasi'],
+            'nama_vendor'                  => $post['nama_vendor'],
+            'jenis_vendor'                 => $post['jenis_vendor'],
             'jenis_pekerjaan'              => $post['jenis_pekerjaan'],
             'bagian_bangunan'              => $post['bagian_bangunan'],
             'luas_bangunan'                => $post['luas_bangunan'],
@@ -146,8 +155,8 @@ class Ps_my_hajat_renovasi extends CI_Controller
             'luas_bangunan'                => $post['luas_bangunan'],
             'jumlah_pekerja'               => $post['jumlah_pekerja'],
             'estimasi_waktu'               => $post['estimasi_waktu'],
-            'nilai_pembiayaan'              => str_replace(",", "", $post['nilai_pengajuan_pembiayaan_renovasi']),
-            'informasi_tambahan'           => $post['informasi_tambahan_renovasi'],
+            'nilai_pembiayaan'              => str_replace(",", "", $post['nilai_pembiayaan']),
+            'informasi_tambahan'           => $post['informasi_tambahan'],
 
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
@@ -174,10 +183,12 @@ class Ps_my_hajat_renovasi extends CI_Controller
         $id_ps_ticket = $this->ps_ticket->update($ps_ticket, $where);
 
         // Activity
-        $this->activity('Data My Hajat Renovasi telah dirubah', $id_ps_ticket);
+        $this->activity('Data My Hajat Renovasi telah dirubah', $post['id_ps_ticket']);
 
         //Notification
-        $this->notification($id_ps_ticket, 'Data Tiket Product Support Dirubah');
+        $this->notification($post['id_ps_ticket'], 'Data Tiket Product Support Dirubah');
+
+        redirect($post['redirect']);
     }
 
     public function upload_file()

@@ -97,7 +97,7 @@ class Leads extends CI_Controller
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
-            'agents' => $this->agent_model->get($this->where),
+            'agents' => $this->agent_model->get("agents.". $this->where),
             'partners' => $this->partner_model->get_mapping($this->where)
         ];
         $this->template->load('template/index', 'leads-form', $data);
@@ -113,7 +113,7 @@ class Leads extends CI_Controller
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(),
 
-            'agents' => $this->agent_model->get($this->where),
+            'agents' => $this->agent_model->get("agents.".$this->where),
             'partners' => $this->partner_model->get_mapping($this->where)
         ];
         $this->template->load('template/index', 'leads-edit', $data);
@@ -129,7 +129,7 @@ class Leads extends CI_Controller
             'branches'      => $this->branch_model->get(),
             'users'         => $this->user_model->get_all(),
 
-            'agents'        => $this->agent_model->get($this->where),
+            'agents'        => $this->agent_model->get("agents.".$this->where),
             'partners'      => $this->partner_model->get_mapping($this->where),
 
             'activities'    => $this->leads_activity->get($where),
@@ -321,11 +321,11 @@ class Leads extends CI_Controller
             }
         } else {
             $data = [
-                'mappings' => $this->mapping_leads->get($this->where),
+                'mappings' => $this->mapping_leads->get('mapping_leads.' . $this->where),
                 'branches' => $this->branch_model->get(),
                 'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
-
-                'agents' => $this->agent_model->get($this->where),
+    
+                'agents' => $this->agent_model->get("agents.". $this->where),
                 'partners' => $this->partner_model->get_mapping($this->where)
             ];
             $this->template->load('template/index', 'leads-form', $data);

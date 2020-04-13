@@ -23,7 +23,9 @@ class Partner_model extends CI_Model
 
     public function get($where = NULL)
     {
+        $this->db->select('mapping_partners.*, partners.*, tickets.ttd_pks, tickets.status as status_ticket');
         $this->db->from('partners');
+        $this->db->join('tickets', 'tickets.id_partner = partners.id_partner', 'left');
         $this->db->join('mapping_partners', 'mapping_partners.id_mapping = partners.id_mapping', 'inner');
         if ($where != null) {
             $this->db->where($where);
