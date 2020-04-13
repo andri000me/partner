@@ -239,6 +239,7 @@
 									</div>
 
 									<form action="#">
+										<h3 class="ml-3">INFORMASI PEMOHON, BARANG / JASA & SUPPLIER</h3>
 										<div class="form-group ml-3 mr-3">
 											<label>Nama Pemohon</label>
 											<input type="text" class="form-control text-size" name="nama_pemohon"
@@ -315,7 +316,7 @@
 											</select>
 										</div>
 										<div class="form-group ml-3 mr-3">
-											<label>Source of Application (SOA)</label>
+											<label>Source of Application (status_karyawan)</label>
 											<select class="form-control text-size" name="soa" id="soa" required>
 												<option selected value="">Pilih Source of Application (SOA)</option>
 												<option value="Internal BFI">Internal BFI</option>
@@ -325,8 +326,10 @@
 												<option value="Lainnya">Lainnya</option>
 											</select>
 										</div>
-										<input type="text" class="form-control text-size" name="soa_lainnya"
-											id="soa_lainnya" placeholder="Lainnya" />
+										<div class="form-group ml-3 mr-3">
+											<input type="text" class="form-control text-size" name="soa_lainnya"
+												id="soa_lainnya" placeholder="Lainnya" />
+										</div>
 										<div class="form-group ml-3 mr-3">
 											<label>Nama PIC Supplier</label>
 											<input type="text" class="form-control text-size" name="nama_pic_supplier"
@@ -416,14 +419,549 @@
 											<input type="text" class="form-control text-size" name="webhsite"
 												id="webhsite" placeholder="Website" required />
 										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Media Sosial</label>
+											<input type="text" class="form-control text-size" name="medsos" id="medsos"
+												placeholder="( FB / IG / Twitter )" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kepemilikan Tempat Usaha</label><br>
+											<div class="form-check form-check-inline mt-2">
+												<input class="form-check-input renovasi" type="radio"
+													name="kepemilikan_tempat_usaha" id="kepemilikan_tempat_usaha"
+													value="Milik Sendiri">
+												<label class="form-check-label">
+													Milik Sendiri
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input renovasi" type="radio"
+													name="kepemilikan_tempat_usaha" id="kepemilikan_tempat_usaha"
+													value="Sewa">
+												<label class="form-check-label">
+													Sewa
+												</label>
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jumlah Cabang Usaha</label>
+											<input type="number" class="form-control text-size number-only"
+												name="jumlah_cabang" id="jumlah_cabang"
+												placeholder="Jumlah Cabang Usaha" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jumlah Karyawan</label>
+											<input type="number" class="form-control text-size number-only"
+												name="jumlah_karyawan" id="jumlah_karyawan"
+												placeholder="Jumlah Karyawan" required />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Metode Pembayaran</label>
+											<select class="form-control text-size" name="metode_pembayaran"
+												id="metode_pembayaran" required>
+												<option selected value="">Pilih Metode Pembayaran</option>
+												<option value="Cash">Cash</option>
+												<option value="Credit Card">Credit Card</option>
+												<option value="Debit Card">Debit Card</option>
+												<option value="Tranfer">Tranfer</option>
+												<option value="Lembaga Keungan (LK)">Lembaga Keungan (LK)</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kerjasama Dengan ?</label>
+											<input type="text" class="form-control text-size" name="kerjasama_dengan"
+												id="kerjasama_dengan" placeholder="Kerjasama Dengan ?" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Official Distributor Merk</label>
+											<input type="number" class="form-control text-size number-only"
+												name="official_distributor_merk" id="official_distributor_merk"
+												placeholder="Official Distributor Merk" required />
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Harga Penawaran Supplier</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="harga_penawaran_rupplier" id="harga_penawaran_rupplier"
+													data-type="currency" required placeholder="3,000,000"
+													aria-label="Username" aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Status Supplier</label><br>
+											<div class="form-check form-check-inline mt-2">
+												<input class="form-check-input renovasi" type="radio"
+													name="status_supplier" id="status_supplier" value="MOU">
+												<label class="form-check-label">
+													MOU
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input renovasi" type="radio"
+													name="status_supplier" id="status_supplier" value="Belum MOU">
+												<label class="form-check-label">
+													Belum MOU
+												</label>
+											</div>
+										</div>
+
+										<br>
+										<hr><br>
+
+										<H3 class="ml-3">STRUKTUR PEMBIAYAAN (Sesuaikan dengan Tools Hitung)</H3>
+										<div class="ml-3 mr-3">
+											<label>Total harga Beli BFI Syariah ke Supplier</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="harga_beli" id="harga_beli" data-type="currency" required
+													placeholder="Total harga Beli BFI Syariah ke Supplier"
+													aria-label="Username" aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Total harga Jual BFI Syariah ke Pemohon</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="harga_jual" id="harga_jual" data-type="currency" required
+													placeholder="Total harga Jual BFI Syariah ke Pemohon"
+													aria-label="Username" aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Uang Muka</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="uang_muka" id="uang_muka" data-type="currency" required
+													placeholder="Uang Muka" aria-label="Username"
+													aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Biaya administrasi</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="biaya_administrasi" id="biaya_administrasi"
+													data-type="currency" required placeholder="Biaya administrasi"
+													aria-label="Username" aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Asuransi Jiwa</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="asuransi_jiwa" id="asuransi_jiwa" data-type="currency"
+													required placeholder="Asuransi Jiwa" aria-label="Username"
+													aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Asuransi Kendaraan</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="asuransi_kendaraan" id="asuransi_kendaraan"
+													data-type="currency" required placeholder="Asuransi Kendaraan"
+													aria-label="Username" aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Total Uangmuka (TDP)</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="total_uang_muka" id="total_uang_muka" data-type="currency"
+													required placeholder="Total Uangmuka (TDP)" aria-label="Username"
+													aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Tenor</label>
+											<input type="text" class="form-control text-size" name="tenor" id="tenor"
+												placeholder="Tenor" />
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Angsuran Perbulan</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="angsuran_perbulan" id="angsuran_perbulan" data-type="currency"
+													required placeholder="Angsuran Perbulan" aria-label="Username"
+													aria-describedby="addon-wrapping">
+											</div>
+										</div>
+
+										<br>
+										<hr><br>
+
+										<h3 class="ml-3">Pengecekan 3 harga</h3>
+										<div class="form-group ml-3 mr-3">
+											<label>nama baranga / Jasa</label>
+											<input type="text" class="form-control text-size" name="nama_barang"
+												id="nama_barang" placeholder="nama baranga / Jasa" />
+										</div>
+										<div class="ml-3 mr-3">
+											<label>Harga</label>
+											<div class="input-group flex-nowrap mb-3">
+												<div class="input-group-prepend">
+													<span class="input-group-text text-size"
+														id="addon-wrapping">Rp.</span>
+												</div>
+												<input type="text" class="form-control text-size number-only"
+													name="harga" id="harga" data-type="currency" required
+													placeholder="Harga" aria-label="Username"
+													aria-describedby="addon-wrapping">
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Source Pengecekan</label>
+											<input type="text" class="form-control text-size" name="source_pengecekan"
+												id="source_pengecekan" placeholder="Source Pengecekan" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nomor Telepon / WA</label>
+											<input type="phone" class="form-control text-size" name="telepon"
+												id="telepon" placeholder="Nomor Telepon /  WA" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>PIC yang melakukan Cek Harga</label>
+											<input type="text" class="form-control text-size" name="pic_cek_harga"
+												id="pic_cek_harga" placeholder="PIC yang Melakukan Cek Harga" />
+										</div>
+										<br>
+
+										<h3 class="ml-3">Hasil Survey</h3>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama PIC Survey (Surveyor)</label>
+											<input type="text" class="form-control text-size" name="nama_surveyor"
+												id="nama_surveyor" placeholder="Nama PIC Survey (Surveyor)" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Posisi / Jabatan Surveyor</label>
+											<input type="text" class="form-control text-size" name="jabatan_surveyor"
+												id="jabatan_surveyor" placeholder="Posisi / Jabatan Surveyor" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>NIK Surveyor</label>
+											<input type="text" class="form-control text-size number-only placement"
+												name="nik_surveyor" id="nik_surveyor" placeholder="NIK Surveyor"
+												minlength="6" maxlength="7" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Orang Yang disurvey</label>
+											<input type="text" class="form-control text-size" name="nama_yang_disurvey"
+												id="nama_yang_disurvey" placeholder="Nama Orang Yang disurvey" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Hari / Tanggal pelaksanaan Survey</label>
+											<input type="date" class="form-control text-size" name="tgl_survey"
+												id="tgl_survey" placeholder="Hari / Tanggal pelaksanaan Survey" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jam Pelaksanaan Survey</label>
+											<input type="text" class="form-control text-size" name="jam_survey"
+												id="jam_survey" placeholder="Jam Pelaksanaan Survey" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Lama Pelaksanaan Survey</label>
+											<input type="text" class="form-control text-size" name="lama_survey"
+												id="lama_survey" placeholder="Lama Pelaksanaan Survey" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Alamat / Lokasi Survey</label>
+											<input type="text" class="form-control text-size" name="alamat_survey"
+												id="alamat_survey" placeholder="Alamat / Lokasi Survey" />
+										</div>
+
+										<br>
+										<hr><br>
+
+										<h3 class="ml-3">Purpose</h3>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Baranag / jasa</label>
+											<input type="text" class="form-control text-size" name="nama_barang"
+												id="nama_barang" placeholder="Nama Baranag / jasa" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Spesifikasi Barang / Jasa</label>
+											<input type="text" class="form-control text-size" name="spesifikasi_barang"
+												id="spesifikasi_barang" placeholder="Spesifikasi Barang / Jasa" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Bergerak di Bidang</label>
+											<input type="text" class="form-control text-size" name="penggunaan_barang"
+												id="penggunaan_barang" placeholder="Penggunaan Barang / Jasa" />
+										</div>
+
+										<br>
+										<hr><br>
+
+										<h3 class="ml-3">Condition</h3><br>
+
+										<p class="ml-3">Jika Pemohon Berprofesi Sebagai Karyawan</p>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Tempat Kerja Saat Ini</label>
+											<input type="text" class="form-control text-size" name="nama_tempat_kerja"
+												id="nama_tempat_kerja" placeholder="Nama Tempat Kerja Saat Ini" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Berdiri Sejak</label>
+											<input type="text" class="form-control text-size number-only placement"
+												name="berdiri_sejak" id="berdiri_sejak" placeholder="Berdiri Sejak"
+												minlength="4" maxlength="4" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Bergerak di Bidang</label>
+											<input type="text" class="form-control text-size" name="bidang" id="bidang"
+												placeholder="Bergerak di Bidang" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>jumlah Karyawan</label>
+											<input type="text" class="form-control text-size" name="jumlah_karyawan"
+												id="jumlah_karyawan" placeholder="jumlah Karyawan" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Status Karyawan</label>
+											<select class="form-control text-size" name="status_karyawan"
+												id="status_karyawan" required>
+												<option selected value="">Pilih Status Karyawan</option>
+												<option value="Tetap">Tetap</option>
+												<option value="Kontrak">Kontrak</option>
+												<option value="Magang">Magang</option>
+												<option value="Honorer">Honorer</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Lama Bekerja</label>
+											<input type="text" class="form-control text-size" name="lama_bekerja"
+												id="lama_bekerja" placeholder="Lama Bekerja" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jabatan Pemohon</label>
+											<input type="text" class="form-control text-size" name="jabatan_pemohon"
+												id="jabatan_pemohon" placeholder="Jabatan Pemohon" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Metode Pembayaran Gaji</label>
+											<select class="form-control text-size" name="status_karyawan"
+												id="status_karyawan" required>
+												<option selected value="">Pilih Metode Pembayaran Gaji</option>
+												<option value="Tunai">Tunai</option>
+												<option value="Tranfer">Tranfer</option>
+												<option value="Lainnya">Lainnya</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<input type="text" class="form-control text-size"
+												name="metode_pembayaran_lainnya" id="metode_pembayaran_lainnya"
+												placeholder="Metode Pembayaran Lainnya" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Tempat Bekerja Sebelumnya</label>
+											<input type="text" class="form-control text-size"
+												name="tempat_kerja_sebelum" id="tempat_kerja_sebelum"
+												placeholder="Nama Tempat Bekerja Sebelumnya" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Bergerak di Bidang</label>
+											<input type="text" class="form-control text-size" name="bidang" id="bidang"
+												placeholder="Bergerak di Bidang" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Lama Bekerja</label>
+											<input type="text" class="form-control text-size" name="lama_bekerja"
+												id="lama_bekerja" placeholder="Lama Bekerja" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jabatan Pemohon</label>
+											<input type="text" class="form-control text-size" name="jabatan_pemohon"
+												id="jabatan_pemohon" placeholder="Jabatan Pemohon" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Keterangan Lainnya</label>
+											<textarea class="form-control text-size" name="keterangan_lainnya"
+												id="keterangan_lainnya" cols="30" rows="10"
+												placeholder="Keterangan Lainnya" style="height:110px;"></textarea>
+										</div>
+
+										<br>
+										<hr><br>
+
+										<p class="ml-3">Jika Pemohon Berprofesi Sebagai Wiraswasta</p>
+										<div class="form-group ml-3 mr-3">
+											<label>Nama Usaha Saat ini</label>
+											<input type="text" class="form-control text-size" name="nama_usaha"
+												id="nama_usaha" placeholder="Nama Usaha Saat ini" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Lama Usaha</label>
+											<input type="text" class="form-control text-size" name="lama_usaha"
+												id="lama_usaha" placeholder="Lama Usaha" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Bergerak di Bidang</label>
+											<input type="text" class="form-control text-size" name="bidang" id="bidang"
+												placeholder="Bergerak di Bidang" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Jumlah Karyawan</label>
+											<input type="text" class="form-control text-size" name="jumlah_karyawan"
+												id="jumlah_karyawan" placeholder="Jumlah Karyawan" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Bentuk Usaha</label>
+											<select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha"
+												required>
+												<option selected value="">Pilih Bentuk Usaha</option>
+												<option value="PT / CV">PT / CV</option>
+												<option value="Perorangan">Perorangan</option>
+												<option value="Lainnya">Lainnya</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<input type="text" class="form-control text-size"
+												name="bentuk_usaha_lainnya" id="bentuk_usaha_lainnya"
+												placeholder="Bentuk Usaha Lainnya" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Tempat Usaha</label><br>
+											<div class="form-check form-check-inline mt-2">
+												<input class="form-check-input renovasi" type="radio"
+													name="tempat_usaha" id="tempat_usaha" value="Bangunan Permanen">
+												<label class="form-check-label">
+													Bangunan Permanen
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input renovasi" type="radio"
+													name="tempat_usaha" id="tempat_usaha"
+													value="bangunan Tidak Permanen">
+												<label class="form-check-label">
+													bangunan Tidak Permanen
+												</label>
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kepemilikan Tempat Usaha</label>
+											<select class="form-control text-size" name="kepemilikan_tempat_usaha"
+												id="kepemilikan_tempat_usaha" required>
+												<option selected value="">Pilih Kepemilikan Tempat Usaha</option>
+												<option value="Milik Sendiri">Milik Sendiri</option>
+												<option value="Milik keluarga">Milik keluarga</option>
+												<option value="Sewa / Kontrak">Sewa / Kontrak</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kepemilikan Usaha</label><br>
+											<div class="form-check form-check-inline mt-2">
+												<input class="form-check-input renovasi" type="radio"
+													name="kepemilikan_usaha" id="kepemilikan_usaha"
+													value="Milik Sendiri">
+												<label class="form-check-label">
+													Milik Sendiri
+												</label>
+											</div>
+											<div class="form-check form-check-inline">
+												<input class="form-check-input renovasi" type="radio"
+													name="kepemilikan_usaha" id="kepemilikan_usaha"
+													value="Kongsi / Kerja Sama Dengan Kepemilikan">
+												<label class="form-check-label">
+													Kongsi / Kerja Sama Dengan Kepemilikan
+												</label>
+											</div>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Sistem Pembayaran</label>
+											<select class="form-control text-size" name="sistem_pembayaran"
+												id="sistem_pembayaran" required>
+												<option selected value="">Pilih Sistem Pembayaran</option>
+												<option value="Tunai">Tunai</option>
+												<option value="Transfer">Transfer</option>
+												<option value="Lainnya">Lainnya</option>
+											</select>
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<input type="text" class="form-control text-size"
+												name="sistem_pembayaran_lainnya" id="sistem_pembayaran_lainnya"
+												placeholder="Sistem Pembayaran Lainnya" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kompetitor atau Usaha Sejenis di Sekitar</label>
+											<input type="text" class="form-control text-size" name="kompetitor"
+												id="kompetitor"
+												placeholder="Kompetitor atau Usaha Sejenis di Sekitar" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Kondisi Usaha Pemohon</label>
+											<input type="text" class="form-control text-size"
+												name="kondisi_usaha_pemohon" id="kondisi_usaha_pemohon"
+												placeholder="Kondisi Usaha Pemohon" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Usaha Sebelumnya</label>
+											<input type="text" class="form-control text-size" name="usaha_sebelumnya"
+												id="usaha_sebelumnya" placeholder="Usaha Sebelumnya" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Lama Usaha</label>
+											<input type="text" class="form-control text-size" name="lama_usaha"
+												id="lama_usaha" placeholder="Lama Usaha" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Bergerak di Bidang</label>
+											<input type="text" class="form-control text-size" name="bidang" id="bidang"
+												placeholder="Bergerak di Bidang" />
+										</div>
+										<div class="form-group ml-3 mr-3">
+											<label>Keterangan Lainnya</label>
+											<textarea class="form-control text-size" name="keterangan_lainnya" id="keterangan_lainnya
+												cols=" 30" rows="10" placeholder="Keterangan Lainnya" style="height:110px;"></textarea>
+										</div>
+
+										<br>
+										<hr><br>
+
+										<h3 class="ml-3"></h3>
 
 									</form>
 								</div>
-								<!-- Upload -->
 
 							</div>
 
-
+							<br>
+							<hr><br>
 							<!-- Modal partner -->
 							<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog"
 								aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -552,208 +1090,7 @@
 			<!-- App js -->
 			<script src="../assets/js/app.js"></script>
 
-			<script>
-				// input produk
-				$('.talim, .hajat, .ihram, .safar, .faedah, .cars, .paket, .upload').hide();
 
-				$('#input_produk').change(function () {
-					if ($('#input_produk').val() == "My Ta'lim") {
-						$('.talim, .upload').show();
-						$('.talim').attr('required', 'required');
-						$('.hajat, .ihram, .safar, .faedah, .cars, .paket').removeAttr('required', ' ');
-						$('.hajat, .ihram, .safar, .faedah, .cars, .paket').val("");
-						$('.hajat, .ihram, .safar, .faedah, .cars, .paket').hide();
-					} else if ($('#input_produk').val() == 'My Hajat') {
-						$('.hajat, .upload').show();
-						$('.hajat').attr('required', 'required');
-						$('.talim, .ihram, .safar, .faedah, .cars, .paket').removeAttr('required', ' ');
-						$('.talim, .ihram, .safar, .faedah, .cars, .paket').val("");
-						$('.talim, .ihram, .safar, .faedah, .cars, .paket').hide();
-					} else if ($('#input_produk').val() == 'My Ihram') {
-						$('.ihram, .upload').show();
-						$('.ihram').attr('required', 'required');
-						$('.talim, .hajat, .safar, .faedah, .cars, .paket').removeAttr('required', ' ');
-						$('.talim, .hajat, .safar, .faedah, .cars, .paket').val("");
-						$('.talim, .hajat, .safar, .faedah, .cars, .paket').hide();
-					} else if ($('#input_produk').val() == 'My Safar') {
-						$('.safar, .upload').show();
-						$('.safar').attr('required', 'required');
-						$('.talim, .hajat, .ihram, .faedah, .cars, .paket').removeAttr('required', ' ');
-						$('.talim, .hajat, .ihram, .faedah, .cars, .paket').val("");
-						$('.talim, .hajat, .ihram, .faedah, .cars, .paket').hide();
-					} else if ($('#input_produk').val() == 'My Faedah') {
-						$('.faedah, .upload').show();
-						$('.faedah').attr('required', 'required');
-						$('.talim, .hajat, .ihram, .safar, .cars, .paket').removeAttr('required', ' ');
-						$('.talim, .hajat, .ihram, .safar, .cars, .paket').val("");
-						$('.talim, .hajat, .ihram, .safar, .cars, .paket').hide();
-					} else if ($('#input_produk').val() == 'My Cars') {
-						$('.cars, .upload').show();
-						$('.cars').attr('required', 'required');
-						$('.talim, .hajat, .ihram, .safar, .faedah, .paket').removeAttr('required', ' ');
-						$('.talim, .hajat, .ihram, .safar, .faedah, .paket').val("");
-						$('.talim, .hajat, .ihram, .safar, .faedah, .paket').hide();
-					} else if ($('#input_produk').val() == 'Input Paket') {
-						$('.paket, .upload').show();
-						$('.paket').attr('required', 'required');
-						$('.talim, .hajat, .ihram, .safar, .faedah, .cars').removeAttr('required', ' ');
-						$('.talim, .hajat, .ihram, .safar, .faedah, .cars').val("");
-						$('.talim, .hajat, .ihram, .safar, .faedah, .cars').hide();
-					} else {
-						$('.talim, .hajat, .ihram, .safar, .faedah, .cars, .paket, .upload').hide();
-						$('.talim, .hajat, .ihram, .safar, .faedah, .cars, .paket, .upload').val("");
-					}
-
-				})
-				// input produk
-
-				// my hajat
-				$('.renovasi, .sewa, .wedding, .usaha, .lainnya').hide();
-
-				$('#kategori_myhajat').change(function () {
-					if ($('#kategori_myhajat').val() == "Renovasi Rumah") {
-						$('.renovasi').show();
-						$('.renovasi').attr('required', 'required');
-						$('.sewa, .wedding, .usaha, .lainnya').removeAttr('required', ' ');
-						$('.sewa, .wedding, .usaha, .lainnya').val("");
-						$('.sewa, .wedding, .usaha, .lainnya').hide();
-					} else if ($('#kategori_myhajat').val() == 'Sewa bangunan (Rumah / Ruko)') {
-						$('.sewa').show();
-						$(' .sewa').attr('required', 'required');
-						$('.renovasi, .wedding, .usaha, .lainnya').removeAttr('required', ' ');
-						$('.renovasi, .wedding, .usaha, .lainnya').val("");
-						$('.renovasi, .wedding, .usaha, .lainnya').hide();
-					} else if ($('#kategori_myhajat').val() == 'Wedding Organizer') {
-						$('.wedding').show();
-						$('.wedding').attr('required', 'required');
-						$('.renovasi, .sewa, .usaha, .lainnya').removeAttr('required', ' ');
-						$('.renovasi, .sewa, .usaha, .lainnya').val("");
-						$('.renovasi, .sewa, .usaha, .lainnya').hide();
-					} else if ($('#kategori_myhajat').val() == 'Usaha franchise') {
-						$('.usaha').show();
-						$(' .usaha').attr('required', 'required');
-						$('.renovasi, .sewa, .wedding, .lainnya').removeAttr('required', ' ');
-						$('.renovasi, .sewa, .wedding, .lainnya').val("");
-						$('.renovasi, .sewa, .wedding, .lainnya').hide();
-					} else if ($('#kategori_myhajat').val() == 'Lainnya') {
-						$('.lainnya').show();
-						$(' .lainnya').attr('required', 'required');
-						$('.renovasi, .sewa, .wedding, .usaha').removeAttr('required', ' ');
-						$('.renovasi, .sewa, .wedding, .usaha').val("");
-						$('.renovasi, .sewa, .wedding, .usaha').hide();
-					} else {
-						$('.renovasi, .sewa, .wedding, .usaha, .lainnya').hide();
-						$('.renovasi, .sewa, .wedding, .usaha, .lainnya').val("");
-					}
-
-				})
-				// my hajat
-
-				// my faedah
-				$('.bangunan, .elektronik, .barang_modal, .qurban, .other').hide();
-
-				$('#kategori_myfaedah').change(function () {
-					if ($('#kategori_myfaedah').val() == "Bahan Matrial bangunan") {
-						$('.bangunan').show();
-						$('.bangunan').attr('required', 'required');
-						$('.elektronik, .barang_modal, .qurban, .other').removeAttr('required', ' ');
-						$('.elektronik, .barang_modal, .qurban, .other').val("");
-						$('.elektronik, .barang_modal, .qurban, .other').hide();
-					} else if ($('#kategori_myfaedah').val() == 'Elektronik') {
-						$('.elektronik').show();
-						$('.elektronik').attr('required', 'required');
-						$('.bangunan, .barang_modal, .qurban, .other').removeAttr('required', ' ');
-						$('.bangunan, .barang_modal, .qurban, .other').val("");
-						$('.bangunan, .barang_modal, .qurban, .other').hide();
-					} else if ($('#kategori_myfaedah').val() == 'Barang Modal') {
-						$('.barang_modal').show();
-						$('.barang_modal').attr('required', 'required');
-						$('.bangunan, .elektronik, .qurban, .other').removeAttr('required', ' ');
-						$('.bangunan, .elektronik, .qurban, .other').val("");
-						$('.bangunan, .elektronik, .qurban, .other').hide();
-					} else if ($('#kategori_myfaedah').val() == 'Hewan Qurban') {
-						$('.qurban').show();
-						$('.qurban').attr('required', 'required');
-						$('.bangunan, .elektronik, .barang_modal, .other').removeAttr('required', ' ');
-						$('.bangunan, .elektronik, .barang_modal, .other').val("");
-						$('.bangunan, .elektronik, .barang_modal, .other').hide();
-					} else if ($('#kategori_myfaedah').val() == 'Lainnya') {
-						$('.other').show();
-						$('.other').attr('required', 'required');
-						$('.bangunan, .elektronik, .barang_modal, .qurban').removeAttr('required', ' ');
-						$('.bangunan, .elektronik, .barang_modal, .qurban').val("");
-						$('.bangunan, .elektronik, .barang_modal, .qurban').hide();
-					} else {
-						$('.bangunan, .elektronik, .barang_modal, .qurban, .other').hide();
-						$('.bangunan, .elektronik, .barang_modal, .qurban, .other').val("");
-					}
-				})
-
-				$('#other_jenis_barang_elektronik').hide();
-
-				$('#jenis_barang_elektronik').change(function () {
-					if ($('#jenis_barang_elektronik').val() == "Others") {
-						$('#other_jenis_barang_elektronik').show();
-						$('#other_jenis_barang_elektronik').attr('required', 'required');
-						$('').val("");
-					} else {
-						$('#other_jenis_barang_elektronik').hide();
-						$('#other_jenis_barang_elektronik').removeAttr('required', ' ');
-						$('').val("");
-					}
-				})
-				// my faedah
-
-				$('#reset').hide();
-				if ($("#id_mapping_leads").val()) {
-					$('#nama_konsumen').attr('readonly', 'readonly');
-					$('#reset').show();
-				}
-
-				$('#reset').click(function () {
-					$('').val("");
-					$('').removeAttr('readonly');
-				})
-
-			</script>
-
-			<script type="text/javascript">
-				$(document).ready(function () {
-					$("input[id^='upload_file']").each(function () {
-						var id = parseInt(this.id.replace("upload_file", ""));
-						$("#upload_file" + id).change(function () {
-							if ($("#upload_file" + id).val() != "") {
-								$("#moreImageUploadLink").show();
-							}
-						});
-					});
-				});
-
-				$(document).ready(function () {
-					var upload_number = 2;
-					$('#attachMore').click(function () {
-						//add more file
-						var moreUploadTag = '';
-						moreUploadTag +=
-							'<div class="form-group element text-size"><label for="upload_file"' +
-							upload_number + '>Lampirkan Data ' + '</label>' + '<br>';
-						moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran"/>';
-						moreUploadTag += ' <a class="btn btn-secondary float-right" href="javascript:del_file(' +
-							upload_number +
-							')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' +
-							'</a></div>' + '<hr>';
-						$('<dl id="delete_file' + upload_number + '">' + moreUploadTag + '</dl>').fadeIn('slow')
-							.appendTo('#moreImageUpload');
-						upload_number++;
-					});
-				});
-
-				function del_file(eleId) {
-					var ele = document.getElementById("delete_file" + eleId);
-					ele.parentNode.removeChild(ele);
-				}
-
-			</script>
 
 </body>
 

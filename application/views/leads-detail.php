@@ -69,7 +69,7 @@
 										</div>
 									</div>
 									<div class="form-row text-size">
-										<div class="col-md-12">
+										<div class="col-md-6">
 											<div class="form-group ml-3 mr-3">
 												<label>Nama Konsumen</label>
 												<input type="text" class="form-control placement text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="009377736433744" minlength="16" maxlength="16">
