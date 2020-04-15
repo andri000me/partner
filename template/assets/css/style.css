@@ -3739,6 +3739,19 @@ input[data-readonly] {
 	background: #E9ECEF;
 }
 
+.sticky {
+	position: fixed;
+	z-index: 1;
+	width: 546px;
+	margin-top: -18px;
+}
+
+.gradient {
+	color: white;
+	background-color: #0c2461;
+	background-image: linear-gradient(to right, #0c2461, #0984e3);
+}
+
 /* .dataTables_filter {
 	display: none;
 } */
@@ -3845,13 +3858,6 @@ input[data-readonly] {
 	.enlarged .slimscroll-menu {
 		overflow: inherit !important;
 	}
-}
-
-.sticky {
-	position: fixed;
-	z-index: 1;
-	width: 546px;
-	margin-top: -18px;
 }
 
 @media(max-width: 1920px) {

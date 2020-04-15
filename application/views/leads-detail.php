@@ -42,6 +42,9 @@
                             <form class="" action="<?= base_url('Leads/update_detail') ?>" method="post">
                                 <!-- ID Ticket -->
                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
+                                <!-- ID Mapping Leads -->
+                                <input type="hidden" name="id_mapping_leads" id="id_mapping_leads"
+                                    value="<?= $data->id_mapping_leads ?>">
                                 <!-- ID Leads -->
                                 <input type="hidden" name="id_leads" id="id_leads" value="<?= $data->id_leads ?>">
                                 <!-- ID Mapping Partner -->
@@ -71,69 +74,111 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row text-size">
-                                        <div class="col-md-6">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>Nama Konsumen</label>
-                                                <input type="text" class="form-control text-size" name="nama_konsumen"
-                                                    id="nama_konsumen" value="<?= $data->nama_konsumen ?>"
+                                                <label>Nama Lengkap</label>
+                                                <input type="text" class="form-control placement text-size"
+                                                    name="nama_konsumen" id="nama_konsumen"
+                                                    value="<?= $data->nama_konsumen ?>"
                                                     <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?>
-                                                    required placeholder="Okky Aditya">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
-                                                <label>Nomor Telepon / Whatsapp</label>
-                                                <input type="text" class="form-control placement number-only text-size"
-                                                    name="telepon" id="telepon" value="<?= $data->telepon ?>"
-                                                    <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?>
-                                                    required placeholder="0811977500" maxlength="15">
+                                                    required placeholder="Nama Lengkap" minlength="16" maxlength="16">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row">
-                                        <div class="col-md-12 text-size">
-                                            <div class="form-group ml-3 mr-3">
-                                                <label>ID KTP</label>
+                                    <div class="form-row text-size">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Nomor KTP</label>
                                                 <input type="phone" class="form-control placement number-only text-size"
                                                     name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>"
                                                     <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?>
-                                                    required placeholder="0786 6875 8725 3564" minlength="16"
+                                                    required placeholder="0000 0000 0000 0000" minlength="16"
                                                     maxlength="16">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Nomor handphone</label>
+                                                <input type="text" class="form-control placement number-only text-size"
+                                                    name="telepon" id="telepon" value="<?= $data->telepon ?>"
+                                                    <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?>
+                                                    required placeholder="0896 5533 985" maxlength="15">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group text-size ml-3 mr-3">
-                                                <label>Produk</label>
-                                                <select class="form-control text-size" name="produk" id="produk"
-                                                    <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-                                                    <option selected>Pilih Kategori Produk</option>
-                                                    <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?>
-                                                        value="My Ihram">My Ihram</option>
-                                                    <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?>
-                                                        value="My Safar">My Safar</option>
-                                                    <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?>
-                                                        value="My Talim">My Talim</option>
-                                                    <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?>
-                                                        value="My Hajat">My Hajat</option>
-                                                    <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?>
-                                                        value="My Faedah">My Faedah</option>
-                                                    <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?>
-                                                        value="My CarS">My CarS</option>
+                                                <label>Pekerjaan Konsumen?</label><br>
+                                                <div class="form-check form-check-inline mt-2">
+                                                    <input class="form-check-input cross_branch" type="radio"
+                                                        name="cross_branch" id="cross_branch" required value="Karyawan">
+                                                    <label class="form-check-label">
+                                                        Karyawan
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input cross_branch" type="radio"
+                                                        name="cross_branch" id="cross_branch" required
+                                                        value="Wiraswasta">
+                                                    <label class="form-check-label">
+                                                        Wiraswasta
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Status Konsumen</label>
+                                                    <select class="form-control text-size" name="status_konsumen"
+                                                        id="status_konsumen" required>
+                                                        <option selected value="">Pilih Status Konsumen</option>
+                                                        <option value="New Customer">New Customer</option>
+                                                        <option value="RO Expire">RO Expire</option>
+                                                        <option value="RO Active">RO Active</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row kontrak">
+                                        <div class="col-md-12">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Nomor Kontrak</label>
+                                                <input type="text" class="form-control text-size" name="nomor_kontrak"
+                                                    id="nomor_kontrak" placeholder="Nomor Kontrak">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Tanggal Lahir</label>
+                                                <input type="date" class="form-control text-size" name="tanggal_lahir"
+                                                    id="tanggal_lahir" placeholder="Tanggal lahir">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Status Pernikahan</label>
+                                                <select class="form-control text-size" name="status_pernikahan"
+                                                    id="status_pernikahan" required>
+                                                    <option selected value="">Pilih Status Pernikahan</option>
+                                                    <option value="Sudah Menikah">Sudah Menikah</option>
+                                                    <option value="Belum Menikah">Belum Menikah</option>
+                                                    <option value="Janda /  Duda">Janda / Duda</option>
                                                 </select>
                                             </div>
-                                            <input type="hidden" name="produk" value="<?= $data->produk ?>"
-                                                <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
                                         </div>
-                                        <div class="col-md-6 text-size">
+                                    </div>
+                                    <div class="form-row pasangan">
+                                        <div class="col-md-12">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>Detail Produk</label>
-                                                <input type="text" class="form-control text-size" name="detail_produk"
-                                                    id="detail_produk" value="<?= $data->detail_produk ?>"
-                                                    <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?>
-                                                    required placeholder="Detail produk">
+                                                <label>Nama Pasangan</label>
+                                                <input type="text" class="form-control text-size" name="nama_pasangan"
+                                                    id="nama_pasangan" placeholder="Nama Pasangan">
                                             </div>
                                         </div>
                                     </div>
@@ -268,10 +313,44 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size ml-3 mr-3">
+                                                <label>Kategori Produk</label>
+                                                <select class="form-control text-size" name="produk" id="produk"
+                                                    <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
+                                                    <option selected>Pilih Kategori Produk</option>
+                                                    <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?>
+                                                        value="My Ihram">My Ihram</option>
+                                                    <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?>
+                                                        value="My Safar">My Safar</option>
+                                                    <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?>
+                                                        value="My Talim">My Talim</option>
+                                                    <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?>
+                                                        value="My Hajat">My Hajat</option>
+                                                    <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?>
+                                                        value="My Faedah">My Faedah</option>
+                                                    <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?>
+                                                        value="My CarS">My CarS</option>
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="produk" value="<?= $data->produk ?>"
+                                                <?= $cabang_asal == $data->id_branch ? 'disabled' : '' ?>>
+                                        </div>
+                                        <div class="col-md-6 text-size">
+                                            <div class="form-group ml-3 mr-3">
+                                                <label>Baranag / Jasa Yang Dipesan</label>
+                                                <input type="text" class="form-control text-size" name="detail_produk"
+                                                    id="detail_produk" value="<?= $data->detail_produk ?>"
+                                                    <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?>
+                                                    required placeholder="Detail produk">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="col-md-6 text-size">
                                             <fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
                                                 <div class="form-group ml-3 mr-3">
-                                                    <label>Cross Branch?</label><br>
+                                                    <label>Konsumen Cross Branch?</label><br>
                                                     <div class="form-check form-check-inline mt-2">
                                                         <input class="form-check-input cross_branch text-size"
                                                             type="radio" name="cross_branch"
@@ -384,11 +463,11 @@
                                     <div class="form-row">
                                         <div class="col-md-6 text-size">
                                             <div class="form-group ml-3 mr-3">
-                                                <label>Follow Up By</label>
+                                                <label>Telah Dihubungi Melalui</label>
                                                 <select class="form-control text-size" name="follow_up_by"
                                                     id="follow_up_by" required
                                                     <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-                                                    <option selected disabled value="">Pilih Follow Up By</option>
+                                                    <option selected disabled value="">Hubungi Melalui</option>
                                                     <option <?= $data->follow_up_by == 'Kunjungan' ? 'selected' : '' ?>
                                                         value="Kunjungan">Kunjungan</option>
                                                     <option <?= $data->follow_up_by == 'Telepon' ? 'selected' : '' ?>
@@ -405,7 +484,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="ml-3 mr-3">
-                                                <label>Nilai Funding</label>
+                                                <label>Rencana Funding</label>
                                                 <div class="input-group flex-nowrap">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text text-size"
@@ -1262,5 +1341,31 @@ $("table").on('click', '.pilih-leads', function() {
     $('#modal-leads').modal('hide');
 
     source_leads();
+})
+</script>
+
+<script>
+$('.kontrak, .pasangan').hide();
+
+$('#status_konsumen').change(function() {
+    if ($('#status_konsumen').val() == "RO Active") {
+        $('.kontrak').show();
+        $('#nomor_kontrak').attr('required', 'required');
+    } else {
+        $('.kontrak').hide();
+        $('#nomor_kontrak').removeAttr('required', ' ');
+    }
+
+})
+
+$('#status_pernikahan').change(function() {
+    if ($('#status_pernikahan').val() == "Sudah Menikah") {
+        $('.pasangan').show();
+        $('#nama_pasangan').attr('required', 'required');
+    } else {
+        $('.pasnagan').hide();
+        $('#nama_pasangan').removeAttr('required', ' ');
+    }
+
 })
 </script>
