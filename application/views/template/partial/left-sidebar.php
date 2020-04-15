@@ -60,7 +60,7 @@
                             <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                         </span></a>
                     <ul class="submenu">
-                        <li><a href="<?= base_url('mapping_leads') ?>">Database</a></li>
+                        <li><a href="<?= base_url('leads/leads_database') ?>">Database</a></li>
                         <li><a href="<?= base_url('leads') ?>">Prospect</a></li>
                     </ul>
                 </li>
@@ -71,7 +71,7 @@
                             <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                         </span></a>
                     <ul class="submenu">
-                        <li><a href="<?= base_url('mapping_partner') ?>">Mapping Merchant</a></li>
+                        <li><a href="<?= base_url('partner/index_mapping') ?>">Mapping Merchant</a></li>
                         <li><a href="<?= base_url('partner') ?>">Daftar Merchant</a></li>
                         <li><a href="<?= base_url('agent') ?>">Agent / BA</a></li>
                     </ul>

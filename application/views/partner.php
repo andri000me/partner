@@ -47,56 +47,54 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($data->result() as $mapping) { ?>
+                        <?php foreach ($data->result() as $partner) { ?>
                         <tr>
                             <td>
-                                <?= $mapping->nama_usaha ?>
+                                <?= $partner->nama_usaha ?>
                             </td>
                             <td>
-                                <?= $mapping->bidang_usaha ?>
+                                <?= $partner->bidang_usaha ?>
                             </td>
                             <td>
-                                <?= $mapping->kategori_produk ?>
+                                <?= $partner->kategori_produk ?>
                             </td>
                             <td>
-                                <?= $mapping->alamat ?>
+                                <?= $partner->alamat ?>
                             </td>
                             <td>
-                                <?= $mapping->email ?>
+                                <?= $partner->email ?>
                             </td>
                             <td>
-                                <?= $mapping->telepon ?>
+                                <?= $partner->telepon ?>
                             </td>
                             <td>
                                 <center>
-                                    <?php if($mapping->status_ticket == 5){ ?>
-                                    <h6><span class="badge badge-success">Terverifikasi</span></h6>
-                                    <?php } else if($mapping->status_ticket == 6) { ?>
+                                    <?php if($partner->status_ticket == 6) { ?>
                                     <h6><span class="badge badge-primary">Teraktivasi</span></h6>
-                                    <?php } else if($mapping->status_ticket == 4){ ?>
+                                    <?php } else if($partner->status_ticket == 5){ ?>
+                                    <h6><span class="badge badge-success">Terverifikasi</span></h6>
+                                    <?php } else if($partner->status_ticket == 4){ ?>
                                     <h6><span class="badge badge-danger">Ditolak</span></h6>
-                                    <?php } else if($mapping->status_ticket < 4){ ?>
+                                    <?php } else if($partner->status_ticket <= 2){ ?>
                                     <h6><span class="badge badge-secondary">Belum Terverifikasi</span></h6>
                                     <?php } ?>
                                 </center>
                             </td>
                             <td>
                                 <center>
-                                    <?php if($mapping->ttd_pks == 'Ya'){ ?>
-                                    <h6><span class="badge badge-success">Sudah Tanda Tangan
-                                            Kerjasama</span></h6>
+                                    <?php if($partner->ttd_pks == 'Ya'){ ?>
+                                    <h6><span class="badge badge-success">PKS</span></h6>
                                     <?php } else { ?>
-                                    <h6><span class="badge badge-danger">Belum Tanda Tangan
-                                            Kerjasama</span></h6>
+                                    <h6><span class="badge badge-danger">Non-PKS</span></h6>
                                     <?php } ?>
                                 </center>
                             </td>
                             <td>
-                                <?php if ($mapping->status == 'draft') { ?>
-                                <center><a href="<?= base_url('Partner/edit/' . $mapping->id_partner) ?>"
+                                <?php if ($partner->status == 'draft') { ?>
+                                <center><a href="<?= base_url('Partner/edit/' . $partner->id_partner) ?>"
                                         class="btn btn-secondary text-size">Lanjutkan</a></center>
-                                <?php } else if ($mapping->status == 'lengkap') { ?>
-                                <center><a href="<?= base_url('Partner/detail/' . $mapping->id_partner) ?>"
+                                <?php } else if ($partner->status == 'lengkap') { ?>
+                                <center><a href="<?= base_url('Partner/detail/' . $partner->id_partner) ?>"
                                         class="btn btn-primary text-size" style="width: 90px;">Detail</a></center>
                                 <?php } ?>
                             </td>
@@ -139,7 +137,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($lengkap->result() as $maintain) { ?>
+                        <?php foreach ($maintains->result() as $maintain) { ?>
                         <tr>
                             <td class="not-clickable">
                                 <div class="text-size"><?= $maintain->nama_usaha ?></div>

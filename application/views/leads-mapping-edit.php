@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Mapping Leads</h4>
+            <h4 class="page-title">Leads Database</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Mapping Leads</li>
+                <li class="breadcrumb-item"><a href="<?= base_url('leads/leads_database') ?>">Leads Database</a></li>
+                <li class="breadcrumb-item active">Edit / Detail</li>
             </ol>
         </div>
     </div>
@@ -19,13 +20,13 @@
                     <h4 class="mt-0 header-title">Leads Database</h4>
                     <p class="text-muted m-b-30 text-size">Input data leads anda untuk keperluan database</p>
                 </div>
-                <form class="" action="<?= base_url('mapping_leads/update') ?>" method="post">
-                    <!-- ID Mapping Leads -->
-                    <input type="hidden" id="id_mapping_leads" name="id_mapping_leads" value="<?= $data->mapping_id ?>">
+                <form class="" action="<?= base_url('leads/update_database') ?>" method="post">
+                    <!-- ID Leads -->
+                    <input type="hidden" id="id_leads" name="id_leads" value="<?= $data->id_leads ?>">
                     <!-- ID Agent -->
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= $data->id_agent ?>">
                     <!-- ID Partner -->
-                    <input type="hidden" id="id_mapping" name="id_mapping" value="<?= $data->id_mapping ?>">
+                    <input type="hidden" id="id_partner" name="id_partner" value="<?= $data->id_partner ?>">
                     <!-- Redirect -->
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="form-row">
@@ -33,27 +34,40 @@
                             <div class="ml-3 mr-3">
                                 <div class="form-group">
                                     <label>Nama Konsumen</label>
-                                    <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" />
+                                    <input type="text" class="form-control text-size" name="nama_konsumen"
+                                        id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required
+                                        placeholder="Ibrahim Ahmad" />
                                 </div>
                                 <div class="form-group">
                                     <label>Produk</label>
                                     <select class="form-control text-size" name="produk" id="produk">
                                         <option value="" selected>Pilih Kategori Produk</option>
-                                        <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                        <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                        <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                        <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                        <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
-                                        <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                        <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My
+                                            Ihram</option>
+                                        <option <?= $data->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My
+                                            Safar</option>
+                                        <option <?= $data->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My
+                                            Talim</option>
+                                        <option <?= $data->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My
+                                            Hajat</option>
+                                        <option <?= $data->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">
+                                            My Faedah</option>
+                                        <option <?= $data->produk == 'My CarS' ? 'selected' : '' ?> value="My CarS">My
+                                            CarS</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Detail Produk</label>
-                                    <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
+                                    <input type="text" class="form-control text-size" name="detail_produk"
+                                        id="detail_produk" value="<?= $data->detail_produk ?>" required
+                                        placeholder="Detail produk" />
                                 </div>
                                 <div class="form-group">
                                     <label>Handphone/Whatsapp</label>
-                                    <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon_mapping ?>" required placeholder="0811977500" maxlength="15" />
+                                    <input type="text"
+                                        class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only"
+                                        name="telepon" id="telepon" value="<?= $data->telepon ?>" required
+                                        placeholder="0811977500" maxlength="15" />
                                     <?= form_error('telepon') ?>
                                 </div>
                             </div>
@@ -64,62 +78,86 @@
                                     <label>SOA</label>
                                     <select class="form-control text-size" name="soa" id="soa" required>
                                         <option value="" selected>Pilih Source Aplikasi</option>
-                                        <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                        <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                        <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                        <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                        <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?>
+                                            value="Direct Selling">Direct Selling</option>
+                                        <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?>
+                                            value="Tour & travel">Tour & travel</option>
+                                        <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?>
+                                            value="Penyedia Jasa">Penyedia Jasa</option>
+                                        <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent
+                                            BA</option>
                                         <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
                                         <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                        <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                        <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
+                                        <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?>
+                                            value="Digital Marketing">Digital Marketing</option>
+                                        <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?>
+                                            value="Website BFI Syariah">Website BFI Syariah</option>
                                         <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                        <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                        <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                        <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                        <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In
+                                        </option>
+                                        <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?>
+                                            value="Event Promotion">Event Promotion</option>
+                                        <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?>
+                                            value="Tele Marketing">Tele Marketing</option>
                                     </select>
                                 </div>
                                 <div class="form-group event">
                                     <label>Nama Event</label>
-                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $data->nama_event ?>" placeholder="Nama Event">
+                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event"
+                                        value="<?= $data->nama_event ?>" placeholder="Nama Event">
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 nik">
                                         <div class="form-group">
                                             <label>NIK</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" minlength="6" maxlength="7" />
+                                            <input type="phone" class="form-control text-size placement number-only"
+                                                name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>"
+                                                placeholder="072104" minlength="6" maxlength="7" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 cabang">
                                         <div class="form-group">
                                             <label>Cabang</label>
-                                            <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Nama Cabang">
+                                            <input type="text" class="form-control text-size" name="cabang_egc"
+                                                id="cabang_egc" value="<?= $data->cabang_egc ?>"
+                                                placeholder="Nama Cabang">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="posisi">
                                     <div class="form-group">
                                         <label>Posisi</label>
-                                        <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Nama Jabatan / Posisi">
+                                        <input type="text" class="form-control text-size" name="posisi_egc"
+                                            id="posisi_egc" value="<?= $data->posisi_egc ?>"
+                                            placeholder="Nama Jabatan / Posisi">
                                     </div>
                                 </div>
                                 <div class="kontrak-ro">
                                     <div class="form-group">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" minlength="10" maxlength="10" />
+                                        <input type="phone" class="form-control text-size placement number-only"
+                                            name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>"
+                                            placeholder="087883774" minlength="10" maxlength="10" />
                                     </div>
                                 </div>
                                 <div class="konsumen-ro">
                                     <div class="form-group">
                                         <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
+                                        <input type="text" class="form-control text-size" name="referral_konsumen"
+                                            id="referral_konsumen" value="<?= $data->referral_konsumen ?>"
+                                            placeholder="Input Nama konsumen">
                                     </div>
                                 </div>
                                 <div class="form-agent mb-3">
                                     <label class="agent">Pilih Data Agent</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                        <input type="text" class="form-control text-size readonly pointer"
+                                            name="data_agent" id="data_agent" value="<?= $data->nama_agent ?>"
+                                            placeholder="" aria-label="Recipient's username"
+                                            aria-describedby="button-addon2">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
+                                            <button class="btn btn-primary btn-data text-size" type="button"
+                                                id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
                                         </div>
                                     </div>
                                 </div>
@@ -128,9 +166,11 @@
                                     <label class=" travel">Pilih Data Travel</label>
                                     <label class=" jasa">Pilih Data Penyedia Jasa</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control text-size readonly pointer" name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>">
+                                        <input type="text" class="form-control text-size readonly pointer"
+                                            name="data_partner" id="data_partner" value="<?= $data->nama_partner ?>">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target="">Cari</button>
+                                            <button class="btn btn-primary btn-data text-size" type="button"
+                                                id="btn-data" data-toggle="modal" data-target="">Cari</button>
                                         </div>
                                     </div>
                                 </div>
@@ -138,7 +178,8 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                        <a href="<?= base_url('mapping_leads') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
+                        <a href="<?= base_url('mapping_leads') ?>"
+                            class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
                         <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
                             Simpan
                         </button>
@@ -151,7 +192,7 @@
             <div class="card-body">
                 <form class="" action="<?= base_url('Leads_follow_up/save') ?>" method="post">
                     <!-- ID Partner -->
-                    <input type="hidden" name="id_mapping_leads" value="<?= $data->mapping_id ?>">
+                    <input type="hidden" name="id_leads" value="<?= $data->id_leads ?>">
                     <!-- Redirect -->
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="form-group ml-3 mr-3">
@@ -166,7 +207,8 @@
                     </div>
                     <div class="form-group ml-3 mr-3">
                         <label>Catatan</label>
-                        <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" required placeholder="Jelaskan detail kegiatan anda" style="height:80px;"></textarea>
+                        <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10"
+                            required placeholder="Jelaskan detail kegiatan anda" style="height:80px;"></textarea>
                     </div>
                     <div class="form-group mb-0 float-right mt-2 ml-3 mr-3">
                         <div>
@@ -190,18 +232,19 @@
                             if ($follow_up->num_rows() > 0) {
                                 foreach ($follow_up->result() as $data) {
                             ?>
-                                    <li class="feed-item text-size">
-                                        <div class="feed-item-list">
-                                            <span class="activity-text text-primary"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
-                                            <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
-                                            <span class="date"><?= $data->tanggal_follow_up ?></span>
-                                            <span class="activity-text"><?= $data->catatan ?></span>
-                                        </div>
-                                    </li>
-                                <?php
+                            <li class="feed-item text-size">
+                                <div class="feed-item-list">
+                                    <span class="activity-text text-primary"><b>Follow Up By
+                                            <?= $data->follow_up_by ?></b></span><br>
+                                    <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+                                    <span class="date"><?= $data->tanggal_follow_up ?></span>
+                                    <span class="activity-text"><?= $data->catatan ?></span>
+                                </div>
+                            </li>
+                            <?php
                                 }
                             } else { ?>
-                                <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+                            <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
                             <?php } ?>
                             <!-- <li class="feed-item  text-size">
                                 <div class="feed-item-list">
@@ -236,18 +279,18 @@
                         if ($follow_up->num_rows() > 0) {
                             foreach ($follow_up->result() as $data) {
                         ?>
-                                <li class="feed-item text-size">
-                                    <div class="feed-item-list">
-                                        <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
-                                        <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
-                                        <span class="date"><?= $data->tanggal_follow_up ?></span>
-                                        <span class="activity-text"><?= $data->catatan ?></span>
-                                    </div>
-                                </li>
-                            <?php
+                        <li class="feed-item text-size">
+                            <div class="feed-item-list">
+                                <span class="activity-text"><b>Follow Up By <?= $data->follow_up_by ?></b></span><br>
+                                <span class="activity-text"><b>Oleh <?= $data->name ?></b></span>
+                                <span class="date"><?= $data->tanggal_follow_up ?></span>
+                                <span class="activity-text"><?= $data->catatan ?></span>
+                            </div>
+                        </li>
+                        <?php
                             }
                         } else { ?>
-                            <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
+                        <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
                         <?php } ?>
                     </ol>
                 </div>
@@ -258,7 +301,8 @@
 
 
 <!-- Modal partner -->
-<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
@@ -267,7 +311,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <a href="<?= base_url('partner/create') ?>" class="btn btn-primary mb-2">Buat Data Partner +</a>
-                <table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id=""
+                    class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Name Usaha</th>
@@ -279,20 +325,24 @@
                     </thead>
                     <tbody>
                         <?php foreach ($partners->result() as $partner) { ?>
-                            <tr>
-                                <td><?= $partner->nama_usaha ?></td>
-                                <td><?= $partner->kategori_produk ?></td>
-                                <td><?= $partner->telepon ?></td>
-                                <td>
-                                    <?php if ($partner->status == 'draft') { ?>
-                                        <span class="badge badge-secondary">Draft</span>
-                                    <?php } ?>
-                                    <?php if ($partner->status == 'lengkap') { ?>
-                                        <span class="badge badge-success">Lengkap</span>
-                                    <?php } ?>
-                                </td>
-                                <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_mapping ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
-                            </tr>
+                        <tr>
+                            <td><?= $partner->nama_usaha ?></td>
+                            <td><?= $partner->kategori_produk ?></td>
+                            <td><?= $partner->telepon ?></td>
+                            <td>
+                                <?php if ($partner->status == 'draft') { ?>
+                                <span class="badge badge-secondary">Draft</span>
+                                <?php } ?>
+                                <?php if ($partner->status == 'mapping') { ?>
+                                <span class="badge badge-secondary">Mapping</span>
+                                <?php } ?>
+                                <?php if ($partner->status == 'lengkap') { ?>
+                                <span class="badge badge-success">Lengkap</span>
+                                <?php } ?>
+                            </td>
+                            <td><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>"
+                                    data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -303,7 +353,8 @@
 <!-- Modal partner -->
 
 <!-- Modal agent -->
-<div class="modal fade" id="modal-agent" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-agent" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
@@ -312,7 +363,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <a href="<?= base_url('agent/create') ?>" class="btn btn-primary mb-2">Buat Data Agent +</a>
-                <table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id=""
+                    class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Lengkap</th>
@@ -322,11 +375,12 @@
                     </thead>
                     <tbody>
                         <?php foreach ($agents->result() as $agent) { ?>
-                            <tr>
-                                <td><?= $agent->nama_lengkap ?></td>
-                                <td><?= $agent->telepon ?></td>
-                                <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-nama="<?= $agent->nama_lengkap ?>">Pilih</button></td>
-                            </tr>
+                        <tr>
+                            <td><?= $agent->nama_lengkap ?></td>
+                            <td><?= $agent->telepon ?></td>
+                            <td><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>"
+                                    data-nama="<?= $agent->nama_lengkap ?>">Pilih</button></td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -337,121 +391,141 @@
 <!-- Modal agent -->
 
 <script>
-    $("table").on('click', '.pilih-partner', function() {
-        $('#id_mapping').val($(this).data('partner'));
-        // $('#id_agent').val("");
-        $('#data_partner').val($(this).data('vendor'));
-        $('#modal-partner').modal('hide');
-    })
-    $("table").on('click', '.pilih-agent', function() {
-        $('#id_agent').val($(this).data('agent'));
-        // $('#id_mapping').val("");
-        $('#data_agent').val($(this).data('nama'));
-        $('#modal-agent').modal('hide');
-    })
+$("table").on('click', '.pilih-partner', function() {
+    $('#id_partner').val($(this).data('partner'));
+    // $('#id_agent').val("");
+    $('#data_partner').val($(this).data('vendor'));
+    $('#modal-partner').modal('hide');
+})
+$("table").on('click', '.pilih-agent', function() {
+    $('#id_agent').val($(this).data('agent'));
+    // $('#id_partner').val("");
+    $('#data_agent').val($(this).data('nama'));
+    $('#modal-agent').modal('hide');
+})
 </script>
 
 <script>
-    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor').hide();
+$('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
+    .hide();
+source_leads();
+$('#soa').change(function() {
     source_leads();
-    $('#soa').change(function() {
-        source_leads();
-        $('#id_partner').val("");
-        $('#id_agent').val("");
-        $('#nama_vendor').val("").removeAttr("required");
-        $('#nama_event').val("");
-        $('#data_partner').val("");
-        $('#data_agent').val("");
-        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
-    })
+    $('#id_partner').val("");
+    $('#id_agent').val("");
+    $('#nama_vendor').val("").removeAttr("required");
+    $('#nama_event').val("");
+    $('#data_partner').val("");
+    $('#data_agent').val("");
+    $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+})
 
-    function source_leads() {
-        if ($('#soa').val() == 'Direct Selling') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
-        } else if ($('#soa').val() == 'Penyedia Jasa') {
-            $('.jasa, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
-        } else if ($('#soa').val() == 'Agent BA') {
-            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
-            $('#btn-data-agent').attr('data-target', '#modal-agent')
-            // $('#data_partner, #data_agent').attr('required', 'required');
-            $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
-        } else if ($('#soa').val() == 'EGC') {
-            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-            $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-        } else if ($('#soa').val() == 'Digital Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'Website BFI Syariah') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'Walk In') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'Event Promotion') {
-            $('.event, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_event').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'Tele Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else {
-            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#data_partner, #data_agent').removeAttr('required', 'required');
-        }
+function source_leads() {
+    if ($('#soa').val() == 'Direct Selling') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Tour & travel') {
+        $('.travel, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Penyedia Jasa') {
+        $('.jasa, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Agent BA') {
+        $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+        $('#btn-data-agent').attr('data-target', '#modal-agent')
+        // $('#data_partner, #data_agent').attr('required', 'required');
+        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required',
+            'required');
+        $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
+            .hide();
+    } else if ($('#soa').val() == 'EGC') {
+        $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
+        $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+    } else if ($('#soa').val() == 'RO' || $('#soa').val() == 'CGC') {
+        $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+    } else if ($('#soa').val() == 'Digital Marketing') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Website BFI Syariah') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Walk In') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Event Promotion') {
+        $('.event, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#nama_event').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required',
+            'required');
+        $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+    } else if ($('#soa').val() == 'Tele Marketing') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+    } else {
+        $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#data_partner, #data_agent').removeAttr('required', 'required');
     }
+}
 
-    $(".readonly").keydown(function(e) {
-        e.preventDefault();
-    });
+$(".readonly").keydown(function(e) {
+    e.preventDefault();
+});
 </script>

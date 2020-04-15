@@ -23,9 +23,6 @@ class Transfer_data extends CI_Controller
         // Load Modul Partner
         $this->load->model('partner_model');
 
-        // Load Modul Mapping Leads
-        $this->load->model('mapping_leads_model', 'mapping_leads');
-
         // Load Modul Leads
         $this->load->model('leads_model');
 

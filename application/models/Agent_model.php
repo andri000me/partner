@@ -23,7 +23,7 @@ class Agent_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->select('agents.*, tickets.ttd_pks, tickets.status as status_ticket');
+        $this->db->select('agents.*, tickets.status as status_ticket');
         $this->db->from('agents');
         $this->db->join('tickets', 'tickets.id_agent = agents.id_agent', 'left');
         // $this->db->join('users', 'users.id_user = agents.id_user', 'inner');

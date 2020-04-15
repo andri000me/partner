@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="btn-kanan mb-2">
-            <a href=" <?= base_url('mapping_leads/create') ?>"><button class="btn btn-primary text-size">Input
+            <a href=" <?= base_url('leads/create_database') ?>"><button class="btn btn-primary text-size">Input
                     Leads</button></a>
             <!-- <a href=" <?= base_url('mapping_leads/export_template') ?>"><button class="btn btn-primary text-size">Export Template Excel</button></a>
             <a href=" <?= base_url('mapping_leads/form') ?>"><button class="btn btn-primary text-size">Import Template Excel</button></a> -->
@@ -62,7 +62,7 @@
                             </td>
                             <td>
                                 <center><a class="btn btn-secondary text-size"
-                                        href="<?= base_url('Mapping_leads/edit/' . $mapping_leads->mapping_id) ?>">Detail</a>
+                                        href="<?= base_url('leads/edit_database/' . $mapping_leads->id_leads) ?>">Detail</a>
                                 </center>
                             </td>
                         </tr>

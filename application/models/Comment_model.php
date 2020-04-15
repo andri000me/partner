@@ -27,9 +27,9 @@ class Comment_model extends CI_Model
         $this->db->join('tickets', 'tickets.id_ticket = comments.id_ticket', 'left');
         $this->db->join('ps_tickets', 'ps_tickets.id_ps_ticket = comments.id_ps_ticket', 'left');
         $this->db->join('users', 'users.id_user = comments.id_user', 'left');
-        $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');
+        $this->db->join('partners_full', 'partners_full.id_partner = tickets.id_partner', 'left');
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
-        $this->db->join('leads', 'leads.id_leads = tickets.id_leads', 'left');
+        $this->db->join('leads_full', 'leads_full.id_leads = tickets.id_leads', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

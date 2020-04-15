@@ -27,14 +27,14 @@ class Notification_model extends CI_Model
         user_penerima.name as nama_penerima,
         cross.nama_cabang as cabang_asal,
         DATE_FORMAT(notifications.created_at, '%d %b, %Y') as dibuat_pada,
-        leads.id_leads as id_lead,
-        partners.id_partner as partner_id,
+        leads_full.id_leads as id_lead,
+        partners_full.id_partner as partner_id,
         agents.id_agent as agent_id");
         $this->db->from('notifications');
         $this->db->join('tickets', 'tickets.id_ticket = notifications.id_ticket', 'left');
-        $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');
+        $this->db->join('partners_full', 'partners_full.id_partner = tickets.id_partner', 'left');
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
-        $this->db->join('leads', 'leads.id_leads = tickets.id_leads', 'left');
+        $this->db->join('leads_full', 'leads_full.id_leads = tickets.id_leads', 'left');
         // $this->db->join('leads_assignments', 'assignto.id_leads = tickets.id_leads', 'left');
 
         // Pengirim Notifikasi

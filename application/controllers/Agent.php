@@ -491,18 +491,56 @@ class Agent extends CI_Controller
         redirect($post['redirect']);
     }
 
-    private function set_upload_options()
-    {   
-        //upload an image options
-        $config = [];
+    public function update_ttd()
+    {
+        // $post = $this->input->post(null, TRUE);
+        $data = [
+            'ttd_pks'           => $this->input->post('ttd_pks')
+        ];
+
+        $where = ['id_agent' => $this->input->post('id_agent')];
+        $data = $this->agent_model->update($data, $where);
+
+        echo json_encode($data);
+
+        $notification = $this->notification($this->input->post('id_agent'), 'Ditanda tangan oleh');
+        $this->notification_model->create($notification);
+    }
+
+    //Upload Formulir MOU
+    public function upload_mou()
+    {
         //Konfigurasi Upload
         $config['upload_path']         = './uploads/agents';
         $config['allowed_types']        = '*';
         $config['max_size']             = 0;
         $config['max_width']            = 0;
         $config['max_height']           = 0;
-        // $config['overwrite']            = FALSE; 
 
-        return $config;
+        $this->load->library('upload', $config);
+        
+        if (!$this->upload->do_upload('upload_mou')) {
+            echo $this->upload->display_errors();
+        } else {
+            $data_ticket = [
+                'date_verified_ttd' =>  date('Y-m-d H:i:s'),
+                'verified_by'       => $this->fungsi->user_login()->id_user
+            ];
+            $where = ['id_agent' => $this->input->post('id_agent')];
+            $this->ticket_model->update($data_ticket, $where);
+            $data['form_mou'] = $this->upload->data('file_name');
+            $this->agent_model->update($data, $where);
+
+            //Jika data tiket sudah diapprove namun belum di upload form pks, maka ketika user upload form mou, tiket kembali ke status `pending`
+            $id_agent = $this->ticket_model->get(['tickets.id_agent' => $this->input->post('id_agent')])->row();
+            if ($id_agent->status_ticket == 5 || $id_agent->status_ticket == 6) {
+                $data_ticket = ['status' => 2];
+                $this->ticket_model->update($data_ticket, ['id_agent' => $this->input->post('id_agent')]);
+            }
+
+            redirect($this->input->post('redirect'));
+        }
     }
+
+    
 }

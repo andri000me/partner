@@ -14,10 +14,11 @@ $('#kategori_produk').change(function() {
 $(document).ready(function() {
     $('#hide, .users').hide();
     var radioValue = $("input[name='cross_branch']:checked").val();
+    // var sudah_funding = $("input[name='sudah_funding']:checked").val();
     if (radioValue == 'Tidak') {
         $("#hide").hide();
         $(".users").show();
-        $('#pic_ttd, #surveyor').attr('required', 'required');
+        // $('#pic_ttd, #surveyor').attr('required', 'required');
         $('#cabang_cross').removeAttr('required');
     } else if (radioValue == 'Ya') {
         $("#hide").show()
@@ -279,43 +280,6 @@ $(".select2-limiting").select2({
 });
 </script>
 
-<!-- //Script untuk update tanda tangan pks -->
-<script>
-// $("#form_mou").hide();
-// alert($('.ttd_pks').val());
-if ($("input[name='ttd_pks']:checked").val() == 'Ya') {
-    $(".form_mou").show();
-} else {
-    $(".form_mou").hide();
-}
-//Update tanda tangan pks
-$(".ttd_pks").on('click', function() {
-    var ttd_pks = $(this).val();
-    var id_ticket = $('#id_ticket').val();
-
-    if (ttd_pks == 'Ya') {
-        $(".form_mou").show();
-    } else {
-        $(".form_mou").hide();
-    }
-
-    $.ajax({
-        type: "POST",
-        url: "<?= base_url('ticket/update_ttd') ?>",
-        dataType: "JSON",
-        data: {
-            ttd_pks: ttd_pks,
-            id_ticket: id_ticket
-        },
-        success: function(data) {
-            // alert('Success, \n ID Tiket: ' + id_ticket + '\n TTD: ' + ttd_pks);
-            // location.reload();
-        }
-    });
-    // return false;
-});
-</script>
-
 <script>
 var $table = $('.table-modal');
 if (window.innerWidth <= 600) $table.addClass('table-responsive');
@@ -382,7 +346,8 @@ function show_pic_ttd() {
     }
     $.ajax({
         type: 'post',
-        url: '<?= base_url('leads/get_user/') ?>' + cabang_cross,
+        url: '<?= base_url('
+        leads / get_user / ') ?>' + cabang_cross,
         // async: false,
         dataType: 'json',
         data: {

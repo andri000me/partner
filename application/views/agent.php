@@ -77,13 +77,13 @@
                             </td>
                             <td>
                                 <center>
-                                    <?php if($agent->status_ticket == 5){ ?>
-                                    <h6><span class="badge badge-success">Terverifikasi</span></h6>
-                                    <?php } else if($agent->status_ticket == 6) { ?>
+                                    <?php if($agent->status_ticket == 6) { ?>
                                     <h6><span class="badge badge-primary">Teraktivasi</span></h6>
+                                    <?php } else if($agent->status_ticket == 5){ ?>
+                                    <h6><span class="badge badge-success">Terverifikasi</span></h6>
                                     <?php } else if($agent->status_ticket == 4){ ?>
                                     <h6><span class="badge badge-danger">Ditolak</span></h6>
-                                    <?php } else if($agent->status_ticket < 4){ ?>
+                                    <?php } else if($agent->status_ticket <= 2){ ?>
                                     <h6><span class="badge badge-secondary">Belum Terverifikasi</span></h6>
                                     <?php } ?>
                                 </center>
@@ -91,11 +91,9 @@
                             <td>
                                 <center>
                                     <?php if($agent->ttd_pks == 'Ya'){ ?>
-                                    <h6><span class="badge badge-success">Sudah Tanda Tangan
-                                            Kerjasama</span></h6>
+                                    <h6><span class="badge badge-success">PKS</span></h6>
                                     <?php } else { ?>
-                                    <h6><span class="badge badge-danger">Belum Tanda Tangan
-                                            Kerjasama</span></h6>
+                                    <h6><span class="badge badge-danger">Non-PKS</span></h6>
                                     <?php } ?>
                                 </center>
                             </td>

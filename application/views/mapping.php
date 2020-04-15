@@ -14,15 +14,18 @@
 <div class="row">
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <a href="<?= base_url('Mapping_partner/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
+        <a href="<?= base_url('partner/create_mapping') ?>"><button
+                class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data Baru</button></a>
         <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Table Calon partner</h4>
-                <p class="text-muted m-b-30 text-size">Tekan Tombol Tambah Data baru untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Edit untuk mengedit data yang harus di ubah.</p>
-                <table id="datatable-kerjasama" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <p class="text-muted m-b-30 text-size">Tekan Tombol Tambah Data baru untuk menambahkan data yang baru
+                    dan data akan tersimpan di tabel, tekan tombol Edit untuk mengedit data yang harus di ubah.</p>
+                <table id="datatable-kerjasama" class="table table-striped table-bordered dt-responsive wrap text-size"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Usaha</th>
@@ -36,30 +39,30 @@
                     </thead>
                     <tbody>
                         <?php foreach ($data->result() as $mapping) { ?>
-                            <tr class="clickable-row" data-href="detail-partnership.html">
-                                <td>
-                                    <?= $mapping->nama_usaha ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->bidang_usaha ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->kategori_produk ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->alamat ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->email ?>
-                                </td>
-                                <td>
-                                    <?= $mapping->telepon ?>
-                                </td>
-                                <td>
-                                    <center><a href="<?= base_url('Mapping_partner/edit/' . $mapping->mapping_id) ?>" class="btn btn-secondary text-size">Detail</a></center>
-                                </td>
-                                <!-- <td></td> -->
-                            </tr>
+                        <tr class="clickable-row" data-href="detail-partnership.html">
+                            <td>
+                                <?= $mapping->nama_usaha ?>
+                            </td>
+                            <td>
+                                <?= $mapping->bidang_usaha ?>
+                            </td>
+                            <td>
+                                <?= $mapping->kategori_produk ?>
+                            </td>
+                            <td>
+                                <?= $mapping->alamat ?>
+                            </td>
+                            <td>
+                                <?= $mapping->email ?>
+                            </td>
+                            <td>
+                                <?= $mapping->telepon ?>
+                            </td>
+                            <td>
+                                <center><a href="<?= base_url('partner/edit_mapping/' . $mapping->id_partner) ?>"
+                                        class="btn btn-secondary text-size">Detail</a></center>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>

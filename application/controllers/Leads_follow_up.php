@@ -19,29 +19,6 @@ class Leads_follow_up extends CI_Controller
         check_not_login();
     }
 
-
-    //Get All data maintain partner
-    public function index()
-    {
-        $data = [
-            'data' => $this->leads_follow_up_model->get()
-        ];
-
-        // $this->template->load('template/index', 'maintain_partner', $data);
-    }
-
-    public function create($id)
-    {
-        $where = ['A.id_mapping_leads' => $id];
-
-        $data = [
-            'data'          => $this->mapping_leads_model->get($where)->row(),
-            // 'follow_up'      => $this->leads_follow_up_model->get($where)
-        ];
-
-        $this->template->load('template/index', 'leads-follow-up', $data);
-    }
-
     //Save Follow Up
     public function save()
     {
@@ -59,8 +36,8 @@ class Leads_follow_up extends CI_Controller
             //ID User yang mencatat leads follow up
             'id_user' => $this->fungsi->user_login()->id_user,
 
-            //ID Mapping Leads yang di follow-up
-            'id_mapping_leads' => $post['id_mapping_leads']
+            //ID Leads yang di follow-up
+            'id_leads' => $post['id_leads']
         ];
 
 

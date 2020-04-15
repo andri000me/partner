@@ -6,27 +6,26 @@ class Leads_model extends CI_Model
 
     public function create($data)
     {
-        $this->db->insert('leads', $data);
+        $this->db->insert('leads_full', $data);
         return $this->db->insert_id();
     }
 
     public function update($data, $where)
     {
-        $this->db->update('leads', $data, $where);
+        $this->db->update('leads_full', $data, $where);
     }
 
     public function delete($where)
     {
-        $this->db->delete('leads', $where);
+        $this->db->delete('leads_full', $where);
     }
 
     public function get($where = NULL)
     {
-        $this->db->select("*, mapping_leads.foto_usaha as foto_usaha_mapping");
-        $this->db->from('leads');
-        $this->db->join('mapping_leads', 'mapping_leads.id_mapping_leads = leads.id_mapping_leads', 'inner');
-        $this->db->join('users', 'users.id_user = mapping_leads.id_user', 'inner');
-        $this->db->join('branches', 'branches.id_branch = mapping_leads.id_branch', 'inner');
+        $this->db->select("*");
+        $this->db->from('leads_full');
+        $this->db->join('users', 'users.id_user = leads_full.id_user', 'inner');
+        $this->db->join('branches', 'branches.id_branch = leads_full.id_branch', 'inner');
         if ($where != null) {
             $this->db->where($where);
         }

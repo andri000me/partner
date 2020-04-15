@@ -32,7 +32,7 @@ class Maintain_partner extends CI_Controller
 
     public function create($id)
     {
-        $where = ['partners.id_partner' => $id];
+        $where = ['partners_full.id_partner' => $id];
 
         $data = [
             'data'          => $this->partner_model->get($where)->row(),
