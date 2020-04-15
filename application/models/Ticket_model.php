@@ -24,6 +24,9 @@ class Ticket_model extends CI_Model
     {
         $this->db->select("
         *,
+        tickets.id_agent as agent_id,
+        tickets.id_partner as partner_id,
+
         tickets.status as status_ticket,
         users.id_user as user_id,
         branches.id_branch as branch_id,
