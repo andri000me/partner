@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<title>Lexa - Responsive Bootstrap 4 Admin Dashboard</title>
+	<meta content="Admin Dashboard" name="description" />
+	<meta content="Themesbrand" name="author" />
+	<link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+	<!-- Dropzone css -->
+	<link href="../assets/plugins/css/dropzone.css" rel="stylesheet" type="text/css">
+
+	<!-- Plugins css -->
+	<link href="../assets/plugins/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+	<link href="../assets/plugins/css/bootstrap-datepicker.min.css" rel="stylesheet">
+	<link href="../assets/plugins/css/select2.min.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/css/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+	<link href="../assets/plugins/css/morris.css" rel="stylesheet" />
+	<link href="../assets/plugins/css/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+	<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/metismenu.min.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/icons.css" rel="stylesheet" type="text/css">
+	<link href="../assets/css/style.css" rel="stylesheet" type="text/css">
+
+	<!-- DataTables -->
+	<link href="../assets/plugins/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="../assets/plugins/css/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- Responsive datatable examples -->
+	<link href="../assets/plugins/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+	<!-- Begin page -->
+	<div id="wrapper">
+
+		<div class="topbar">
+
+			<!-- LOGO -->
+			<div class="topbar-left">
+				<a href="index.html" class="logo">
+					<span>
+						<img src="<?= base_url('template/assets/images/logo-light.png') ?>" alt="" height="18">
+					</span>
+					<i>
+						<img src="<?= base_url('template/assets/images/logo-sm.png') ?>" alt="" height="22">
+					</i>
+				</a>
+			</div>
+
+			<nav class="navbar-custom">
+
+				<ul class="navbar-right d-flex list-inline float-right mb-0">
+
+					<li class="dropdown notification-list">
+						<a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown" href="#"
+							role="button" aria-haspopup="false" aria-expanded="false">
+							<i class="ti-bell noti-icon"></i>
+							<span class="badge badge-pill badge-danger noti-icon-badge">3</span>
+						</a>
+						<div class="dropdown-menu dropdown-menu-right dropdown-menu-lg">
+							<!-- item-->
+							<h6 class="dropdown-item-text">
+								Notifications (258)
+							</h6>
+							<div class="slimscroll notification-item-list">
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item active">
+									<div class="notify-icon bg-success"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-info"><i class="mdi mdi-martini"></i></div>
+									<p class="notify-details">Your item is shipped<span class="text-muted">It is a long
+											established fact that a reader will</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-primary"><i class="mdi mdi-cart-outline"></i></div>
+									<p class="notify-details">Your order is placed<span class="text-muted">Dummy text of
+											the printing and typesetting industry.</span></p>
+								</a>
+								<!-- item-->
+								<a href="javascript:void(0);" class="dropdown-item notify-item">
+									<div class="notify-icon bg-danger"><i class="mdi mdi-message"></i></div>
+									<p class="notify-details">New Message received<span class="text-muted">You have 87
+											unread messages</span></p>
+								</a>
+							</div>
+							<!-- All-->
+							<a href="javascript:void(0);" class="dropdown-item text-center text-primary">
+								View all <i class="fi-arrow-right"></i>
+							</a>
+						</div>
+					</li>
+					<li class="dropdown notification-list">
+						<div class="dropdown notification-list nav-pro-img">
+							<a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown"
+								href="#" role="button" aria-haspopup="false" aria-expanded="false">
+								<img src="<?= base_url('template/assets/images/users/user-4.jpg') ?>" alt="user"
+									class="rounded-circle">
+							</a>
+							<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+								<!-- item-->
+								<a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i>
+									Profile</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item text-danger" href="<?= base_url('Auth/logout') ?>"><i
+										class="mdi mdi-power text-danger"></i> Logout</a>
+							</div>
+						</div>
+					</li>
+
+				</ul>
+
+				<ul class="list-inline menu-left mb-0">
+					<li class="float-left">
+						<button class="button-menu-mobile open-left waves-effect">
+							<i class="mdi mdi-menu"></i>
+						</button>
+					</li>
+					<li class="d-none d-sm-block">
+						<div class="dropdown pt-3 d-inline-block">
+							<a class="btn btn-light dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Create
+							</a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Another action</a>
+								<a class="dropdown-item" href="#">Something else here</a>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Separated link</a>
+							</div>
+						</div>
+					</li>
+				</ul>
+
+			</nav>
+
+
+		</div>
+		<!-- Top Bar End -->
+
+		<!-- ========== Left Sidebar Start ========== -->
+		<div class="left side-menu">
+			<div class="slimscroll-menu" id="remove-scroll">
+
+				<!--- Sidemenu -->
+				<div id="sidebar-menu">
+					<!-- Left Menu Start -->
+					<ul class="metismenu" id="side-menu">
+						<li class="menu-title">Informasi</li>
+						<li>
+							<a href="<?= base_url('Partner') ?>" class="waves-effect">
+								<i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="profile.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Profile </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ti-bell noti-icon"></i><span
+									class="badge badge-primary badge-pill float-right">2</span> <span> Notification
+								</span>
+							</a>
+						</li>
+
+						<li class="menu-title">Aktivitas Cabang</li>
+
+						<li>
+							<a href="tiket.html" class="waves-effect">
+								<i class="mdi ion-person"></i><span> Tiket </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi mdi-email-outline"></i><span> Leads <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="leads-mapping.html">Database</a></li>
+								<li><a href="leads.html">Prospect</a></li>
+							</ul>
+						</li>
+
+						<li>
+							<a href="javascript:void(0);" class="waves-effect"><i
+									class="mdi ion-person-stalker "></i><span> Kerjasama <span
+										class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+								</span></a>
+							<ul class="submenu">
+								<li><a href="mapping.html">Mapping Lokasi Partner</a></li>
+								<li><a href="partnership.html">Partnership</a></li>
+								<li><a href="agent.html">Agent / BA</a></li>
+							</ul>
+						</li>
+
+						<li class="menu-title">Bantuan HO</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-headphone  noti-icon"></i><span> Product Support </span>
+							</a>
+						</li>
+
+						<li>
+							<a href="<?= base_url('') ?>" class="waves-effect">
+								<i class="ion-ios7-paper-outline noti-icon"></i><span> NST </span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- Sidebar -->
+				<div class="clearfix"></div>
+
+			</div>
+			<!-- Sidebar -left -->
+
+		</div>
+		<!-- Left Sidebar End -->
+
+		<!-- ============================================================== -->
+		<!-- Start right Content here -->
+		<!-- ============================================================== -->
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="page-title-box ml-3">
+								<h4 class="page-title">Partnership</h4>
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+									<li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
+									<li class="breadcrumb-item active">Partnership</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-primary font-size gradient ml-3 mr-3" role="alert">
+								<div class="ml-4 mr-4 mt-4 mb-4">
+									<h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
+										menginput data</h5>
+									<p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen.
+										Data ini akan disimpan sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan
+										mengisi <b>Form verifikasi dan Survey.</b> Data ini akan diteruskan ke head di
+										cabang kemudian diassign ke CMS diisi datanya dengan lengkap.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-3">
+							<div class="ml-3 mr-3 mt-1">
+								<div class="left-bar ml-5">
+									<h5><b>Things To Fill</b></h5>
+									<p class="mt-3 mb-0 " style="font-size: 16px;">Personal Data</p>
+									<a type="button" data-toggle="collapse" data-target="#konsumen" aria-expanded="true"
+										aria-controls="collapseOne">
+										<p class="mt-1 personal-sudah" style="color: #7f8c8d;"><i
+												class="fas fa-check-circle fa-lg text-success"></i>&nbsp;&nbsp;&nbsp;Data
+											Lengkap</p>
+										<p class="mt-1 personal-belum" style="color: #7f8c8d;"><i
+												class="fas fa-times-circle fa-lg text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+											Belum
+											Lengkap</p>
+									</a>
+									<p class="mb-0 " style="font-size: 16px;">Detail Data</p>
+									<a type="button" data-toggle="collapse" data-target="#condition"
+										aria-expanded="true" aria-controls="collapseOne">
+										<p class="mt-1 personal-sudah" style="color: #7f8c8d;"><i
+												class="fas fa-check-circle fa-lg text-success"></i>&nbsp;&nbsp;&nbsp;Data
+											Lengkap</p>
+										<p class="mt-1 personal-belum" style="color: #7f8c8d;"><i
+												class="fas fa-times-circle fa-lg text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+											Belum
+											Lengkap</p>
+									</a>
+
+									<p class="mb-0 " style="font-size: 16px;">Product Purpose</p>
+									<a type="button" data-toggle="collapse" data-target="#purpose" aria-expanded="true"
+										aria-controls="collapseOne">
+										<p class="mt-1 personal-sudah" style="color: #7f8c8d;"><i
+												class="fas fa-check-circle fa-lg text-success"></i>&nbsp;&nbsp;&nbsp;Data
+											Lengkap</p>
+										<p class="mt-1 personal-belum" style="color: #7f8c8d;"><i
+												class="fas fa-times-circle fa-lg text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+											Belum
+											Lengkap</p>
+									</a>
+
+									<p class="mb-0 " style="font-size: 16px;">Branch Analysis</p>
+									<a type="button" data-toggle="collapse" data-target="#analysis" aria-expanded="true"
+										aria-controls="collapseOne">
+										<p class="mt-1 personal-sudah" style="color: #7f8c8d;"><i
+												class="fas fa-check-circle fa-lg text-success"></i>&nbsp;&nbsp;&nbsp;Data
+											Lengkap</p>
+										<p class="mt-1 personal-belum" style="color: #7f8c8d;"><i
+												class="fas fa-times-circle fa-lg text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+											Belum
+											Lengkap</p>
+									</a>
+
+									<h5 class="mt-4"><b>Documents</b></h5>
+
+									<p class="mt-3"></p><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Kartu
+									Tanda Penduduk</p>
+									<p class="mt-1"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Kartu
+										Keluarga</p>
+									<p class="mt-1"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;buntu
+										Penghasilan</p>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-md-9">
+							<form action="#">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="accordion ml-3 mr-3" id="accordionExample">
+											<div class="card">
+												<div id="konsumen" class="collapse show"
+													data-parent="#accordionExample">
+													<div class="card-body">
+														<h4 class="ml-3 mb-4">Data Konsumen</h4>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-row">
+																	<div class="col-md-12">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Leads ID</label>
+																			<input type="text"
+																				class="form-control text-size placement konsumen"
+																				name="leads_id" id="leads_id" value=""
+																				required placeholder="202001SLOS123456"
+																				minlength="16" maxlength="16">
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row mb-3">
+																	<div class="col-md-12">
+																		<div class="ml-3 mr-3">
+																			<label>Nama Lengkap</label>
+																			<div class="input-group">
+																				<input type="text"
+																					class="form-control text-size konsumen"
+																					name="nama_konsumen"
+																					id="nama_konsumen" value="" required
+																					placeholder="Ibrahim Ahmad"
+																					aria-label="Recipient's username"
+																					aria-describedby="button-addon2">
+																				<div class="input-group-append">
+																					<button
+																						class="btn btn-danger text-size"
+																						type="button"
+																						id="reset">Hapus</button>
+																					<button
+																						class="btn btn-primary text-size"
+																						type="button" id=""
+																						data-toggle="modal"
+																						data-target="#modal-leads">Cari</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Nomor KTP</label>
+																			<input type="phone"
+																				class="form-control text-size placement number-only konsumen"
+																				name="no_ktp" id="no_ktp" value=""
+																				required
+																				placeholder="0000 0000 0000 0000"
+																				minlength="16" maxlength="16" />
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3 ml-3 mr-3">
+																			<label>Nomor Handphone</label>
+																			<input type="text"
+																				class="form-control text-size placement number-only konsumen"
+																				name="telepon" id="telepon" value=""
+																				required placeholder="0896 5533 985"
+																				maxlength="15" />
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group text-size ml-3 mr-3">
+																			<label>Pekerjaan Konsumen?</label><br>
+																			<div
+																				class="form-check form-check-inline mt-2">
+																				<input class="form-check-input konsumen"
+																					type="radio" name="cross_branch"
+																					id="cross_branch" required
+																					value="Karyawan">
+																				<label class="form-check-label">
+																					Karyawan
+																				</label>
+																			</div>
+																			<div class="form-check form-check-inline">
+																				<input class="form-check-input konsumen"
+																					type="radio" name="cross_branch"
+																					id="cross_branch" required
+																					value="Wiraswasta">
+																				<label class="form-check-label">
+																					Wiraswasta
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="col-md-12">
+																			<div class="form-group">
+																				<label>Status Konsumen</label>
+																				<select
+																					class="form-control text-size  konsumen"
+																					name="status_konsumen"
+																					id="status_konsumen" required>
+																					<option selected value="">Pilih
+																						Status Konsumen</option>
+																					<option value="New Customer">New
+																						Customer</option>
+																					<option value="RO Expire">RO Expire
+																					</option>
+																					<option value="RO Active">RO Active
+																					</option>
+																				</select>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Tanggal Lahir</label>
+																			<input type="date"
+																				class="form-control text-size"
+																				name="tanggal_lahir" id="tanggal_lahir"
+																				placeholder="Tanggal lahir">
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Status Pernikahan</label>
+																			<select class="form-control text-size"
+																				name="status_pernikahan"
+																				id="status_pernikahan" required>
+																				<option selected value="">Pilih Status
+																					Pernikahan</option>
+																				<option value="Sudah Menikah">Sudah
+																					Menikah</option>
+																				<option value="Belum Menikah">Belum
+																					Menikah</option>
+																				<option value="Janda /  Duda">Janda /
+																					Duda</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row pasangan">
+																	<div class="col-md-12">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Nama Pasangan</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="nama_pasangan" id="nama_pasangan"
+																				placeholder="Nama Pasangan">
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-row">
+																	<div class="col-md-12">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Asal Aplikasi</label>
+																			<select class="form-control text-size"
+																				name="soa" id="soa" required>
+																				<option selected value="">Pilih Source
+																					Aplikasi</option>
+																				<option value="Direct Selling">Direct
+																					Selling</option>
+																				<option value="Tour & travel">Tour &
+																					travel
+																				</option>
+																				<option value="Penyedia Jasa">Penyedia
+																					Jasa
+																				</option>
+																				<option value="Agent BA">Agent BA
+																				</option>
+																				<option value="EGC">EGC</option>
+																				<option value="CGC">CGC</option>
+																				<option value="Digital Marketing">
+																					Digital
+																					Marketing</option>
+																				<option value="Website BFI Syariah">
+																					Website
+																					BFI Syariah</option>
+																				<option value="RO">RO</option>
+																				<option value="Walk In">Walk In</option>
+																				<option value="Event Promotion">Event
+																					Promotion</option>
+																				<option value="Tele Marketing">Tele
+																					Marketing</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-12 event">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Nama Event</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="nama_event" id="nama_event"
+																				value="" placeholder="Input Nama Event">
+																		</div>
+																	</div>
+																	<div class="col-md-12 form-agent mb-3">
+																		<div class="ml-3 mr-3">
+																			<label class="gent">Pilih Data Agent</label>
+																			<div class="input-group">
+																				<input type="text"
+																					class="form-control text-size"
+																					name="data_agent" id="data_agent"
+																					value=""
+																					aria-label="Recipient's username"
+																					aria-describedby="button-addon2"
+																					readonly>
+																				<div class="input-group-append">
+																					<button
+																						class="btn btn-primary btn-data text-size"
+																						type="button"
+																						id="btn-data-agent"
+																						data-toggle="modal"
+																						data-target="">Cari</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-12 form mb-3">
+																		<div class="ml-3 mr-3">
+																			<label class="travel">Pilih Data
+																				Travel</label>
+																			<label class="jasa">Pilih Data Penyedia
+																				Jasa</label>
+																			<label class="vendor">Pilih Data
+																				Partner</label>
+																			<div class="input-group">
+																				<input type="text"
+																					class="form-control text-size"
+																					name="data_partner"
+																					id="data_partner" value=""
+																					aria-label="Recipient's username"
+																					aria-describedby="button-addon2"
+																					readonly>
+																				<div class="input-group-append">
+																					<button
+																						class="btn btn-primary btn-data text-size"
+																						type="button" id="btn-data"
+																						data-toggle="modal"
+																						data-target="">Cari</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-6 nik">
+																		<div class="form-group ml-3 mr-3">
+																			<label>NIK</label>
+																			<input type="phone"
+																				class="form-control text-size placement number-only"
+																				name="nik_egc" id="nik_egc" value=""
+																				placeholder="072104" minlength="6"
+																				maxlength="7" />
+																		</div>
+																	</div>
+																	<div class="col-md-6 posisi">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Posisi</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="posisi_egc" id="posisi_egc"
+																				value="" placeholder="Input Posisi">
+																		</div>
+																	</div>
+																	<div class="col-md-12 cabang">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Cabang</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="cabang_egc" id="cabang_egc"
+																				value="" placeholder="Input Cabang">
+																		</div>
+																	</div>
+																	<div class="col-md-6 kontrak-ro">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Nomor Kontrak</label>
+																			<input type="phone"
+																				class="form-control text-size placement number-only"
+																				name="nomor_kontrak" id="nomor_kontrak"
+																				value="" placeholder="087883774"
+																				minlength="10" maxlength="10" />
+																		</div>
+																	</div>
+																	<div class="col-md-6 konsumen-ro">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Nama Konsumen</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="referral_konsumen"
+																				id="referral_konsumen" value=""
+																				placeholder="Input Nama konsumen">
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Kategori Produk</label>
+																			<select class="form-control text-size"
+																				name="produk" id="produk" required>
+																				<option selected value="">Pilih Kategori
+																					Produk</option>
+																				<option value="My Ihram">My Ihram
+																				</option>
+																				<option value="My Safar">My Safar
+																				</option>
+																				<option value="My Talim">My Talim
+																				</option>
+																				<option value="My Hajat">My Hajat
+																				</option>
+																				<option value="My Faedah">My Faedah
+																				</option>
+																				<option value="My CarS">My CarS</option>
+																			</select>
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Barang / Jasa Yang Dipesan</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="detail_produk" id="detail_produk"
+																				value="" required
+																				placeholder="Infokan Nama Produk" />
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group text-size ml-3 mr-3">
+																			<label>Konsumen Cross Branch?</label><br>
+																			<div
+																				class="form-check form-check-inline mt-2">
+																				<input
+																					class="form-check-input cross_branch"
+																					type="radio" name="cross_branch"
+																					id="cross_branch" required
+																					value="Ya">
+																				<label class="form-check-label">
+																					Ya
+																				</label>
+																			</div>
+																			<div class="form-check form-check-inline">
+																				<input
+																					class="form-check-input cross_branch"
+																					type="radio" name="cross_branch"
+																					id="cross_branch" required
+																					value="Tidak">
+																				<label class="form-check-label">
+																					Tidak
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Telah Dihubungi Melalui</label>
+																			<select class="form-control text-size"
+																				name="follow_up_by" id="follow_up_by"
+																				required>
+																				<option selected disabled value="">
+																					Hubungi Melalui</option>
+																				<option value="Kunjungan">Kunjungan
+																				</option>
+																				<option value="Telepon">Telepon</option>
+																				<option value="Whatsapp">Whatsapp
+																				</option>
+																				<option value="Email">Email</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-12">
+																		<div id="hide" class="form-group ml-3 mr-3">
+																			<label>Pilih Cabang Tujuan</label>
+																			<select class="form-control text-size"
+																				name="cabang_cross" id="cabang_cross">
+																				<option selected disabled value="">Pilih
+																					Cabang</option>
+																				<?php foreach ($branches->result() as $branch) { ?>
+																				<?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
+																				<option
+																					<?= set_value('cabang_cross') == $branch->id_branch ? 'selected' : '' ?>
+																					value="<?= $branch->id_branch ?>">
+																					<?= $branch->nama_cabang ?></option>
+																				<?php } ?>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row users">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Pic Tanda Tangan</label>
+																			<select class="form-control text-size"
+																				name="pic_ttd" id="pic_ttd">
+																				<option value="" selected>Pilih PIC
+																					Tanda tangan</option>
+																				<optgroup id="show_pic_ttd">
+
+																				</optgroup>
+																			</select>
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Surveyor</label>
+																			<select class="form-control text-size"
+																				name="surveyor" id="surveyor">
+																				<option value="" selected>Pilih Surveyor
+																				</option>
+																				<optgroup id="show_surveyor">
+
+																				</optgroup>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row mb-3">
+																	<div class="col-md-12">
+																		<div class="ml-3 mr-3">
+																			<label>Rencana Funding</label>
+																			<div class="input-group flex-nowrap">
+																				<div class="input-group-prepend">
+																					<span
+																						class="input-group-text text-size"
+																						id="addon-wrapping">Rp.</span>
+																				</div>
+																				<input type="text"
+																					class="form-control text-size number-only"
+																					name="nilai_funding"
+																					id="nilai_funding"
+																					data-type="currency" value=""
+																					required placeholder="300,000,000"
+																					aria-label="Username"
+																					aria-describedby="addon-wrapping">
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div id="condition" class="collapse" data-parent="#accordionExample">
+													<div class="card-body">
+														<h4>Condition</h4>
+														<div class="row">
+															<div class="col-md-6">
+																<div class="form-group ml-3 mr-3">
+																	<label>Nama Perusahaan Saat Ini</label>
+																	<input type="text" class="form-control text-size"
+																		name="nama_perusahaan" id="nama_perusahaan"
+																		placeholder="PT BFI Finance Indonesia"
+																		required />
+																</div>
+																<div class="form-row">
+																	<div class="col-md-4">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Tahun Berdiri</label>
+																			<input type="text"
+																				class="form-control text-size number-only placement"
+																				name="tahun_berdiri" id="tahun_berdiri"
+																				placeholder="2020" minlength="4"
+																				maxlength="4" required />
+																		</div>
+																	</div>
+																	<div class="col-md-4">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Total karyawan</label>
+																			<input type="text"
+																				class="form-control text-size number-only"
+																				name="total_karyawan"
+																				id="total_karyawan" placeholder="5000"
+																				required />
+																		</div>
+																	</div>
+																	<div class="col-md-4">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Lama Bekerja</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="lama_bekerja" id="lama_bekerja"
+																				placeholder="5000" required />
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Bidang Usaha</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="bidang_usaha" id="bidang_usaha"
+																				placeholder="Pertambangan" required />
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Status Karyawan</label>
+																			<select class="form-control text-size"
+																				name="status_karyawan"
+																				id="status_karyawan" required>
+																				<option selected value="">Pilih Status
+																					Karyawan
+																				</option>
+																				<option value="Tetap">Tetap</option>
+																				<option value="Kontrak">Kontrak</option>
+																				<option value="Magang">Magang</option>
+																				<option value="Honorer">Honorer</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Jabatan</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="jabatan" id="jabatan"
+																				placeholder="Staf" />
+																		</div>
+																	</div>
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Pembayaran Gaji Via</label>
+																			<select class="form-control text-size"
+																				name="metode_pembayaran_gaji"
+																				id="metode_pembayaran_gaji" required>
+																				<option selected value="">Pilih Metode
+																				</option>
+																				<option value="Tunai">Tunai</option>
+																				<option value="Tranfer">Tranfer</option>
+																				<option value="Lainnya">Lainnya</option>
+																			</select>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-md-6">
+																<div class="form-group ml-3 mr-3">
+																	<label>Nama Perusahaan Sebelumnya</label>
+																	<input type="text" class="form-control text-size"
+																		name="nama_perusahaan_sebelum"
+																		id="nama_perusahaan_sebelum"
+																		placeholder="PT BFI Finance Indonesia"
+																		required />
+																</div>
+																<div class="form-row">
+																	<div class="col-md-6">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Bidang Usaha</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="bidang_usaha_sebelum"
+																				id="bidang_usaha_sebelum"
+																				placeholder="Pertambangan" required />
+																		</div>
+																	</div>
+																	<div class="col-md-4">
+																		<div class="form-group ml-3 mr-3">
+																			<label>Lama Bekerja</label>
+																			<input type="text"
+																				class="form-control text-size"
+																				name="lama_bekerja_sebelum"
+																				id="lama_bekerja_sebelum"
+																				placeholder="5000" required />
+																		</div>
+																	</div>
+																</div>
+																<div class="form-group ml-3 mr-3">
+																	<label>Jabatan</label>
+																	<input type="text" class="form-control text-size"
+																		name="jabatan_sebelum" id="jabatan_sebelum"
+																		placeholder="Staf" required />
+																</div>
+															</div>
+
+														</div>
+													</div>
+												</div>
+
+												<div id="purpose" class="collapse" data-parent="#accordionExample">
+													<div class="card-body">
+														Anim pariatur cliche reprehenderit, enim eiusmod high life
+														accusamus terry richardson ad squid. 3 wolf moon officia aute,
+														non cupidatat skateboard dolor brunch. Food truck quinoa
+														nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+														put a bird on it squid single-origin coffee nulla assumenda
+														shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+														wes anderson cred nesciunt sapiente ea proident. Ad vegan
+														excepteur butcher vice lomo. Leggings occaecat craft beer
+														farm-to-table, raw denim aesthetic synth nesciunt you probably
+														haven't heard of them accusamus labore sustainable VHS.
+													</div>
+												</div>
+
+												<div id="analysis" class="collapse" data-parent="#accordionExample">
+													<div class="card-body">
+														Anim pariatur cliche reprehenderit, enim eiusmod high life
+														accusamus terry richardson ad squid. 3 wolf moon officia aute,
+														non cupidatat skateboard dolor brunch. Food truck quinoa
+														nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+														put a bird on it squid single-origin coffee nulla assumenda
+														shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+														wes anderson cred nesciunt sapiente ea proident. Ad vegan
+														excepteur butcher vice lomo. Leggings occaecat craft beer
+														farm-to-table, raw denim aesthetic synth nesciunt you probably
+														haven't heard of them accusamus labore sustainable VHS.
+													</div>
+												</div>
+
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div> <!-- container-fluid -->
+			</div> <!-- content -->
+		</div>
+
+		<!-- Modal Mapping Leads -->
+		<div class="modal fade bd-example-modal-xl" id="modal-leads" tabindex="-1" role="dialog"
+			aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-xl">
+				<div class="modal-content">
+					<div class="modal-body" style="height:700px;">
+						<div class="modal-header mb-2">
+							<h4 class="modal-title">Cari Data Leads</h4>
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+						</div>
+						<table
+							class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+							style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+							<thead>
+								<tr>
+									<th>
+										<div class="text-size">Nama Lengkap</div>
+									</th>
+									<th>
+										<div class="text-size">Nomor Telepon</div>
+									</th>
+									<th>
+										<div class="text-size">Asal Aplikasi</div>
+									</th>
+									<th>
+										<div class="text-size">Produk</div>
+									</th>
+									<th>
+										<div class="text-size">Aksi</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($mappings->result() as $mapping) { ?>
+								<tr>
+									<td>
+										<div class="text-size"><?= $mapping->nama_konsumen ?></div>
+									</td>
+									<td>
+										<div class="text-size"><?= $mapping->telepon ?></div>
+									</td>
+									<td>
+										<div class="text-size"><?= $mapping->soa ?></div>
+									</td>
+									<td>
+										<div class="text-size"><?= $mapping->produk ?></div>
+									</td>
+									<td>
+										<center><button class="btn btn-primary pilih-leads" id="search"
+												data-mapping="<?= $mapping->mapping_id ?>"
+												data-nama="<?= $mapping->nama_konsumen ?>"
+												data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>"
+												data-produk="<?= $mapping->produk ?>"
+												data-detail="<?= $mapping->detail_produk ?>"
+												data-event="<?= $mapping->nama_event ?>"
+												data-kontrak="<?= $mapping->nomor_kontrak ?>"
+												data-referral="<?= $mapping->referral_konsumen ?>"
+												data-nikegc="<?= $mapping->nik_egc ?>"
+												data-posisiegc="<?= $mapping->posisi_egc ?>"
+												data-cabangegc="<?= $mapping->cabang_egc ?>"
+												data-partner="<?= $mapping->id_mapping ?>"
+												data-namapartner="<?= $mapping->nama_partner ?>"
+												data-namaagent="<?= $mapping->nama_agent ?>"
+												data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
+									</td>
+								</tr>
+								<?php } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Modal -->
+
+	</div>
+	<!-- END wrapper -->
+
+
+	<!-- jQuery  -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/bootstrap.bundle.min.js"></script>
+	<script src="../assets/js/metisMenu.min.js"></script>
+	<script src="../assets/js/jquery.slimscroll.js"></script>
+	<script src="../assets/js/waves.min.js"></script>
+	<script src="../assets/js/common_scripts_min.js"></script>
+
+	<script src="../assets/plugins/js/jquery.sparkline.min.js"></script>
+
+	<!-- Plugins js -->
+	<script src="../assets/plugins/js/bootstrap-colorpicker.min.js"></script>
+	<script src="../assets/plugins/js/bootstrap-datepicker.js"></script>
+	<script src="../assets/plugins/js/select2.min.js"></script>
+	<script src="../assets/plugins/js/bootstrap-maxlength.min.js"></script>
+	<script src="../assets/plugins/js/bootstrap-filestyle.min.js"></script>
+	<script src="../assets/plugins/js/jquery.bootstrap-touchspin.min.js"></script>
+
+	<!-- Sweet-Alert  -->
+	<script src="../assets/plugins/js/sweetalert2.min.js"></script>
+	<script src="../assets/pages/sweet-alert.init.js"></script>
+
+	<!--Dropzone-->
+	<script src="../assets/plugins/js/dropzone.js"></script>
+
+	<!-- Plugins Init js -->
+	<script src="../assets/pages/form-advanced.js"></script>
+
+	<!-- Required datatable js -->
+	<script src="../assets/plugins/js/jquery.dataTables.min.js"></script>
+	<script src="../assets/plugins/js/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Buttons examples -->
+	<script src="../assets/plugins/js/dataTables.buttons.min.js"></script>
+	<script src="../assets/plugins/js/buttons.bootstrap4.min.js"></script>
+	<script src="../assets/plugins/js/jszip.min.js"></script>
+	<script src="../assets/plugins/js/pdfmake.min.js"></script>
+	<script src="../assets/plugins/js/vfs_fonts.js"></script>
+	<script src="../assets/plugins/js/buttons.html5.min.js"></script>
+	<script src="../assets/plugins/js/buttons.print.min.js"></script>
+	<script src="../assets/plugins/js/buttons.colVis.min.js"></script>
+
+	<!-- Responsive examples -->
+	<script src="../assets/plugins/js/dataTables.responsive.min.js"></script>
+	<script src="../assets/plugins/js/responsive.bootstrap4.min.js"></script>
+
+	<!-- Datatable init js -->
+	<script src="../assets/pages/datatables.init.js"></script>
+
+	<!--Morris Chart-->
+	<script src="../assets/plugins/js/morris.min.js"></script>
+	<script src="../assets/plugins/js/raphael-min.js"></script>
+	<script src="../assets/pages/dashboard.js"></script>
+
+	<!-- App js -->
+	<script src="../assets/js/app.js"></script>
+
+	<script>
+		$('.personal-sudah, .detail-sudah, .product-sudah, .branch-sudah').hide();
+
+		$(".konsumen").on("keypress keydown keyup", function () {
+			var empty = [];
+			$(".konsumen").each(function () {
+				empty.push($(this).val());
+			})
+			console.log(empty)
+			//
+			if (!empty.includes('')) {
+				$('.personal-belum').hide();
+				$('.personal-sudah').show();
+			} else {
+				$('.personal-belum').show();
+				$('.personal-sudah').hide();
+			}
+		});
+
+	</script>
+
+	<script>
+		$('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
+			.hide();
+		source_leads();
+		$('#soa').change(function () {
+			source_leads();
+			$('#id_partner').val("");
+			$('#id_agent').val("");
+			$('#nama_vendor').val("").removeAttr("required");
+			$('#nama_event').val("");
+			$('#data_partner').val("");
+			$('#data_agent').val("");
+			$('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+		})
+
+		function source_leads() {
+			if ($('#soa').val() == 'Direct Selling') {
+				$('.vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+				$('#btn-data').attr('data-target', '#modal-partner');
+				// $('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Tour & travel') {
+				$('.travel, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Travel')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				$('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Penyedia Jasa') {
+				$('.jasa, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				$('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Agent BA') {
+				$('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				$('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+				$('#btn-data-agent').attr('data-target', '#modal-agent')
+				// $('#data_partner, #data_agent').attr('required', 'required');
+				$('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr(
+					'required', 'required');
+				$('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'EGC') {
+				$('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+				$('#btn-data').attr('data-target', '#modal-partner');
+				$('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
+				$('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'RO') {
+				$('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+				$('#btn-data').attr('data-target', '#modal-partner');
+				$('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+				$('#status_konsumen').val('RO Active');
+			} else if ($('#soa').val() == 'CGC') {
+				$('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+				$('#btn-data').attr('data-target', '#modal-partner');
+				$('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Digital Marketing') {
+				$('.vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				// $('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Website BFI Syariah') {
+				$('.vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				// $('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Walk In') {
+				$('.vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				// $('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Event Promotion') {
+				$('.event, .vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				$('#nama_event').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr(
+					'required', 'required');
+				$('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else if ($('#soa').val() == 'Tele Marketing') {
+				$('.vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+				$('#btn-data').attr('data-target', '#modal-partner')
+				// $('#data_partner').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+					.removeAttr('required', 'required');
+				$('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#status_konsumen').val('');
+			} else {
+				$('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+					.hide();
+				$('#data_partner, #data_agent').removeAttr('required', 'required');
+				$('#status_konsumen').val('');
+			}
+		}
+
+		$(".readonly").keydown(function (e) {
+			e.preventDefault();
+		});
+
+	</script>
+
+	<script>
+		// alert($("#id_mapping_leads").val());
+		$('#reset').hide();
+		if ($("#id_mapping_leads").val()) {
+			$('#nama_konsumen').attr('readonly', 'readonly');
+			$('#reset').show();
+		}
+
+		$('#reset').click(function () {
+			$('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
+				.val("");
+			$('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
+				.hide();
+			$('#nama_konsumen').removeAttr('readonly');
+		})
+
+	</script>
+
+	<script>
+		$('.kontrak, .pasangan').hide();
+
+		$('#status_konsumen').change(function () {
+			if ($('#status_konsumen').val() == "RO Active") {
+				$('#soa').val('RO')
+				$('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+				$('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+				$('#btn-data').attr('data-target', '#modal-partner');
+				$('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+				$('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+			} else {}
+
+		})
+
+		$('#status_pernikahan').change(function () {
+			if ($('#status_pernikahan').val() == "Sudah Menikah") {
+				$('.pasangan').show();
+				$('#nama_pasangan').attr('required', 'required');
+			} else {
+				$('.pasangan').hide();
+				$('#nama_pasangan').removeAttr('required', ' ');
+			}
+
+		})
+
+	</script>
+
+	<script>
+		$(document).ready(function () {
+			$('#hide, .users').hide();
+			var radioValue = $("input[name='cross_branch']:checked").val();
+			if (radioValue == 'Tidak') {
+				$("#hide").hide();
+				$(".users").show();
+				$('#pic_ttd, #surveyor').attr('required', 'required');
+				$('#cabang_cross').removeAttr('required');
+			} else if (radioValue == 'Ya') {
+				$("#hide").show()
+				$('.users').hide();
+				$('#cabang_cross').attr('required', 'required');
+				$('#pic_ttd, #surveyor').removeAttr('required');
+			}
+			//Jika form prospek bukan cross branch (milik sendiri) 
+			if ($("input[name='cross_branch']:checked").val() == 'Ya' && $("#id_branch").val() == $(
+					"#id_cabang_cross").val()) {
+				//meng-aktifkan form surveyor & pic ttd
+				$("#surveyor, #pic_ttd").removeAttr('disabled');
+				$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+			} else if ($("input[name='cross_branch']:checked").val() == 'Tidak' && $("#id_branch").val() != $(
+					"#id_cabang_cross").val()) {
+				$("#surveyor, #pic_ttd").removeAttr('disabled');
+				$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+			}
+
+			function sudah_funding() {
+
+				var cross_branch = $("input[name='cross_branch']:checked").val();
+				var sudah_funding = $("input[name='sudah_funding']:checked").val();
+
+				if (cross_branch == 'Ya') {
+
+					$('#hide').show();
+					$('.users').hide();
+
+					$('#cabang_cross').attr('required', 'required');
+					$('#pic_ttd, #surveyor').removeAttr('required');
+
+					$("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+					$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled');
+				} else if (cross_branch == 'Tidak') {
+					$('#hide').hide();
+					$(".users").show();
+
+					$("#cabang_cross").val("");
+					$('#cabang_cross').removeAttr('required');
+					$('#pic_ttd, #surveyor').attr('required', 'required');
+
+					if (sudah_funding == 'Sudah') {
+						// alert(sudah_funding);
+						$("#surveyor, #pic_ttd").removeAttr('disabled');
+						$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").attr('disabled', 'disabled');
+					} else if (sudah_funding == 'Belum') {
+						// alert(sudah_funding);
+						$("#surveyor, #pic_ttd").attr('disabled', 'disabled');
+						$("input:hidden[name='surveyor'], input:hidden[name='pic_ttd']").removeAttr('disabled').val(
+							"");
+					}
+					show_pic_ttd();
+				}
+			}
+
+			if ($("#id_branch").val() != $("#id_cross_branch").val()) {
+				sudah_funding();
+			}
+
+			$("input[name='cross_branch'], input[name='sudah_funding']").click(function () {
+				sudah_funding();
+			})
+		})
+
+	</script>
+
+</body>
+
+</html>
