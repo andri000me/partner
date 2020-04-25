@@ -343,11 +343,11 @@ function show_pic_ttd() {
     var cabang_cross = $("#cabang_cross").val();
     if (cabang_cross == null || cabang_cross == '') {
         cabang_cross = $("#id_branch").val();
+
     }
     $.ajax({
         type: 'post',
-        url: '<?= base_url('
-        leads / get_user / ') ?>' + cabang_cross,
+        url: '<?= base_url() ?>' + 'leads/get_user/' + cabang_cross,
         // async: false,
         dataType: 'json',
         data: {
@@ -364,7 +364,7 @@ function show_pic_ttd() {
         },
         error: function(xhr, status, error) {
             // var err = eval("(" + xhr.responseText + ")");
-            alert(error);
+            // alert(error);
         }
     });
 }

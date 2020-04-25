@@ -187,6 +187,11 @@ class Leads extends CI_Controller
             $data = [
                 // ------ LEADS DATABASE
                 'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
+                'pekerjaan_konsumen'    => !empty($post['pekerjaan_konsumen']) ? $post['pekerjaan_konsumen'] : NULL,
+                'status_konsumen'       => !empty($post['status_konsumen']) ? $post['status_konsumen'] : NULL,
+                'tanggal_lahir'         => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
+                'status_pernikahan'     => !empty($post['status_pernikahan']) ? $post['status_pernikahan'] : NULL,
+                'nama_pasangan'         => !empty($post['nama_pasangan']) ? $post['nama_pasangan'] : NULL,
                 'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
                 'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
                 'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
@@ -375,6 +380,11 @@ class Leads extends CI_Controller
         $data = [
             // ------ LEADS DATABASE
             'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
+            'pekerjaan_konsumen'    => !empty($post['pekerjaan_konsumen']) ? $post['pekerjaan_konsumen'] : NULL,
+            'status_konsumen'       => !empty($post['status_konsumen']) ? $post['status_konsumen'] : NULL,
+            'tanggal_lahir'         => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
+            'status_pernikahan'     => !empty($post['status_pernikahan']) ? $post['status_pernikahan'] : NULL,
+            'nama_pasangan'         => !empty($post['nama_pasangan']) ? $post['nama_pasangan'] : NULL,
             'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,

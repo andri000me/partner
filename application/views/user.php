@@ -22,9 +22,11 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Table Data Karyawan Cabang</h4>
                 <!-- <p class="text-muted m-b-30 text-size">Tekan tombol Transfer Perdata untuk memindahkan data tertentu atau Tekan tombol transfer Semua Data untuk memindahkan semua data.</p> -->
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap text-size"
+                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
+                            <th>Foto</th>
                             <th>Nama</th>
                             <th>NIK</th>
                             <th>Jabatan</th>
@@ -36,37 +38,50 @@
                     </thead>
                     <tbody>
                         <?php foreach ($users->result() as $user) { ?>
-                            <tr>
-                                <td>
-                                    <?= $user->name ?>
-                                </td>
-                                <td>
-                                    <?= $user->nik ?>
-                                </td>
-                                <td>
-                                    <?= $user->jabatan ?>
-                                </td>
-                                <td>
-                                    <?= $user->nama_cabang ?>
-                                </td>
-                                <td>
-                                    <center>
-                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger">Non Aktif</span></h6>' : '<h6><span class="badge badge-success">Aktif</span></h6>' ?>
-                                    </center>
-                                </td>
-                                <td>
-                                    <center>
-                                        <a class="btn btn-primary text-size detail-user" style="color: white;" data-toggle="modal" data-target="#myModal" data-id="<?= $user->id_user ?>" data-name="<?= $user->name ?>" data-email="<?= $user->email ?>" data-nik="<?= $user->nik ?>" data-level="<?= $user->level ?>" data-branch="<?= $user->id_branch ?>" data-foto="<?= $user->foto ?>" data-active="<?= $user->is_active ?>" data-tanggal="<?= $user->tanggal_daftar ?>">
-                                            Detail
-                                        </a>
-                                        <!-- <form method="post" action="<?= base_url('User/del') ?>">
+                        <tr>
+                            <td>
+                                <div class="zoom-gallery">
+                                    <a href="<?= base_url('uploads/foto_profil/' . $user->foto) ?>"><img
+                                            src="<?= base_url('uploads/foto_profil/' . $user->foto) ?>" alt=""
+                                            style="height:50px; width:50px;"></a>
+                                </div>
+                            </td>
+                            <td>
+                                <?= $user->name ?>
+                            </td>
+                            <td>
+                                <?= $user->nik ?>
+                            </td>
+                            <td>
+                                <?= $user->jabatan ?>
+                            </td>
+                            <td>
+                                <?= $user->nama_cabang ?>
+                            </td>
+                            <td>
+                                <center>
+                                    <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger">Non Aktif</span></h6>' : '<h6><span class="badge badge-success">Aktif</span></h6>' ?>
+                                </center>
+                            </td>
+                            <td>
+                                <center>
+                                    <a class="btn btn-primary text-size detail-user" style="color: white;"
+                                        data-toggle="modal" data-target="#myModal" data-id="<?= $user->id_user ?>"
+                                        data-name="<?= $user->name ?>" data-email="<?= $user->email ?>"
+                                        data-nik="<?= $user->nik ?>" data-level="<?= $user->level ?>"
+                                        data-branch="<?= $user->id_branch ?>" data-foto="<?= $user->foto ?>"
+                                        data-active="<?= $user->is_active ?>"
+                                        data-tanggal="<?= $user->tanggal_daftar ?>">
+                                        Detail
+                                    </a>
+                                    <!-- <form method="post" action="<?= base_url('User/del') ?>">
 
                                             <input type="hidden" name="user_id" value="<?= $user->id_user ?>">
                                             <button class="btn btn-danger ml-1" onclick="return confirm('Apakah Anda yakin Menghapus data ini?')">Hapus</button>
                                         </form> -->
-                                    </center>
-                                </td>
-                            </tr>
+                                </center>
+                            </td>
+                        </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -91,11 +106,14 @@
                             <div class="ml-3 mr-3 mt-3">
                                 <div class="form-group">
                                     <label>Nomor Induk Karyawan</label>
-                                    <input type="phone" class="form-control text-size placement number-only" name="nik" id="nik" required placeholder="072104" minlength="6" maxlength="7" autocomplete="off" />
+                                    <input type="phone" class="form-control text-size placement number-only" name="nik"
+                                        id="nik" required placeholder="072104" minlength="6" maxlength="7"
+                                        autocomplete="off" />
                                 </div>
                                 <div class="form-group">
                                     <label>Nama</label>
-                                    <input type="text" class="form-control text-size" name="name" id="name" required placeholder="Ibrahim Ahmad" />
+                                    <input type="text" class="form-control text-size" name="name" id="name" required
+                                        placeholder="Ibrahim Ahmad" />
                                 </div>
                                 <div class="form-group">
                                     <label class="text-size">Jabatan</label>
@@ -113,20 +131,22 @@
                                     <select class="form-control text-size" name="id_branch" id="id_branch">
                                         <option selected disabled value="">Pilih Cabang</option>
                                         <?php foreach ($branches->result() as $branch) { ?>
-                                            <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                        <option value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                         <?php } ?>
                                     </select>
                                 </div>
                                 <div class="form-group text-size">
                                     <label>Status</label><br>
                                     <div class="form-check form-check-inline mt-2">
-                                        <input class="form-check-input" type="radio" name="is_active" required value="0">
+                                        <input class="form-check-input" type="radio" name="is_active" required
+                                            value="0">
                                         <label class="form-check-label">
                                             Non Aktif
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="is_active" required value="1">
+                                        <input class="form-check-input" type="radio" name="is_active" required
+                                            value="1">
                                         <label class="form-check-label">
                                             Aktif
                                         </label>
@@ -144,7 +164,8 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Branch</label><br>
-                                                    <input type="checkbox" name="branch_active" id="branch" switch="none" />
+                                                    <input type="checkbox" name="branch_active" id="branch"
+                                                        switch="none" />
                                                     <label for="branch" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
@@ -158,7 +179,8 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Leads</label><br>
-                                                    <input type="checkbox" name="leads_active" id="leads" switch="none" />
+                                                    <input type="checkbox" name="leads_active" id="leads"
+                                                        switch="none" />
                                                     <label for="leads" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
@@ -167,15 +189,19 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Kerjasama</label><br>
-                                                    <input type="checkbox" name="kerjasama_active" id="kerjasama" switch="none" />
-                                                    <label for="kerjasama" data-on-label="On" data-off-label="Off"></label>
+                                                    <input type="checkbox" name="kerjasama_active" id="kerjasama"
+                                                        switch="none" />
+                                                    <label for="kerjasama" data-on-label="On"
+                                                        data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Assignment</label><br>
-                                                    <input type="checkbox" name="assignment_active" id="assignment" switch="none" />
-                                                    <label for="assignment" data-on-label="On" data-off-label="Off"></label>
+                                                    <input type="checkbox" name="assignment_active" id="assignment"
+                                                        switch="none" />
+                                                    <label for="assignment" data-on-label="On"
+                                                        data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -190,22 +216,28 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Approval Bonus</label><br>
-                                                    <input type="checkbox" name="approval_bonus_active" id="approval_bonus" switch="none" />
-                                                    <label for="approval_bonus" data-on-label="On" data-off-label="Off"></label>
+                                                    <input type="checkbox" name="approval_bonus_active"
+                                                        id="approval_bonus" switch="none" />
+                                                    <label for="approval_bonus" data-on-label="On"
+                                                        data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Transfer Data User</label><br>
-                                                    <input type="checkbox" name="transfer_data_active" id="transfer_data" switch="none" />
-                                                    <label for="transfer_data" data-on-label="On" data-off-label="Off"></label>
+                                                    <input type="checkbox" name="transfer_data_active"
+                                                        id="transfer_data" switch="none" />
+                                                    <label for="transfer_data" data-on-label="On"
+                                                        data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Product Support</label><br>
-                                                    <input type="checkbox" name="product_support_active" id="product_support" switch="none" />
-                                                    <label for="product_support" data-on-label="On" data-off-label="Off"></label>
+                                                    <input type="checkbox" name="product_support_active"
+                                                        id="product_support" switch="none" />
+                                                    <label for="product_support" data-on-label="On"
+                                                        data-off-label="Off"></label>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,7 +245,8 @@
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
                                                     <label>Tiket</label><br>
-                                                    <input type="checkbox" name="ticket_active" id="ticket" switch="none" />
+                                                    <input type="checkbox" name="ticket_active" id="ticket"
+                                                        switch="none" />
                                                     <label for="ticket" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
@@ -223,7 +256,8 @@
 
 
                                 <div class="form-group mt-3">
-                                    <button type="button" class="btn btn-info" id="reset_password">Reset Password</button>
+                                    <button type="button" class="btn btn-info" id="reset_password">Reset
+                                        Password</button>
                                 </div>
 
                             </div>
@@ -243,76 +277,77 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        var foto = "<?= base_url('uploads/foto_profil/') ?>";
-        $(".table").on('click', '.detail-user', function() {
-            $("#id_user").val($(this).data('id'));
-            $("#nik").val($(this).data('nik'));
-            $("#name").val($(this).data('name'));
-            $("#email").val($(this).data('email'));
-            $("#jabatan").val($(this).data('level'));
-            $("#id_branch").val($(this).data('branch'));
-            $("input:radio[name=is_active]")[$(this).data('active')].checked = true;
-            $("#reset_password").data('id', $(this).data('id'));
-            $("#foto_profil").attr('src', foto + $(this).data('foto'));
+$(document).ready(function() {
+    var foto = "<?= base_url('uploads/foto_profil/') ?>";
+    $(".table").on('click', '.detail-user', function() {
+        $("#id_user").val($(this).data('id'));
+        $("#nik").val($(this).data('nik'));
+        $("#name").val($(this).data('name'));
+        $("#email").val($(this).data('email'));
+        $("#jabatan").val($(this).data('level'));
+        $("#id_branch").val($(this).data('branch'));
+        $("input:radio[name=is_active]")[$(this).data('active')].checked = true;
+        $("#reset_password").data('id', $(this).data('id'));
+        $("#foto_profil").attr('src', foto + $(this).data('foto'));
 
-            var id_user = $(this).data('id');
-            //Module
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url('User/get_module/') ?>' + id_user,
-                dataType: 'json',
-                data: {
-                    id_user: id_user
-                },
-                success: function(data) {
-                    if (data.branch_active == 1) {
-                        $("#branch").prop('checked', true);
-                    }
-                    if (data.user_active == 1) {
-                        $("#user").prop('checked', true);
-                    }
-                    if (data.leads_active == 1) {
-                        $("#leads").prop('checked', true);
-                    }
-                    if (data.kerjasama_active == 1) {
-                        $("#kerjasama").prop('checked', true);
-                    }
-                    if (data.assignment_active == 1) {
-                        $("#assignment").prop('checked', true);
-                    }
-                    if (data.nst_active == 1) {
-                        $("#nst").prop('checked', true);
-                    }
-                    if (data.transfer_active == 1) {
-                        $("#transfer_data").prop('checked', true);
-                    }
-                    if (data.product_active == 1) {
-                        $("#product_support").prop('checked', true);
-                    }
-                    if (data.approval_bonus_active == 1) {
-                        $("#approval_bonus").prop('checked', true);
-                    }
-                    if (data.ticket_active == 1) {
-                        $("#ticket").prop('checked', true);
-                    }
+        var id_user = $(this).data('id');
+        //Module
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url() ?>' + 'user/get_module/' + id_user,
+            dataType: 'json',
+            data: {
+                id_user: id_user
+            },
+            success: function(data) {
+                if (data.branch_active == 1) {
+                    $("#branch").prop('checked', true);
                 }
-            });
+                if (data.user_active == 1) {
+                    $("#user").prop('checked', true);
+                }
+                if (data.leads_active == 1) {
+                    $("#leads").prop('checked', true);
+                }
+                if (data.kerjasama_active == 1) {
+                    $("#kerjasama").prop('checked', true);
+                }
+                if (data.assignment_active == 1) {
+                    $("#assignment").prop('checked', true);
+                }
+                if (data.nst_active == 1) {
+                    $("#nst").prop('checked', true);
+                }
+                if (data.transfer_active == 1) {
+                    $("#transfer_data").prop('checked', true);
+                }
+                if (data.product_active == 1) {
+                    $("#product_support").prop('checked', true);
+                }
+                if (data.approval_bonus_active == 1) {
+                    $("#approval_bonus").prop('checked', true);
+                }
+                if (data.ticket_active == 1) {
+                    $("#ticket").prop('checked', true);
+                }
+            }
         });
+    });
 
-        $("#reset_password").click(function() {
-            var id_user = $("#id_user").val();
-            $.ajax({
-                type: 'POST',
-                url: '<?= base_url('User/reset_password/') ?>' + id_user,
-                dataType: 'json',
-                data: {
-                    id_user: id_user
-                },
-                success: function(data) {
-                    alert('Password si ' + $("#name").val() + ' telah diubah menjadi "bfisyariah" ');
-                }
-            });
-        })
+    $("#reset_password").click(function() {
+        var id_user = $("#id_user").val();
+        $.ajax({
+            type: 'POST',
+            url: '<?= base_url() ?>' + 'user/reset_password/' + id_user,
+            dataType: 'json',
+            data: {
+                id_user: id_user
+            },
+            success: function(data) {
+                alert('Password si ' + $("#name").val() +
+                    ' telah diubah menjadi "bfisyariah" ');
+            }
+        });
     })
+})
 </script>

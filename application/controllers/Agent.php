@@ -483,10 +483,19 @@ class Agent extends CI_Controller
 
 
 
+        $where = "agents.id_agent = ".  $post['id_agent'];
+        //Mengambil nama file lampiran tambahan yang ada
+        $lampiran_tambahan = $this->agent_model->get($where)->row()->lampiran_tambahan;
+        //Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
-        $data_agent['lampiran_tambahan'] = $comma;
-        $where = ['id_agent' => $post['id_agent']];
-        $this->agent_model->update($data_agent, $where);
+        //Jika sudah pernah melampirkan tambahan, maka append nama file di database
+        if($lampiran_tambahan){
+            $data_agent['lampiran_tambahan'] = $lampiran_tambahan. ",". $comma;
+            $this->agent_model->update($data_agent, $where);
+        }else{
+            $data_agent['lampiran_tambahan'] = $comma;
+            $this->agent_model->update($data_agent, $where);
+        }
         
         redirect($post['redirect']);
     }

@@ -620,7 +620,7 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
-            'sudah_mou'            => !empty($post['sudah_mou'])                ? $post['sudah_mou'] : NULL,
+            // 'sudah_mou'            => !empty($post['sudah_mou'])                ? $post['sudah_mou'] : NULL,
 
 
             //Timestamp
@@ -717,10 +717,20 @@ class Partner extends CI_Controller
                 }
             }
         }
+        
+        $where = "partners_full.id_partner = ".  $post['id_partner'];
+        //Mengambil nama file lampiran tambahan yang ada
+        $lampiran_tambahan = $this->partner_model->get($where)->row()->lampiran_tambahan;
+        //Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
-        $data_partner['lampiran_tambahan'] = $comma;
-        $where = ['id_partner' => $post['id_partner']];
-        $this->partner_model->update($data_partner, $where);
+        //Jika sudah pernah melampirkan tambahan, maka append nama file di database
+        if($lampiran_tambahan){
+            $data_partner['lampiran_tambahan'] = $lampiran_tambahan. ",". $comma;
+            $this->partner_model->update($data_partner, $where);
+        }else{
+            $data_partner['lampiran_tambahan'] = $comma;
+            $this->partner_model->update($data_partner, $where);
+        }
 
         redirect($post['redirect']);
     }

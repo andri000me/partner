@@ -73,7 +73,7 @@
                                                     aria-describedby="button-addon2">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-danger text-size" type="button"
-                                                        id="reset">hapus</button>
+                                                        id="reset">Hapus</button>
                                                     <button class="btn btn-primary text-size" type="button"
                                                         id="button-addon2" data-toggle="modal"
                                                         data-target="#modal-leads">Cari</button>
@@ -106,14 +106,18 @@
                                             <label>Pekerjaan Konsumen?</label><br>
                                             <div class="form-check form-check-inline mt-2">
                                                 <input class="form-check-input cross_branch" type="radio"
-                                                    name="cross_branch" id="cross_branch" required value="Karyawan">
+                                                    name="pekerjaan_konsumen" required
+                                                    <?= $data->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?>
+                                                    value="Karyawan">
                                                 <label class="form-check-label">
                                                     Karyawan
                                                 </label>
                                             </div>
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input cross_branch" type="radio"
-                                                    name="cross_branch" id="cross_branch" required value="Wiraswasta">
+                                                    name="pekerjaan_konsumen" required
+                                                    <?= $data->pekerjaan_konsumen == 'Wiraswasta' ? 'checked' : '' ?>
+                                                    value="Wiraswasta">
                                                 <label class="form-check-label">
                                                     Wiraswasta
                                                 </label>
@@ -127,9 +131,15 @@
                                                 <select class="form-control text-size" name="status_konsumen"
                                                     id="status_konsumen" required>
                                                     <option selected value="">Pilih Status Konsumen</option>
-                                                    <option value="New Customer">New Customer</option>
-                                                    <option value="RO Expire">RO Expire</option>
-                                                    <option value="RO Active">RO Active</option>
+                                                    <option
+                                                        <?= $data->status_konsumen == 'New Customer' ? 'selected' : '' ?>
+                                                        value="New Customer">New Customer</option>
+                                                    <option
+                                                        <?= $data->status_konsumen == 'RO Expire' ? 'selected' : '' ?>
+                                                        value="RO Expire">RO Expire</option>
+                                                    <option
+                                                        <?= $data->status_konsumen == 'RO Active' ? 'selected' : '' ?>
+                                                        value="RO Active">RO Active</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -140,7 +150,8 @@
                                         <div class="form-group ml-3 mr-3">
                                             <label>Nomor Kontrak</label>
                                             <input type="text" class="form-control text-size" name="nomor_kontrak"
-                                                id="nomor_kontrak" placeholder="Nomor Kontrak">
+                                                id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>"
+                                                placeholder="Nomor Kontrak">
                                         </div>
                                     </div>
                                 </div>
@@ -149,7 +160,8 @@
                                         <div class="form-group ml-3 mr-3">
                                             <label>Tanggal Lahir</label>
                                             <input type="date" class="form-control text-size" name="tanggal_lahir"
-                                                id="tanggal_lahir" placeholder="Tanggal lahir">
+                                                id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>"
+                                                placeholder="Tanggal lahir">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -158,9 +170,15 @@
                                             <select class="form-control text-size" name="status_pernikahan"
                                                 id="status_pernikahan" required>
                                                 <option selected value="">Pilih Status Pernikahan</option>
-                                                <option value="Sudah Menikah">Sudah Menikah</option>
-                                                <option value="Belum Menikah">Belum Menikah</option>
-                                                <option value="Janda /  Duda">Janda / Duda</option>
+                                                <option
+                                                    <?= $data->status_pernikahan == 'Sudah Menikah' ? 'selected' : '' ?>
+                                                    value="Sudah Menikah">Sudah Menikah</option>
+                                                <option
+                                                    <?= $data->status_pernikahan == 'Belum Menikah' ? 'selected' : '' ?>
+                                                    value="Belum Menikah">Belum Menikah</option>
+                                                <option
+                                                    <?= $data->status_pernikahan == 'Janda /  Duda' ? 'selected' : '' ?>
+                                                    value="Janda /  Duda">Janda / Duda</option>
                                             </select>
                                         </div>
                                     </div>
@@ -170,7 +188,8 @@
                                         <div class="form-group ml-3 mr-3">
                                             <label>Nama Pasangan</label>
                                             <input type="text" class="form-control text-size" name="nama_pasangan"
-                                                id="nama_pasangan" placeholder="Nama Pasangan">
+                                                id="nama_pasangan" value="<?= $data->nama_pasangan ?>"
+                                                placeholder="Nama Pasangan">
                                         </div>
                                     </div>
                                 </div>
@@ -641,7 +660,7 @@
                             </td>
                             <td>
                                 <center><button class="btn btn-primary pilih-partner"
-                                        data-partner="<?= $partner->id_partner_partner ?>"
+                                        data-partner="<?= $partner->id_partner ?>"
                                         data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                             </td>
                         </tr>
@@ -878,8 +897,7 @@ function show_leads() {
     var id_leads = $("#id_leads").val();
     $.ajax({
         type: 'GET',
-        url: '<?= base_url('
-        Leads / get_leads / ') ?>' + id_leads,
+        url: '<?= base_url() ?>' + 'leads/get_leads/' + id_leads,
         dataType: 'json',
         data: {
             id_leads: id_leads
@@ -915,26 +933,34 @@ $('#reset').click(function() {
 <script>
 $('.kontrak, .pasangan').hide();
 
-$('#status_konsumen').change(function() {
+function status_konsumen() {
     if ($('#status_konsumen').val() == "RO Active") {
         $('.kontrak').show();
         $('#nomor_kontrak').attr('required', 'required');
+        source_leads();
     } else {
         $('.kontrak').hide();
         $('#nomor_kontrak').removeAttr('required', ' ');
     }
+}
 
+status_konsumen();
+$('#status_konsumen').change(function() {
+    status_konsumen();
 })
 
-$('#status_pernikahan').change(function() {
+function status_pernikahan() {
     if ($('#status_pernikahan').val() == "Sudah Menikah") {
         $('.pasangan').show();
         $('#nama_pasangan').attr('required', 'required');
     } else {
-        $('.pasnagan').hide();
+        $('.pasangan').hide();
         $('#nama_pasangan').removeAttr('required', ' ');
     }
-
+}
+status_pernikahan();
+$('#status_pernikahan').change(function() {
+    status_pernikahan();
 })
 </script>
 

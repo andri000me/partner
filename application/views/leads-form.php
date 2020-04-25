@@ -106,14 +106,18 @@
                                         <label>Pekerjaan Konsumen?</label><br>
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input cross_branch" type="radio"
-                                                name="cross_branch" id="cross_branch" required value="Karyawan">
+                                                name="pekerjaan_konsumen"
+                                                <?= set_value('pekerjaan_konsumen') == 'Karyawan' ? 'checked' : '' ?>
+                                                required value="Karyawan">
                                             <label class="form-check-label">
                                                 Karyawan
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input cross_branch" type="radio"
-                                                name="cross_branch" id="cross_branch" required value="Wiraswasta">
+                                                name="pekerjaan_konsumen"
+                                                <?= set_value('pekerjaan_konsumen') == 'Wiraswasta' ? 'checked' : '' ?>
+                                                required value="Wiraswasta">
                                             <label class="form-check-label">
                                                 Wiraswasta
                                             </label>
@@ -127,9 +131,15 @@
                                             <select class="form-control text-size" name="status_konsumen"
                                                 id="status_konsumen" required>
                                                 <option selected value="">Pilih Status Konsumen</option>
-                                                <option value="New Customer">New Customer</option>
-                                                <option value="RO Expire">RO Expire</option>
-                                                <option value="RO Active">RO Active</option>
+                                                <option
+                                                    <?= set_value('status_konsumen') == 'New Customer' ? 'selected' : '' ?>
+                                                    value="New Customer">New Customer</option>
+                                                <option
+                                                    <?= set_value('status_konsumen') == 'RO Expire' ? 'selected' : '' ?>
+                                                    value="RO Expire">RO Expire</option>
+                                                <option
+                                                    <?= set_value('status_konsumen') == 'RO Active' ? 'selected' : '' ?>
+                                                    value="RO Active">RO Active</option>
                                             </select>
                                         </div>
                                     </div>
@@ -140,7 +150,8 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nomor Kontrak</label>
                                         <input type="text" class="form-control text-size" name="nomor_kontrak"
-                                            id="nomor_kontrak" placeholder="Nomor Kontrak">
+                                            id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>"
+                                            placeholder="Nomor Kontrak">
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +160,8 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Tanggal Lahir</label>
                                         <input type="date" class="form-control text-size" name="tanggal_lahir"
-                                            id="tanggal_lahir" placeholder="Tanggal lahir">
+                                            id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>"
+                                            placeholder="Tanggal lahir">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -158,9 +170,15 @@
                                         <select class="form-control text-size" name="status_pernikahan"
                                             id="status_pernikahan" required>
                                             <option selected value="">Pilih Status Pernikahan</option>
-                                            <option value="Sudah Menikah">Sudah Menikah</option>
-                                            <option value="Belum Menikah">Belum Menikah</option>
-                                            <option value="Janda /  Duda">Janda / Duda</option>
+                                            <option
+                                                <?= set_value('status_pernikahan') == 'Sudah Menikah' ? 'selected' : '' ?>
+                                                value="Sudah Menikah">Sudah Menikah</option>
+                                            <option
+                                                <?= set_value('status_pernikahan') == 'Belum Menikah' ? 'selected' : '' ?>
+                                                value="Belum Menikah">Belum Menikah</option>
+                                            <option
+                                                <?= set_value('status_pernikahan') == 'Janda /  Duda' ? 'selected' : '' ?>
+                                                value="Janda /  Duda">Janda / Duda</option>
                                         </select>
                                     </div>
                                 </div>
@@ -170,7 +188,8 @@
                                     <div class="form-group ml-3 mr-3">
                                         <label>Nama Pasangan</label>
                                         <input type="text" class="form-control text-size" name="nama_pasangan"
-                                            id="nama_pasangan" placeholder="Nama Pasangan">
+                                            id="nama_pasangan" value="<?= set_value('nama_pasangan') ?>"
+                                            placeholder="Nama Pasangan">
                                     </div>
                                 </div>
                             </div>
@@ -795,48 +814,52 @@ if ($("#id_leads").val()) {
     $('#reset').show();
 }
 
-<<
-<< << < HEAD
 $('#reset').click(function() {
-        $('#id_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
-            .val("");
-        $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
-            .hide();
-        $('#nama_konsumen').removeAttr('readonly');
-    }) ===
-    === =
-    $('#reset').click(function() {
-        $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
-            .val("");
-        $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
-            .hide();
-        $('#nama_konsumen').removeAttr('readonly');
-    })
+    $('#id_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
+        .val("");
+    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
+        .hide();
+    $('#nama_konsumen').removeAttr('readonly');
+})
+$('#reset').click(function() {
+    $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
+        .val("");
+    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
+        .hide();
+    $('#nama_konsumen').removeAttr('readonly');
+})
 </script>
 
 <script>
 $('.kontrak, .pasangan').hide();
 
-$('#status_konsumen').change(function() {
+function status_konsumen() {
     if ($('#status_konsumen').val() == "RO Active") {
         $('.kontrak').show();
         $('#nomor_kontrak').attr('required', 'required');
+        source_leads();
     } else {
         $('.kontrak').hide();
         $('#nomor_kontrak').removeAttr('required', ' ');
     }
+}
 
+status_konsumen();
+$('#status_konsumen').change(function() {
+    status_konsumen();
 })
 
+function status_pernikahan() {
+    if ($('#status_pernikahan').val() == "Sudah Menikah") {
+        $('.pasangan').show();
+        $('#nama_pasangan').attr('required', 'required');
+    } else {
+        $('.pasangan').hide();
+        $('#nama_pasangan').removeAttr('required', ' ');
+    }
+}
+status_pernikahan();
 $('#status_pernikahan').change(function() {
-        if ($('#status_pernikahan').val() == "Sudah Menikah") {
-            $('.pasangan').show();
-            $('#nama_pasangan').attr('required', 'required');
-        } else {
-            $('.pasnagan').hide();
-            $('#nama_pasangan').removeAttr('required', ' ');
-        }
-
-    }) >>>
-    >>> > origin / don
+    status_pernikahan();
+})
 </script>

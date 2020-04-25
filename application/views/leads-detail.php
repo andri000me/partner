@@ -42,13 +42,10 @@
                             <form class="" action="<?= base_url('Leads/update_detail') ?>" method="post">
                                 <!-- ID Ticket -->
                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
-                                <!-- ID Mapping Leads -->
-                                <input type="hidden" name="id_mapping_leads" id="id_mapping_leads"
-                                    value="<?= $data->id_mapping_leads ?>">
                                 <!-- ID Leads -->
                                 <input type="hidden" name="id_leads" id="id_leads" value="<?= $data->id_leads ?>">
                                 <!-- ID Mapping Partner -->
-                                <input type="hidden" name="id_mapping" id="id_mapping" value="<?= $data->id_mapping ?>">
+                                <input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
                                 <!-- ID Agent -->
                                 <input type="hidden" name="id_agent" id="id_agent" value="<?= $data->id_agent ?>">
                                 <!-- ID User -->
@@ -576,7 +573,7 @@
                                         <div class="clear"></div>
                                         <div id="moreImageUploadLink" style="display:none;" class="float-right">
                                             <a class="btn btn-secondary mr-1" href="javascript:void(0);"
-                                                id="attachMore">tambah Form lampiran</a>
+                                                id="attachMore">Tambah Form lampiran</a>
                                             <button class="btn btn-primary mr-3">Simpan</button>
                                         </div>
                                     </form>

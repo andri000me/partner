@@ -689,13 +689,11 @@
                                         <?php } ?>
                                         <?php if ($data->lampiran_tambahan) { ?>
                                         <!-- Lampiran Tambahan -->
-                                        <div class="item" style="height:150px; width:300px;">
-                                            <?php
+                                        <?php
                                                 $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
                                                 foreach ($lampiran_tambahan as $upload) {
-                                                    echo $upload;
-
-                                                ?>
+                                                    ?>
+                                        <div class="item" style="height:150px; width:300px;">
                                             <?php if (get_extension($upload)) { ?>
                                             <div class="zoom-gallery">
                                                 <a href="<?= base_url('uploads/partners/' . $upload) ?>"><img
@@ -710,8 +708,8 @@
                                                 </div>
                                             </a>
                                             <?php } ?>
-                                            <?php } ?>
                                         </div>
+                                        <?php } ?>
                                         <?php } ?>
                                         <!-- Form MOU -->
                                         <?php if ($ticket->form_mou) { ?>
