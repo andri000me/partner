@@ -3752,6 +3752,10 @@ input[data-readonly] {
 	background-image: linear-gradient(to right, #0c2461, #0984e3);
 }
 
+.btn-cari {
+	color: #0984e3;
+}
+
 /* .dataTables_filter {
 	display: none;
 } */
