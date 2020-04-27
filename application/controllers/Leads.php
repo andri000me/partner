@@ -8,31 +8,6 @@ class Leads extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // Load Modul Leads
-        $this->load->model('leads_model');
-        // Load Modul Leads Activity
-        $this->load->model('leads_activity_model', 'leads_activity');
-        // Load Modul Ticket
-        $this->load->model('ticket_model');
-        // Load Modul Branch
-        $this->load->model('branch_model');
-        // Load Modul Agent
-        $this->load->model('agent_model');
-        // Load Modul Partner
-        $this->load->model('partner_model');
-        // Load Modul User
-        $this->load->model('user_model');
-        // Load Modul Comment
-        $this->load->model('comment_model');
-        // Load Modul Notification
-        $this->load->model('notification_model');
-        // Load Modul Leads Activity
-        $this->load->model('leads_activity_model', 'leads_activity');
-        // Load Modul Leads Follow Up
-        $this->load->model('leads_follow_up_model');
-
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
@@ -162,7 +137,7 @@ class Leads extends CI_Controller
             'agents'        => $this->agent_model->get("agents.".$this->where),
             'partners'      => $this->partner_model->get("partners_full." .$this->where),
 
-            'activities'    => $this->leads_activity->get($where),
+            'activities'    => $this->leads_activity_model->get($where),
             'comments'      => $this->comment_model->get($where),
             'ticket'        => $this->ticket_model->get($where)->row(),
 
@@ -258,14 +233,14 @@ class Leads extends CI_Controller
             }
 
             //Membuat history activity inputan data leads
-            $leads_activity = [
+            $leads_activity_model = [
                 'activity' => 'Data leads telah dibuat',
                 'date_activity' => date('Y-m-d H:i:s'),
                 'id_leads' => $id,
                 'id_user' => $this->fungsi->user_login()->id_user
             ];
 
-            $this->leads_activity->create($leads_activity);
+            $this->leads_activity_model->create($leads_activity_model);
 
             //Menambah antrian tiket untuk data leads
             if (isset($post['process'])) {
@@ -473,14 +448,14 @@ class Leads extends CI_Controller
         $this->leads_model->update($data, $where);
 
         //Membuat history activity inputan data leads
-        $leads_activity = [
+        $leads_activity_model = [
             'activity' => 'Perubahan pada data leads',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_leads' => $post['id_leads'],
             'id_user' => $this->fungsi->user_login()->id_user
         ];
 
-        $this->leads_activity->create($leads_activity);
+        $this->leads_activity_model->create($leads_activity_model);
 
         //Membuat notifikasi Perubahan Data untuk Admin
         $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
@@ -593,14 +568,14 @@ class Leads extends CI_Controller
         $id = $this->leads_model->update($data, $where);
 
         //Membuat history activity inputan data leads
-        $leads_activity = [
+        $leads_activity_model = [
             'activity' => 'Perubahan pada data leads',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_leads' => $post['id_leads'],
             'id_user' => $this->fungsi->user_login()->id_user
         ];
 
-        $this->leads_activity->create($leads_activity);
+        $this->leads_activity_model->create($leads_activity_model);
 
         //Meng-update antrian tiket untuk data Leads
         $has_superior = $this->fungsi->user_login()->has_superior;

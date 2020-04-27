@@ -9,10 +9,6 @@ class Zip extends CI_Controller
 
         parent::__construct();
         $this->load->helper('url');
-
-        // Load zip library
-        $this->load->library('zip');
-        $this->load->model('ticket_model');
     }
 
     public function index()

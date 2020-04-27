@@ -7,14 +7,6 @@ class Leads_follow_up extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('leads_follow_up_model');
-        // $this->load->model('partner_activity_model', 'partner_activity');
-        $this->load->model('mapping_leads_model');
-        $this->load->model('ticket_model');
-        $this->load->model('comment_model');
-
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         check_not_login();
     }

@@ -847,41 +847,42 @@ $('#reset').click(function() {
 $('.kontrak, .pasangan').hide();
 
 $('#status_konsumen').change(function() {
-            if ($('#status_konsumen').val() == "RO Active") {
-                $('#soa').val('RO')
-                $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-                $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-                $('#btn-data').attr('data-target', '#modal-partner');
-                $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-                $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-            } else {}
+    if ($('#status_konsumen').val() == "RO Active") {
+        $('#soa').val('RO')
+        $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+    } else {}
 
-            function status_konsumen() {
-                if ($('#status_konsumen').val() == "RO Active") {
-                    $('.kontrak').show();
-                    $('#nomor_kontrak').attr('required', 'required');
-                    source_leads();
-                } else {
-                    $('.kontrak').hide();
-                    $('#nomor_kontrak').removeAttr('required', ' ');
-                }
-            }
+    function status_konsumen() {
+        if ($('#status_konsumen').val() == "RO Active") {
+            $('.kontrak').show();
+            $('#nomor_kontrak').attr('required', 'required');
+            source_leads();
+        } else {
+            $('.kontrak').hide();
+            $('#nomor_kontrak').removeAttr('required', ' ');
+        }
+    }
 
-            $('#status_pernikahan').change(function() {
-                if ($('#status_pernikahan').val() == "Sudah Menikah") {
-                    $('.pasangan').show();
-                    $('#nama_pasangan').attr('required', 'required');
-                } else {
-                    $('.pasangan').hide();
-                    $('#nama_pasangan').removeAttr('required', ' ');
-                }
+    $('#status_pernikahan').change(function() {
+        if ($('#status_pernikahan').val() == "Sudah Menikah") {
+            $('.pasangan').show();
+            $('#nama_pasangan').attr('required', 'required');
+        } else {
+            $('.pasangan').hide();
+            $('#nama_pasangan').removeAttr('required', ' ');
+        }
 
-            })
+    })
+});
 </script>
 
 <script>
 $(document).ready(function() {
-    $('').hide();
+    // $('asd').hide();
     var radioValue = $("input[name='npwp']:checked").val();
     if (radioValue == 'Ada') {
         $(".npwp-form").hide();

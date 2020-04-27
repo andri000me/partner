@@ -7,12 +7,6 @@ class Comment extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('comment_model');
-        $this->load->model('ticket_model');
-        $this->load->model('ps_ticket_model', 'ps_ticket');
-        $this->load->model('notification_model');
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         check_not_login();
     }
@@ -62,8 +56,8 @@ class Comment extends CI_Controller
         //Notifikasi
         $notification = [
             'pengirim'          => $this->fungsi->user_login()->id_user,
-            'penerima'          => $this->ps_ticket->get(['id_ps_ticket' => $post['id_ps_ticket']])->row()->user_id,
-            'penerima_cabang'   => $this->ps_ticket->get(['id_ps_ticket' => $post['id_ps_ticket']])->row()->branch_id,
+            'penerima'          => $this->ps_ticket_model->get(['id_ps_ticket' => $post['id_ps_ticket']])->row()->user_id,
+            'penerima_cabang'   => $this->ps_ticket_model->get(['id_ps_ticket' => $post['id_ps_ticket']])->row()->branch_id,
             'type'              => 'Komentar oleh',
             'id_ps_ticket'      => $post['id_ps_ticket'],
             'created_at'        => date('Y-m-d H:i:s')

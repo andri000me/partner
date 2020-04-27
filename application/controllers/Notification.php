@@ -8,10 +8,6 @@ class Notification extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //Load Modul Branch
-        $this->load->model('notification_model');
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         check_not_login();
 

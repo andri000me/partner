@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Partner extends CI_Controller
@@ -9,21 +9,6 @@ class Partner extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        // Load Modul Partner
-        $this->load->model('partner_model');
-        // Load Modul Ticket
-        $this->load->model('ticket_model');
-        // Load Modul Partner Activity
-        $this->load->model('partner_activity_model', 'partner_activity');
-        // Load Modul Maintain Partner 
-        $this->load->model('maintain_partner_model', 'maintain_partner');
-        //Load Modul Comment
-        $this->load->model('comment_model');
-        //Load Modul notification
-        $this->load->model('notification_model');
-
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
@@ -117,8 +102,8 @@ class Partner extends CI_Controller
         $data = [
             'data'          => $this->partner_model->get($where)->row(),
             'ticket'        => $this->ticket_model->get($where)->row(),
-            'maintains'      => $this->maintain_partner->get($where),
-            'activities'    => $this->partner_activity->get($where),
+            'maintains'      => $this->maintain_partner_model->get($where),
+            'activities'    => $this->partner_activity_model->get($where),
             'comments'      => $this->comment_model->get($where)
         ];
         $this->template->load('template/index', 'partner-detail', $data);
@@ -349,14 +334,14 @@ class Partner extends CI_Controller
         }
 
          //Membuat history activity inputan data partner
-         $partner_activity = [
+         $partner_activity_model = [
             'activity' => 'Data Partner telah dibuat',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_partner' => $id,
             'id_user' => $this->fungsi->user_login()->id_user   
         ];
 
-        $this->partner_activity->create($partner_activity);
+        $this->partner_activity_model->create($partner_activity_model);
         
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -504,14 +489,14 @@ class Partner extends CI_Controller
         $id = $this->partner_model->update($data, $where);
 
         //Membuat history activity inputan data partner
-        $partner_activity = [
+        $partner_activity_model = [
             'activity'      => 'Perubahan pada data Partner',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_partner'    => $post['id_partner'],
             'id_user'       => $this->fungsi->user_login()->id_user
         ];
 
-        $this->partner_activity->create($partner_activity);
+        $this->partner_activity_model->create($partner_activity_model);
 
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -638,14 +623,14 @@ class Partner extends CI_Controller
         $this->partner_model->update($data, $where);
 
         //Membuat history activity inputan data partner
-        $partner_activity = [
+        $partner_activity_model = [
             'activity' => 'Perubahan pada data Partner',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_partner' => $post['id_partner'],
             'id_user' => $post['id_user']
         ];
 
-        $this->partner_activity->create($partner_activity);
+        $this->partner_activity_model->create($partner_activity_model);
 
         //Membuat notifikasi Perubahan Data untuk Admin
         $notification = $this->notification($post['id_ticket'], 'Perubahan Data');

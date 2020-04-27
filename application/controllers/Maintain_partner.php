@@ -7,14 +7,6 @@ class Maintain_partner extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('maintain_partner_model', 'maintain_model');
-        $this->load->model('partner_activity_model', 'partner_activity');
-        $this->load->model('partner_model');
-        $this->load->model('ticket_model');
-        $this->load->model('comment_model');
-
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         check_not_login();
     }
@@ -37,8 +29,8 @@ class Maintain_partner extends CI_Controller
         $data = [
             'data'          => $this->partner_model->get($where)->row(),
             'ticket'        => $this->ticket_model->get($where)->row(),
-            'maintains'      => $this->maintain_model->get($where),
-            'activities'    => $this->partner_activity->get($where),
+            'maintains'      => $this->maintain_partner_model->get($where),
+            'activities'    => $this->partner_activity_model->get($where),
             'comments'      => $this->comment_model->get($where)
         ];
 
@@ -77,17 +69,17 @@ class Maintain_partner extends CI_Controller
             $data['photo_activity'] = $this->upload->data('file_name');
         }
 
-        $this->maintain_model->create($data);
+        $this->maintain_partner_model->create($data);
 
         //Membuat history activity inputan data maintain partner
-        $partner_activity = [
+        $partner_activity_model = [
             'activity' => 'Partner telah dimaintain',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_partner' => $post['id_partner'],
             'id_user' => $post['id_user']
         ];
 
-        $this->partner_activity->create($partner_activity);
+        $this->partner_activity_model->create($partner_activity_model);
         $this->session->set_flashdata("berhasil_simpan", "Data Maintain Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
         redirect('Partner');

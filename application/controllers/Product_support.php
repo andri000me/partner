@@ -7,9 +7,6 @@ class Product_support extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->helper('fungsi');
-        //Load Modul Product Support
-        $this->load->model('ps_ticket_model', 'ps_ticket');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
@@ -31,7 +28,7 @@ class Product_support extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->ps_ticket->get($this->where)
+            'data' => $this->ps_ticket_model->get($this->where)
         ];
         $this->template->load('template/index', 'ps-tiket' , $data);
     }
