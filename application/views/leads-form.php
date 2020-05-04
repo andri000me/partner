@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box ml-3">
             <h4 class="page-title">Form Leads Prospect</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
@@ -812,8 +812,8 @@ function source_leads() {
         $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
         $('#data_partner, #data_agent').removeAttr('required', 'required');
-        $('#status_konsumen').val('');
     }
+}
 }
 
 $(".readonly").keydown(function(e) {
