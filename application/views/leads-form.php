@@ -16,7 +16,10 @@
         <div class="alert alert-primary font-size gradient ml-3 mr-3" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
-                <p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi<br> <b>Form verifikasi dan Survey. Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan lengkap.</p>
+                <p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan
+                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi<br> <b>Form verifikasi dan Survey.
+                        Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan
+                        lengkap.</p>
             </div>
         </div>
     </div>
@@ -66,8 +69,10 @@
                                                 placeholder="Ibrahim Ahmad" aria-label="Recipient's username"
                                                 aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
-                                                <button class="btn btn-light text-size btn-cari" type="button" id="" data-toggle="modal" data-target="#modal-leads">Cari</button>
+                                                <button class="btn btn-danger text-size" type="button"
+                                                    id="reset">Hapus</button>
+                                                <button class="btn btn-light text-size btn-cari" type="button" id=""
+                                                    data-toggle="modal" data-target="#modal-leads">Cari</button>
                                             </div>
                                         </div>
                                     </div>
@@ -99,7 +104,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Email</label>
-                                        <input type="email" class="form-control text-size" name="email" id="email" placeholder="Email">
+                                        <input type="email"
+                                            class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>"
+                                            name="email" id="email" value="<?= set_value('email') ?>"
+                                            placeholder="Email">
+                                        <?= form_error('email') ?>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -108,18 +117,30 @@
                                         <select class="form-control text-size" name="pendidikan" id="pendidikan"
                                             required>
                                             <option selected value="">Pilih Pendidikan</option>
-                                            <option value="SD">SD</option>
-                                            <option value="SLTP">SLTP</option>
-                                            <option value="SMU">SMU</option>
-                                            <option value="SLTA">SLTA</option>
-                                            <option value="STM">STM</option>
-                                            <option value="SMEA">SMEA</option>
-                                            <option value="D1">D1</option>
-                                            <option value="D2">D2</option>
-                                            <option value="D3">D3</option>
-                                            <option value="S1">S1</option>
-                                            <option value="S2">S2</option>
-                                            <option value="S3">S3</option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SD">SD
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SLTP">SLTP
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SMU">SMU
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SLTA">SLTA
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="STM">STM
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SMEA">SMEA
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="D1">D1
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="D2">D2
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="D3">D3
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="S1">S1
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="S2">S2
+                                            </option>
+                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="S3">S3
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -128,7 +149,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Tanggal Lahir</label>
-                                        <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" placeholder="Tanggal lahir">
+                                        <input type="date" class="form-control text-size" name="tanggal_lahir"
+                                            id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>"
+                                            placeholder="Tanggal lahir">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -137,10 +160,14 @@
                                         <select class="form-control text-size" name="status_pernikahan"
                                             id="status_pernikahan" required>
                                             <option selected value="">Pilih Status Pernikahan</option>
-                                            <option value="Sudah Menikah">Sudah Menikah</option>
-                                            <option value="Belum Menikah">Belum Menikah</option>
-                                            <option value="Janda / Duda - Meninggal">Janda / Duda - Meninggal</option>
-                                            <option value="Janda / Duda - Cerai">Janda / Duda - Cerai</option>
+                                            <option <?= set_value('status_pernikahan') ?> value="Sudah Menikah">Sudah
+                                                Menikah</option>
+                                            <option <?= set_value('status_pernikahan') ?> value="Belum Menikah">Belum
+                                                Menikah</option>
+                                            <option <?= set_value('status_pernikahan') ?>
+                                                value="Janda/Duda - Meninggal">Janda/Duda - Meninggal</option>
+                                            <option <?= set_value('status_pernikahan') ?> value="Janda/Duda - Cerai">
+                                                Janda/Duda - Cerai</option>
                                         </select>
                                     </div>
                                 </div>
@@ -160,13 +187,17 @@
                                     <div class="form-group text-size ml-4 mr-4">
                                         <label>Pekerjaan Konsumen</label><br>
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="jenis_rumah" id="jenis_rumah" required value="Karyawan">
+                                            <input class="form-check-input" type="radio" name="jenis_rumah"
+                                                <?= set_value('jenis_rumah') == 'Karyawan' ? 'checked' : '' ?>
+                                                id="jenis_rumah" required value="Karyawan">
                                             <label class="form-check-label">
                                                 Karyawan
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jenis_rumah" id="jenis_rumah" required value="Wiraswasta">
+                                            <input class="form-check-input" type="radio" name="jenis_rumah"
+                                                <?= set_value('jenis_rumah') == 'Wiraswasta' ? 'checked' : '' ?>
+                                                id="jenis_rumah" required value="Wiraswasta">
                                             <label class="form-check-label">
                                                 Wiraswasta
                                             </label>
@@ -176,11 +207,16 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Jenis Konsumen</label>
-                                        <select class="form-control text-size" name="status_konsumen" id="status_konsumen" required>
+                                        <select class="form-control text-size" name="status_konsumen"
+                                            id="status_konsumen" required>
                                             <option selected value="">Pilih Jenis Konsumen</option>
-                                            <option value="New Customer">New Customer</option>
-                                            <option value="RO Expire">RO Expire</option>
-                                            <option value="RO Active">RO Active</option>
+                                            <option
+                                                <?= set_value('status_konsumen') == 'New Customer' ? 'selected' : '' ?>
+                                                value="New Customer">New Customer</option>
+                                            <option <?= set_value('status_konsumen') == 'RO Expire' ? 'selected' : '' ?>
+                                                value="RO Expire">RO Expire</option>
+                                            <option <?= set_value('status_konsumen') == 'RO Active' ? 'selected' : '' ?>
+                                                value="RO Active">RO Active</option>
                                         </select>
                                     </div>
                                 </div>
@@ -194,17 +230,29 @@
                                         <select class="form-control text-size" name="lokasi_rumah" id="lokasi_rumah"
                                             required>
                                             <option selected value="">Pilih Kategori Lokasi Rumah</option>
-                                            <option value="Non Perumahan - Tidak bisa Lewat Mobil">Non Perumahan - Tidak
+                                            <option
+                                                <?= set_value('lokasi_rumah') == 'Non Perumahan - Tidak bisa Lewat Mobil' ? 'selected' :  '' ?>
+                                                value="Non Perumahan - Tidak bisa Lewat Mobil">Non Perumahan - Tidak
                                                 bisa Lewat Mobil</option>
-                                            <option value="Non Perumahan - Jalan Satu Mobil">Non Perumahan - Jalan Satu
+                                            <option
+                                                <?= set_value('lokasi_rumah') == 'Non Perumahan - Jalan Satu Mobil' ? 'selected' :  '' ?>
+                                                value="Non Perumahan - Jalan Satu Mobil">Non Perumahan - Jalan Satu
                                                 Mobil</option>
-                                            <option value="Non Perumahan - Jalan Dua Mobil">Non Perumahan - Jalan Dua
+                                            <option
+                                                <?= set_value('lokasi_rumah') == 'Non Perumahan - Jalan Dua Mobil' ? 'selected' :  '' ?>
+                                                value="Non Perumahan - Jalan Dua Mobil">Non Perumahan - Jalan Dua
                                                 Mobil</option>
-                                            <option value="Perumahan - Tidak Bisa Lewat Mobil">Perumahan - Tidak Bisa
+                                            <option
+                                                <?= set_value('lokasi_rumah') == 'Perumahan - Tidak Bisa Lewat Mobil' ? 'selected' :  '' ?>
+                                                value="Perumahan - Tidak Bisa Lewat Mobil">Perumahan - Tidak Bisa
                                                 Lewat Mobil</option>
-                                            <option value="Perumahan - Jalan Satu Mobil">Perumahan - Jalan Satu Mobil
+                                            <option
+                                                <?= set_value('lokasi_rumah') == 'Perumahan - Jalan Satu Mobil' ? 'selected' :  '' ?>
+                                                value="Perumahan - Jalan Satu Mobil">Perumahan - Jalan Satu Mobil
                                             </option>
-                                            <option value="Perumahan - Jalan Dua Mobil">Perumahan - Jalan Dua Mobil
+                                            <option
+                                                <?= set_value('lokasi_rumah') == 'Perumahan - Jalan Dua Mobil' ? 'selected' :  '' ?>
+                                                value="Perumahan - Jalan Dua Mobil">Perumahan - Jalan Dua Mobil
                                             </option>
                                         </select>
                                     </div>
@@ -214,7 +262,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Jenis Bangunan Rumah</label>
-                                        <select class="form-control text-size" name="jenis_bangunan" id="jenis_bangunan" required>
+                                        <select class="form-control text-size" name="jenis_bangunan" id="jenis_bangunan"
+                                            required>
                                             <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
                                             <option value="Permanent">Permanent</option>
                                             <option value="Semi Permanent">Semi Permanent</option>
@@ -224,10 +273,12 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Luas Bangunan Rumah</label>
-                                        <select class="form-control text-size" name="luas_bangunan" id="luas_bangunan" required>
+                                        <select class="form-control text-size" name="luas_bangunan" id="luas_bangunan"
+                                            required>
                                             <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
                                             <option value="< 60 M2">
-                                                < 60 M2</option> <option value="60 - 100 M2">60 - 100 M2
+                                                < 60 M2</option>
+                                            <option value="60 - 100 M2">60 - 100 M2
                                             </option>
                                             <option value="100 - 150 M2">100 - 150 M2</option>
                                             <option value="> 150 M2">> 150 M2</option>
@@ -241,36 +292,70 @@
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
                                             <option selected value="">Pilih Asal Aplikasi</option>
-                                            <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                            <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                            <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                            <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                            <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                            <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                            <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                            <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                            <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                            <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                            <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                            <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?>
+                                                value="Direct Selling">Direct Selling</option>
+                                            <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?>
+                                                value="Tour & travel">Tour & travel</option>
+                                            <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?>
+                                                value="Penyedia Jasa">Penyedia Jasa</option>
+                                            <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?>
+                                                value="Agent BA">Agent BA</option>
+                                            <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC
+                                            </option>
+                                            <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC
+                                            </option>
+                                            <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?>
+                                                value="Digital Marketing">Digital Marketing</option>
+                                            <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?>
+                                                value="Website BFI Syariah">Website BFI Syariah</option>
+                                            <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO
+                                            </option>
+                                            <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?>
+                                                value="Walk In">Walk In</option>
+                                            <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?>
+                                                value="Event Promotion">Event Promotion</option>
+                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?>
+                                                value="Tele Marketing">Tele Marketing</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Activity Marketing</label>
-                                        <select class="form-control text-size" name="activity" id="activity" required>
-                                            <option selected disabled value="">Pilih Kategori Activity Marketing</option>
-                                            <optionm value="Direct Selling">Direct Selling</optionm>
-                                            <option value="Tele call">Tele call</option>
-                                            <option value="Digital Marketing">Digital Marketing</option>
-                                            <option value="Sosial Media">Sosial Media</option>
-                                            <option value="Website">Website</option>
-                                            <option value="Event Promotion">Event Promotion</option>
-                                            <option value="Walk In Branch">Walk In Branch</option>
-                                            <option value="Surat Penawaran">Surat Penawaran</option>
-                                            <option value="Blast WA / SMS">Blast WA / SMS</option>
-                                            <option value="Email Marketing">Email Marketing</option>
+                                        <select class="form-control text-size" name="activity_marketing"
+                                            id="activity_marketing" required>
+                                            <option selected disabled value="">Pilih Kategori Activity Marketing
+                                            </option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Direct Selling' ? 'selected' : '' ?>
+                                                value="Direct Selling">Direct Selling</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Tele call' ? 'selected' : '' ?>
+                                                value="Tele call">Tele call</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Digital Marketing' ? 'selected' : '' ?>
+                                                value="Digital Marketing">Digital Marketing</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Sosial Media' ? 'selected' : '' ?>
+                                                value="Sosial Media">Sosial Media</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Website' ? 'selected' : '' ?>
+                                                value="Website">Website</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Event Promotion' ? 'selected' : '' ?>
+                                                value="Event Promotion">Event Promotion</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Walk In Branch' ? 'selected' : '' ?>
+                                                value="Walk In Branch">Walk In Branch</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Surat Penawaran' ? 'selected' : '' ?>
+                                                value="Surat Penawaran">Surat Penawaran</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Blast WA / SMS' ? 'selected' : '' ?>
+                                                value="Blast WA / SMS">Blast WA / SMS</option>
+                                            <option
+                                                <?= set_value('activity_marketing') == 'Email Marketing' ? 'selected' : '' ?>
+                                                value="Email Marketing">Email Marketing</option>
                                         </select>
                                     </div>
                                 </div>
@@ -293,7 +378,8 @@
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data btn-cari text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
+                                                <button class="btn btn-light btn-data btn-cari text-size" type="button"
+                                                    id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
                                             </div>
                                         </div>
                                     </div>
@@ -309,7 +395,8 @@
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data btn-cari text-size" type="button" id="btn-data" data-toggle="modal" data-target="">Cari</button>
+                                                <button class="btn btn-light btn-data btn-cari text-size" type="button"
+                                                    id="btn-data" data-toggle="modal" data-target="">Cari</button>
                                             </div>
                                         </div>
                                     </div>
@@ -398,8 +485,10 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-5 mr-4">
-                        <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="draft" name="draft" class="btn" type="submit">Simpan</button>
-                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process">Kirim</button>
+                        <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="draft"
+                            name="draft" class="btn" type="submit">Simpan</button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit"
+                            name="process">Kirim</button>
                     </div>
                 </form>
             </div>
@@ -602,112 +691,129 @@ $('#soa').change(function() {
     $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
 })
 
-    function source_leads() {
-        if ($('#soa').val() == 'Direct Selling') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Penyedia Jasa') {
-            $('.jasa, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Agent BA') {
-            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
-            $('#btn-data-agent').attr('data-target', '#modal-agent')
-            // $('#data_partner, #data_agent').attr('required', 'required');
-            $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'EGC') {
-            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-            $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'RO') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('RO Active');
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Digital Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Website BFI Syariah') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Walk In') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Event Promotion') {
-            $('.event, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_event').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tele Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else {
-            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#data_partner, #data_agent').removeAttr('required', 'required');
-            $('#status_konsumen').val('');
-        }
+function source_leads() {
+    if ($('#soa').val() == 'Direct Selling') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Tour & travel') {
+        $('.travel, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Penyedia Jasa') {
+        $('.jasa, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Agent BA') {
+        $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+        $('#btn-data-agent').attr('data-target', '#modal-agent')
+        // $('#data_partner, #data_agent').attr('required', 'required');
+        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required',
+            'required');
+        $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'EGC') {
+        $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
+        $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'RO') {
+        $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+        $('#status_konsumen').val('RO Active');
+    } else if ($('#soa').val() == 'CGC') {
+        $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Digital Marketing') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Website BFI Syariah') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Walk In') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Event Promotion') {
+        $('.event, .vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        $('#nama_event').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required',
+            'required');
+        $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else if ($('#soa').val() == 'Tele Marketing') {
+        $('.vendor, .form, .btn-data').show();
+        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#btn-data').attr('data-target', '#modal-partner')
+        // $('#data_partner').attr('required', 'required');
+        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            .removeAttr('required', 'required');
+        $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#status_konsumen').val('');
+    } else {
+        $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+            .hide();
+        $('#data_partner, #data_agent').removeAttr('required', 'required');
+        $('#status_konsumen').val('');
     }
-}
 }
 
 $(".readonly").keydown(function(e) {
@@ -796,7 +902,7 @@ $('#status_konsumen').change(function() {
         $('#btn-data').attr('data-target', '#modal-partner');
         $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
         $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-    } else {}
+    }
 
     function status_konsumen() {
         if ($('#status_konsumen').val() == "RO Active") {
