@@ -3756,6 +3756,57 @@ input[data-readonly] {
 	color: #0984e3;
 }
 
+.table-lable {
+	width: 200px;
+}
+
+.form-border {
+	border: 0;
+}
+
+.table-rigt-220 {
+	width: 220px;
+	float: right;
+	border: 0px;
+}
+
+.table-form-220 {
+	width: 220px;
+	border: 0px;
+}
+
+.table-form-300 {
+	width: 300px;
+	border: 0px;
+}
+
+.table-form-400 {
+	width: 400px;
+	border: 0px;
+}
+
+.table-form-500 {
+	width: 400px;
+	border: 0px;
+}
+
+.table-form-600 {
+	width: 400px;
+	border: 0px;
+}
+
+.table-245 {
+	width: 245px;
+}
+
+.radius {
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+	width: 90px;
+}
+
 /* .dataTables_filter {
 	display: none;
 } */
