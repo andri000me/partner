@@ -24,7 +24,7 @@ class Leads_activity_model extends CI_Model
     {
         $this->db->select("*, DATE_FORMAT(date_activity, '%d %b, %Y') as tanggal_activity");
         $this->db->from('leads_activities');
-        $this->db->join('leads', 'leads.id_leads = leads_activities.id_leads', 'inner');
+        $this->db->join('leads_full', 'leads_full.id_leads = leads_activities.id_leads', 'inner');
         $this->db->join('users', 'users.id_user = leads_activities.id_user', 'inner');
         $this->db->join('branches', 'branches.id_branch = users.id_branch', 'inner');
         if ($where != null) {

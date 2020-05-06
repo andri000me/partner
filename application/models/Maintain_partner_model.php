@@ -24,7 +24,7 @@ class Maintain_partner_model extends CI_Model
     {
         $this->db->select("*, DATE_FORMAT(date_maintain, '%d %M %Y %H:%i:%s') as tanggal_maintain");
         $this->db->from("maintain_partners");
-        $this->db->join("partners", "partners.id_partner = maintain_partners.id_partner", "inner");
+        $this->db->join("partners_full", "partners_full.id_partner = maintain_partners.id_partner", "inner");
         if ($where != null) {
             $this->db->where($where);
         }

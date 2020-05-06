@@ -6,20 +6,6 @@ class Nst extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //Load Modul Leads
-        $this->load->model('leads_model');
-        //Load Modul NST
-        $this->load->model('nst_model');
-        //Load Modul Ticket
-        $this->load->model('ticket_model');
-        //Load Modul Notifikasi
-        $this->load->model('notification_model');
-        //Load Modul Agent Activity
-        $this->load->model('agent_activity_model', 'agent_activity');
-        //Load Modul Comment
-        $this->load->model('comment_model');
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {

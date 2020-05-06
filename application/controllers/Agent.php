@@ -8,21 +8,6 @@ class Agent extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //Load Modul Agent
-        $this->load->model('agent_model');
-        //Load Modul Ticket
-        $this->load->model('ticket_model');
-        //Load Modul Notifikasi
-        $this->load->model('notification_model');
-        //Load Modul Agent Activity
-        $this->load->model('agent_activity_model', 'agent_activity');
-        //Load Modul Comment
-        $this->load->model('comment_model');
-        //Load Modul Users
-        $this->load->model('user_model');
-
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
@@ -32,7 +17,7 @@ class Agent extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = ['agents.id_branch' => $this->fungsi->user_login()->id_branch];
         } else {
-            $this->where = "status = 'lengkap'";
+            $this->where = "agents.status = 'lengkap'";
         }
 
         check_not_login();
@@ -82,7 +67,7 @@ class Agent extends CI_Controller
         $where = ['agents.id_agent' => $id];
         $data = [
             'data' => $this->agent_model->get($where)->row(),
-            'activities' => $this->agent_activity->get($where),
+            'activities' => $this->agent_activity_model->get($where),
             'comments' => $this->comment_model->get($where),
             'ticket' => $this->ticket_model->get($where)->row()
         ];
@@ -209,14 +194,14 @@ class Agent extends CI_Controller
 
             }
             //Membuat history activity inputan data Agent
-            $agent_activity = [
+            $agent_activity_model = [
                 'activity' => 'Data Agent telah dibuat',
                 'date_activity' => date('Y-m-d H:i:s'),
                 'id_agent' => $id,
                 'id_user' => $post['id_user']
             ];
 
-            $this->agent_activity->create($agent_activity);
+            $this->agent_activity_model->create($agent_activity_model);
 
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil disimpan. <a href='#'>Lihat Data</a>");
@@ -342,14 +327,14 @@ class Agent extends CI_Controller
         $id = $this->agent_model->update($data, $where);
 
         //Membuat history activity inputan data Agent
-        $agent_activity = [
+        $agent_activity_model = [
             'activity' => 'Perubahan pada data Agent',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_agent' => $post['id_agent'],
             'id_user' => $post['id_user']
         ];
 
-        $this->agent_activity->create($agent_activity);
+        $this->agent_activity_model->create($agent_activity_model);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diubah. <a href='#'>Lihat Data</a>");
@@ -399,14 +384,14 @@ class Agent extends CI_Controller
         $this->agent_model->update($data, $where);
 
         //Membuat history activity inputan data Agent
-        $agent_activity = [
+        $agent_activity_model = [
             'activity' => 'Perubahan pada data Agent',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_agent' => $post['id_agent'],
             'id_user' => $post['id_user']
         ];
 
-        $this->agent_activity->create($agent_activity);
+        $this->agent_activity_model->create($agent_activity_model);
 
         //Membuat notifikasi Perubahan Data untuk Admin
         $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
@@ -483,26 +468,73 @@ class Agent extends CI_Controller
 
 
 
+        $where = "agents.id_agent = ".  $post['id_agent'];
+        //Mengambil nama file lampiran tambahan yang ada
+        $lampiran_tambahan = $this->agent_model->get($where)->row()->lampiran_tambahan;
+        //Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
-        $data_agent['lampiran_tambahan'] = $comma;
-        $where = ['id_agent' => $post['id_agent']];
-        $this->agent_model->update($data_agent, $where);
+        //Jika sudah pernah melampirkan tambahan, maka append nama file di database
+        if($lampiran_tambahan){
+            $data_agent['lampiran_tambahan'] = $lampiran_tambahan. ",". $comma;
+            $this->agent_model->update($data_agent, $where);
+        }else{
+            $data_agent['lampiran_tambahan'] = $comma;
+            $this->agent_model->update($data_agent, $where);
+        }
         
         redirect($post['redirect']);
     }
 
-    private function set_upload_options()
-    {   
-        //upload an image options
-        $config = [];
+    public function update_ttd()
+    {
+        // $post = $this->input->post(null, TRUE);
+        $data = [
+            'ttd_pks'           => $this->input->post('ttd_pks')
+        ];
+
+        $where = ['id_agent' => $this->input->post('id_agent')];
+        $data = $this->agent_model->update($data, $where);
+
+        echo json_encode($data);
+
+        $notification = $this->notification($this->input->post('id_agent'), 'Ditanda tangan oleh');
+        $this->notification_model->create($notification);
+    }
+
+    //Upload Formulir MOU
+    public function upload_mou()
+    {
         //Konfigurasi Upload
         $config['upload_path']         = './uploads/agents';
         $config['allowed_types']        = '*';
         $config['max_size']             = 0;
         $config['max_width']            = 0;
         $config['max_height']           = 0;
-        // $config['overwrite']            = FALSE; 
 
-        return $config;
+        $this->load->library('upload', $config);
+        
+        if (!$this->upload->do_upload('upload_mou')) {
+            echo $this->upload->display_errors();
+        } else {
+            $data_ticket = [
+                'date_verified_ttd' =>  date('Y-m-d H:i:s'),
+                'verified_by'       => $this->fungsi->user_login()->id_user
+            ];
+            $where = ['id_agent' => $this->input->post('id_agent')];
+            $this->ticket_model->update($data_ticket, $where);
+            $data['form_mou'] = $this->upload->data('file_name');
+            $this->agent_model->update($data, $where);
+
+            //Jika data tiket sudah diapprove namun belum di upload form pks, maka ketika user upload form mou, tiket kembali ke status `pending`
+            $id_agent = $this->ticket_model->get(['tickets.id_agent' => $this->input->post('id_agent')])->row();
+            if ($id_agent->status_ticket == 5 || $id_agent->status_ticket == 6) {
+                $data_ticket = ['status' => 2];
+                $this->ticket_model->update($data_ticket, ['id_agent' => $this->input->post('id_agent')]);
+            }
+
+            redirect($this->input->post('redirect'));
+        }
     }
+
+    
 }

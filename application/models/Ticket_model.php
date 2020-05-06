@@ -24,6 +24,9 @@ class Ticket_model extends CI_Model
     {
         $this->db->select("
         *,
+        tickets.id_agent as agent_id,
+        tickets.id_partner as partner_id,
+
         tickets.status as status_ticket,
         users.id_user as user_id,
         branches.id_branch as branch_id,
@@ -32,9 +35,9 @@ class Ticket_model extends CI_Model
         user_completed.name as nama_user_completed, 
         user_activated.name as nama_user_activated, 
         user_verified_ttd.name as nama_user_verified,
-        partners.ktp as ktp_partner,
+        partners_full.ktp as ktp_partner,
         agents.ktp as ktp_agent,
-        partners.npwp as npwp_partner,
+        partners_full.npwp as npwp_partner,
         agents.npwp as npwp_agent,
 
         DATE_FORMAT(date_pending, '%d %b, %Y') as tanggal_pending,
@@ -57,11 +60,11 @@ class Ticket_model extends CI_Model
         ");
         $this->db->from('tickets');
         // Join Table `Partner`
-        $this->db->join('partners', 'partners.id_partner = tickets.id_partner', 'left');
+        $this->db->join('partners_full', 'partners_full.id_partner = tickets.id_partner', 'left');
         // Join Table `Agents`
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
         // Join Table `Leads`
-        $this->db->join('leads', 'leads.id_leads = tickets.id_leads', 'left');
+        $this->db->join('leads_full', 'leads_full.id_leads = tickets.id_leads', 'left');
         // Join Table `Leads`
         $this->db->join('nst', 'nst.id_nst = tickets.id_nst', 'left');
         // Join Table `Users`

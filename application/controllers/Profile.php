@@ -7,10 +7,6 @@ class Profile extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model');
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
-
         check_not_login();
     }
 

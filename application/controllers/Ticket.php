@@ -9,11 +9,7 @@ class Ticket extends CI_Controller
     {
 
         parent::__construct();
-        $this->load->model('ticket_model');
-        $this->load->model('notification_model');
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
-
+        
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
             $this->where = ['tickets.id_user' => $this->fungsi->user_login()->id_user];

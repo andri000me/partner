@@ -1,18 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Leads_assignment extends CI_Controller
+class leads_assignment_model extends CI_Controller
 {
 
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('leads_assignment_model', 'leads_assignment');
-        $this->load->model('branch_model');
-        $this->load->model('notification_model');
-
-        $this->load->helper('fungsi');
-        $this->load->library('form_validation');
 
         check_not_login();
     }
@@ -21,7 +15,7 @@ class Leads_assignment extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->leads_assignment->get()
+            'data' => $this->leads_assignment_model->get()
         ];
 
         // $this->template->load('template/index', 'maintain_partner', $data);
@@ -42,7 +36,7 @@ class Leads_assignment extends CI_Controller
     {
         $where = ['id_leads_assignment' => $id];
         $data = [
-            'data'      => $this->leads_assignment->get($where)->row(),
+            'data'      => $this->leads_assignment_model->get($where)->row(),
             'branches'  => $this->branch_model->get()
         ];
         $this->template->load('template/index', 'tele-admin-edit', $data);
@@ -77,7 +71,7 @@ class Leads_assignment extends CI_Controller
             ];
 
 
-            $this->leads_assignment->create($data);
+            $this->leads_assignment_model->create($data);
 
             //Notifikasi
             $notification = [
@@ -105,7 +99,7 @@ class Leads_assignment extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        // $original_value = $this->leads_assignment->get(['id_leads_assignment' => $post['id_leads_assignment']])->row();
+        // $original_value = $this->leads_assignment_model->get(['id_leads_assignment' => $post['id_leads_assignment']])->row();
 
         // $this->form_validation->set_rules('telepon', 'Nomor Telepon', ($post['telepon'] != $original_value->telepon) ? 'is_unique[leads_assignments.telepon]' : '', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
         // if ($post['telepon'] == $original_value->telepon) {
@@ -138,7 +132,7 @@ class Leads_assignment extends CI_Controller
 
         $where = ['id_leads_assignment' => $post['id_leads_assignment']];
 
-        $this->leads_assignment->update($data, $where);
+        $this->leads_assignment_model->update($data, $where);
 
         //Notifikasi
         $notification = [
@@ -157,7 +151,7 @@ class Leads_assignment extends CI_Controller
         //     // echo 'hasbdjbasdjbdas';
         //     $where = ['id_leads_assignment' => $post['id_leads_assignment']];
         //     $data = [
-        //         'data' => $this->leads_assignment->get($where)->row(),
+        //         'data' => $this->leads_assignment_model->get($where)->row(),
         //         'branches' => $this->branch_model->get()
         //     ];
         //     $this->template->load('template/index', 'tele-admin-edit', $data);

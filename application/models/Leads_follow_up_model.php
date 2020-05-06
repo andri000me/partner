@@ -24,7 +24,7 @@ class Leads_follow_up_model extends CI_Model
     {
         $this->db->select("*, DATE_FORMAT(date_follow_up, '%d %M %Y %H:%i:%s') as tanggal_follow_up");
         $this->db->from("leads_follow_up");
-        $this->db->join("mapping_leads", "mapping_leads.id_mapping_leads = leads_follow_up.id_mapping_leads", "inner");
+        $this->db->join("leads_full", "leads_full.id_leads = leads_follow_up.id_leads", "inner");
         $this->db->join("users", "users.id_user = leads_follow_up.id_user", "inner");
         if ($where != null) {
             $this->db->where($where);

@@ -58,7 +58,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('user_agent' => 'ua');
 */
-$autoload['libraries'] = array('database', 'session', 'template', 'fungsi');
+$autoload['libraries'] = array('database', 'session', 'template', 'fungsi', 'form_validation');
 
 /*
 | -------------------------------------------------------------------
@@ -132,4 +132,26 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array();
+$autoload['model'] = [
+    'agent_activity_model',
+    'agent_model',
+    'approval_bonus_model',
+    'branch_model',
+    'comment_model',
+    'leads_activity_model',
+    'leads_assignment_model',
+    'leads_follow_up_model',
+    'leads_model',
+    'maintain_partner_model',
+    'module_model',
+    'notification_model',
+    'nst_model',
+    'partner_activity_model',
+    'partner_model',
+    'product_support_model',
+    'ps_activity_model',
+    'ps_model',
+    'ps_ticket_model',
+    'ticket_model',
+    'user_model'
+];

@@ -23,12 +23,10 @@ class Mapping_partner_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->select("*, A.id_mapping as mapping_id");
-        $this->db->from("mapping_partners A");
-        $this->db->join("partners B", "A.id_mapping = B.id_mapping", "left");
-        // $this->db->join("users C", "A.id_user = C.id_user", "inner");
-        // $this->db->where_not_in("A.id_mapping", "SELECT id_mapping FROM partners");
-        $this->db->where("B.id_mapping IS NULL");
+        $this->db->select("*, mapping_partners.id_mapping as mapping_id");
+        $this->db->from("mapping_partners");
+        $this->db->join("partners", "mapping_partners.id_mapping = partners.id_mapping", "left");
+        $this->db->where("partners.id_mapping IS NULL");
         if ($where != null) {
             $this->db->where($where);
         }

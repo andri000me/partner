@@ -8,29 +8,6 @@ class Transfer_data extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //Load Modul Branch
-        $this->load->model('branch_model');
-
-        //Load Modul User
-        $this->load->model('user_model');
-
-        // Load Modul Agent
-        $this->load->model('agent_model');
-
-        // Load Modul Mapping Partner
-        $this->load->model('mapping_partner_model', 'mapping_partner');
-
-        // Load Modul Partner
-        $this->load->model('partner_model');
-
-        // Load Modul Mapping Leads
-        $this->load->model('mapping_leads_model', 'mapping_leads');
-
-        // Load Modul Leads
-        $this->load->model('leads_model');
-
-        $this->load->library('form_validation');
-        $this->load->helper('fungsi');
 
         check_not_login();
 
@@ -42,7 +19,7 @@ class Transfer_data extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = 'branches.id_branch = ' . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "1";
         }
     }
 
@@ -71,7 +48,7 @@ class Transfer_data extends CI_Controller
             "
             ),
 
-            'mapping_partner' => $this->mapping_partner->query(
+            'mapping_partner_model' => $this->mapping_partner_model->query(
                 "SELECT * , mapping_partners.id_mapping as mapping_id_partner, mapping_partners.id_user as user_id 
                 FROM mapping_partners
                 LEFT JOIN partners ON partners.id_mapping = mapping_partners.id_mapping
@@ -129,7 +106,7 @@ class Transfer_data extends CI_Controller
 
         $update_agent = $this->agent_model->update($data, $where);
         $update_mapping_leads = $this->mapping_leads->update($data, $where);
-        $update_mapping_partner = $this->mapping_partner->update($data, $where);
+        $update_mapping_partner = $this->mapping_partner_model->update($data, $where);
 
         // if ($update_agent > 0 || $update_mapping_leads > 0 || $update_mapping_partner > 0) {
         // echo $update_agent . ' ' . $update_mapping_leads . ' ' . $update_mapping_partner;
@@ -150,7 +127,7 @@ class Transfer_data extends CI_Controller
         }
 
         foreach ($partner as $key => $val) {
-            $this->mapping_partner->update(['id_user' => $val], ['id_mapping' => $key]);
+            $this->mapping_partner_model->update(['id_user' => $val], ['id_mapping' => $key]);
         }
 
         foreach ($agent as $key => $val) {
@@ -190,7 +167,7 @@ class Transfer_data extends CI_Controller
 
         $where_data = ['id_mapping' => $post['data']];
         $data = ['id_user' => $post['penginput']];
-        $id = $this->mapping_partner->update($data, $where_data);
+        $id = $this->mapping_partner_model->update($data, $where_data);
 
         echo json_encode($id);
     }

@@ -8,17 +8,6 @@ class User extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        //Load Modul Branch
-        $this->load->model('branch_model');
-
-        //Load Modul User
-        $this->load->model('user_model');
-
-        //Load Modul Module
-        $this->load->model('module_model');
-
-        $this->load->library('form_validation');
-        $this->load->helper('fungsi');
 
         check_not_login();
     }

@@ -531,7 +531,8 @@
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-comment-dots"></i></span>
-                                    <span class="d-none d-sm-block">Comment</span>
+                                    <span class="d-none d-sm-block">Comment <span
+                                            class="badge badge-secondary"><?= $comments->num_rows() ?></span></span>
                                 </a>
                             </li>
                         </ul>
@@ -715,7 +716,7 @@
                                         </div>
                                         <?php } ?>
                                         <!-- Tanda Tangan PKS -->
-                                        <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
+                                        <?php if ($data->ttd_pks == 'Ya' && $data->form_mou != NULL) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -764,7 +765,7 @@
                                             </div>
                                         </div>
                                         <?php } ?>
-                                        <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+                                        <?php if (($this->fungsi->user_login()->level < 4) && ($data->form_mou == NULL || $data->form_mou == '')) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">
                                                 <table>
@@ -787,7 +788,7 @@
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input ttd_pks"
                                                                             type="radio" name="ttd_pks"
-                                                                            <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?>
+                                                                            <?= $data->ttd_pks == 'Ya' ? 'checked' : '' ?>
                                                                             value="Ya">
                                                                         <label class="form-check-label">
                                                                             Ya
@@ -796,7 +797,7 @@
                                                                     <div class="form-check form-check-inline">
                                                                         <input class="form-check-input ttd_pks"
                                                                             type="radio" name="ttd_pks"
-                                                                            <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?>
+                                                                            <?= $data->ttd_pks == 'Tidak' ? 'checked' : '' ?>
                                                                             value="Tidak">
                                                                         <label class="form-check-label">
                                                                             Tidak
@@ -806,11 +807,10 @@
                                                             </form>
 
                                                             <div id="" class="form-group ml-3 form_mou">
-                                                                <form
-                                                                    action="<?= base_url('ticket/upload_mou/partners') ?>"
+                                                                <form action="<?= base_url('agent/upload_mou') ?>"
                                                                     method="post" enctype="multipart/form-data">
-                                                                    <input type="hidden" name="id_ticket"
-                                                                        value="<?= $ticket->id_ticket ?>">
+                                                                    <input type="hidden" name="id_agent"
+                                                                        value="<?= $data->id_agent ?>">
                                                                     <input type="hidden" name="redirect"
                                                                         value="<?= uri_string() ?>">
                                                                     <div class="form-group mr-2">
@@ -916,7 +916,7 @@
                                         </div>
                                     </div>
                                     <?php } ?>
-                                    <?php if ($ticket->ttd_pks == 'Ya' && $ticket->form_mou != NULL) { ?>
+                                    <?php if ($data->ttd_pks == 'Ya' && $data->form_mou != NULL) { ?>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table class="text-size">
@@ -965,7 +965,7 @@
                                         </div>
                                     </div>
                                     <?php } ?>
-                                    <?php if (($this->fungsi->user_login()->level < 4) && ($ticket->form_mou == NULL || $ticket->form_mou == '')) { ?>
+                                    <?php if (($this->fungsi->user_login()->level < 4) && ($data->form_mou == NULL || $data->form_mou == '')) { ?>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table>
@@ -988,7 +988,7 @@
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input ttd_pks" type="radio"
                                                                         name="ttd_pks"
-                                                                        <?= $ticket->ttd_pks == 'Ya' ? 'checked' : '' ?>
+                                                                        <?= $data->ttd_pks == 'Ya' ? 'checked' : '' ?>
                                                                         value="Ya">
                                                                     <label class="form-check-label">
                                                                         Ya
@@ -997,7 +997,7 @@
                                                                 <div class="form-check form-check-inline">
                                                                     <input class="form-check-input ttd_pks" type="radio"
                                                                         name="ttd_pks"
-                                                                        <?= $ticket->ttd_pks == 'Tidak' ? 'checked' : '' ?>
+                                                                        <?= $data->ttd_pks == 'Tidak' ? 'checked' : '' ?>
                                                                         value="Tidak">
                                                                     <label class="form-check-label">
                                                                         Tidak
@@ -1006,10 +1006,10 @@
                                                             </form>
                                                         </div>
                                                         <div id="" class="form-group ml-3 form_mou">
-                                                            <form action="<?= base_url('ticket/upload_mou/partners') ?>"
+                                                            <form action="<?= base_url('agent/upload_mou') ?>"
                                                                 method="post" enctype="multipart/form-data">
-                                                                <input type="hidden" name="id_ticket"
-                                                                    value="<?= $ticket->id_ticket ?>">
+                                                                <input type="hidden" name="id_agent"
+                                                                    value="<?= $data->id_agent ?>">
                                                                 <input type="hidden" name="redirect"
                                                                     value="<?= uri_string() ?>">
                                                                 <div class="form-group mr-2">
@@ -1095,3 +1095,38 @@
         </div>
     </div>
 </div>
+
+<!-- //Script untuk update tanda tangan pks -->
+<script>
+if ($("input[name='ttd_pks']:checked").val() == 'Ya') {
+    $(".form_mou").show();
+} else {
+    $(".form_mou").hide();
+}
+//Update tanda tangan pks
+$(".ttd_pks").on('click', function() {
+    var ttd_pks = $(this).val();
+    var id_agent = $('#id_agent').val();
+
+    if (ttd_pks == 'Ya') {
+        $(".form_mou").show();
+    } else {
+        $(".form_mou").hide();
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "<?= base_url('agent/update_ttd') ?>",
+        dataType: "JSON",
+        data: {
+            ttd_pks: ttd_pks,
+            id_agent: id_agent
+        },
+        success: function(data) {
+            alert('Success, \n ID Agent: ' + id_agent + '\n TTD: ' + ttd_pks);
+            // location.reload();
+        }
+    });
+    // return false;
+});
+</script>

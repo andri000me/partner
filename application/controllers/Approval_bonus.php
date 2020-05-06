@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Approval_bonus extends CI_Controller
+class approval_bonus_model extends CI_Controller
 {
     public $where;
 
@@ -9,31 +9,13 @@ class Approval_bonus extends CI_Controller
     {
         parent::__construct();
 
-        //Load Modul Approval Bonus
-        $this->load->model('approval_bonus_model', 'approval_bonus');
-
-        // Load Modul Leads
-        $this->load->model('leads_model');
-        // Load Modul Leads Assignment
-        $this->load->model('leads_assignment_model', 'leads_assignment');
-        //Load Modul NST
-        $this->load->model('nst_model');
-        //Load Modul Ticket
-        $this->load->model('ticket_model');
-
-
-        $this->load->helper('fungsi');
-
-        $this->load->library('form_validation');
-
-
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['approval_bonuses.id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "approval_bonuses.id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['approval_bonuses.id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "approval_bonuses.id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = NULL;
         }
@@ -59,10 +41,9 @@ class Approval_bonus extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->approval_bonus->get_ticket($this->where)
+            'data' => $this->approval_bonus_model->get($this->where)
         ];
         $this->template->load('template/index', 'approval-bonus', $data);
-        // $this->template->load('template/index', 'approval-bonus');
     }
 
     public function create()
@@ -133,7 +114,7 @@ class Approval_bonus extends CI_Controller
         AND $where";
         
             $data = [
-            'data' => $this->approval_bonus->get_ticket(['approval_bonuses.id_approval_bonus' => $id])->row(),
+            'data' => $this->approval_bonus_model->get_ticket(['approval_bonuses.id_approval_bonus' => $id])->row(),
             'leads' => $this->leads_model->query($get_leads)
         ];
 
@@ -186,7 +167,7 @@ class Approval_bonus extends CI_Controller
                 $data['lampiran'] = $this->upload->data('file_name');
             }
 
-            $id = $this->approval_bonus->create($data);
+            $id = $this->approval_bonus_model->create($data);
 
             //Menambah antrian tiket untuk data Agent
             $has_superior = $this->fungsi->user_login()->has_superior;
@@ -206,7 +187,7 @@ class Approval_bonus extends CI_Controller
             $notification = $this->notification($id_ticket, 'Tiket Baru');
             $this->notification_model->create($notification);
 
-            redirect('approval_bonus');
+            redirect('approval_bonus_model');
         } else {
             $get_leads =
                 "SELECT *, 
@@ -275,12 +256,12 @@ class Approval_bonus extends CI_Controller
             }
 
             $where = ['leads_id' => $post['leads_id']];
-            $id = $this->approval_bonus->update($data, $where);
+            $id = $this->approval_bonus_model->update($data, $where);
 
             //Membuat notifikasi Perubahan Data untuk Admin
             $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
             $this->notification_model->create($notification);
 
-            redirect('approval_bonus');
+            redirect('approval_bonus_model');
     }
 }

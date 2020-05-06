@@ -9,16 +9,6 @@ class Assignment extends CI_Controller
     {
         parent::__construct();
 
-        // Load Modul Leads
-        $this->load->model('leads_model');
-        // Load Modul Leads Assignment
-        $this->load->model('leads_assignment_model', 'leads_assignment');
-        //Load Modul NST
-        $this->load->model('nst_model');
-
-
-        $this->load->helper('fungsi');
-
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
             $this->where = ['id_user' => $this->fungsi->user_login()->id_user];
@@ -66,15 +56,15 @@ class Assignment extends CI_Controller
         }
 
         $data = [
-            'data' => $this->leads_assignment->get($where),
+            'data' => $this->leads_assignment_model->get($where),
 
             //Mengambil data assignment dari Tele ke Cabang
-            'belum_update' => $this->leads_assignment->get("status IS NULL AND assign_to != 46 AND " . $where),
-            'sudah_update' => $this->leads_assignment->get("status IS NOT NULL AND assign_to != 46 AND " . $where),
+            'belum_update' => $this->leads_assignment_model->get("status IS NULL AND assign_to != 46 AND " . $where),
+            'sudah_update' => $this->leads_assignment_model->get("status IS NOT NULL AND assign_to != 46 AND " . $where),
 
             //Mengambil data assignment dari HO ke Tele
-            'belum_update_tele' => $this->leads_assignment->get("status IS NULL AND assign_to = 46"),
-            'sudah_update_tele' => $this->leads_assignment->get("status IS NOT NULL AND assign_to = 46")
+            'belum_update_tele' => $this->leads_assignment_model->get("status IS NULL AND assign_to = 46"),
+            'sudah_update_tele' => $this->leads_assignment_model->get("status IS NOT NULL AND assign_to = 46")
         ];
 
         $this->template->load('template/index', 'assignment-lead-database', $data);
