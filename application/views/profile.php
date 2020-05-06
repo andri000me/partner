@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 mt-5">
-        <div class="card directory-card m-b-20">
+        <div class="card directory-card m-b-20 ml-3 mr-3">
             <div>
                 <div class="directory-bg text-center" style="background-image: url(<?= base_url('template/assets/images/montain.jpeg') ?>)">
                     <div class="directory-overlay">

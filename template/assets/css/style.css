@@ -645,7 +645,7 @@ dt {
 	text-align: center;
 	height: 70px;
 	position: relative;
-	width: 240px;
+	width: 300px;
 	z-index: 1;
 }
 
@@ -689,7 +689,7 @@ dt {
 }
 
 .side-menu {
-	width: 240px;
+	width: 300px;
 	z-index: 10;
 	background: #2b3a4a;
 	bottom: 0;
@@ -708,7 +708,7 @@ dt {
 }
 
 .content-page {
-	margin-left: 240px;
+	margin-left: 300px;
 	overflow: hidden;
 }
 
