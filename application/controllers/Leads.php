@@ -153,8 +153,6 @@ class Leads extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
-        // $this->form_validation->set_rules('id_partner_leads', 'ID Mapping Leads', 'required', ['required' => 'Mohon pilih data dari Mapping Leads']);
-        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[leads_full.no_ktp]', ['is_unique' => 'Nomor KTP sudah dipakai, mohon ganti nomor KTP']);
         $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[leads_full.no_ktp]', ['is_unique' => 'Nomor KTP sudah dipakai, mohon ganti nomor KTP']);
         $this->form_validation->set_rules('leads_id', 'Leads ID', 'is_unique[leads_full.leads_id]', ['is_unique' => 'Leads ID sudah dipakai, mohon ganti Leads ID']);
 
@@ -178,25 +176,25 @@ class Leads extends CI_Controller
                 // Untuk SOA Event
                 'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
                 
-                'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-                'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+                'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
+                'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
                 
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
                 'updated_at'            => date('Y-m-d H:i:s'),
                 
                 // ----- PROSPECT
-                'follow_up_by'          => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
                 'no_ktp'                => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-                'leads_id'              => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
                 'cross_branch'          => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
                 'cabang_cross'          => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-                'surveyor'              => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
-                'pic_ttd'               => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
-                'appeal_nst'            => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
-                'nilai_funding'         => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-                'sudah_funding'         => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
-                
+                // 'follow_up_by'          => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
+                // 'leads_id'              => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
+                // 'surveyor'              => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
+                // 'pic_ttd'               => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
+                // 'appeal_nst'            => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
+                // 'nilai_funding'         => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
+                // 'sudah_funding'         => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
+
                 'pekerjaan_konsumen'    => !empty($post['pekerjaan_konsumen']) ? $post['pekerjaan_konsumen'] : NULL,
                 'status_konsumen'       => !empty($post['status_konsumen']) ? $post['status_konsumen'] : NULL,
                 'tanggal_lahir'         => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
@@ -279,6 +277,10 @@ class Leads extends CI_Controller
                 //Membuat notifikasi tiket baru untuk Admin
                 $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
                 $this->notification_model->create($notification_admin);
+
+                // Tambah record ke Form Survey
+                $form_survey = ['id_leads' => $id];
+                $this->fs_konsumen_model->create($form_survey);
             }
             if ($id) {
                 //Memberi pesan berhasil data menyimpan data mapping
@@ -324,8 +326,8 @@ class Leads extends CI_Controller
                 // Untuk SOA Event
                 'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
-                'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-                'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+                'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
+                'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
 
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
@@ -380,20 +382,20 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
             
-            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+            'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
+            'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
 
             // ----- PROSPECT
-            'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
             'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-            'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
             'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
             'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-            'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
-            'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
-            'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
-            'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
+            // 'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
+            // 'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
+            // 'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
+            // 'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
+            // 'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
+            // 'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
+            // 'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
 
             'pekerjaan_konsumen'    => !empty($post['pekerjaan_konsumen']) ? $post['pekerjaan_konsumen'] : NULL,
             'status_konsumen'       => !empty($post['status_konsumen']) ? $post['status_konsumen'] : NULL,
@@ -459,6 +461,10 @@ class Leads extends CI_Controller
                 'id_leads' => $post['id_leads']
             ];
             $this->leads_follow_up_model->create($data_leads_follow_up);
+
+            // Tambah record ke Form Survey
+            $form_survey = ['id_leads' => $post['id_leads']];
+            $this->fs_konsumen_model->create($form_survey);
         }
 
         $where = ['id_leads' => $post['id_leads']];
@@ -509,8 +515,8 @@ class Leads extends CI_Controller
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
-            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+            'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
+            'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
 
             //Timestamp
             // 'created_at'            => date('Y-m-d H:i:s'),
@@ -547,31 +553,31 @@ class Leads extends CI_Controller
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
-            
-            // Untuk SOA EGC
+         
+            // Untuk SOA EGC   
             'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
             'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
             'cabang_egc'            => !empty($post['cabang_egc']) ? $post['cabang_egc'] : NULL,
-            // Untuk SOA CGC / RO
+            // Untuk SOA CGC / RO  
             'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
-            // Untuk SOA Event
+            // Untuk SOA Event 
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
-            
-            'nama_partner'            => !empty($post['data_partner']) ? $post['data_partner'] : NULL,
-            'nama_agent'            => !empty($post['data_agent']) ? $post['data_agent'] : NULL,
+         
+            'nama_partner'          => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
+            'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
             
             // ----- PROSPECT
-            'follow_up_by'      => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
-            'no_ktp'            => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-            'leads_id'          => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
-            'cross_branch'      => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
-            'cabang_cross'      => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-            'surveyor'          => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
-            'pic_ttd'           => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
-            'appeal_nst'        => !empty($post['appeal_nst'])  ? $post['appeal_nst'] : NULL,
-            'nilai_funding'     => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
-            'sudah_funding'     => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
+            'no_ktp'                => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
+            'cross_branch'          => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
+            'cabang_cross'          => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
+            // 'follow_up_by'          => !empty($post['follow_up_by']) ? $post['follow_up_by'] : NULL,
+            // 'leads_id'              => !empty($post['leads_id']) ? $post['leads_id'] : NULL,
+            // 'surveyor'              => !empty($post['surveyor']) ? $post['surveyor'] : NULL,
+            // 'pic_ttd'               => !empty($post['pic_ttd']) ? $post['pic_ttd'] : NULL,
+            // 'appeal_nst'            => !empty($post['appeal_nst']) ? $post['appeal_nst'] : NULL,
+            // 'nilai_funding'         => !empty($post['nilai_funding']) ? str_replace(",", "", $post['nilai_funding']) : NULL,
+            // 'sudah_funding'         => !empty($post['sudah_funding']) ? $post['sudah_funding'] : 'Belum',
 
             'pekerjaan_konsumen'    => !empty($post['pekerjaan_konsumen']) ? $post['pekerjaan_konsumen'] : NULL,
             'status_konsumen'       => !empty($post['status_konsumen']) ? $post['status_konsumen'] : NULL,
@@ -588,10 +594,10 @@ class Leads extends CI_Controller
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),
-            'updated_at'        => date('Y-m-d H:i:s'),
+            'updated_at'            => date('Y-m-d H:i:s'),
 
-            'id_partner'            => !empty($post['id_partner'])          ? $post['id_partner'] : NULL,
-            'id_agent'              => !empty($post['id_agent'])            ? $post['id_agent'] : NULL
+            'id_partner'            => !empty($post['id_partner']) ? $post['id_partner'] : NULL,
+            'id_agent'              => !empty($post['id_agent']) ? $post['id_agent'] : NULL
         ];
 
         $where = ['id_leads' => $post['id_leads']];

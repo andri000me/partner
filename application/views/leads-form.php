@@ -187,17 +187,17 @@
                                     <div class="form-group text-size ml-4 mr-4">
                                         <label>Pekerjaan Konsumen</label><br>
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="jenis_rumah"
-                                                <?= set_value('jenis_rumah') == 'Karyawan' ? 'checked' : '' ?>
-                                                id="jenis_rumah" required value="Karyawan">
+                                            <input class="form-check-input" type="radio" name="pekerjaan__konsumen"
+                                                <?= set_value('pekerjaan__konsumen') == 'Karyawan' ? 'checked' : '' ?>
+                                                id="pekerjaan__konsumen" required value="Karyawan">
                                             <label class="form-check-label">
                                                 Karyawan
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="jenis_rumah"
-                                                <?= set_value('jenis_rumah') == 'Wiraswasta' ? 'checked' : '' ?>
-                                                id="jenis_rumah" required value="Wiraswasta">
+                                            <input class="form-check-input" type="radio" name="pekerjaan__konsumen"
+                                                <?= set_value('pekerjaan__konsumen') == 'Wiraswasta' ? 'checked' : '' ?>
+                                                id="pekerjaan__konsumen" required value="Wiraswasta">
                                             <label class="form-check-label">
                                                 Wiraswasta
                                             </label>
@@ -262,7 +262,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Jenis Bangunan Rumah</label>
-                                        <select class="form-control text-size" name="jenis_bangunan" id="jenis_bangunan"
+                                        <select class="form-control text-size" name="jenis_rumah" id="jenis_rumah"
                                             required>
                                             <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
                                             <option value="Permanent">Permanent</option>
@@ -273,7 +273,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Luas Bangunan Rumah</label>
-                                        <select class="form-control text-size" name="luas_bangunan" id="luas_bangunan"
+                                        <select class="form-control text-size" name="luas_rumah" id="luas_rumah"
                                             required>
                                             <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
                                             <option value="< 60 M2">
@@ -373,8 +373,8 @@
                                     <div class="ml-4 mr-4">
                                         <label class="gent">Pilih Data Agent</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-size" name="data_agent"
-                                                id="data_agent" value="<?= set_value('data_agent') ?>"
+                                            <input type="text" class="form-control text-size" name="nama_agent"
+                                                id="nama_agent" value="<?= set_value('nama_agent') ?>"
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
@@ -390,8 +390,8 @@
                                         <label class="jasa">Pilih Data Penyedia Jasa</label>
                                         <label class="vendor">Pilih Data Partner</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-size" name="data_partner"
-                                                id="data_partner" value="<?= set_value('data_partner') ?>"
+                                            <input type="text" class="form-control text-size" name="nama_partner"
+                                                id="nama_partner" value="<?= set_value('nama_partner') ?>"
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
@@ -686,49 +686,49 @@ $('#soa').change(function() {
     $('#id_agent').val("");
     $('#nama_vendor').val("").removeAttr("required");
     $('#nama_event').val("");
-    $('#data_partner').val("");
-    $('#data_agent').val("");
+    $('#nama_partner').val("");
+    $('#nama_agent').val("");
     $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
 })
 
 function source_leads() {
     if ($('#soa').val() == 'Direct Selling') {
         $('.vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
         $('#btn-data').attr('data-target', '#modal-partner');
-        // $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        // $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Tour & travel') {
         $('.travel, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
         $('#btn-data').attr('data-target', '#modal-partner')
-        $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Penyedia Jasa') {
         $('.jasa, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
         $('#btn-data').attr('data-target', '#modal-partner')
-        $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Agent BA') {
         $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
         $('#btn-data').attr('data-target', '#modal-partner')
-        $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+        $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
         $('#btn-data-agent').attr('data-target', '#modal-agent')
-        // $('#data_partner, #data_agent').attr('required', 'required');
+        // $('#nama_partner, #nama_agent').attr('required', 'required');
         $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required',
             'required');
         $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
@@ -736,74 +736,74 @@ function source_leads() {
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'EGC') {
         $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
         $('#btn-data').attr('data-target', '#modal-partner');
         $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-        $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
+        $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'RO') {
         $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
         $('#btn-data').attr('data-target', '#modal-partner');
         $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
         $('#status_konsumen').val('RO Active');
     } else if ($('#soa').val() == 'CGC') {
         $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
         $('#btn-data').attr('data-target', '#modal-partner');
         $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Digital Marketing') {
         $('.vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
         $('#btn-data').attr('data-target', '#modal-partner')
-        // $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        // $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Website BFI Syariah') {
         $('.vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
         $('#btn-data').attr('data-target', '#modal-partner')
-        // $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        // $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Walk In') {
         $('.vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
         $('#btn-data').attr('data-target', '#modal-partner')
-        // $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        // $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Event Promotion') {
         $('.event, .vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
         $('#btn-data').attr('data-target', '#modal-partner')
         $('#nama_event').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required',
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required',
             'required');
         $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
         $('#status_konsumen').val('');
     } else if ($('#soa').val() == 'Tele Marketing') {
         $('.vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
         $('#btn-data').attr('data-target', '#modal-partner')
-        // $('#data_partner').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+        // $('#nama_partner').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
             .removeAttr('required', 'required');
         $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
@@ -811,9 +811,8 @@ function source_leads() {
     } else {
         $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
             .hide();
-        $('#data_partner, #data_agent').removeAttr('required', 'required');
+        $('#nama_partner, #nama_agent').removeAttr('required', 'required');
     }
-}
 }
 
 $(".readonly").keydown(function(e) {
@@ -826,14 +825,14 @@ $("table").on('click', '.pilih-partner', function() {
     $('#id_partner').val($(this).data('partner'));
     // $('#id_agent').val("");
     $('#nama_vendor').val($(this).data('vendor'));
-    $('#data_partner').val($(this).data('vendor'));
+    $('#nama_partner').val($(this).data('vendor'));
     $('#modal-partner').modal('hide');
 })
 $("table").on('click', '.pilih-agent', function() {
     $('#id_agent').val($(this).data('agent'));
     // $('#id_partner').val("");
     // $('#nama_vendor').val($(this).data('nama'));
-    $('#data_agent').val($(this).data('namaagent'));
+    $('#nama_agent').val($(this).data('namaagent'));
     $('#modal-agent').modal('hide');
 })
 $("table").on('click', '.pilih-leads', function() {
@@ -850,14 +849,14 @@ $("table").on('click', '.pilih-leads', function() {
     //Data Leads
     $('#produk').val($(this).data('produk'));
     $('#telepon').val($(this).data('telepon'));
-    $('#data_partner').val($(this).data('vendor'));
+    $('#nama_partner').val($(this).data('vendor'));
     $('#detail_produk').val($(this).data('detail'));
     $('#nama_event').val($(this).data('event'));
     $('#nama_konsumen').val($(this).data('nama'));
     $('#id_agent').val($(this).data('agent'));
     $('#id_partner').val($(this).data('partner'));
-    $('#data_partner').val($(this).data('namapartner'));
-    $('#data_agent').val($(this).data('namaagent'));
+    $('#nama_partner').val($(this).data('namapartner'));
+    $('#nama_agent').val($(this).data('namaagent'));
     $('#modal-leads').modal('hide');
 
     $('#nama_konsumen').attr('readonly', 'readonly');
@@ -876,14 +875,14 @@ if ($("#id_leads").val()) {
 }
 
 $('#reset').click(function() {
-    $('#id_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
+    $('#id_leads, #id_agent, #id_partner, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #nama_partner, #nama_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
         .val("");
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
         .hide();
     $('#nama_konsumen').removeAttr('readonly');
 })
 $('#reset').click(function() {
-    $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #data_partner, #data_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
+    $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #nama_partner, #nama_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
         .val("");
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
         .hide();
@@ -898,10 +897,10 @@ $('#status_konsumen').change(function() {
     if ($('#status_konsumen').val() == "RO Active") {
         $('#soa').val('RO')
         $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-        $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
         $('#btn-data').attr('data-target', '#modal-partner');
         $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-        $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
     }
 
     function status_konsumen() {

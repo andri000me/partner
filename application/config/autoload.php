@@ -138,6 +138,7 @@ $autoload['model'] = [
     'approval_bonus_model',
     'branch_model',
     'comment_model',
+    'fs_konsumen_model',
     'leads_activity_model',
     'leads_assignment_model',
     'leads_follow_up_model',

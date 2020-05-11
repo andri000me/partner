@@ -20,8 +20,9 @@
     <div class="col-12">
         <div class="card m-b-20">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Tabel Leads Prospect</h4>
-                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk keperluan NST, KPI dan Bonus</p>
+                <h4 class="mt-0 header-title">Daftar Data Survey</h4>
+                <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk
+                    keperluan NST, KPI dan Bonus</p>
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#all" role="tab">
@@ -31,8 +32,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#pending" role="tab">
-                            <span class="d-block d-sm-none">Pending</span>
-                            <span class="d-none d-sm-block">Pending</span>
+                            <span class="d-block d-sm-none">Pending <span
+                                    class="badge badge-secondary"><?= $pending->num_rows() ?></span></span>
+                            <span class="d-none d-sm-block">Pending <span
+                                    class="badge badge-secondary"><?= $pending->num_rows() ?></span></span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -44,7 +47,9 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="all" role="tabpanel">
-                        <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable-buttons"
+                            class="table table-striped table-bordered dt-responsive wrap text-size"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
@@ -53,35 +58,62 @@
                                     <th>Cabang</th>
                                     <th>Status</th>
                                     <th>Action</th>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                    <th>Assign To</th>
+                                    <?php } ?>
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach($data->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
-                                        1
+                                        <?= $fs_konsumen->id ?>
                                     </td>
                                     <td>
-                                        Tatang
+                                        <?= $fs_konsumen->nama_konsumen ?>
                                     </td>
                                     <td>
-                                        My Ihram
+                                        <?= $fs_konsumen->produk ?>
                                     </td>
                                     <td>
-                                        Bandung
+                                        <?= $fs_konsumen->nama_cabang ?>
                                     </td>
                                     <td>
-                                        Pending
+                                        <center>
+                                            <?php if ($fs_konsumen->status_approval == 0) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span>
+                                            </h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
+                                            </h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
+                                            <?php } ?>
+                                        </center>
                                     </td>
                                     <td>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                        <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
+                                                class="btn btn-secondary text-size radius">Form Survey</a>
+                                        </center>
                                     </td>
                                 </tr>
+                                <?php } ?>
+
                             </tbody>
                         </table>
                     </div>
                     <div class="tab-pane p-3" id="pending" role="tabpanel">
-                        <table id="datatable-buttons-1" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable-buttons-1"
+                            class="table table-striped table-bordered dt-responsive wrap text-size"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
@@ -93,32 +125,56 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach($pending->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
-                                        1
+                                        <?= $fs_konsumen->id ?>
                                     </td>
                                     <td>
-                                        Tatang
+                                        <?= $fs_konsumen->nama_konsumen ?>
                                     </td>
                                     <td>
-                                        My Ihram
+                                        <?= $fs_konsumen->produk ?>
                                     </td>
                                     <td>
-                                        Bandung
+                                        <?= $fs_konsumen->nama_cabang ?>
                                     </td>
                                     <td>
-                                        Pending
+                                        <center>
+                                            <?php if ($fs_konsumen->status_approval == 0) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span>
+                                            </h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
+                                            </h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
+                                            <?php } ?>
+                                        </center>
                                     </td>
                                     <td>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                        <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
+                                                class="btn btn-secondary text-size radius">Form Survey</a>
+                                        </center>
                                     </td>
                                 </tr>
+                                <?php } ?>
+
                             </tbody>
                         </table>
                     </div>
                     <div class="tab-pane p-3" id="finished" role="tabpanel">
-                        <table id="datatable-buttons-2" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="datatable-buttons-2"
+                            class="table table-striped table-bordered dt-responsive wrap text-size"
+                            style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
@@ -130,27 +186,50 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php foreach($completed->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
-                                        1
+                                        <?= $fs_konsumen->id ?>
                                     </td>
                                     <td>
-                                        Tatang
+                                        <?= $fs_konsumen->nama_konsumen ?>
                                     </td>
                                     <td>
-                                        My Ihram
+                                        <?= $fs_konsumen->produk ?>
                                     </td>
                                     <td>
-                                        Bandung
+                                        <?= $fs_konsumen->nama_cabang ?>
                                     </td>
                                     <td>
-                                        Pending
+                                        <center>
+                                            <?php if ($fs_konsumen->status_approval == 0) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span>
+                                            </h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
+                                            </h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
+                                            <?php } ?>
+                                        </center>
                                     </td>
                                     <td>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+
+                                        <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
+                                                class="btn btn-secondary text-size radius">Form Survey</a>
+                                        </center>
                                     </td>
                                 </tr>
+                                <?php } ?>
+
                             </tbody>
                         </table>
                     </div>

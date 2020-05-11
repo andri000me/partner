@@ -62,6 +62,7 @@
                     <ul class="submenu">
                         <li><a href="<?= base_url('leads/leads_database') ?>">Database</a></li>
                         <li><a href="<?= base_url('leads') ?>">Prospect</a></li>
+                        <li><a href="<?= base_url('fs_konsumen') ?>">Form Survey</a></li>
                     </ul>
                 </li>
                 <?php } ?>
