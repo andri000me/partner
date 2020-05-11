@@ -1,20 +1,35 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
-            <h4 class="page-title">Partnership</h4>
+        <div class="page-title-box card-margin-5">
+            <h4 class="page-title">Rekrut Agent / BA</h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
-                <li class="breadcrumb-item active">Agent / BA</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Agent / BA</a></li>
+                <li class="breadcrumb-item active">Rekrut Agent / BA</li>
             </ol>
         </div>
     </div>
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+            <div class="ml-4 mr-4 mt-3 mb-3">
+                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
+                <p>Isi data agent/ BA yang ingin anda daftarkan.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-lg-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-5">
             <div class="card-body">
+                <div class="ml-4">
+                    <h4 class="mt-0 mb-4 header-title">Form Rekrut Agen / BA</h4>
+                </div>
                 <div id="wizard_container">
                     <div id="top-wizard">
                         <div id="progressbar"></div>
@@ -32,26 +47,26 @@
                             <!-- Leave for security protection, read docs for details -->
                             <div id="middle-wizard">
                                 <div class="step">
-                                    <div class="row mb-2">
+                                    <!-- <div class="row mb-2">
                                         <div class="col-md-12 ml-3">
                                             <h4 class="mt-0 header-title">Formulir Agent / BA</h4>
-                                            <p class="text-muted">Isi data agent/ BA yang ingin anda daftarkan.</p>
+                                            <p class="text-muted"></p>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="">
-                                                <div class="form-row">
+                                                <!-- <div class="form-row">
                                                     <div class="col-md-12">
                                                         <div class="form-group ml-3 mr-3">
                                                             <label>Nama Lengkap</label>
                                                             <input type="text" class="form-control text-size <?= form_error('nama_lengkap') ? 'is-invalid' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" required placeholder="Aisha Putri" />
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>E-Mail</label>
                                                             <div>
                                                                 <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" required placeholder="Aisha@bfisyariah.id" />
@@ -60,7 +75,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Nomor Telepon</label>
                                                             <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="09788398364" maxlength="15" />
                                                             <?= form_error('telepon'); ?>
@@ -69,13 +84,13 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Tanggal Lahir</label>
                                                             <input type="date" class="form-control text-size <?= form_error('tanggal_lahir') ? 'is-invalid' : '' ?>" name="tanggal_lahir" id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>" required placeholder="19 / 10 / 1927" />
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Nomor KTP</label>
                                                             <input type="text" class="form-control text-size <?= form_error('no_ktp') ? 'is-invalid' : '' ?> placement number-only" name="no_ktp" id="no_ktp" value="<?= set_value('no_ktp') ?>" required placeholder="1234567891234567" minlength="16" maxlength="16" />
                                                             <?= form_error('no_ktp'); ?>
@@ -84,7 +99,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-6">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Pekerjaan</label>
                                                             <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" /> -->
                                                             <select class="form-control text-size <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
@@ -96,7 +111,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Jenis Pekerjaan</label>
                                                             <input type="text" class="form-control text-size <?= form_error('jenis_pekerjaan') ? 'is-invalid' : '' ?>" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= set_value('jenis_pekerjaan') ?>" required placeholder="Pekerja Rumah tangga" />
                                                         </div>
@@ -104,7 +119,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Jenis Agent / BA</label>
                                                             <select class="form-control text-size <?= form_error('jenis_agent') ? 'is-invalid' : '' ?>" name="jenis_agent" id="jenis_agent" required>
                                                                 <option selected disabled value="">Pilih Jenis Agent / BA</option>
@@ -117,7 +132,7 @@
                                                 </div>
                                                 <div class="form-row">
                                                     <div class="col-md-12">
-                                                        <div class="form-group ml-3 mr-3">
+                                                        <div class="form-group ml-4 mr-4">
                                                             <label>Status Kepemilikan Rumah</label>
                                                             <select class="form-control text-size <?= form_error('') ? 'is-invalid' : 'status_kepemilikan_rumah' ?>" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
                                                                 <option selected disabled value="">Rumah Milik Siapa?</option>
@@ -131,7 +146,7 @@
                                                 </div>
                                                 <div class="form-row mb-3">
                                                     <div class="col-md-12">
-                                                        <div class="ml-3 mr-3">
+                                                        <div class="ml-4 mr-4">
                                                             <label>income Per bulan saat ini</label>
                                                             <div class="input-group flex-nowrap">
                                                                 <div class="input-group-prepend">
@@ -148,7 +163,7 @@
                                         <div class="col-md-6">
                                             <div class="form-row mb-1">
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Apakah Punya Pinjaman?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
                                                             <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" <?= set_value('punya_pinjaman') == 'Ya' ? 'checked' : '' ?> required>
@@ -165,7 +180,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Terdaftar Sebagai Agen travel / Lainnya?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
                                                             <input class="form-check-input" type="radio" name="afiliasi_travel" id="afiliasi_travel" value="Ya" <?= set_value('afiliasi_travel') == 'Ya' ? 'checked' : '' ?> required>
@@ -184,7 +199,7 @@
                                             </div>
                                             <div class="form-row mb-1">
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Terdaftar Sebagai Agen BFI Finance?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
                                                             <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" <?= set_value('agent_konvensional') == 'Ya' ? 'checked' : '' ?> required>
@@ -201,7 +216,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Ada hubungan dengan karyawan BFI Finance?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
                                                             <input class="form-check-input" type="radio" name="hubungan_karyawan_bfi" id="hubungan_karyawan_bfi" value="Ada" <?= set_value('hubungan_karyawan_bfi') == 'Ada' ? 'checked' : '' ?> required>
@@ -220,7 +235,7 @@
                                             </div>
                                             <div class="form-row mb-1">
                                                 <div class="col-md-12">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Apakah pernah menjadi konsumen BFI Finance?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
                                                             <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" <?= set_value('konsumen_bfi') == 'Pernah' ? 'checked' : '' ?> required>
@@ -239,7 +254,7 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-12">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Nomor NPWP</label>
                                                         <input type="text" class="form-control text-size <?= form_error('no_npwp') ? 'is-invalid' : '' ?> placement number-only" name="no_npwp" id="no_npwp" value="<?= set_value('no_npwp') ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
                                                         <?= form_error('no_npwp'); ?>
@@ -248,14 +263,14 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Rekening Bank</label>
                                                         <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
                                                         <?= form_error('rekening_bank'); ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Nama Bank</label>
                                                         <input type="text" class="form-control text-size <?= form_error('nama_bank') ? 'is-invalid' : '' ?>" id="nama_bank" name="nama_bank" value="<?= set_value('nama_bank') ?>" required placeholder="Bank Mandiri">
                                                     </div>
@@ -263,13 +278,13 @@
                                             </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Cabang Bank</label>
                                                         <input type="text" class="form-control text-size <?= form_error('cabang_bank') ? 'is-invalid' : '' ?>" id="cabang_bank" name="cabang_bank" value="<?= set_value('cabang_bank') ?>" required placeholder="Cabang Karawaci">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <div class="form-group ml-3 mr-3">
+                                                    <div class="form-group ml-4 mr-4">
                                                         <label>Nama Pemilik</label>
                                                         <input type="text" class="form-control text-size <?= form_error('atas_nama') ? 'is-invalid' : '' ?>" name="atas_nama" id="atas_nama" value="<?= set_value('atas_nama') ?>" required placeholder="Anto Hoed">
                                                     </div>
@@ -280,21 +295,21 @@
                                 </div>
 
                                 <div class="submit step">
-                                    <div class="form-row mb-3">
+                                    <!-- <div class="form-row mb-3">
                                         <div class="col-md-12">
                                             <h4 class="mt-0 header-title">Formulir Agent / BA</h4>
                                             <p class="text-muted">pastikan semua data yang dikirim benar dan valid. Silahkan upload dokumen pendukung.</p>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>KTP</label>
                                                 <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>NPWP</label>
                                                 <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
@@ -302,13 +317,13 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Buku Tabungan</label>
                                                 <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Foto Selfie</label>
                                                 <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
@@ -316,7 +331,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Form F100</label>
                                                 <input type="file" name="form_f100" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
@@ -326,11 +341,11 @@
                                 <!-- /step-->
                             </div>
                             <!-- /middle-wizard -->
-                            <div class="form-group mb-0 float-right mt-3 mr-3">
+                            <div class="form-group mb-0 float-right mt-4 mr-4">
                                 <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit">Draft</button>
-                                <button class="btn btn-secondary waves-effect waves-light backward text-size" type="button" name="backward">Kembali</button>
-                                <button class="btn btn-primary waves-effect waves-light forward text-size" type="button" name="forward">Selanjutnya</button>
-                                <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
+                                <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward">Kembali</button>
+                                <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward">Selanjutnya</button>
+                                <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil">Simpan</button>
                             </div>
                             <!-- /bottom-wizard -->
                         </form>

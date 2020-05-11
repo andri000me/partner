@@ -1,6 +1,6 @@
 <div class="row mt-5">
     <div class="col-lg-8">
-        <div class="page-title-box">
+        <div class="page-title-box card-margin-2">
             <h4 class="page-title">Timeline Maintain</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>

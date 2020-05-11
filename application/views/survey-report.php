@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box card-margin-2">
             <h4 class="page-title">Daftar Data Survey</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
@@ -13,12 +13,12 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="btn-kanan mb-2">
+        <div class="btn-kanan mb-2 card-margin-2">
             <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Buat Data</button></a>
         </div>
     </div>
     <div class="col-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20  card-margin-2">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Tabel Leads Prospect</h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk keperluan NST, KPI dan Bonus</p>
@@ -73,8 +73,8 @@
                                         Pending
                                     </td>
                                     <td>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                        <center><a href="<?= base_url() ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
+                                        <center><a href="<?= base_url() ?>" class="btn btn-primary text-size radius">Detail</a></center>
                                     </td>
                                 </tr>
                             </tbody>
@@ -110,8 +110,8 @@
                                         Pending
                                     </td>
                                     <td>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                        <center><a href="<?= base_url() ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
+                                        <center><a href="<?= base_url() ?>" class="btn btn-primary text-size radius">Detail</a></center>
                                     </td>
                                 </tr>
                             </tbody>
@@ -147,8 +147,8 @@
                                         Pending
                                     </td>
                                     <td>
-                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
-                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                        <center><a href="<?= base_url() ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
+                                        <center><a href="<?= base_url() ?>" class="btn btn-primary text-size radius">Detail</a></center>
                                     </td>
                                 </tr>
                             </tbody>

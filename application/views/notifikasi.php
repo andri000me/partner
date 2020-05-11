@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box card-margin-2">
             <h4 class="page-title">Notifikasi</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
@@ -12,10 +12,9 @@
 
 <div class="row">
     <div class="col-12">
-        <!-- Right Sidebar -->
-        <div class="card">
+        <div class="card m-b-20 card-margin-2">
             <div class="card-body text-size">
-                <a class="btn btn-primary float-right mb-1 mt-0 text-size" href="#" id="mark_all">Mark all as read</a>
+                <a class="btn btn-primary mb-4 mt-1 text-size btn-kanan" href="#" id="mark_all">Mark all as read</a>
                 <div class="table-responsive">
                     <table class="table table-hover table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>
@@ -63,13 +62,19 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
-                                            <span class="badge-success badge">Approved</span>
+                                            <h6><span class="badge-success badge" style="width: 100px; height: 30px;">
+                                                    <p style="margin-top: 2px">Approved</p>
+                                                </span></h6>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Diaktivasi oleh Head HO') { ?>
-                                            <span class="badge-primary badge">Activated</span>
+                                            <h6><span class="badge-primary badge" style="width: 100px; height: 30px;">
+                                                    <p style="margin-top: 2px">Activated</p>
+                                                </span></h6>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Ditolak oleh') { ?>
-                                            <span class="badge-danger badge">Reject</span>
+                                            <h6><span class="badge-danger badge" style="width: 100px; height: 30px;">
+                                                    <p style="margin-top: 2px">Reject</p>
+                                                </span></h6>
                                         <?php } ?>
                                     </td>
                                     <td>
@@ -79,16 +84,16 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-secondary " data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Leads Assignment oleh') { ?>
-                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -132,13 +137,19 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->type == 'Disetujui oleh Head' || $notif->type == 'Disetujui oleh Manager' || $notif->type == 'Disetujui oleh Admin HO' || $notif->type == 'Ditanda tangan') { ?>
-                                            <span class="badge-success badge">Approved</span>
+                                            <h6><span class="badge-success badge" style="width: 100px; height: 30px;">
+                                                    <p style="margin-top: 2px">Approved</p>
+                                                </span></h6>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Diaktivasi oleh Head HO') { ?>
-                                            <span class="badge-primary badge">Activated</span>
+                                            <h6><span class="badge-primary badge" style="width: 100px; height: 30px;">
+                                                    <p style="margin-top: 2px">Activated</p>
+                                                </span></h6>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Ditolak oleh') { ?>
-                                            <span class="badge-danger badge">Reject</span>
+                                            <h6><span class="badge-danger badge" style="width: 100px; height: 30px;">
+                                                    <p style="margin-top: 2px">Reject</p>
+                                                </span></h6>
                                         <?php } ?>
                                     </td>
                                     <td>
@@ -148,16 +159,16 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('agent/edit/' . $notif->agent_id) ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('agent/edit/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Leads Assignment oleh') { ?>
-                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-secondary text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
                                         <?php } ?>
                                     </td>
                                 </tr>

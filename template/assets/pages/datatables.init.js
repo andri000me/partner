@@ -73,6 +73,21 @@ $(document).ready(function () {
 		.container()
 		.appendTo(".col-md-6:eq(6)");
 
+	$("#datatable-buttons-profile")
+		.DataTable({
+			responsive: true,
+			pagingType: "simple",
+			lengthChange: false,
+			language: {
+				search: '',
+				searchPlaceholder: "Cari Data Disini"
+			},
+			buttons: ["pdf", "excel", "colvis"]
+		})
+		.buttons()
+		.container()
+		.appendTo(".col-md-6:eq(3)");
+
 	$("#datatable-kerjasama")
 		.DataTable({
 			responsive: true,
