@@ -1,19 +1,20 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
-            <h4 class="page-title">Assignment Lead prospect</h4>
+        <div class="page-title-box card-margin-2">
+            <h4 class="page-title">Lead prospect</h4>
             <ol class="breadcrumb">
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Assignment</a></li>
-                <li class="breadcrumb-item text-size active">Assignment Lead prospect</li>
+                <li class="breadcrumb-item text-size active">Lead prospect</li>
             </ol>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">
                             <span class="d-block d-sm-none">Belum Funding</span>
@@ -57,9 +58,9 @@
                                     </td>
                                     <td>
                                         <?php if ($leads->status == 'draft') { ?>
-                                            <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                            <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
                                         <?php } else if ($leads->status == 'lengkap') { ?>
-                                            <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
+                                            <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -95,9 +96,9 @@
                                     </td>
                                     <td>
                                         <?php if ($leads->status == 'draft') { ?>
-                                            <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                            <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
                                         <?php } else if ($leads->status == 'lengkap') { ?>
-                                            <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size">Detail</a></center>
+                                            <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
                                         <?php } ?>
                                     </td>
                                 </tr>

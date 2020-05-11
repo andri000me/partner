@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12 mt-5">
-        <div class="card directory-card m-b-20 ml-3 mr-3">
+        <div class="card directory-card m-b-20 card-margin-5">
             <div>
                 <div class="directory-bg text-center" style="background-image: url(<?= base_url('template/assets/images/montain.jpeg') ?>)">
                     <div class="directory-overlay">
@@ -13,7 +13,7 @@
                     <p class=" mt-4"><?= $data->jabatan ?>, <?= $data->nama_cabang ?></p>
                     <h4 class="font-16"><?= $data->name ?><br><span class="badge badge-light">Nik <?= $data->nik ?></span></h4>
 
-                    <ul class="nav nav-tabs mt-5" role="tablist">
+                    <ul class="nav nav-tabs nav-tabs-custom mt-5" role="tablist">
                         <li class="nav-item ">
                             <a class="nav-link active" data-toggle="tab" href="#edit-data" role="tab">
                                 <span class="d-block d-sm-none"><i class="fas fa-edit"></i></span>
@@ -45,7 +45,13 @@
 
                         <form action="<?= base_url('Profile/update') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <div class="form-group text-size ml-3 mr-3">
+                                        <label>Foto</label>
+                                        <input type="file" name="foto" class="filestyle text-size" data-buttonname="btn-secondary" placeholder="Silahkan Upload Foto Kegiatan">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group ml-3 mr-3 text-size">
                                         <label>E-Mail</label>
                                         <div>
@@ -53,7 +59,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group ml-3 mr-3 text-size">
                                         <label>Cabang</label>
                                         <!-- <input type="text" class="form-control" name="cabang" id="cabang" value="<?= $data->nama_cabang ?>" placeholder=""> -->
@@ -65,16 +71,10 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group text-size ml-3 mr-3">
-                                        <label>Foto</label>
-                                        <input type="file" name="foto" class="filestyle text-size" data-buttonname="btn-secondary" placeholder="Silahkan Upload Foto Kegiatan">
-                                    </div>
-                                </div>
                             </div>
                             <div class="form-group float-right mt-2">
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light text-size" type="submit">Submit</button>
+                                    <button class="btn btn-primary w-md text-size" style="background-color: #0067D0;" type="submit">Simpan</button>
                                 </div>
                             </div>
                         </form>
@@ -107,7 +107,7 @@
                             </div>
                             <div class="form-group float-right mt-2">
                                 <div class="col-12   text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light text-size" type="submit">Masuk</button>
+                                    <button class="btn btn-primary w-md waves-effect waves-light text-size" type="submit">Simpan</button>
                                 </div>
                             </div>
                         </form>
@@ -116,7 +116,7 @@
                         <div class="tab-pane p-3" id="data-anggota" role="tabpanel">
                             <div class="ml-3 mr-3">
                                 <h4 class="mt-0 header-title">Table List Karyawan</h4>
-                                <table id="datatable-buttons-1" class="table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <table id="datatable-buttons-profile" class="table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                     <thead>
                                         <tr>
                                             <th>Nama</th>
@@ -144,7 +144,7 @@
                                                 </td>
                                                 <td>
                                                     <center>
-                                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger">Non Aktif</span></h6>' : '<h6><span class="badge badge-success">Aktif</span></h6>' ?>
+                                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger" style="width: 80px; height: 30px;"><p style="margin-top: 2px;">Non Aktif</p></span></h6>' : '<h6><span class="badge badge-success" style="width: 60px; height: 30px;"><p style="margin-top: 2px;">Aktif</p></span></h6>' ?>
                                                     </center>
                                                 </td>
                                             </tr>

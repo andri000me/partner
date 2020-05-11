@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box text size">
+        <div class="page-title-box text size card-margin-2">
             <h4 class="page-title">Transfer Data</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
@@ -13,7 +13,7 @@
 <div class="row">
 
     <div class="col-lg-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-2">
 
             <div class="card-body text-size">
 
@@ -88,7 +88,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size leads" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <select class="form-control text-size leads border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -134,7 +134,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size leads" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <select class="form-control text-size leads border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -184,7 +184,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size partner" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <select class="form-control text-size partner border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -234,7 +234,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size partner" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <select class="form-control text-size partner border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -292,7 +292,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size agent" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
+                                                    <select class="form-control text-size agent border" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>

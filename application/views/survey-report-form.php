@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box ml-3">
+        <div class="page-title-box card-margin-5">
             <h4 class="page-title">Form Survey Report</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-primary font-size gradient ml-3 mr-3" role="alert">
+        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
                     menginput data</h5>
@@ -852,6 +852,15 @@
                                                                 value="<?= $data->purpose_total_uang_muka ?>" id=""
                                                                 data-type="currency" required
                                                                 placeholder="Total Uang Muka" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">NTF Murni</label>
+                                                        </th>
+                                                        <td><input type="text"
+                                                                class="form-control text-size number-only table-rigt-220"
+                                                                name="" id="" data-type="currency" required
+                                                                placeholder="Harga Beli - Uang Muka" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3630,7 +3639,7 @@
 
                 <!-- konfirmasi karakter -->
                 <div class="col-md-12">
-                    <div class="card ml-3 mr-3">
+                    <d iv class="card ml-3 mr-3">
                         <div class="card-body text-size">
                             <h4 class="ml-3 mb-4">Konfirmasi Karakter
                                 <a class="float-right konfirmasi-down" onclick="konfirmasidownFunction()"
@@ -3747,7 +3756,7 @@
                                 </center>
                             </div>
                         </div>
-                    </div>
+                    </d>
                 </div>
                 <!-- konfirmasi karakter -->
 
@@ -3817,6 +3826,8 @@
                                                 value="Truck ">Truck </option>
                                             <option <?= $data->collateral_jenis == 'SJMB' ? 'selected' : '' ?>
                                                 value="SJMB ">SJMB </option>
+                                            <option <?= $data->collateral_jenis == 'Heavy Truck' ? 'selected' : '' ?>
+                                                value="Heavy Truck">Heavy Truck</option>
                                         </select>
                                     </div>
                                 </div>
@@ -3846,12 +3857,12 @@
                                             required>
                                             <option selected value="">Pilih Pemilik BPKB
                                             </option>
-                                            <option <?= $data->collateral_nama_bpkb == 'Orang Lain' ? 'selected' : '' ?>
-                                                value="Orang Lain">Orang Lain</option>
-                                            <option
-                                                <?= $data->collateral_nama_bpkb == 'Konsumen-Pasangan' ? 'selected' : '' ?>
-                                                value="Konsumen-Pasangan">Konsumen-Pasangan
-                                            </option>
+                                            <option value="Sendiri">Sendiri</option>
+                                            <option value="Pasangan">Pasangan</option>
+                                            <option value="OrangTua">OrangTua</option>
+                                            <option value="Anak Kandung">Anak Kandung</option>
+                                            <option value="Saudara kandung">Saudara kandung</option>
+                                            <option value="Orang Lain">Orang Lain</option>
                                         </select>
                                     </div>
                                 </div>
@@ -3982,23 +3993,23 @@
                                         <option
                                             <?= $data->religi_zakat == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Berzakat' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Berzakat">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum
-                                                Pernah Berzakat</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) < 60 Juta, Dan Belum
+                                                Pernah Berzakat </option>
                                         <option
                                             <?= $data->religi_zakat == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Tapi Belum Pernah Zakat' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Tapi Belum Pernah Zakat">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang)
-                                            >60 Juta, Tapi Belum Pernah Zakat</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Tapi Belum
+                                            Pernah Zakat</option>
                                         <option
                                             <?= $data->religi_zakat == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Tapi Tidak Konsisten Berzakat' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Tapi Tidak Konsisten Berzakat">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60
-                                            Juta, Tapi Tidak Konsisten Berzakat</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Tapi Tidak
+                                            Konsisten Berzakat</option>
                                         <option
                                             <?= $data->religi_zakat == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Selalu Berzakat' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Selalu Berzakat">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60
-                                            Juta, Dan Selalu Berzakat</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Selalu
+                                            Berzakat</option>
                                     </select>
                                 </div>
                                 <div class="form-group ml-3 mr-3">
@@ -4015,14 +4026,13 @@
                                         <option
                                             <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang)
-                                            >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah
-                                            Mendaftar Haji</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum
+                                            Pernah Berhaji / Belum Pernah Mendaftar Haji</option>
                                         <option
-                                            <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Berhaji / Sudah Pernah Mendaftar Haji' ? 'selected' : '' ?>
-                                            value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Berhaji / Sudah Pernah Mendaftar Haji">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100
-                                            Juta, Sudah Pernah Berhaji / Sudah Pernah Mendaftar Haji
+                                            <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Haji / Sudah Mendaftar Haji' ? 'selected' : '' ?>
+                                            value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Haji / Sudah Mendaftar Haji">
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah
+                                            Haji / Sudah Mendaftar Haji
                                         </option>
                                     </select>
                                 </div>
@@ -4040,13 +4050,13 @@
                                         <option
                                             <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum Pernah Umroh' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum Pernah Umroh">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang)
-                                            >60 Juta, Dan Belum Pernah Umroh</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum
+                                            Pernah Umroh</option>
                                         <option
-                                            <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Pernah Umroh' ? 'selected' : '' ?>
-                                            value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Pernah Umroh">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60
-                                            Juta, Sudah Pernah Umroh</option>
+                                            <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh, Sudah Daftar Umroh' ? 'selected' : '' ?>
+                                            value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh, Sudah Daftar Umroh">
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh,
+                                            Sudah Daftar Umroh</option>
                                     </select>
                                 </div>
                                 <div class="form-group ml-3 mr-3">
@@ -4063,18 +4073,18 @@
                                         <option
                                             <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum Pernah Berkurban' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum Pernah Berkurban">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang)
-                                            >20 Juta, Tapi Belum Pernah Berkurban</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum
+                                            Pernah Berkurban</option>
                                         <option
                                             <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak Konsisten Berkurban' ? 'selected' : '' ?>
                                             value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak Konsisten Berkurban">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20
-                                            Juta, Tapi Tidak Konsisten Berkurban</option>
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak
+                                            Konsisten Berkurban</option>
                                         <option
-                                            <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Sudah Pernah Berkurban' ? 'selected' : '' ?>
-                                            value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Sudah Pernah Berkurban">
-                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20
-                                            Juta, Sudah Pernah Berkurban</option>
+                                            <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn Berkurban Setiap Tahun' ? 'selected' : '' ?>
+                                            value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn Berkurban Setiap Tahun">
+                                            Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn
+                                            Berkurban Setiap Tahun</option>
                                     </select>
                                 </div>
                                 <div class="form-group ml-3 mr-3">

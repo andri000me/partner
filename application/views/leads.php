@@ -1,11 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box card-margin-2">
             <h4 class="page-title">Leads Prospect</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
-                <li class="breadcrumb-item active">Leads Prospect</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
+                <li class="breadcrumb-item active">Prospect</li>
             </ol>
         </div>
     </div>
@@ -13,18 +13,18 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="btn-kanan mb-2">
+        <div class="btn-kanan mb-2 card-margin-2">
             <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input
                     Prospect</button></a>
         </div>
     </div>
     <div class="col-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <h4 class="mt-0 header-title">Tabel Leads Prospect</h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk
                     keperluan NST, KPI dan Bonus</p>
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">
                             <span class="d-block d-sm-none">Belum Funding</span>
@@ -78,10 +78,10 @@
                                     <td>
                                         <?php if ($leads->status == 'draft') { ?>
                                         <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>"
-                                                class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                                class="btn btn-secondary text-size radius">Lanjutkan</a></center>
                                         <?php } else if ($leads->status == 'lengkap') { ?>
                                         <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>"
-                                                class="btn btn-primary text-size" style="width: 90px;">Detail</a>
+                                                class="btn btn-primary text-size radius" style="width: 90px;">Detail</a>
                                         </center>
                                         <?php } ?>
                                     </td>
@@ -129,10 +129,10 @@
                                     <td>
                                         <?php if ($leads->status == 'draft') { ?>
                                         <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>"
-                                                class="btn btn-secondary text-size">Lanjutkan</a></center>
+                                                class="btn btn-secondary text-size radius">Lanjutkan</a></center>
                                         <?php } else if ($leads->status == 'lengkap') { ?>
                                         <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>"
-                                                class="btn btn-primary text-size">Detail</a></center>
+                                                class="btn btn-primary text-size radius">Detail</a></center>
                                         <?php } ?>
                                     </td>
                                 </tr>

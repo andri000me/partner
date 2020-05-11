@@ -29,7 +29,7 @@
                 <?php if ($this->fungsi->module()->user_active == 1) { ?>
                 <li>
                     <a href="<?= base_url('user') ?>" class="waves-effect">
-                        <i class="fas fa-users"></i><span>User </span>
+                        <i class="fas fa-users"></i><span>List User</span>
                     </a>
                 </li>
                 <?php } ?>
@@ -37,7 +37,7 @@
                 <li>
                     <a href="<?= base_url('notification') ?>" class="waves-effect">
                         <i class="ti-bell noti-icon"></i><span
-                            class="badge badge-primary badge-pill float-right"><?= $this->fungsi->notification()->num_rows() > 0 ? $this->fungsi->notification()->num_rows() : '' ?></span><span>
+                            class="badge badge-danger badge-pill float-right"><?= $this->fungsi->notification()->num_rows() > 0 ? $this->fungsi->notification()->num_rows() : '' ?></span><span>
                             Notification
                         </span>
                     </a>

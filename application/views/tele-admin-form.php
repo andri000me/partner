@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box ml-3 mr-3">
             <h4 class="page-title">Tele Admin Form</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Assignment</a></li>

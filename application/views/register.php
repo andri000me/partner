@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box card-margin-5">
             <h4 class="page-title">Tambah user</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">User</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">List User</a></li>
                 <li class="breadcrumb-item active">Tambah User</li>
             </ol>
         </div>
@@ -12,18 +12,29 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+            <div class="ml-4 mr-4 mt-3 mb-3">
+                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
+                <p>Input data user dengan benar.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-lg-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-5">
             <div class="card-body">
-                <div class="ml-3">
+                <!-- <div class="ml-3">
                     <h4 class="mt-0 header-title">Form Tambah User</h4>
-                    <p class="text-muted m-b-30 text-size">Input data user dengan benar.</p>
-                </div>
+                    <p class="text-muted m-b-30 text-size"></p>
+                </div> -->
                 <?= $this->session->flashdata('berhasil_register') ?>
                 <form method="post" class="form-horizontal m-t-30" action="<?= base_url('User/save') ?>" autocomplete="off">
                     <div class="form-row">
                         <div class="col-md-6">
-                            <div class="ml-3 mr-3">
+                            <div class="ml-4 mr-4">
                                 <div class="form-group">
                                     <label for="name">Nama Lengkap</label>
                                     <input type="text" class="form-control <?= form_error('name') ? 'has-error' : '' ?>" id="name" name="name" required value="<?= set_value('name') ?>" placeholder="Nama Lengkap">
@@ -60,22 +71,22 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Branch</label><br>
                                         <input type="checkbox" name="branch_active" id="branch_active" switch="none" />
                                         <label for="branch_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>User</label><br>
                                         <input type="checkbox" name="user_active" id="user_active" switch="none" />
                                         <label for="user_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Leads</label><br>
                                         <input type="checkbox" name="leads_active" id="leads_active" switch="none" />
                                         <label for="leads_active" data-on-label="On" data-off-label="Off"></label>
@@ -83,22 +94,22 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Kerjasama</label><br>
                                         <input type="checkbox" name="kerjasama_active" id="kerjasama_active" switch="none" />
                                         <label for="kerjasama_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Assignment</label><br>
                                         <input type="checkbox" name="assignment_active" id="assignment_active" switch="none" />
                                         <label for="assignment_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Transfer Data User</label><br>
                                         <input type="checkbox" name="transfer_data_active" id="Transfer_data_active" switch="none" />
                                         <label for="Transfer_data_active" data-on-label="On" data-off-label="Off"></label>
@@ -106,22 +117,22 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Approval Bonus</label><br>
                                         <input type="checkbox" name="approval_bonus_active" id="approval_bonus_active" switch="none" />
                                         <label for="approval_bonus_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Product Support</label><br>
                                         <input type="checkbox" name="product_support_active" id="product_support_active" switch="none" />
                                         <label for="product_support_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>NST</label><br>
                                         <input type="checkbox" name="nst_active" id="nst_active" switch="none" />
                                         <label for="nst_active" data-on-label="On" data-off-label="Off"></label>
@@ -129,8 +140,8 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-4">
-                                    <div class="form-group ml-3 mr-3">
+                                <div class="col-md-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Tiket</label><br>
                                         <input type="checkbox" name="ticket_active" id="ticket_active" switch="none" />
                                         <label for="ticket_active" data-on-label="On" data-off-label="Off"></label>
@@ -139,7 +150,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group mb-0 float-right mt-3 mr-3">
+                            <div class="form-group mb-0 float-right mt-4 mr-4">
                                 <a href="<?= base_url('user') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
                                 <button class="btn btn-primary w-md waves-effect waves-light text-size ml-1" type="submit">Register</button>
                             </div>

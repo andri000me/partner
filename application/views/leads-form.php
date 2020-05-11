@@ -1,11 +1,12 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box ml-3">
-            <h4 class="page-title">Form Leads Prospect</h4>
+        <div class="page-title-box card-margin-5">
+            <h4 class="page-title">Input Prospect</h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
-                <li class="breadcrumb-item active">Survey Report</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Prospect</a></li>
+                <li class="breadcrumb-item active">Input Prospect</li>
             </ol>
         </div>
     </div>
@@ -13,7 +14,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-primary font-size gradient ml-3 mr-3" role="alert">
+        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
                 <p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan
@@ -27,7 +28,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card m-b-20 ml-3 mr-3">
+        <div class="card m-b-20 card-margin-5">
             <div class="card-body">
                 <form action="<?= base_url('Leads/save') ?>" method="post" enctype="multipart/form-data"
                     class=" text-size">
@@ -40,10 +41,8 @@
                     <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <h5 class="mt-0 ml-4">Data konsumen</h5>
-                        </div>
+                    <div class="ml-4">
+                        <h4 class="mt-0 mb-4 header-title">Form Leads Prospect</h4>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -71,7 +70,7 @@
                                             <div class="input-group-append">
                                                 <button class="btn btn-danger text-size" type="button"
                                                     id="reset">Hapus</button>
-                                                <button class="btn btn-light text-size btn-cari" type="button" id=""
+                                                <button class="btn btn-primary text-size" type="button" id=""
                                                     data-toggle="modal" data-target="#modal-leads">Cari</button>
                                             </div>
                                         </div>
@@ -187,17 +186,17 @@
                                     <div class="form-group text-size ml-4 mr-4">
                                         <label>Pekerjaan Konsumen</label><br>
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="pekerjaan__konsumen"
-                                                <?= set_value('pekerjaan__konsumen') == 'Karyawan' ? 'checked' : '' ?>
-                                                id="pekerjaan__konsumen" required value="Karyawan">
+                                            <input class="form-check-input" type="radio" name="pekerjaan_konsumen"
+                                                <?= set_value('pekerjaan_konsumen') == 'Karyawan' ? 'checked' : '' ?>
+                                                id="pekerjaan_konsumen" required value="Karyawan">
                                             <label class="form-check-label">
                                                 Karyawan
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pekerjaan__konsumen"
-                                                <?= set_value('pekerjaan__konsumen') == 'Wiraswasta' ? 'checked' : '' ?>
-                                                id="pekerjaan__konsumen" required value="Wiraswasta">
+                                            <input class="form-check-input" type="radio" name="pekerjaan_konsumen"
+                                                <?= set_value('pekerjaan_konsumen') == 'Wiraswasta' ? 'checked' : '' ?>
+                                                id="pekerjaan_konsumen" required value="Wiraswasta">
                                             <label class="form-check-label">
                                                 Wiraswasta
                                             </label>
@@ -378,7 +377,7 @@
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data btn-cari text-size" type="button"
+                                                <button class="btn btn-primary btn-datatext-size" type="button"
                                                     id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
                                             </div>
                                         </div>
@@ -395,7 +394,7 @@
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data btn-cari text-size" type="button"
+                                                <button class="btn btn-primary btn-datatext-size" type="button"
                                                     id="btn-data" data-toggle="modal" data-target="">Cari</button>
                                             </div>
                                         </div>
@@ -485,8 +484,8 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-5 mr-4">
-                        <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="draft"
-                            name="draft" class="btn" type="submit">Simpan</button>
+                        <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft"
+                            class="btn" type="submit">Simpan</button>
                         <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit"
                             name="process">Kirim</button>
                     </div>
@@ -680,15 +679,13 @@ $('#draft').click(function() {
 $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
     .hide();
 source_leads();
-$('#soa').change(function() {
-    source_leads();
-    $('#id_partner').val("");
-    $('#id_agent').val("");
-    $('#nama_vendor').val("").removeAttr("required");
-    $('#nama_event').val("");
-    $('#nama_partner').val("");
-    $('#nama_agent').val("");
-    $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+$('#id_partner').val("");
+$('#id_agent').val("");
+$('#nama_vendor').val("").removeAttr("required");
+$('#nama_event').val("");
+$('#nama_partner').val("");
+$('#nama_agent').val("");
+$('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
 })
 
 function source_leads() {
@@ -815,6 +812,7 @@ function source_leads() {
     }
 }
 
+
 $(".readonly").keydown(function(e) {
     e.preventDefault();
 });
@@ -894,37 +892,48 @@ $('#reset').click(function() {
 $('.kontrak, .pasangan').hide();
 
 $('#status_konsumen').change(function() {
-    if ($('#status_konsumen').val() == "RO Active") {
-        $('#soa').val('RO')
-        $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-        $('#btn-data').attr('data-target', '#modal-partner');
-        $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-    }
+            if ($('#status_konsumen').val() == "RO Active") {
+                $('#soa').val('RO')
+                $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+                $('#btn-data').attr('data-target', '#modal-partner');
+                $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+            }
 
-    function status_konsumen() {
-        if ($('#status_konsumen').val() == "RO Active") {
-            $('.kontrak').show();
-            $('#nomor_kontrak').attr('required', 'required');
-            source_leads();
-        } else {
-            $('.kontrak').hide();
-            $('#nomor_kontrak').removeAttr('required', ' ');
-        }
-    }
+            $('#status_konsumen').change(function() {
+                if ($('#status_konsumen').val() == "RO Active") {
+                    $('#soa').val('RO')
+                    $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+                    $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+                    $('#btn-data').attr('data-target', '#modal-partner');
+                    $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+                    $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required',
+                    '');
+                }
 
-    $('#status_pernikahan').change(function() {
-        if ($('#status_pernikahan').val() == "Sudah Menikah") {
-            $('.pasangan').show();
-            $('#nama_pasangan').attr('required', 'required');
-        } else {
-            $('.pasangan').hide();
-            $('#nama_pasangan').removeAttr('required', ' ');
-        }
+                function status_konsumen() {
+                    if ($('#status_konsumen').val() == "RO Active") {
+                        $('.kontrak').show();
+                        $('#nomor_kontrak').attr('required', 'required');
+                        source_leads();
+                    } else {
+                        $('.kontrak').hide();
+                        $('#nomor_kontrak').removeAttr('required', ' ');
+                    }
+                }
 
-    })
-});
+                $('#status_pernikahan').change(function() {
+                    if ($('#status_pernikahan').val() == "Sudah Menikah") {
+                        $('.pasangan').show();
+                        $('#nama_pasangan').attr('required', 'required');
+                    } else {
+                        $('.pasangan').hide();
+                        $('#nama_pasangan').removeAttr('required', ' ');
+                    }
+
+                })
+            });
 </script>
 
 <script>

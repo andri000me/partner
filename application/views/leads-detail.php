@@ -1,16 +1,16 @@
 <div class="row">
     <div class="col-md-8">
-        <div class="page-title-box ml-4">
+        <div class="page-title-box card-margin-2">
             <h4 class="page-title">Leads Detail</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Database</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Prospect</a></li>
                 <li class="breadcrumb-item active">Leads Detail</li>
             </ol>
         </div>
 
-        <div class="card">
+        <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <div id="hilang" class="loader-body">
                     <div id="loader"></div>
@@ -62,7 +62,7 @@
                                 <div class="">
                                     <div class="form-row">
                                         <div class="col-md-12">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Nama Lengkap</label>
                                                 <input type="text" class="form-control placement text-size"
                                                     name="nama_konsumen" id="nama_konsumen"
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="form-row text-size">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Nomor KTP</label>
                                                 <input type="phone" class="form-control placement number-only text-size"
                                                     name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>"
@@ -84,7 +84,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Nomor handphone</label>
                                                 <input type="text" class="form-control placement number-only text-size"
                                                     name="telepon" id="telepon" value="<?= $data->telepon ?>"
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Email</label>
                                                 <input type="email" class="form-control text-size" name="email"
                                                     value="<?= $data->email ?>"
@@ -104,7 +104,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Pendidikan</label>
                                                 <select class="form-control text-size" name="pendidikan" id="pendidikan"
                                                     <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>
@@ -142,7 +142,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Tanggal Lahir</label>
                                                 <input type="date" class="form-control text-size" name="tanggal_lahir"
                                                     value="<?= $data->tanggal_lahir ?>" id="tanggal_lahir"
@@ -151,7 +151,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Status Pernikahan</label>
                                                 <select class="form-control text-size" name="status_pernikahan"
                                                     id="status_pernikahan"
@@ -179,7 +179,7 @@
                                     </div>
                                     <div class="form-row pasangan">
                                         <div class="col-md-12">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Nama Pasangan</label>
                                                 <input type="text" class="form-control text-size" name="nama_pasangan"
                                                     value="<?= $data->nama_pasangan ?>" id="nama_pasangan"
@@ -190,7 +190,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Pekerjaan Konsumen</label><br>
                                                 <div class="form-check form-check-inline mt-2">
                                                     <input class="form-check-input" type="radio"
@@ -215,7 +215,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Jenis Konsumen</label>
                                                 <select class="form-control text-size" name="status_konsumen"
                                                     id="status_konsumen"
@@ -240,7 +240,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Lokasi Rumah</label>
                                                 <select class="form-control text-size" name="lokasi_rumah"
                                                     id="lokasi_rumah"
@@ -280,7 +280,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size ml-3 mr-3">
+                                            <div class="form-group text-size ml-4 mr-4">
                                                 <label>Jenis Rumah</label><br>
                                                 <div class="form-check form-check-inline mt-2">
                                                     <input class="form-check-input" type="radio" name="jenis_rumah"
@@ -305,7 +305,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Luas Bangunan Rumah</label>
                                                 <select class="form-control text-size" name="luas_rumah" id="luas_rumah"
                                                     required
@@ -330,7 +330,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Asal Aplikasi</label>
                                                 <select class="form-control text-size" name="soa" id="soa" required
                                                     <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
@@ -365,7 +365,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Activity Marketing</label>
                                                 <select class="form-control text-size" name="activity_marketing"
                                                     id="activity_marketing" required>
@@ -407,7 +407,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12 event text-size">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Nama Event</label>
                                                 <input type="text" class="form-control text-size"
                                                     value="<?= $data->nama_event ?>" name="nama_event" id="nama_event"
@@ -415,7 +415,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 form-agent text-size mb-3">
-                                            <div class="ml-3 mr-3">
+                                            <div class="ml-4 mr-4">
                                                 <label class="agent">Pilih Data Agent</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control text-size readonly pointer"
@@ -424,16 +424,15 @@
                                                         aria-label="Recipient's username"
                                                         aria-describedby="button-addon2">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-light btn-data btn-cari text-size"
-                                                            type="button" id="btn-data-agent" data-toggle="modal"
-                                                            data-target=""
+                                                        <button class="btn btn-primary btn-data text-size" type="button"
+                                                            id="btn-data-agent" data-toggle="modal" data-target=""
                                                             <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>Cari</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12 form text-size mb-3">
-                                            <div class="ml-3 mr-3">
+                                            <div class="ml-4 mr-4">
                                                 <label class="travel">Pilih Data Travel</label>
                                                 <label class="jasa">Pilih Data Penyedia Jasa</label>
                                                 <label class="vendor">Pilih Data Partner</label>
@@ -444,16 +443,15 @@
                                                         aria-label="Recipient's username"
                                                         aria-describedby="button-addon2">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-light btn-data btn-cari text-size"
-                                                            type="button" id="btn-data" data-toggle="modal"
-                                                            data-target=""
+                                                        <button class="btn btn-primary btn-data text-size" type="button"
+                                                            id="btn-data" data-toggle="modal" data-target=""
                                                             <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>Cari</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 nik text-size">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>NIK</label>
                                                 <input type="phone" class="form-control text-size placement number-only"
                                                     name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>"
@@ -462,7 +460,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 posisi text-size">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Posisi</label>
                                                 <input type="text" class="form-control text-size" name="posisi_egc"
                                                     id="posisi_egc" value="<?= $data->posisi_egc ?>"
@@ -471,7 +469,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12 cabang">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Cabang</label>
                                                 <input type="text" class="form-control text-size" name="cabang_egc"
                                                     id="cabang_egc" value="<?= $data->cabang_egc ?>"
@@ -480,7 +478,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 kontrak-ro">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Nomor Kontrak</label>
                                                 <input type="phone" class="form-control text-size placement number-only"
                                                     name="nomor_kontrak" id="nomor_kontrak"
@@ -490,7 +488,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6 konsumen-ro">
-                                            <div class="form-group ml-3 mr-3">
+                                            <div class="form-group ml-4 mr-4">
                                                 <label>Nama Konsumen</label>
                                                 <input type="text" class="form-control text-size"
                                                     name="referral_konsumen" id="referral_konsumen"
@@ -503,7 +501,7 @@
                                     <div class="form-row">
                                         <div class="col-md-6 text-size">
                                             <fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-                                                <div class="form-group ml-3 mr-3">
+                                                <div class="form-group ml-4 mr-4">
                                                     <label>Konsumen Cross Branch?</label><br>
                                                     <div class="form-check form-check-inline mt-2">
                                                         <input class="form-check-input cross_branch text-size"
@@ -530,7 +528,7 @@
                                         </div>
                                         <div class="col-md-6 text-size">
                                             <fieldset <?= $cabang_asal == $data->cabang_cross ? 'disabled' : '' ?>>
-                                                <div id="hide" class="form-group ml-3 mr-3">
+                                                <div id="hide" class="form-group ml-4 mr-4">
                                                     <label>Pilih cabang</label>
                                                     <select class="form-control text-size" name="cabang_cross"
                                                         id="cabang_cross"
@@ -554,11 +552,11 @@
                                 </div>
                                 <div class="form-group mb-0 mt-2 float-right btn-maintain">
                                     <?php
-									$level = $this->fungsi->user_login()->level;
-									if (
-										($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && (($this->fungsi->user_login()->id_branch == $data->id_branch) || $level == 4)
-									) {
-									?>
+                                    $level = $this->fungsi->user_login()->level;
+                                    if (
+                                        ($level != 1)  && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2)) && (($this->fungsi->user_login()->id_branch == $data->id_branch) || $level == 4)
+                                    ) {
+                                    ?>
                                     <a class="btn btn-info text-size"
                                         onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')"
                                         href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
@@ -583,9 +581,9 @@
                                 <div class="col-md-6">
                                     <ol class="activity-feed mb-0">
                                         <?php
-										if ($follow_up->num_rows() > 0) {
-											foreach ($follow_up->result() as $data) {
-										?>
+                                        if ($follow_up->num_rows() > 0) {
+                                            foreach ($follow_up->result() as $data) {
+                                        ?>
                                         <li class="feed-item text-size">
                                             <div class="feed-item-list">
                                                 <span class="activity-text text-primary"><b>Follow Up By
@@ -596,8 +594,8 @@
                                             </div>
                                         </li>
                                         <?php
-											}
-										} else { ?>
+                                            }
+                                        } else { ?>
                                         <p class="text-muted m-b-10 text-size text-center">Tidak Ada Data</p>
                                         <?php } ?>
                                     </ol>
@@ -657,7 +655,7 @@
                                 <a class="nav-link" data-toggle="tab" href="#profile1" role="tab">
                                     <span class="d-block d-sm-none"><i class="far fa-comment-dots"></i></span>
                                     <span class="d-none d-sm-block">Comment <span
-                                            class="badge badge-secondary"><?= $comments->num_rows() ?></span></span>
+                                            class="badge badge-danger m-1 "><?= $comments->num_rows() ?></span></span>
                                 </a>
                             </li>
                         </ul>
@@ -667,7 +665,7 @@
                                 <h6 class="header-title web mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
                                 <div class="boxx overflow-auto web">
                                     <?php if ($activities->num_rows() > 0) {
-										foreach ($activities->result() as $activity) { ?>
+                                        foreach ($activities->result() as $activity) { ?>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table class="text-size">
@@ -703,15 +701,15 @@
                                         </div>
                                     </div>
                                     <?php
-										}
-									} else { ?>
+                                        }
+                                    } else { ?>
                                     <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                                     <?php } ?>
                                 </div>
                                 <div class="boxx mobile">
                                     <h6 class="header-title mt-0 mb-0">AKTIVITAS TERAKHIR</h6>
                                     <?php if ($activities->num_rows() > 0) {
-										foreach ($activities->result() as $activity) { ?>
+                                        foreach ($activities->result() as $activity) { ?>
                                     <div class="inbox-wid">
                                         <div class="inbox-item">
                                             <table class="text-size">
@@ -745,8 +743,8 @@
                                         </div>
                                     </div>
                                     <?php
-										}
-									} else { ?>
+                                        }
+                                    } else { ?>
                                     <p class="text-muted m-b-10 text-size">Tidak Ada Data</p>
                                     <?php } ?>
                                 </div>

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box ml-3">
+        <div class="page-title-box card-margin-5">
             <h4 class="page-title">Form Leads Prospect</h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
@@ -13,13 +13,13 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-primary font-size gradient ml-3 mr-3" role="alert">
-            <div class="ml-4 mr-4">
+        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+            <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
                 <p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan
-                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi <b>Form verifikasi dan Survey.</b>
-                    Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan lengkap.
-                </p>
+                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi<br> <b>Form verifikasi dan Survey.
+                        Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan
+                        lengkap.</p>
             </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-5">
             <div class="card-body">
                 <form action="<?= base_url('Leads/update') ?>" method="post" enctype="multipart/form-data"
                     class="text-size">
@@ -46,7 +46,7 @@
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <h4 class="mt-0 header-title ml-3">Data konsumen</h4>
+                            <h4 class="mt-0 header-title ml-3">Form Leads Prospect</h4>
                         </div>
                     </div>
                     <div class="row">

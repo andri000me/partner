@@ -1,10 +1,11 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
-            <h4 class="page-title">Assignment Lead Database</h4>
+        <div class="page-title-box card-margin-2">
+            <h4 class="page-title">Lead Database</h4>
             <ol class="breadcrumb">
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Assignment</a></li>
-                <li class="breadcrumb-item text-size active">Assignment Lead Database</li>
+                <li class="breadcrumb-item text-size active">Lead Database</li>
             </ol>
         </div>
     </div>
@@ -12,14 +13,14 @@
 <div class="row">
     <?php if ($this->fungsi->user_login()->level >= 3) { ?>
         <div class="col-md-12 mt-4">
-            <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Assign Leads ke Cabang/Tele</button></a>
+            <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size card-margin-2">Assign Leads ke Cabang / Tele</button></a>
         </div>
     <?php } ?>
     <div class="col-md-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <?= $this->session->flashdata("berhasil_simpan"); ?>
-                <ul class="nav nav-tabs" role="tablist">
+                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#cabang" role="tab">
                             <span class="d-block d-sm-none">Assignment Cabang</span>
@@ -41,8 +42,8 @@
                         <ul class="nav nav-tabs mt-2" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#belum-update" role="tab">
-                                    <span class="d-block d-sm-none">Belum Update <?= $belum_update->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update->num_rows()  : '' ?></span></span>
-                                    <span class="d-none d-sm-block">Belum Update <?= $belum_update->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update->num_rows()  : '' ?></span></span>
+                                    <span class="d-block d-sm-none">Belum Update <?= $belum_update->num_rows() > 0 ? '<span class="badge badge-pill badge-danger float-right ml-2"> ' . $belum_update->num_rows()  : '' ?></span></span>
+                                    <span class="d-none d-sm-block">Belum Update <?= $belum_update->num_rows() > 0 ? '<span class="badge badge-pill badge-danger float-right ml-2"> ' . $belum_update->num_rows()  : '' ?></span></span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -84,7 +85,7 @@
                                                     <?= $leads_assignemnt->detail_produk ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -126,7 +127,7 @@
                                                     <?= $leads_assignemnt->status ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -139,8 +140,8 @@
                         <ul class="nav nav-tabs mt-2" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#belum-update-tele" role="tab">
-                                    <span class="d-block d-sm-none">Belum Update <?= $belum_update_tele->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update_tele->num_rows()  : '' ?></span></span>
-                                    <span class="d-none d-sm-block">Belum Update <?= $belum_update_tele->num_rows() > 0 ? '<span class="badge badge-pill badge-primary float-right ml-2"> ' . $belum_update_tele->num_rows()  : '' ?></span></span>
+                                    <span class="d-block d-sm-none">Belum Update <?= $belum_update_tele->num_rows() > 0 ? '<span class="badge badge-pill badge-danger float-right ml-2"> ' . $belum_update_tele->num_rows()  : '' ?></span></span>
+                                    <span class="d-none d-sm-block">Belum Update <?= $belum_update_tele->num_rows() > 0 ? '<span class="badge badge-pill badge-danger float-right ml-2"> ' . $belum_update_tele->num_rows()  : '' ?></span></span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -182,7 +183,7 @@
                                                     <?= $leads_assignemnt->detail_produk ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -224,7 +225,7 @@
                                                     <?= $leads_assignemnt->status ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-secondary text-size" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
