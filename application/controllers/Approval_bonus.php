@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class approval_bonus_model extends CI_Controller
+class Approval_bonus extends CI_Controller
 {
     public $where;
 
@@ -50,29 +50,28 @@ class approval_bonus_model extends CI_Controller
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $where = 'mapping_leads.id_user = '. $this->fungsi->user_login()->id_user;
+            $where = 'leads_full.id_user = '. $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where = 'mapping_leads.id_branch = '. $this->fungsi->user_login()->id_branch;
+            $where = 'leads_full.id_branch = '. $this->fungsi->user_login()->id_branch;
         } else {
-            $where = 'mapping_leads.id_mapping_leads IS NOT NULL';
+            $where = 'leads_full.id_leads IS NOT NULL';
         }
 
         $get_leads =
             "SELECT *, 
-        leads.leads_id as leads_id_leads,
-        mapping_leads.nama_konsumen as nama_konsumen_leads,
-        mapping_leads.id_branch as id_branch_leads,
-        mapping_leads.produk as produk_leads,
-        mapping_leads.id_user as id_user_leads,
-        mapping_leads.nama_konsumen as nama_konsumen_leads,
-        leads.created_at as created_at_leads
-        FROM leads
-        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
-        INNER JOIN users ON users.id_user = mapping_leads.id_user 
-        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
-        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads.leads_id
+        leads_full.leads_id as leads_id_leads,
+        leads_full.nama_konsumen as nama_konsumen_leads,
+        leads_full.id_branch as id_branch_leads,
+        leads_full.produk as produk_leads,
+        leads_full.id_user as id_user_leads,
+        leads_full.nama_konsumen as nama_konsumen_leads,
+        leads_full.created_at as created_at_leads
+        FROM leads_full
+        INNER JOIN users ON users.id_user = leads_full.id_user 
+        INNER JOIN branches ON branches.id_branch = leads_full.id_branch
+        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads_full.leads_id
         WHERE approval_bonuses.leads_id IS NULL 
         AND $where";
 
@@ -87,29 +86,28 @@ class approval_bonus_model extends CI_Controller
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $where = 'mapping_leads.id_user = '. $this->fungsi->user_login()->id_user;
+            $where = 'leads_full.id_user = '. $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where = 'mapping_leads.id_branch = '. $this->fungsi->user_login()->id_branch;
+            $where = 'leads_full.id_branch = '. $this->fungsi->user_login()->id_branch;
         } else {
-            $where = 'mapping_leads.id_mapping_leads IS NOT NULL';
+            $where = 'leads_full.id_leads IS NOT NULL';
         }
 
         $get_leads =
             "SELECT *, 
-        leads.leads_id as leads_id_leads,
-        mapping_leads.nama_konsumen as nama_konsumen_leads,
-        mapping_leads.id_branch as id_branch_leads,
-        mapping_leads.produk as produk_leads,
-        mapping_leads.id_user as id_user_leads,
-        mapping_leads.nama_konsumen as nama_konsumen_leads,
-        leads.created_at as created_at_leads
-        FROM leads
-        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
-        INNER JOIN users ON users.id_user = mapping_leads.id_user 
-        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
-        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads.leads_id
+        leads_full.leads_id as leads_id_leads,
+        leads_full.nama_konsumen as nama_konsumen_leads,
+        leads_full.id_branch as id_branch_leads,
+        leads_full.produk as produk_leads,
+        leads_full.id_user as id_user_leads,
+        leads_full.nama_konsumen as nama_konsumen_leads,
+        leads_full.created_at as created_at_leads
+        FROM leads_full
+        INNER JOIN users ON users.id_user = leads_full.id_user 
+        INNER JOIN branches ON branches.id_branch = leads_full.id_branch
+        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads_full.leads_id
         WHERE approval_bonuses.leads_id IS NULL 
         AND $where";
         
