@@ -28,7 +28,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Merchant Data Table</h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol rekrut Merchant untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Detail untuk melihat data yang telah diinput.</p>
-                <table id="datatable-kerjasama" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-kerjasama" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama Usaha</th>
@@ -64,38 +64,34 @@
                                     <?= $partner->telepon ?>
                                 </td>
                                 <td>
-                                    <center>
-                                        <?php if ($partner->status_ticket == 6) { ?>
-                                            <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px">Teraktivasi</p>
-                                                </span></h6>
-                                        <?php } else if ($partner->status_ticket == 5) { ?>
-                                            <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px">Terverifikasi</p>
-                                                </span></h6>
-                                        <?php } else if ($partner->status_ticket == 4) { ?>
-                                            <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px">Ditolak</p>
-                                                </span></h6>
-                                        <?php } else if ($partner->status_ticket <= 2) { ?>
-                                            <h6><span class="badge badge-secondary" style="width: 140px; height: 30px;">
-                                                    <p style="margin-top: 2px">Belum Terverifikasi</p>
-                                                </span></h6>
-                                        <?php } ?>
-                                    </center>
+                                    <?php if ($partner->status_ticket == 6) { ?>
+                                        <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px">Teraktivasi</p>
+                                            </span></h6>
+                                    <?php } else if ($partner->status_ticket == 5) { ?>
+                                        <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px">Terverifikasi</p>
+                                            </span></h6>
+                                    <?php } else if ($partner->status_ticket == 4) { ?>
+                                        <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
+                                                <p style="margin-top: 2px">Ditolak</p>
+                                            </span></h6>
+                                    <?php } else if ($partner->status_ticket <= 2) { ?>
+                                        <h6><span class="badge badge-secondary" style="width: 140px; height: 30px;">
+                                                <p style="margin-top: 2px">Belum Terverifikasi</p>
+                                            </span></h6>
+                                    <?php } ?>
                                 </td>
                                 <td>
-                                    <center>
-                                        <?php if ($partner->ttd_pks == 'Ya') { ?>
-                                            <h6><span class="badge badge-success" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px">PKS</p>
-                                                </span></h6>
-                                        <?php } else { ?>
-                                            <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px">Non-PKS</p>
-                                                </span></h6>
-                                        <?php } ?>
-                                    </center>
+                                    <?php if ($partner->ttd_pks == 'Ya') { ?>
+                                        <h6><span class="badge badge-success" style="width: 70px; height: 30px;">
+                                                <p style="margin-top: 2px">PKS</p>
+                                            </span></h6>
+                                    <?php } else { ?>
+                                        <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
+                                                <p style="margin-top: 2px">Non-PKS</p>
+                                            </span></h6>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($partner->status == 'draft') { ?>
@@ -122,7 +118,7 @@
                     <h6 class="modal-title">Cari Data Merchant</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>

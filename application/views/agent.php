@@ -25,7 +25,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title">Agent / BA</h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol rekrut Agen / BA untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Detail untuk melihat data yang telah diinput.</p>
-                <table id="datatable-agent" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-agent" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>

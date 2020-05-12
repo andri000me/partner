@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <!-- <p class="text-muted m-b-30 text-size">Tiket di bawah.</p> -->
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>ID Tiket</th>
@@ -62,37 +62,35 @@
                                     <?= $ticket->aktivitas_cabang ?>
                                 </td>
                                 <td>
-                                    <center>
-                                        <?php if ($ticket->status_approval == 0) { ?>
-                                            <h6><span class="badge badge-secondary" style="width: 210px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Head</p>
-                                                </span></h6>
-                                        <?php } else if ($ticket->status_approval == 1) { ?>
-                                            <h6><span class="badge badge-secondary" style="width: 230px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Manager</p>
-                                                </span></h6>
-                                        <?php } else if ($ticket->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Pending HO</p>
-                                                </span></h6>
-                                        <?php } else if ($ticket->status_approval == 3) { ?>
-                                            <h6><span class="badge badge-warning" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px;">In Progress</p>
-                                                </span></h6>
-                                        <?php } else if ($ticket->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Ditolak</p>
-                                                </span></h6>
-                                        <?php } else if ($ticket->status_approval == 5) { ?>
-                                            <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Disetujui</p>
-                                                </span></h6>
-                                        <?php } else if ($ticket->status_approval == 6) { ?>
-                                            <h6><span class="badge badge-primary" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Diaktivasi</p>
-                                                </span></h6>
-                                        <?php } ?>
-                                    </center>
+                                    <?php if ($ticket->status_approval == 0) { ?>
+                                        <h6><span class="badge badge-secondary" style="width: 210px; height: 30px;">
+                                                <p style="margin-top: 2px;">Menunggu Persetujuan Head</p>
+                                            </span></h6>
+                                    <?php } else if ($ticket->status_approval == 1) { ?>
+                                        <h6><span class="badge badge-secondary" style="width: 230px; height: 30px;">
+                                                <p style="margin-top: 2px;">Menunggu Persetujuan Manager</p>
+                                            </span></h6>
+                                    <?php } else if ($ticket->status_approval == 2) { ?>
+                                        <h6><span class="badge badge-secondary" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px;">Pending HO</p>
+                                            </span></h6>
+                                    <?php } else if ($ticket->status_approval == 3) { ?>
+                                        <h6><span class="badge badge-warning" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px;">In Progress</p>
+                                            </span></h6>
+                                    <?php } else if ($ticket->status_approval == 4) { ?>
+                                        <h6><span class="badge badge-danger" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px;">Ditolak</p>
+                                            </span></h6>
+                                    <?php } else if ($ticket->status_approval == 5) { ?>
+                                        <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px;">Disetujui</p>
+                                            </span></h6>
+                                    <?php } else if ($ticket->status_approval == 6) { ?>
+                                        <h6><span class="badge badge-primary" style="width: 100px; height: 30px;">
+                                                <p style="margin-top: 2px;">Diaktivasi</p>
+                                            </span></h6>
+                                    <?php } ?>
                                 </td>
                                 <td><?= $ticket->tanggal_diubah ?></td>
                                 <td>
