@@ -57,10 +57,10 @@
                                     <th>Produk</th>
                                     <th>Cabang</th>
                                     <th>Status</th>
-                                    <th>Action</th>
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
                                     <th>Assign To</th>
                                     <?php } ?>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -87,11 +87,11 @@
                                             <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
                                             </h6>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
+                                            <h6><span class="badge badge-secondary">Pending</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                             <h6><span class="badge badge-warning">In Progress</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                            <h6><span class="badge badge-danger">Returned</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                             <h6><span class="badge badge-success">Disetujui</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
@@ -99,9 +99,24 @@
                                             <?php } ?>
                                         </center>
                                     </td>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                    <td data-search="<?= $fs_konsumen->name ?>">
+                                        <center>
+                                            <select class="form-control text-size survey border"
+                                                data-fs="<?= $fs_konsumen->id ?>">
+                                                <option selected value="">Pilih CMS</option>
+                                                <?php foreach ($users->result() as $user) { ?>
+                                                <option
+                                                    <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?>
+                                                    value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </center>
+                                    </td>
+                                    <?php } ?>
                                     <td>
                                         <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
-                                                class="btn btn-primary text-size radius">Form Survey</a>
+                                                class="btn btn-primary text-size radius">Detail</a>
                                         </center>
                                     </td>
                                 </tr>
@@ -148,11 +163,11 @@
                                             <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
                                             </h6>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
+                                            <h6><span class="badge badge-secondary">Pending</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                             <h6><span class="badge badge-warning">In Progress</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                            <h6><span class="badge badge-danger">Returned</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                             <h6><span class="badge badge-success">Disetujui</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
@@ -160,9 +175,24 @@
                                             <?php } ?>
                                         </center>
                                     </td>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                    <td data-search="<?= $fs_konsumen->name ?>">
+                                        <center>
+                                            <select class="form-control text-size survey border"
+                                                data-fs="<?= $fs_konsumen->id ?>">
+                                                <option selected value="">Pilih CMS</option>
+                                                <?php foreach ($users->result() as $user) { ?>
+                                                <option
+                                                    <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?>
+                                                    value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </center>
+                                    </td>
+                                    <?php } ?>
                                     <td>
                                         <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
-                                                class="btn btn-primary text-size radius">Form Survey</a>
+                                                class="btn btn-primary text-size radius">Detail</a>
                                         </center>
                                     </td>
                                 </tr>
@@ -209,11 +239,11 @@
                                             <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
                                             </h6>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending HO</span></h6>
+                                            <h6><span class="badge badge-secondary">Pending</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                             <h6><span class="badge badge-warning">In Progress</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger">Ditolak</span></h6>
+                                            <h6><span class="badge badge-danger">Returned</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                             <h6><span class="badge badge-success">Disetujui</span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
@@ -221,10 +251,26 @@
                                             <?php } ?>
                                         </center>
                                     </td>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                    <td data-search="<?= $fs_konsumen->name ?>">
+                                        <center>
+                                            <select class="form-control text-size survey border"
+                                                data-fs="<?= $fs_konsumen->id ?>" data-cms="<?= $user->name ?>">
+                                                <option selected value="">Pilih CMS</option>
+                                                <?php foreach ($users->result() as $user) { ?>
+                                                <option
+                                                    <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?>
+                                                    value="<?= $user->id_user ?>">
+                                                    <?= $user->name ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </center>
+                                    </td>
+                                    <?php } ?>
                                     <td>
 
                                         <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
-                                                class="btn btn-primary text-size radius">Form Survey</a>
+                                                class="btn btn-primary text-size radius">Detail</a>
                                         </center>
                                     </td>
                                 </tr>
@@ -238,3 +284,29 @@
         </div>
     </div> <!-- end col -->
 </div>
+
+<script>
+$(document).ready(function() {
+    $('.survey').on('change', function() {
+        var data = $(this).data('fs');
+        var cms = $(this).val();
+
+        // alert('assign: ' + cms + ' data id: ' + data);
+
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('fs_konsumen/update_assignment') ?>",
+            dataType: "JSON",
+            data: {
+                data: data,
+                cms: cms
+            },
+            success: function(res) {
+                alert(cms != '' ? 'Data form survey telah di-assign :
+                    'Assignment telah ditarik');
+            }
+        });
+        // return false;
+    });
+});
+</script>
