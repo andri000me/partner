@@ -12,26 +12,26 @@ class Fs_konsumen extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "users.id_user = " . $this->fungsi->user_login()->id_user;
+            $this->where = "(users.id_user = " . $this->fungsi->user_login()->id_user. " OR fs_konsumen.assign_cms = " . $this->fungsi->user_login()->id_user. ")";
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch. " OR leads_full.cabang_cross = ". $this->fungsi->user_login()->id_branch. " )";
+            $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch. " OR leads_full.cabang_cross = ". $this->fungsi->user_login()->id_branch. ")";
         } else {
-            $this->where = NULL;
+            $this->where = "id IS NOT NULL";
         }
 
         check_not_login();
     }
-
-
-    //Get All data maintain partner
+    
     public function index()
     {
         $data = [
             'data'      => $this->fs_konsumen_model->get($this->where),
             'pending'   => $this->fs_konsumen_model->get("tickets.status <= 2 AND ". $this->where),
             'completed' => $this->fs_konsumen_model->get("tickets.status = 5 AND ". $this->where),
+
+            'users'     => $this->user_model->get_all("users.id_branch = ". $this->fungsi->user_login()->id_branch)
         ];
 
         $this->template->load('template/index', 'survey-report', $data);
@@ -270,5 +270,27 @@ class Fs_konsumen extends CI_Controller
         $json = $this->fs_konsumen_model->update($data, $where);
 
         echo json_encode($data);
+    }
+
+    public function update_assignment()
+    {
+        // $post = $this->input->post(NULL, TRUE);
+
+        $data = ['assign_cms' => !empty($this->input->post('cms')) ? $this->input->post('cms') : NULL];
+        $where = ['id_leads' => $this->input->post('data')];
+        $id = $this->fs_konsumen_model->update($data, $where);
+
+        echo json_encode($id);
+    }
+
+    public function return_fs()
+    {
+        //tiket ditolak (returned)
+        $data = ['status' => 4];
+        
+        $where = ['id_leads' => $this->input->post('data')];
+        $id = $this->ticket_model->update($data, $where);
+
+        echo json_encode($id);
     }
 }

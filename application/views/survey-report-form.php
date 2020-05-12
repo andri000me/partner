@@ -105,6 +105,8 @@
         <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
             <!-- ID Leads -->
             <input type="hidden" id="id_leads" name="id_leads" value="<?= $leads->id_leads ?>">
+            <!-- Level -->
+            <input type="hidden" id="level" value="<?= $this->fungsi->user_login()->level ?>">
             <div class="row">
                 <!-- Data Konsumen -->
                 <div class="col-md-12">
@@ -1014,7 +1016,7 @@
                     </div>
                 </div>
                 <!-- Tujuan Pembiayaan -->
-
+                <?php if($leads->pekerjaan_konsumen == 'Karyawan'){ ?>
                 <!-- kondisi konsumen jika karyawan -->
                 <div class="col-md-12">
                     <div class="card ml-3 mr-3">
@@ -1420,7 +1422,9 @@
                     </div>
                 </div>
                 <!-- kondisi konsumen jika karyawan -->
+                <?php } ?>
 
+                <?php if($leads->pekerjaan_konsumen == 'Wiraswasta'){ ?>
                 <!-- kondisi konsumen jika wiraswasta -->
                 <div class="col-md-12">
                     <div class="card ml-3 mr-3">
@@ -1898,7 +1902,9 @@
                     </div>
                 </div>
                 <!-- kondisi konsumen jika wiraswasta -->
+                <?php } ?>
 
+                <?php if($leads->pekerjaan_konsumen == 'Karyawan'){ ?>
                 <!-- Kapasitas konsumen jika karyawan -->
                 <div class="col-md-12">
                     <div class="card ml-3 mr-3">
@@ -2409,7 +2415,9 @@
                     </div>
                 </div>
                 <!-- kapasitas konsumen jika karyawan -->
+                <?php } ?>
 
+                <?php if($leads->pekerjaan_konsumen == 'Wiraswasta'){ ?>
                 <!-- Kapasitas konsumen jika Wiraswasta -->
                 <div class="col-md-12">
                     <div class="card ml-3 mr-3">
@@ -3434,6 +3442,7 @@
                     </div>
                 </div>
                 <!-- kapasitas konsumen jika Wiraswasta -->
+                <?php } ?>
 
                 <!-- Aset Konsumen -->
                 <div class="col-md-12">
@@ -4222,11 +4231,12 @@
         </form>
     </div>
 </div>
+
 <div class="form-row">
     <div class="col-md-12">
         <div class="form-group float-right mr-3">
-            <button class=" btn btn-light waves-effect waves-light text-size btn-cari" id="draft" name="draft"
-                class="btn" type="submit">Simpan</button>
+            <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="return" name="return"
+                class="btn" type="button">Return</button>
             <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit"
                 name="process">Score</button>
         </div>
@@ -4518,14 +4528,8 @@ function religiupFunction() {
 $(document).ready(function() {
     var id_leads = $("#id_leads").val();
 
-    // alert(id_leads);
-    $("form#fs_konsumen").on("click", "input, select, textarea", function() {
-        var selector = ($(this).attr('name'));
 
-        // $("[name='" + selector + "']").after(
-        //     `<div class="alert alert-primary">Loading...</div>`)
-    })
-
+    //menyimpan data secara AJAX
     $("form#fs_konsumen").on("blur", "input, select, textarea", function() {
         var selector = ($(this).attr('name'));
         var spinner = $("[data-selector='" + selector + "']");
@@ -4554,5 +4558,37 @@ $(document).ready(function() {
         })
     })
 })
+</script>
+
+<!-- return form konsumen -->
+<script>
+$('#return').click(function() {
+    var data = $("#id_leads").val();
+
+    var conf = confirm('Apakah Anda yakin ingin mengembalikan data form survey ini ke CMS?');
+
+
+    if (conf) {
+        // alert('alert')
+        $.ajax({
+            url: '<?= base_url() ?>' + 'fs_konsumen/return_fs/',
+            type: 'POST',
+            data: {
+                data: data
+            },
+            dataType: 'json',
+            success: function(data) {
+                alert('success')
+            }
+        })
+    }
+})
+</script>
+
+<script>
+var level = $("#level").val()
+if (level == '2' || level == '3') {
+    $("input, select, textarea").attr('disabled', 'disabled');
+}
 </script>
 <!-- btn -->
