@@ -48,47 +48,43 @@ class Transfer_data extends CI_Controller
             "
             ),
 
-            'mapping_partner_model' => $this->mapping_partner_model->query(
-                "SELECT * , mapping_partners.id_mapping as mapping_id_partner, mapping_partners.id_user as user_id 
-                FROM mapping_partners
-                LEFT JOIN partners ON partners.id_mapping = mapping_partners.id_mapping
-                INNER JOIN users ON users.id_user = mapping_partners.id_user
-                INNER JOIN branches ON branches.id_branch = mapping_partners.id_branch
-                WHERE $this->where AND partners.id_mapping IS NULL
-                ORDER BY mapping_partners.id_user ASC
+            'mapping_partner' => $this->partner_model->query(
+                "SELECT * , partners_full.id_partner as mapping_id_partner, partners_full.id_user as user_id 
+                FROM partners_full
+                INNER JOIN users ON users.id_user = partners_full.id_user
+                INNER JOIN branches ON branches.id_branch = partners_full.id_branch
+                WHERE $this->where AND status = 'mapping'
+                ORDER BY partners_full.id_user ASC
             "
             ),
 
             'partner' => $this->partner_model->query(
-                "SELECT *, mapping_partners.id_mapping as mapping_id_partner, mapping_partners.id_user as user_id 
-                FROM partners
-                INNER JOIN mapping_partners ON mapping_partners.id_mapping = partners.id_mapping
-                INNER JOIN users ON users.id_user = mapping_partners.id_user
-                INNER JOIN branches ON branches.id_branch = mapping_partners.id_branch
-                WHERE $this->where
-                ORDER BY mapping_partners.id_user ASC
+                "SELECT *, partners_full.id_partner as mapping_id_partner, partners_full.id_user as user_id 
+                FROM partners_full
+                INNER JOIN users ON users.id_user = partners_full.id_user
+                INNER JOIN branches ON branches.id_branch = partners_full.id_branch
+                WHERE $this->where AND (status = 'draft' OR status = 'lengkap')
+                ORDER BY partners_full.id_user ASC
             "
             ),
 
-            'mapping_leads' => $this->mapping_leads->query(
-                "SELECT *, mapping_leads.id_mapping_leads as mapping_id_leads, mapping_leads.id_user as user_id 
-                FROM mapping_leads
-                LEFT JOIN leads ON leads.id_mapping_leads = mapping_leads.id_mapping_leads
-                INNER JOIN users ON users.id_user = mapping_leads.id_user
-                INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
-                WHERE $this->where AND leads.id_mapping_leads IS NULL
-                ORDER BY mapping_leads.id_user ASC
+            'mapping_leads' => $this->leads_model->query(
+                "SELECT *, leads_full.id_leads as mapping_id_leads, leads_full.id_user as user_id 
+                FROM leads_full
+                INNER JOIN users ON users.id_user = leads_full.id_user
+                INNER JOIN branches ON branches.id_branch = leads_full.id_branch
+                WHERE $this->where AND leads_full.status = 'database' 
+                ORDER BY leads_full.id_user ASC
             "
             ),
 
             'leads' => $this->leads_model->query(
-                "SELECT *, mapping_leads.id_mapping_leads as mapping_id_leads, mapping_leads.id_user as user_id 
-                FROM leads
-                INNER JOIN mapping_leads ON leads.id_mapping_leads = mapping_leads.id_mapping_leads
-                INNER JOIN users ON users.id_user = mapping_leads.id_user
-                INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
+                "SELECT *, leads_full.id_leads as mapping_id_leads, leads_full.id_user as user_id 
+                FROM leads_full
+                INNER JOIN users ON users.id_user = leads_full.id_user
+                INNER JOIN branches ON branches.id_branch = leads_full.id_branch
                 WHERE $this->where
-                ORDER BY mapping_leads.id_user ASC
+                ORDER BY leads_full.id_user ASC
             "
             )
         ];
@@ -123,11 +119,11 @@ class Transfer_data extends CI_Controller
         $agent = $post['agent_transfer'];
 
         foreach ($leads as $key => $val) {
-            $this->mapping_leads->update(['id_user' => $val], ['id_mapping_leads' => $key]);
+            $this->leads_model->update(['id_user' => $val], ['id_leads' => $key]);
         }
 
         foreach ($partner as $key => $val) {
-            $this->mapping_partner_model->update(['id_user' => $val], ['id_mapping' => $key]);
+            $this->partner_model->update(['id_user' => $val], ['id_partner' => $key]);
         }
 
         foreach ($agent as $key => $val) {
@@ -153,9 +149,9 @@ class Transfer_data extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        $where_data = ['id_mapping_leads' => $post['data']];
+        $where_data = ['id_leads' => $post['data']];
         $data = ['id_user' => $post['penginput']];
-        $id = $this->mapping_leads->update($data, $where_data);
+        $id = $this->leads_model->update($data, $where_data);
 
 
         echo json_encode($id);
@@ -165,9 +161,9 @@ class Transfer_data extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        $where_data = ['id_mapping' => $post['data']];
+        $where_data = ['id_partner' => $post['data']];
         $data = ['id_user' => $post['penginput']];
-        $id = $this->mapping_partner_model->update($data, $where_data);
+        $id = $this->partner_model->update($data, $where_data);
 
         echo json_encode($id);
     }

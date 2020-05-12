@@ -9,11 +9,11 @@ class Nst extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['nst.id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "nst.id_user = ". $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['nst.id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "nst.id_branch = ". $this->fungsi->user_login()->id_branch;
         } else {
             $this->where = NULL;
         }
@@ -31,12 +31,11 @@ class Nst extends CI_Controller
 
     public function create()
     {
-        $get_leads = "SELECT *, leads.leads_id as lead_id 
-        FROM leads
-        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
-        INNER JOIN users ON users.id_user = mapping_leads.id_user 
-        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
-        LEFT JOIN nst ON nst.leads_id = leads.leads_id
+        $get_leads = "SELECT *, leads_full.leads_id as lead_id 
+        FROM leads_full
+        INNER JOIN users ON users.id_user = leads_full.id_user 
+        INNER JOIN branches ON branches.id_branch = leads_full.id_branch
+        LEFT JOIN nst ON nst.leads_id = leads_full.leads_id
         WHERE users.id_user = " . $this->fungsi->user_login()->id_user . "
         AND branches.id_branch = " . $this->fungsi->user_login()->id_branch . "
         AND nst.leads_id IS NULL";
@@ -50,12 +49,11 @@ class Nst extends CI_Controller
     public function edit($id)
     {
         $get_leads =
-            "SELECT *, leads.leads_id as lead_id 
+            "SELECT *, leads_full.leads_id as lead_id 
                 FROM nst
-                INNER JOIN leads ON leads.leads_id = nst.leads_id
-                INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
-                INNER JOIN users ON users.id_user = mapping_leads.id_user 
-                INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
+                INNER JOIN leads_full ON leads_full.leads_id = nst.leads_id
+                INNER JOIN users ON users.id_user = leads_full.id_user 
+                INNER JOIN branches ON branches.id_branch = leads_full.id_branch
                 WHERE nst.id_nst = $id";
 
         $data = [
@@ -128,14 +126,14 @@ class Nst extends CI_Controller
 
             redirect('nst');
         } else {
-            $get_leads = "SELECT *, leads.leads_id as lead_id FROM leads
-        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
-        INNER JOIN users ON users.id_user = mapping_leads.id_user 
-        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
-        LEFT JOIN nst ON nst.leads_id = leads.leads_id
+            $get_leads = "SELECT *, leads_full.leads_id as lead_id 
+        FROM leads_full
+        INNER JOIN users ON users.id_user = leads_full.id_user 
+        INNER JOIN branches ON branches.id_branch = leads_full.id_branch
+        LEFT JOIN nst ON nst.leads_id = leads_full.leads_id
         WHERE users.id_user = " . $this->fungsi->user_login()->id_user . "
-        AND nst.leads_id IS NULL
-        AND branches.id_branch = " . $this->fungsi->user_login()->id_branch;
+        AND branches.id_branch = " . $this->fungsi->user_login()->id_branch . "
+        AND nst.leads_id IS NULL";
 
             $data = [
                 'leads' => $this->nst_model->query($get_leads)
