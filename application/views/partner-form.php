@@ -412,6 +412,14 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group ml-4 mr-4">
+                                                        <label>NPWP Penyedia Jasa</label>
+                                                        <input type="text" class="form-control placement text-size number-only" id="" name="" value="" required placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <div id="disable" class="form-group ml-4 mr-4">
                                                         <label>Tahun Berakhir Izin Usaha</label>

@@ -57,7 +57,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active p-3" id="database" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama Konsumen</th>
@@ -88,7 +88,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size leads border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <select class="form-control text-size leads form-border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -103,7 +103,7 @@
                         </div>
 
                         <div class="tab-pane p-3" id="prospect" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-1" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
@@ -134,7 +134,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size leads border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <select class="form-control text-size leads form-border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -149,7 +149,7 @@
                         </div>
 
                         <div class="tab-pane p-3" id="mapping" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-2" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama Usaha</th>
@@ -171,7 +171,9 @@
                                                 <?= $data->bidang_usaha ?>
                                             </td>
                                             <td>
-                                                <?= $data->alamat ?>
+                                                <div style="width: 300px">
+                                                    <?= $data->alamat ?>
+                                                </div>
                                             </td>
                                             <td>
                                                 <?= $data->telepon ?>
@@ -184,7 +186,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size partner border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <select class="form-control text-size partner form-border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -199,7 +201,7 @@
                         </div>
 
                         <div class="tab-pane p-3" id="partnership" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-3" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama Usaha</th>
@@ -234,7 +236,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size partner border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <select class="form-control text-size partner form-border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -249,7 +251,7 @@
                         </div>
 
                         <div class="tab-pane p-3" id="agent" role="tabpanel">
-                            <table id="" class="datatable table table-striped table-bordered dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-4" class="table table-hover dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>
@@ -292,7 +294,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size agent border" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
+                                                    <select class="form-control text-size agent form-border" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
