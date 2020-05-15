@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
+        <div class="page-title-box card-margin-2">
             <h4 class="page-title">Approval Bonus</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
@@ -13,13 +13,13 @@
 <div class="row">
     <?php if ($this->fungsi->user_login()->level < 4) { ?>
         <div class="col-md-12">
-            <a href="<?= base_url('approval_bonus/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size">Tambah Data</button></a>
+            <a href="<?= base_url('approval_bonus/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size card-margin-2">Tambah Data</button></a>
         </div>
     <?php } ?>
     <div class="col-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Table List Approval Bonus</h4>
+                <h4 class="mt-0 mb-4 header-title">Table List Approval Bonus</h4>
                 <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -46,7 +46,7 @@
                                     <?= $approval->created_at ?>
                                 </td>
                                 <td>
-                                    <center><a href="<?= base_url('approval_bonus/edit/' . $approval->id_approval_bonus) ?>" class="btn btn-secondary text-size">Detail</a></center>
+                                    <center><a href="<?= base_url('approval_bonus/edit/' . $approval->id_approval_bonus) ?>" class="btn btn-primary text-size radius">Detail</a></center>
                                 </td>
                             <?php } ?>
                             </tr>

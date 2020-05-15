@@ -1,34 +1,46 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="page-title-box">
-            <h4 class="page-title">Approval Bonus Form</h4>
+        <div class="page-title-box card-margin-5">
+            <h4 class="page-title">Tambah Data</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Approval bonus</a></li>
-                <li class="breadcrumb-item active">Approval Bonus Form</li>
+                <li class="breadcrumb-item active">Tambah Data</li>
             </ol>
         </div>
     </div>
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+            <div class="ml-4 mr-4 mt-3 mb-3">
+                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
+                <p>Cari data menggunakan tombol search di bawah
+                    ini.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-lg-12">
-        <div class="card m-b-20">
+        <div class="card m-b-20 card-margin-5">
             <div class="card-body">
-                <div class="ml-3">
-                    <h4 class="mt-0 header-title">Approval Bonus Form</h4>
-                    <p class="text-muted m-b-30 text-size"></p>
+                <div class="ml-4">
+                    <h4 class="mt-0 mb-4 header-title">Approval Bonus Form</h4>
+                    <!-- <p class="text-muted m-b-30 text-size"></p> -->
                 </div>
                 <form class="text-size" action="<?= base_url('approval_bonus/update') ?>" method="post">
                     <!-- ID Agent -->
-                    <input type="hidden" id="id_approval_bonus" name="id_approval_bonus" value="<?= $data->id_approval_bonus ?>" >
+                    <input type="hidden" id="id_approval_bonus" name="id_approval_bonus" value="<?= $data->id_approval_bonus ?>">
                     <!-- ID Ticket -->
-                    <input type="hidden" id="id_ticket" name="id_ticket" value="<?= $data->id_ticket ?>" >
+                    <input type="hidden" id="id_ticket" name="id_ticket" value="<?= $data->id_ticket ?>">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-row mb-3">
                                 <div class="col-md-12">
-                                    <div class="ml-3 mr-3">
+                                    <div class="ml-4 mr-4">
                                         <label>Lead ID</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="202001SLOS12345">
@@ -43,7 +55,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="nama_cabang" id="nama_cabang" value="<?= $data->nama_cabang ?>" placeholder="Cabang" readonly>
                                         <input type="hidden" id="cabang" name="cabang" value="<?= $data->cabang ?>">
@@ -52,7 +64,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Requester</label>
                                         <input type="text" class="form-control text-size" name="requester" id="requester" value="<?= $data->name ?>" placeholder="Requester" readonly>
                                         <input type="hidden" id="requester" name="requester" value="<?= $data->requester ?>">
@@ -61,7 +73,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Nama Konsumen</label>
                                         <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" placeholder="nama Konsumen" value="<?= $data->nama_konsumen ?>" readonly>
                                     </div>
@@ -69,7 +81,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Tanggal Dibuat</label>
                                         <input type="text" class="form-control text-size" name="tanggal_dibuat" id="tanggal_dibuat" placeholder="Tanggal Dibuat" value="<?= $data->tanggal_dibuat ?>" readonly>
                                     </div>
@@ -77,7 +89,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Produk</label>
                                         <input type="text" class="form-control text-size" name="produk" id="produk" placeholder="Produk" value="<?= $data->produk ?>" readonly>
                                     </div>
@@ -85,7 +97,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Sumber Lead</label>
                                         <input type="text" class="form-control text-size" name="sumber_lead" id="sumber_lead" placeholder="Sumber Lead" value="<?= $data->sumber_lead ?>" readonly>
                                     </div>
@@ -93,7 +105,7 @@
                             </div>
                             <div class="form-row">
                                 <!-- <div class="col-md-12">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group ml-4 mr-4">
                                         <label>Nama Pemberi Lead</label>
                                         <input type="text" class="form-control text-size" name="nama_pemberi_lead" id="nama_pemberi_lead" placeholder="Nama Pemberi lead" value="<?= $data->nama_pemberi_lead ?>" readonly>
                                     </div>
@@ -101,33 +113,33 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group ml-3 mr-3">
+                            <div class="form-group ml-4 mr-4">
                                 <label>Nomor Kontrak</label>
                                 <input type="text" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" required placeholder="Nomor Kontrak" minlength="10" maxlength="10" />
                             </div>
-                            <div class="form-group ml-3 mr-3">
+                            <div class="form-group ml-4 mr-4">
                                 <label>Nomor Rekening</label>
                                 <input type="text" class="form-control text-size placement number-only" name="nomor_rekening" id="nomor_rekening" value="<?= $data->nomor_rekening ?>" required placeholder="Nomor Rekening" minlength="16" maxlength="16" />
                             </div>
-                            <div class="form-group ml-3 mr-3">
+                            <div class="form-group ml-4 mr-4">
                                 <label>Atas Nama</label>
                                 <input type="text" class="form-control text-size" name="atas_nama" id="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Atas Nama" />
                             </div>
-                            <div class="form-group ml-3 mr-3">
+                            <div class="form-group ml-4 mr-4">
                                 <label>Nama Bank</label>
                                 <input type="text" class="form-control text-size" name="nama_bank" id="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Nomor Rekening" />
                             </div>
-                            <div class="form-group ml-3 mr-3">
+                            <div class="form-group ml-4 mr-4">
                                 <label>NPWP</label>
                                 <input type="text" class="form-control text-size placement number-only" name="npwp" id="npwp" value="<?= $data->npwp ?>" required placeholder="NPWP" minlength="15" maxlength="15" />
                             </div>
-                            <div class="form-group text-size ml-3 mr-3">
+                            <div class="form-group text-size ml-4 mr-4">
                                 <label>Data Lampiran</label>
                                 <input type="file" name="lampiran" class="filestyle" data-buttonname="btn-secondary">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group mb-0 float-right mt-3 mr-3">
+                    <div class="form-group mb-0 float-right mt-4 mr-4">
                         <?php
                         $level = $this->fungsi->user_login()->level;
                         if (($level != 1) && (($level == 2 && $data->status == 0) || ($level == 3 && $data->status == 1) || ($level == 4 && $data->status == 2))) {
@@ -160,7 +172,7 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>
@@ -197,7 +209,7 @@
                                 </td>
                                 <td>
                                     <center>
-                                        <button class="btn btn-primary pilih-leads" data-leads="<?= $data->leads_id_leads ?>" data-cabang="<?= $data->id_branch_leads ?>" data-namacabang="<?= $data->nama_cabang ?>" data-requester="<?= $data->id_user_leads ?>" data-namarequester="<?= $data->name ?>" data-konsumen="<?= $data->nama_konsumen_leads ?>" data-tanggal="<?= $data->created_at_leads ?>" data-produk="<?= $data->produk_leads ?>" data-soa="<?= $data->soa ?>">Pilih</button>
+                                        <button class="btn btn-primary pilih-leads radius" data-leads="<?= $data->leads_id_leads ?>" data-cabang="<?= $data->id_branch_leads ?>" data-namacabang="<?= $data->nama_cabang ?>" data-requester="<?= $data->id_user_leads ?>" data-namarequester="<?= $data->name ?>" data-konsumen="<?= $data->nama_konsumen_leads ?>" data-tanggal="<?= $data->created_at_leads ?>" data-produk="<?= $data->produk_leads ?>" data-soa="<?= $data->soa ?>">Pilih</button>
                                     </center>
                                 </td>
                             </tr>

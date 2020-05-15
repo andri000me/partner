@@ -15,7 +15,7 @@
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <form action="<?= base_url('branch/update') ?>" method="post">
-                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="datatable-buttons" class="table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>ID Cabang</th>

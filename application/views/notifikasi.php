@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Notifikasi</h4>
+            <h4 class="page-title">Notification</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item active">Notifikasi</li>
+                <li class="breadcrumb-item active">Notification</li>
             </ol>
         </div>
     </div>

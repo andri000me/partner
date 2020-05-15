@@ -57,8 +57,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div class="tab-pane active p-3" id="database" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama Konsumen</th>
@@ -71,44 +70,40 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($mapping_leads->result() as $data) { ?>
-                                    <tr>
-                                        <td>
-                                            <?= $data->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->telepon ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->soa ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->produk ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->detail_produk ?>
-                                        </td>
-                                        <td data-search="<?= $data->name ?>">
-                                            <center>
-                                                <select class="form-control text-size leads border"
-                                                    name="leads_transfer[<?= $data->mapping_id_leads ?>]"
-                                                    id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
-                                                    <option selected disabled value="">Pilih Penginput</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                    <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?>
-                                                        value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </center>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $data->nama_konsumen ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->telepon ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->soa ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->produk ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->detail_produk ?>
+                                            </td>
+                                            <td data-search="<?= $data->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size leads form-border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                        <option selected disabled value="">Pilih Penginput</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="tab-pane p-3" id="prospect" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-1" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama</th>
@@ -121,44 +116,40 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($leads->result() as $data) { ?>
-                                    <tr>
-                                        <td>
-                                            <?= $data->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->leads_id ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->no_ktp ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->follow_up_by ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->sudah_funding ?>
-                                        </td>
-                                        <td data-search="<?= $data->name ?>">
-                                            <center>
-                                                <select class="form-control text-size leads border"
-                                                    name="leads_transfer[<?= $data->mapping_id_leads ?>]"
-                                                    id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
-                                                    <option selected disabled value="">Pilih Penginput</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                    <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?>
-                                                        value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </center>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $data->nama_konsumen ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->leads_id ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->no_ktp ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->follow_up_by ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->sudah_funding ?>
+                                            </td>
+                                            <td data-search="<?= $data->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size leads form-border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                        <option selected disabled value="">Pilih Penginput</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="tab-pane p-3" id="mapping" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-2" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama Usaha</th>
@@ -172,47 +163,45 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($mapping_partner->result() as $data) { ?>
-                                    <tr>
-                                        <td>
-                                            <?= $data->nama_usaha ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->bidang_usaha ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->alamat ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->telepon ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->email ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->kategori_produk ?>
-                                        </td>
-                                        <td data-search="<?= $data->name ?>">
-                                            <center>
-                                                <select class="form-control text-size partner border"
-                                                    name="partner_transfer[<?= $data->mapping_id_partner ?>]"
-                                                    id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
-                                                    <option selected disabled value="">Pilih Penginput</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                    <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?>
-                                                        value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </center>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $data->nama_usaha ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->bidang_usaha ?>
+                                            </td>
+                                            <td>
+                                                <div style="width: 300px">
+                                                    <?= $data->alamat ?>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <?= $data->telepon ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->email ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->kategori_produk ?>
+                                            </td>
+                                            <td data-search="<?= $data->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size partner form-border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                        <option selected disabled value="">Pilih Penginput</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="tab-pane p-3" id="partnership" role="tabpanel">
-                            <table class="datatable table table-striped table-bordered dt-responsive wrap text-size"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-3" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Nama Usaha</th>
@@ -226,47 +215,43 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($partner->result() as $data) { ?>
-                                    <tr>
-                                        <td>
-                                            <?= $data->nama_usaha ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->bidang_usaha ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->telepon ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->email ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->kategori_produk ?>
-                                        </td>
-                                        <td>
-                                            <?= $data->alamat ?>
-                                        </td>
-                                        <td data-search="<?= $data->name ?>">
-                                            <center>
-                                                <select class="form-control text-size partner border"
-                                                    name="partner_transfer[<?= $data->mapping_id_partner ?>]"
-                                                    id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
-                                                    <option selected disabled value="">Pilih Penginput</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                    <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?>
-                                                        value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </center>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <?= $data->nama_usaha ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->bidang_usaha ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->telepon ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->email ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->kategori_produk ?>
+                                            </td>
+                                            <td>
+                                                <?= $data->alamat ?>
+                                            </td>
+                                            <td data-search="<?= $data->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size partner form-border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                        <option selected disabled value="">Pilih Penginput</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="tab-pane p-3" id="agent" role="tabpanel">
-                            <table id="" class="datatable table table-striped table-bordered dt-responsive wrap"
-                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <table id="datatable-buttons-4" class="table table-hover dt-responsive wrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>
@@ -291,36 +276,33 @@
                                 </thead>
                                 <tbody>
                                     <?php foreach ($agent->result() as $data) { ?>
-                                    <tr>
-                                        <td>
-                                            <div class="text-size"><?= $data->nama_lengkap ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="text-size"><?= $data->jenis_agent ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="text-size"><?= $data->pekerjaan ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="text-size"><?= $data->email ?></div>
-                                        </td>
-                                        <td>
-                                            <div class="text-size"><?= $data->no_ktp ?></div>
-                                        </td>
-                                        <td data-search="<?= $data->name ?>">
-                                            <center>
-                                                <select class="form-control text-size agent border"
-                                                    name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to"
-                                                    data-data="<?= $data->id_agent ?>">
-                                                    <option selected value="">Pilih CMS</option>
-                                                    <?php foreach ($users->result() as $user) { ?>
-                                                    <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?>
-                                                        value="<?= $user->id_user ?>"><?= $user->name ?></option>
-                                                    <?php } ?>
-                                                </select>
-                                            </center>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="text-size"><?= $data->nama_lengkap ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="text-size"><?= $data->jenis_agent ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="text-size"><?= $data->pekerjaan ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="text-size"><?= $data->email ?></div>
+                                            </td>
+                                            <td>
+                                                <div class="text-size"><?= $data->no_ktp ?></div>
+                                            </td>
+                                            <td data-search="<?= $data->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size agent form-border" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
+                                                        <option selected disabled value="">Pilih Penginput</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        </tr>
                                     <?php } ?>
                                 </tbody>
                             </table>
@@ -328,8 +310,7 @@
                     </div>
 
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                        <a href="<?= base_url('transfer_data') ?>"
-                            class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
+                        <a href="<?= base_url('transfer_data') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
                         <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
                             Transfer
                         </button>
@@ -342,68 +323,68 @@
 </div>
 
 <script>
-$(document).ready(function() {
-    $('.agent').on('change', function() {
-        var data = $(this).data('data');
-        var penginput = $(this).val();
+    $(document).ready(function() {
+        $('.agent').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
 
-        // alert('penginput: ' + penginput + ' data id: ' + data);
+            // alert('penginput: ' + penginput + ' data id: ' + data);
 
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url('transfer_data/update_agent') ?>",
-            dataType: "JSON",
-            data: {
-                data: data,
-                penginput: penginput
-            },
-            success: function(data) {
-                // alert('Success');
-            }
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_agent') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    // alert('Success');
+                }
+            });
+            return false;
         });
-        return false;
-    });
 
-    $('.leads').on('change', function() {
-        var data = $(this).data('data');
-        var penginput = $(this).val();
+        $('.leads').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
 
-        // alert('penginput: ' + penginput + ' data id: ' + data);
+            // alert('penginput: ' + penginput + ' data id: ' + data);
 
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url('transfer_data/update_leads') ?>",
-            dataType: "JSON",
-            data: {
-                data: data,
-                penginput: penginput
-            },
-            success: function(data) {
-                // alert('Success');
-            }
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_leads') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    // alert('Success');
+                }
+            });
+            return false;
         });
-        return false;
-    });
 
-    $('.partner').on('change', function() {
-        var data = $(this).data('data');
-        var penginput = $(this).val();
+        $('.partner').on('change', function() {
+            var data = $(this).data('data');
+            var penginput = $(this).val();
 
-        // alert('penginput: ' + penginput + ' data id: ' + data);
+            // alert('penginput: ' + penginput + ' data id: ' + data);
 
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url('transfer_data/update_partner') ?>",
-            dataType: "JSON",
-            data: {
-                data: data,
-                penginput: penginput
-            },
-            success: function(data) {
-                // alert('Success');
-            }
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('transfer_data/update_partner') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    penginput: penginput
+                },
+                success: function(data) {
+                    // alert('Success');
+                }
+            });
+            return false;
         });
-        return false;
-    });
-})
+    })
 </script>

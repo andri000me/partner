@@ -510,8 +510,7 @@
                     <h4 class="modal-title">Cari Data Leads</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table
-                    class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+                <table class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -585,8 +584,7 @@
                     <h4 class="modal-title">Cari Data Partner</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id=""
-                    class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -639,8 +637,7 @@
                     <h4 class="modal-title">Cari Data Agent</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id=""
-                    class="datatable-modal table table-striped table-bordered dt-responsive wrap text-size table-modal"
+                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
                     style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
@@ -678,18 +675,8 @@ $('#draft').click(function() {
 <script>
 $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
     .hide();
-source_leads();
-$('#id_partner').val("");
-$('#id_agent').val("");
-$('#nama_vendor').val("").removeAttr("required");
-$('#nama_event').val("");
-$('#nama_partner').val("");
-$('#nama_agent').val("");
-$('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
-$("#soa").change(function() {
-    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
-        .hide();
-    source_leads();
+
+function source_leads() {
     $('#id_partner').val("");
     $('#id_agent').val("");
     $('#nama_vendor').val("").removeAttr("required");
@@ -697,8 +684,7 @@ $("#soa").change(function() {
     $('#nama_partner').val("");
     $('#nama_agent').val("");
     $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
-
-})
+}
 
 function source_leads() {
     if ($('#soa').val() == 'Direct Selling') {
@@ -936,17 +922,18 @@ $('#status_konsumen').change(function() {
         }
 
         $('#status_pernikahan').change(function() {
-            if ($('#status_pernikahan').val() == "Sudah Menikah") {
-                $('.pasangan').show();
-                $('#nama_pasangan').attr('required', 'required');
-            } else {
-                $('.pasangan').hide();
-                $('#nama_pasangan').removeAttr('required', ' ');
+                if ($('#status_pernikahan').val() == "Sudah Menikah") {
+                    $('.pasangan').show();
+                    $('#nama_pasangan').attr('required', 'required');
+                } else {
+                    $('.pasangan').hide();
+                    $('#nama_pasangan').removeAttr('required', ' ');
+                }
             }
 
-        })
-    });
-});
+        )
+    })
+})
 </script>
 
 <script>
