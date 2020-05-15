@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="page-title-box card-margin-5">
-			<h4 class="page-title">NST</h4>
+			<h4><b>Form NST</b></h4>
 			<ol class="breadcrumb text-size">
 				<li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
 				<li class="breadcrumb-item"><a href="javascript:void(0);">NST</a></li>
@@ -13,7 +13,7 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+		<div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
 			<div class="ml-4 mr-4 mt-3 mb-3">
 				<h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
 				<p>Cari data menggunakan tombol "Cari" di bawah
@@ -27,57 +27,55 @@
 	<div class="col-md-12">
 		<div class="card m-b-20  card-margin-5">
 			<div class="card-body">
-				<div class="ml-4">
-					<h4 class="mt-0 mb-4 header-title">Form NST</h4>
+				<div class="form-margin">
+					<h4 class="mt-0 mb-4 header-title"><b>Data NST</b></h4>
 				</div>
 				<form class="" method="post" action="<?= base_url('nst/save') ?>" enctype="multipart/form-data">
 					<div class="form-row">
 						<div class="col-md-6">
-							<div class="ml-4 mr-4">
+							<div class="form-margin">
 								<label>Leads ID</label>
-								<div class="input-group mb-3">
+								<div class="input-group">
 									<input type="text" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" aria-label="Recipient's username" aria-describedby="button-addon2">
 									<div class="input-group-append">
-										<button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
-										<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads">Cari</button>
+										<button class="btn btn-danger text-size" type="button" id="reset"><b>Hapus</b></button>
+										<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads"><b>Cari</b></button>
 									</div>
 								</div>
 								<?= form_error('leads_id') ?>
-								<div class="form-group">
-									<label>Cabang</label>
-									<input type="text" class="form-control" name="cabang" id="cabang" required value="" placeholder="Cabang" readonly />
+							</div>
+							<div class="form-group form-margin">
+								<label>Cabang</label>
+								<input type="text" class="form-control" name="cabang" id="cabang" required value="" placeholder="Cabang" readonly />
+							</div>
+							<div class="form-group form-margin">
+								<label>Kategori produk</label>
+								<input type="text" class="form-control" name="kategori_produk" id="produk" required value="" placeholder="Kategori produk" readonly />
+							</div>
+							<div class="form-group form-margin">
+								<label>Requester</label>
+								<div>
+									<input type="text" class="form-control" name="requester" id="requester" parsley-type="requester" required value="" placeholder="Requester" readonly />
 								</div>
-								<div class="form-group">
-									<label>Kategori produk</label>
-									<input type="text" class="form-control" name="kategori_produk" id="produk" required value="" placeholder="Kategori produk" readonly />
-								</div>
-								<div class="form-group">
-									<label>Requester</label>
-									<div>
-										<input type="text" class="form-control" name="requester" id="requester" parsley-type="requester" required value="" placeholder="Requester" readonly />
-									</div>
-								</div>
-								<div class="form-group">
-									<label>Nama konsumen</label>
-									<input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required value="" placeholder="Nama Konsumen" readonly />
-								</div>
+							</div>
+							<div class="form-group form-margin">
+								<label>Nama konsumen</label>
+								<input type="text" class="form-control" name="nama_konsumen" id="nama_konsumen" required value="" placeholder="Nama Konsumen" readonly />
 							</div>
 						</div>
 						<div class="col-md-6">
-							<div class="ml-4 mr-4">
-								<?php for ($i = 1; $i <= 5; $i++) { ?>
-									<div class="form-group text-size">
-										<label>Data Lampiran</label>
-										<input type="file" name="lampiran<?= $i ?>" class="filestyle" data-buttonname="btn-secondary">
-									</div>
-								<?php } ?>
-							</div>
+							<?php for ($i = 1; $i <= 5; $i++) { ?>
+								<div class="form-group text-size form-margin">
+									<label>Data Lampiran</label>
+									<input type="file" name="lampiran<?= $i ?>" class="filestyle" data-buttonname="btn-secondary">
+								</div>
+							<?php } ?>
 						</div>
 						<div class="col-md-12">
-							<div class="form-group mb-0 float-right mt-5 ml-4 mr-4">
-								<a href="mapping.html" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
-								<button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-									Simpan
+							<div class="form-group mb-0 float-right mt-5 form-margin">
+								<a href="<?= base_url('nst') ?>" class="btn btn-secondary waves-effect waves-light text-size btn-width"><b>Batal</b></a>
+								<button type="submit" class="btn btn-primary waves-effect waves-light text-size btn-width ml-1">
+									<b>Simpan</b>
 								</button>
 							</div>
 						</div>
@@ -93,8 +91,8 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content">
 			<div class="modal-body">
-				<div class="modal-header mb-2">
-					<h4 class="modal-title">Cari Data Leads</h4>
+				<div class="modal-header mb-3">
+					<h4 class="modal-title"><b>Cari Data Leads</b></h4>
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 				</div>
 				<table id="" class="datatable-modal table table-hover dt-responsive nowrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

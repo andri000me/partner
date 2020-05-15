@@ -3845,7 +3845,29 @@ input[data-readonly] {
 }
 
 .card-height {
-	height: 750px;
+	height: 846px;
+}
+
+.form-margin {
+	margin-left: 25px;
+	margin-right: 25px;
+	margin-bottom: 25px;
+}
+
+.form-left {
+	margin-left: 25px;
+	margin-right: 7px;
+	margin-bottom: 25px;
+}
+
+.form-right {
+	margin-left: 7px;
+	margin-right: 25px;
+	margin-bottom: 25px;
+}
+
+.btn-width {
+	width: 80px;
 }
 
 /* .dataTables_filter {
@@ -4092,7 +4114,7 @@ input[data-readonly] {
 	}
 
 	.card-height {
-		height: 732px;
+		height: 828px;
 	}
 }
 
@@ -4278,6 +4300,24 @@ input[data-readonly] {
 
 	.mobile {
 		display: unset;
+	}
+
+	.form-margin {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 25px;
+	}
+
+	.form-left {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 25px;
+	}
+
+	.form-right {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 25px;
 	}
 }
 

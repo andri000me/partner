@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">NST</h4>
+            <h4 class="page-title"><b>NST</b></h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">NST</li>
@@ -13,7 +13,7 @@
     <div class="col-md-12 card-margin-2">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan">
-                <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size">Tambah NST</button></a>
+                <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size"><b>Tambah NST</b></button></a>
             </div>
         <?php } ?>
     </div>

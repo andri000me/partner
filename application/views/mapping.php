@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Mapping Lokasi Merchant</h4>
+            <h4><b>Mapping Lokasi Merchant</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
@@ -14,13 +14,13 @@
 <div class="row">
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
-            <a href="<?= base_url('partner/create_mapping') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size card-margin-2">Tambah Data Baru</button></a>
+            <a href="<?= base_url('partner/create_mapping') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size card-margin-2"><b>Tambah Data Baru</b></button></a>
         <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Table Calon Merchant</h4>
+                <h4 class="mt-0 header-title"><b>Tabel Calon Merchant</b></h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol Tambah Data baru untuk menambahkan data yang baru
                     dan data akan tersimpan di tabel, tekan tombol Edit untuk mengedit data yang harus di ubah.</p>
                 <table id="datatable-kerjasama" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

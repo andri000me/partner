@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-5">
-            <h4 class="page-title">Tambah Data Baru</h4>
+            <h4><b>Form Mapping Lokasi Merchant</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
@@ -15,7 +15,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-primary text-size gradient card-margin-5" role="alert">
+        <div class="alert alert-primary text-size gradient card-margin-5 mb-5" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
                     menginput data</h5>
@@ -39,14 +39,14 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="ml-4">
-                                <h4 class="mt-0 mb-4 header-title">Form Mapping Merchant</h4>
+                            <div class="form-margin">
+                                <h4 class="mt-0 mb-4 header-title">Form Mapping Lokasi Merchant</h4>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Nama Usaha</label>
                                         <input type="text" class="form-control text-size <?= form_error('nama_usaha') ? 'is-invalid' : '' ?>" name="nama_usaha" id="nama_usaha" required value="<?= set_value('nama_usaha') ?>" placeholder="CV Aria Santiika" />
                                         <?= form_error('nama_usaha'); ?>
@@ -55,7 +55,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Bidang Usaha</label>
                                         <input type="text" class="form-control text-size <?= form_error('bidang_usaha') ? 'is-invalid' : '' ?>" name="bidang_usaha" id="bidang_usaha" required value="<?= set_value('bidang_usaha') ?>" placeholder="Garmen / Percetakan / Lainnya" />
                                         <?= form_error('bidang_usaha'); ?>
@@ -64,7 +64,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label>Bentuk Usaha</label>
                                         <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
                                             <option selected value="">Pilih Bentuk Usaha</option>
@@ -78,7 +78,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Alamat / Lokasi</label>
                                         <input type="phone" class="form-control text-size <?= form_error('alamat') ? 'is-invalid' : '' ?>" name="alamat" id="alamat" required value="<?= set_value('alamat') ?>" placeholder="Jalan Perjalanan Panjang No.22" />
                                         <?= form_error('alamat'); ?>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Nomor Telepon</label>
                                         <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" placeholder="0811977500" maxlength="15" />
                                         <?= form_error('telepon'); ?>
@@ -98,7 +98,7 @@
                         <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">E-Mail</label>
                                         <div>
                                             <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
@@ -109,7 +109,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Kategori Produk</label>
                                         <select class="form-control text-size <?= form_error('kategori_produk') ? 'is-invalid' : '' ?>" name="kategori_produk" id="kategori_produk" required>
                                             <option selected value="">Pilih Kategori Produk</option>
@@ -126,7 +126,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group text-size ml-4 mr-4 text-size">
+                                    <div class="form-group text-size form-margin text-size">
                                         <label>Foto usaha</label>
                                         <input type="file" name="foto_usaha_mapping" class="filestyle text-size" data-buttonname="btn-secondary text-size">
                                     </div>
@@ -134,7 +134,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Catatan</label>
                                         <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" value="<?= set_value('catatan') ?>" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
                                     </div>
@@ -142,13 +142,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group mb-0 float-right ml-4 mr-4">
+                    <div class="form-group mb-0 float-right form-margin">
                         <div>
-                            <a href="<?= base_url('partner/index_mapping') ?>" class="btn btn-secondary waves-effect waves-light text-size">
-                                Batal
+                            <a href="<?= base_url('partner/index_mapping') ?>" class="btn btn-secondary waves-effect waves-light text-size btn-width">
+                                <b>Batal</b>
                             </a>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-                                Simpan
+                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size btn-width ml-1">
+                                <b>Simpan</b>
                             </button>
                         </div>
                     </div>

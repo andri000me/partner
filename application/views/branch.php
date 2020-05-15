@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Cabang</h4>
+            <h4><b>Branch</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item active">Cabang</li>
+                <li class="breadcrumb-item active">Branch</li>
             </ol>
         </div>
     </div>
@@ -14,6 +14,8 @@
     <div class="col-md-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
+                <h4 class="mt-0 header-title"><b>Tabel Branch</b></h4>
+                <p class="text-muted m-b-30 text-size"></p>
                 <form action="<?= base_url('branch/update') ?>" method="post">
                     <table id="datatable-buttons" class="table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
@@ -63,9 +65,9 @@
                             <?php }  ?>
                         </tbody>
                     </table>
-                    <button class="btn btn-primary float-right mt-2 text-size">Update</button>
+                    <button class="btn btn-primary w-md float-right mt-4 text-size"><b>Update</b></button>
                 </form>
+                </>
             </div>
-        </div>
-    </div> <!-- end col -->
-</div>
+        </div> <!-- end col -->
+    </div>

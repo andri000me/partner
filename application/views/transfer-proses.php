@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box text size card-margin-2">
-            <h4 class="page-title">Transfer Data</h4>
+            <h4 class="page-title"><b>Transfer Data</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item active">Transfer Data</li>
+                <li class="breadcrumb-item active">Transfer Perdata</li>
             </ol>
         </div>
     </div>
@@ -17,14 +17,14 @@
 
             <div class="card-body text-size">
 
-                <h4 class="mt-0 header-title">Proses Transfer Data</h4>
+                <h4 class="mt-0 header-title"><b>Proses Transfer Data</b></h4>
                 <p class="text-muted m-b-30 text-size">Silahkan pilih data yang akan di transfer.</p>
 
                 <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#database" role="tab">
-                            <span class="d-block d-sm-none">Leads Database</span>
-                            <span class="d-none d-sm-block">Leads Database</span>
+                            <span class="d-block d-sm-none mb-1">Leads Database</span>
+                            <span class="d-none d-sm-block mb-1">Leads Database</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -310,9 +310,9 @@
                     </div>
 
                     <div class="form-group mb-0 float-right mt-3 mr-3">
-                        <a href="<?= base_url('transfer_data') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
+                        <a href="<?= base_url('transfer_data') ?>" class="btn btn-secondary waves-effect waves-light text-size "><b>Batal</b></a>
                         <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-                            Transfer
+                            <b>Transfer</b>
                         </button>
                     </div>
                 </form>

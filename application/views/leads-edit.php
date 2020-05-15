@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-5">
-            <h4 class="page-title">Form Leads Prospect</h4>
+            <h4><b>Form Leads Prospect</b></h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
@@ -16,8 +16,8 @@
         <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
-                <p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan
-                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi<br> <b>Form verifikasi dan Survey.
+                <p class="text-size">Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan
+                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi <b>Form verifikasi dan Survey.
                         Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan
                         lengkap.</p>
             </div>
@@ -43,23 +43,21 @@
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <!-- Redirect -->
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                    <div class="row mb-3">
-                        <div class="col-md-12">
-                            <h4 class="mt-0 header-title ml-3">Form Leads Prospect</h4>
-                        </div>
+                    <div class="ml-4">
+                        <h4 class="mt-0 mb-4"><b>Data Konsumen</b></h4>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
                             <div class="">
                                 <div class="form-row">
                                     <div class="col-md-12">
-                                        <div class=" ml-4 mr-4">
+                                        <div class="form-margin">
                                             <label>Nama Lengkap</label>
                                             <div class="input-group">
                                                 <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <div class="input-group-append">
                                                     <button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
-                                                    <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads">Cari</button>
+                                                    <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><b>Cari</b></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -67,13 +65,13 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group fomr-left">
                                             <label>Nomor KTP</label>
                                             <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group form-right">
                                             <label>Nomor Handphone</label>
                                             <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0896 5533 985" maxlength="15" />
                                         </div>
@@ -81,13 +79,13 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group fomr-left">
                                             <label>Email</label>
                                             <input type="email" class="form-control text-size" name="email" id="email" value="<?= $data->email ?>" placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group form-right">
                                             <label>Pendidikan</label>
                                             <select class="form-control text-size" name="pendidikan" id="pendidikan" required>
                                                 <option selected value="">Pilih Pendidikan</option>
@@ -118,13 +116,13 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group fomr-left">
                                             <label>Tanggal Lahir</label>
                                             <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->email ?>" placeholder="Tanggal lahir">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group form-right">
                                             <label>Status Pernikahan</label>
                                             <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan" required>
                                                 <option selected value="">Pilih Status Pernikahan</option>
@@ -138,7 +136,7 @@
                                 </div>
                                 <div class="form-row pasangan">
                                     <div class="col-md-12">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group form-margin">
                                             <label>Nama Pasangan</label>
                                             <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $data->nama_pasangan ?>" placeholder="Nama Pasangan">
                                         </div>
@@ -146,7 +144,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group text-size ml-4 mr-4">
+                                        <div class="form-group text-size fomr-left">
                                             <label>Pekerjaan Konsumen?</label><br>
                                             <div class="form-check form-check-inline mt-2">
                                                 <input class="form-check-input pekerjaan_konsumen" type="radio" name="pekerjaan_konsumen" id="pekerjaan_konsumen" <?= $data->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?> required value="Karyawan">
@@ -163,7 +161,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group ml-4 mr-4">
+                                        <div class="form-group fomr-right">
                                             <label>Jenis Konsumen</label>
                                             <select class="form-control text-size" name="status_konsumen" id="status_konsumen" required>
                                                 <option selected value="">Pilih Jenis Konsumen</option>
@@ -180,7 +178,7 @@
                         <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label>Lokasi Rumah</label>
                                         <select class="form-control text-size" name="lokasi_rumah" id="lokasi_rumah" required>
                                             <option selected value="">Pilih Kategori Lokasi Rumah</option>
@@ -202,7 +200,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group fomr-left">
                                         <label>Jenis Bangunan Rumah</label>
                                         <select class="form-control text-size" name="jenis_rumah" id="jenis_rumah" required>
                                             <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
@@ -213,7 +211,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group fomr-right">
                                         <label>Luas Bangunan Rumah</label>
                                         <select class="form-control text-size" name="luas_rumah" id="luas_rumah" required>
                                             <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
@@ -228,7 +226,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group fomr-left">
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
                                             <option selected value="">Pilih Asal Aplikasi</option>
@@ -253,7 +251,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Activity Marketing</label>
                                         <select class="form-control text-size" name="activity" id="activity" required>
                                             <option selected disabled value="">Pilih Kategori Activity Marketing
@@ -274,61 +272,61 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12 event">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group form-margin">
                                         <label>Nama Event</label>
                                         <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $data->nama_event ?>" placeholder="Input Nama Event">
                                     </div>
                                 </div>
-                                <div class="col-md-12 form-agent mb-3">
-                                    <div class="ml-3 mr-3">
+                                <div class="col-md-12 form-agent">
+                                    <div class="form-margin">
                                         <label class="agent">Pilih Data Agent</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size readonly pointer" name="nama_agent" id="nama_agent" placeholder="" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data btn-cari text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
+                                                <button class="btn btn-light btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 form mb-3">
-                                    <div class="ml-3 mr-3">
+                                <div class="col-md-12 form">
+                                    <div class="form-margin">
                                         <label class="travel">Pilih Data Travel</label>
                                         <label class="jasa">Pilih Data Penyedia Jasa</label>
                                         <label class="vendor">Pilih Data Partner</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size readonly pointer" name="nama_partner" id="nama_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data btn-cari text-size" type="button" id="btn-data" data-toggle="modal" data-target="">Cari</button>
+                                                <button class="btn btn-light btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 nik">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group fomr-left">
                                         <label>NIK</label>
                                         <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" minlength="6" maxlength="7" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 posisi">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group fomr-right">
                                         <label>Posisi</label>
                                         <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Input Posisi">
                                     </div>
                                 </div>
                                 <div class="col-md-12 cabang">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group fomr-margin">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Input Cabang">
                                     </div>
                                 </div>
                                 <div class="col-md-6 kontrak-ro">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group fomr-left">
                                         <label>Nomor Kontrak</label>
                                         <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
-                                    <div class="form-group ml-3 mr-3">
+                                    <div class="form-group fomr-right">
                                         <label>Nama Konsumen</label>
                                         <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
                                     </div>
@@ -336,7 +334,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group text-size ml-4 mr-4">
+                                    <div class="form-group text-size fomr-left">
                                         <label>Konsumen Cross Branch?</label><br>
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
@@ -353,7 +351,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group ml-4 mr-4">
+                                    <div id="hide" class="form-group fomr-right">
                                         <label>Pilih Cabang Tujuan</label>
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
@@ -367,9 +365,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group mb-0 float-right mt-5 mr-4">
-                        <button class="btn btn-light waves-effect waves-light btn-cari text-size" id="draft" name="draft" class="btn" type="submit">Simpan</button>
-                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process">Kirim</button>
+                    <div class="form-group mb-0 float-right mt-5 form-margin">
+                        <button class="btn btn-light waves-effect waves-light btn-cari text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size btn-width ml-1" type="submit" name="process"><b>Kirim</b></button>
                     </div>
                 </form>
             </div>
@@ -377,36 +375,13 @@
     </div> <!-- end col -->
 </div>
 
-
-<!-- ============================================================== -->
-<!-- End Right content here -->
-<!-- ============================================================== -->
-<!-- Modal simpan -->
-<!-- <div class="modal fade" id="modalBerhasil" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title text-center" id="exampleModalCenterTitle">Pengajuan Kerjasama Berhasil</h5>
-            </div>
-            <div class="modal-body">
-                Terimakasih telah menyelesaikan tugas perjanjian kerjasama dengan partner potensial di daerah anda.
-                Tim HO akan memverifikasi data anda, dan informasinya akan diberikan melalui menu <a href="#" style="color: blue;">motification</a> di website ini.
-            </div>
-            <div class="modal-footer">
-                <a href="index.html"><button class="btn btn-primary">OK</button></a>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- Modal simpan -->
-
 <!-- Modal Mapping Leads -->
 <div class="modal fade bd-example-modal-xl" id="modal-leads" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body" style="height:700px;">
-                <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Leads</h4>
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Leads</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -445,7 +420,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads" id="search" data-mapping="<?= $mapping->leads_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->leads_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -462,8 +437,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Partner</h4>
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Partner</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -484,17 +459,23 @@
                                 <td><?= $partner->telepon ?></td>
                                 <td>
                                     <?php if ($partner->status == 'draft') { ?>
-                                        <span class="badge badge-secondary">Draft</span>
+                                        <span class="badge badge-secondary" style="width: 60px; height: 30px;">
+                                            <p style="margin-top: 5px;">Draft</p>
+                                        </span>
                                     <?php } ?>
                                     <?php if ($partner->status == 'lengkap') { ?>
-                                        <span class="badge badge-success">Lengkap</span>
+                                        <span class="badge badge-success" style="width: 60px; height: 30px;">
+                                            <p style="margin-top: 5px;">Lengkap</p>
+                                        </span>
                                     <?php } ?>
                                     <?php if ($partner->status == '') { ?>
-                                        <span class="badge badge-secondary">Mapping</span>
+                                        <span class="badge badge-secondary" style="width: 60px; height: 30px;">
+                                            <p style="margin-top: 5px;">Mapping</p>
+                                        </span>
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-partner" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-partner radius" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -511,8 +492,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Agent</h4>
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Agent</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
@@ -529,7 +510,7 @@
                                 <td><?= $agent->nama_lengkap ?></td>
                                 <td><?= $agent->telepon ?></td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-agent radius" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>">Pilih</button></center>
                                 </td>
                             </tr>
                         <?php } ?>

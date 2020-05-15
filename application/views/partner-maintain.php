@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-8">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Maintain Merchant</h4>
+            <h4><b>Maintain Merchant</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
@@ -9,7 +9,7 @@
                 <li class="breadcrumb-item active">maintain Merchant</li>
             </ol>
         </div>
-        <div class="alert alert-primary font-size gradient card-margin-2" role="alert">
+        <div class="alert alert-primary font-size gradient card-margin-2 mb-5" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
                     menginput data</h5>
@@ -18,7 +18,7 @@
         </div>
         <div class="card card-margin-2">
             <div class="card-body">
-                <!-- <h4 class="mt-0 header-title">Form Maintain Merchant</h4> -->
+                <h4 class="mt-0 header-title form-margin">Form Maintain Merchant</h4>
 
                 <form class="" action="<?= base_url('Maintain_partner/save') ?>" method="post" enctype="multipart/form-data">
                     <!-- ID Partner -->
@@ -27,11 +27,11 @@
                     <input type="hidden" name="id_user" value="<?= $this->fungsi->user_login()->id_user ?>">
                     <!-- ID branch -->
                     <input type="hidden" name="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
-                    <div class="form-group text-size ml-4 mr-4">
+                    <div class="form-group text-size form-margin">
                         <label>Upload Foto Selfie Anda</label>
                         <input type="file" name="photo_activity" class="filestyle text-size" data-buttonname="btn-secondary text-size" required>
                     </div>
-                    <div class="form-group ml-4 mr-4 text-size">
+                    <div class="form-group form-margin text-size">
                         <label>Jenis Kegiatan</label>
                         <select class="form-control text-size" name="jenis_kegiatan" id="jenis_kegiatan" required>
                             <option selected>Pilih Jenis Kegiatan</option>
@@ -42,17 +42,17 @@
                             <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
-                    <div class="form-group ml-4 mr-4 text-size">
+                    <div class="form-group form-margin text-size">
                         <label>Catatan</label>
                         <textarea class="form-control text-size" name="catatan" id="catatan" cols="30" rows="10" placeholder="jelaskan detail kegiatan anda" style="height:110px;"></textarea>
                     </div>
-                    <div class="form-group mb-0 float-right mt-2 ml-4 mr-4">
+                    <div class="form-group mb-0 float-right mt-2 form-margin">
                         <div>
-                            <a href="<?= base_url('partner') ?>" class="btn btn-secondary waves-effect waves-light text-size">
-                                Batal
+                            <a href="<?= base_url('partner') ?>" class="btn btn-secondary waves-effect waves-light text-size btn-width">
+                                <b>Batal</b>
                             </a>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size">
-                                Simpan
+                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size btn-width ml-1">
+                                <b>Simpan</b>
                             </button>
                         </div>
                     </div>
@@ -69,8 +69,8 @@
                         <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">
-                                    <span class="d-block d-sm-none"><i class="far fa-newspaper"></i></span>
-                                    <span class="d-none d-sm-block">Status</span>
+                                    <span class="d-block d-sm-none mb-1"><i class="far fa-newspaper"></i></span>
+                                    <span class="d-none d-sm-block mb-1">Status</span>
                                 </a>
                             </li>
                             <li class="nav-item">

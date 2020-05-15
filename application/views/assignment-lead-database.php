@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Lead Database</h4>
+            <h4><b>Assignment Lead Database</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Assignment</a></li>
@@ -13,7 +13,7 @@
 <div class="row">
     <?php if ($this->fungsi->user_login()->level >= 3) { ?>
         <div class="col-md-12 mt-4">
-            <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size card-margin-2">Assign Leads ke Cabang / Tele</button></a>
+            <a href="<?= base_url('leads_assignment/create') ?>"><button class="btn btn-primary mb-2 btn-kanan text-size card-margin-2"><b>Assign Leads ke Cabang / Tele</b></button></a>
         </div>
     <?php } ?>
     <div class="col-md-12">
@@ -23,8 +23,8 @@
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#cabang" role="tab">
-                            <span class="d-block d-sm-none">Assignment Cabang</span>
-                            <span class="d-none d-sm-block">Assignment Cabang</span>
+                            <span class="d-block d-sm-none mb-1">Assignment Cabang</span>
+                            <span class="d-none d-sm-block mb-1">Assignment Cabang</span>
                         </a>
                     </li>
                     <?php if ($this->fungsi->user_login()->level >= 3) { ?>
