@@ -618,7 +618,7 @@
                     </div>
                 </div>
 
-                <!-- Tujuan Pembiayaan -->
+                <!-- Tujuan Pembixayaan -->
                 <div class="col-md-12">
                     <div class="card ml-3 mr-3">
                         <div class="card-body text-size">
@@ -887,7 +887,7 @@
                                                                 name="purpose_angsuran_per_bulan"
                                                                 value="<?= $data->purpose_angsuran_per_bulan ?>" id=""
                                                                 data-type="currency" required placeholder="Angsuran
-																					Per Bulan" />
+                                                                                    Per Bulan" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1285,11 +1285,12 @@
                                                                 Tua</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                            <input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-karyawan"
                                                                 name="condition_karyawan_tanggungan_orangtua"
-                                                                value="<?= $data->condition_karyawan_tanggungan_orangtua ?>"
-                                                                id="" required placeholder="Orang Tua" />
+                                                                value="<?= $data->condition_karyawan_tanggungan_orangtua ? $data->condition_karyawan_tanggungan_orangtua : '0' ?>"
+                                                                id="condition_karyawan_tanggungan_orangtua" required
+                                                                placeholder="Orang Tua" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1297,44 +1298,47 @@
                                                             <label class="table-lable">Pasangan</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                            <input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-karyawan"
                                                                 name="condition_karyawan_tanggungan_pasangan"
-                                                                value="<?= $data->condition_karyawan_tanggungan_pasangan ?>"
-                                                                id="" required placeholder="Pasangan" />
+                                                                value="<?= $data->condition_karyawan_tanggungan_pasangan ? $data->condition_karyawan_tanggungan_pasangan : '0' ?>"
+                                                                id="condition_karyawan_tanggungan_pasangan" required
+                                                                placeholder="Pasangan" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Anak Usia
                                                                 Belum Sekolah</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-karyawan"
                                                                 name="condition_karyawan_tanggungan_anak1"
-                                                                value="<?= $data->condition_karyawan_tanggungan_anak1 ?>"
-                                                                id="" required placeholder="Anak Usia Belum Sekolah" />
+                                                                value="<?= $data->condition_karyawan_tanggungan_anak1 ? $data->condition_karyawan_tanggungan_anak1 : '0' ?>"
+                                                                id="condition_karyawan_tanggungan_anak1" required
+                                                                placeholder="Anak Usia Belum Sekolah" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Anak Usia TK
                                                                 - SMA</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-karyawan"
                                                                 name="condition_karyawan_tanggungan_anak2"
-                                                                value="<?= $data->condition_karyawan_tanggungan_anak2 ?>"
-                                                                id="" required placeholder="Anak Usia TK - SMA" />
+                                                                value="<?= $data->condition_karyawan_tanggungan_anak2 ? $data->condition_karyawan_tanggungan_anak2 : '0' ?>"
+                                                                id="condition_karyawan_tanggungan_anak2" required
+                                                                placeholder="Anak Usia TK - SMA" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Anak Usia
                                                                 Perguruan Tinggi</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-karyawan"
                                                                 name="condition_karyawan_tanggungan_anak3"
-                                                                value="<?= $data->condition_karyawan_tanggungan_anak3 ?>"
-                                                                id="" required
+                                                                value="<?= $data->condition_karyawan_tanggungan_anak3 ? $data->condition_karyawan_tanggungan_anak3 : '0' ?>"
+                                                                id="condition_karyawan_tanggungan_anak3" required
                                                                 placeholder="Anak Usia Perguruan Tinggi" />
                                                         </td>
                                                     </tr>
@@ -1342,11 +1346,11 @@
                                                         <th><label class="table-lable">Saudara /
                                                                 Keluarga Lainnya</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-karyawan"
                                                                 name="condition_karyawan_tanggungan_saudara"
-                                                                value="<?= $data->condition_karyawan_tanggungan_saudara ?>"
-                                                                id="" required
+                                                                value="<?= $data->condition_karyawan_tanggungan_saudara ? $data->condition_karyawan_tanggungan_saudara : '0' ?>"
+                                                                id="condition_karyawan_tanggungan_saudara" required
                                                                 placeholder="Saudara / Keluarga Lainnya" />
                                                         </td>
                                                     </tr>
@@ -1354,12 +1358,12 @@
                                                         <th><label class="table-lable">Total Jumlah
                                                                 Tanggungan</label>
                                                         </th>
-                                                        <td><input type="text"
+                                                        <td><input type="number"
                                                                 class="form-control text-size number-only table-rigt-220"
                                                                 name="condition_karyawan_tanggungan_total"
                                                                 value="<?= $data->condition_karyawan_tanggungan_total ?>"
-                                                                id="" required placeholder="Total Jumlah Tanggungan"
-                                                                readonly />
+                                                                id="condition_karyawan_tanggungan_total" required
+                                                                placeholder="Total Jumlah Tanggungan" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1554,10 +1558,10 @@
                                                                 Tua</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                            <input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-wiraswasta"
                                                                 name="condition_wir_tanggungan_orangtua"
-                                                                value="<?= $data->condition_wir_tanggungan_orangtua ?>"
+                                                                value="<?= $data->condition_wir_tanggungan_orangtua ? $data->condition_wir_tanggungan_orangtua : '0' ?>"
                                                                 id="orangtua_tanggungan" required
                                                                 placeholder="Orang Tua" />
                                                         </td>
@@ -1567,10 +1571,10 @@
                                                             <label class="table-lable">Pasangan</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                            <input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-wiraswasta"
                                                                 name="condition_wir_tanggungan_pasangan"
-                                                                value="<?= $data->condition_wir_tanggungan_pasangan ?>"
+                                                                value="<?= $data->condition_wir_tanggungan_pasangan ? $data->condition_wir_tanggungan_pasangan : '0' ?>"
                                                                 id="pasangan_tanggungan" required
                                                                 placeholder="Pasangan" />
                                                         </td>
@@ -1579,10 +1583,10 @@
                                                         <th><label class="table-lable">Anak Usia
                                                                 Belum Sekolah</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-wiraswasta"
                                                                 name="condition_wir_tanggungan_anak1"
-                                                                value="<?= $data->condition_wir_tanggungan_anak1 ?>"
+                                                                value="<?= $data->condition_wir_tanggungan_anak1 ? $data->condition_wir_tanggungan_anak1 : '0' ?>"
                                                                 id="anak_belum_sekolah" required placeholder="Anak Usia
 																					Belum Sekolah" />
                                                         </td>
@@ -1591,10 +1595,10 @@
                                                         <th><label class="table-lable">Anak Usia TK
                                                                 - SMA</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-wiraswasta"
                                                                 name="condition_wir_tanggungan_anak2"
-                                                                value="<?= $data->condition_wir_tanggungan_anak2 ?>"
+                                                                value="<?= $data->condition_wir_tanggungan_anak2 ? $data->condition_wir_tanggungan_anak2 : '0' ?>"
                                                                 id="anak_sudah_sekolah" required placeholder="Anak Usia TK
 																					- SMA" />
                                                         </td>
@@ -1603,10 +1607,10 @@
                                                         <th><label class="table-lable">Anak Usia
                                                                 Perguruan Tinggi</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-wiraswasta"
                                                                 name="condition_wir_tanggungan_anak3"
-                                                                value="<?= $data->condition_wir_tanggungan_anak3 ?>"
+                                                                value="<?= $data->condition_wir_tanggungan_anak3 ? $data->condition_wir_tanggungan_anak3 : '0' ?>"
                                                                 id="anak_perguruan_tinggi" required placeholder="Anak Usia
 																					Perguruan Tinggi" />
                                                         </td>
@@ -1615,11 +1619,11 @@
                                                         <th><label class="table-lable">Saudara /
                                                                 Keluarga Lainnya</label>
                                                         </th>
-                                                        <td><input type="text"
-                                                                class="form-control text-size number-only table-rigt-220"
+                                                        <td><input type="number"
+                                                                class="form-control text-size number-only table-rigt-220 tanggungan-wiraswasta"
                                                                 name="condition_wir_tanggungan_saudara"
-                                                                value="<?= $data->condition_wir_tanggungan_saudara ?>"
-                                                                id="saudara_lainnya" required
+                                                                value="<?= $data->condition_wir_tanggungan_saudara ? $data->condition_wir_tanggungan_saudara : '0' ?>"
+                                                                id="condition_wir_tanggungan_saudara" required
                                                                 placeholder="Saudara / Keluarga Lainnya" />
                                                         </td>
                                                     </tr>
@@ -1627,11 +1631,11 @@
                                                         <th><label class="table-lable">Total Jumlah
                                                                 Tanggungan</label>
                                                         </th>
-                                                        <td><input type="text"
+                                                        <td><input type="number"
                                                                 class="form-control text-size number-only table-rigt-220"
                                                                 name="condition_wir_tanggungan_total"
                                                                 value="<?= $data->condition_wir_tanggungan_total ?>"
-                                                                id="saudara_lainnya" required
+                                                                id="condition_wir_tanggungan_total" required
                                                                 placeholder="Total Jumlah Tanggungan" readonly />
                                                         </td>
                                                     </tr>
@@ -1923,7 +1927,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Pendapatan Berupa (Gaji)</label>
-                                        <input type="text" class="form-control text-size number-only"
+                                        <input type="text"
+                                            class="form-control text-size number-only pendapatan-karyawan"
                                             name="capacity_karyawan_income_bruto"
                                             value="<?= $data->capacity_karyawan_income_bruto ?>" id=""
                                             data-type="currency" placeholder="Rp. 000000000" />
@@ -1932,7 +1937,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group ml-3 mr-3">
                                         <label>Take Home Pay</label>
-                                        <input type="text" class="form-control text-size number-only"
+                                        <input type="text"
+                                            class="form-control text-size number-only pendapatan-karyawan"
                                             name="capacity_karyawan_income_thp"
                                             value="<?= $data->capacity_karyawan_income_thp ?>" id=""
                                             data-type="currency" placeholder="Rp. 000000000" />
@@ -1998,7 +2004,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 pendapatan-karyawan pendapatan-periodik-karyawan"
                                                             name="capacity_karyawan_nilai1"
                                                             value="<?= $data->capacity_karyawan_nilai1 ?>" id=""
                                                             data-type="currency" required placeholder="Nominal 1" />
@@ -2018,7 +2024,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 pendapatan-karyawan pendapatan-periodik-karyawan"
                                                             name="capacity_karyawan_nilai2"
                                                             value="<?= $data->capacity_karyawan_nilai2 ?>" id=""
                                                             data-type="currency" required placeholder="Nominal 2" />
@@ -2038,7 +2044,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 pendapatan-karyawan pendapatan-periodik-karyawan"
                                                             name="capacity_karyawan_nilai3"
                                                             value="<?= $data->capacity_karyawan_nilai3 ?>" id=""
                                                             data-type="currency" required placeholder="Nominal 3" />
@@ -2053,9 +2059,9 @@
                                                         <input type="text"
                                                             class="form-control text-size number-only table-form-220"
                                                             name="capacity_karyawan_total_bonus"
-                                                            value="<?= $data->capacity_karyawan_total_bonus ?>" id=""
-                                                            data-type="currency" required
-                                                            placeholder="Total Pendapatan Periodik" readonly />
+                                                            value="<?= $data->capacity_karyawan_total_bonus ?>"
+                                                            id="capacity_karyawan_total_bonus" data-type="currency"
+                                                            required placeholder="Total Pendapatan Periodik" readonly />
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -2114,7 +2120,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pendapatan-karyawan pendapatan-karyawan-lainnya"
                                                                 name="capacity_karyawan_nilai_lain1"
                                                                 value="<?= $data->capacity_karyawan_nilai_lain1 ?>"
                                                                 id="" data-type="currency" required
@@ -2131,7 +2137,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pendapatan-karyawan pendapatan-karyawan-lainnya"
                                                                 name="capacity_karyawan_nilai_lain2"
                                                                 value="<?= $data->capacity_karyawan_nilai_lain2 ?>"
                                                                 id="" data-type="currency" required
@@ -2147,8 +2153,9 @@
                                                                 class="form-control text-size number-only table-form-220"
                                                                 name="capacity_karyawan_total_income_lainnya"
                                                                 value="<?= $data->capacity_karyawan_total_income_lainnya ?>"
-                                                                id="" data-type="currency" required
-                                                                placeholder="Nominal 2" readonly />
+                                                                id="capacity_karyawan_total_income_lainnya"
+                                                                data-type="currency" required placeholder="Nominal 2"
+                                                                readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -2180,8 +2187,9 @@
                                             <label>Total Pendapatan</label>
                                             <input type="text" class="form-control text-size number-only"
                                                 name="capacity_karyawan_total_net_income"
-                                                value="<?= $data->capacity_karyawan_total_net_income ?>" id=""
-                                                data-type="currency" placeholder="Rp. 000000000" />
+                                                value="<?= $data->capacity_karyawan_total_net_income ?>"
+                                                id="capacity_karyawan_total_net_income" data-type="currency"
+                                                placeholder="Rp. 000000000" />
                                         </div>
                                     </div>
                                 </div>
@@ -2201,7 +2209,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-karyawan"
                                                                 name="capacity_karyawan_outcome_pendidikan"
                                                                 value="<?= $data->capacity_karyawan_outcome_pendidikan ?>"
                                                                 id="" data-type="currency" required placeholder="Biaya
@@ -2216,7 +2224,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-karyawan"
                                                                 name="capacity_karyawan_outcome_rumah"
                                                                 value="<?= $data->capacity_karyawan_outcome_rumah ?>"
                                                                 id="" data-type="currency" required placeholder="Biaya Rumah
@@ -2230,7 +2238,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-karyawan"
                                                                 name="capacity_karyawan_outcome_listrik"
                                                                 value="<?= $data->capacity_karyawan_outcome_listrik ?>"
                                                                 id="" data-type="currency" required placeholder="Biaya
@@ -2244,7 +2252,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-karyawan"
                                                                 name="capacity_karyawan_outcome_lainnya"
                                                                 value="<?= $data->capacity_karyawan_outcome_lainnya ?>"
                                                                 id="" data-type="currency" required
@@ -2261,7 +2269,8 @@
                                                                 class="form-control text-size number-only table-form-220"
                                                                 name="capacity_karyawan_total_outcome"
                                                                 value="<?= $data->capacity_karyawan_total_biaya_outcome ?>"
-                                                                id="" data-type="currency" required
+                                                                id="capacity_karyawan_total_biaya_outcome"
+                                                                data-type="currency" required
                                                                 placeholder="Total Pengeluaran" readonly />
                                                         </td>
                                                     </tr>
@@ -2320,7 +2329,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 hutang-karyawan"
                                                                 name="capacity_karyawan_nilai_hutang1"
                                                                 value="<?= $data->capacity_karyawan_nilai_hutang1 ?>"
                                                                 id="" data-type="currency" required
@@ -2337,7 +2346,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 hutang-karyawan"
                                                                 name="capacity_karyawan_nilai_hutang2"
                                                                 value="<?= $data->capacity_karyawan_nilai_hutang2 ?>"
                                                                 id="" data-type="currency" required
@@ -2354,7 +2363,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 hutang-karyawan"
                                                                 name="capacity_karyawan_nilai_hutang3"
                                                                 value="<?= $data->capacity_karyawan_nilai_hutang3 ?>"
                                                                 id="" data-type="currency" required
@@ -2370,8 +2379,8 @@
                                                                 class="form-control text-size number-only table-form-220"
                                                                 name="capacity_karyawan_total_hutang"
                                                                 value="<?= $data->capacity_karyawan_total_hutang ?>"
-                                                                id="" data-type="currency" required
-                                                                placeholder="Total Hutang" readonly />
+                                                                id="capacity_karyawan_total_hutang" data-type="currency"
+                                                                required placeholder="Total Hutang" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -2471,7 +2480,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 wiraswasta-mutasi"
                                                             name="capacity_wir_mutasi1"
                                                             value="<?= $data->capacity_wir_mutasi1 ?>" id=""
                                                             data-type="currency" required placeholder="Bulan Pertama" />
@@ -2484,7 +2493,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 wiraswasta-mutasi"
                                                             name="capacity_wir_mutasi2"
                                                             value="<?= $data->capacity_wir_mutasi2 ?>" id=""
                                                             data-type="currency" required placeholder="Bulan Kedua" />
@@ -2497,7 +2506,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 wiraswasta-mutasi"
                                                             name="capacity_wir_mutasi3"
                                                             value="<?= $data->capacity_wir_mutasi3 ?>" id=""
                                                             data-type="currency" required placeholder="Bulan Ketiga" />
@@ -2512,9 +2521,9 @@
                                                         <input type="text"
                                                             class="form-control text-size number-only table-form-220"
                                                             name="capacity_wir_avr_mutasi"
-                                                            value="<?= $data->capacity_wir_avr_mutasi ?>" id=""
-                                                            data-type="currency" required placeholder="Average Kredit"
-                                                            readonly />
+                                                            value="<?= $data->capacity_wir_avr_mutasi ?>"
+                                                            id="capacity_wir_avr_mutasi" data-type="currency" required
+                                                            placeholder="Average Kredit" readonly />
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -2532,7 +2541,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 wiraswasta-nota"
                                                             name="capacity_wir_nota1"
                                                             value="<?= $data->capacity_wir_nota1 ?>" id=""
                                                             data-type="currency" required placeholder="Bulan Pertama" />
@@ -2545,7 +2554,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 wiraswasta-nota"
                                                             name="capacity_wir_nota2"
                                                             value="<?= $data->capacity_wir_nota2 ?>" id=""
                                                             data-type="currency" required placeholder="Bulan Kedua" />
@@ -2558,7 +2567,7 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size number-only table-form-220"
+                                                            class="form-control text-size number-only table-form-220 wiraswasta-nota"
                                                             name="capacity_wir_nota3"
                                                             value="<?= $data->capacity_wir_nota3 ?>" id=""
                                                             data-type="currency" required placeholder="Bulan Ketiga" />
@@ -2573,9 +2582,9 @@
                                                         <input type="text"
                                                             class="form-control text-size number-only table-form-220"
                                                             name="capacity_wir_avr_nota"
-                                                            value="<?= $data->capacity_wir_avr_nota ?>" id=""
-                                                            data-type="currency" required placeholder="Average Kredit"
-                                                            readonly />
+                                                            value="<?= $data->capacity_wir_avr_nota ?>"
+                                                            id="capacity_wir_avr_nota" data-type="currency" required
+                                                            placeholder="Average Kredit" readonly />
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -2844,7 +2853,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-wiraswasta"
                                                                 name="capacity_wir_outcome_pendidikan"
                                                                 value="<?= $data->capacity_wir_outcome_pendidikan ?>"
                                                                 id="" data-type="currency" required placeholder="Biaya
@@ -2859,7 +2868,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-wiraswasta"
                                                                 name="capacity_wir_outcome_rumah_tangga"
                                                                 value="<?= $data->capacity_wir_outcome_rumah_tangga ?>"
                                                                 id="" data-type="currency" required placeholder="Biaya Rumah
@@ -2873,7 +2882,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-wiraswasta"
                                                                 name="capacity_wir_outcome_internet"
                                                                 value="<?= $data->capacity_wir_outcome_internet ?>"
                                                                 id="" data-type="currency" required placeholder="Biaya
@@ -2887,11 +2896,11 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 pengeluaran-wiraswasta"
                                                                 name="capacity_wir_outcome_lainnya"
-                                                                value="<?= $data->capacity_wir_outcome_lainnya ?>" id=""
-                                                                data-type="currency" required
-                                                                placeholder="Biaya Lain - Lain" />
+                                                                value="<?= $data->capacity_wir_outcome_lainnya ?>"
+                                                                id="capacity_wir_outcome_lainnya" data-type="currency"
+                                                                required placeholder="Biaya Lain - Lain" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -2904,7 +2913,8 @@
                                                                 class="form-control text-size number-only table-form-220"
                                                                 name="capacity_wir_total_biaya_outcome"
                                                                 value="<?= $data->capacity_wir_total_biaya_outcome ?>"
-                                                                id="" data-type="currency" required
+                                                                id="capacity_wir_total_biaya_outcome"
+                                                                data-type="currency" required
                                                                 placeholder="Total Pengeluaran" readonly />
                                                         </td>
                                                     </tr>
@@ -3546,7 +3556,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only table-form-220"
+                                                                class="form-control text-size number-only table-form-220 aset-konsumen"
                                                                 name="capital_harga1"
                                                                 value="<?= $data->capital_harga1 ?>" id=""
                                                                 data-type="currency" required placeholder="Nominal 1" />
@@ -3561,7 +3571,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only  table-form-220"
+                                                                class="form-control text-size number-only  table-form-220 aset-konsumen"
                                                                 name="capital_harga2"
                                                                 value="<?= $data->capital_harga2 ?>" id=""
                                                                 data-type="currency" required placeholder="Nominal 2" />
@@ -3576,7 +3586,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only  table-form-220"
+                                                                class="form-control text-size number-only  table-form-220 aset-konsumen"
                                                                 name="capital_harga3"
                                                                 value="<?= $data->capital_harga3 ?>" id=""
                                                                 data-type="currency" required placeholder="Nominal 3" />
@@ -3591,7 +3601,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only  table-form-220"
+                                                                class="form-control text-size number-only  table-form-220 aset-konsumen"
                                                                 name="capital_harga4"
                                                                 value="<?= $data->capital_harga4 ?>" id=""
                                                                 data-type="currency" required placeholder="Nominal 4" />
@@ -3606,7 +3616,7 @@
                                                         </td>
                                                         <td>
                                                             <input type="text"
-                                                                class="form-control text-size number-only  table-form-220"
+                                                                class="form-control text-size number-only  table-form-220 aset-konsumen"
                                                                 name="capital_harga5"
                                                                 value="<?= $data->capital_harga5 ?>" id=""
                                                                 data-type="currency" required placeholder="Nominal 5" />
@@ -3620,8 +3630,8 @@
                                                             <input type="text"
                                                                 class="form-control text-size number-only  table-form-220"
                                                                 name="capital_total_aset"
-                                                                value="<?= $data->capital_total_aset ?>" id=""
-                                                                data-type="currency" required
+                                                                value="<?= $data->capital_total_aset ?>"
+                                                                id="capital_total_aset" data-type="currency" required
                                                                 placeholder="Total Nilai Aset" readonly />
                                                         </td>
                                                     </tr>
@@ -4585,10 +4595,92 @@ $('#return').click(function() {
 })
 </script>
 
+<!-- Jika Head/Manager, maka disable semua form inputan -->
 <script>
 var level = $("#level").val()
 if (level == '2' || level == '3') {
     $("input, select, textarea").attr('disabled', 'disabled');
 }
+</script>
+
+<script>
+function sum(hitung, hasil) {
+    var total = 0;
+    $(hitung).each(function() {
+        if ($(this).val() == '') {
+            $(this).val('0')
+            $(this)[0].setSelectionRange(0, 1)
+        }
+        console.log($(this).val());
+        total = total + parseInt($(this).val().replace(",", ""));
+    })
+    $(hasil).val(total);
+}
+
+function average(hitung, hasil) {
+    var total = 0;
+    var jumlah_field = 0;
+    $(hitung).each(function() {
+        jumlah_field++;
+        if ($(this).val() == '') {
+            $(this).val('0')
+            $(this)[0].setSelectionRange(0, 1)
+        }
+        total = total + parseInt($(this).val().replace(",", ""));
+    })
+    $(hasil).val(total / jumlah_field);
+}
+// tanggungan karyawan
+$(".tanggungan-karyawan").on("click keyup", function() {
+    sum(".tanggungan-karyawan", "#condition_karyawan_tanggungan_total")
+})
+
+// tanggungan wiraswasta
+$(".tanggungan-wiraswasta").on("click keyup", function() {
+    sum(".tanggungan-wiraswasta", "#condition_wir_tanggungan_total")
+})
+
+// mutasi wiraswasta
+$(".wiraswasta-mutasi").on("click keyup", function() {
+    average(".wiraswasta-mutasi", "#capacity_wir_avr_mutasi")
+})
+// nota wiraswasta
+$(".wiraswasta-nota").on("click keyup", function() {
+    average(".wiraswasta-nota", "#capacity_wir_avr_nota")
+})
+
+//pendapatan karyawan (capacity)
+$(".pendapatan-karyawan").on("click keyup", function() {
+    sum(".pendapatan-karyawan", "#capacity_karyawan_total_net_income")
+})
+//pendapatan periodik karyawan (capacity)
+$(".pendapatan-periodik-karyawan").on("click keyup", function() {
+    sum(".pendapatan-periodik-karyawan", "#capacity_karyawan_total_bonus")
+})
+
+//pendapatan karyawan lainnya (capacity)
+$(".pendapatan-karyawan-lainnya").on("click keyup", function() {
+    sum(".pendapatan-karyawan-lainnya", "#capacity_karyawan_total_income_lainnya")
+})
+
+//pengeluaran karyawan (capacity)
+$(".pengeluaran-karyawan").on("click keyup", function() {
+    sum(".pengeluaran-karyawan", "#capacity_karyawan_total_biaya_outcome")
+})
+
+//pengeluaran karyawan (capacity)
+$(".pengeluaran-wiraswasta").on("click keyup", function() {
+    sum(".pengeluaran-wiraswasta", "#capacity_wir_total_biaya_outcome")
+})
+
+//hutang karyawan (capacity)
+$(".hutang-karyawan").on("click keyup", function() {
+    sum(".hutang-karyawan", "#capacity_karyawan_total_hutang")
+})
+
+//Aset konsumen (capital)
+$(".aset-konsumen").on("click keyup", function() {
+    sum(".aset-konsumen", "#capital_total_aset")
+})
 </script>
 <!-- btn -->

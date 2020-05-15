@@ -302,7 +302,7 @@ $(document).ready(function() {
                 cms: cms
             },
             success: function(res) {
-                alert(cms != '' ? 'Data form survey telah di-assign :
+                alert(cms != '' ? 'Data form survey telah di-assign' :
                     'Assignment telah ditarik');
             }
         });

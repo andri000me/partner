@@ -268,6 +268,11 @@ class Fs_konsumen extends CI_Controller
             ];
         $where = ['id_leads' => $this->input->post('id_leads')];
         $json = $this->fs_konsumen_model->update($data, $where);
+        
+        if($this->ticket_model->get("tickets.id_leads = ". $this->input->post('id_leads'))->row()->status_approval == '4'){
+            $pending = ['status' => '2'];
+            $this->ticket_model->update($pending, $where);
+        }
 
         echo json_encode($data);
     }
