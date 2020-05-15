@@ -686,6 +686,18 @@ $('#nama_event').val("");
 $('#nama_partner').val("");
 $('#nama_agent').val("");
 $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+$("#soa").change(function() {
+    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
+        .hide();
+    source_leads();
+    $('#id_partner').val("");
+    $('#id_agent').val("");
+    $('#nama_vendor').val("").removeAttr("required");
+    $('#nama_event').val("");
+    $('#nama_partner').val("");
+    $('#nama_agent').val("");
+    $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+
 })
 
 function source_leads() {
@@ -892,48 +904,49 @@ $('#reset').click(function() {
 $('.kontrak, .pasangan').hide();
 
 $('#status_konsumen').change(function() {
+    if ($('#status_konsumen').val() == "RO Active") {
+        $('#soa').val('RO')
+        $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+        $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+        $('#btn-data').attr('data-target', '#modal-partner');
+        $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+        $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+    }
+
+    $('#status_konsumen').change(function() {
+        if ($('#status_konsumen').val() == "RO Active") {
+            $('#soa').val('RO')
+            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required',
+                '');
+        }
+
+        function status_konsumen() {
             if ($('#status_konsumen').val() == "RO Active") {
-                $('#soa').val('RO')
-                $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-                $('#btn-data').attr('data-target', '#modal-partner');
-                $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+                $('.kontrak').show();
+                $('#nomor_kontrak').attr('required', 'required');
+                source_leads();
+            } else {
+                $('.kontrak').hide();
+                $('#nomor_kontrak').removeAttr('required', ' ');
+            }
+        }
+
+        $('#status_pernikahan').change(function() {
+            if ($('#status_pernikahan').val() == "Sudah Menikah") {
+                $('.pasangan').show();
+                $('#nama_pasangan').attr('required', 'required');
+            } else {
+                $('.pasangan').hide();
+                $('#nama_pasangan').removeAttr('required', ' ');
             }
 
-            $('#status_konsumen').change(function() {
-                if ($('#status_konsumen').val() == "RO Active") {
-                    $('#soa').val('RO')
-                    $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-                    $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-                    $('#btn-data').attr('data-target', '#modal-partner');
-                    $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-                    $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required',
-                    '');
-                }
-
-                function status_konsumen() {
-                    if ($('#status_konsumen').val() == "RO Active") {
-                        $('.kontrak').show();
-                        $('#nomor_kontrak').attr('required', 'required');
-                        source_leads();
-                    } else {
-                        $('.kontrak').hide();
-                        $('#nomor_kontrak').removeAttr('required', ' ');
-                    }
-                }
-
-                $('#status_pernikahan').change(function() {
-                    if ($('#status_pernikahan').val() == "Sudah Menikah") {
-                        $('.pasangan').show();
-                        $('#nama_pasangan').attr('required', 'required');
-                    } else {
-                        $('.pasangan').hide();
-                        $('#nama_pasangan').removeAttr('required', ' ');
-                    }
-
-                })
-            });
+        })
+    });
+});
 </script>
 
 <script>
