@@ -675,8 +675,9 @@ $('#draft').click(function() {
 <script>
 $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
     .hide();
-
-function source_leads() {
+source_leads();
+$("#soa").change(function() {
+    source_leads();
     $('#id_partner').val("");
     $('#id_agent').val("");
     $('#nama_vendor').val("").removeAttr("required");
@@ -684,7 +685,8 @@ function source_leads() {
     $('#nama_partner').val("");
     $('#nama_agent').val("");
     $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
-}
+
+})
 
 function source_leads() {
     if ($('#soa').val() == 'Direct Selling') {

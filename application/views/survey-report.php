@@ -13,9 +13,6 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="btn-kanan mb-2 card-margin-2">
-            <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Buat Data</button></a>
-        </div>
     </div>
     <div class="col-12">
         <div class="card m-b-20  card-margin-2">
@@ -116,7 +113,7 @@
                                     <?php } ?>
                                     <td>
                                         <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
-                                                class="btn btn-primary text-size radius">Detail</a>
+                                                class="btn btn-primary text-size radius">Isi data</a>
                                         </center>
                                     </td>
                                 </tr>

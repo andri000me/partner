@@ -162,6 +162,7 @@ class Leads extends CI_Controller
                 // ------ LEADS DATABASE
                 'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
                 'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+                'nomor_wa'               => !empty($post['nomor_wa']) ? $post['nomor_wa'] : NULL,
                 'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
                 'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
                 'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
@@ -286,7 +287,10 @@ class Leads extends CI_Controller
                 //Memberi pesan berhasil data menyimpan data mapping
                 $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
                 // sleep(6);
-                redirect('Leads');
+                // redirect('Leads');
+
+                //Langsung redirect ke halaman form survey
+                redirect('Fs_konsumen/create/'.$id);
             }
         } else {
             $data = [
@@ -313,6 +317,7 @@ class Leads extends CI_Controller
             $data = [
                 'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
                 'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+                'nomor_wa'               => !empty($post['nomor_wa']) ? $post['nomor_wa'] : NULL,
                 'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
                 'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
                 'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
@@ -368,6 +373,7 @@ class Leads extends CI_Controller
             'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
             'pekerjaan_konsumen'    => !empty($post['pekerjaan_konsumen']) ? $post['pekerjaan_konsumen'] : NULL,
             'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+            'nomor_wa'               => !empty($post['nomor_wa']) ? $post['nomor_wa'] : NULL,
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
@@ -491,7 +497,10 @@ class Leads extends CI_Controller
         if (isset($post['draft'])) {
             redirect($post['redirect']);
         } else if (isset($post['process'])) {
-            redirect('leads');
+            // redirect('leads');
+            
+            //Langsung redirect ke halaman form survey
+            redirect('Fs_konsumen/create/'.$id);
         }
     }
 
@@ -500,11 +509,12 @@ class Leads extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
         $data = [
-            'nama_konsumen'         => $post['nama_konsumen'],
-            'telepon'               => $post['telepon'],
-            'soa'                   => $post['soa'],
-            'produk'                => $post['produk'],
-            'detail_produk'         => $post['detail_produk'],
+            'nama_konsumen'         => !empty($post['nama_konsumen'] ? $post['nama_konsumen'] : NULL),
+            'telepon'               => !empty($post['telepon'] ? $post['telepon'] : NULL),
+            'nomor_wa'               => !empty($post['nomor_wa'] ? $post['nomor_wa'] : NULL),
+            'soa'                   => !empty($post['soa'] ? $post['soa'] : NULL),
+            'produk'                => !empty($post['produk'] ? $post['produk'] : NULL),
+            'detail_produk'         => !empty($post['detail_produk'] ? $post['detail_produk'] : NULL),
             // Untuk SOA EGC
             'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
             'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
@@ -550,6 +560,7 @@ class Leads extends CI_Controller
             // ------ LEADS DATABASE
             'nama_konsumen'         => !empty($post['nama_konsumen']) ? $post['nama_konsumen'] : NULL,
             'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
+            'nomor_wa'               => !empty($post['nomor_wa']) ? $post['nomor_wa'] : NULL,
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
