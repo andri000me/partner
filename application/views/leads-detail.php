@@ -66,17 +66,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row text-size">
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size form-left">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group text-size form-margin">
                                                 <label>Nomor KTP</label>
                                                 <input type="phone" class="form-control placement number-only text-size" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16">
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group text-size form-right">
+                                            <div class="form-group text-size form-left">
                                                 <label>Nomor handphone</label>
                                                 <input type="text" class="form-control placement number-only text-size" name="telepon" id="telepon" value="<?= $data->telepon ?>" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0896 5533 985" maxlength="15">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size form-right">
+                                                <label>Nomor WA</label>
+                                                <input type="text" class="form-control placement number-only text-size" name="" id="" value="" <?= $cabang_asal == $data->cabang_cross ? 'readonly' : '' ?> required placeholder="0896 5533 985" maxlength="15">
                                             </div>
                                         </div>
                                     </div>

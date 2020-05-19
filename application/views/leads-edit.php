@@ -56,7 +56,7 @@
                                             <div class="input-group">
                                                 <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                 <div class="input-group-append">
-                                                    <button class="btn btn-danger text-size" type="button" id="reset">Hapus</button>
+                                                    <button class="btn btn-danger text-size" type="button" id="reset"><b>Hapus</b></button>
                                                     <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><b>Cari</b></button>
                                                 </div>
                                             </div>
@@ -64,16 +64,24 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group fomr-left">
+                                    <div class="col-md-12">
+                                        <div class="form-group fomr-margin">
                                             <label>Nomor KTP</label>
                                             <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" />
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group form-right">
+                                        <div class="form-group form-left">
                                             <label>Nomor Handphone</label>
                                             <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0896 5533 985" maxlength="15" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-right">
+                                            <label>Nomor WA</label>
+                                            <input type="text" class="form-control text-size placement number-only" name="" id="" value="" required placeholder="0896 5533 985" maxlength="15" />
                                         </div>
                                     </div>
                                 </div>
@@ -89,8 +97,7 @@
                                             <label>Pendidikan</label>
                                             <select class="form-control text-size" name="pendidikan" id="pendidikan" required>
                                                 <option selected value="">Pilih Pendidikan</option>
-                                                <option <?= $data->pendidikan == 'SD' ? 'selected' : '' ?> value="SD">SD
-                                                </option>
+                                                <option <?= $data->pendidikan == 'SD' ? 'selected' : '' ?> value="SD">SD</option>
                                                 <option <?= $data->pendidikan == 'SLTP' ? 'selected' : '' ?> value="SLTP">SLTP</option>
                                                 <option <?= $data->pendidikan == 'SMU' ? 'selected' : '' ?> value="SMU">
                                                     SMU</option>

@@ -3768,7 +3768,7 @@ input[data-readonly] {
 	border: 0;
 }
 
-.table-rigt-220 {
+/* .table-rigt-220 {
 	width: 220px;
 	float: right;
 	border: 0px;
@@ -3801,7 +3801,8 @@ input[data-readonly] {
 
 .table-245 {
 	width: 245px;
-}
+	border: 0p;
+} */
 
 .radius {
 	border-top-right-radius: 20px;
@@ -3844,6 +3845,11 @@ input[data-readonly] {
 	margin-right: 50px;
 }
 
+.card-margin-survey {
+	margin-right: 50px;
+	margin-left: 15px;
+}
+
 .card-height {
 	height: 846px;
 }
@@ -3868,6 +3874,11 @@ input[data-readonly] {
 
 .btn-width {
 	width: 80px;
+}
+
+.stick {
+	position: sticky;
+	top: 20px;
 }
 
 /* .dataTables_filter {
@@ -4248,6 +4259,35 @@ input[data-readonly] {
 		display: none;
 	}
 
+	.table-rigt-220 {
+		width: 220px;
+		float: right;
+	}
+
+	.table-form-220 {
+		width: 220px;
+	}
+
+	.table-form-300 {
+		width: 300px;
+	}
+
+	.table-form-400 {
+		width: 400px;
+	}
+
+	.table-form-500 {
+		width: 400px;
+	}
+
+	.table-form-600 {
+		width: 400px;
+	}
+
+	.table-245 {
+		width: 245px;
+	}
+
 	.right-bar {
 		margin-left: 15px;
 		margin-right: 15px;
@@ -4284,6 +4324,11 @@ input[data-readonly] {
 
 	.card-margin-right {
 		margin-right: unset;
+	}
+
+	.card-margin-survey {
+		margin-right: unset;
+		margin-left: unset;
 	}
 
 	.card-height {

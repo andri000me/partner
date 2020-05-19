@@ -422,6 +422,7 @@
         } else {
             $("#hide").hide();
         }
+
     })
 </script>
 
@@ -460,4 +461,17 @@
         var ele = document.getElementById("delete_file" + eleId);
         ele.parentNode.removeChild(ele);
     }
+</script>
+
+<script>
+    $(window).scroll(function() {
+        var height = $(window).scrollTop();
+        if (height >= 300) {
+            $("#leftcaption").css('position', 'fixed');
+            $('#leftcaption').css("top", "100px");
+        } else {
+            $("#leftcaption").css("position", "relative");
+            $('#leftcaption').css("top", "0px");
+        }
+    });
 </script>
