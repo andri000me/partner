@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Daftar Tiket</h4>
+            <h4><b>Daftar Tiket</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">Daftar Tiket</li>
@@ -14,11 +14,11 @@
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="header-title mb-3">Table Daftar Tiket</h4>
+                <h4 class="header-title mb-3"><b>Tabel Daftar Tiket</b></h4>
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Sort Table By : </label>
+                            <label for="exampleFormControlSelect1">Sort Table By </label>
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option selected>All</option>
                                 <option>Disetujui</option>

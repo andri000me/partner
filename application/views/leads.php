@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Leads Prospect</h4>
+            <h4><b>Daftar Leads Prospect</b></h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
@@ -14,21 +14,21 @@
 <div class="row">
     <div class="col-md-12">
         <div class="btn-kanan mb-2 card-margin-2">
-            <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size">Input
-                    Prospect</button></a>
+            <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size"><b>Input
+                        Prospect</b></button></a>
         </div>
     </div>
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Tabel Leads Prospect</h4>
+                <h4 class="mt-0 header-title"><b>Tabel Leads Prospect</b></h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk
                     keperluan NST, KPI dan Bonus</p>
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">
-                            <span class="d-block d-sm-none">Belum Funding</span>
-                            <span class="d-none d-sm-block">Belum Funding</span>
+                            <span class="d-block d-sm-none mb-1">Belum Funding</span>
+                            <span class="d-none d-sm-block mb-1">Belum Funding</span>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Lead prospect</h4>
+            <h4><b>Assignment Lead Prospect</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Assignment</a></li>
@@ -17,8 +17,8 @@
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">
-                            <span class="d-block d-sm-none">Belum Funding</span>
-                            <span class="d-none d-sm-block">Belum Funding</span>
+                            <span class="d-block d-sm-none mb-1">Belum Funding</span>
+                            <span class="d-none d-sm-block mb-1">Belum Funding</span>
                         </a>
                     </li>
                     <li class="nav-item">

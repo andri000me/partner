@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-5">
-            <h4 class="page-title">Input Prospect</h4>
+            <h4><b>Form Leads Prospect</b></h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
@@ -14,11 +14,12 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+        <div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
             <div class="ml-4 mr-4 mt-3 mb-3">
                 <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
-                <p>Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data ini akan disimpan
-                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi<br> <b>Form verifikasi dan Survey.
+                <p class="text-size">Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen. Data
+                    ini akan disimpan
+                    sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi <b>Form verifikasi dan Survey.
                         Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan
                         lengkap.</p>
             </div>
@@ -42,25 +43,13 @@
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <div class="ml-4">
-                        <h4 class="mt-0 mb-4 header-title">Form Leads Prospect</h4>
+                        <h5 class="mt-0 mb-4"><b>Data Konsumen</b></h5>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <!-- <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="form-group ml-3 mr-3">
-                                            <label>Leads ID</label>
-                                            <input type="text"
-                                                class="form-control text-size placement <?= form_error('leads_id') ? 'is-invalid' : '' ?>"
-                                                name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>"
-                                                required placeholder="202001SLOS123456" minlength="16" maxlength="16">
-                                            <?= form_error('leads_id') ?>
-                                        </div>
-                                    </div>
-                                </div> -->
-                            <div class="form-row mb-3">
+                            <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="ml-4 mr-4">
+                                    <div class="form-margin">
                                         <label>Nama Lengkap</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="nama_konsumen"
@@ -69,17 +58,17 @@
                                                 aria-describedby="button-addon2">
                                             <div class="input-group-append">
                                                 <button class="btn btn-danger text-size" type="button"
-                                                    id="reset">Hapus</button>
+                                                    id="reset"><b>Hapus</b></button>
                                                 <button class="btn btn-primary text-size" type="button" id=""
-                                                    data-toggle="modal" data-target="#modal-leads">Cari</button>
+                                                    data-toggle="modal" data-target="#modal-leads"><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                <div class="col-md-12">
+                                    <div class="form-group form-margin">
                                         <label>Nomor KTP</label>
                                         <input type="phone"
                                             class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>"
@@ -88,8 +77,10 @@
                                         <?= form_error('no_ktp') ?>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>Nomor Handphone</label>
                                         <input type="text"
                                             class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>"
@@ -98,10 +89,20 @@
                                         <?= form_error('telepon') ?>
                                     </div>
                                 </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Nomor WA</label>
+                                        <input type="text"
+                                            class="form-control text-size placement number-only <?= form_error('') ? 'is-invalid' : '' ?>"
+                                            name="" id="" value="<?= set_value('') ?>" required
+                                            placeholder="0896 5533 985" maxlength="15" />
+                                        <?= form_error('') ?>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>Email</label>
                                         <input type="email"
                                             class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>"
@@ -111,7 +112,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Pendidikan</label>
                                         <select class="form-control text-size" name="pendidikan" id="pendidikan"
                                             required>
@@ -146,7 +147,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>Tanggal Lahir</label>
                                         <input type="date" class="form-control text-size" name="tanggal_lahir"
                                             id="tanggal_lahir" value="<?= set_value('tanggal_lahir') ?>"
@@ -154,7 +155,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Status Pernikahan</label>
                                         <select class="form-control text-size" name="status_pernikahan"
                                             id="status_pernikahan" required>
@@ -173,7 +174,7 @@
                             </div>
                             <div class="form-row pasangan">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label>Nama Pasangan</label>
                                         <input type="text" class="form-control text-size" name="nama_pasangan"
                                             id="nama_pasangan" value="<?= set_value('nama_pasangan') ?>"
@@ -183,7 +184,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group text-size ml-4 mr-4">
+                                    <div class="form-group text-size form-left">
                                         <label>Pekerjaan Konsumen</label><br>
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input" type="radio" name="pekerjaan_konsumen"
@@ -204,7 +205,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Jenis Konsumen</label>
                                         <select class="form-control text-size" name="status_konsumen"
                                             id="status_konsumen" required>
@@ -224,7 +225,7 @@
                         <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label>Lokasi Rumah</label>
                                         <select class="form-control text-size" name="lokasi_rumah" id="lokasi_rumah"
                                             required>
@@ -259,7 +260,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>Jenis Bangunan Rumah</label>
                                         <select class="form-control text-size" name="jenis_rumah" id="jenis_rumah"
                                             required>
@@ -270,7 +271,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Luas Bangunan Rumah</label>
                                         <select class="form-control text-size" name="luas_rumah" id="luas_rumah"
                                             required>
@@ -287,7 +288,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
                                             <option selected value="">Pilih Asal Aplikasi</option>
@@ -319,7 +320,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Activity Marketing</label>
                                         <select class="form-control text-size" name="activity_marketing"
                                             id="activity_marketing" required>
@@ -361,15 +362,15 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-12 event">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label>Nama Event</label>
                                         <input type="text" class="form-control text-size" name="nama_event"
                                             id="nama_event" value="<?= set_value('nama_event') ?>"
                                             placeholder="Input Nama Event">
                                     </div>
                                 </div>
-                                <div class="col-md-12 form-agent mb-3">
-                                    <div class="ml-4 mr-4">
+                                <div class="col-md-12 form-agent">
+                                    <div class="form-margin">
                                         <label class="gent">Pilih Data Agent</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="nama_agent"
@@ -377,14 +378,15 @@
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary btn-datatext-size" type="button"
-                                                    id="btn-data-agent" data-toggle="modal" data-target="">Cari</button>
+                                                <button class="btn btn-primary btn-data text-size" type="button"
+                                                    id="btn-data-agent" data-toggle="modal"
+                                                    data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12 form mb-3">
-                                    <div class="ml-4 mr-4">
+                                <div class="col-md-12 form">
+                                    <div class="form-margin">
                                         <label class="travel">Pilih Data Travel</label>
                                         <label class="jasa">Pilih Data Penyedia Jasa</label>
                                         <label class="vendor">Pilih Data Partner</label>
@@ -394,14 +396,15 @@
                                                 aria-label="Recipient's username" aria-describedby="button-addon2"
                                                 readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary btn-datatext-size" type="button"
-                                                    id="btn-data" data-toggle="modal" data-target="">Cari</button>
+                                                <button class="btn btn-primary btn-data text-size" type="button"
+                                                    id="btn-data" data-toggle="modal"
+                                                    data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 nik">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>NIK</label>
                                         <input type="phone" class="form-control text-size placement number-only"
                                             name="nik_egc" id="nik_egc" value="<?= set_value('nik_egc') ?>"
@@ -409,7 +412,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 posisi">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Posisi</label>
                                         <input type="text" class="form-control text-size" name="posisi_egc"
                                             id="posisi_egc" value="<?= set_value('posisi_egc') ?>"
@@ -417,7 +420,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 cabang">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="cabang_egc"
                                             id="cabang_egc" value="<?= set_value('cabang_egc') ?>"
@@ -425,7 +428,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 kontrak-ro">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-left">
                                         <label>Nomor Kontrak</label>
                                         <input type="phone" class="form-control text-size placement number-only"
                                             name="nomor_kontrak" id="nomor_kontrak"
@@ -434,7 +437,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-right">
                                         <label>Nama Konsumen</label>
                                         <input type="text" class="form-control text-size" name="referral_konsumen"
                                             id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>"
@@ -444,7 +447,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group text-size ml-4 mr-4">
+                                    <div class="form-group text-size form-left">
                                         <label>Konsumen Cross Branch?</label><br>
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input cross_branch" type="radio"
@@ -467,7 +470,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group ml-4 mr-4">
+                                    <div id="hide" class="form-group form-right">
                                         <label>Pilih Cabang Tujuan</label>
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
@@ -483,11 +486,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group mb-0 float-right mt-5 mr-4">
-                        <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft"
-                            class="btn" type="submit">Simpan</button>
-                        <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit"
-                            name="process">Kirim</button>
+                    <div class="form-group mb-0 float-right mt-5 form-margin">
+                        <button class="btn btn-light waves-effect waves-light text-size btn-width" id="draft"
+                            name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                        <button class="btn btn-primary waves-effect waves-light submit text-size btn-width ml-1"
+                            type="submit" name="process"><b>Kirim</b></button>
                     </div>
                 </form>
             </div>
@@ -506,8 +509,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body" style="height:700px;">
-                <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Leads</h4>
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Leads</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
@@ -547,7 +550,7 @@
                                 <div class="text-size"><?= $mapping->produk ?></div>
                             </td>
                             <td>
-                                <center><button class="btn btn-primary pilih-leads" id="search"
+                                <center><button class="btn btn-primary pilih-leads radius" id="search"
                                         data-mapping="<?= $mapping->id_leads ?>"
                                         data-nama="<?= $mapping->nama_konsumen ?>"
                                         data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>"
@@ -580,8 +583,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Partner</h4>
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Partner</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
@@ -603,17 +606,23 @@
                             <td><?= $partner->telepon ?></td>
                             <td>
                                 <?php if ($partner->status == 'draft') { ?>
-                                <span class="badge badge-secondary">Draft</span>
+                                <span class="badge badge-secondary" style="width: 60px; height: 30px;">
+                                    <p style="margin-top: 5px;">Draft</p>
+                                </span>
                                 <?php } ?>
                                 <?php if ($partner->status == 'mapping') { ?>
-                                <span class="badge badge-secondary">Mapping</span>
+                                <span class="badge badge-secondary" style="width: 60px; height: 30px;">
+                                    <p style="margin-top: 5px;">Mapping</p>
+                                </span>
                                 <?php } ?>
                                 <?php if ($partner->status == 'lengkap') { ?>
-                                <span class="badge badge-success">Lengkap</span>
+                                <span class="badge badge-success" style="width: 60px; height: 30px;">
+                                    <p style="margin-top: 5px;">Lengkap</p>
+                                </span>
                                 <?php } ?>
                             </td>
                             <td>
-                                <center><button class="btn btn-primary pilih-partner"
+                                <center><button class="btn btn-primary pilih-partner radius"
                                         data-partner="<?= $partner->id_partner ?>"
                                         data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
                             </td>
@@ -633,8 +642,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="modal-header mb-2">
-                    <h4 class="modal-title">Cari Data Agent</h4>
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Agent</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
@@ -652,7 +661,8 @@
                             <td><?= $agent->nama_lengkap ?></td>
                             <td><?= $agent->telepon ?></td>
                             <td>
-                                <center><button class="btn btn-primary pilih-agent" data-agent="<?= $agent->id_agent ?>"
+                                <center><button class="btn btn-primary pilih-agent radius"
+                                        data-agent="<?= $agent->id_agent ?>"
                                         data-namaagent="<?= $agent->nama_lengkap ?>">Pilih</button></center>
                             </td>
                         </tr>

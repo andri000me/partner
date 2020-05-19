@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Product Support</h4>
+            <h4><b>Product Support</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">Product Support</li>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="btn-kanan mb-2 card-margin-2">
-                <a href="<?= base_url('product_support/create') ?>"><button class="btn btn-primary text-size">Request Product Support</button></a>
+                <a href="<?= base_url('product_support/create') ?>"><button class="btn btn-primary text-size"><b>Request Product Support</b></button></a>
             </div>
         </div>
     </div>
@@ -22,11 +22,11 @@
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="header-title mb-3">Table Daftar Tiket Product Support</h4>
+                <h4 class="header-title mb-3"><b>Table Daftar Tiket Product Support</b></h4>
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Sort Table By : </label>
+                            <label for="exampleFormControlSelect1">Sort Table By</label>
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option selected>All</option>
                                 <option>Disetujui</option>

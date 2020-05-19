@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-8">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Detail Agent / BA</h4>
+            <h4><b>Detail Agent / BA</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="#">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="#">Kerjasama</a></li>
@@ -19,8 +19,8 @@
                     <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#agent" role="tab">
-                                <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                                <span class="d-none d-sm-block">Data partner</span>
+                                <span class="d-block d-sm-none mb-1"><i class="far fa-user"></i></span>
+                                <span class="d-none d-sm-block mb-1">Data partner</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -45,13 +45,13 @@
                                 <input type="hidden" name="redirect" value="<?= uri_string() ?>">
 
                                 <div class="">
-                                    <div class="form-group ml-4 mr-4">
+                                    <div class="form-group form-margin">
                                         <label class="text-size">Nama Usaha</label>
                                         <input type="text" class="form-control text-size" name="nama_lengkap" id="nama_lengkap" value="<?= $data->nama_lengkap ?>" required placeholder="Aisha Putri" />
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-left">
                                                 <label class="text-size">E-Mail</label>
                                                 <div>
                                                     <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-right">
                                                 <label class="text-size">Nomor Telepon</label>
                                                 <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="109788398364" maxlength="15" />
                                             </div>
@@ -67,13 +67,13 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-left">
                                                 <label class="text-size">Tanggal Lahir</label>
                                                 <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" required placeholder="19 / 10 / 1927" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-right">
                                                 <label class="text-size">Nomor KTP</label>
                                                 <input type="text" class="form-control placement text-size number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="1234567891234567" minlength="16" maxlength="16" />
                                             </div>
@@ -81,30 +81,32 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-left">
                                                 <label class="text-size">Pekerjaan</label>
                                                 <input type="text" class="form-control text-size" name="pekerjaan" id="pekerjaan" value="<?= $data->pekerjaan ?>" required placeholder="Pilih Pekerjaan" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-right">
                                                 <label class="text-size">Jenis Pekerjaan</label>
                                                 <input type="text" class="form-control text-size" name="jenis_pekerjaan" id="jenis_pekerjaan" value="<?= $data->jenis_pekerjaan ?>" required placeholder="Pekerja Rumah tangga" />
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ml-4 mr-4">
-                                        <label class="text-size">Jenis Agent / BA</label>
-                                        <select class="form-control text-size" name="jenis_agent" id="jenis_agent" required>
-                                            <option selected disabled value="">Pilih Jenis Agent / BA</option>
-                                            <option <?= $data->jenis_agent == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
-                                            <option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
-                                            <option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
-                                        </select>
-                                    </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-left">
+                                                <label class="text-size">Jenis Agent / BA</label>
+                                                <select class="form-control text-size" name="jenis_agent" id="jenis_agent" required>
+                                                    <option selected disabled value="">Pilih Jenis Agent / BA</option>
+                                                    <option <?= $data->jenis_agent == 'Syariah Agent' ? 'selected' : '' ?> value="Syariah Agent">Syariah Agent</option>
+                                                    <option <?= $data->jenis_agent == 'Syariah Ambassador' ? 'selected' : '' ?> value="Syariah Ambassador">Syariah Ambassador</option>
+                                                    <option <?= $data->jenis_agent == 'Syariah Point' ? 'selected' : '' ?> value="Syariah Point">Syariah Point</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
                                                 <label class="text-size">Status Kepemilikan Rumah</label>
                                                 <select class="form-control text-size" name="status_kepemilikan_rumah" id="status_kepemilikan_rumah" required>
                                                     <option selected disabled value="">Rumah Milik Siapa?</option>
@@ -115,21 +117,52 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 mb-3">
-                                            <div class="ml-4 mr-4">
-                                                <label>Income Per bulan saat ini</label>
-                                                <div class="input-group flex-nowrap">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text text-size" id="addon-wrapping">Rp.</span>
-                                                    </div>
-                                                    <input type="text" class="form-control text-size number-only" name="income" id="income" value="<?= $data->income ?>" data-type="currency" required placeholder="3,000,000" aria-label="Username" aria-describedby="addon-wrapping">
-                                                </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
+                                                <label class="text-size">Income Per bulan saat ini</label>
+                                                <input type="text" class="form-control text-size number-only" name="income" id="income" data-type="currency" value="<?= $data->income ?>" required placeholder="Rp. 000 000 000" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
+                                                <label class="text-size">Nomor NPWP</label>
+                                                <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-left">
+                                                <label class="text-size">Rekening Bank</label>
+                                                <input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
+                                                <label class="text-size">Nama Bank</label>
+                                                <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
+                                                <label class="text-size">Cabang Bank</label>
+                                                <input type=" text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
+                                                <label class="text-size">Nama Pemilik</label>
+                                                <input type=" text" class="form-control text-size" name="atas_nama" id="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anto Hoed">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
                                                 <label class="text-size">Apakah Punya Pinjaman?</label><br>
                                                 <div class="form-check form-check-inline mt-2 text-size">
                                                     <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" value="Ya" <?= $data->punya_pinjaman == 'Ya' ? 'checked' : '' ?> required>
@@ -146,7 +179,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-right">
                                                 <label class="text-size">Terdaftar Sebagai Agen travel /
                                                     Lainnya?</label><br>
                                                 <div class="form-check form-check-inline mt-2 text-size">
@@ -166,7 +199,7 @@
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-left">
                                                 <label class="text-size">Terdaftar Sebagai Agen BFI Finance?</label><br>
                                                 <div class="form-check form-check-inline mt-2 text-size">
                                                     <input class="form-check-input" type="radio" name="agent_konvensional" id="agent_konvensional" value="Ya" <?= $data->agent_konvensional == 'Ya' ? 'checked' : '' ?> required>
@@ -183,7 +216,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
+                                            <div class="form-group form-right">
                                                 <label class="text-size">Ada hubungan dengan karyawan BFI
                                                     Finance?</label><br>
                                                 <div class="form-check form-check-inline mt-2 text-size">
@@ -201,8 +234,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ml-4 mr-4">
-                                        <label class="text-size">Apakah pernah menjadi konsumen BFI Finance?</label><br>
+                                    <div class="form-group form-left">
+                                        <label class=" text-size">Apakah pernah menjadi konsumen BFI Finance?</label><br>
                                         <div class="form-check form-check-inline mt-2 text-size">
                                             <input class="form-check-input" type="radio" name="konsumen_bfi" id="konsumen_bfi" value="Pernah" <?= $data->konsumen_bfi == 'Pernah' ? 'checked' : '' ?> required>
                                             <label class="form-check-label">
@@ -216,51 +249,19 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="form-group ml-4 mr-4">
-                                        <label class="text-size">Nomor NPWP</label>
-                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
-                                                <label class="text-size">Rekening Bank</label>
-                                                <input type="text" class="form-control pelacement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
-                                                <label class="text-size">Nama Bank</label>
-                                                <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
-                                                <label class="text-size">Cabang Bank</label>
-                                                <input type=" text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group ml-4 mr-4">
-                                                <label class="text-size">Nama Pemilik</label>
-                                                <input type=" text" class="form-control text-size" name="atas_nama" id="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anto Hoed">
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="form-group mb-0 mt-2 mr-4 float-right btn-maintain">
+                                <div class="form-group mb-0 mt-2 mr-4 float-right mr-4">
                                     <?php
                                     $level = $this->fungsi->user_login()->level;
                                     if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2) || ($level == 5 && $ticket->status_approval == 5))) {
                                     ?>
-                                        <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
+                                        <a class="btn btn-info text-size ml-1" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>">Approve</a>
                                     <?php } ?>
                                     <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
-                                        <a class="btn btn-danger text-size" onclick=" return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
+                                        <a class="btn btn-danger text-size ml-1 mb-1" onclick=" return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket) ?>">Reject</a>
                                     <?php } ?>
                                     <?php if ($level < 4) { ?>
-                                        <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size">
+                                        <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size ml-1 mb-1">
                                             Simpan
                                         </button>
                                     <?php } ?>
@@ -270,7 +271,7 @@
                         <div class="tab-pane p-3" id="lampiran" role="tabpanel">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4 class="mt-0 header-title mb-4">Data Lampiran</h4>
+                                    <h4 class="mt-0 header-title mb-4"><b>Data Lampiran</b></h4>
                                     <div class="owl-carousel owl-theme">
                                         <?php if ($data->ktp) { ?>
                                             <div class="item" style="height:150px; width:300px;">
@@ -395,7 +396,7 @@
                                     <form action="<?= base_url('agent/tambah_lampiran') ?>" method="post" enctype="multipart/form-data">
                                         <input type="hidden" name="id_agent" value="<?= $data->id_agent ?>">
                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                        <h4 class="mt-0 header-title mb-4">Tambah Data Lampiran</h4>
+                                        <h4 class="mt-0 header-title mb-4"><b>Tambah Data Lampiran</b></h4>
                                         <div class="form-group element text-size ml-3 mr-3">
                                             <label>Lampirkan Data</label><br>
                                             <input type="file" name="tambah_lampiran[]" id="upload_file1" required>
@@ -404,8 +405,8 @@
                                         <div id="moreImageUpload"></div>
                                         <div class="clear"></div>
                                         <div id="moreImageUploadLink" style="display:none;" class="float-right">
-                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">Tambah Form lampiran</a>
-                                            <button type="submit" class="btn btn-primary mr-3">Simpan</button>
+                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore"><b>Tambah Form lampiran</b></a>
+                                            <button type="submit" class="btn btn-primary mr-3"><b>Simpan</b></button>
                                         </div>
 
                                     </form>
@@ -426,8 +427,8 @@
                         <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#home1" role="tab">
-                                    <span class="d-block d-sm-none"><i class="far fa-newspaper"></i></span>
-                                    <span class="d-none d-sm-block">Status</span>
+                                    <span class="d-block d-sm-none mb-1"><i class="far fa-newspaper"></i></span>
+                                    <span class="d-none d-sm-block mb-1">Status</span>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -937,7 +938,7 @@
                                         <label>Comment</label>
                                         <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
                                     </div>
-                                    <button class="btn btn-primary waves-effect waves-light float-right" type="submit" name="process">Kirim</button>
+                                    <button class="btn btn-primary waves-effect waves-light float-right w-md" type="submit" name="process"><b>Kirim</b></button>
                                 </form>
                             </div>
                         </div>

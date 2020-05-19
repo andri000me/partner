@@ -1,10 +1,9 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Daftar Data Survey</h4>
+            <h4><b>Daftar Data Survey</b></h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
                 <li class="breadcrumb-item active">Daftar Data Survey</li>
             </ol>
         </div>
@@ -17,22 +16,22 @@
     <div class="col-12">
         <div class="card m-b-20  card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Daftar Data Survey</h4>
+                <h4 class="mt-0 header-title"><b>Tabel Data Survey</b></h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk
                     keperluan NST, KPI dan Bonus</p>
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#all" role="tab">
-                            <span class="d-block d-sm-none">All Data</span>
-                            <span class="d-none d-sm-block">All Data</span>
+                            <span class="d-block d-sm-none mb-1">All Data</span>
+                            <span class="d-none d-sm-block mb-1">All Data</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#pending" role="tab">
                             <span class="d-block d-sm-none">Pending <span
-                                    class="badge badge-secondary"><?= $pending->num_rows() ?></span></span>
+                                    class="badge badge-danger"><?= $pending->num_rows() ?></span></span>
                             <span class="d-none d-sm-block">Pending <span
-                                    class="badge badge-secondary"><?= $pending->num_rows() ?></span></span>
+                                    class="badge badge-danger"><?= $pending->num_rows() ?></span></span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -44,8 +43,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="all" role="tabpanel">
-                        <table id="datatable-buttons"
-                            class="table table-striped table-bordered dt-responsive wrap text-size"
+                        <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
@@ -61,7 +59,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($data->result() as $fs_konsumen) { ?>
+                                <?php foreach ($data->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
                                         <?= $fs_konsumen->id ?>
@@ -78,22 +76,36 @@
                                     <td>
                                         <center>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span>
-                                            </h6>
+                                            <h6><span class="badge badge-secondary" style="width: 200px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Head</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
-                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
+                                            <h6><span class="badge badge-secondary" style="width: 220px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Manager</p>
+                                                </span>
                                             </h6>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending</span></h6>
+                                            <h6><span class="badge badge-secondary" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Pending</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
-                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                            <h6><span class="badge badge-warning" style="width: 90px; height: 30px;">
+                                                    <p style="margin-top: 2px;">In Progress</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger">Returned</span></h6>
+                                            <h6><span class="badge badge-danger" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Returned</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                            <h6><span class="badge badge-success" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Disetujui</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
+                                            <h6><span class="badge badge-primary" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Diaktivasi</p>
+                                                </span></h6>
                                             <?php } ?>
+                                            </select>
                                         </center>
                                     </td>
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -123,8 +135,7 @@
                         </table>
                     </div>
                     <div class="tab-pane p-3" id="pending" role="tabpanel">
-                        <table id="datatable-buttons-1"
-                            class="table table-striped table-bordered dt-responsive wrap text-size"
+                        <table id="datatable-buttons-1" class="table table-hover dt-responsive wrap text-size"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
@@ -137,7 +148,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($pending->result() as $fs_konsumen) { ?>
+                                <?php foreach ($pending->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
                                         <?= $fs_konsumen->id ?>
@@ -154,21 +165,34 @@
                                     <td>
                                         <center>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span>
-                                            </h6>
+                                            <h6><span class="badge badge-secondary" style="width: 200px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Head</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
-                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
+                                            <h6><span class="badge badge-secondary" style="width: 220px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Manager</p>
+                                                </span>
                                             </h6>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending</span></h6>
+                                            <h6><span class="badge badge-secondary" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Pending</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
-                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                            <h6><span class="badge badge-warning" style="width: 90px; height: 30px;">
+                                                    <p style="margin-top: 2px;">In Progress</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger">Returned</span></h6>
+                                            <h6><span class="badge badge-danger" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Returned</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                            <h6><span class="badge badge-success" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Disetujui</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
+                                            <h6><span class="badge badge-primary" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Diaktivasi</p>
+                                                </span></h6>
                                             <?php } ?>
                                         </center>
                                     </td>
@@ -188,7 +212,7 @@
                                     </td>
                                     <?php } ?>
                                     <td>
-                                        <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
+                                        <center><a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>"
                                                 class="btn btn-primary text-size radius">Detail</a>
                                         </center>
                                     </td>
@@ -199,8 +223,7 @@
                         </table>
                     </div>
                     <div class="tab-pane p-3" id="finished" role="tabpanel">
-                        <table id="datatable-buttons-2"
-                            class="table table-striped table-bordered dt-responsive wrap text-size"
+                        <table id="datatable-buttons-2" class="table table-hover dt-responsive wrap text-size"
                             style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
@@ -213,7 +236,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach($completed->result() as $fs_konsumen) { ?>
+                                <?php foreach ($completed->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
                                         <?= $fs_konsumen->id ?>
@@ -230,21 +253,34 @@
                                     <td>
                                         <center>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Head</span>
-                                            </h6>
+                                            <h6><span class="badge badge-secondary" style="width: 200px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Head</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
-                                            <h6><span class="badge badge-secondary">Menunggu Persetujuan Manager</span>
+                                            <h6><span class="badge badge-secondary" style="width: 220px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Menunggu Persetujuan Manager</p>
+                                                </span>
                                             </h6>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                            <h6><span class="badge badge-secondary">Pending</span></h6>
+                                            <h6><span class="badge badge-secondary" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Pending</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
-                                            <h6><span class="badge badge-warning">In Progress</span></h6>
+                                            <h6><span class="badge badge-warning" style="width: 90px; height: 30px;">
+                                                    <p style="margin-top: 2px;">In Progress</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
-                                            <h6><span class="badge badge-danger">Returned</span></h6>
+                                            <h6><span class="badge badge-danger" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Returned</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                            <h6><span class="badge badge-success">Disetujui</span></h6>
+                                            <h6><span class="badge badge-success" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Disetujui</p>
+                                                </span></h6>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                            <h6><span class="badge badge-primary">Diaktivasi</span></h6>
+                                            <h6><span class="badge badge-primary" style="width: 80px; height: 30px;">
+                                                    <p style="margin-top: 2px;">Diaktivasi</p>
+                                                </span></h6>
                                             <?php } ?>
                                         </center>
                                     </td>
@@ -266,7 +302,7 @@
                                     <?php } ?>
                                     <td>
 
-                                        <center><a href="<?= base_url('fs_konsumen/create/'. $fs_konsumen->id) ?>"
+                                        <center><a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>"
                                                 class="btn btn-primary text-size radius">Detail</a>
                                         </center>
                                     </td>

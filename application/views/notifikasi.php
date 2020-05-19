@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Notification</h4>
+            <h4><b>Notification</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">Notification</li>
@@ -14,7 +14,7 @@
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body text-size">
-                <a class="btn btn-primary mb-4 mt-1 text-size btn-kanan" href="#" id="mark_all">Mark all as read</a>
+                <a class="btn btn-primary mb-4 mt-1 text-size btn-kanan" href="#" id="mark_all"><b>Mark all as read</b></a>
                 <div class="table-responsive">
                     <table class="table table-hover table-vertical  mb-1" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <tbody>

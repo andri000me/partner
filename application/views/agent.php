@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Agent / BA</h4>
+            <h4><b>Daftar Agent / BA</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
@@ -15,15 +15,15 @@
     <div class="col-md-12">
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan card-margin-2">
-                <a href="<?= base_url('Agent/create') ?>"><button class="btn btn-primary mb-2 text-size">Rekrut Agent /
-                        BA</button></a>
+                <a href="<?= base_url('Agent/create') ?>"><button class="btn btn-primary mb-2 text-size"><b>Rekrut Agent /
+                            BA</b></button></a>
             </div>
         <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Agent / BA</h4>
+                <h4 class="mt-0 header-title"><b>Tabel Data Agent / BA</b></h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol rekrut Agen / BA untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Detail untuk melihat data yang telah diinput.</p>
                 <table id="datatable-agent" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>

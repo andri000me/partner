@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4 class="page-title">Daftar Merchant</h4>
+            <h4><b>Daftar Merchant</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
@@ -17,16 +17,16 @@
             <a href="#"><button class="btn btn-success ml-3 mb-4" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Partner</button></a> -->
         <?php if ($this->fungsi->user_login()->level != 4) { ?>
             <div class="btn-kanan mb-2 card-margin-2">
-                <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size">Rekrut
-                        Merchant</button></a>
-                <a href="#"><button class="btn btn-primary ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl">Maintain Merchant</button></a>
+                <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size"><b>Rekrut
+                            Merchant</b></button></a>
+                <a href="#"><button class="btn btn-primary ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl"><b>Maintain Merchant</b></button></a>
             </div>
         <?php } ?>
     </div>
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title">Merchant Data Table</h4>
+                <h4 class="mt-0 header-title"><b>Tabel Data Merchant</b></h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol rekrut Merchant untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Detail untuk melihat data yang telah diinput.</p>
                 <table id="datatable-kerjasama" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
@@ -114,8 +114,8 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body">
-                <div class="modal-header mb-2">
-                    <h6 class="modal-title">Cari Data Merchant</h6>
+                <div class="modal-header mb-3">
+                    <h6 class="modal-title"><b>Cari Data Merchant</b></h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

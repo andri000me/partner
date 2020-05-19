@@ -1,5 +1,17 @@
 <div class="row">
-    <div class="col-md-12 mt-5">
+    <div class="col-sm-12">
+        <div class="page-title-box card-margin-5">
+            <h3><b>Profile</b></h3>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item active">Profile</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
         <div class="card directory-card m-b-20 card-margin-5">
             <div>
                 <div class="directory-bg text-center" style="background-image: url(<?= base_url('template/assets/images/montain.jpeg') ?>)">
@@ -16,8 +28,8 @@
                     <ul class="nav nav-tabs nav-tabs-custom mt-5" role="tablist">
                         <li class="nav-item ">
                             <a class="nav-link active" data-toggle="tab" href="#edit-data" role="tab">
-                                <span class="d-block d-sm-none"><i class="fas fa-edit"></i></span>
-                                <span class="d-none d-sm-block">Edit profile</span>
+                                <span class="d-block d-sm-none mb-1"><i class="fas fa-edit"></i></span>
+                                <span class="d-none d-sm-block mb-1">Edit profile</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -72,9 +84,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group float-right mt-2">
+                            <div class="form-group float-right">
                                 <div class="col-12 text-center">
-                                    <button class="btn btn-primary w-md text-size" style="background-color: #0067D0;" type="submit">Simpan</button>
+                                    <button class="btn btn-primary w-md text-size mt-2 mb-2" type="submit"><b>Simpan</b></button>
                                 </div>
                             </div>
                         </form>
@@ -105,9 +117,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group float-right mt-2">
+                            <div class="form-group float-right">
                                 <div class="col-12   text-center">
-                                    <button class="btn btn-primary w-md waves-effect waves-light text-size" type="submit">Simpan</button>
+                                    <button class="btn btn-primary w-md waves-effect waves-light text-size mt-2 mb-2" type="submit">Simpan</button>
                                 </div>
                             </div>
                         </form>
