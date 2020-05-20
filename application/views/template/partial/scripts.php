@@ -399,8 +399,7 @@
         var id_leads = $("#id_leads").val();
         $.ajax({
             type: 'POST',
-            url: '<?= base_url('
-        Leads / get_leads / ') ?>' + id_leads,
+            url: '<?= base_url('Leads / get_leads / ') ?>' + id_leads,
             dataType: 'json',
             data: {
                 id_leads: id_leads

@@ -3866,6 +3866,12 @@ input[data-readonly] {
 	margin-bottom: 25px;
 }
 
+.form-center {
+	margin-left: 7px;
+	margin-right: 7px;
+	margin-bottom: 25px;
+}
+
 .form-right {
 	margin-left: 7px;
 	margin-right: 25px;
@@ -3879,6 +3885,26 @@ input[data-readonly] {
 .stick {
 	position: sticky;
 	top: 20px;
+}
+
+/* #leftcaption {
+	width: 100%;
+	z-index: 1;
+} */
+
+.gede {
+	font-size: 20px;
+}
+
+.sedeng {
+	font-size: 16px;
+	font: bold;
+}
+
+.kecil {
+	font-size: 13px;
+	color: #7f8c8d;
+	;
 }
 
 /* .dataTables_filter {
@@ -4127,6 +4153,21 @@ input[data-readonly] {
 	.card-height {
 		height: 828px;
 	}
+
+	.gede {
+		font-size: 16px;
+	}
+
+	.sedeng {
+		font-size: 14px;
+		font: bold;
+	}
+
+	.kecil {
+		font-size: 11px;
+		color: #7f8c8d;
+		;
+	}
 }
 
 @media (max-width: 1024px) {
@@ -4354,6 +4395,12 @@ input[data-readonly] {
 	}
 
 	.form-left {
+		margin-left: 10px;
+		margin-right: 10px;
+		margin-bottom: 25px;
+	}
+
+	.form-center {
 		margin-left: 10px;
 		margin-right: 10px;
 		margin-bottom: 25px;
