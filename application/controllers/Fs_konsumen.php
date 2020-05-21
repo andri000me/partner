@@ -101,26 +101,27 @@ class Fs_konsumen extends CI_Controller
             'condition_karyawan_tanggungan_total'             => !empty($this->input->post('condition_karyawan_tanggungan_total')) ? $this->input->post('condition_karyawan_tanggungan_total') : NULL,
 
             //kondisi konsumen (wiraswasta)
-            'condition_wir_pekerjaan'             => !empty($this->input->post('condition_wir_pekerjaan')) ? $this->input->post('condition_wir_pekerjaan') : NULL, 
-            'condition_wir_profesi_beresiko'      => !empty($this->input->post('condition_wir_profesi_beresiko')) ? $this->input->post('condition_wir_profesi_beresiko') : NULL, 
-            'condition_wir_tempat_kerja_pasangan' => !empty($this->input->post('condition_wir_tempat_kerja_pasangan')) ? $this->input->post('condition_wir_tempat_kerja_pasangan') : NULL,
-            'condition_wir_nama_usaha'            => !empty($this->input->post('condition_wir_nama_usaha')) ? $this->input->post('condition_wir_nama_usaha') : NULL, 
-            'condition_wir_bidang_usaha'          => !empty($this->input->post('condition_wir_bidang_usaha')) ? $this->input->post('condition_wir_bidang_usaha') : NULL, 
-            'condition_wir_tahun_berdiri'         => !empty($this->input->post('condition_wir_tahun_berdiri')) ? $this->input->post('condition_wir_tahun_berdiri') : NULL, 
-            'condition_wir_jumlah_karyawan'       => !empty($this->input->post('condition_wir_jumlah_karyawan')) ? $this->input->post('condition_wir_jumlah_karyawan') : NULL, 
-            'condition_wir_jenis_bangunan_usaha'  => !empty($this->input->post('condition_wir_jenis_bangunan_usaha')) ? $this->input->post('condition_wir_jenis_bangunan_usaha') : NULL,
-            'condition_wir_pemilik_tempat_usaha'  => !empty($this->input->post('condition_wir_pemilik_tempat_usaha')) ? $this->input->post('condition_wir_pemilik_tempat_usaha') : NULL,
-            'condition_wir_kepemilikan_usaha'     => !empty($this->input->post('condition_wir_kepemilikan_usaha')) ? $this->input->post('condition_wir_kepemilikan_usaha') : NULL,
-            'condition_wir_bentuk_usaha'          => !empty($this->input->post('condition_wir_bentuk_usaha')) ? $this->input->post('condition_wir_bentuk_usaha') : NULL, 
-            'condition_wir_cara_bayar'            => !empty($this->input->post('condition_wir_cara_bayar')) ? $this->input->post('condition_wir_cara_bayar') : NULL, 
-            'condition_wir_kondisi_usaha'         => !empty($this->input->post('condition_wir_kondisi_usaha')) ? $this->input->post('condition_wir_kondisi_usaha') : NULL, 
-            'condition_wir_tanggungan_orangtua'   => !empty($this->input->post('condition_wir_tanggungan_orangtua')) ? $this->input->post('condition_wir_tanggungan_orangtua') : NULL,
-            'condition_wir_tanggungan_pasangan'   => !empty($this->input->post('condition_wir_tanggungan_pasangan')) ? $this->input->post('condition_wir_tanggungan_pasangan') : NULL,
-            'condition_wir_tanggungan_anak1'      => !empty($this->input->post('condition_wir_tanggungan_anak1')) ? $this->input->post('condition_wir_tanggungan_anak1') : NULL,
-            'condition_wir_tanggungan_anak2'      => !empty($this->input->post('condition_wir_tanggungan_anak2')) ? $this->input->post('condition_wir_tanggungan_anak2') : NULL,
-            'condition_wir_tanggungan_anak3'      => !empty($this->input->post('condition_wir_tanggungan_anak3')) ? $this->input->post('condition_wir_tanggungan_anak3') : NULL,
-            'condition_wir_tanggungan_saudara'    => !empty($this->input->post('condition_wir_tanggungan_saudara')) ? $this->input->post('condition_wir_tanggungan_saudara') : NULL,
-            'condition_wir_tanggungan_total'      => !empty($this->input->post('condition_wir_tanggungan_total')) ? $this->input->post('condition_wir_tanggungan_total') : NULL,
+            'condition_wir_pekerjaan'                   => !empty($this->input->post('condition_wir_pekerjaan')) ? $this->input->post('condition_wir_pekerjaan') : NULL, 
+            'condition_wir_profesi_beresiko'            => !empty($this->input->post('condition_wir_profesi_beresiko')) ? $this->input->post('condition_wir_profesi_beresiko') : NULL, 
+            'condition_wir_tempat_kerja_pasangan'       => !empty($this->input->post('condition_wir_tempat_kerja_pasangan')) ? $this->input->post('condition_wir_tempat_kerja_pasangan') : NULL,
+            'condition_wir_profesi_beresiko_pasangan'   => !empty($this->input->post('condition_wir_profesi_beresiko_pasangan')) ? $this->input->post('condition_wir_profesi_beresiko_pasangan') : NULL, 
+            'condition_wir_nama_usaha'                  => !empty($this->input->post('condition_wir_nama_usaha')) ? $this->input->post('condition_wir_nama_usaha') : NULL, 
+            'condition_wir_bidang_usaha'                => !empty($this->input->post('condition_wir_bidang_usaha')) ? $this->input->post('condition_wir_bidang_usaha') : NULL, 
+            'condition_wir_tahun_berdiri'               => !empty($this->input->post('condition_wir_tahun_berdiri')) ? $this->input->post('condition_wir_tahun_berdiri') : NULL, 
+            'condition_wir_jumlah_karyawan'             => !empty($this->input->post('condition_wir_jumlah_karyawan')) ? $this->input->post('condition_wir_jumlah_karyawan') : NULL, 
+            'condition_wir_jenis_bangunan_usaha'        => !empty($this->input->post('condition_wir_jenis_bangunan_usaha')) ? $this->input->post('condition_wir_jenis_bangunan_usaha') : NULL,
+            'condition_wir_pemilik_tempat_usaha'        => !empty($this->input->post('condition_wir_pemilik_tempat_usaha')) ? $this->input->post('condition_wir_pemilik_tempat_usaha') : NULL,
+            'condition_wir_kepemilikan_usaha'           => !empty($this->input->post('condition_wir_kepemilikan_usaha')) ? $this->input->post('condition_wir_kepemilikan_usaha') : NULL,
+            'condition_wir_bentuk_usaha'                => !empty($this->input->post('condition_wir_bentuk_usaha')) ? $this->input->post('condition_wir_bentuk_usaha') : NULL, 
+            'condition_wir_cara_bayar'                  => !empty($this->input->post('condition_wir_cara_bayar')) ? $this->input->post('condition_wir_cara_bayar') : NULL, 
+            'condition_wir_kondisi_usaha'               => !empty($this->input->post('condition_wir_kondisi_usaha')) ? $this->input->post('condition_wir_kondisi_usaha') : NULL, 
+            'condition_wir_tanggungan_orangtua'         => !empty($this->input->post('condition_wir_tanggungan_orangtua')) ? $this->input->post('condition_wir_tanggungan_orangtua') : NULL,
+            'condition_wir_tanggungan_pasangan'         => !empty($this->input->post('condition_wir_tanggungan_pasangan')) ? $this->input->post('condition_wir_tanggungan_pasangan') : NULL,
+            'condition_wir_tanggungan_anak1'            => !empty($this->input->post('condition_wir_tanggungan_anak1')) ? $this->input->post('condition_wir_tanggungan_anak1') : NULL,
+            'condition_wir_tanggungan_anak2'            => !empty($this->input->post('condition_wir_tanggungan_anak2')) ? $this->input->post('condition_wir_tanggungan_anak2') : NULL,
+            'condition_wir_tanggungan_anak3'            => !empty($this->input->post('condition_wir_tanggungan_anak3')) ? $this->input->post('condition_wir_tanggungan_anak3') : NULL,
+            'condition_wir_tanggungan_saudara'          => !empty($this->input->post('condition_wir_tanggungan_saudara')) ? $this->input->post('condition_wir_tanggungan_saudara') : NULL,
+            'condition_wir_tanggungan_total'            => !empty($this->input->post('condition_wir_tanggungan_total')) ? $this->input->post('condition_wir_tanggungan_total') : NULL,
             
             //capacity konsumen karyawan
             'capacity_karyawan_income_bruto'            => !empty($this->input->post('capacity_karyawan_income_bruto')) ? $this->input->post('capacity_karyawan_income_bruto') : NULL,
@@ -277,6 +278,7 @@ class Fs_konsumen extends CI_Controller
         echo json_encode($data);
     }
 
+    //fungsi update assignment ke cms oleh head/manager 
     public function update_assignment()
     {
         // $post = $this->input->post(NULL, TRUE);
@@ -288,6 +290,7 @@ class Fs_konsumen extends CI_Controller
         echo json_encode($id);
     }
 
+    //fungsi untuk mengembalikan form survey ke cms
     public function return_fs()
     {
         //tiket ditolak (returned)
@@ -297,5 +300,359 @@ class Fs_konsumen extends CI_Controller
         $id = $this->ticket_model->update($data, $where);
 
         echo json_encode($id);
+    }
+
+    public function generate_pdf()
+    {
+        $pdf = new FPDF('P','mm','A4');
+        $pdf->AddPage();
+        
+        $pdf->SetFont('Times','B',16);
+        $pdf->Cell(190,7,'Form Survey Konsumen',0,1,'C');
+        
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','B',12);
+        $pdf->Cell(190,7,'Data Konsumen',0,1);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $data = $this->fs_konsumen_model->get("fs_konsumen.id_leads = 248")->row();
+
+        /* Data Konsumen */
+
+        $pdf->Cell(90,6,'Nama Lengkap',1,0);
+        $pdf->Cell(85,6, $data->nama_konsumen,1,1);
+
+        $pdf->Cell(90,6,'Nomor Handphone',1,0);
+        $pdf->Cell(85,6, $data->telepon,1,1);
+
+        $pdf->Cell(90,6,'Nomor WhatsApp',1,0);
+        $pdf->Cell(85,6, $data->nomor_wa,1,1);
+
+        $pdf->Cell(90,6,'Nomor KTP',1,0);
+        $pdf->Cell(85,6, $data->nomor_wa,1,1);
+
+        $pdf->Cell(90,6,'Nomor WhatsApp',1,0);
+        $pdf->Cell(85,6, $data->no_ktp,1,1);
+
+        $pdf->Cell(90,6,'Nomor KTP',1,0);
+        $pdf->Cell(85,6, $data->no_ktp,1,1);
+
+        $pdf->Cell(90,6,'Email',1,0);
+        $pdf->Cell(85,6, $data->email,1,1);
+
+        $pdf->Cell(90,6,'Jenis Konsumen',1,0);
+        $pdf->Cell(85,6, $data->status_konsumen,1,1);
+
+        $pdf->Cell(90,6,'Asal Aplikasi',1,0);
+        $pdf->Cell(85,6, $data->soa,1,1);
+
+        $pdf->Cell(90,6,'Tanggal Lahir',1,0);
+        $pdf->Cell(85,6, $data->tanggal_lahir,1,1);
+
+        $pdf->Cell(90,6,'Pendidikan',1,0);
+        $pdf->Cell(85,6, $data->pendidikan,1,1);
+
+        $pdf->Cell(90,6,'Pekerjaan Konsumen',1,0);
+        $pdf->Cell(85,6, $data->pekerjaan_konsumen,1,1);
+
+        $pdf->Cell(90,6,'Status Pernikahan',1,0);
+        $pdf->Cell(85,6, $data->status_pernikahan,1,1);
+
+        $pdf->Cell(90,6,'Lokasi Rumah',1,0);
+        $pdf->Cell(85,6, $data->lokasi_rumah,1,1);
+
+        $pdf->Cell(90,6,'Nama Partner',1,0);
+        $pdf->Cell(85,6, $data->nama_partner,1,1);
+
+        $pdf->Cell(90,6,'Nama Agent',1,0);
+        $pdf->Cell(85,6, $data->nama_agent,1,1);
+
+        $pdf->Cell(90,6,'Activity Marketing',1,0);
+        $pdf->Cell(85,6, $data->activity_marketing,1,1);
+
+        $pdf->Cell(90,6,'Cross Branch',1,0);
+        $pdf->Cell(85,6, $data->cross_branch,1,1);
+
+        $pdf->Cell(90,6,'Nama Cabang Cross',1,0);
+        $pdf->Cell(85,6, $data->cabang_cross,1,1);
+
+        /* Tujuan Pembiayaan (Purpose) */
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','B',12);
+        $pdf->Cell(190,7,'Tujuan Pembiayaan',0,1);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Jenis Barang / Jasa',1,0);
+        $pdf->Cell(85,6, $data->purpose_jenis_barang,1,1);
+
+        $pdf->Cell(90,6,'Tujuan Penggunaan',1,0);
+        $pdf->Cell(85,6, $data->purpose_tujuan_penggunaan,1,1);
+
+        $pdf->Cell(90,6,'Kategori Produk',1,0);
+        $pdf->Cell(85,6, $data->purpose_kategori_produk,1,1);
+
+        $pdf->Cell(90,6,'Detail Barang / Jasa',1,0);
+        $pdf->Cell(85,6, $data->purpose_detail_barang_jasa,1,1);
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Informasi Pembiayaan',0,1);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Harga Beli ke Merchant',1,0);
+        $pdf->Cell(85,6, $data->purpose_harga_beli_ke_merchant,1,1);
+
+        $pdf->Cell(90,6,'Harga Jual ke Merchant',1,0);
+        $pdf->Cell(85,6, $data->purpose_harga_jual_ke_konsumen,1,1);
+
+        $pdf->Cell(90,6,'Uang Muka',1,0);
+        $pdf->Cell(85,6, $data->purpose_uang_muka,1,1);
+
+        $pdf->Cell(90,6,'Biaya Administrasi',1,0);
+        $pdf->Cell(85,6, $data->purpose_biaya_administrasi,1,1);
+
+        $pdf->Cell(90,6,'Asuransi Jiwa',1,0);
+        $pdf->Cell(85,6, $data->purpose_asuransi_jiwa,1,1);
+
+        $pdf->Cell(90,6,'Asuransi Kendaraan',1,0);
+        $pdf->Cell(85,6, $data->purpose_asuransi_kendaraan,1,1);
+
+        $pdf->Cell(90,6,'Total Uang Muka',1,0);
+        $pdf->Cell(85,6, $data->purpose_total_uang_muka,1,1);
+
+        $pdf->Cell(90,6,'NTF Murni',1,0);
+        $pdf->Cell(85,6, $data->purpose_ntf_murni,1,1);
+
+        $pdf->Cell(90,6,'Lama Angsuran',1,0);
+        $pdf->Cell(85,6, $data->purpose_lama_angsuran,1,1);
+
+        $pdf->Cell(90,6,'Angsuran per Bulan',1,0);
+        $pdf->Cell(85,6, $data->purpose_angsuran_per_bulan,1,1);
+
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Informasi Pendapatan Periodik',0,1);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(60, 6, 'Nama Merchant / Toko', 1,0);
+        $pdf->Cell(60, 6, 'Harga', 1,0);
+        $pdf->Cell(60, 6, 'Alamat / Telepon', 1,1);
+
+        $pdf->Cell(60, 6, $data->purpose_nama_merchant_1, 1,0);
+        $pdf->Cell(60, 6, $data->purpose_harga_1, 1,0);
+        $pdf->Cell(60, 6, $data->purpose_alamat_telepon_1, 1,1);
+
+        $pdf->Cell(60, 6, $data->purpose_nama_merchant_2, 1,0);
+        $pdf->Cell(60, 6, $data->purpose_harga_2, 1,0);
+        $pdf->Cell(60, 6, $data->purpose_alamat_telepon_2, 1,1);
+        
+        $pdf->Cell(60, 6, $data->purpose_nama_merchant_3, 1,0);
+        $pdf->Cell(60, 6, $data->purpose_harga_3, 1,0);
+        $pdf->Cell(60, 6, $data->purpose_alamat_telepon_3, 1,1);
+
+        /* Kondisi Konsumen (Wiraswasta) */
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','B',12);
+        $pdf->Cell(190,7,'Kondisi Konsumen (Wiraswasta)',0,1);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Pekerjaan Konsumen',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_pekerjaan,1,1);
+
+        $pdf->Cell(90,6,'Penjelasan Profesi Beresiko',1,0);
+        $pdf->Cell(85,6, $data->condition_karyawan_profesi_beresiko,1,1);
+
+        $pdf->Cell(90,6,'Tempat Kerja / Usaha Pasangan',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tempat_kerja_pasangan,1,1);
+
+        $pdf->Cell(90,6,'Penjelasan Profesi Beresiko Pasangan',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_profesi_beresiko_pasangan,1,1);
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Jumlah Tanggungan',0,1);
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Orang Tua',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_orangtua,1,1);
+
+        $pdf->Cell(90,6,'Pasangan',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_pasangan,1,1);
+
+        $pdf->Cell(90,6,'Anak Usia belum sekolah',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_anak1,1,1);
+
+        $pdf->Cell(90,6,'Anak Usia TK - SMA',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_anak2,1,1);
+
+        $pdf->Cell(90,6,'Anak Usia Perguruan Tinggi',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_anak3,1,1);
+
+        $pdf->Cell(90,6,'Saudara / Keluarga Lainnya',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_saudara,1,1);
+
+        $pdf->Cell(90,6,'Total Jumlah Tanggungan',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tanggungan_total,1,1);
+        
+        $pdf->Cell(10,7,'',0,1);
+        
+        $pdf->Cell(90,6,'Nama Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_nama_usaha,1,1);
+
+        $pdf->Cell(90,6,'Bidang Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_bidang_usaha,1,1);
+
+        $pdf->Cell(90,6,'Tahun Berdiri',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_tahun_berdiri,1,1);
+        
+        $pdf->Cell(90,6,'Jumlah Karyawan',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_jumlah_karyawan,1,1);
+
+        $pdf->Cell(90,6,'Jenis Bangunan Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_jenis_bangunan_usaha,1,1);
+
+        $pdf->Cell(90,6,'Pemilik Tempat Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_pemilik_tempat_usaha,1,1);
+
+        $pdf->Cell(90,6,'Kepemilikan Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_kepemilikan_usaha,1,1);
+
+        $pdf->Cell(90,6,'Bentuk Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_bentuk_usaha,1,1);
+
+        $pdf->Cell(90,6,'Metode Pembayaran',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_cara_bayar,1,1);
+
+        $pdf->Cell(90,6,'Kondisi Usaha',1,0);
+        $pdf->Cell(85,6, $data->condition_wir_kondisi_usaha,1,1);
+
+        /* Kapasitas Konsumen (Wiraswasta) */
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','B',12);
+        $pdf->Cell(190,7,'Kapasitas Konsumen (Wiraswasta)',0,1);
+        // Memberikan space kebawah agar tidak terlalu rapat
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Pendapatan',0,1);
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        
+        
+        $pdf->Cell(90,6,'Data Analisa',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_pilih_data_analisa,1,1);
+        
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Informasi Kredit Rekening (jika kredit rekening)',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Mutasi Kredit Bulan Pertama',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_mutasi1,1,1);
+
+        $pdf->Cell(90,6,'Mutasi Kredit Bulan Kedua',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_mutasi2,1,1);
+
+        $pdf->Cell(90,6,'Mutasi Kredit Bulan Ketiga',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_mutasi3,1,1);
+
+        $pdf->Cell(90,6,'Average Kredit',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_avr_mutasi,1,1);
+        
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Informasi Total Nilai Nota (jika nota)',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Total Nota Bulan Pertama',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_nota1,1,1);
+
+        $pdf->Cell(90,6,'Total Nota Bulan Kedua',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_nota2,1,1);
+
+        $pdf->Cell(90,6,'Total Nota Bulan Ketiga',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_nota3,1,1);
+
+        $pdf->Cell(90,6,'Average Kredit',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_avr_nota,1,1);
+        
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Biaya Operasional',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(90,6,'Biaya Sewa (Jika sewa)',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_sewa,1,1);
+
+        $pdf->Cell(90,6,'Gaji Karyawan Perbulan',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_payroll,1,1);
+
+        $pdf->Cell(90,6,'Biaya Internet / Pulsa / Listrik',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_internet,1,1);
+
+        $pdf->Cell(90,6,'Biaya Lainnya',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_lainnya,1,1);
+
+        $pdf->Cell(90,6,'Total Biaya Operasional',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_total_operasional,1,1);
+
+        $pdf->Cell(90,6,'Total Pendapatan Omset',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_total_omset,1,1);
+
+        $pdf->Cell(90,6,'Total Nett Profit',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_total_net_profit,1,1);
+
+        $pdf->Cell(90,6,'Presentase Profit Margin (%)',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_profit_margin,1,1);
+        
+        $pdf->Cell(10,7,'',0,1);
+        
+        $pdf->Cell(90,6,'Pendapatan Lainnya',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_ada_income_lainnya,1,1);
+
+        $pdf->Cell(10,7,'',0,1);
+        $pdf->SetFont('Times','',10);
+        $pdf->Cell(190,7,'Informasi Pendapatan Lainnya',0,1);
+        $pdf->SetFont('Times','',10);
+
+        $pdf->Cell(80, 6, 'Deskripsi', 1,0);
+        $pdf->Cell(80, 6, 'Nominal (Nett)', 1,1);
+        $pdf->Cell(80, 6, $data->capacity_wir_income_lain1, 1,0);
+        $pdf->Cell(80, 6, $data->capacity_wir_nilai_lain1, 1,1);
+        $pdf->Cell(80, 6, $data->capacity_wir_income_lain2, 1,0);
+        $pdf->Cell(80, 6, $data->capacity_wir_nilai_lain2, 1,1);
+        $pdf->Cell(80, 6, 'Total Pendapatan', 1,0);
+        $pdf->Cell(80, 6, $data->capacity_wir_total_lain, 1,1);
+
+        $pdf->Cell(10,7,'',0,1);
+
+        $pdf->Cell(90,6,'Saldo Rekening Saat Ini',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_saldo_rekening,1,1);
+
+        $pdf->Cell(90,6,'Pendapatan Pasangan',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_income_pasangan,1,1);
+
+        $pdf->Cell(90,6,'Total Pendapatan',1,0);
+        $pdf->Cell(85,6, $data->capacity_wir_total_nett_income,1,1);
+
+
+        $pdf->Output();
     }
 }
