@@ -42,7 +42,7 @@
                     <input type="hidden" id="id_partner" name="id_partner" value="<?= set_value('id_partner') ?>">
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
-                    <div class="ml-4">
+                    <div class="form-margin">
                         <h5 class="mt-0 mb-4"><b>Data Konsumen</b></h5>
                     </div>
                     <div class="row">
