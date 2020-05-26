@@ -28,7 +28,7 @@ class Fs_konsumen extends CI_Controller
     {
         $data = [
             'data'      => $this->fs_konsumen_model->get($this->where),
-            'pending'   => $this->fs_konsumen_model->get("tickets.status <= 2 AND ". $this->where),
+            'unfinished'   => $this->fs_konsumen_model->get("tickets.status < 5 AND ". $this->where),
             'completed' => $this->fs_konsumen_model->get("tickets.status = 5 AND ". $this->where),
 
             'users'     => $this->user_model->get_all("users.id_branch = ". $this->fungsi->user_login()->id_branch)
@@ -654,5 +654,18 @@ class Fs_konsumen extends CI_Controller
 
 
         $pdf->Output();
+    }
+
+    public function generate_pdf_html($id)
+    {
+        $mpdf = new \Mpdf\Mpdf();
+
+        $data = $this->fs_konsumen_model->get("fs_konsumen.id_leads = ". $id)->row();
+        $html = $this->load->view('html_to_pdf', ['data' => $data], true);
+        $mpdf->SetWatermarkImage(base_url('template/assets/images/logo-bfi-syariah.png'));
+        $mpdf->showWatermarkImage = true;
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+
     }
 }

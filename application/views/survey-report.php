@@ -28,10 +28,10 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#pending" role="tab">
-                            <span class="d-block d-sm-none">Pending <span
-                                    class="badge badge-danger"><?= $pending->num_rows() ?></span></span>
-                            <span class="d-none d-sm-block">Pending <span
-                                    class="badge badge-danger"><?= $pending->num_rows() ?></span></span>
+                            <span class="d-block d-sm-none">Unfinished <span
+                                    class="badge badge-danger"><?= $unfinished->num_rows() ?></span></span>
+                            <span class="d-none d-sm-block">Unfinished <span
+                                    class="badge badge-danger"><?= $unfinished->num_rows() ?></span></span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -148,7 +148,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($pending->result() as $fs_konsumen) { ?>
+                                <?php foreach ($unfinished->result() as $fs_konsumen) { ?>
                                 <tr>
                                     <td>
                                         <?= $fs_konsumen->id ?>
