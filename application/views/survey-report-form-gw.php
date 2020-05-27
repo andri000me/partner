@@ -4550,73 +4550,74 @@ function average(hitung, hasil) {
     $(hasil).val(total / jumlah_field);
 }
 $("input").on("input", function() {
-            // tanggungan karyawan
-            sum(".tanggungan-karyawan", "#condition_karyawan_tanggungan_total")
+    // tanggungan karyawan
+    sum(".tanggungan-karyawan", "#condition_karyawan_tanggungan_total")
 
-            // tanggungan wiraswasta
-            sum(".tanggungan-wiraswasta", "#condition_wir_tanggungan_total")
+    // tanggungan wiraswasta
+    sum(".tanggungan-wiraswasta", "#condition_wir_tanggungan_total")
 
-            // mutasi wiraswasta
-            average(".wiraswasta-mutasi", "#capacity_wir_avr_mutasi")
-            // nota wiraswasta
-            average(".wiraswasta-nota", "#capacity_wir_avr_nota")
+    // mutasi wiraswasta
+    average(".wiraswasta-mutasi", "#capacity_wir_avr_mutasi")
+    // nota wiraswasta
+    average(".wiraswasta-nota", "#capacity_wir_avr_nota")
 
-            //total biaya operasional (capacity wiraswasta)
-            sum(".total-operasional-wiraswasta", "#capacity_wir_total_operasional")
+    //total biaya operasional (capacity wiraswasta)
+    sum(".total-operasional-wiraswasta", "#capacity_wir_total_operasional")
 
-            //omset wiraswasta (capacity wiraswasta)
-            // hitung omset per bulan
-            var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val().replace(/,/g, ''));
-            var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val().replace(/,/g, ''));
-            $("#capacity_wir_usaha_omset_perbulan").val(omset_per_hari * jumlah_hari);
+    //omset wiraswasta (capacity wiraswasta)
+    // hitung omset per bulan
+    var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val().replace(/,/g, ''));
+    var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val().replace(/,/g, ''));
+    $("#capacity_wir_usaha_omset_perbulan").val(omset_per_hari * jumlah_hari);
 
-            //hitung total nett profit
-            var total_operasional = parseInt($("#capacity_wir_total_operasional").val().replace(/,/g, ''));
-            var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val().replace(/,/g, ''));
-            $("#capacity_wir_total_income").val(omset_per_bulan - total_operasional);
+    //hitung total nett profit
+    var total_operasional = parseInt($("#capacity_wir_total_operasional").val().replace(/,/g, ''));
+    var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val().replace(/,/g, ''));
+    $("#capacity_wir_total_income").val(omset_per_bulan - total_operasional);
 
-            //hitung total nett profit (capacity wiraswasta)
-            var profit_margin = parseInt($("#capacity_wir_profit_margin").val().replace(/,/g, ''));
-            var pendapatan_omset = parseInt($("#capacity_wir_total_income").val().replace(/,/g, ''));
-            $("#capacity_wir_total_net_profit").val(pendapatan_omset * (profit_margin / 100));
+    //hitung total nett profit (capacity wiraswasta)
+    var profit_margin = parseInt($("#capacity_wir_profit_margin").val().replace(/,/g, ''));
+    var pendapatan_omset = parseInt($("#capacity_wir_total_income").val().replace(/,/g, ''));
+    $("#capacity_wir_total_net_profit").val(pendapatan_omset * (profit_margin / 100));
 
-            //pendapatan wiraswasta lainnya (capacity wiraswasta)
-            sum(".pendapatan-wiraswasta-lainnya", "#capacity_wir_total_lain")
+    //pendapatan wiraswasta lainnya (capacity wiraswasta)
+    sum(".pendapatan-wiraswasta-lainnya", "#capacity_wir_total_lain")
 
-            //total pendapatan wiraswasta (capacity wiraswasta)
-            sum(".total-pendapatan-wiraswasta", "#capacity_wir_total_nett_income")
+    //total pendapatan wiraswasta (capacity wiraswasta)
+    sum(".total-pendapatan-wiraswasta", "#capacity_wir_total_nett_income")
 
-            //pengeluaran wiraswasta (capacity wiraswasta)
-            sum(".pengeluaran-wiraswasta", "#capacity_wir_total_biaya_outcome")
-            //hutang wiraswasta (capacity wiraswasta)
-            sum(".hutang-wiraswasta", "#capacity_wir_total_hutang")
-            //total pengeluaran wiraswasta + hutang (capacity wiraswasta)
-            sum(".total-pengeluaran-wiraswasta", "#capacity_wir_total_outcome")
-            //kelebihan pendapatan (capacity wiraswasta)
-            var total_pendapatan_wiraswasta = $("#capacity_wir_total_nett_income").val();
-            var total_pengeluaran_wiraswasta = $("#capacity_wir_total_outcome").val();
-            $("#capacity_wir_nett_income").val(total_pendapatan_wiraswasta - total_pengeluaran_wiraswasta);
-
-
-            //pendapatan karyawan (capacity)
-            sum(".pendapatan-karyawan", "#capacity_karyawan_total_net_income")
-            //pendapatan periodik karyawan (capacity)
-            sum(".pendapatan-periodik-karyawan", "#capacity_karyawan_total_bonus")
-
-            //pendapatan karyawan lainnya (capacity)
-            sum(".pendapatan-karyawan-lainnya", "#capacity_karyawan_total_income_lainnya")
-
-            //pengeluaran karyawan (capacity)
-            sum(".pengeluaran-karyawan", "#capacity_karyawan_total_biaya_outcome")
-
-            //hutang karyawan (capacity)
-            sum(".hutang-karyawan", "#capacity_karyawan_total_hutang")
+    //pengeluaran wiraswasta (capacity wiraswasta)
+    sum(".pengeluaran-wiraswasta", "#capacity_wir_total_biaya_outcome")
+    //hutang wiraswasta (capacity wiraswasta)
+    sum(".hutang-wiraswasta", "#capacity_wir_total_hutang")
+    //total pengeluaran wiraswasta + hutang (capacity wiraswasta)
+    sum(".total-pengeluaran-wiraswasta", "#capacity_wir_total_outcome")
+    //kelebihan pendapatan (capacity wiraswasta)
+    var total_pendapatan_wiraswasta = $("#capacity_wir_total_nett_income").val();
+    var total_pengeluaran_wiraswasta = $("#capacity_wir_total_outcome").val();
+    $("#capacity_wir_nett_income").val(total_pendapatan_wiraswasta - total_pengeluaran_wiraswasta);
 
 
-            //Aset konsumen (capital)
-            $(".aset-konsumen").on("click keyup", function() {
-                sum(".aset-konsumen", "#capital_total_aset")
-            })
+    //pendapatan karyawan (capacity)
+    sum(".pendapatan-karyawan", "#capacity_karyawan_total_net_income")
+    //pendapatan periodik karyawan (capacity)
+    sum(".pendapatan-periodik-karyawan", "#capacity_karyawan_total_bonus")
+
+    //pendapatan karyawan lainnya (capacity)
+    sum(".pendapatan-karyawan-lainnya", "#capacity_karyawan_total_income_lainnya")
+
+    //pengeluaran karyawan (capacity)
+    sum(".pengeluaran-karyawan", "#capacity_karyawan_total_biaya_outcome")
+
+    //hutang karyawan (capacity)
+    sum(".hutang-karyawan", "#capacity_karyawan_total_hutang")
+
+
+    //Aset konsumen (capital)
+    $(".aset-konsumen").on("click keyup", function() {
+        sum(".aset-konsumen", "#capital_total_aset")
+    })
+})
 </script>
 
 <script type="text/javascript">

@@ -221,6 +221,7 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
+            'npwp_penyedia_jasa'    => !empty($post['npwp_penyedia_jasa'])       ? $post['npwp_penyedia_jasa'] : NULL,
             'ttd_pks'               => !empty($post['ttd_pks'])                ? $post['ttd_pks'] : NULL,
 
 
@@ -295,13 +296,14 @@ class Partner extends CI_Controller
         }
 
         // Jika Leads Database dipilih / terisi, maka leads database yang ada akan diupdate
-            // Jika tak dipilih, maka akan membuat record leads baru
-            if(!empty($post['id_partner'])){
-                $id = $post['id_partner'];
-                unset($data['created_at']);
-                
-                $this->partner_model->update($data, ["id_partner" => $id]);
-            } else {
+        if(!empty($post['id_partner'])){
+            $id = $post['id_partner'];
+            unset($data['created_at']);
+            
+            $this->partner_model->update($data, ["id_partner" => $id]);
+        } 
+        // Jika tak dipilih, maka akan membuat record leads baru
+            else {
                 $id = $this->partner_model->create($data);
             }
 
@@ -392,6 +394,7 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
+            'npwp_penyedia_jasa'    => !empty($post['npwp_penyedia_jasa'])       ? $post['npwp_penyedia_jasa'] : NULL,
             'ttd_pks'            => !empty($post['ttd_pks'])                ? $post['ttd_pks'] : NULL,
 
 
@@ -458,6 +461,7 @@ class Partner extends CI_Controller
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
         } else if (isset($post['process'])) {
+            $data['status'] = 'lengkap';
             //Menambah antrian tiket untuk data Agent
             $has_superior = $this->fungsi->user_login()->has_superior;
             $ticket = [
@@ -605,6 +609,7 @@ class Partner extends CI_Controller
             'cabang_bank'           => !empty($post['cabang_bank'])             ? $post['cabang_bank'] : NULL,
             'nama_bank'             => !empty($post['nama_bank'])               ? $post['nama_bank'] : NULL,
             'atas_nama'             => !empty($post['atas_nama'])               ? $post['atas_nama'] : NULL,
+            'npwp_penyedia_jasa'    => !empty($post['npwp_penyedia_jasa'])       ? $post['npwp_penyedia_jasa'] : NULL,
             // 'sudah_mou'            => !empty($post['sudah_mou'])                ? $post['sudah_mou'] : NULL,
 
 

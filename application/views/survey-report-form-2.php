@@ -27,7 +27,7 @@
 </div>
 
 <div class="row">
-<!-- Sticky -->
+    <!-- Sticky -->
     <div class="col-md-3 web">
         <div class="card-margin-left" id="leftcaption" style="width: 100%;">
             <div class="mt-1">
@@ -4385,7 +4385,7 @@ function sum(hitung, hasil) {
             $(this).val('0');
             $(this).select();
         }
-        total = total + parseInt($(this).val().replace(/,/g, ''));
+        total = total + parseInt($(this).val().replace(",", ""));
     })
     $(hasil).val(total);
 }
@@ -4395,7 +4395,7 @@ function average(hitung, hasil) {
     var jumlah_field = 0;
     $(hitung).each(function() {
         jumlah_field++;
-        total = total + parseInt($(this).val().replace(/,/g, ''));
+        total = total + parseInt($(this).val().replace(",", ""));
     })
     $(hasil).val(total / jumlah_field);
 }
@@ -4416,18 +4416,18 @@ $("input").on("input", function() {
 
     //omset wiraswasta (capacity wiraswasta)
     // hitung omset per bulan
-    var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val().replace(/,/g, ''));
-    var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val().replace(/,/g, ''));
+    var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val().replace(",", ""));
+    var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val().replace(",", ""));
     $("#capacity_wir_usaha_omset_perbulan").val(omset_per_hari * jumlah_hari);
 
     //hitung total nett profit
-    var total_operasional = parseInt($("#capacity_wir_total_operasional").val().replace(/,/g, ''));
-    var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val().replace(/,/g, ''));
+    var total_operasional = parseInt($("#capacity_wir_total_operasional").val().replace(",", ""));
+    var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val().replace(",", ""));
     $("#capacity_wir_total_income").val(omset_per_bulan - total_operasional);
 
     //hitung total nett profit (capacity wiraswasta)
-    var profit_margin = parseInt($("#capacity_wir_profit_margin").val().replace(/,/g, ''));
-    var pendapatan_omset = parseInt($("#capacity_wir_total_income").val().replace(/,/g, ''));
+    var profit_margin = parseInt($("#capacity_wir_profit_margin").val().replace(",", ""));
+    var pendapatan_omset = parseInt($("#capacity_wir_total_income").val().replace(",", ""));
     $("#capacity_wir_total_net_profit").val(pendapatan_omset * (profit_margin / 100));
 
     //pendapatan wiraswasta lainnya (capacity wiraswasta)
