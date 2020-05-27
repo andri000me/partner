@@ -149,7 +149,7 @@
                                     <div class="card-body">
                                         <div class="row mb-2">
                                             <div class="col-md-12 ">
-                                                <h5><b>Pengaturan Halaman</b></h5>
+                                                <h5 class="ml-3"><b>Pengaturan Halaman</b></h5>
                                             </div>
                                         </div>
                                         <div class="form-row">

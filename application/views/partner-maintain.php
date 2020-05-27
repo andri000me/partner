@@ -10,10 +10,10 @@
             </ol>
         </div>
         <div class="alert alert-primary font-size gradient card-margin-2 mb-5" role="alert">
-            <div class="ml-4 mr-4 mt-3 mb-3">
-                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
-                    menginput data</h5>
-                <p>Form ini digunakan untuk mencatat aktivitas maintain cabang anda.</p>
+            <div class="topcaption">
+                <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
+                        menginput data</b></p>
+                <p class="captiontext">Form ini digunakan untuk mencatat aktivitas maintain cabang anda.</p>
             </div>
         </div>
         <div class="card card-margin-2">

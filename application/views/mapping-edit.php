@@ -16,10 +16,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-primary text-size gradient card-margin-5 mb-5" role="alert">
-            <div class="ml-4 mr-4 mt-3 mb-3">
-                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
-                    menginput data</h5>
-                <p>Gunakan form ini untuk mendata calon partner yang
+            <div class="topcaption">
+                <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
+                        menginput data</b></p>
+                <p class="captiontext">Gunakan form ini untuk mendata calon partner yang
                     berpotensi di area cabang anda. Pastikan anda memasukan data yang valid agar memudahkan anda
                     dalam memaintain partner anda.</p>
             </div>

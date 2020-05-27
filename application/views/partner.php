@@ -55,7 +55,9 @@
                                     <?= $partner->kategori_produk ?>
                                 </td>
                                 <td>
-                                    <?= $partner->alamat ?>
+                                    <div style="width: 200px;">
+                                        <?= $partner->alamat ?>
+                                    </div>
                                 </td>
                                 <td>
                                     <?= $partner->email ?>

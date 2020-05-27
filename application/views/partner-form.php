@@ -15,10 +15,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
-            <div class="ml-4 mr-4 mt-3 mb-3">
-                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
-                    menginput data</h5>
-                <p>Pilih data yang sudah anda mapping pada
+            <div class="topcaption">
+                <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
+                        menginput data</b></p>
+                <p class="captiontext">Pilih data yang sudah anda mapping pada
                     pilihan yang akan muncul dilayar, kemudia isi semua kolom pertanyaan
                     untuk melanjutkan ke halaman selanjutnya.</p>
             </div>
@@ -258,7 +258,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group form-rigt">
+                                                        <div class="form-group form-right">
                                                             <label>Nama Bank</label>
                                                             <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="Bank Mandiri">
                                                         </div>
@@ -334,7 +334,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group form-left">
                                                         <label>Apakah Punya Pinjaman?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
@@ -351,7 +351,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-7">
                                                     <div class="form-group form-right">
                                                         <label>Ada Plafond Dari Instansi keuangan?</label><br>
                                                         <div class="form-check  form-check-inline mt-2">
@@ -370,25 +370,8 @@
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-5">
                                                     <div class="form-group form-left">
-                                                        <label>Apakah Memiliki Giro / Cek?</label><br>
-                                                        <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= set_value('punya_giro_cek') == 'Ya' ? 'checked' : '' ?> required value="Ya">
-                                                            <label class="form-check-label">
-                                                                Ya
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= set_value('punya_giro_cek') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
-                                                            <label class="form-check-label">
-                                                                Tidak
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-right">
                                                         <label>Apakah Sudah MOU?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
                                                             <input class="form-check-input mou" type="radio" name="ttd_pks" <?= set_value('ttd_pks') == 'Ya' ? 'checked' : '' ?> required value="Ya">
@@ -398,6 +381,23 @@
                                                         </div>
                                                         <div class="form-check form-check-inline">
                                                             <input class="form-check-input mou" type="radio" name="ttd_pks" <?= set_value('ttd_pks') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
+                                                            <label class="form-check-label">
+                                                                Tidak
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div class="form-group form-right">
+                                                        <label>Apakah Memiliki Giro / Cek?</label><br>
+                                                        <div class="form-check form-check-inline mt-2">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= set_value('punya_giro_cek') == 'Ya' ? 'checked' : '' ?> required value="Ya">
+                                                            <label class="form-check-label">
+                                                                Ya
+                                                            </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= set_value('punya_giro_cek') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                             <label class="form-check-label">
                                                                 Tidak
                                                             </label>
@@ -442,21 +442,21 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
-                                                <label>Buku Tabungan</label>
-                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary" required>
+                                                <label>Cover Tabungan</label>
+                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>SIUP / TDP</label>
-                                                <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -464,21 +464,36 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Logo Perusahaan</label>
-                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Foto usaha</label>
-                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="foto_usaha" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div id="lampiran_mou" class="form-group text-size form-margin">
+                                        <div class="col-md-6" id="lampiran_mou">
+                                            <div class="form-group text-size form-margin">
                                                 <label>Lampiran MOU</label>
-                                                <input type="file" id="form_mou" name="form_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" id="form_mou" name="form_mou" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size form-margin">
+                                                <label>Data Lainnya</label>
+                                                <input type="file" name="" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size form-margin">
+                                                <label>Data Lainnya</label>
+                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -653,15 +668,31 @@
         var radioValue = $("input[name='ttd_pks']:checked").val();
         if (radioValue == 'Tidak') {
             $("#lampiran_mou").hide();
-            $('#form_mou').removeAttr('required');
+            $('#form_mou').removeAttr('required', '');
         } else if (radioValue == 'Ya') {
             $("#lampiran_mou").show()
-            $('#form_mou').attr('required', 'required');
+            // $('#form_mou').attr('required', 'required');
         }
     }
 
     $(".mou").click(function() {
         mou();
+    })
+
+    perorangan()
+
+    function perorangan() {
+        $('#bentuk_usaha').change(function() {
+            if ($('#bentuk_usaha').val() == "Perorangan") {
+                $('.upload-form').removeAttr('required', ' ');
+            } else {
+                $('.upload-form').attr('required', 'required');
+            }
+        })
+    }
+
+    $('#bentuk_usaha').click(function() {
+        perorangan();
     })
 </script>
 
@@ -672,8 +703,7 @@
             var value = $(selector).val();
             if (value != '') {
                 $.ajax({
-                    url: '<?= base_url('
-                partner / check_duplicate / ') ?>' + field + '/' + value,
+                    url: '<?= base_url('partner / check_duplicate / ') ?>' + field + '/' + value,
                     method: 'POST',
                     data: {
                         field: value

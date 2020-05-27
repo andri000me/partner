@@ -49,14 +49,14 @@
                                 <div class="step">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <!-- <div class="form-row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group ml-3 mr-3">
-                                                            <label>Nama Lengkap</label>
-                                                            <input type="text" class="form-control text-size <?= form_error('nama_lengkap') ? 'is-invalid' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" required placeholder="Aisha Putri" />
-                                                        </div>
+                                            <div class="form-row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group form-margin">
+                                                        <label>Nama Lengkap</label>
+                                                        <input type="text" class="form-control text-size <?= form_error('nama_lengkap') ? 'is-invalid' : '' ?>" name="nama_lengkap" id="nama_lengkap" value="<?= set_value('nama_lengkap') ?>" required placeholder="Aisha Putri" />
                                                     </div>
-                                                </div> -->
+                                                </div>
+                                            </div>
                                             <div class="form-row">
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">

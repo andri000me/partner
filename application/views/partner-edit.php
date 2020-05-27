@@ -15,10 +15,10 @@
 <div class="row">
     <div class="col-md-12">
         <div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
-            <div class="ml-4 mr-4 mt-3 mb-3">
-                <h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam
-                    menginput data</h5>
-                <p>Pilih data yang sudah anda mapping pada
+            <div class="topcaption">
+                <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
+                        menginput data</b></p>
+                <p class="captiontext">Pilih data yang sudah anda mapping pada
                     pilihan yang akan muncul dilayar, kemudia isi semua kolom pertanyaan
                     untuk melanjutkan ke halaman selanjutnya.</p>
             </div>
@@ -457,7 +457,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>NPWP</label>
-                                            <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
+                                            <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
                                             <?php if ($data->npwp) { ?>
                                                 <?php if (get_extension($data->npwp)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -480,8 +480,8 @@
                                 <div class="form-row">
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
-                                            <label>Buku Tabungan</label>
-                                            <input type="file" name="buku_tabungan_perusahaan" class="filestyle" data-buttonname="btn-secondary" <?= $data->buku_tabungan_perusahaan ? '' : 'required' ?>>
+                                            <label>Cover Tabungan</label>
+                                            <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->buku_tabungan_perusahaan ? '' : 'required' ?>>
                                             <?php if ($data->buku_tabungan_perusahaan) { ?>
                                                 <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -503,7 +503,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>SIUP / TDP</label>
-                                            <input type="file" name="siup" class="filestyle" data-buttonname="btn-secondary" <?= $data->siup ? '' : 'required' ?>>
+                                            <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->siup ? '' : 'required' ?>>
                                             <?php if ($data->siup) { ?>
                                                 <?php if (get_extension($data->siup)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -527,7 +527,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>Logo Perusahaan</label>
-                                            <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary" <?= $data->logo_perusahaan ? '' : 'required' ?>>
+                                            <input type="file" name="logo_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->logo_perusahaan ? '' : 'required' ?>>
                                             <?php if ($data->logo_perusahaan) { ?>
                                                 <?php if (get_extension($data->logo_perusahaan)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -550,7 +550,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Foto usaha</label>
-                                                <input type="file" name="foto_usaha" class="filestyle" data-buttonname="btn-secondary" <?= ($data->foto_usaha || $data->foto_usaha) ? '' : 'required' ?>>
+                                                <input type="file" name="foto_usaha" class="filestyle upload-form" data-buttonname="btn-secondary" <?= ($data->foto_usaha || $data->foto_usaha) ? '' : 'required' ?>>
                                                 <?php if ($data->foto_usaha) { ?>
                                                     <?php if (get_extension($data->foto_usaha)) { ?>
                                                         <div class="img-fluid mt-1">
@@ -571,10 +571,10 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div id="lampiran_mou" class="form-group text-size form-margin">
+                                        <div class="col-md-6" id="lampiran_mou">
+                                            <div class="form-group text-size form-margin">
                                                 <label>Lampiran MOU</label>
-                                                <input type="file" id="form_mou" name="form_mou" class="filestyle" data-buttonname="btn-secondary">
+                                                <input type="file" id="form_mou" name="form_mou" class="filestyle upload-form" data-buttonname="btn-secondary">
                                                 <input type="hidden" name="form_mou" <?= ($data->form_mou == '' || $data->form_mou == NULL) ? "disabled" : "value='$data->form_mou'"  ?>>
                                                 <?php if ($data->form_mou) { ?>
                                                     <?php if (get_extension($data->form_mou)) { ?>
@@ -595,17 +595,32 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group text-size form-margin">
+                                                <label>Lampiran lainnya</label>
+                                                <input type="file" name="" class="filestyle" data-buttonname="btn-secondary">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group text-size form-margin">
+                                                    <label>Lampiran lainnya</label>
+                                                    <input type="file" name="" class="filestyle" data-buttonname="btn-secondary">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /step-->
                                 </div>
-                                <!-- /step-->
-                            </div>
-                            <!-- /middle-wizard -->
-                            <div class="form-group mb-0 float-right form-margin">
-                                <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
-                                <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward"><b>Kembali</b></button>
-                                <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward"><b>Selanjutnya</b></button>
-                                <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil"><b>Kirim</b></button>
-                            </div>
-                            <!-- /bottom-wizard -->
+                                <!-- /middle-wizard -->
+                                <div class="form-group mb-0 float-right form-margin">
+                                    <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                                    <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward"><b>Kembali</b></button>
+                                    <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward"><b>Selanjutnya</b></button>
+                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil"><b>Kirim</b></button>
+                                </div>
+                                <!-- /bottom-wizard -->
                     </form>
                 </div>
             </div>
@@ -765,21 +780,37 @@
 
 <script>
     $('#lampiran_mou').hide();
-    mou();
+    mou()
 
     function mou() {
         var radioValue = $("input[name='ttd_pks']:checked").val();
         if (radioValue == 'Tidak') {
             $("#lampiran_mou").hide();
-            $('#form_mou').removeAttr('required');
+            $('#form_mou').removeAttr('required', '');
         } else if (radioValue == 'Ya') {
             $("#lampiran_mou").show()
-            $('#form_mou').attr('required', 'required');
+            // $('#form_mou').attr('required', 'required');
         }
     }
 
     $(".mou").click(function() {
         mou();
+    })
+
+    perorangan()
+
+    function perorangan() {
+        $('#bentuk_usaha').change(function() {
+            if ($('#bentuk_usaha').val() == "Perorangan") {
+                $('.upload-form').removeAttr('required', ' ');
+            } else {
+                $('.upload-form').attr('required', 'required');
+            }
+        })
+    }
+
+    $('#bentuk_usaha').click(function() {
+        perorangan();
     })
 </script>
 <!-- script -->

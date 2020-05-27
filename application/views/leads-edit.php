@@ -64,10 +64,27 @@
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="form-group fomr-margin">
+                                    <div class="col-md-6">
+                                        <div class="form-group fomr-left">
                                             <label>Nomor KTP</label>
                                             <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group text-size fomr-right">
+                                            <label>Jenis kelamin</label><br>
+                                            <div class="form-check form-check-inline mt-2">
+                                                <input class="form-check-input" type="radio" name="" id="" required value="Laki - Laki">
+                                                <label class="form-check-label">
+                                                    Laki - Laki
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="" id="" required value="Perempuan">
+                                                <label class="form-check-label">
+                                                    Perempuan
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
