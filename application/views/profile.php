@@ -155,9 +155,7 @@
                                                     <?= $user->nama_cabang ?>
                                                 </td>
                                                 <td>
-                                                    <center>
-                                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger" style="width: 80px; height: 30px;"><p style="margin-top: 2px;">Non Aktif</p></span></h6>' : '<h6><span class="badge badge-success" style="width: 60px; height: 30px;"><p style="margin-top: 2px;">Aktif</p></span></h6>' ?>
-                                                    </center>
+                                                    <?= $user->is_active == 0 ? '<b class="text-danger">Non Aktif</b>' : '<b class="text-success">Aktif</b>' ?>
                                                 </td>
                                             </tr>
                                         <?php } ?>

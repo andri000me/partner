@@ -33,7 +33,7 @@
                                     <td><?= $cabang->id_branch ?></td>
                                     <td><?= $cabang->nama_cabang ?></td>
                                     <td>
-                                        <select class="form-control has_superior text-size form-border" name="has_superior[<?= $cabang->id_branch ?>]" data-id="<?= $cabang->id_branch ?>">
+                                        <select class="form-control has_superior text-size form-border form-radius" name="has_superior[<?= $cabang->id_branch ?>]" data-id="<?= $cabang->id_branch ?>">
                                             <option <?= $cabang->has_superior == 0 ? 'selected' : '' ?> value="0">Tidak Ada Head & Manager</option>
                                             <option <?= $cabang->has_superior == 1 ? 'selected' : '' ?> value="1">Ada Head</option>
                                             <option <?= $cabang->has_superior == 2 ? 'selected' : '' ?> value="2">Ada Head & Manager</option>

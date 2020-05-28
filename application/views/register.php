@@ -152,8 +152,8 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-0 float-right mt-4 mr-4">
-                                <a href="<?= base_url('user') ?>" class="btn btn-secondary btn-width waves-effect waves-light text-size">Batal</a>
-                                <button class="btn btn-primary btn-width waves-effect waves-light text-size ml-1" type="submit">Register</button>
+                                <a href="<?= base_url('user') ?>" class="btn btn-secondary btn-width waves-effect waves-light text-size"><b>Batal</b></a>
+                                <button class="btn btn-primary btn-width waves-effect waves-light text-size ml-1" type="submit"><b>Register</b></button>
                             </div>
                         </div>
                     </div>

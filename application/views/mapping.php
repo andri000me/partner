@@ -32,7 +32,7 @@
                             <th>Alamat</th>
                             <th>E-mail</th>
                             <th>Telepon</th>
-                            <th>Action</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -57,7 +57,7 @@
                                     <?= $mapping->telepon ?>
                                 </td>
                                 <td>
-                                    <center><a href="<?= base_url('partner/edit_mapping/' . $mapping->id_partner) ?>" class="btn btn-secondary text-size">Detail</a></center>
+                                    <center><a href="<?= base_url('partner/edit_mapping/' . $mapping->id_partner) ?>" class="btn btn-secondary text-size"><b>Detail</b></a></center>
                                 </td>
                             </tr>
                         <?php } ?>

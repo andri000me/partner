@@ -623,7 +623,7 @@
                                                     <tr>
                                                         <th><label class="table-lable">NTF Murni</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="" id="" data-type="currency" required placeholder="Harga Beli - Uang Muka" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="" id="" data-type="currency" required placeholder="NTF Murni" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -953,7 +953,7 @@
                                                             <th><label class="table-lable">Total Jumlah
                                                                     Tanggungan</label>
                                                             </th>
-                                                            <td><input type="number" class="form-control text-size number-only form-border" name="condition_karyawan_tanggungan_total" value="<?= $data->condition_karyawan_tanggungan_total ?>" id="condition_karyawan_tanggungan_total" required placeholder="Total Jumlah Tanggungan" readonly />
+                                                            <td><input type="number" class="form-control text-size number-only form-border form-radius" name="condition_karyawan_tanggungan_total" value="<?= $data->condition_karyawan_tanggungan_total ?>" id="condition_karyawan_tanggungan_total" required placeholder="Total Jumlah Tanggungan" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1141,7 +1141,7 @@
                                                         <th><label class="table-lable">Total Jumlah
                                                                 Tanggungan</label>
                                                         </th>
-                                                        <td><input type="number" class="form-control text-size number-only form-border" name="condition_wir_tanggungan_total" value="<?= $data->condition_wir_tanggungan_total ?>" id="condition_wir_tanggungan_total" required placeholder="Total Jumlah Tanggungan" readonly />
+                                                        <td><input type="number" class="form-control text-size number-only form-border form-radius" name="condition_wir_tanggungan_total" value="<?= $data->condition_wir_tanggungan_total ?>" id="condition_wir_tanggungan_total" required placeholder="Total Jumlah Tanggungan" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1444,7 +1444,7 @@
                                                         </td>
                                                         <td></td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_bonus" value="<?= $data->capacity_karyawan_total_bonus ?>" id="capacity_karyawan_total_bonus" data-type="currency" required placeholder="Total Pendapatan Periodik" readonly />
+                                                            <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_bonus" value="<?= $data->capacity_karyawan_total_bonus ?>" id="capacity_karyawan_total_bonus" data-type="currency" required placeholder="Total Pendapatan Periodik" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1508,7 +1508,7 @@
                                                                 <label>Total Pendapatan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_income_lainnya" value="<?= $data->capacity_karyawan_total_income_lainnya ?>" id="capacity_karyawan_total_income_lainnya" data-type="currency" required placeholder="Nominal 2" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_income_lainnya" value="<?= $data->capacity_karyawan_total_income_lainnya ?>" id="capacity_karyawan_total_income_lainnya" data-type="currency" required placeholder="Nominal 2" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1591,7 +1591,7 @@
                                                                     Pengeluaran</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_biaya_outcome ?>" id="capacity_karyawan_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_biaya_outcome ?>" id="capacity_karyawan_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1662,7 +1662,7 @@
                                                                 <label>Total Hutang</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_hutang" value="<?= $data->capacity_karyawan_total_hutang ?>" id="capacity_karyawan_total_hutang" data-type="currency" required placeholder="Total Hutang" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_hutang" value="<?= $data->capacity_karyawan_total_hutang ?>" id="capacity_karyawan_total_hutang" data-type="currency" required placeholder="Total Hutang" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1774,7 +1774,7 @@
                                                                     Kredit</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_avr_mutasi" value="<?= $data->capacity_wir_avr_mutasi ?>" id="capacity_wir_avr_mutasi" data-type="currency" required placeholder="Average Kredit" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_wir_avr_mutasi" value="<?= $data->capacity_wir_avr_mutasi ?>" id="capacity_wir_avr_mutasi" data-type="currency" required placeholder="Average Kredit" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -1820,7 +1820,7 @@
                                                                     Kredit</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_avr_nota" value="<?= $data->capacity_wir_avr_nota ?>" id="capacity_wir_avr_nota" data-type="currency" required placeholder="Average Kredit" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_wir_avr_nota" value="<?= $data->capacity_wir_avr_nota ?>" id="capacity_wir_avr_nota" data-type="currency" required placeholder="Average Kredit" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2357,7 +2357,7 @@
                                                             <label>Total Nilai Aset</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only  form-border" name="capital_total_aset" value="<?= $data->capital_total_aset ?>" id="capital_total_aset" data-type="currency" required placeholder="Total Nilai Aset" readonly />
+                                                            <input type="text" class="form-control text-size number-only  form-border form-radius" name="capital_total_aset" value="<?= $data->capital_total_aset ?>" id="capital_total_aset" data-type="currency" required placeholder="Total Nilai Aset" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>

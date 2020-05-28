@@ -63,7 +63,7 @@
                                             <th>Kota</th>
                                             <th>Produk</th>
                                             <th>Detail Produk</th>
-                                            <th>Aksi</th>
+                                            <th> </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -85,7 +85,7 @@
                                                     <?= $leads_assignemnt->detail_produk ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>"><b>Detail</b></a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -102,7 +102,7 @@
                                             <th>Produk</th>
                                             <th>Detail Produk</th>
                                             <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th> </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -127,7 +127,7 @@
                                                     <?= $leads_assignemnt->status ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>"><b>Detail</b></a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -161,7 +161,7 @@
                                             <th>Kota</th>
                                             <th>Produk</th>
                                             <th>Detail Produk</th>
-                                            <th>Aksi</th>
+                                            <th> </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -183,7 +183,7 @@
                                                     <?= $leads_assignemnt->detail_produk ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>"><b>Detail</b></a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>
@@ -200,7 +200,7 @@
                                             <th>Produk</th>
                                             <th>Detail Produk</th>
                                             <th>Status</th>
-                                            <th>Aksi</th>
+                                            <th> </th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -225,7 +225,7 @@
                                                     <?= $leads_assignemnt->status ?>
                                                 </td>
                                                 <td>
-                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>">Detail</a></center>
+                                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads_assignment/edit/' . $leads_assignemnt->id_leads_assignment) ?>"><b>Detail</b></a></center>
                                                 </td>
                                             </tr>
                                         <?php } ?>

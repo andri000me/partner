@@ -49,7 +49,7 @@
                                     <th>Follow Up By</th>
                                     <th>Requester</th>
                                     <th>Cabang</th>
-                                    <th>Action</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,9 +75,9 @@
                                         </td>
                                         <td>
                                             <?php if ($leads->status == 'draft') { ?>
-                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
+                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius"><b>Lanjutkan</b></a></center>
                                             <?php } else if ($leads->status == 'lengkap') { ?>
-                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius" style="width: 90px;">Detail</a>
+                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius" style="width: 90px;"><b>Detail</b></a>
                                                 </center>
                                             <?php } ?>
                                         </td>
@@ -96,7 +96,7 @@
                                     <th>Follow Up By</th>
                                     <th>Requester</th>
                                     <th>Cabang</th>
-                                    <th>Action</th>
+                                    <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -122,9 +122,9 @@
                                         </td>
                                         <td>
                                             <?php if ($leads->status == 'draft') { ?>
-                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
+                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius"><b>Lanjutkan</b></a></center>
                                             <?php } else if ($leads->status == 'lengkap') { ?>
-                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a></center>
                                             <?php } ?>
                                         </td>
                                     </tr>

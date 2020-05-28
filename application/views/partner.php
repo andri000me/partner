@@ -39,7 +39,7 @@
                             <th>Telepon</th>
                             <th>Status</th>
                             <th>PKS</th>
-                            <th>Action</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,39 +67,27 @@
                                 </td>
                                 <td>
                                     <?php if ($partner->status_ticket == 6) { ?>
-                                        <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px">Teraktivasi</p>
-                                            </span></h6>
+                                        <b class="text-primary">Teraktivasi</b>
                                     <?php } else if ($partner->status_ticket == 5) { ?>
-                                        <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px">Terverifikasi</p>
-                                            </span></h6>
+                                        <b class="text-success">Terverifikasi</b>
                                     <?php } else if ($partner->status_ticket == 4) { ?>
-                                        <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
-                                                <p style="margin-top: 2px">Ditolak</p>
-                                            </span></h6>
+                                        <b class="text-danger">Ditolak</b>
                                     <?php } else if ($partner->status_ticket <= 2) { ?>
-                                        <h6><span class="badge badge-secondary" style="width: 140px; height: 30px;">
-                                                <p style="margin-top: 2px">Belum Terverifikasi</p>
-                                            </span></h6>
+                                        <b class="tect-secondary">Belum Terverifikasi</b>
                                     <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($partner->ttd_pks == 'Ya') { ?>
-                                        <h6><span class="badge badge-success" style="width: 70px; height: 30px;">
-                                                <p style="margin-top: 2px">PKS</p>
-                                            </span></h6>
+                                        <b class="text-success">PKS</b>
                                     <?php } else { ?>
-                                        <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
-                                                <p style="margin-top: 2px">Non-PKS</p>
-                                            </span></h6>
+                                        <b class="text-danger">Non-PKS</b>
                                     <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($partner->status == 'draft') { ?>
-                                        <center><a href="<?= base_url('Partner/edit/' . $partner->id_partner) ?>" class="btn btn-secondary text-size radius">Lanjutkan</a></center>
+                                        <center><a href="<?= base_url('Partner/edit/' . $partner->id_partner) ?>" class="btn btn-secondary text-size radius"><b>Lanjutkan</b></a></center>
                                     <?php } else if ($partner->status == 'lengkap') { ?>
-                                        <center><a href="<?= base_url('Partner/detail/' . $partner->id_partner) ?>" class="btn btn-primary text-size radius" style="width: 90px;">Detail</a></center>
+                                        <center><a href="<?= base_url('Partner/detail/' . $partner->id_partner) ?>" class="btn btn-primary text-size radius" style="width: 90px;"><b>Detail</b></a></center>
                                     <?php } ?>
                                 </td>
                             </tr>
@@ -133,7 +121,7 @@
                                 <div class="text-size">Telepon</div>
                             </th>
                             <th>
-                                <div class="text-size">Aksi</div>
+                                <div class="text-size"> </div>
                             </th>
                         </tr>
                     </thead>
@@ -151,7 +139,7 @@
                                 </td>
                                 <td>
                                     <center>
-                                        <a class="btn btn-primary text-size radius" href="<?= base_url('Maintain_partner/create/' . $maintain->id_partner) ?>">Maintain</a>
+                                        <a class="btn btn-primary text-size radius" href="<?= base_url('Maintain_partner/create/' . $maintain->id_partner) ?>"><b>Maintain</b></a>
                                     </center>
                                 </td>
                             </tr>

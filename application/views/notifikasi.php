@@ -84,16 +84,16 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                         <?php if ($notif->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                         <?php if ($notif->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Leads Assignment oleh') { ?>
-                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                     </td>
                                 </tr>
@@ -159,16 +159,16 @@
                                     </td>
                                     <td>
                                         <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                         <?php if ($notif->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('agent/edit/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('agent/edit/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                         <?php if ($notif->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                         <?php if ($notif->type == 'Leads Assignment oleh') { ?>
-                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>">View</a>
+                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
                                         <?php } ?>
                                     </td>
                                 </tr>

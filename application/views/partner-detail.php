@@ -598,10 +598,10 @@
                                         </div>
                                         <hr>
                                         <div id="moreImageUpload"></div>
-                                        <div class="clear"></div>
-                                        <div id="moreImageUploadLink" style="display:none;" class="float-right">
-                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore">tambah Form lampiran</a>
-                                            <button class="btn btn-primary mr-3">Simpan</button>
+                                        <div class="clear "></div>
+                                        <div id="moreImageUploadLink" class="float-right">
+                                            <a class="btn btn-secondary text-size mr-1" href="javascript:void(0);" id="attachMore">Tambah Form</a>
+                                            <button class="btn btn-primary text-size">Simpan</button>
                                         </div>
                                     </form>
                                 </div>

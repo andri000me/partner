@@ -35,7 +35,7 @@
                                 <div class="text-size">Nomor KTP</div>
                             </th>
                             <th>
-                                <div class="text-size">Aksi</div>
+                                <div class="text-size"> </div>
                             </th>
                         </tr>
                     </thead>
@@ -52,7 +52,7 @@
                                     <div class="text-size"><?= $nst->no_ktp ?></div>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('nst/edit/' . $nst->id_nst) ?>">Detail</a></center>
+                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('nst/edit/' . $nst->id_nst) ?>"><b>Detail</b></a></center>
                                 </td>
                             </tr>
                         <?php } ?>

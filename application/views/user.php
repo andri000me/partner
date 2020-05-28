@@ -31,7 +31,7 @@
                             <th>Jabatan</th>
                             <th>Cabang</th>
                             <th>Status</th>
-                            <th>Aksi</th>
+                            <th> </th>
                             <!-- <th>Action</th> -->
                         </tr>
                     </thead>
@@ -58,18 +58,12 @@
                                     <?= $user->nama_cabang ?>
                                 </td>
                                 <td>
-                                    <center>
-                                        <?= $user->is_active == 0 ? '<h6><span class="badge badge-danger" style="width: 80px; height: 30px;">
-                                            <p style="margin-top: 2px;">Non Aktif</p>
-                                        </span></h6>' : '<h6><span class="badge badge-success" style="width: 60px; height: 30px;">
-                                            <p style="margin-top: 2px;">Aktif</p>
-                                        </span></h6>' ?>
-                                    </center>
+                                    <?= $user->is_active == 0 ? '<b class="text-danger">Non Aktif</b>' : '<b class="text-success">Aktif</b>' ?>
                                 </td>
                                 <td>
                                     <center>
                                         <a class="btn btn-primary text-size detail-user radius" style="color: white;" data-toggle="modal" data-target="#myModal" data-id="<?= $user->id_user ?>" data-name="<?= $user->name ?>" data-email="<?= $user->email ?>" data-nik="<?= $user->nik ?>" data-level="<?= $user->level ?>" data-branch="<?= $user->id_branch ?>" data-foto="<?= $user->foto ?>" data-active="<?= $user->is_active ?>" data-tanggal="<?= $user->tanggal_daftar ?>">
-                                            Detail
+                                            <b>Detail</b>
                                         </a>
                                         <!-- <form method="post" action="<?= base_url('User/del') ?>">
 
