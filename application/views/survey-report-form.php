@@ -840,8 +840,9 @@
                                                         </th>
                                                         <td><input type="text"
                                                                 class="form-control text-size form-border number-only"
-                                                                name="purpose_ntf_murni" id="" data-type="currency"
-                                                                required placeholder="NTF Murni" />
+                                                                name="purpose_ntf_murni"
+                                                                value="<?= $data->purpose_ntf_murni ?>" id=""
+                                                                data-type="currency" required placeholder="NTF Murni" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -4420,65 +4421,49 @@
                         <div class="collapse" id="konfirmasi">
 
                         </div>
-                        <!-- <div class="col-md-12 konfirmasi-up">
-													<center>
-														<h4 class="ml-3">
-															<a onclick="konfirmasiupFunction()" data-toggle="collapse"
-																href="#konfirmasi" role="button" aria-expanded="false"
-																aria-controls="collapseExample">
-																<i class="fas fa-chevron-circle-up"></i>
-															</a>
-														</h4>
-													</center>
-												</div> -->
                     </div>
                 </div>
             </div>
             <!-- Data Hasil Analisa -->
 
-            <!-- Data Lampiran -->
-            <div class="col-md-12">
+
+        </form>
+        <!-- Data Lampiran -->
+        <div class="col-md-12">
+            <form action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" method="post" enctype="multipart/form-data">
+                <!-- URI untuk redirect ke halaman sama -->
+                <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                <!-- ID Leads -->
+                <input type="hidden" name="id_leads" value="<?= $leads->id_leads ?>">
                 <div class="card card-margin-survey">
                     <div class="card-body text-size">
                         <h5 class="form-margin"><b>Data Lampiran</b>
-                            <!-- <a class="float-right lampiran-down" onclick="lampirandownFunction()" data-toggle="collapse" href="#lampiran" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    <i class="fas fa-chevron-circle-down"></i>
-                                </a> -->
                         </h5>
 
                         <div class="form-group element text-size form-margin">
                             <label>Lampirkan Data</label><br>
-                            <input type="file" name="tambah_lampiran" id="upload_file1">
+                            <input type="file" name="tambah_lampiran[]" id="upload_file1">
                         </div>
                         <div class="form-margin">
                             <div id="moreImageUpload"></div>
                             <div class="clear"></div>
                             <div id="moreImageUploadLink" class="float-right mt-3">
-                                <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">tambah
+                                <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">Tambah
                                     Form
                                     lampiran</a>
                             </div>
+                            <button type="submit">Upload File</button>
                         </div>
 
                         <div class="collapse" id="lampiran">
 
                         </div>
-                        <!-- <div class="col-md-12 lampiran-up">
-                                <center>
-                                    <h4 class="ml-3">
-                                        <a onclick="lampiranupFunction()" data-toggle="collapse" href="#lampiran" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-up"></i>
-                                        </a>
-                                    </h4>
-                                </center>
-                            </div> -->
                     </div>
                 </div>
-            </div>
-            <!-- Data Lampiran -->
-
+            </form>
+        </div>
+        <!-- Data Lampiran -->
     </div>
-    </form>
 </div>
 </div>
 
@@ -5042,101 +5027,110 @@ $('#return').click(function() {
 </script>
 
 <script>
-function sum(hitung, hasil) {
-    var total = 0;
-    $(hitung).each(function() {
-        if ($(this).val() == '') {
-            $(this).val('0');
-            $(this).select();
-        }
-        total = total + parseInt($(this).val().replace(/,/g, ''));
+$(document).ready(function() {
+    function sum(hitung, hasil) {
+        var total = 0;
+        $(hitung).each(function() {
+            if ($(this).val() == '') {
+                $(this).val('0');
+                $(this).select();
+            }
+            total = total + parseInt($(this).val());
+        })
+        $(hasil).val(total);
+
+    }
+
+    function average(hitung, hasil) {
+        var total = 0;
+        var jumlah_field = 0;
+        $(hitung).each(function() {
+            jumlah_field++;
+            total = total + parseInt($(this).val());
+        })
+        $(hasil).val(total / jumlah_field);
+    }
+
+    $("input").on("input", function() {
+        console.log("inputed");
+
+        // tanggungan karyawan
+        sum(".tanggungan-karyawan", "#condition_karyawan_tanggungan_total");
+
+        // tanggungan wiraswasta
+        sum(".tanggungan-wiraswasta", "#condition_wir_tanggungan_total");
+
+        // mutasi wiraswasta
+        average(".wiraswasta-mutasi", "#capacity_wir_avr_mutasi");
+        // nota wiraswasta
+        average(".wiraswasta-nota", "#capacity_wir_avr_nota");
+
+        //total biaya operasional (capacity wiraswasta)
+        sum(".total-operasional-wiraswasta", "#capacity_wir_total_operasional");
+
+        //omset wiraswasta (capacity wiraswasta)
+        // hitung omset per bulan
+        var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val());
+        var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val());
+        $("#capacity_wir_usaha_omset_perbulan").val(omset_per_hari * jumlah_hari);
+
+        //hitung total nett profit
+        var total_operasional = parseInt($("#capacity_wir_total_operasional").val());
+        var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val());
+        $("#capacity_wir_total_income").val(omset_per_bulan - total_operasional);
+
+        //hitung total nett profit (capacity wiraswasta)
+        var profit_margin = parseInt($("#capacity_wir_profit_margin").val());
+        var pendapatan_omset = parseInt($("#capacity_wir_total_income").val());
+        $("#capacity_wir_total_net_profit").val(pendapatan_omset * (profit_margin / 100));
+
+        //pendapatan wiraswasta lainnya (capacity wiraswasta)
+        sum(".pendapatan-wiraswasta-lainnya", "#capacity_wir_total_lain");
+
+        //total pendapatan wiraswasta (capacity wiraswasta)
+        sum(".total-pendapatan-wiraswasta", "#capacity_wir_total_nett_income");
+
+        //pengeluaran wiraswasta (capacity wiraswasta)
+        sum(".pengeluaran-wiraswasta", "#capacity_wir_total_biaya_outcome");
+
+        //hutang wiraswasta (capacity wiraswasta)
+        sum(".hutang-wiraswasta", "#capacity_wir_total_hutang");
+
+
+        //kelebihan pendapatan (capacity wiraswasta)
+        var total_pendapatan_wiraswasta = parseInt($("#capacity_wir_total_nett_income").val().replace(
+            /,/g, ""));
+        var total_pengeluaran_wiraswasta = parseInt($("#capacity_wir_total_outcome").val().replace(/,/g,
+            ""));
+        $("#capacity_wir_nett_income").val(total_pendapatan_wiraswasta - total_pengeluaran_wiraswasta);
+
+
+        //pendapatan karyawan (capacity)
+        sum(".pendapatan-karyawan", "#capacity_karyawan_total_net_income");
+        //pendapatan periodik karyawan (capacity)
+        sum(".pendapatan-periodik-karyawan", "#capacity_karyawan_total_bonus");
+
+        //pendapatan karyawan lainnya (capacity)
+        sum(".pendapatan-karyawan-lainnya", "#capacity_karyawan_total_income_lainnya");
+
+        //pengeluaran karyawan (capacity)
+        sum(".pengeluaran-karyawan", "#capacity_karyawan_total_biaya_outcome");
+
+        //kelebihan pendapatan (capacity karyawan)
+        var total_pendapatan_karyawan = parseInt($("#capacity_karyawan_total_net_income").val().replace(
+            /,/g, ""));
+        var total_pengeluaran_karyawan = parseInt($("#capacity_karyawan_total_outcome").val().replace(
+            /,/g, ""));
+        $("#capacity_karyawan_kelebihan_net_income").val(total_pendapatan_karyawan -
+            total_pengeluaran_karyawan);
+
+        //hutang karyawan (capacity)
+        sum(".hutang-karyawan", "#capacity_karyawan_total_hutang")
+
+        //Aset konsumen (capital)
+        sum(".aset-konsumen", "#capital_total_aset")
     })
-    $(hasil).val(total);
-}
 
-function average(hitung, hasil) {
-    var total = 0;
-    var jumlah_field = 0;
-    $(hitung).each(function() {
-        jumlah_field++;
-        total = total + parseInt($(this).val().replace(/,/g, ''));
-    })
-    $(hasil).val(total / jumlah_field);
-}
-$("input").on("input", function() {
-// tanggungan karyawan
-sum(".tanggungan-karyawan", "#condition_karyawan_tanggungan_total")
-
-// tanggungan wiraswasta
-sum(".tanggungan-wiraswasta", "#condition_wir_tanggungan_total")
-
-// mutasi wiraswasta
-average(".wiraswasta-mutasi", "#capacity_wir_avr_mutasi")
-// nota wiraswasta
-average(".wiraswasta-nota", "#capacity_wir_avr_nota")
-
-//total biaya operasional (capacity wiraswasta)
-sum(".total-operasional-wiraswasta", "#capacity_wir_total_operasional")
-
-//omset wiraswasta (capacity wiraswasta)
-// hitung omset per bulan
-var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val().replace(/,/g, ''));
-var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val().replace(/,/g, ''));
-$("#capacity_wir_usaha_omset_perbulan").val(omset_per_hari * jumlah_hari);
-
-//hitung total nett profit
-var total_operasional = parseInt($("#capacity_wir_total_operasional").val().replace(/,/g, ''));
-var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val().replace(/,/g, ''));
-$("#capacity_wir_total_income").val(omset_per_bulan - total_operasional);
-
-//hitung total nett profit (capacity wiraswasta)
-var profit_margin = parseInt($("#capacity_wir_profit_margin").val().replace(/,/g, ''));
-var pendapatan_omset = parseInt($("#capacity_wir_total_income").val().replace(/,/g, ''));
-$("#capacity_wir_total_net_profit").val(pendapatan_omset * (profit_margin / 100));
-
-//pendapatan wiraswasta lainnya (capacity wiraswasta)
-sum(".pendapatan-wiraswasta-lainnya", "#capacity_wir_total_lain")
-
-//total pendapatan wiraswasta (capacity wiraswasta)
-sum(".total-pendapatan-wiraswasta", "#capacity_wir_total_nett_income")
-
-//pengeluaran wiraswasta (capacity wiraswasta)
-sum(".pengeluaran-wiraswasta", "#capacity_wir_total_biaya_outcome")
-
-//hutang wiraswasta (capacity wiraswasta)
-sum(".hutang-wiraswasta", "#capacity_wir_total_hutang")
-
-
-//kelebihan pendapatan (capacity wiraswasta)
-var total_pendapatan_wiraswasta = $("#capacity_wir_total_nett_income").val().replace(/,/g, "");
-var total_pengeluaran_wiraswasta = $("#capacity_wir_total_outcome").val().replace(/,/g, "");
-$("#capacity_wir_nett_income").val(total_pendapatan_wiraswasta - total_pengeluaran_wiraswasta);
-
-
-//pendapatan karyawan (capacity)
-sum(".pendapatan-karyawan", "#capacity_karyawan_total_net_income")
-//pendapatan periodik karyawan (capacity)
-sum(".pendapatan-periodik-karyawan", "#capacity_karyawan_total_bonus")
-
-//pendapatan karyawan lainnya (capacity)
-sum(".pendapatan-karyawan-lainnya", "#capacity_karyawan_total_income_lainnya")
-
-//pengeluaran karyawan (capacity)
-sum(".pengeluaran-karyawan", "#capacity_karyawan_total_biaya_outcome")
-
-//kelebihan pendapatan (capacity karyawan)
-var total_pendapatan_karyawan = $("#capacity_karyawan_total_net_income").val().replace(/,/g,
-    "");
-var total_pengeluaran_karyawan = $("#capacity_karyawan_total_outcome").val().replace(/,/g, "");
-$("#capacity_karyawan_kelebihan_net_income").val(total_pendapatan_karyawan -
-    total_pengeluaran_karyawan);
-
-//hutang karyawan (capacity)
-sum(".hutang-karyawan", "#capacity_karyawan_total_hutang")
-
-//Aset konsumen (capital)
-sum(".aset-konsumen", "#capital_total_aset")
-})
 })
 </script>
 
@@ -5168,7 +5162,7 @@ $(document).ready(function() {
         moreUploadTag +=
             '<div class="form-group element text-size"><label for="upload_file"' +
             upload_number + '>Lampirkan Data ' + '</label>' + '<br>';
-        moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran"/>';
+        moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran[]"/>';
         moreUploadTag += ' <a class="btn btn-secondary float-right" href="javascript:del_file(' +
             upload_number +
             ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' +
