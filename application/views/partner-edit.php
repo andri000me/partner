@@ -542,7 +542,8 @@
                                                     <label>NPWP Penyedia Jasa</label>
                                                     <input type="text"
                                                         class="form-control placement text-size number-only" id=""
-                                                        name="npwp_penyedia_jasa" value="" required
+                                                        name="npwp_penyedia_jasa"
+                                                        value="<?= $data->npwp_penyedia_jasa ?>" required
                                                         placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
                                                 </div>
                                             </div>

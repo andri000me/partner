@@ -208,6 +208,7 @@ class Leads extends CI_Controller
                 'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
                 'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
                 'activity_marketing'    => !empty($post['activity_marketing']) ? $post['activity_marketing'] : NULL,
+                'jenis_kelamin'    => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
 
                 //Timestamp
                 'created_at'        => date('Y-m-d H:i:s'),
@@ -416,6 +417,7 @@ class Leads extends CI_Controller
             'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
             'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
             'activity_marketing'    => !empty($post['activity_marketing']) ? $post['activity_marketing'] : NULL,
+            'jenis_kelamin'    => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),
@@ -604,6 +606,7 @@ class Leads extends CI_Controller
             'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
             'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
             'activity_marketing'    => !empty($post['activity_marketing']) ? $post['activity_marketing'] : NULL,
+            'jenis_kelamin'    => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
 
             //Timestamp
             // 'created_at'        => date('Y-m-d H:i:s'),

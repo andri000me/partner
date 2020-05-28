@@ -169,15 +169,17 @@
                                     <div class="form-group text-size form-left">
                                         <label>Jenis Kelamin</label><br>
                                         <div class="form-check form-check-inline mt-2">
-                                            <input class="form-check-input" type="radio" name="" disabled id=""
-                                                value="Laki - Laki">
+                                            <input class="form-check-input" type="radio" name="jenis_kelamin"
+                                                <?= $leads->jenis_kelamin == 'Laki - Laki' ? 'checked' : '' ?> disabled
+                                                id="" value="Laki - Laki">
                                             <label class="form-check-label">
                                                 Laki - Laki
                                             </label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="" disabled id=""
-                                                value="Perempuan">
+                                            <input class="form-check-input" type="radio" name="jenis_kelamin"
+                                                <?= $leads->jenis_kelamin == 'Perempuan' ? 'checked' : '' ?> disabled
+                                                id="" value="Perempuan">
                                             <label class="form-check-label">
                                                 Perempuan
                                             </label>
