@@ -790,7 +790,9 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <hr>
+
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
@@ -855,7 +857,7 @@
                                 <div class="text-size">Telepon</div>
                             </th>
                             <th>
-                                <div class="text-size">Action</div>
+                                <div class="text-size"> </div>
                             </th>
                         </tr>
                     </thead>
@@ -877,7 +879,7 @@
                                         data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>"
                                         data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>"
                                         data-bidang="<?= $data->bidang_usaha ?>"
-                                        data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
+                                        data-bentuk="<?= $data->bentuk_usaha ?>"><b>Pilih</b></a></center>
                             </td>
                         </tr>
                         <?php } ?>

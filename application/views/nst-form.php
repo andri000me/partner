@@ -14,9 +14,10 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
-			<div class="ml-4 mr-4 mt-3 mb-3">
-				<h5 class="alert-heading"><i class="fas fa-info-circle"></i> Hati - hati dalam menginput data</h5>
-				<p>Cari data menggunakan tombol "Cari" di bawah
+			<div class="topcaption">
+				<p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
+						menginput data</b></p>
+				<p class="captiontext">Cari data menggunakan tombol "Cari" di bawah
 					ini.</p>
 			</div>
 		</div>
@@ -100,7 +101,7 @@
 						<tr>
 							<th>Nama Konsumen</th>
 							<th>Leads ID</th>
-							<th>Aksi</th>
+							<th> </th>
 						</tr>
 					</thead>
 					<tbody>
@@ -110,7 +111,7 @@
 								<td><?= $lead->lead_id ?></td>
 								<td>
 									<center>
-										<button class="btn btn-primary pilih-leads radius" id="search" data-id="<?= $lead->id_leads ?>" data-konsumen="<?= $lead->nama_konsumen ?>" data-leads="<?= $lead->lead_id ?>" data-requester="<?= $lead->name ?>" data-cabang="<?= $lead->nama_cabang ?>" data-produk="<?= $lead->produk ?>">Pilih</button>
+										<button class="btn btn-primary pilih-leads radius" id="search" data-id="<?= $lead->id_leads ?>" data-konsumen="<?= $lead->nama_konsumen ?>" data-leads="<?= $lead->lead_id ?>" data-requester="<?= $lead->name ?>" data-cabang="<?= $lead->nama_cabang ?>" data-produk="<?= $lead->produk ?>"><b>Pilih</b></button>
 									</center>
 								</td>
 							</tr>

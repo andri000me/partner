@@ -35,7 +35,7 @@
                             <th>Produk</th>
                             <th>Requester</th>
                             <th>Cabang</th>
-                            <th>Lihat Data</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,7 +60,7 @@
                                     <?= $mapping_leads->nama_cabang ?>
                                 </td>
                                 <td>
-                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads/edit_database/' . $mapping_leads->id_leads) ?>">Detail</a>
+                                    <center><a class="btn btn-primary text-size radius" href="<?= base_url('leads/edit_database/' . $mapping_leads->id_leads) ?>"><b>Detail</b></a>
                                     </center>
                                 </td>
                             </tr>

@@ -88,7 +88,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size leads form-border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <select class="form-control text-size leads form-border form-radius" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -134,7 +134,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size leads form-border" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
+                                                    <select class="form-control text-size leads form-border form-radius" name="leads_transfer[<?= $data->mapping_id_leads ?>]" id="transfer_to" data-data="<?= $data->mapping_id_leads ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -186,7 +186,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size partner form-border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <select class="form-control text-size partner form-border form-radius" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -236,7 +236,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size partner form-border" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
+                                                    <select class="form-control text-size partner form-border form-radius" name="partner_transfer[<?= $data->mapping_id_partner ?>]" id="transfer_to" data-data="<?= $data->mapping_id_partner ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
@@ -294,7 +294,7 @@
                                             </td>
                                             <td data-search="<?= $data->name ?>">
                                                 <center>
-                                                    <select class="form-control text-size agent form-border" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
+                                                    <select class="form-control text-size agent form-border form-radius" name="agent_transfer[<?= $data->id_agent ?>]" id="transfer_to" data-data="<?= $data->id_agent ?>">
                                                         <option selected disabled value="">Pilih Penginput</option>
                                                         <?php foreach ($users->result() as $user) { ?>
                                                             <option <?= $user->id_user == $data->user_id ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>

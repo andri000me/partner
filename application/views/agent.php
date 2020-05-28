@@ -49,9 +49,7 @@
                             <th>
                                 PKS
                             </th>
-                            <th>
-                                Action
-                            </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,45 +71,29 @@
                                     <?= $agent->no_ktp ?>
                                 </td>
                                 <td>
-                                    <center>
-                                        <?php if ($agent->status_ticket == 6) { ?>
-                                            <h6><span class="badge badge-primary" style="width: 90px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Teraktivasi</p>
-                                                </span></h6>
-                                        <?php } else if ($agent->status_ticket == 5) { ?>
-                                            <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Terverifikasi</p>
-                                                </span></h6>
-                                        <?php } else if ($agent->status_ticket == 4) { ?>
-                                            <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Ditolak</p>
-                                                </span></h6>
-                                        <?php } else if ($agent->status_ticket <= 2) { ?>
-                                            <h6><span class="badge badge-secondary" style="width: 140px; height: 30px;">
-                                                    <p style="margin-top: 2px;">Belum Terverifikasi</p>
-                                                </span></h6>
-                                        <?php } ?>
-                                    </center>
+                                    <?php if ($agent->status_ticket == 6) { ?>
+                                        <b class="text-primary">Teraktivasi</b>
+                                    <?php } else if ($agent->status_ticket == 5) { ?>
+                                        <b class="text-success">Terverifikasi</b>
+                                    <?php } else if ($agent->status_ticket == 4) { ?>
+                                        <b class="text-danger">Ditolak</b>
+                                    <?php } else if ($agent->status_ticket <= 2) { ?>
+                                        <b class="text-secondary">Belum Terverifikasi</b>
+                                    <?php } ?>
                                 </td>
                                 <td>
-                                    <center>
-                                        <?php if ($agent->ttd_pks == 'Ya') { ?>
-                                            <h6><span class="badge badge-success" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px">PKS</p>
-                                                </span></h6>
-                                        <?php } else { ?>
-                                            <h6><span class="badge badge-danger" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px">Non-PKS</p>
-                                                </span></h6>
-                                        <?php } ?>
-                                    </center>
+                                    <?php if ($agent->ttd_pks == 'Ya') { ?>
+                                        <b class="text-success">PKS</b>
+                                    <?php } else { ?>
+                                        <b class="text-danger">Non-PKS</b>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($agent->status == 'draft') { ?>
-                                        <center><a class="btn btn-secondary text-size radius" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>">Lanjutkan</a></center>
+                                        <center><a class="btn btn-secondary text-size radius" href="<?= base_url('Agent/edit/' . $agent->id_agent) ?>"><b>Lanjutkan</b></a></center>
                                     <?php } ?>
                                     <?php if ($agent->status == 'lengkap') { ?>
-                                        <center><a class="btn btn-primary text-size radius" href="<?= base_url('Agent/detail/' . $agent->id_agent) ?>" style="width: 90px;">Detail</a></center>
+                                        <center><a class="btn btn-primary text-size radius" href="<?= base_url('Agent/detail/' . $agent->id_agent) ?>"><b>Detail</b></a></center>
                                     <?php } ?>
                                 </td>
                             </tr>

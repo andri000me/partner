@@ -562,7 +562,8 @@
                                                         <label>NPWP Penyedia Jasa</label>
                                                         <input type="text"
                                                             class="form-control placement text-size number-only" id=""
-                                                            name="npwp_penyedia_jasa" value="<?= set_value('npwp_penyedia_jasa') ?>" required
+                                                            name="npwp_penyedia_jasa"
+                                                            value="<?= set_value('npwp_penyedia_jasa') ?>" required
                                                             placeholder="0000 0000 0000 000" minlength="15"
                                                             maxlength="15">
                                                     </div>
@@ -716,7 +717,7 @@
                                 <div class="text-size">Telepon</div>
                             </th>
                             <th>
-                                <div class="text-size">Action</div>
+                                <div class="text-size"> </div>
                             </th>
                         </tr>
                     </thead>
@@ -738,7 +739,7 @@
                                         data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>"
                                         data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>"
                                         data-bidang="<?= $data->bidang_usaha ?>"
-                                        data-bentuk="<?= $data->bentuk_usaha ?>">Pilih</a></center>
+                                        data-bentuk="<?= $data->bentuk_usaha ?>"><b>Pilih</b></a></center>
                             </td>
                         </tr>
                         <?php } ?>

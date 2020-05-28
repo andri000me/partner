@@ -443,12 +443,11 @@
         $('#attachMore').click(function() {
             //add more file
             var moreUploadTag = '';
-            moreUploadTag += '<div class="form-group element text-size ml-3 mr-3"><label for="upload_file' +
+            moreUploadTag += '<div class="form-group element text-size"><label for="upload_file' +
                 upload_number + '">Lampirkan Data ' + '</label>' + '<br>';
-            moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran[]"/>' +
-                '<br><br>';
-            moreUploadTag += ' <a class="btn btn-danger" href="javascript:del_file(' + upload_number +
-                ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' +
+            moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran[]"/>';
+            moreUploadTag += ' <a class="btn btn-secondary float-right text-size" href="javascript:del_file(' + upload_number +
+                ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")"><b>Hapus</b>' +
                 '</a></div>' + '<hr>';
             $('<dl id="delete_file' + upload_number + '">' + moreUploadTag + '</dl>').fadeIn('slow')
                 .appendTo('#moreImageUpload');

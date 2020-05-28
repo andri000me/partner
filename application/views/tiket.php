@@ -42,7 +42,7 @@
                             <th>Aktivitas Cabang</th>
                             <th>Status</th>
                             <th>Terakhir Diubah</th>
-                            <th>Aksi</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,48 +63,34 @@
                                 </td>
                                 <td>
                                     <?php if ($ticket->status_approval == 0) { ?>
-                                        <h6><span class="badge badge-secondary" style="width: 210px; height: 30px;">
-                                                <p style="margin-top: 2px;">Menunggu Persetujuan Head</p>
-                                            </span></h6>
+                                        <b class="text-secondary">Menunggu Persetujuan Head</b>
                                     <?php } else if ($ticket->status_approval == 1) { ?>
-                                        <h6><span class="badge badge-secondary" style="width: 230px; height: 30px;">
-                                                <p style="margin-top: 2px;">Menunggu Persetujuan Manager</p>
-                                            </span></h6>
+                                        <b class="text-secondary">Menunggu Persetujuan Manager</b>
                                     <?php } else if ($ticket->status_approval == 2) { ?>
-                                        <h6><span class="badge badge-secondary" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px;">Pending HO</p>
-                                            </span></h6>
+                                        <b class="text-secondary">Pending HO</b>
                                     <?php } else if ($ticket->status_approval == 3) { ?>
-                                        <h6><span class="badge badge-warning" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px;">In Progress</p>
-                                            </span></h6>
+                                        <b class="text-warning">In Progress</b>
                                     <?php } else if ($ticket->status_approval == 4) { ?>
-                                        <h6><span class="badge badge-danger" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px;">Ditolak</p>
-                                            </span></h6>
+                                        <b class="text-danger">Ditolak</b>
                                     <?php } else if ($ticket->status_approval == 5) { ?>
-                                        <h6><span class="badge badge-success" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px;">Disetujui</p>
-                                            </span></h6>
+                                        <b class="text-success">Disetujui</b>
                                     <?php } else if ($ticket->status_approval == 6) { ?>
-                                        <h6><span class="badge badge-primary" style="width: 100px; height: 30px;">
-                                                <p style="margin-top: 2px;">Diaktivasi</p>
-                                            </span></h6>
+                                        <b class="text-primary">Diaktivasi</b>
                                     <?php } ?>
                                 </td>
                                 <td><?= $ticket->tanggal_diubah ?></td>
                                 <td>
                                     <center>
                                         <?php if ($ticket->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('Agent/detail/' . $ticket->agent_id) ?>" class="btn btn-primary text-size radius">Detail</a>
+                                            <a href="<?= base_url('Agent/detail/' . $ticket->agent_id) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
                                         <?php } else if ($ticket->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $ticket->partner_id) ?>" class="btn btn-primary text-size radius">Detail</a>
+                                            <a href="<?= base_url('partner/detail/' . $ticket->partner_id) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
                                         <?php } else if ($ticket->id_leads != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius">Detail</a>
+                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
                                         <?php } else if ($ticket->id_nst != NULL) { ?>
-                                            <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius">Detail</a>
+                                            <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
                                         <?php } else if ($ticket->id_approval_bonus != NULL) { ?>
-                                            <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius">Detail</a>
+                                            <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
                                         <?php } ?>
                                         <!-- <button class="btn btn-primary">Detail</button> -->
                                     </center>

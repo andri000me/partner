@@ -20,14 +20,14 @@
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <h4 class="mt-0 mb-4 header-title"><b>Tabel List Approval Bonus</b></h4>
-                <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Leads ID</th>
                             <th>Nama Konsumen</th>
                             <th>Produk</th>
                             <th>Tanggal Dibuat</th>
-                            <th>Action</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,7 +46,7 @@
                                     <?= $approval->created_at ?>
                                 </td>
                                 <td>
-                                    <center><a href="<?= base_url('approval_bonus/edit/' . $approval->id_approval_bonus) ?>" class="btn btn-primary text-size radius">Detail</a></center>
+                                    <center><a href="<?= base_url('approval_bonus/edit/' . $approval->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a></center>
                                 </td>
                             <?php } ?>
                             </tr>

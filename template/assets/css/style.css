@@ -3776,6 +3776,13 @@ input[data-readonly] {
 	width: 90px;
 }
 
+.form-radius {
+	border-top-right-radius: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+}
+
 .card-margin-1 {
 	margin-left: 10px;
 	margin-right: 10px;
@@ -3851,11 +3858,6 @@ input[data-readonly] {
 	top: 20px;
 }
 
-/* #leftcaption {
-	width: 100%;
-	z-index: 1;
-} */
-
 .gede {
 	font-size: 20px;
 }
@@ -3884,6 +3886,14 @@ input[data-readonly] {
 
 .captiontext {
 	font-size: 14px;
+}
+
+.pdf-cir {
+	width: 35px;
+	border-top-right-radius: 50px;
+	border-top-left-radius: 50px;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
 }
 
 /* .dataTables_filter {
