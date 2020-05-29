@@ -433,7 +433,6 @@
                                 <div class="col-md-12">
                                     <h4 class="mt-0 header-title mb-4"><b>Data Lampiran</b></h4>
 
-
                                     <hr>
                                 </div>
                                 <div class="col-md-12">
@@ -448,9 +447,9 @@
                                         <hr>
                                         <div id="moreImageUpload"></div>
                                         <div class="clear"></div>
-                                        <div id="moreImageUploadLink" style="display:none;" class="float-right">
-                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMore"><b>Tambah Form lampiran</b></a>
-                                            <button class="btn btn-primary mr-3"><b>Simpan</b></button>
+                                        <div id="moreImageUploadLink" class="float-right mt-3">
+                                            <a class="btn btn-secondary mr-1 text-size" href="javascript:void(0);" id="attachMore"><b>Tambah Form</b></a>
+                                            <button class="btn btn-primary text-size"><b>Simpan</b></button>
                                         </div>
                                     </form>
                                 </div>
@@ -903,7 +902,7 @@
                                 <div class="text-size">Produk</div>
                             </th>
                             <th>
-                                <div class="text-size">Aksi</div>
+                                <div class="text-size"> </div>
                             </th>
                         </tr>
                     </thead>
@@ -923,7 +922,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads radius" data-mapping="<?= $mapping->id_leads ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-leads radius" data-mapping="<?= $mapping->id_leads ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>"><b>Pilih</b></button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -951,7 +950,7 @@
                             <th>Kategori Produk</th>
                             <th>Telepon</th>
                             <th>Status</th>
-                            <th>Aksi</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -962,23 +961,17 @@
                                 <td><?= $partner->telepon ?></td>
                                 <td>
                                     <?php if ($partner->status == 'draft') { ?>
-                                        <span class="badge badge-secondary" style="width: 60px; height: 30px;">
-                                            <p style="margin-top: 5px;">Draft</p>
-                                        </span>
+                                        <b class="text-secondary">Draft</b>
                                     <?php } ?>
                                     <?php if ($partner->status == 'lengkap') { ?>
-                                        <span class="badge badge-success" style="width: 60px; height: 30px;">
-                                            <p style="margin-top: 5px;">Lengkap</p>
-                                        </span>
+                                        <b class="text-success">Lengkap</b>
                                     <?php } ?>
                                     <?php if ($partner->status == 'mapping') { ?>
-                                        <span class="badge badge-secondary" style="width: 60px; height: 30px;">
-                                            <p style="margin-top: 5px;">Mapping</p>
-                                        </span>
+                                        <b class="text-secondary">Mapping</b>
                                     <?php } ?>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-partner radius" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-partner radius" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>"><b>Pilih</b></button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -1004,7 +997,7 @@
                         <tr>
                             <th>Nama Lengkap</th>
                             <th>Telepon</th>
-                            <th>Aksi</th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1013,7 +1006,7 @@
                                 <td><?= $agent->nama_lengkap ?></td>
                                 <td><?= $agent->telepon ?></td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-agent radius" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>">Pilih</button></center>
+                                    <center><button class="btn btn-primary pilih-agent radius" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>"><b>Pilih</b></button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -1193,7 +1186,14 @@
 <script>
     $('.kontrak, .pasangan').hide();
 
+    // Status Konsumen
+    status_konsumen();
+
     $('#status_konsumen').change(function() {
+        status_konsumen();
+    })
+
+    function status_konsumen() {
         if ($('#status_konsumen').val() == "RO Active") {
             $('#soa').val('RO')
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
@@ -1201,11 +1201,18 @@
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
             $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-        } else {}
+        }
+    }
+    // Status Konsumen
 
-    })
+    // status pernikahan
+    status_pernikahan();
 
     $('#status_pernikahan').change(function() {
+        status_pernikahan();
+    })
+
+    function status_pernikahan() {
         if ($('#status_pernikahan').val() == "Sudah Menikah") {
             $('.pasangan').show();
             $('#nama_pasangan').attr('required', 'required');
@@ -1213,6 +1220,6 @@
             $('.pasangan').hide();
             $('#nama_pasangan').removeAttr('required', ' ');
         }
-
-    })
+    }
+    // status pernikahan
 </script>
