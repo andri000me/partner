@@ -1631,22 +1631,29 @@
                                             <label>Jumlah Karyawan</label>
                                             <select class="form-control text-size" name="condition_wir_jumlah_karyawan"
                                                 id="" required>
-                                                <option selected value="">Pilih Kategori Jenis
-                                                    Bangunan
+                                                <option selected value="">Pilih Jumlah Karyawan
                                                 </option>
-                                                <option <?= $data->condition_wir_jumlah_karyawan ?> value=" 1 - 4"> 1 -
-                                                    4
+                                                <option
+                                                    <?= $data->condition_wir_jumlah_karyawan == '1 - 4' ? 'selected' : ''  ?>
+                                                    value="1 - 4"> 1 - 4
                                                 </option>
-                                                <option <?= $data->condition_wir_jumlah_karyawan ?> value="5 - 19">5 -
+                                                <option
+                                                    <?= $data->condition_wir_jumlah_karyawan == '5 - 19' ? 'selected' : ''  ?>
+                                                    value="5 - 19">5 -
                                                     19
                                                 </option>
-                                                <option <?= $data->condition_wir_jumlah_karyawan ?> value="20 -99">20
-                                                    -99
+                                                <option
+                                                    <?= $data->condition_wir_jumlah_karyawan == '20 - 99' ? 'selected' : ''  ?>
+                                                    value="20 - 99">20 - 99
                                                 </option>
-                                                <option <?= $data->condition_wir_jumlah_karyawan ?> value="100 - 499">
+                                                <option
+                                                    <?= $data->condition_wir_jumlah_karyawan == '100 - 499' ? 'selected' : ''  ?>
+                                                    value="100 - 499">
                                                     100 - 499
                                                 </option>
-                                                <option <?= $data->condition_wir_jumlah_karyawan ?> value="> 500">> 500
+                                                <option
+                                                    <?= $data->condition_wir_jumlah_karyawan == '> 500' ? 'selected' : ''  ?>
+                                                    value="> 500">> 500
                                                 </option>
                                             </select>
                                         </div>
@@ -1675,40 +1682,40 @@
                                         <div class="form-group form-right">
                                             <label>Pekerjaan Pasangan</label>
                                             <select class="form-control text-size"
-                                                name="condition_wir_tempat_kerja_pasangan"
-                                                id="condition_wir_tempat_kerja_pasangan" required>
+                                                name="condition_wir_pekerjaan_pasangan"
+                                                id="condition_wir_pekerjaan_pasangan" required>
                                                 <option selected value="">Pilih Pekerjaan
                                                 </option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'Karyawan Swasta - Tetap' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Tetap' ? 'selected' : '' ?>
                                                     value="Karyawan Swasta - Tetap">
                                                     Karyawan Swasta - Tetap</option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'Karyawan Swasta - Kontrak' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Kontrak' ? 'selected' : '' ?>
                                                     value="Karyawan Swasta - Kontrak">
                                                     Karyawan Swasta - Kontrak</option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'PNS / ASN - Tetap' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Tetap' ? 'selected' : '' ?>
                                                     value="PNS / ASN - Tetap">PNS / ASN -
                                                     Tetap</option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'PNS / ASN - Honorer < 5th' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Honorer < 5th' ? 'selected' : '' ?>
                                                     value="PNS / ASN - Honorer < 5th">PNS /
                                                     ASN - Honorer < 5th</option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'PNS / ASN - Honorer > 5th' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Honorer > 5th' ? 'selected' : '' ?>
                                                     value="PNS / ASN - Honorer > 5th">PNS / ASN -
                                                     Honorer > 5th</option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'Wiraswasta < 2th' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'Wiraswasta < 2th' ? 'selected' : '' ?>
                                                     value="Wiraswasta < 2th">Wiraswasta < 2th</option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'Wiraswasta > 2th' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'Wiraswasta > 2th' ? 'selected' : '' ?>
                                                     value="Wiraswasta > 2th">
                                                     Wiraswasta > 2th
                                                 </option>
                                                 <option
-                                                    <?= $data->condition_wir_tempat_kerja_pasangan == 'Profesi Beresiko' ? 'selected' : '' ?>
+                                                    <?= $data->condition_wir_pekerjaan_pasangan == 'Profesi Beresiko' ? 'selected' : '' ?>
                                                     value="Profesi Beresiko">Profesi
                                                     Beresiko</option>
                                             </select>
@@ -1721,7 +1728,8 @@
                                             <label>Penjelasan Profesi Beresiko</label>
                                             <input type="text" class="form-control text-size"
                                                 name="condition_wir_profesi_beresiko_pasangan"
-                                                id="condition_wir_profesi_beresiko_pasangan" value=""
+                                                id="condition_wir_profesi_beresiko_pasangan"
+                                                value="<?= $data->condition_wir_profesi_beresiko_pasangan ?>"
                                                 placeholder="Penjelasan Profesi Beresiko" />
                                         </div>
                                     </div>
@@ -1730,16 +1738,20 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-left">
                                             <label>Tempat Kerja / Usaha pasangan</label>
-                                            <input type="text" class="form-control text-size" name="condition_" id=""
+                                            <input type="text" class="form-control text-size"
+                                                name="condition_wir_tempat_kerja_pasangan"
+                                                id="condition_wir_tempat_kerja_pasangan"
+                                                value="<?= $data->condition_wir_tempat_kerja_pasangan ?>"
                                                 placeholder="Tempat Kerja / Usaha pasangan" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group form-right">
-                                            <label>Tempat Kerja / Usaha pasangan</label>
+                                            <label>Kondisi Usaha</label>
                                             <input type="text" class="form-control text-size"
                                                 name="condition_wir_kondisi_usaha"
-                                                value="<?= $data->condition_wir_kondisi_usaha ?>" id=""
+                                                value="<?= $data->condition_wir_kondisi_usaha ?>"
+                                                id="condition_wir_kondisi_usaha"
                                                 placeholder="Jelaskan Kondisi Usaha Saat ini" />
                                         </div>
                                     </div>
@@ -3265,8 +3277,10 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size text-size form-border" name=""
-                                                            value="" id="" required placeholder="Status Barang 1" />
+                                                            class="form-control text-size text-size form-border"
+                                                            name="capital_status_barang1"
+                                                            value="<?= $data->capital_status_barang1 ?>" id="" required
+                                                            placeholder="Status Barang 1" />
                                                     </td>
                                                     <td>
                                                         <input type="text"
@@ -3284,8 +3298,10 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size text-size form-border" name=""
-                                                            value="" id="" required placeholder="Status Barang 2" />
+                                                            class="form-control text-size text-size form-border"
+                                                            name="capital_status_barang2"
+                                                            value="<?= $data->capital_status_barang2 ?>" id="" required
+                                                            placeholder="Status Barang 2" />
                                                     </td>
                                                     <td>
                                                         <input type="text"
@@ -3303,8 +3319,10 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size text-size form-border" name=""
-                                                            value="" id="" required placeholder="Status Barang 3" />
+                                                            class="form-control text-size text-size form-border"
+                                                            name="capital_status_barang3"
+                                                            value="<?= $data->capital_status_barang3 ?>" id="" required
+                                                            placeholder="Status Barang 3" />
                                                     </td>
                                                     <td>
                                                         <input type="text"
@@ -3322,8 +3340,10 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size text-size form-border" name=""
-                                                            value="" id="" required placeholder="Status Barang 4" />
+                                                            class="form-control text-size text-size form-border"
+                                                            name="capital_status_barang4"
+                                                            value="<?= $data->capital_status_barang4 ?>" id="" required
+                                                            placeholder="Status Barang 4" />
                                                     </td>
                                                     <td>
                                                         <input type="text"
@@ -3341,8 +3361,10 @@
                                                     </td>
                                                     <td>
                                                         <input type="text"
-                                                            class="form-control text-size text-size form-border" name=""
-                                                            value="" id="" required placeholder="Status Barang 5" />
+                                                            class="form-control text-size text-size form-border"
+                                                            name="capital_status_barang5"
+                                                            value="<?= $data->capital_status_barang5 ?>" id="" required
+                                                            placeholder="Status Barang 5" />
                                                     </td>
                                                     <td>
                                                         <input type="text"
@@ -4291,20 +4313,22 @@
     //         $('#condition_wir_profesi_beresiko').removeAttr('required', ' ');
     //     }
     // })
-
-    resiko_wir_pasangan();
-
-    function condition_wir_tempat_kerja_pasangan() {
+    $(document).ready(function() {
         resiko_wir_pasangan();
-    }
+
+    })
+
+    $('#condition_wir_pekerjaan_pasangan').change(function() {
+        resiko_wir_pasangan();
+    })
 
     function resiko_wir_pasangan() {
-        if ($('#condition_wir_tempat_kerja_pasangan').val() == "Profesi Beresiko") {
+        if ($('#condition_wir_pekerjaan_pasangan').val() == "Profesi Beresiko") {
             $('.resiko-pasangan').show();
             $('#condition_wir_profesi_beresiko_pasangan').attr('required', 'required');
         } else {
             $('.resiko-pasangan').hide();
-            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', ' ');
+            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required');
         }
     }
 
@@ -4571,8 +4595,8 @@
                 beforeSend: function() {
                     // console.log('LOADING')
                     if (spinner.length == 0) {
-                        $("[name='" + selector + "']").after(
-                            `<div class="spinner-border spinner-border-sm mt-1 text-primary" data-selector="${selector}"><span class="sr-only">Loading...</span></div>`
+                        $("[name='" + selector + "']").before(
+                            `<div class="spinner-border spinner-border-sm text-primary" data-selector="${selector}"><span class="sr-only">Loading...</span></div>`
                         )
                     }
                 },

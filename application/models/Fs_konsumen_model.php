@@ -13,6 +13,7 @@ class Fs_konsumen_model extends CI_Model
     public function update($data, $where)
     {
         $this->db->update('fs_konsumen', $data, $where);
+        // $this->db->update('fs_konsumen', $data_leads, $where);
         // return $data;
     }
 
