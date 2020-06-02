@@ -8,16 +8,55 @@
                 <li class="menu-title">Informasi</li>
                 <li>
                     <a href="#" class="waves-effect">
-                        <i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span>
+                        <i class="fas fa-th-large"></i> <span> Dashboard </span>
                     </a>
                 </li>
 
                 <li>
                     <a href="<?= base_url('profile') ?>" class="waves-effect">
-                        <i class="mdi ion-person"></i><span> Profile </span>
+                        <i class="fas fa-user-alt"></i><span> Profile </span>
                     </a>
                 </li>
-                <?php if ($this->fungsi->module()->branch_active == 1) { ?>
+
+                <li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-edit"></i><span> Admin
+                            <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                        </span></a>
+                    <ul class="submenu">
+                        <?php if ($this->fungsi->module()->branch_active == 1) { ?>
+
+                            <li>
+                                <a href="<?= base_url('branch') ?>" class="waves-effect">
+                                    <span>Branch </span>
+                                </a>
+                            </li>
+
+                        <?php } ?>
+                        <?php if ($this->fungsi->module()->user_active == 1) { ?>
+                            <li>
+                                <a href="<?= base_url('') ?>" class="waves-effect">
+                                    <span>List Karyawan</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if ($this->fungsi->module()->user_active == 1) { ?>
+                            <li>
+                                <a href="<?= base_url('user') ?>" class="waves-effect">
+                                    <span>List User</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        <?php if ($this->fungsi->module()->transfer_active == 1) { ?>
+
+                            <li>
+                                <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
+                                    <span> Transfer Data </span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </li>
+                <!-- <?php if ($this->fungsi->module()->branch_active == 1) { ?>
 
                     <li>
                         <a href="<?= base_url('branch') ?>" class="waves-effect">
@@ -32,7 +71,7 @@
                             <i class="fas fa-users"></i><span>List User</span>
                         </a>
                     </li>
-                <?php } ?>
+                <?php } ?> -->
 
                 <li>
                     <a href="<?= base_url('notification') ?>" class="waves-effect">
@@ -59,8 +98,8 @@
                                 <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                             </span></a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url('leads/leads_database') ?>">Database</a></li>
-                            <li><a href="<?= base_url('leads') ?>">Prospect</a></li>
+                            <li><a href="<?= base_url('leads/leads_database') ?>" class="waves-effect">Database</a></li>
+                            <li><a href="<?= base_url('leads') ?>" class="waves-effect">Prospect</a></li>
                         </ul>
                     </li>
                     <li>
@@ -75,9 +114,9 @@
                                 <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                             </span></a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url('partner/index_mapping') ?>">Mapping Merchant</a></li>
-                            <li><a href="<?= base_url('partner') ?>">Daftar Merchant</a></li>
-                            <li><a href="<?= base_url('agent') ?>">Agent / BA</a></li>
+                            <li><a href="<?= base_url('partner/index_mapping') ?>" class="waves-effect">Mapping Merchant</a></li>
+                            <li><a href="<?= base_url('partner') ?>" class="waves-effect">Daftar Merchant</a></li>
+                            <li><a href="<?= base_url('agent') ?>" class="waves-effect">Agent / BA</a></li>
                         </ul>
                     </li>
                 <?php } ?>
@@ -90,20 +129,20 @@
                                 <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
                             </span></a>
                         <ul class="submenu">
-                            <li><a href="<?= base_url('assignment/leads') ?>">Leads Database</a></li>
-                            <li><a href="<?= base_url('assignment/prospect') ?>">Leads Prospect</a></li>
-                            <!-- <li><a href="<?= base_url('assignment/nst') ?>">NST</a></li> -->
+                            <li><a href="<?= base_url('assignment/leads') ?>" class="waves-effect">Leads Database</a></li>
+                            <li><a href="<?= base_url('assignment/prospect') ?>" class="waves-effect">Leads Prospect</a></li>
+                            <!-- <li><a href="<?= base_url('assignment/nst') ?>" class="waves-effect">NST</a></li> -->
                         </ul>
                     </li>
                 <?php } ?>
-                <?php if ($this->fungsi->module()->transfer_active == 1) { ?>
+                <!-- <?php if ($this->fungsi->module()->transfer_active == 1) { ?>
 
                     <li>
                         <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
                             <i class="fas fa-sync"></i> <span> Transfer Data </span>
                         </a>
                     </li>
-                <?php } ?>
+                <?php } ?> -->
 
                 <li class="menu-title">Bantuan HO</li>
 
