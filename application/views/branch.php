@@ -4,6 +4,7 @@
             <h4><b>Branch</b></h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
                 <li class="breadcrumb-item active">Branch</li>
             </ol>
         </div>
@@ -17,7 +18,7 @@
                 <h4 class="mt-0 header-title"><b>Tabel Cabang</b></h4>
                 <p class="text-muted m-b-30 text-size"></p>
                 <form action="<?= base_url('branch/update') ?>" method="post">
-                    <table id="datatable-buttons" class="table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <table id="" class="datatable table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                             <tr>
                                 <th>ID Cabang</th>

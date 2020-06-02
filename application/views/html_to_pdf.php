@@ -837,28 +837,34 @@
             <thead>
                 <tr>
                     <th>Nama Barang</th>
+                    <th>Status Barang</th>
                     <th>Nominal</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td><?= $data->capital_aset1 ?></td>
+                    <td><?= $data->capital_status_barang1 ?></td>
                     <td><?= $data->capital_harga1 ?></td>
                 </tr>
                 <tr>
                     <td><?= $data->capital_aset2 ?></td>
+                    <td><?= $data->capital_status_barang2 ?></td>
                     <td><?= $data->capital_harga2 ?></td>
                 </tr>
                 <tr>
                     <td><?= $data->capital_aset3 ?></td>
+                    <td><?= $data->capital_status_barang3 ?></td>
                     <td><?= $data->capital_harga3 ?></td>
                 </tr>
                 <tr>
                     <td><?= $data->capital_aset4 ?></td>
+                    <td><?= $data->capital_status_barang4 ?></td>
                     <td><?= $data->capital_harga4 ?></td>
                 </tr>
                 <tr>
                     <td><?= $data->capital_aset5 ?></td>
+                    <td><?= $data->capital_status_barang5 ?></td>
                     <td><?= $data->capital_harga5 ?></td>
                 </tr>
                 <tr>

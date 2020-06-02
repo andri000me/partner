@@ -102,6 +102,7 @@ class Fs_konsumen extends CI_Controller
 
             //kondisi konsumen (wiraswasta)
             'condition_wir_pekerjaan'                   => !empty($this->input->post('condition_wir_pekerjaan')) ? $this->input->post('condition_wir_pekerjaan') : NULL, 
+            'condition_wir_pekerjaan_pasangan'           => !empty($this->input->post('condition_wir_pekerjaan_pasangan')) ? $this->input->post('condition_wir_pekerjaan_pasangan') : NULL, 
             'condition_wir_profesi_beresiko'            => !empty($this->input->post('condition_wir_profesi_beresiko')) ? $this->input->post('condition_wir_profesi_beresiko') : NULL, 
             'condition_wir_tempat_kerja_pasangan'       => !empty($this->input->post('condition_wir_tempat_kerja_pasangan')) ? $this->input->post('condition_wir_tempat_kerja_pasangan') : NULL,
             'condition_wir_profesi_beresiko_pasangan'   => !empty($this->input->post('condition_wir_profesi_beresiko_pasangan')) ? $this->input->post('condition_wir_profesi_beresiko_pasangan') : NULL, 
@@ -217,14 +218,19 @@ class Fs_konsumen extends CI_Controller
             'capital_alamat_bkr_ktp'        => !empty($this->input->post('capital_alamat_bkr_ktp')) ? $this->input->post('capital_alamat_bkr_ktp') : NULL,
             'capital_alamat_bkr'            => !empty($this->input->post('capital_alamat_bkr')) ? $this->input->post('capital_alamat_bkr') : NULL,
             'capital_aset1'                 => !empty($this->input->post('capital_aset1')) ? $this->input->post('capital_aset1') : NULL,
+            'capital_status_barang1'                => !empty($this->input->post('capital_status_barang1')) ? $this->input->post('capital_status_barang1') : NULL,
             'capital_harga1'                => !empty($this->input->post('capital_harga1')) ? $this->input->post('capital_harga1') : NULL,
             'capital_aset2'                 => !empty($this->input->post('capital_aset2')) ? $this->input->post('capital_aset2') : NULL,
+            'capital_status_barang2'                => !empty($this->input->post('capital_status_barang2')) ? $this->input->post('capital_status_barang2') : NULL,
             'capital_harga2'                => !empty($this->input->post('capital_harga2')) ? $this->input->post('capital_harga2') : NULL,
             'capital_aset3'                 => !empty($this->input->post('capital_aset3')) ? $this->input->post('capital_aset3') : NULL,
+            'capital_status_barang3'                => !empty($this->input->post('capital_status_barang3')) ? $this->input->post('capital_status_barang3') : NULL,
             'capital_harga3'                => !empty($this->input->post('capital_harga3')) ? $this->input->post('capital_harga3') : NULL,
             'capital_aset4'                 => !empty($this->input->post('capital_aset4')) ? $this->input->post('capital_aset4') : NULL,
+            'capital_status_barang4'                => !empty($this->input->post('capital_status_barang4')) ? $this->input->post('capital_status_barang4') : NULL,
             'capital_harga4'                => !empty($this->input->post('capital_harga4')) ? $this->input->post('capital_harga4') : NULL,
             'capital_aset5'                 => !empty($this->input->post('capital_aset5')) ? $this->input->post('capital_aset5') : NULL,
+            'capital_status_barang5'                => !empty($this->input->post('capital_status_barang5')) ? $this->input->post('capital_status_barang5') : NULL,
             'capital_harga5'                => !empty($this->input->post('capital_harga5')) ? $this->input->post('capital_harga5') : NULL,
             'capital_total_aset'            => !empty($this->input->post('capital_total_aset')) ? $this->input->post('capital_total_aset') : NULL,
             

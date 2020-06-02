@@ -123,7 +123,7 @@
                                         <center>
                                             <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>"
                                                 class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                            <a href="<?= base_url('fs_konsumen/generate_pdf_html/.'. $fs_konsumen->id) ?>"
+                                            <a href="<?= base_url('fs_konsumen/generate_pdf_html/'. $fs_konsumen->id) ?>"
                                                 class="btn btn-danger text-size pdf-cir ml-2"><i
                                                     class="far fa-file-pdf fa-lg"></i></a>
                                         </center>
@@ -215,8 +215,8 @@
                                         <center>
                                             <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>"
                                                 class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                            <a href="#" class="btn btn-danger text-size pdf-cir ml-2"><i
-                                                    class="far fa-file-pdf fa-lg"></i></a>
+                                            <a href="<?= base_url('fs_konsumen/generate_pdf_html/'. $fs_konsumen->id) ?>"
+                                                class="far fa-file-pdf fa-lg"></i></a>
                                         </center>
                                     </td>
                                 </tr>
@@ -308,8 +308,8 @@
                                         <center>
                                             <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>"
                                                 class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                            <a href="#" class="btn btn-danger text-size pdf-cir ml-2"><i
-                                                    class="far fa-file-pdf fa-lg"></i></a>
+                                            <a href="<?= base_url('fs_konsumen/generate_pdf_html/'. $fs_konsumen->id) ?>"
+                                                class="far fa-file-pdf fa-lg"></i></a>
                                         </center>
                                     </td>
                                 </tr>
