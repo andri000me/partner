@@ -2,10 +2,11 @@
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
             <h4><b>Daftar Tiket</b></h4>
-            <ol class="breadcrumb">
+            <p class="text-muted m-b-30 text-size">Tabel berisi daftar data pengajuan support daricabang</p>
+            <!-- <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">Daftar Tiket</li>
-            </ol>
+            </ol> -->
         </div>
     </div>
 </div>
@@ -14,7 +15,7 @@
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="header-title mb-3"><b>Tabel Daftar Tiket</b></h4>
+                <!-- <h4 class="header-title mb-3"><b>Tabel Daftar Tiket</b></h4> -->
                 <div class="row">
                     <div class="col-md-2">
                         <div class="form-group">
@@ -24,8 +25,8 @@
                                 <option>Disetujui</option>
                                 <option>Ditolak</option>
                                 <option>Diaktivasi</option>
-                                <option>In Progress</option>
-                                <option>Pending HO</option>
+                                <!-- <option>In Progress</option> -->
+                                <option>Menunggu Persetujuan HO</option>
                                 <option>Menunggu Persetujuan Head</option>
                                 <option>Menunggu Persetujuan Manager</option>
                             </select>
@@ -37,11 +38,11 @@
                     <thead>
                         <tr>
                             <th>ID Tiket</th>
-                            <th>Requester</th>
+                            <th>Pemohon</th>
                             <th>Cabang</th>
-                            <th>Aktivitas Cabang</th>
+                            <th>Aktivitas</th>
                             <th>Status</th>
-                            <th>Terakhir Diubah</th>
+                            <th>Tanggal</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -82,17 +83,17 @@
                                 <td>
                                     <center>
                                         <?php if ($ticket->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('Agent/detail/' . $ticket->agent_id) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
+                                            <a href="<?= base_url('Agent/detail/' . $ticket->agent_id) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                         <?php } else if ($ticket->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $ticket->partner_id) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
+                                            <a href="<?= base_url('partner/detail/' . $ticket->partner_id) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                         <?php } else if ($ticket->id_leads != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
+                                            <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                         <?php } else if ($ticket->id_nst != NULL) { ?>
-                                            <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
+                                            <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                         <?php } else if ($ticket->id_approval_bonus != NULL) { ?>
-                                            <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a>
+                                            <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                         <?php } ?>
-                                        <!-- <button class="btn btn-primary">Detail</button> -->
+                                        <!-- <button class="btn btn-primary">Lihat</button> -->
                                     </center>
                                 </td>
                             </tr>

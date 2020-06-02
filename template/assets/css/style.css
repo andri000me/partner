@@ -3885,7 +3885,7 @@ input[data-readonly] {
 }
 
 .captiontext {
-	font-size: 14px;
+	font-size: 12px;
 }
 
 .pdf-cir {
@@ -4170,7 +4170,7 @@ input[data-readonly] {
 	}
 
 	.captiontext {
-		font-size: 12px;
+		font-size: 11px;
 	}
 }
 
@@ -4428,7 +4428,7 @@ input[data-readonly] {
 	}
 
 	.captiontext {
-		font-size: 11px;
+		font-size: 10px;
 	}
 }
 
