@@ -404,7 +404,7 @@
                                         <hr>
                                         <div id="moreImageUpload"></div>
                                         <div class="clear"></div>
-                                        <div id="moreImageUploadLink" class="float-right">
+                                        <div id="moreImageUploadLink" class="float-right mt-3">
                                             <a class="btn btn-secondary mr-1 text-size" href="javascript:void(0);" id="attachMore"><b>Tambah Form</b></a>
                                             <button type="submit" class="btn btn-primary text-size"><b>Simpan</b></button>
                                         </div>
