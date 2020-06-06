@@ -4195,6 +4195,8 @@ input[data-readonly] {
 
 	.height {
 		height: 1220px;
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 
 	.boxx {
@@ -4227,6 +4229,24 @@ input[data-readonly] {
 
 	.btn-maintain {
 		margin-right: 15px;
+	}
+
+	.height {
+		height: 1500px;
+	}
+}
+
+@media (max-width: 991px) {
+	.sticky {
+		position: unset;
+		z-index: 0;
+		width: unset;
+	}
+
+	.height {
+		height: unset;
+		margin-left: unset;
+		margin-right: unset;
 	}
 }
 
