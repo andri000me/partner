@@ -15,7 +15,7 @@
     <div class="col-md-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 header-title"><b>Tabel Cabang</b></h4>
+                <!-- <h4 class="mt-0 header-title"><b>Tabel Cabang</b></h4> -->
                 <p class="text-muted m-b-30 text-size"></p>
                 <form action="<?= base_url('branch/update') ?>" method="post">
                     <table id="" class="datatable table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4><b>List User</b></h4>
+            <h4><b>Daftar Akun</b></h4>
             <ol class="breadcrumb text-size">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
@@ -14,14 +14,14 @@
 <div class="row">
     <div class="col-md-12">
         <div class="mb-2 btn-kanan card-margin-2">
-            <a class="btn btn-primary text-size" href="<?= base_url('user/create') ?>"><b>Tambah User</b></a>
+            <a class="btn btn-primary text-size" href="<?= base_url('user/create') ?>"><b>Tambah Akun</b></a>
         </div>
     </div>
 
     <div class=" col-lg-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
-                <h4 class="mt-0 mb-4 header-title"><b>Tabel Data Karyawan Cabang</b></h4>
+                <!-- <h4 class="mt-0 mb-4 header-title"><b>Tabel Data Karyawan Cabang</b></h4> -->
                 <!-- <p class="text-muted m-b-30 text-size">Tekan tombol Transfer Perdata untuk memindahkan data tertentu atau Tekan tombol transfer Semua Data untuk memindahkan semua data.</p> -->
                 <table id="datatable-buttons" class="table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>

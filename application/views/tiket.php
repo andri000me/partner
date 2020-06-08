@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
             <h4><b>Daftar Tiket</b></h4>
-            <p class="text-muted m-b-30 text-size">Tabel berisi daftar data pengajuan support daricabang</p>
+            <p class="text-muted m-b-30 text-size">Tabel berisi daftar data pengajuan support dari cabang</p>
             <!-- <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
                 <li class="breadcrumb-item active">Daftar Tiket</li>

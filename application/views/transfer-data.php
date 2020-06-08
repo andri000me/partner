@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="mb-2 btn-kanan card-margin-2">
-            <a class="btn btn-primary text-size" href="<?= base_url('transfer_data/create') ?>"><b>Transfer Perdata</b></a>
+            <a class="btn btn-primary text-size" href="<?= base_url('transfer_data/create') ?>"><b>Transfer Data</b></a>
             <a href="#" class="btn btn-primary text-size transfer ml-1" data-toggle="modal" data-target=".bs-example-modal-center"><b>Transfer Semua</b></a>
         </div>
     </div>
