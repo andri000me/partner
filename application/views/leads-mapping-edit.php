@@ -42,7 +42,7 @@
                                 <input type="text" class="form-control text-size " name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" />
                             </div>
                             <div class="form-group form-margin">
-                                <label>Produk</label>
+                                <label>Kategori Produk</label>
                                 <select class="form-control text-size " name="produk" id="produk">
                                     <option value="" selected>Pilih Kategori Produk</option>
                                     <option <?= $data->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My
@@ -60,28 +60,30 @@
                                 </select>
                             </div>
                             <div class="form-group form-margin">
-                                <label>Detail Produk</label>
-                                <input type="text" class="form-control text-size " name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail produk" />
+                                <label>Detail Barang / Jasa</label>
+                                <input type="text" class="form-control text-size " name="detail_produk" id="detail_produk" value="<?= $data->detail_produk ?>" required placeholder="Detail Barang / Jasa" />
                             </div>
                             <div class="form-group form-margin">
-                                <label>Handphone/Whatsapp</label>
+                                <label>Nomor Handphone</label>
                                 <input type="text" class="form-control text-size  <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0811977500" maxlength="15" />
                                 <?= form_error('telepon') ?>
                             </div>
                             <div class="form-group form-margin">
                                 <label>Activity Marketing</label>
                                 <select class="form-control text-size" name="activity_marketing" id="activity_marketing" required>
-                                    <option selected disabled value="">Pilih Activity</option>
-                                    <option <?= $data->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                    <option <?= $data->activity_marketing == 'Tele call' ? 'selected' : '' ?> value="Tele call">Tele call</option>
-                                    <option <?= $data->activity_marketing == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                    <option <?= $data->activity_marketing == 'Sosial Media' ? 'selected' : '' ?> value="Sosial Media">Sosial Media</option>
-                                    <option <?= $data->activity_marketing == 'Website' ? 'selected' : '' ?> value="Website">Website</option>
-                                    <option <?= $data->activity_marketing == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                    <option <?= $data->activity_marketing == 'Walk In Branch' ? 'selected' : '' ?> value="Walk In Branch">Walk In Branch</option>
-                                    <option <?= $data->activity_marketing == 'Surat Penawaran' ? 'selected' : '' ?> value="Surat Penawaran">Surat Penawaran</option>
-                                    <option <?= $data->activity_marketing == 'Blast WA / SMS' ? 'selected' : '' ?> value="Blast WA / SMS">Blast WA / SMS</option>
-                                    <option <?= $data->activity_marketing == 'Email Marketing' ? 'selected' : '' ?> value="Email Marketing">Email Marketing</option>
+                                    <option value="" selected>Pilih Asal Aplikasi</option>
+                                    <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                    <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                    <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                    <option <?= set_value('soa') == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
+                                    <option <?= set_value('soa') == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
+                                    <option <?= set_value('soa') == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
+                                    <option <?= set_value('soa') == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
+                                    <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                    <option <?= set_value('soa') == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
+                                    <!-- <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                            <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
                                 </select>
                             </div>
                         </div>

@@ -257,23 +257,18 @@
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
                                             <option selected value="">Pilih Asal Aplikasi</option>
-                                            <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                            <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                            <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                            <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                            <option <?= $data->soa == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
+                                            <option <?= $data->soa == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
+                                            <option <?= $data->soa == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
+                                            <option <?= $data->soa == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
                                             <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                            <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
-                                            <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">
-                                                Agent BA</option>
-                                            <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC
-                                            </option>
-                                            <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC
-                                            </option>
-                                            <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                            <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                            <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO
-                                            </option>
-                                            <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">
-                                                Walk In</option>
-                                            <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                            <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                            <option <?= $data->soa == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
+                                            <!-- <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                                <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                                <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
                                         </select>
                                     </div>
                                 </div>
