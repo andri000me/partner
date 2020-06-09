@@ -99,7 +99,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-right">
                                         <label>Nomor WA</label>
-                                        <input type="text" class="form-control text-size placement number-only <?= form_error('') ? 'is-invalid' : '' ?>" name="" id="" value="<?= set_value('') ?>" required placeholder="0896 5533 985" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only <?= form_error('nomor_wa') ? 'is-invalid' : '' ?>" name="nomor_wa" id="" value="<?= set_value('nomor_wa') ?>" required placeholder="0896 5533 985" maxlength="15" />
                                         <?= form_error('') ?>
                                     </div>
                                 </div>
@@ -108,8 +108,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-left">
                                         <label>Email</label>
-                                        <input type="email" class="form-control text-size <?= form_error('email') ? 'is-invalid' : '' ?>" name="email" id="email" value="<?= set_value('email') ?>" placeholder="Email">
-                                        <?= form_error('email') ?>
+                                        <input type="email" class="form-control text-size <?= form_error('email_konsumen') ? 'is-invalid' : '' ?>" name="email_konsumen" id="email_konsumen" value="<?= set_value('email_konsumen') ?>" placeholder="Email">
+                                        <?= form_error('email_konsumen') ?>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -117,29 +117,29 @@
                                         <label>Pendidikan</label>
                                         <select class="form-control text-size" name="pendidikan" id="pendidikan" required>
                                             <option selected value="">Pilih Pendidikan</option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SD">SD
+                                            <option <?= set_value('pendidikan') == 'SD' ? 'selected' : '' ?> value="SD">SD
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SLTP">SLTP
+                                            <option <?= set_value('pendidikan') == 'SLTP' ? 'selected' : '' ?> value="SLTP">SLTP
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SMU">SMU
+                                            <option <?= set_value('pendidikan') == 'SMU' ? 'selected' : '' ?> value="SMU">SMU
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SLTA">SLTA
+                                            <option <?= set_value('pendidikan') == 'SLTA' ? 'selected' : '' ?> value="SLTA">SLTA
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="STM">STM
+                                            <option <?= set_value('pendidikan') == 'STM' ? 'selected' : '' ?> value="STM">STM
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="SMEA">SMEA
+                                            <option <?= set_value('pendidikan') == 'SMEA' ? 'selected' : '' ?> value="SMEA">SMEA
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="D1">D1
+                                            <option <?= set_value('pendidikan') == 'D1' ? 'selected' : '' ?> value="D1">D1
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="D2">D2
+                                            <option <?= set_value('pendidikan') == 'D2' ? 'selected' : '' ?> value="D2">D2
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="D3">D3
+                                            <option <?= set_value('pendidikan') == 'D3' ? 'selected' : '' ?> value="D3">D3
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="S1">S1
+                                            <option <?= set_value('pendidikan') == 'S1' ? 'selected' : '' ?> value="S1">S1
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="S2">S2
+                                            <option <?= set_value('pendidikan') == 'S2' ? 'selected' : '' ?> value="S2">S2
                                             </option>
-                                            <option <?= set_value('pendidikan') ? 'selected' : '' ?> value="S3">S3
+                                            <option <?= set_value('pendidikan') == 'S3' ? 'selected' : '' ?> value="S3">S3
                                             </option>
                                         </select>
                                     </div>
@@ -157,12 +157,12 @@
                                         <label>Status Pernikahan</label>
                                         <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan" required>
                                             <option selected value="">Pilih Status Pernikahan</option>
-                                            <option <?= set_value('status_pernikahan') ?> value="Sudah Menikah">Sudah
+                                            <option <?= set_value('status_pernikahan') == 'Sudah Menikah' ? 'selected' : '' ?> value="Sudah Menikah">Sudah
                                                 Menikah</option>
-                                            <option <?= set_value('status_pernikahan') ?> value="Belum Menikah">Belum
+                                            <option <?= set_value('status_pernikahan') == 'Belum Menikah' ? 'selected' : '' ?> value="Belum Menikah">Belum
                                                 Menikah</option>
-                                            <option <?= set_value('status_pernikahan') ?> value="Janda/Duda - Meninggal">Janda/Duda - Meninggal</option>
-                                            <option <?= set_value('status_pernikahan') ?> value="Janda/Duda - Cerai">
+                                            <option <?= set_value('status_pernikahan') == 'Janda/Duda - Meninggal' ? 'selected' : '' ?> value="Janda/Duda - Meninggal">Janda/Duda - Meninggal</option>
+                                            <option <?= set_value('status_pernikahan') == 'Janda/Duda - Cerai' ? 'selected' : '' ?> value="Janda/Duda - Cerai">
                                                 Janda/Duda - Cerai</option>
                                         </select>
                                     </div>
@@ -236,8 +236,8 @@
                                         <label>Jenis Bangunan Rumah</label>
                                         <select class="form-control text-size" name="jenis_rumah" id="jenis_rumah" required>
                                             <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
-                                            <option value="Permanent">Permanent</option>
-                                            <option value="Semi Permanent">Semi Permanent</option>
+                                            <option <?= set_value('jenis_rumah') == 'Permanent' ? 'selected' : '' ?> value="Permanent">Permanent</option>
+                                            <option <?= set_value('jenis_rumah') == 'Semi Permanent' ? 'selected' : '' ?> value="Semi Permanent">Semi Permanent</option>
                                         </select>
                                     </div>
                                 </div>
@@ -246,11 +246,11 @@
                                         <label>Luas Bangunan Rumah</label>
                                         <select class="form-control text-size" name="luas_rumah" id="luas_rumah" required>
                                             <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
-                                            <option value="< 60 M2">
-                                                < 60 M2</option> <option value="60 - 100 M2">60 - 100 M2
+                                            <option <?= set_value('luas_rumah') == '< 60 M2' ? 'selected' : '' ?> value="< 60 M2">
+                                                < 60 M2</option> <option <?= set_value('luas_rumah') == '60 - 100 M2' ? 'selected' : '' ?> value="60 - 100 M2">60 - 100 M2
                                             </option>
-                                            <option value="100 - 150 M2">100 - 150 M2</option>
-                                            <option value="> 150 M2">> 150 M2</option>
+                                            <option <?= set_value('luas_rumah') == '100 - 150 M2' ? 'selected' : '' ?> value="100 - 150 M2">100 - 150 M2</option>
+                                            <option <?= set_value('luas_rumah') == '> 150 M2' ? 'selected' : '' ?> value="> 150 M2">> 150 M2</option>
                                         </select>
                                     </div>
                                 </div>
@@ -454,7 +454,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->id_leads ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>"><b>Pilih</b></button></center>
+                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->id_leads ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>" data-activity="<?= $mapping->activity_marketing ?>"><b>Pilih</b></button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -741,6 +741,7 @@
         $('#id_partner').val($(this).data('partner'));
         $('#nama_partner').val($(this).data('namapartner'));
         $('#nama_agent').val($(this).data('namaagent'));
+        $('#activity_marketing').val($(this).data('activity'));
         $('#modal-leads').modal('hide');
 
         $('#nama_konsumen').attr('readonly', 'readonly');

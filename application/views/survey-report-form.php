@@ -270,7 +270,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group form-left">
                                                     <label>Email</label>
-                                                    <input type="email" class="form-control text-size" name="email" value="<?= $leads->email ?>" id="email">
+                                                    <input type="email" class="form-control text-size" name="email_konsumen" value="<?= $leads->email_konsumen ?>" id="email">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -349,7 +349,7 @@
                                             <div class="col-md-4 pasangan">
                                                 <div class="form-group form-right">
                                                     <label>Nama Pasangan</label>
-                                                    <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $leads->nama_konsumen ?>">
+                                                    <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $leads->nama_pasangan ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -3701,7 +3701,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     if (spinner.length == 0) {
-                        $("[name='" + selector + "']").after(
+                        $("[name='" + selector + "']").before(
                             `<div class="spinner-border spinner-border-sm mt-1 text-primary" data-selector="${selector}"><span class="sr-only">Loading...</span></div>`
                         )
                     }

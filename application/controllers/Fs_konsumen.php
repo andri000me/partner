@@ -12,26 +12,26 @@ class Fs_konsumen extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "(users.id_user = " . $this->fungsi->user_login()->id_user. " OR fs_konsumen.assign_cms = " . $this->fungsi->user_login()->id_user. ")";
+            $this->where = "(users.id_user = " . $this->fungsi->user_login()->id_user . " OR fs_konsumen.assign_cms = " . $this->fungsi->user_login()->id_user . ")";
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch. " OR leads_full.cabang_cross = ". $this->fungsi->user_login()->id_branch. ")";
+            $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR leads_full.cabang_cross = " . $this->fungsi->user_login()->id_branch . ")";
         } else {
             $this->where = "id IS NOT NULL";
         }
 
         check_not_login();
     }
-    
+
     public function index()
     {
         $data = [
             'data'      => $this->fs_konsumen_model->get($this->where),
-            'unfinished'   => $this->fs_konsumen_model->get("tickets.status < 5 AND ". $this->where),
-            'completed' => $this->fs_konsumen_model->get("tickets.status = 5 AND ". $this->where),
+            'unfinished'   => $this->fs_konsumen_model->get("tickets.status < 5 AND " . $this->where),
+            'completed' => $this->fs_konsumen_model->get("tickets.status = 5 AND " . $this->where),
 
-            'users'     => $this->user_model->get_all("users.id_branch = ". $this->fungsi->user_login()->id_branch)
+            'users'     => $this->user_model->get_all("users.id_branch = " . $this->fungsi->user_login()->id_branch)
         ];
 
         $this->template->load('template/index', 'survey-report', $data);
@@ -49,7 +49,7 @@ class Fs_konsumen extends CI_Controller
 
         $this->template->load('template/index', 'survey-report-form', $data);
     }
-    
+
     public function update()
     {
         $data = [
@@ -78,7 +78,7 @@ class Fs_konsumen extends CI_Controller
             'purpose_nama_merchant_3'           => !empty($this->input->post('purpose_nama_merchant_3')) ? $this->input->post('purpose_nama_merchant_3') : NULL,
             'purpose_harga_3'                   => !empty($this->input->post('purpose_harga_3')) ? $this->input->post('purpose_harga_3') : NULL,
             'purpose_alamat_telepon_3'          => !empty($this->input->post('purpose_alamat_telepon_3')) ? $this->input->post('purpose_alamat_telepon_3') : NULL,
-            
+
             //kondisi konsumen (karyawan)
             'condition_karyawan_pekerjaan'                    => !empty($this->input->post('condition_karyawan_pekerjaan')) ? $this->input->post('condition_karyawan_pekerjaan') : NULL,
             'condition_karyawan_tempat_kerja'                 => !empty($this->input->post('condition_karyawan_tempat_kerja')) ? $this->input->post('condition_karyawan_tempat_kerja') : NULL,
@@ -101,21 +101,21 @@ class Fs_konsumen extends CI_Controller
             'condition_karyawan_tanggungan_total'             => !empty($this->input->post('condition_karyawan_tanggungan_total')) ? $this->input->post('condition_karyawan_tanggungan_total') : NULL,
 
             //kondisi konsumen (wiraswasta)
-            'condition_wir_pekerjaan'                   => !empty($this->input->post('condition_wir_pekerjaan')) ? $this->input->post('condition_wir_pekerjaan') : NULL, 
-            'condition_wir_pekerjaan_pasangan'           => !empty($this->input->post('condition_wir_pekerjaan_pasangan')) ? $this->input->post('condition_wir_pekerjaan_pasangan') : NULL, 
-            'condition_wir_profesi_beresiko'            => !empty($this->input->post('condition_wir_profesi_beresiko')) ? $this->input->post('condition_wir_profesi_beresiko') : NULL, 
+            'condition_wir_pekerjaan'                   => !empty($this->input->post('condition_wir_pekerjaan')) ? $this->input->post('condition_wir_pekerjaan') : NULL,
+            'condition_wir_pekerjaan_pasangan'           => !empty($this->input->post('condition_wir_pekerjaan_pasangan')) ? $this->input->post('condition_wir_pekerjaan_pasangan') : NULL,
+            'condition_wir_profesi_beresiko'            => !empty($this->input->post('condition_wir_profesi_beresiko')) ? $this->input->post('condition_wir_profesi_beresiko') : NULL,
             'condition_wir_tempat_kerja_pasangan'       => !empty($this->input->post('condition_wir_tempat_kerja_pasangan')) ? $this->input->post('condition_wir_tempat_kerja_pasangan') : NULL,
-            'condition_wir_profesi_beresiko_pasangan'   => !empty($this->input->post('condition_wir_profesi_beresiko_pasangan')) ? $this->input->post('condition_wir_profesi_beresiko_pasangan') : NULL, 
-            'condition_wir_nama_usaha'                  => !empty($this->input->post('condition_wir_nama_usaha')) ? $this->input->post('condition_wir_nama_usaha') : NULL, 
-            'condition_wir_bidang_usaha'                => !empty($this->input->post('condition_wir_bidang_usaha')) ? $this->input->post('condition_wir_bidang_usaha') : NULL, 
-            'condition_wir_tahun_berdiri'               => !empty($this->input->post('condition_wir_tahun_berdiri')) ? $this->input->post('condition_wir_tahun_berdiri') : NULL, 
-            'condition_wir_jumlah_karyawan'             => !empty($this->input->post('condition_wir_jumlah_karyawan')) ? $this->input->post('condition_wir_jumlah_karyawan') : NULL, 
+            'condition_wir_profesi_beresiko_pasangan'   => !empty($this->input->post('condition_wir_profesi_beresiko_pasangan')) ? $this->input->post('condition_wir_profesi_beresiko_pasangan') : NULL,
+            'condition_wir_nama_usaha'                  => !empty($this->input->post('condition_wir_nama_usaha')) ? $this->input->post('condition_wir_nama_usaha') : NULL,
+            'condition_wir_bidang_usaha'                => !empty($this->input->post('condition_wir_bidang_usaha')) ? $this->input->post('condition_wir_bidang_usaha') : NULL,
+            'condition_wir_tahun_berdiri'               => !empty($this->input->post('condition_wir_tahun_berdiri')) ? $this->input->post('condition_wir_tahun_berdiri') : NULL,
+            'condition_wir_jumlah_karyawan'             => !empty($this->input->post('condition_wir_jumlah_karyawan')) ? $this->input->post('condition_wir_jumlah_karyawan') : NULL,
             'condition_wir_jenis_bangunan_usaha'        => !empty($this->input->post('condition_wir_jenis_bangunan_usaha')) ? $this->input->post('condition_wir_jenis_bangunan_usaha') : NULL,
             'condition_wir_pemilik_tempat_usaha'        => !empty($this->input->post('condition_wir_pemilik_tempat_usaha')) ? $this->input->post('condition_wir_pemilik_tempat_usaha') : NULL,
             'condition_wir_kepemilikan_usaha'           => !empty($this->input->post('condition_wir_kepemilikan_usaha')) ? $this->input->post('condition_wir_kepemilikan_usaha') : NULL,
-            'condition_wir_bentuk_usaha'                => !empty($this->input->post('condition_wir_bentuk_usaha')) ? $this->input->post('condition_wir_bentuk_usaha') : NULL, 
-            'condition_wir_cara_bayar'                  => !empty($this->input->post('condition_wir_cara_bayar')) ? $this->input->post('condition_wir_cara_bayar') : NULL, 
-            'condition_wir_kondisi_usaha'               => !empty($this->input->post('condition_wir_kondisi_usaha')) ? $this->input->post('condition_wir_kondisi_usaha') : NULL, 
+            'condition_wir_bentuk_usaha'                => !empty($this->input->post('condition_wir_bentuk_usaha')) ? $this->input->post('condition_wir_bentuk_usaha') : NULL,
+            'condition_wir_cara_bayar'                  => !empty($this->input->post('condition_wir_cara_bayar')) ? $this->input->post('condition_wir_cara_bayar') : NULL,
+            'condition_wir_kondisi_usaha'               => !empty($this->input->post('condition_wir_kondisi_usaha')) ? $this->input->post('condition_wir_kondisi_usaha') : NULL,
             'condition_wir_tanggungan_orangtua'         => !empty($this->input->post('condition_wir_tanggungan_orangtua')) ? $this->input->post('condition_wir_tanggungan_orangtua') : NULL,
             'condition_wir_tanggungan_pasangan'         => !empty($this->input->post('condition_wir_tanggungan_pasangan')) ? $this->input->post('condition_wir_tanggungan_pasangan') : NULL,
             'condition_wir_tanggungan_anak1'            => !empty($this->input->post('condition_wir_tanggungan_anak1')) ? $this->input->post('condition_wir_tanggungan_anak1') : NULL,
@@ -123,7 +123,7 @@ class Fs_konsumen extends CI_Controller
             'condition_wir_tanggungan_anak3'            => !empty($this->input->post('condition_wir_tanggungan_anak3')) ? $this->input->post('condition_wir_tanggungan_anak3') : NULL,
             'condition_wir_tanggungan_saudara'          => !empty($this->input->post('condition_wir_tanggungan_saudara')) ? $this->input->post('condition_wir_tanggungan_saudara') : NULL,
             'condition_wir_tanggungan_total'            => !empty($this->input->post('condition_wir_tanggungan_total')) ? $this->input->post('condition_wir_tanggungan_total') : NULL,
-            
+
             //capacity konsumen karyawan
             'capacity_karyawan_income_bruto'            => !empty($this->input->post('capacity_karyawan_income_bruto')) ? $this->input->post('capacity_karyawan_income_bruto') : NULL,
             'capacity_karyawan_income_thp'              => !empty($this->input->post('capacity_karyawan_income_thp')) ? $this->input->post('capacity_karyawan_income_thp') : NULL,
@@ -206,9 +206,9 @@ class Fs_konsumen extends CI_Controller
             'capacity_wir_total_hutang'             => !empty($this->input->post('capacity_wir_total_hutang')) ? $this->input->post('capacity_wir_total_hutang') : NULL,
             'capacity_wir_total_outcome'            => !empty($this->input->post('capacity_wir_total_outcome')) ? $this->input->post('capacity_wir_total_outcome') : NULL,
             'capacity_wir_nett_income'              => !empty($this->input->post('capacity_wir_nett_income')) ? $this->input->post('capacity_wir_nett_income') : NULL,
-            'capacity_wir_ada_analisa_dari_omset'   => !empty($this->input->post('capacity_wir_ada_analisa_dari_omset')) ? $this->input->post('capacity_wir_ada_analisa_dari_omset') : NULL, 
+            'capacity_wir_ada_analisa_dari_omset'   => !empty($this->input->post('capacity_wir_ada_analisa_dari_omset')) ? $this->input->post('capacity_wir_ada_analisa_dari_omset') : NULL,
             'capacity_wir_usaha_omset_perhari'      => !empty($this->input->post('capacity_wir_usaha_omset_perhari')) ? $this->input->post('capacity_wir_usaha_omset_perhari') : NULL,
-            'capacity_wir_usaha_jumlah_hari_buka'   => !empty($this->input->post('capacity_wir_usaha_jumlah_hari_buka')) ? $this->input->post('capacity_wir_usaha_jumlah_hari_buka') : NULL, 
+            'capacity_wir_usaha_jumlah_hari_buka'   => !empty($this->input->post('capacity_wir_usaha_jumlah_hari_buka')) ? $this->input->post('capacity_wir_usaha_jumlah_hari_buka') : NULL,
             'capacity_wir_usaha_omset_perbulan'     => !empty($this->input->post('capacity_wir_usaha_omset_perbulan')) ? $this->input->post('capacity_wir_usaha_omset_perbulan') : NULL,
             'capacity_wir_total_omset'              => !empty($this->input->post('capacity_wir_total_omset')) ? $this->input->post('capacity_wir_total_omset') : NULL,
 
@@ -233,7 +233,7 @@ class Fs_konsumen extends CI_Controller
             'capital_status_barang5'                => !empty($this->input->post('capital_status_barang5')) ? $this->input->post('capital_status_barang5') : NULL,
             'capital_harga5'                => !empty($this->input->post('capital_harga5')) ? $this->input->post('capital_harga5') : NULL,
             'capital_total_aset'            => !empty($this->input->post('capital_total_aset')) ? $this->input->post('capital_total_aset') : NULL,
-            
+
             // character
             'character_nama1'                   => !empty($this->input->post('character_nama1')) ? $this->input->post('character_nama1') : NULL,
             'character_no_telp1'                => !empty($this->input->post('character_no_telp1')) ? $this->input->post('character_no_telp1') : NULL,
@@ -246,7 +246,7 @@ class Fs_konsumen extends CI_Controller
             'character_hubungan3'               => !empty($this->input->post('character_hubungan3')) ? $this->input->post('character_hubungan3') : NULL,
             'character_hasil_kredit'            => !empty($this->input->post('character_hasil_kredit')) ? $this->input->post('character_hasil_kredit') : NULL,
             'character_hasil_kredit_media_lain' => !empty($this->input->post('character_hasil_kredit_media_lain')) ? $this->input->post('character_hasil_kredit_media_lain') : NULL,
-            
+
             //collateral (jaminan kendaraan)
             'collateral_merk'               => !empty($this->input->post('collateral_merk')) ? $this->input->post('collateral_merk') : NULL,
             'collateral_jenis'              => !empty($this->input->post('collateral_jenis')) ? $this->input->post('collateral_jenis') : NULL,
@@ -268,15 +268,15 @@ class Fs_konsumen extends CI_Controller
             'religi_pengetahuan_riba'   => !empty($this->input->post('religi_pengetahuan_riba')) ? $this->input->post('religi_pengetahuan_riba') : NULL,
             'religi_dosa_hutang'        => !empty($this->input->post('religi_dosa_hutang')) ? $this->input->post('religi_dosa_hutang') : NULL,
             'religi_alasan_syariah'     => !empty($this->input->post('religi_alasan_syariah')) ? $this->input->post('religi_alasan_syariah') : NULL,
-            
+
             //kesimpulan
             'kesimpulan_strength'     => !empty($this->input->post('kesimpulan_strength')) ? $this->input->post('kesimpulan_strength') : NULL,
             'kesimpulan_weakness'     => !empty($this->input->post('kesimpulan_weakness')) ? $this->input->post('kesimpulan_weakness') : NULL,
-            ];
+        ];
         $where = ['id_leads' => $this->input->post('id_leads')];
         $json = $this->fs_konsumen_model->update($data, $where);
-        
-        if($this->ticket_model->get("tickets.id_leads = ". $this->input->post('id_leads'))->row()->status_approval == '4'){
+
+        if ($this->ticket_model->get("tickets.id_leads = " . $this->input->post('id_leads'))->row()->status_approval == '4') {
             $pending = ['status' => '2'];
             $this->ticket_model->update($pending, $where);
         }
@@ -301,7 +301,7 @@ class Fs_konsumen extends CI_Controller
     {
         //tiket ditolak (returned)
         $data = ['status' => 4];
-        
+
         $where = ['id_leads' => $this->input->post('data')];
         $id = $this->ticket_model->update($data, $where);
 
@@ -312,13 +312,12 @@ class Fs_konsumen extends CI_Controller
     {
         $mpdf = new \Mpdf\Mpdf();
 
-        $data = $this->fs_konsumen_model->get("fs_konsumen.id_leads = ". $id)->row();
+        $data = $this->fs_konsumen_model->get("fs_konsumen.id_leads = " . $id)->row();
         $html = $this->load->view('html_to_pdf', ['data' => $data], true);
         $mpdf->SetWatermarkImage(base_url('template/assets/images/logo-bfi-syariah.png'));
         $mpdf->showWatermarkImage = true;
         $mpdf->WriteHTML($html);
         $mpdf->Output();
-
     }
 
     public function tambah_lampiran()
@@ -369,21 +368,30 @@ class Fs_konsumen extends CI_Controller
                 }
             }
         }
-        
-        $where = "fs_konsumen.id_leads = ".  $post['id_leads'];
+
+        $where = "fs_konsumen.id_leads = " .  $post['id_leads'];
         //Mengambil nama file lampiran tambahan yang ada
         $lampiran_tambahan = $this->fs_konsumen_model->get($where)->row()->lampiran_tambahan;
         //Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
         //Jika sudah pernah melampirkan tambahan, maka append nama file di database
-        if($lampiran_tambahan){
-            $data_fs_konsumen['lampiran_tambahan'] = $lampiran_tambahan. ",". $comma;
+        if ($lampiran_tambahan) {
+            $data_fs_konsumen['lampiran_tambahan'] = $lampiran_tambahan . "," . $comma;
             $this->fs_konsumen_model->update($data_fs_konsumen, $where);
-        }else{
+        } else {
             $data_fs_konsumen['lampiran_tambahan'] = $comma;
             $this->fs_konsumen_model->update($data_fs_konsumen, $where);
         }
 
         redirect($post['redirect']);
+    }
+
+    public function update_recommendation()
+    {
+        $data = ['is_recommended' => $this->input->post('recommended')];
+        $where = ['id_leads' => $this->input->post('data')];
+        $id = $this->fs_konsumen_model->update($data, $where);
+
+        echo json_encode($id);
     }
 }

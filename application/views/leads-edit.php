@@ -45,6 +45,7 @@
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
                     <!-- Redirect -->
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+
                     <div class="ml-4">
                         <h4 class="mt-0 mb-4"><b>Data Konsumen</b></h4>
                     </div>
@@ -100,15 +101,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group form-right">
                                             <label>Nomor WA</label>
-                                            <input type="text" class="form-control text-size placement number-only" name="" id="" value="" required placeholder="0896 5533 985" maxlength="15" />
+                                            <input type="text" class="form-control text-size placement number-only" name="nomor_wa" id="" value="<?= $data->nomor_wa ?>" required placeholder="0896 5533 985" maxlength="15" />
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group fomr-left">
+                                        <div class="form-group form-left">
                                             <label>Email</label>
-                                            <input type="email" class="form-control text-size" name="email" id="email" value="<?= $data->email ?>" placeholder="Email">
+                                            <input type="email" class="form-control text-size" name="email_konsumen" id="email_konsumen" value="<?= $data->email_konsumen ?>" placeholder="Email">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -145,7 +146,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group fomr-left">
                                             <label>Tanggal Lahir</label>
-                                            <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->email ?>" placeholder="Tanggal lahir">
+                                            <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" placeholder="Tanggal lahir">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -280,7 +281,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-right">
                                         <label>Activity Marketing</label>
-                                        <select class="form-control text-size" name="activity" id="activity" required>
+                                        <select class="form-control text-size" name="activity_marketing" id="activity_marketing" required>
                                             <option selected disabled value="">Pilih Kategori Activity Marketing
                                             </option>
                                             <option <?= $data->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
@@ -447,7 +448,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->leads_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>"><b>Pilih</b></button></center>
+                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->leads_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>" data-activity="<?= $mapping->activity_marketing ?>"><b>Pilih</b></button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -739,6 +740,7 @@
         $('#nama_konsumen').val($(this).data('nama'));
         $('#nama_partner').val($(this).data('namapartner'));
         $('#nama_agent').val($(this).data('namaagent'));
+        $('#activity_marketing').val($(this).data('activity'));
 
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val($(this).data('partner'));

@@ -66,7 +66,7 @@ class Leads extends CI_Controller
     public function leads_database()
     {
         $data = [
-            'data'      => $this->leads_model->get("status= 'database' AND leads_full.". $this->where),
+            'data'      => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
         ];
 
         $this->template->load('template/index', 'leads-mapping', $data);
@@ -75,12 +75,12 @@ class Leads extends CI_Controller
     public function create()
     {
         $data = [
-            'mappings'  => $this->leads_model->get("status= 'database' AND leads_full.". $this->where),
+            'mappings'  => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
             'branches'  => $this->branch_model->get(),
             'users'     => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
 
-            'agents'    => $this->agent_model->get("agents.". $this->where),
-            'partners'  => $this->partner_model->get("partners_full." .$this->where)
+            'agents'    => $this->agent_model->get("agents." . $this->where),
+            'partners'  => $this->partner_model->get("partners_full." . $this->where)
         ];
         $this->template->load('template/index', 'leads-form', $data);
     }
@@ -90,12 +90,12 @@ class Leads extends CI_Controller
 
         $data = [
             'agents' => $this->agent_model->get('agents.' . $this->where),
-            'partners' => $this->partner_model->get('partners_full.'.$this->where)
+            'partners' => $this->partner_model->get('partners_full.' . $this->where)
         ];
         $this->template->load('template/index', 'leads-mapping-form', $data);
     }
 
-    
+
 
     public function edit($id)
     {
@@ -103,12 +103,12 @@ class Leads extends CI_Controller
         $where = ['leads_full.id_leads' => $id];
         $data = [
             'data' => $this->leads_model->get($where)->row(),
-            'mappings'      => $this->leads_model->get("status= 'database' AND leads_full.". $this->where),
+            'mappings'      => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
             'branches' => $this->branch_model->get(),
             'users' => $this->user_model->get_all(),
 
-            'agents' => $this->agent_model->get("agents." .$this->where),
-            'partners' => $this->partner_model->get("partners_full." .$this->where)
+            'agents' => $this->agent_model->get("agents." . $this->where),
+            'partners' => $this->partner_model->get("partners_full." . $this->where)
         ];
         $this->template->load('template/index', 'leads-edit', $data);
     }
@@ -117,8 +117,8 @@ class Leads extends CI_Controller
     {
         $data = [
             'data' => $this->leads_model->get(['leads_full.id_leads' => $id])->row(),
-            'agents' => $this->agent_model->get('agents.'. $this->where),
-            'partners' => $this->partner_model->get('partners_full.'.$this->where),
+            'agents' => $this->agent_model->get('agents.' . $this->where),
+            'partners' => $this->partner_model->get('partners_full.' . $this->where),
             'follow_up' => $this->leads_follow_up_model->get(['leads_full.id_leads' => $id])
         ];
         $this->template->load('template/index', 'leads-mapping-edit', $data);
@@ -130,12 +130,12 @@ class Leads extends CI_Controller
 
         $data = [
             'data'          => $this->leads_model->get($where)->row(),
-            'mappings'      => $this->leads_model->get("status= 'database' AND leads_full.". $this->where),
+            'mappings'      => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
             'branches'      => $this->branch_model->get(),
             'users'         => $this->user_model->get_all(),
 
-            'agents'        => $this->agent_model->get("agents.".$this->where),
-            'partners'      => $this->partner_model->get("partners_full." .$this->where),
+            'agents'        => $this->agent_model->get("agents." . $this->where),
+            'partners'      => $this->partner_model->get("partners_full." . $this->where),
 
             'activities'    => $this->leads_activity_model->get($where),
             'comments'      => $this->comment_model->get($where),
@@ -154,8 +154,6 @@ class Leads extends CI_Controller
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
         $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[leads_full.no_ktp]', ['is_unique' => 'Nomor KTP sudah dipakai, mohon ganti nomor KTP']);
-        $this->form_validation->set_rules('leads_id', 'Leads ID', 'is_unique[leads_full.leads_id]', ['is_unique' => 'Leads ID sudah dipakai, mohon ganti Leads ID']);
-
 
         if ($this->form_validation->run() != FALSE) {
             $data = [
@@ -166,7 +164,7 @@ class Leads extends CI_Controller
                 'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
                 'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
                 'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
-                
+
                 // Untuk SOA EGC
                 'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
                 'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
@@ -176,14 +174,14 @@ class Leads extends CI_Controller
                 'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
                 // Untuk SOA Event
                 'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
-                
+
                 'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
                 'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
-                
+
                 //Timestamp
                 'created_at'            => date('Y-m-d H:i:s'),
                 'updated_at'            => date('Y-m-d H:i:s'),
-                
+
                 // ----- PROSPECT
                 'no_ktp'                => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
                 'cross_branch'          => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
@@ -202,11 +200,10 @@ class Leads extends CI_Controller
                 'status_pernikahan'     => !empty($post['status_pernikahan']) ? $post['status_pernikahan'] : NULL,
                 'nama_pasangan'         => !empty($post['nama_pasangan']) ? $post['nama_pasangan'] : NULL,
                 'pendidikan'            => !empty($post['pendidikan']) ? $post['pendidikan'] : NULL,
-                'email'                 => !empty($post['email']) ? $post['email'] : NULL,
+                'email_konsumen'        => !empty($post['email_konsumen']) ? $post['email_konsumen'] : NULL,
                 'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
                 'jenis_rumah'           => !empty($post['jenis_rumah']) ? $post['jenis_rumah'] : NULL,
                 'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
-                'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
                 'activity_marketing'    => !empty($post['activity_marketing']) ? $post['activity_marketing'] : NULL,
                 'jenis_kelamin'    => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
 
@@ -216,7 +213,7 @@ class Leads extends CI_Controller
 
                 'id_partner'            => !empty($post['id_partner'])          ? $post['id_partner'] : NULL,
                 'id_agent'              => !empty($post['id_agent'])            ? $post['id_agent'] : NULL,
-                
+
                 //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
                 'id_user'               => $this->fungsi->user_login()->id_user,
                 //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
@@ -228,10 +225,10 @@ class Leads extends CI_Controller
             } else if (isset($post['process'])) {
                 $data['status'] = 'lengkap';
             }
-            
+
             // Jika Leads Database dipilih / terisi, maka leads database yang ada akan diupdate
             // Jika tak dipilih, maka akan membuat record leads baru
-            if(!empty($post['id_leads'])){
+            if (!empty($post['id_leads'])) {
                 $id = $post["id_leads"];
 
                 //menghapuskan date created, untuk proses update
@@ -269,7 +266,7 @@ class Leads extends CI_Controller
                 //Notifikasi
                 $notification = [
                     'pengirim'          => $this->fungsi->user_login()->id_user,
-                    'penerima_cabang'   => $post['cabang_cross'],
+                    'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
                     'type'              => 'Cross Branch oleh',
                     'id_ticket'         => $id_ticket,
                     'created_at'        => date('Y-m-d H:i:s')
@@ -291,16 +288,16 @@ class Leads extends CI_Controller
                 // redirect('Leads');
 
                 //Langsung redirect ke halaman form survey
-                redirect('Fs_konsumen/create/'.$id);
+                redirect('Fs_konsumen/create/' . $id);
             }
         } else {
             $data = [
-                'mappings'  => $this->leads_model->get("status= 'database' AND leads_full.". $this->where),
+                'mappings'  => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
                 'branches'  => $this->branch_model->get(),
                 'users'     => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
-    
-                'agents'    => $this->agent_model->get("agents.". $this->where),
-                'partners'  => $this->partner_model->get("partners_full." .$this->where)
+
+                'agents'    => $this->agent_model->get("agents." . $this->where),
+                'partners'  => $this->partner_model->get("partners_full." . $this->where)
             ];
             $this->template->load('template/index', 'leads-form', $data);
         }
@@ -358,8 +355,8 @@ class Leads extends CI_Controller
             redirect('leads/leads_database');
         } else {
             $data = [
-                'agents' => $this->agent_model->get('agents.'. $this->where),
-                'partners' => $this->partner_model->get('partners_full.'.$this->where),
+                'agents' => $this->agent_model->get('agents.' . $this->where),
+                'partners' => $this->partner_model->get('partners_full.' . $this->where),
             ];
             $this->template->load('template/index', 'leads-mapping-form', $data);
         }
@@ -379,7 +376,7 @@ class Leads extends CI_Controller
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
-            
+
             // Untuk SOA EGC
             'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
             'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
@@ -389,7 +386,7 @@ class Leads extends CI_Controller
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
-            
+
             'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
             'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
 
@@ -411,11 +408,10 @@ class Leads extends CI_Controller
             'status_pernikahan'     => !empty($post['status_pernikahan']) ? $post['status_pernikahan'] : NULL,
             'nama_pasangan'         => !empty($post['nama_pasangan']) ? $post['nama_pasangan'] : NULL,
             'pendidikan'            => !empty($post['pendidikan']) ? $post['pendidikan'] : NULL,
-            'email'                 => !empty($post['email']) ? $post['email'] : NULL,
+            'email_konsumen'                 => !empty($post['email_konsumen']) ? $post['email_konsumen'] : NULL,
             'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
             'jenis_rumah'           => !empty($post['jenis_rumah']) ? $post['jenis_rumah'] : NULL,
             'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
-            'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
             'activity_marketing'    => !empty($post['activity_marketing']) ? $post['activity_marketing'] : NULL,
             'jenis_kelamin'    => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
 
@@ -451,7 +447,7 @@ class Leads extends CI_Controller
             //Notifikasi Cross Branch
             $notification = [
                 'pengirim'          => $this->fungsi->user_login()->id_user,
-                'penerima_cabang'   => $post['cabang_cross'],
+                'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
                 'type'              => 'Cross Branch oleh',
                 'id_ticket'         => $id_ticket,
                 'created_at'        => date('Y-m-d H:i:s')
@@ -496,14 +492,14 @@ class Leads extends CI_Controller
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
-        
+
         if (isset($post['draft'])) {
             redirect($post['redirect']);
         } else if (isset($post['process'])) {
             // redirect('leads');
-            
+
             //Langsung redirect ke halaman form survey
-            redirect('Fs_konsumen/create/'.$id);
+            redirect('Fs_konsumen/create/' . $id);
         }
     }
 
@@ -521,7 +517,7 @@ class Leads extends CI_Controller
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
-            
+
             // Untuk SOA EGC
             'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
             'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
@@ -531,7 +527,7 @@ class Leads extends CI_Controller
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
-            
+
             'nama_partner'            => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
             'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
 
@@ -553,7 +549,7 @@ class Leads extends CI_Controller
             'status_pernikahan'     => !empty($post['status_pernikahan']) ? $post['status_pernikahan'] : NULL,
             'nama_pasangan'         => !empty($post['nama_pasangan']) ? $post['nama_pasangan'] : NULL,
             'pendidikan'            => !empty($post['pendidikan']) ? $post['pendidikan'] : NULL,
-            'email'                 => !empty($post['email']) ? $post['email'] : NULL,
+            'email_konsumen'                 => !empty($post['email_konsumen']) ? $post['email_konsumen'] : NULL,
             'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
             'jenis_rumah'           => !empty($post['jenis_rumah']) ? $post['jenis_rumah'] : NULL,
             'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
@@ -572,7 +568,7 @@ class Leads extends CI_Controller
         $where = ['id_leads' => $post['id_leads']];
         //Memasukkan data mapping ke database `leads`
         $json = $this->leads_model->update($data, $where);
-        
+
         echo json_encode($json);
     }
 
@@ -637,7 +633,7 @@ class Leads extends CI_Controller
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
             'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
             'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
-         
+
             // Untuk SOA EGC   
             'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,
             'posisi_egc'            => !empty($post['posisi_egc']) ? $post['posisi_egc'] : NULL,
@@ -647,10 +643,10 @@ class Leads extends CI_Controller
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
             // Untuk SOA Event 
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
-         
+
             'nama_partner'          => !empty($post['nama_partner']) ? $post['nama_partner'] : NULL,
             'nama_agent'            => !empty($post['nama_agent']) ? $post['nama_agent'] : NULL,
-            
+
             // ----- PROSPECT
             'no_ktp'                => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
             'cross_branch'          => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
@@ -669,7 +665,7 @@ class Leads extends CI_Controller
             'status_pernikahan'     => !empty($post['status_pernikahan']) ? $post['status_pernikahan'] : NULL,
             'nama_pasangan'         => !empty($post['nama_pasangan']) ? $post['nama_pasangan'] : NULL,
             'pendidikan'            => !empty($post['pendidikan']) ? $post['pendidikan'] : NULL,
-            'email'                 => !empty($post['email']) ? $post['email'] : NULL,
+            'email_konsumen'                 => !empty($post['email_konsumen']) ? $post['email_konsumen'] : NULL,
             'lokasi_rumah'          => !empty($post['lokasi_rumah']) ? $post['lokasi_rumah'] : NULL,
             'jenis_rumah'           => !empty($post['jenis_rumah']) ? $post['jenis_rumah'] : NULL,
             'luas_rumah'            => !empty($post['luas_rumah']) ? $post['luas_rumah'] : NULL,
