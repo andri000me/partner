@@ -272,6 +272,19 @@ class Fs_konsumen extends CI_Controller
             //kesimpulan
             'kesimpulan_strength'     => !empty($this->input->post('kesimpulan_strength')) ? $this->input->post('kesimpulan_strength') : NULL,
             'kesimpulan_weakness'     => !empty($this->input->post('kesimpulan_weakness')) ? $this->input->post('kesimpulan_weakness') : NULL,
+
+            //Hasil Scoring
+            'hasil_scoring_nilai_informasi_konsumen'    => !empty($this->input->post('hasil_scoring_nilai_informasi_konsumen')) ? $this->input->post('hasil_scoring_nilai_informasi_konsumen') : NULL,
+            'hasil_scoring_nilai_survey_konsumen'       => !empty($this->input->post('hasil_scoring_nilai_survey_konsumen')) ? $this->input->post('hasil_scoring_nilai_survey_konsumen') : NULL,
+            'hasil_scoring_nilai_penilaian_merchant'    => !empty($this->input->post('hasil_scoring_nilai_penilaian_merchant')) ? $this->input->post('hasil_scoring_nilai_penilaian_merchant') : NULL,
+            'hasil_scoring_nilai_aset_kendaraan'        => !empty($this->input->post('hasil_scoring_nilai_aset_kendaraan')) ? $this->input->post('hasil_scoring_nilai_aset_kendaraan') : NULL,
+            'hasil_scoring_nilai_tingkat_religiusitas'  => !empty($this->input->post('hasil_scoring_nilai_tingkat_religiusitas')) ? $this->input->post('hasil_scoring_nilai_tingkat_religiusitas') : NULL,
+            'hasil_scoring_grade_informasi_konsumen'    => !empty($this->input->post('hasil_scoring_grade_informasi_konsumen')) ? $this->input->post('hasil_scoring_grade_informasi_konsumen') : NULL,
+            'hasil_scoring_grade_survey_konsumen'       => !empty($this->input->post('hasil_scoring_grade_survey_konsumen')) ? $this->input->post('hasil_scoring_grade_survey_konsumen') : NULL,
+            'hasil_scoring_grade_penilaian_merchant'    => !empty($this->input->post('hasil_scoring_grade_penilaian_merchant')) ? $this->input->post('hasil_scoring_grade_penilaian_merchant') : NULL,
+            'hasil_scoring_grade_aset_kendaraan'        => !empty($this->input->post('hasil_scoring_grade_aset_kendaraan')) ? $this->input->post('hasil_scoring_grade_aset_kendaraan') : NULL,
+            'hasil_scoring_grade_tingkat_religiusitas'  => !empty($this->input->post('hasil_scoring_grade_tingkat_religiusitas')) ? $this->input->post('hasil_scoring_grade_tingkat_religiusitas') : NULL,
+            'is_recommended'                            => !empty($this->input->post('is_recommended')) ? $this->input->post('is_recommended') : NULL,
         ];
         $where = ['id_leads' => $this->input->post('id_leads')];
         $json = $this->fs_konsumen_model->update($data, $where);

@@ -2997,10 +2997,10 @@
                                                             <label>Informasi Aplikasi & Konsumen</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_informasi_konsumen" value="<?= $data->hasil_scoring_nilai_informasi_konsumen ?>" id="" placeholder="Nilai" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" value="<?= $data->hasil_scoring_grade_informasi_konsumen ?>" id="" placeholder="Grade" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3008,10 +3008,10 @@
                                                             <label>Survey Konsumen</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_grade_survey_konsumen ?>" id="" placeholder="Grade" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3019,10 +3019,10 @@
                                                             <label>Penilaian Merchant</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_penilaian_merchant" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" value="<?= $data->hasil_scoring_grade_penilaian_merchant ?>" id="" placeholder="Grade" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3030,10 +3030,10 @@
                                                             <label>Aset Kendaraan</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_aset_kendaraan" value="<?= $data->hasil_scoring_nilai_aset_kendaraan ?>" id="" placeholder="Nilai" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" value="<?= $data->hasil_scoring_grade_aset_kendaraan ?>" id="" placeholder="Grade" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -3041,10 +3041,10 @@
                                                             <label>Tingkat Religiusitas</label>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_tingkat_religiusitas" value="<?= $data->hasil_scoring_nilai_tingkat_religiusitas ?>" id="" placeholder="Nilai" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" value="<?= $data->hasil_scoring_grade_tingkat_religiusitas ?>" id="" placeholder="Grade" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -3054,10 +3054,10 @@
 
                                     <div class="form-group form-margin">
                                         <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
-                                        <select class="form-control text-size" name="" id="" required>
+                                        <select class="form-control text-size" name="is_recommended" id="" required>
                                             <option selected value="">Pilih Jawaban</option>
-                                            <option value="Recommended">Recommended</option>
-                                            <option value="Not Recommended">Not Recommended</option>
+                                            <option <?= $data->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
+                                            <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
                                         </select>
                                     </div>
 
@@ -3074,7 +3074,9 @@
                                     </div> -->
                                 </div>
                             </div>
-
+                        </form>
+                        <form action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
+                            <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                             <div class="card">
                                 <div class="card-body text-size">
                                     <h5 class="form-margin"><b>Data Lampiran</b>
@@ -3096,6 +3098,8 @@
                                                 lampiran</a>
                                         </div>
                                     </div>
+                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit"><b>Upload Lampiran</b></button>
+
 
                                     <div class="collapse" id="lampiran">
 
@@ -3111,8 +3115,8 @@
                             </div> -->
                                 </div>
                             </div>
-
                         </form>
+
                     </div>
                     <!-- Data Hasil Analisa -->
 
