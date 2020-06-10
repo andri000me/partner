@@ -197,11 +197,11 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-right">
                                         <label>Jenis Konsumen</label>
-                                        <select class="form-control text-size" name="status_konsumen" id="status_konsumen" required>
+                                        <select class="form-control text-size" name="jenis_konsumen" id="jenis_konsumen" required>
                                             <option selected value="">Pilih Jenis Konsumen</option>
-                                            <option <?= set_value('status_konsumen') == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer</option>
-                                            <option <?= set_value('status_konsumen') == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
-                                            <option <?= set_value('status_konsumen') == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
+                                            <option <?= set_value('jenis_konsumen') == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer</option>
+                                            <option <?= set_value('jenis_konsumen') == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
+                                            <option <?= set_value('jenis_konsumen') == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
                                         </select>
                                     </div>
                                 </div>
@@ -580,7 +580,7 @@
                 .removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
@@ -590,7 +590,7 @@
                 .removeAttr('required', 'required');
             $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Penyedia Jasa') {
             $('.jasa, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
@@ -600,7 +600,7 @@
                 .removeAttr('required', 'required');
             $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Agent BA') {
             $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -613,7 +613,7 @@
                     '');
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -621,7 +621,7 @@
             $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
             $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
             $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'RO') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -629,7 +629,7 @@
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
             $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('RO Active');
+            $('#jenis_konsumen').val('RO Active');
         } else if ($('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -637,7 +637,7 @@
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
             $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Digital Marketing') {
             $('.vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -647,7 +647,7 @@
                 .removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Website BFI Syariah') {
             $('.vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -657,7 +657,7 @@
                 .removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Walk In') {
             $('.vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -667,7 +667,7 @@
                 .removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Event Promotion') {
             $('.event, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -677,7 +677,7 @@
                 'required');
             $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else if ($('#soa').val() == 'Tele Marketing') {
             $('.vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -687,7 +687,7 @@
                 .removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
+            $('#jenis_konsumen').val('');
         } else {
             $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
@@ -776,14 +776,14 @@
     $('.kontrak, .pasangan').hide();
 
     // Status Konsumen
-    status_konsumen();
+    jenis_konsumen();
 
-    $('#status_konsumen').change(function() {
-        status_konsumen();
+    $('#jenis_konsumen').change(function() {
+        jenis_konsumen();
     })
 
-    function status_konsumen() {
-        if ($('#status_konsumen').val() == "RO Active") {
+    function jenis_konsumen() {
+        if ($('#jenis_konsumen').val() == "RO Active") {
             $('#soa').val('RO')
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');

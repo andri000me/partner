@@ -40,11 +40,15 @@ class Fs_konsumen extends CI_Controller
     public function create($id)
     {
         $where = ['leads_full.id_leads' => $id];
-
+        $user_login = $this->fungsi->user_login();
+        $where_data = $user_login->level == 1 ? "id_user = $user_login->id_user" : ($user_login->level == 2 || $user_login == 3 ? "id_branch = $user_login->id_branch" : "1");
         $data = [
             'data'              => $this->fs_konsumen_model->get($where)->row(),
             'leads'              => $this->leads_model->get($where)->row(),
-            'branches'          => $this->branch_model->get()
+            'branches'          => $this->branch_model->get(),
+
+            'agents'    => $this->agent_model->get("agents." . $where_data),
+            'partners'  => $this->partner_model->get("partners_full." . $where_data)
         ];
 
         $this->template->load('template/index', 'survey-report-form', $data);
@@ -362,7 +366,6 @@ class Fs_konsumen extends CI_Controller
                 $config['max_size']             = 0;
                 $config['max_width']            = 0;
                 $config['max_height']           = 0;
-                // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
 
                 // Load upload library
                 $this->load->library('upload', $config);

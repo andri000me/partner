@@ -224,6 +224,13 @@
                                                     <label for="ticket" data-on-label="On" data-off-label="Off"></label>
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group ml-3 mr-3">
+                                                    <label>Admin</label><br>
+                                                    <input type="checkbox" name="admin_active" id="admin" switch="none" />
+                                                    <label for="admin" data-on-label="On" data-off-label="Off"></label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -303,6 +310,9 @@
                     }
                     if (data.ticket_active == 1) {
                         $("#ticket").prop('checked', true);
+                    }
+                    if (data.admin_active == 1) {
+                        $("#admin").prop('checked', true);
                     }
                 }
             });

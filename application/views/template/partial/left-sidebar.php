@@ -18,60 +18,47 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-edit"></i><span> Admin
-                            <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
-                        </span></a>
-                    <ul class="submenu">
-                        <?php if ($this->fungsi->module()->branch_active == 1) { ?>
-
-                            <li>
-                                <a href="<?= base_url('branch') ?>" class="waves-effect">
-                                    <span>Branch </span>
-                                </a>
-                            </li>
-
-                        <?php } ?>
-                        <?php if ($this->fungsi->module()->user_active == 1) { ?>
-                            <li>
-                                <a href="<?= base_url('') ?>" class="waves-effect">
-                                    <span>List Karyawan</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                        <?php if ($this->fungsi->module()->user_active == 1) { ?>
-                            <li>
-                                <a href="<?= base_url('user') ?>" class="waves-effect">
-                                    <span>List User</span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                        <?php if ($this->fungsi->module()->transfer_active == 1) { ?>
-
-                            <li>
-                                <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
-                                    <span> Transfer Data </span>
-                                </a>
-                            </li>
-                        <?php } ?>
-                    </ul>
-                </li>
-                <!-- <?php if ($this->fungsi->module()->branch_active == 1) { ?>
-
+                <?php if ($this->fungsi->module()->admin_active == 1) { ?>
+                    <!-- Admin -->
                     <li>
-                        <a href="<?= base_url('branch') ?>" class="waves-effect">
-                            <i class="fas fa-code-branch"></i><span>Branch </span>
-                        </a>
-                    </li>
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fas fa-user-edit"></i><span> Admin
+                                <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span>
+                            </span></a>
+                        <ul class="submenu">
+                            <?php if ($this->fungsi->module()->branch_active == 1) { ?>
 
+                                <li>
+                                    <a href="<?= base_url('branch') ?>" class="waves-effect">
+                                        <span>Branch </span>
+                                    </a>
+                                </li>
+
+                            <?php } ?>
+                            <?php if ($this->fungsi->module()->user_active == 1) { ?>
+                                <li>
+                                    <a href="<?= base_url('user/list_karyawan') ?>" class="waves-effect">
+                                        <span>List Karyawan</span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if ($this->fungsi->module()->user_active == 1) { ?>
+                                <li>
+                                    <a href="<?= base_url('user') ?>" class="waves-effect">
+                                        <span>List User</span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                            <?php if ($this->fungsi->module()->transfer_active == 1) { ?>
+
+                                <li>
+                                    <a href="<?= base_url('transfer_data') ?>" class="waves-effect">
+                                        <span> Transfer Data </span>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </li>
                 <?php } ?>
-                <?php if ($this->fungsi->module()->user_active == 1) { ?>
-                    <li>
-                        <a href="<?= base_url('user') ?>" class="waves-effect">
-                            <i class="fas fa-users"></i><span>List User</span>
-                        </a>
-                    </li>
-                <?php } ?> -->
 
                 <li>
                     <a href="<?= base_url('notification') ?>" class="waves-effect">
