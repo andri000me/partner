@@ -76,11 +76,7 @@
 
                 <p class="gede mt-4"><b>Documents</b></p>
 
-                <p class="mb-2 kecil"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Kartu
-                    Tanda Penduduk</p>
-                <p class="mb-2 kecil"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Kartu
-                    Keluarga</p>
-                <p class="mb-2 kecil"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Bukti
+                <p class="mb-2 kecil"><a href="#"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Download Semua Dokumen</a></p>
             </div>
 
         </div>
@@ -265,7 +261,7 @@
                                             <div class="form-group form-center">
                                                 <label>Status Pernikahan</label>
                                                 <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan">
-                                                    <option selected value=""></option>
+                                                    <option selected value="">Pilih Status Pernikahan</option>
                                                     <option <?= $leads->status_pernikahan == 'Sudah Menikah' ? 'selected' : '' ?> value="Sudah Menikah">Sudah Menikah
                                                     </option>
                                                     <option <?= $leads->status_pernikahan == 'Belum Menikah' ? 'selected' : '' ?> value="Belum Menikah">Belum Menikah
@@ -284,8 +280,8 @@
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-left">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-margin">
                                                 <label>Jenis Konsumen</label>
                                                 <select class="form-control text-size" name="status_konsumen" id="status_konsumen">
                                                     <option value="">Pilih Jenis Konsumen</option>
@@ -296,8 +292,24 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="form-row ro-active">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
+                                                <label>Nomor Kontrak</label>
+                                                <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $leads->nomor_kontrak ?>" minlength="10" maxlength="10" placeholder="0000000000" />
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group form-right">
+                                                <label>Nama Konsumen</label>
+                                                <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $leads->referral_konsumen ?>" placeholder="Input Nama Konsumen">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group form-left">
                                                 <label>Lokasi Rumah</label>
                                                 <select class=" form-control text-size" name="lokasi_rumah" id="lokasi_rumah">
                                                     <option selected value="">Pilih Lokasi Rumah</option>
@@ -319,10 +331,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-6">
-                                            <div class="form-group form-left">
+                                        <div class="col-md-4">
+                                            <div class="form-group form-center">
                                                 <label>Jenis Bangunan Rumah</label>
                                                 <select class=" form-control text-size" name="jenis_rumah" id="jenis_rumah">
                                                     <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
@@ -332,7 +342,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group form-right">
                                                 <label>Luas Bangunan Rumah</label>
                                                 <select class=" form-control text-size" name="luas_rumah" id="luas_rumah">
@@ -350,6 +360,26 @@
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group form-left">
+                                                <label>Asal Aplikasi</label>
+                                                <select class="form-control text-size" name="soa" id="soa">
+                                                    <option selected value="">Pilih Asal Aplikasi</option>
+                                                    <option <?= $leads->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                                    <option <?= $leads->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                                    <option <?= $leads->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                                    <option <?= $leads->soa == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
+                                                    <option <?= $leads->soa == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
+                                                    <option <?= $leads->soa == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
+                                                    <option <?= $leads->soa == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
+                                                    <option <?= $leads->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                                    <option <?= $leads->soa == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
+                                                    <!-- <option <?= $leads->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                                    <option <?= $leads->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                                    <option <?= $leads->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
                                                 <label>Activity Marketing</label>
                                                 <select class="form-control text-size" name="activity_marketing" id="activity_marketing">
                                                     <option selected value="">Pilih Kategori Activity Marketing</option>
@@ -374,26 +404,6 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-right">
-                                                <label>Asal Aplikasi</label>
-                                                <select class="form-control text-size" name="soa" id="soa">
-                                                    <option selected value="">Pilih Asal Aplikasi</option>
-                                                    <option <?= $leads->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                                    <option <?= $leads->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                                    <option <?= $leads->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                                    <option <?= $leads->soa == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
-                                                    <option <?= $leads->soa == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
-                                                    <option <?= $leads->soa == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
-                                                    <option <?= $leads->soa == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
-                                                    <option <?= $leads->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                                    <option <?= $leads->soa == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
-                                                    <!-- <option <?= $leads->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                                    <option <?= $leads->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                                    <option <?= $leads->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
-                                                </select>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-12 event">
@@ -408,7 +418,7 @@
                                                 <div class="input-group">
                                                     <input type="text" class="form-control text-size" name="nama_agent" id="nama_agent" value="<?= $leads->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Pilih Nama Agent">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                        <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target="#modal-agent"><b>Cari</b></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -422,7 +432,7 @@
                                                 <div class="input-group">
                                                     <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= $leads->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Pilih Nama Partner">
                                                     <div class="input-group-append">
-                                                        <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                        <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target="#modal-partner"><b>Cari</b></button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -492,7 +502,7 @@
                                     </div>
 
                                     <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-pembiayaan').click()"><b>Selanjutnya</b></button>
+                                        <button type="button" class="btn btn-primary ml-1 text-size" onclick="document.getElementById('btn-pembiayaan').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -744,8 +754,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-konsumen').click()"><b>Kembali</b></button>
-                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-kondisi').click()"><b>Selanjutnya</b></button>
+                                        <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-konsumen').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-kondisi').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -1453,8 +1463,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-pembiayaan').click()"><b>Kembali</b></button>
-                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-kapasitas').click()"><b>Selanjutnya</b></button>
+                                        <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-pembiayaan').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-kapasitas').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -1799,8 +1809,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group form-margin float-right mt-5">
-                                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-kondisi').click()"><b>Kembali</b></button>
-                                            <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-karakter').click()"><b>Selanjutnya</b></button>
+                                            <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-kondisi').click()"><b>Kembali</b></button>
+                                            <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-karakter').click()"><b>Selanjutnya</b></button>
                                         </div>
                                     </div>
                                 </div>
@@ -2385,8 +2395,8 @@
                                             </div>
                                         </div>
                                         <div class="form-group form-margin float-right mt-5">
-                                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-kondisi').click()"><b>Kembali</b></button>
-                                            <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-karakter').click()"><b>Selanjutnya</b></button>
+                                            <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-kondisi').click()"><b>Kembali</b></button>
+                                            <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-karakter').click()"><b>Selanjutnya</b></button>
                                         </div>
                                     </div>
                                 </div>
@@ -2469,8 +2479,8 @@
                                         <textarea class="form-control text-size" name="character_hasil_kredit_media_lain" id="" cols="30" rows="10" placeholder="Haisl Keterangan Dari media Lain" style="height:110px;"><?= $data->character_hasil_kredit_media_lain ?></textarea>
                                     </div>
                                     <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-kapasitas').click()"><b>Kembali</b></button>
-                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-jaminan').click()"><b>Selanjutnya</b></button>
+                                        <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-kapasitas').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-jaminan').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -2596,8 +2606,8 @@
                                         </div>
                                     </div>
                                     <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-karakter').click()"><b>Kembali</b></button>
-                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-religi').click()"><b>Selanjutnya</b></button>
+                                        <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-karakter').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-religi').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -2755,8 +2765,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-jaminan').click()"><b>Kembali</b></button>
-                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-score').click()"><b>Selanjutnya</b></button>
+                                        <button type="button" class="btn btn-secondary text-size" onclick="document.getElementById('btn-jaminan').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary text-size ml-1" onclick="document.getElementById('btn-score').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -2788,17 +2798,41 @@
                                 <div class="card-body text-size">
                                     <h5 class="form-margin"><b>Data Lampiran</b></h5>
 
-                                    <div class="form-group element text-size form-margin">
-                                        <label>Lampirkan Data</label><br>
-                                        <input type="file" name="tambah_lampiran" id="upload_file1">
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class="form-group element text-size form-margin">
+                                                <label>Lampirkan Data</label><br>
+                                                <input type="file" name="tambah_lampiran" id="upload_file1">
+                                            </div>
+                                            <div class="form-margin">
+                                                <div id="moreImageUpload"></div>
+                                                <div class="clear"></div>
+                                                <div id="moreImageUploadLink" class="float-right mt-3">
+                                                    <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">tambah
+                                                        Form
+                                                        lampiran</a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="form-margin">
-                                        <div id="moreImageUpload"></div>
-                                        <div class="clear"></div>
-                                        <div id="moreImageUploadLink" class="float-right mt-3">
-                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">tambah
-                                                Form
-                                                lampiran</a>
+                                    <hr>
+                                    <div class="form-row">
+                                        <div class="col-md-12">
+                                            <div class=" form-margin">
+                                                <div class="owl-carousel owl-theme mt-1">
+                                                    <div class="item" style="width: 200px; height: 100px;">
+                                                        <div class="zoom-gallery">
+                                                            <a href="<?= base_url('../template/assets/images/oldtrafford.jpg') ?>"><img class="item" src="<?= base_url('../template/assets/images/oldtrafford.jpg') ?>" alt=""></a>
+                                                        </div>
+                                                        <a href="">
+                                                            <div class="card text-center" style="width: 200px; height: 100px;" data-toggle="tooltip" title="">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                                <!-- <span class="small"></span> -->
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2941,22 +2975,16 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?= $partner->nama_usaha ?></td>
-                            <td><?= $partner->kategori_produk ?></td>
-                            <td><?= $partner->telepon ?></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <?php if ($partner->status == 'draft') { ?>
-                                    <b class="text-secondary">Draft</b>
-                                <?php } ?>
-                                <?php if ($partner->status == 'mapping') { ?>
-                                    <b class="text-secondary">Mapping</b>
-                                <?php } ?>
-                                <?php if ($partner->status == 'lengkap') { ?>
-                                    <b class="text-success">Lengkap</b>
-                                <?php } ?>
+                                <b class="text-secondary">Draft</b>
+                                <b class="text-secondary">Mapping</b>
+                                <b class="text-success">Lengkap</b>
                             </td>
                             <td>
-                                <center><button class="btn btn-primary pilih-partner radius" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>"><b>Pilih</b></button></center>
+                                <center><button class="btn btn-primary pilih-partner radius"><b>Pilih</b></button></center>
                             </td>
                         </tr>
                     </tbody>
@@ -2986,10 +3014,10 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><?= $agent->nama_lengkap ?></td>
-                            <td><?= $agent->telepon ?></td>
+                            <td></td>
+                            <td></td>
                             <td>
-                                <center><button class="btn btn-primary pilih-agent radius" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>"><b>Pilih</b></button></center>
+                                <center><button class="btn btn-primary pilih-agent radius"><b>Pilih</b></button></center>
                             </td>
                         </tr>
                     </tbody>
@@ -3024,143 +3052,70 @@
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
         .hide();
     source_leads();
-    $('#soa').change(function() {
+    $("#soa").change(function() {
         source_leads();
         $('#id_partner').val("");
         $('#id_agent').val("");
         $('#nama_vendor').val("").removeAttr("required");
         $('#nama_event').val("");
-        $('#data_partner').val("");
-        $('#data_agent').val("");
+        $('#nama_partner').val("");
+        $('#nama_agent').val("");
         $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+
     })
 
     function source_leads() {
-        if ($('#soa').val() == 'Direct Selling') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tour & travel') {
+        if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Travel')
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            $('#nama_partner').attr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
                 .removeAttr('required', 'required');
             $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Penyedia Jasa') {
+        } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
             $('.jasa, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+            $('#nama_partner').attr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
                 .removeAttr('required', 'required');
             $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
         } else if ($('#soa').val() == 'Agent BA') {
             $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
             $('#btn-data').attr('data-target', '#modal-partner')
-            $('#data_agent').attr('placeholder', 'Pilih Nama Agent')
+            $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
             $('#btn-data-agent').attr('data-target', '#modal-agent')
-            // $('#data_partner, #data_agent').attr('required', 'required');
-            $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr(
-                'required', 'required');
+            $('#nama_agent').attr('required', 'required');
+            $('#nama_partner, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+                .removeAttr('required',
+                    '');
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
                 .hide();
-            $('#status_konsumen').val('');
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-            $('#data_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'RO') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent')
-                .hide();
-            $('#status_konsumen').val('RO Active');
+            $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
+            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Digital Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Website BFI Syariah') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Walk In') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Event Promotion') {
-            $('.event, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_event').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr(
-                'required', 'required');
-            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tele Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#data_partner').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
         } else {
             $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#data_partner, #data_agent').removeAttr('required', 'required');
+            $('#nama_partner, #nama_agent').removeAttr('required', 'required');
         }
     }
+
 
     $(".readonly").keydown(function(e) {
         e.preventDefault();
@@ -3168,9 +3123,9 @@
 </script>
 
 <script>
-    $('.kontrak, .pasangan, .resiko, .resiko-pasangan').hide();
+    $('.ro-active, .pasangan, .resiko, .resiko-pasangan').hide();
 
-    // status konsumen
+    // Status Konsumen
     status_konsumen();
 
     $('#status_konsumen').change(function() {
@@ -3179,15 +3134,15 @@
 
     function status_konsumen() {
         if ($('#status_konsumen').val() == "RO Active") {
-            $('#soa').val('RO')
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#data_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#data_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-        } else {}
+        } else {
+            $('.ro-active').hide();
+            $('#referral_konsumen, #nomor_kontrak').removeAttr('required', '');
+            $('#referral_konsumen, #nomor_kontrak').val('');
+        }
     }
-    // status konsumen
+    // Status Konsumen
 
     // status pernikahan
     menikah();

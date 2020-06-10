@@ -38,11 +38,9 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="head-wizard">
-                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data"
-                            class=" text-size">
+                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
                             <input id="website" name="website" type="disable" value="">
-                            <input type="hidden" name="id_partner" id="id_partner"
-                                value="<?= set_value('id_partner') ?>">
+                            <input type="hidden" name="id_partner" id="id_partner" value="<?= set_value('id_partner') ?>">
 
                             <div id="middle-wizard">
                                 <div class="step  text-size">
@@ -53,18 +51,10 @@
                                                     <div class=" form-margin">
                                                         <label>Nama Usaha</label>
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control text-size"
-                                                                name="nama_usaha" id="nama_usaha"
-                                                                value="<?= set_value('nama_usaha') ?>" required
-                                                                placeholder="CV Aria Santika"
-                                                                aria-label="Recipient's username"
-                                                                aria-describedby="button-addon2">
+                                                            <input type="text" class="form-control text-size" name="nama_usaha" id="nama_usaha" value="<?= set_value('nama_usaha') ?>" required placeholder="CV Aria Santika" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                             <div class="input-group-append">
-                                                                <button class="btn btn-danger text-size" type="button"
-                                                                    id="reset"><b>Hapus</b></button>
-                                                                <button class="btn btn-primary text-size" type="button"
-                                                                    id="button-addon2" data-toggle="modal"
-                                                                    data-target=".bd-example-modal-xl"><b>Cari</b></button>
+                                                                <button class="btn btn-danger text-size" type="button" id="reset"><b>Hapus</b></button>
+                                                                <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target=".bd-example-modal-xl"><b>Cari</b></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,10 +64,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>E-Mail</label>
-                                                        <input type="email" class="form-control text-size" name="email"
-                                                            id="email" parsley-type="email"
-                                                            value="<?= set_value('email') ?>"
-                                                            placeholder="Aisha@bfisyariah.id" />
+                                                        <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= set_value('email') ?>" placeholder="Aisha@bfisyariah.id" />
                                                         <?= form_error("email") ?>
                                                         <div id="email-availabilty"></div>
                                                     </div>
@@ -87,11 +74,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Nomor Telepon / WhatsApp</label>
-                                                        <input type="text"
-                                                            class="form-control placement text-size number-only"
-                                                            name="telepon" id="telepon"
-                                                            value="<?= set_value('telepon') ?>" required
-                                                            placeholder="0811977500" maxlength="15" />
+                                                        <input type="text" class="form-control placement text-size number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                                         <?= form_error("telepon") ?>
                                                         <div id="telepon-availabilty"></div>
                                                     </div>
@@ -101,28 +84,15 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Kategori Produk</label>
-                                                        <select class="form-control text-size" name="kategori_produk"
-                                                            id="kategori_produk" required>
+                                                        <select class="form-control text-size" name="kategori_produk" id="kategori_produk" required>
                                                             <option selected disabled value="">Pilih Kategori Produk
                                                             </option>
-                                                            <option
-                                                                <?= set_value('kategori_produk') == 'My Ihram' ? 'selected' : '' ?>
-                                                                value="My Ihram">My Ihram</option>
-                                                            <option
-                                                                <?= set_value('kategori_produk') == 'My Safar' ? 'selected' : '' ?>
-                                                                value="My Safar">My Safar</option>
-                                                            <option
-                                                                <?= set_value('kategori_produk') == 'My Talim' ? 'selected' : '' ?>
-                                                                value="My Talim">My Talim</option>
-                                                            <option
-                                                                <?= set_value('kategori_produk') == 'My Hajat' ? 'selected' : '' ?>
-                                                                value="My Hajat">My Hajat</option>
-                                                            <option
-                                                                <?= set_value('kategori_produk') == 'My Faedah' ? 'selected' : '' ?>
-                                                                value="My Faedah">My Faedah</option>
-                                                            <option
-                                                                <?= set_value('kategori_produk') == 'My CarS' ? 'selected' : '' ?>
-                                                                value="My CarS">My CarS</option>
+                                                            <option <?= set_value('kategori_produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                            <option <?= set_value('kategori_produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                            <option <?= set_value('kategori_produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                            <option <?= set_value('kategori_produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                            <option <?= set_value('kategori_produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                            <option <?= set_value('kategori_produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -131,30 +101,18 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Bidang Usaha</label>
-                                                        <input type="text" class="form-control text-size"
-                                                            name="bidang_usaha" id="bidang_usaha"
-                                                            value="<?= set_value('bidang_usaha') ?>" required
-                                                            placeholder="Garmen / Percetakan / Lainnya" />
+                                                        <input type="text" class="form-control text-size" name="bidang_usaha" id="bidang_usaha" value="<?= set_value('bidang_usaha') ?>" required placeholder="Garmen / Percetakan / Lainnya" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-right">
                                                         <label>Bentuk Usaha</label>
-                                                        <select class="form-control text-size" name="bentuk_usaha"
-                                                            id="bentuk_usaha" required placeholder="Bentuk Usaha">
+                                                        <select class="form-control text-size" name="bentuk_usaha" id="bentuk_usaha" required placeholder="Bentuk Usaha">
                                                             <option selected value="">Pilih Bentuk Usaha</option>
-                                                            <option
-                                                                <?= set_value('bentuk_usaha') == 'Perorangan' ? 'selected' : '' ?>
-                                                                value="Perorangan">Perorangan</option>
-                                                            <option
-                                                                <?= set_value('bentuk_usaha') == 'PD' ? 'selected' : '' ?>
-                                                                value="PD">PD</option>
-                                                            <option
-                                                                <?= set_value('bentuk_usaha') == 'CV' ? 'selected' : '' ?>
-                                                                value="CV">CV</option>
-                                                            <option
-                                                                <?= set_value('bentuk_usaha') == 'PT' ? 'selected' : '' ?>
-                                                                value="PT">PT</option>
+                                                            <option <?= set_value('bentuk_usaha') == 'Perorangan' ? 'selected' : '' ?> value="Perorangan">Perorangan</option>
+                                                            <option <?= set_value('bentuk_usaha') == 'PD' ? 'selected' : '' ?> value="PD">PD</option>
+                                                            <option <?= set_value('bentuk_usaha') == 'CV' ? 'selected' : '' ?> value="CV">CV</option>
+                                                            <option <?= set_value('bentuk_usaha') == 'PT' ? 'selected' : '' ?> value="PT">PT</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -165,9 +123,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Alamat / Lokasi</label>
-                                                        <input type="text" class="form-control text-size" name="alamat"
-                                                            id="alamat" value="<?= set_value('alamat') ?>" required
-                                                            placeholder="Jalan Perjalanan Panjang No.22" />
+                                                        <input type="text" class="form-control text-size" name="alamat" id="alamat" value="<?= set_value('alamat') ?>" required placeholder="Jalan Perjalanan Panjang No.22" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,19 +131,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Kelurahan</label>
-                                                        <input type="text" class="form-control text-size"
-                                                            name="kelurahan" id="kelurahan"
-                                                            value="<?= set_value('kelurahan') ?>" required
-                                                            placeholder="Lengkong Gudang" />
+                                                        <input type="text" class="form-control text-size" name="kelurahan" id="kelurahan" value="<?= set_value('kelurahan') ?>" required placeholder="Lengkong Gudang" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-right">
                                                         <label>Kecamatan</label>
-                                                        <input type="text" class="form-control text-size"
-                                                            name="kecamatan" id="kecamatan"
-                                                            value="<?= set_value('kecamatan') ?>" required
-                                                            placeholder="Serpong utara" />
+                                                        <input type="text" class="form-control text-size" name="kecamatan" id="kecamatan" value="<?= set_value('kecamatan') ?>" required placeholder="Serpong utara" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,20 +145,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Kode Pos</label>
-                                                        <input type="text"
-                                                            class="form-control placement text-size number-only"
-                                                            name="kode_pos" id="kode_pos"
-                                                            value="<?= set_value('kode_pos') ?>" required
-                                                            placeholder="16810" minlength="5" maxlength="6" />
+                                                        <input type="text" class="form-control placement text-size number-only" name="kode_pos" id="kode_pos" value="<?= set_value('kode_pos') ?>" required placeholder="16810" minlength="5" maxlength="6" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-right">
                                                         <label>Provinsi</label>
-                                                        <input type="text" class="form-control text-size"
-                                                            name="provinsi" id="provinsi"
-                                                            value="<?= set_value('provinsi') ?>" required
-                                                            placeholder="Kalimantan Tengah" />
+                                                        <input type="text" class="form-control text-size" name="provinsi" id="provinsi" value="<?= set_value('provinsi') ?>" required placeholder="Kalimantan Tengah" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -216,20 +159,12 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Status Tempat Usaha</label>
-                                                        <select class=" form-control text-size"
-                                                            name="status_tempat_usaha" id="status_tempat_usaha"
-                                                            required>
+                                                        <select class=" form-control text-size" name="status_tempat_usaha" id="status_tempat_usaha" required>
                                                             <option selected disabled value="">Pilih Status Tempat usaha
                                                             </option>
-                                                            <option
-                                                                <?= set_value('status_tempat_usaha') == 'Milik Sendiri' ? 'selected' : '' ?>
-                                                                value="Milik Sendiri">Milik Sendiri</option>
-                                                            <option
-                                                                <?= set_value('status_tempat_usaha') == 'Milik Keluarga' ? 'selected' : '' ?>
-                                                                value="Milik Keluarga">Milik Keluarga</option>
-                                                            <option
-                                                                <?= set_value('status_tempat_usaha') == 'Sewa' ? 'selected' : '' ?>
-                                                                value="Sewa">Sewa</option>
+                                                            <option <?= set_value('status_tempat_usaha') == 'Milik Sendiri' ? 'selected' : '' ?> value="Milik Sendiri">Milik Sendiri</option>
+                                                            <option <?= set_value('status_tempat_usaha') == 'Milik Keluarga' ? 'selected' : '' ?> value="Milik Keluarga">Milik Keluarga</option>
+                                                            <option <?= set_value('status_tempat_usaha') == 'Sewa' ? 'selected' : '' ?> value="Sewa">Sewa</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -238,20 +173,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Tahun Berdiri</label>
-                                                        <input type="text"
-                                                            class="form-control placement text-size number-only"
-                                                            name="tahun_berdiri" id="tahun_berdiri"
-                                                            value="<?= set_value('tahun_berdiri') ?>" required
-                                                            placeholder="2016" minlength="4" maxlength="4">
+                                                        <input type="text" class="form-control placement text-size number-only" name="tahun_berdiri" id="tahun_berdiri" value="<?= set_value('tahun_berdiri') ?>" required placeholder="2016" minlength="4" maxlength="4">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-right">
                                                         <label>Jumlah Karyawan</label>
-                                                        <input type="text" class="form-control text-size number-only"
-                                                            name="jumlah_karyawan" id="jumlah_karyawan"
-                                                            value="<?= set_value('jumlah_karyawan') ?>" required
-                                                            placeholder="25">
+                                                        <input type="text" class="form-control text-size number-only" name="jumlah_karyawan" id="jumlah_karyawan" value="<?= set_value('jumlah_karyawan') ?>" required placeholder="25">
                                                     </div>
                                                 </div>
                                             </div>
@@ -268,10 +196,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group form-margin">
                                                             <label>Barang Yang Dijual</label>
-                                                            <input type="text" class="form-control text-size"
-                                                                name="barang_jual" id="barang_jual" name="barang_jual"
-                                                                value="<?= set_value('barang_jual') ?>" required
-                                                                placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
+                                                            <input type="text" class="form-control text-size" name="barang_jual" id="barang_jual" name="barang_jual" value="<?= set_value('barang_jual') ?>" required placeholder="Contoh : Bahan Bangunan, Paket Pernikahan, Lainnya">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -279,10 +204,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group form-margin">
                                                             <label>Sosial Media / Website</label>
-                                                            <input type="text" class="form-control text-size"
-                                                                name="sosial_media" id="sosial_media"
-                                                                value="<?= set_value('sosial_media') ?>"
-                                                                placeholder="https://www.instagram.com/bfisyariah">
+                                                            <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" value="<?= set_value('sosial_media') ?>" placeholder="https://www.instagram.com/bfisyariah">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -293,26 +215,17 @@
                                                                 Diterima</label>
                                                             <div class="form-group">
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        name="jenis_pembayaran[]" id="inlineCheckbox1"
-                                                                        value="Tunai">
-                                                                    <label class="form-check-label"
-                                                                        for="inlineCheckbox1">Tunai</label>
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox1" value="Tunai">
+                                                                    <label class="form-check-label" for="inlineCheckbox1">Tunai</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        name="jenis_pembayaran[]" id="inlineCheckbox2"
-                                                                        value="Cicilan Konvensional">
-                                                                    <label class="form-check-label"
-                                                                        for="inlineCheckbox2">Cicilan
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox2" value="Cicilan Konvensional">
+                                                                    <label class="form-check-label" for="inlineCheckbox2">Cicilan
                                                                         Konvensional</label>
                                                                 </div>
                                                                 <div class="form-check form-check-inline">
-                                                                    <input class="form-check-input" type="checkbox"
-                                                                        name="jenis_pembayaran[]" id="inlineCheckbox3"
-                                                                        value="Cicilan Syariah">
-                                                                    <label class="form-check-label"
-                                                                        for="inlineCheckbox3">Cicilan Syariah</label>
+                                                                    <input class="form-check-input" type="checkbox" name="jenis_pembayaran[]" id="inlineCheckbox3" value="Cicilan Syariah">
+                                                                    <label class="form-check-label" for="inlineCheckbox3">Cicilan Syariah</label>
                                                                 </div>
                                                                 <!-- <select class="form-control text-size" name="jenis_pembayaran" id="jenis_pembayaran" required placeholder="Jenis Pembayaran">
                                                                 <option selected disabled value="">Pilih Jenis Pembayaran</option>
@@ -328,21 +241,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group form-left">
                                                             <label>Omset Perbulan</label>
-                                                            <input type="text"
-                                                                class="form-control text-size number-only" name="omset"
-                                                                id="omset" data-type="currency"
-                                                                value="<?= set_value('omset') ?>" required
-                                                                placeholder="Rp. 000 000 000">
+                                                            <input type="text" class="form-control text-size number-only" name="omset" id="omset" data-type="currency" value="<?= set_value('omset') ?>" required placeholder="Rp. 000 000 000">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group form-right">
                                                             <label>Jumlah Cabang</label>
-                                                            <input type="text"
-                                                                class="form-control text-size number-only"
-                                                                name="jumlah_cabang" id="jumlah_cabang"
-                                                                value="<?= set_value('jumlah_cabang') ?>" required
-                                                                placeholder="5">
+                                                            <input type="text" class="form-control text-size number-only" name="jumlah_cabang" id="jumlah_cabang" value="<?= set_value('jumlah_cabang') ?>" required placeholder="5">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -350,21 +255,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group form-left">
                                                             <label>Rekening Bank</label>
-                                                            <input type="text"
-                                                                class="form-control placement text-size number-only"
-                                                                id="rekening_bank" name="rekening_bank"
-                                                                value="<?= set_value('rekening_bank') ?>" required
-                                                                placeholder="04686587658745" minlength="10"
-                                                                maxlength="16">
+                                                            <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group form-right">
                                                             <label>Nama Bank</label>
-                                                            <input type="text" class="form-control text-size"
-                                                                id="nama_bank" name="nama_bank"
-                                                                value="<?= set_value('rekening_bank') ?>" required
-                                                                placeholder="Bank Mandiri">
+                                                            <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="Bank Mandiri">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -372,19 +269,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group form-left">
                                                             <label>Cabang Bank</label>
-                                                            <input type="text" class="form-control text-size"
-                                                                id="cabang_bank" name="cabang_bank"
-                                                                value="<?= set_value('cabang_bank') ?>" required
-                                                                placeholder="Cabang Karawaci">
+                                                            <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= set_value('cabang_bank') ?>" required placeholder="Cabang Karawaci">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group form-right">
                                                             <label>Atas Nama</label>
-                                                            <input type="text" class="form-control text-size"
-                                                                id="atas_nama" name="atas_nama"
-                                                                value="<?= set_value('atas_nama') ?>" required
-                                                                placeholder="Anton Hoed">
+                                                            <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= set_value('atas_nama') ?>" required placeholder="Anton Hoed">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -393,19 +284,13 @@
                                                         <div class="form-group form-left">
                                                             <label>Pernah Melakukan Promosi?</label><br>
                                                             <div class="form-check form-check-inline mt-2">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="pernah_promosi" id="pernah_promosi"
-                                                                    <?= set_value('pernah_promosi') == 'Ya' ? 'checked' : '' ?>
-                                                                    required value="Ya">
+                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= set_value('pernah_promosi') == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                                 <label class="form-check-label">
                                                                     Ya
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="pernah_promosi" id="pernah_promosi"
-                                                                    <?= set_value('pernah_promosi') == 'Tidak' ? 'checked' : '' ?>
-                                                                    required value="Tidak">
+                                                                <input class="form-check-input" type="radio" name="pernah_promosi" id="pernah_promosi" <?= set_value('pernah_promosi') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                                 <label class="form-check-label">
                                                                     Tidak
                                                                 </label>
@@ -416,19 +301,13 @@
                                                         <div class="form-group form-right">
                                                             <label>Ada Project Yang Sedang Berjalan?</label><br>
                                                             <div class="form-check form-check-inline mt-2">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="on_going_project" id="on_going_project"
-                                                                    <?= set_value('on_going_project') == 'Ada' ? 'checked' : '' ?>
-                                                                    required value="Ada">
+                                                                <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= set_value('on_going_project') == 'Ada' ? 'checked' : '' ?> required value="Ada">
                                                                 <label class="form-check-label">
                                                                     Ada
                                                                 </label>
                                                             </div>
                                                             <div class="form-check form-check-inline">
-                                                                <input class="form-check-input" type="radio"
-                                                                    name="on_going_project" id="on_going_project"
-                                                                    <?= set_value('on_going_project') == 'Tidak Ada' ? 'checked' : '' ?>
-                                                                    required value="Tidak Ada">
+                                                                <input class="form-check-input" type="radio" name="on_going_project" id="on_going_project" <?= set_value('on_going_project') == 'Tidak Ada' ? 'checked' : '' ?> required value="Tidak Ada">
                                                                 <label class="form-check-label">
                                                                     Tidak Ada
                                                                 </label>
@@ -443,10 +322,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Nama Pemilik</label>
-                                                        <input type="text" class="form-control text-size"
-                                                            name="nama_pemilik" id="nama_pemilik"
-                                                            value="<?= set_value('nama_pemilik') ?>" required
-                                                            placeholder="Khadaffi Antashari">
+                                                        <input type="text" class="form-control text-size" name="nama_pemilik" id="nama_pemilik" value="<?= set_value('nama_pemilik') ?>" required placeholder="Khadaffi Antashari">
                                                     </div>
                                                 </div>
                                             </div>
@@ -454,9 +330,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Hobi / Interest</label>
-                                                        <input type="text" class="form-control text-size" name="hobi"
-                                                            id="hobi" value="<?= set_value('hobi') ?>"
-                                                            placeholder="Memancing">
+                                                        <input type="text" class="form-control text-size" name="hobi" id="hobi" value="<?= set_value('hobi') ?>" placeholder="Memancing">
                                                     </div>
                                                 </div>
                                             </div>
@@ -465,19 +339,13 @@
                                                     <div class="form-group form-left">
                                                         <label>Apakah Punya Pinjaman?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="punya_pinjaman" id="punya_pinjaman"
-                                                                <?= set_value('punya_pinjaman') == 'Ya' ? 'checked' : '' ?>
-                                                                required value="Ya">
+                                                            <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= set_value('punya_pinjaman') == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                             <label class="form-check-label text-size">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="punya_pinjaman" id="punya_pinjaman"
-                                                                <?= set_value('punya_pinjaman') == 'Tidak' ? 'checked' : '' ?>
-                                                                required value="Tidak">
+                                                            <input class="form-check-input" type="radio" name="punya_pinjaman" id="punya_pinjaman" <?= set_value('punya_pinjaman') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                             <label class="form-check-label text-size">
                                                                 Tidak
                                                             </label>
@@ -488,19 +356,13 @@
                                                     <div class="form-group form-right">
                                                         <label>Ada Plafond Dari Instansi keuangan?</label><br>
                                                         <div class="form-check  form-check-inline mt-2">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="punya_jumlah_plafond" id="punya_jumlah_plafond"
-                                                                <?= set_value('punya_jumlah_plafond') == 'Ya' ? 'checked' : '' ?>
-                                                                required value="Ya">
+                                                            <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= set_value('punya_jumlah_plafond') == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                             <label class="form-check-label text-size">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check  form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="punya_jumlah_plafond" id="punya_jumlah_plafond"
-                                                                <?= set_value('punya_jumlah_plafond') == 'Tidak' ? 'checked' : '' ?>
-                                                                required value="Tidak">
+                                                            <input class="form-check-input" type="radio" name="punya_jumlah_plafond" id="punya_jumlah_plafond" <?= set_value('punya_jumlah_plafond') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                             <label class="form-check-label text-size">
                                                                 Tidak
                                                             </label>
@@ -513,19 +375,13 @@
                                                     <div class="form-group form-left">
                                                         <label>Apakah Sudah MOU?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input mou" type="radio"
-                                                                name="ttd_pks"
-                                                                <?= set_value('ttd_pks') == 'Ya' ? 'checked' : '' ?>
-                                                                required value="Ya">
+                                                            <input class="form-check-input mou" type="radio" name="ttd_pks" <?= set_value('ttd_pks') == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                             <label class="form-check-label">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input mou" type="radio"
-                                                                name="ttd_pks"
-                                                                <?= set_value('ttd_pks') == 'Tidak' ? 'checked' : '' ?>
-                                                                required value="Tidak">
+                                                            <input class="form-check-input mou" type="radio" name="ttd_pks" <?= set_value('ttd_pks') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                             <label class="form-check-label">
                                                                 Tidak
                                                             </label>
@@ -536,19 +392,13 @@
                                                     <div class="form-group form-right">
                                                         <label>Apakah Memiliki Giro / Cek?</label><br>
                                                         <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="punya_giro_cek" id="punya_giro_cek"
-                                                                <?= set_value('punya_giro_cek') == 'Ya' ? 'checked' : '' ?>
-                                                                required value="Ya">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= set_value('punya_giro_cek') == 'Ya' ? 'checked' : '' ?> required value="Ya">
                                                             <label class="form-check-label">
                                                                 Ya
                                                             </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="punya_giro_cek" id="punya_giro_cek"
-                                                                <?= set_value('punya_giro_cek') == 'Tidak' ? 'checked' : '' ?>
-                                                                required value="Tidak">
+                                                            <input class="form-check-input" type="radio" name="punya_giro_cek" id="punya_giro_cek" <?= set_value('punya_giro_cek') == 'Tidak' ? 'checked' : '' ?> required value="Tidak">
                                                             <label class="form-check-label">
                                                                 Tidak
                                                             </label>
@@ -560,22 +410,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>NPWP Penyedia Jasa</label>
-                                                        <input type="text"
-                                                            class="form-control placement text-size number-only" id=""
-                                                            name="npwp_penyedia_jasa"
-                                                            value="<?= set_value('npwp_penyedia_jasa') ?>" required
-                                                            placeholder="0000 0000 0000 000" minlength="15"
-                                                            maxlength="15">
+                                                        <input type="text" class="form-control placement text-size number-only" id="" name="npwp_penyedia_jasa" value="<?= set_value('npwp_penyedia_jasa') ?>" required placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div id="disable" class="form-group form-right">
                                                         <label>Tahun Berakhir Izin Usaha</label>
-                                                        <input type="text"
-                                                            class="form-control placement text-size number-only"
-                                                            name="akhir_izin" id="akhir_izin"
-                                                            value="<?= set_value('akhir_izin') ?>" placeholder="2016"
-                                                            minlength="4" maxlength="4">
+                                                        <input type="text" class="form-control placement text-size number-only" name="akhir_izin" id="akhir_izin" value="<?= set_value('akhir_izin') ?>" placeholder="2016" minlength="4" maxlength="4">
                                                     </div>
                                                 </div>
                                             </div>
@@ -583,12 +424,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Catatan</label>
-                                                        <textarea class="form-control text-size"
-                                                            name="keterangan_tambahan" id="keterangan_tambahan"
-                                                            cols="30" rows="10"
-                                                            value="<?= set_value('keterangan_tambahan') ?>"
-                                                            placeholder="isi jika anda informasi tambahan"
-                                                            style="height:110px;"></textarea>
+                                                        <textarea class="form-control text-size" name="keterangan_tambahan" id="keterangan_tambahan" cols="30" rows="10" value="<?= set_value('keterangan_tambahan') ?>" placeholder="isi jika anda informasi tambahan" style="height:110px;"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -601,15 +437,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle"
-                                                    data-buttonname="btn-secondary" required>
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle upload-form"
-                                                    data-buttonname="btn-secondary" required>
+                                                <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -617,16 +451,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Cover Tabungan</label>
-                                                <input type="file" name="buku_tabungan_perusahaan"
-                                                    class="filestyle upload-form" data-buttonname="btn-secondary"
-                                                    required>
+                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>SIUP / TDP</label>
-                                                <input type="file" name="siup" class="filestyle upload-form"
-                                                    data-buttonname="btn-secondary" required>
+                                                <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -634,15 +465,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Logo Perusahaan</label>
-                                                <input type="file" name="logo_perusahaan" class="filestyle"
-                                                    data-buttonname="btn-secondary">
+                                                <input type="file" name="logo_perusahaan" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Foto usaha</label>
-                                                <input type="file" name="foto_usaha" class="filestyle upload-form"
-                                                    data-buttonname="btn-secondary" required>
+                                                <input type="file" name="foto_usaha" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -650,9 +479,7 @@
                                         <div class="col-md-6" id="lampiran_mou">
                                             <div class="form-group text-size form-margin">
                                                 <label>Lampiran MOU</label>
-                                                <input type="file" id="form_mou" name="form_mou"
-                                                    class="filestyle upload-form" data-buttonname="btn-secondary"
-                                                    required>
+                                                <input type="file" id="form_mou" name="form_mou" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
@@ -661,29 +488,22 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Data Lainnya</label>
-                                                <input type="file" name="" class="filestyle"
-                                                    data-buttonname="btn-secondary">
+                                                <input type="file" name="" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Data Lainnya</label>
-                                                <input type="file" name="" class="filestyle upload-form"
-                                                    data-buttonname="btn-secondary" required>
+                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary" required>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0 float-right form-margin mt-5">
-                                    <button class="btn btn-light waves-effect waves-light text-size" id="draft"
-                                        name="draft" class="btn" type="submit"><b>Simpan</b></button>
-                                    <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1"
-                                        type="button" name="backward"><b>Kembali</b></button>
-                                    <button class="btn btn-primary waves-effect waves-light forward text-size ml-1"
-                                        type="button" name="forward"><b>Selanjutnya</b></button>
-                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1"
-                                        type="submit" name="process" data-toggle="modal"
-                                        data-target="#modalBerhasil"><b>Kirim</b></button>
+                                    <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                                    <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward"><b>Kembali</b></button>
+                                    <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward"><b>Selanjutnya</b></button>
+                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil"><b>Kirim</b></button>
                                 </div>
                         </form>
                     </div>
@@ -694,8 +514,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"
-    aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-body" style="height:700px;">
@@ -703,8 +522,7 @@
                     <h4 class="modal-title"><b>Cari Data Partner</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal"
-                    style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>
@@ -723,25 +541,20 @@
                     </thead>
                     <tbody>
                         <?php foreach ($mappings->result() as $data) { ?>
-                        <tr>
-                            <td class="not-clickable">
-                                <div class="text-size"><?= $data->nama_usaha ?></div>
-                            </td>
-                            <td>
-                                <div class="text-size"><?= $data->kategori_produk ?></div>
-                            </td>
-                            <td>
-                                <div class="text-size"><?= $data->telepon ?></div>
-                            </td>
-                            <td>
-                                <center><a href="#" id="search" class="btn btn-primary pilih radius"
-                                        data-mapping="<?= $data->id_partner ?>" data-usaha="<?= $data->nama_usaha ?>"
-                                        data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>"
-                                        data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>"
-                                        data-bidang="<?= $data->bidang_usaha ?>"
-                                        data-bentuk="<?= $data->bentuk_usaha ?>"><b>Pilih</b></a></center>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="not-clickable">
+                                    <div class="text-size"><?= $data->nama_usaha ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->kategori_produk ?></div>
+                                </td>
+                                <td>
+                                    <div class="text-size"><?= $data->telepon ?></div>
+                                </td>
+                                <td>
+                                    <center><a href="#" id="search" class="btn btn-primary pilih radius" data-mapping="<?= $data->id_partner ?>" data-usaha="<?= $data->nama_usaha ?>" data-produk="<?= $data->kategori_produk ?>" data-telepon="<?= $data->telepon ?>" data-email="<?= $data->email ?>" data-alamat="<?= $data->alamat ?>" data-bidang="<?= $data->bidang_usaha ?>" data-bentuk="<?= $data->bentuk_usaha ?>"><b>Pilih</b></a></center>
+                                </td>
+                            </tr>
                         <?php } ?>
                     </tbody>
                 </table>
@@ -752,174 +565,173 @@
 <!-- Modal -->
 
 <script>
-$("table").on('click', '.pilih', function() {
+    $("table").on('click', '.pilih', function() {
 
-    var id_partner = $(this).data('mapping');
-    var nama_usaha = $(this).data('usaha');
-    var kategori_produk = $(this).data('produk');
-    var telepon = $(this).data('telepon');
-    var bidang_usaha = $(this).data('bidang');
-    var bentuk_usaha = $(this).data('bentuk');
-    var email = $(this).data('email');
-    var alamat = $(this).data('alamat');
+        var id_partner = $(this).data('mapping');
+        var nama_usaha = $(this).data('usaha');
+        var kategori_produk = $(this).data('produk');
+        var telepon = $(this).data('telepon');
+        var bidang_usaha = $(this).data('bidang');
+        var bentuk_usaha = $(this).data('bentuk');
+        var email = $(this).data('email');
+        var alamat = $(this).data('alamat');
 
-    $('#id_partner').val(id_partner);
-    $('#nama_usaha').val(nama_usaha);
-    $('#kategori_produk').val(kategori_produk);
-    $('#telepon').val(telepon);
-    $('#bidang_usaha').val(bidang_usaha);
-    $('#bentuk_usaha').val(bentuk_usaha);
-    $('#email').val(email);
-    $('#alamat').val(alamat);
+        $('#id_partner').val(id_partner);
+        $('#nama_usaha').val(nama_usaha);
+        $('#kategori_produk').val(kategori_produk);
+        $('#telepon').val(telepon);
+        $('#bidang_usaha').val(bidang_usaha);
+        $('#bentuk_usaha').val(bentuk_usaha);
+        $('#email').val(email);
+        $('#alamat').val(alamat);
 
 
-    akhir_izin();
+        akhir_izin();
 
-    $('.bd-example-modal-xl').modal('hide');
+        $('.bd-example-modal-xl').modal('hide');
 
-    $('#nama_usaha').attr('readonly', 'readonly');
-    $('#reset').show()
-})
+        $('#nama_usaha').attr('readonly', 'readonly');
+        $('#reset').show()
+    })
 </script>
 
 <script>
-$('#disable').hide();
+    $('#disable').hide();
 
-function akhir_izin() {
-    if ($('#kategori_produk').val() == 'My Ihram' || $('#kategori_produk').val() == 'My Safar') {
-        $('#disable').show();
-        // alert($('#kategori_produk').val());
-    } else {
-        $('#disable').hide();
+    function akhir_izin() {
+        if ($('#kategori_produk').val() == 'My Ihram' || $('#kategori_produk').val() == 'My Safar') {
+            $('#disable').show();
+            // alert($('#kategori_produk').val());
+        } else {
+            $('#disable').hide();
+        }
     }
-}
-$('#kategori_produk').change(function() {
-    akhir_izin();
-})
+    $('#kategori_produk').change(function() {
+        akhir_izin();
+    })
 </script>
 
 <!-- Menghilangkan attr required untuk save sementara -->
 <script>
-$('#draft').click(function() {
-    $("input, select").removeAttr('required');
-})
+    $('#draft').click(function() {
+        $("input, select").removeAttr('required');
+    })
 </script>
 
 <script>
-$('.travel').hide();
-$('.agent').hide();
-$('.jasa').hide();
-$('.event').hide();
-$('.modal-agent').hide();
-$('.modal-parnet').hide();
-$('.form').hide();
-$('#soa').change(function() {
-    if ($('#soa').val() == 'Tour & travel') {
-        $('.travel, .form, .modal-partner').show();
-        $('#id_partner').attr('placeholder', 'jalan - jalan')
-        $('.agent, .jasa, .event, .modal-agent').hide();
-    } else if ($('#soa').val() == 'Penyedia Jasa') {
-        $('.jasa, .form, .modal-partner').show();
-        $('#id_partner').attr('placeholder', 'Jasa raharja')
-        $('.agent, .travel, .event, .modal-agent').hide();
-    } else if ($('#soa').val() == 'Agent BA') {
-        $('.agent, .form, .modal-agent').show();
-        $('#id_partner').attr('placeholder', 'Ibrahim')
-        $('.jasa, .travel, .event, .modal-partner').hide();
-    } else if ($('#soa').val() == 'Event') {
-        $('.event').show();
-        $('.jasa, .travel, .agent, .form').hide();
-    } else {
-        $('.jasa, .travel, .agent, .form, .event').hide();
-    }
-})
-</script>
-
-<script>
-$('#reset').hide()
-$('#search').click(function() {
-    $('#reset').show()
-})
-$('#reset').click(function() {
-    $('#id_partner, #nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan')
-        .val("");
-    $('#reset').hide();
-    $('#nama_usaha').removeAttr('readonly');
-})
-</script>
-
-<script>
-$('#lampiran_mou').hide();
-mou()
-
-function mou() {
-    var radioValue = $("input[name='ttd_pks']:checked").val();
-    if (radioValue == 'Tidak') {
-        $("#lampiran_mou").hide();
-        $('#form_mou').removeAttr('required', '');
-    } else if (radioValue == 'Ya') {
-        $("#lampiran_mou").show()
-        // $('#form_mou').attr('required', 'required');
-    }
-}
-}
-
-$(".mou").click(function() {
-    mou();
-})
-
-perorangan()
-
-function perorangan() {
-    $('#bentuk_usaha').change(function() {
-        if ($('#bentuk_usaha').val() == "Perorangan") {
-            $('.upload-form').removeAttr('required', ' ');
+    $('.travel').hide();
+    $('.agent').hide();
+    $('.jasa').hide();
+    $('.event').hide();
+    $('.modal-agent').hide();
+    $('.modal-parnet').hide();
+    $('.form').hide();
+    $('#soa').change(function() {
+        if ($('#soa').val() == 'Tour & travel') {
+            $('.travel, .form, .modal-partner').show();
+            $('#id_partner').attr('placeholder', 'jalan - jalan')
+            $('.agent, .jasa, .event, .modal-agent').hide();
+        } else if ($('#soa').val() == 'Penyedia Jasa') {
+            $('.jasa, .form, .modal-partner').show();
+            $('#id_partner').attr('placeholder', 'Jasa raharja')
+            $('.agent, .travel, .event, .modal-agent').hide();
+        } else if ($('#soa').val() == 'Agent BA') {
+            $('.agent, .form, .modal-agent').show();
+            $('#id_partner').attr('placeholder', 'Ibrahim')
+            $('.jasa, .travel, .event, .modal-partner').hide();
+        } else if ($('#soa').val() == 'Event') {
+            $('.event').show();
+            $('.jasa, .travel, .agent, .form').hide();
         } else {
-            $('.upload-form').attr('required', 'required');
+            $('.jasa, .travel, .agent, .form, .event').hide();
         }
     })
-}
+</script>
 
-$('#bentuk_usaha').click(function() {
-    perorangan();
-})
+<script>
+    $('#reset').hide()
+    $('#search').click(function() {
+        $('#reset').show()
+    })
+    $('#reset').click(function() {
+        $('#id_partner, #nama_usaha, #bidang_usaha, #bentuk_usaha, #alamat, #telepon, #email, #kategori_produk, #catatan')
+            .val("");
+        $('#reset').hide();
+        $('#nama_usaha').removeAttr('readonly');
+    })
+</script>
+
+<script>
+    $('#lampiran_mou').hide();
+    mou()
+
+    function mou() {
+        var radioValue = $("input[name='ttd_pks']:checked").val();
+        if (radioValue == 'Tidak') {
+            $("#lampiran_mou").hide();
+            $('#form_mou').removeAttr('required', '');
+        } else if (radioValue == 'Ya') {
+            $("#lampiran_mou").show()
+            // $('#form_mou').attr('required', 'required');
+        }
+    }
+
+    $(".mou").click(function() {
+        mou();
+    })
+
+    perorangan()
+
+    function perorangan() {
+        $('#bentuk_usaha').change(function() {
+            if ($('#bentuk_usaha').val() == "Perorangan") {
+                $('.upload-form').removeAttr('required', ' ');
+            } else {
+                $('.upload-form').attr('required', 'required');
+            }
+        })
+    }
+
+    $('#bentuk_usaha').click(function() {
+        perorangan();
+    })
 </script>
 
 <!-- check duplicate -->
 <script>
-$(document).ready(function() {
-    function check_availabilty(field, selector, target, message) {
-        var value = $(selector).val();
-        if (value != '') {
-            $.ajax({
-                    url: '<?= base_url('
+    $(document).ready(function() {
+        function check_availabilty(field, selector, target, message) {
+            var value = $(selector).val();
+            if (value != '') {
+                $.ajax({
+                        url: '<?= base_url('
                     partner / check_duplicate / ') ?>' + field + '/' + value,
-                    method: 'POST',
-                    data: {
-                        field: value
-                    },
-                    dataType: 'text',
-                    success: function(data) {
-                        if (data == 'available') {
-                            $(selector).removeClass("is-invalid");
-                            $(target).html("<span class='text text-success'>" + message +
-                                " Tersedia!</span>");
-                        } else {
-                            $(selector).val("").addClass("is-invalid");
-                            $(target).html("<span class='text text-danger'>" + message + " '" + value +
-                                "' sudah dipakai!</span>");
+                        method: 'POST',
+                        data: {
+                            field: value
+                        },
+                        dataType: 'text',
+                        success: function(data) {
+                            if (data == 'available') {
+                                $(selector).removeClass("is-invalid");
+                                $(target).html("<span class='text text-success'>" + message +
+                                    " Tersedia!</span>");
+                            } else {
+                                $(selector).val("").addClass("is-invalid");
+                                $(target).html("<span class='text text-danger'>" + message + " '" + value +
+                                    "' sudah dipakai!</span>");
+                            }
                         }
                     }
-                }
-            })
+                })
+        }
     }
-}
-$("#telepon").blur(function() {
-    check_availabilty("telepon", "#telepon", "#telepon-availabilty", "Nomor telepon ini");
-}) $("#email").blur(function() {
-    check_availabilty("email", "#email", "#email-availabilty", "Email ini");
-})
-})
+    $("#telepon").blur(function() {
+        check_availabilty("telepon", "#telepon", "#telepon-availabilty", "Nomor telepon ini");
+    }) $("#email").blur(function() {
+        check_availabilty("email", "#email", "#email-availabilty", "Email ini");
+    })
+    })
 </script>
 
 

@@ -67,13 +67,13 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group fomr-left">
+                                        <div class="form-group form-left">
                                             <label>Nomor KTP</label>
                                             <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" />
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group text-size fomr-right">
+                                        <div class="form-group text-size form-right">
                                             <label>Jenis kelamin</label><br>
                                             <div class="form-check form-check-inline mt-2">
                                                 <input class="form-check-input" type="radio" name="jenis_kelamin" id="" required <?= $data->jenis_kelamin == 'Laki - Laki' ? 'checked' : '' ?> value="Laki - Laki">
@@ -106,7 +106,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group fomr-left">
+                                        <div class="form-group form-left">
                                             <label>Email</label>
                                             <input type="email" class="form-control text-size" name="email" id="email" value="<?= $data->email ?>" placeholder="Email">
                                         </div>
@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group fomr-left">
+                                        <div class="form-group form-left">
                                             <label>Tanggal Lahir</label>
                                             <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->email ?>" placeholder="Tanggal lahir">
                                         </div>
@@ -171,7 +171,7 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="col-md-6">
-                                        <div class="form-group text-size fomr-left">
+                                        <div class="form-group text-size form-left">
                                             <label>Pekerjaan Konsumen?</label><br>
                                             <div class="form-check form-check-inline mt-2">
                                                 <input class="form-check-input pekerjaan_konsumen" type="radio" name="pekerjaan_konsumen" id="pekerjaan_konsumen" <?= $data->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?> required value="Karyawan">
@@ -188,7 +188,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group fomr-right">
+                                        <div class="form-group form-right">
                                             <label>Jenis Konsumen</label>
                                             <select class="form-control text-size" name="status_konsumen" id="status_konsumen" required>
                                                 <option selected value="">Pilih Jenis Konsumen</option>
@@ -196,6 +196,20 @@
                                                 <option <?= $data->status_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
                                                 <option <?= $data->status_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row ro-active">
+                                    <div class="col-md-6">
+                                        <div class="form-group form-left">
+                                            <label>Nomor Kontrak</label>
+                                            <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group form-right">
+                                            <label>Nama Konsumen</label>
+                                            <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
                                         </div>
                                     </div>
                                 </div>
@@ -227,7 +241,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group fomr-left">
+                                    <div class="form-group form-left">
                                         <label>Jenis Bangunan Rumah</label>
                                         <select class="form-control text-size" name="jenis_rumah" id="jenis_rumah" required>
                                             <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
@@ -238,7 +252,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group fomr-right">
+                                    <div class="form-group form-right">
                                         <label>Luas Bangunan Rumah</label>
                                         <select class="form-control text-size" name="luas_rumah" id="luas_rumah" required>
                                             <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
@@ -253,7 +267,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group fomr-left">
+                                    <div class="form-group form-left">
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
                                             <option selected value="">Pilih Asal Aplikasi</option>
@@ -276,8 +290,7 @@
                                     <div class="form-group form-right">
                                         <label>Activity Marketing</label>
                                         <select class="form-control text-size" name="activity" id="activity" required>
-                                            <option selected disabled value="">Pilih Kategori Activity Marketing
-                                            </option>
+                                            <option selected disabled value="">Pilih Kategori Activity Marketing</option>
                                             <option <?= $data->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
                                             <option <?= $data->activity_marketing == 'Tele call' ? 'selected' : '' ?> value="Tele call">Tele call</option>
                                             <option <?= $data->activity_marketing == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
@@ -305,7 +318,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size readonly pointer" name="nama_agent" id="nama_agent" placeholder="" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                <button class="btn btn-primary text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -318,37 +331,37 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size readonly pointer" name="nama_partner" id="nama_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                             <div class="input-group-append">
-                                                <button class="btn btn-light btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                <button class="btn btn-primary text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 nik">
-                                    <div class="form-group fomr-left">
+                                    <div class="form-group form-left">
                                         <label>NIK</label>
                                         <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $data->nik_egc ?>" placeholder="072104" minlength="6" maxlength="7" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 posisi">
-                                    <div class="form-group fomr-right">
+                                    <div class="form-group form-right">
                                         <label>Posisi</label>
                                         <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $data->posisi_egc ?>" placeholder="Input Posisi">
                                     </div>
                                 </div>
                                 <div class="col-md-12 cabang">
-                                    <div class="form-group fomr-margin">
+                                    <div class="form-group form-margin">
                                         <label>Cabang</label>
                                         <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $data->cabang_egc ?>" placeholder="Input Cabang">
                                     </div>
                                 </div>
                                 <div class="col-md-6 kontrak-ro">
-                                    <div class="form-group fomr-left">
+                                    <div class="form-group form-left">
                                         <label>Nomor Kontrak</label>
                                         <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
-                                    <div class="form-group fomr-right">
+                                    <div class="form-group form-right">
                                         <label>Nama Konsumen</label>
                                         <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
                                     </div>
@@ -356,7 +369,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6">
-                                    <div class="form-group text-size fomr-left">
+                                    <div class="form-group text-size form-left">
                                         <label>Konsumen Cross Branch?</label><br>
                                         <div class="form-check form-check-inline mt-2">
                                             <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $data->cross_branch == 'Ya' ? 'checked' : '' ?> required value="Ya">
@@ -373,7 +386,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div id="hide" class="form-group fomr-right">
+                                    <div id="hide" class="form-group form-right">
                                         <label>Pilih Cabang Tujuan</label>
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
@@ -549,153 +562,73 @@
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
         .hide();
     source_leads();
-    $('#soa').change(function() {
+    $("#soa").change(function() {
         source_leads();
-        $('#soa').change(function() {
-            source_leads();
-            $('#id_partner').val("");
-            $('#id_agent').val("");
-            $('#nama_vendor').val("").removeAttr("required");
-            $('#nama_event').val("");
-            $('#nama_partner').val("");
-            $('#nama_agent').val("");
-            $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
-        })
+        $('#id_partner').val("");
+        $('#id_agent').val("");
+        $('#nama_vendor').val("").removeAttr("required");
+        $('#nama_event').val("");
+        $('#nama_partner').val("");
+        $('#nama_agent').val("");
+        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
 
-        function source_leads() {
-            if ($('#soa').val() == 'Direct Selling') {
-                $('.vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-                $('#btn-data').attr('data-target', '#modal-partner');
-                // $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Tour & travel') {
-                $('.travel, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Penyedia Jasa') {
-                $('.jasa, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Agent BA') {
-                $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
-                $('#btn-data-agent').attr('data-target', '#modal-agent')
-                // $('#nama_partner, #nama_agent').attr('required', 'required');
-                $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr(
-                    'required', 'required');
-                $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'EGC') {
-                $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-                $('#btn-data').attr('data-target', '#modal-partner');
-                $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-                $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required',
-                    'required');
-                $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'RO') {
-                $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-                $('#btn-data').attr('data-target', '#modal-partner');
-                $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required',
-                    'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('RO Active');
-            } else if ($('#soa').val() == 'CGC') {
-                $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-                $('#btn-data').attr('data-target', '#modal-partner');
-                $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required',
-                    'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Digital Marketing') {
-                $('.vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                // $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Website BFI Syariah') {
-                $('.vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                // $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Walk In') {
-                $('.vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                // $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Event Promotion') {
-                $('.event, .vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                $('#nama_event').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr(
-                    'required', 'required');
-                $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else if ($('#soa').val() == 'Tele Marketing') {
-                $('.vendor, .form, .btn-data').show();
-                $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-                $('#btn-data').attr('data-target', '#modal-partner')
-                // $('#nama_partner').attr('required', 'required');
-                $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                    .removeAttr('required', 'required');
-                $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#status_konsumen').val('');
-            } else {
-                $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                    .hide();
-                $('#nama_partner, #nama_agent').removeAttr('required', 'required');
-                $('#status_konsumen').val('');
-            }
+    })
 
-            $(".readonly").keydown(function(e) {
-                e.preventDefault();
-            });
+    function source_leads() {
+        if ($('#soa').val() == 'Tour & travel') {
+            $('.travel, .form, .btn-data').show();
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('#nama_partner').attr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+                .removeAttr('required', 'required');
+            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+                .hide();
+        } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
+            $('.jasa, .form, .btn-data').show();
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('#nama_partner').attr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+                .removeAttr('required', 'required');
+            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
+                .hide();
+        } else if ($('#soa').val() == 'Agent BA') {
+            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#btn-data').attr('data-target', '#modal-partner')
+            $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
+            $('#btn-data-agent').attr('data-target', '#modal-agent')
+            $('#nama_agent').attr('required', 'required');
+            $('#nama_partner, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
+                .removeAttr('required',
+                    '');
+            $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
+                .hide();
+        } else if ($('#soa').val() == 'EGC') {
+            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
+            $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
+            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
+        } else if ($('#soa').val() == 'CGC') {
+            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#btn-data').attr('data-target', '#modal-partner');
+            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
+        } else {
+            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
+                .hide();
+            $('#nama_partner, #nama_agent').removeAttr('required', 'required');
         }
+    }
+
+
+    $(".readonly").keydown(function(e) {
+        e.preventDefault();
     });
 </script>
 
@@ -786,7 +719,7 @@
 </script>
 
 <script>
-    $('.kontrak, .pasangan').hide();
+    $('.ro-active, .pasangan').hide();
 
     // Status Konsumen
     status_konsumen();
@@ -797,12 +730,12 @@
 
     function status_konsumen() {
         if ($('#status_konsumen').val() == "RO Active") {
-            $('#soa').val('RO')
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+        } else {
+            $('.ro-active').hide();
+            $('#referral_konsumen, #nomor_kontrak').removeAttr('required', '');
+            $('#referral_konsumen, #nomor_kontrak').val('');
         }
     }
     // Status Konsumen

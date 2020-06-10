@@ -71,19 +71,17 @@
                             <div class="form-group form-margin">
                                 <label>Activity Marketing</label>
                                 <select class="form-control text-size" name="activity_marketing" id="activity_marketing" required>
-                                    <option value="" selected>Pilih Asal Aplikasi</option>
-                                    <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                    <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
-                                    <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                    <option <?= set_value('soa') == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
-                                    <option <?= set_value('soa') == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
-                                    <option <?= set_value('soa') == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
-                                    <option <?= set_value('soa') == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
-                                    <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                    <option <?= set_value('soa') == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
-                                    <!-- <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                            <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
+                                    <option selected disabled value="">Pilih Kategori Activity Marketing</option>
+                                    <option <?= $data->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
+                                    <option <?= $data->activity_marketing == 'Tele call' ? 'selected' : '' ?> value="Tele call">Tele call</option>
+                                    <option <?= $data->activity_marketing == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
+                                    <option <?= $data->activity_marketing == 'Sosial Media' ? 'selected' : '' ?> value="Sosial Media">Sosial Media</option>
+                                    <option <?= $data->activity_marketing == 'Website' ? 'selected' : '' ?> value="Website">Website</option>
+                                    <option <?= $data->activity_marketing == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                    <option <?= $data->activity_marketing == 'Walk In Branch' ? 'selected' : '' ?> value="Walk In Branch">Walk In Branch</option>
+                                    <option <?= $data->activity_marketing == 'Surat Penawaran' ? 'selected' : '' ?> value="Surat Penawaran">Surat Penawaran</option>
+                                    <option <?= $data->activity_marketing == 'Blast WA / SMS' ? 'selected' : '' ?> value="Blast WA / SMS">Blast WA / SMS</option>
+                                    <option <?= $data->activity_marketing == 'Email Marketing' ? 'selected' : '' ?> value="Email Marketing">Email Marketing</option>
                                 </select>
                             </div>
                         </div>
@@ -91,19 +89,19 @@
                             <div class="form-group form-margin">
                                 <label>Asal Aplikasi</label>
                                 <select class="form-control text-size" name="soa" id="soa" required>
-                                    <option value="" selected>Pilih Source</option>
-                                    <option <?= $data->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                    <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                    <option <?= $data->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
+                                    <option selected value="">Pilih Asal Aplikasi</option>
                                     <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
                                     <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
                                     <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
-                                    <option <?= $data->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                    <option <?= $data->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                    <option <?= $data->soa == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                    <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                    <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                    <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                    <option <?= $data->soa == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
+                                    <option <?= $data->soa == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
+                                    <option <?= $data->soa == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
+                                    <option <?= $data->soa == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
+                                    <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                    <option <?= $data->soa == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
+                                    <!-- <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                                <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                                <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
                                 </select>
                             </div>
                             <div class="form-group form-margin event">
@@ -380,17 +378,7 @@
     })
 
     function source_leads() {
-        if ($('#soa').val() == 'Direct Selling') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tour & travel') {
+        if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
             $('#btn-data').attr('data-target', '#modal-partner')
@@ -399,8 +387,7 @@
                 .removeAttr('required', 'required');
             $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Penyedia Jasa') {
+        } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
             $('.jasa, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
             $('#btn-data').attr('data-target', '#modal-partner')
@@ -409,7 +396,6 @@
                 .removeAttr('required', 'required');
             $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
         } else if ($('#soa').val() == 'Agent BA') {
             $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -422,7 +408,6 @@
                     '');
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
                 .hide();
-            $('#status_konsumen').val('');
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -430,15 +415,6 @@
             $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
             $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
             $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'RO') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('RO Active');
         } else if ($('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -446,57 +422,6 @@
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
             $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Digital Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Website BFI Syariah') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Walk In') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Event Promotion') {
-            $('.event, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_event').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required',
-                'required');
-            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tele Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
         } else {
             $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();

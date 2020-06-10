@@ -206,6 +206,20 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="form-row ro-active">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Nomor Kontrak</label>
+                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" minlength="10" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Nama Konsumen</label>
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-row">
@@ -571,17 +585,7 @@
     })
 
     function source_leads() {
-        if ($('#soa').val() == 'Direct Selling') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tour & travel') {
+        if ($('#soa').val() == 'Tour & travel') {
             $('.travel, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
             $('#btn-data').attr('data-target', '#modal-partner')
@@ -590,8 +594,7 @@
                 .removeAttr('required', 'required');
             $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Penyedia Jasa') {
+        } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
             $('.jasa, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
             $('#btn-data').attr('data-target', '#modal-partner')
@@ -600,7 +603,6 @@
                 .removeAttr('required', 'required');
             $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
-            $('#status_konsumen').val('');
         } else if ($('#soa').val() == 'Agent BA') {
             $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
@@ -613,7 +615,6 @@
                     '');
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
                 .hide();
-            $('#status_konsumen').val('');
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -621,15 +622,6 @@
             $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
             $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
             $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'RO') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('RO Active');
         } else if ($('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
             $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
@@ -637,57 +629,6 @@
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
             $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Digital Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Website BFI Syariah') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Walk In') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Event Promotion') {
-            $('.event, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_event').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').removeAttr('required',
-                'required');
-            $('.travel, .agent, .jasa, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
-        } else if ($('#soa').val() == 'Tele Marketing') {
-            $('.vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            // $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#status_konsumen').val('');
         } else {
             $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
@@ -772,7 +713,7 @@
 </script>
 
 <script>
-    $('.kontrak, .pasangan').hide();
+    $('.ro-active, .pasangan').hide();
 
     // Status Konsumen
     status_konsumen();
@@ -783,12 +724,12 @@
 
     function status_konsumen() {
         if ($('#status_konsumen').val() == "RO Active") {
-            $('#soa').val('RO')
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
-            $('#btn-data').attr('data-target', '#modal-partner');
+            $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
+        } else {
+            $('.ro-active').hide();
+            $('#referral_konsumen, #nomor_kontrak').removeAttr('required', '');
+            $('#referral_konsumen, #nomor_kontrak').val('');
         }
     }
     // Status Konsumen

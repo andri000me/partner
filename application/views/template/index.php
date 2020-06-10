@@ -65,6 +65,7 @@
         <div class="content-page">
             <div class="content">
                 <div class="container-fluid">
+                    <!-- <button class="btn btn-primary" onclick="topFunction()" id="myBtn" title="Go to top"><i class="fas fa-angle-up"></i></button> -->
                     <?= $contents ?>
                 </div>
 

@@ -3773,7 +3773,7 @@ input[data-readonly] {
 	border-top-left-radius: 20px;
 	border-bottom-left-radius: 20px;
 	border-bottom-right-radius: 20px;
-	width: 90px;
+	width: 100px;
 }
 
 .form-radius {
@@ -3906,6 +3906,17 @@ input[data-readonly] {
 
 .bold {
 	font: bold;
+}
+
+#myBtn {
+	display: none;
+	position: fixed;
+	bottom: 90px;
+	right: 1px;
+	z-index: 99;
+	font-size: 20px;
+	border-radius: 25px;
+	width: 45px;
 }
 
 /* .dataTables_filter {
