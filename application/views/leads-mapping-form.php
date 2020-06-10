@@ -43,7 +43,7 @@
                                 <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= set_value('nama_konsumen') ?>" required placeholder="Ibrahim Ahmad" />
                             </div>
                             <div class="form-group form-margin">
-                                <label>Produk</label>
+                                <label>Kategori Produk</label>
                                 <select class="form-control text-size" name="produk" id="produk" required>
                                     <option value="" selected>Pilih Kategori Produk</option>
                                     <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
@@ -55,11 +55,11 @@
                                 </select>
                             </div>
                             <div class="form-group form-margin text-size">
-                                <label>Detail Produk</label>
-                                <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Nama Barang / Jasa" />
+                                <label>Detail Barang / jasa</label>
+                                <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Detail Barang / Jasa" />
                             </div>
                             <div class="form-group form-margin">
-                                <label>Handphone/Whatsapp</label>
+                                <label>Nomor Handphone</label>
                                 <input type="text" class="form-control text-size <?= form_error('telepon') ? 'is-invalid' : '' ?> placement number-only" name="telepon" id="telepon" value="<?= set_value('telepon') ?>" required placeholder="0811977500" maxlength="15" />
                                 <?= form_error('telepon') ?>
                             </div>
@@ -71,21 +71,18 @@
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
                                             <option value="" selected>Pilih Asal Aplikasi</option>
-                                            <option <?= set_value('soa') == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
-                                            <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
-                                            <option <?= set_value('soa') == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa</option>
                                             <option <?= set_value('soa') == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
-                                            <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC
-                                            </option>
-                                            <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC
-                                            </option>
-                                            <option <?= set_value('soa') == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
-                                            <option <?= set_value('soa') == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI Syariah</option>
-                                            <option <?= set_value('soa') == 'RO' ? 'selected' : '' ?> value="RO">RO</option>
-                                            <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">
-                                                Walk In</option>
+                                            <option <?= set_value('soa') == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                            <option <?= set_value('soa') == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                            <option <?= set_value('soa') == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
+                                            <option <?= set_value('soa') == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
+                                            <option <?= set_value('soa') == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
+                                            <option <?= set_value('soa') == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
+                                            <option <?= set_value('soa') == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                            <option <?= set_value('soa') == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
+                                            <!-- <option <?= set_value('soa') == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
                                             <option <?= set_value('soa') == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option>
+                                            <option <?= set_value('soa') == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
                                         </select>
                                     </div>
                                 </div>

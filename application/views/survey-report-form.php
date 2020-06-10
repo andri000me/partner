@@ -93,50 +93,50 @@
                 <ul class="nav nav-tabs nav-tabs-custom card-margin-survey" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link text-size active" data-toggle="tab" href="#nav-konsumen" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-home"></i></span>
-                            <span class="d-none d-sm-block">Data Diri</span>
+                            <span class="d-block d-sm-none" id="btn-konsumen"><i class="fas fa-home"></i></span>
+                            <span class="d-none d-sm-block" id="btn-konsumen">Data Diri</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-pembiayaan" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-user"></i></span>
-                            <span class="d-none d-sm-block">Tujuan & Struktur</span>
+                            <span class="d-block d-sm-none" id="btn-pembiayaan" onclick="ExistingLogic()"><i class="far fa-user"></i></span>
+                            <span class="d-none d-sm-block" id="btn-pembiayaan" onclick="ExistingLogic()">Tujuan & Struktur</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-kondisi" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                            <span class="d-none d-sm-block">Kondisi & Aset</span>
+                            <span class="d-block d-sm-none" id="btn-kondisi"><i class="far fa-envelope"></i></span>
+                            <span class="d-none d-sm-block" id="btn-kondisi">Kondisi & Aset</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-kapasitas" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Kapasitas</span>
+                            <span class="d-block d-sm-none" id="btn-kapasitas"><i class="fas fa-cog"></i></span>
+                            <span class="d-none d-sm-block" id="btn-kapasitas">Kapasitas</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-karakter" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Karakter</span>
+                            <span class="d-block d-sm-none" id="btn-karakter"><i class="fas fa-cog"></i></span>
+                            <span class="d-none d-sm-block" id="btn-karakter">Karakter</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-jaminan" role="tab">
-                            <span class="d-block d-sm-none"><i class="far fa-envelope"></i></span>
-                            <span class="d-none d-sm-block">Jaminan</span>
+                            <span class="d-block d-sm-none" id="btn-jaminan"><i class="far fa-envelope"></i></span>
+                            <span class="d-none d-sm-block" id="btn-jaminan">Jaminan</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-religi" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Religi</span>
+                            <span class="d-block d-sm-none" id="btn-religi"><i class="fas fa-cog"></i></span>
+                            <span class="d-none d-sm-block" id="btn-religi">Religi</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-size" data-toggle="tab" href="#nav-score" role="tab">
-                            <span class="d-block d-sm-none"><i class="fas fa-cog"></i></span>
-                            <span class="d-none d-sm-block">Score</span>
+                            <span class="d-block d-sm-none" id="btn-score"><i class="fas fa-cog"></i></span>
+                            <span class="d-none d-sm-block" id="btn-score">Score</span>
                         </a>
                     </li>
                 </ul>
@@ -151,22 +151,18 @@
                             <input type="hidden" name="id_leads" value="<?= $leads->id_leads ?>">
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Data Konsumen</b>
-                                        <a class="float-right konsumen-down" onclick="konsumendownFunction()" data-toggle="collapse" href="#konsumen" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a>
-                                    </h5>
+                                    <h5 class="form-margin"><b>Data Konsumen</b></h5>
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group form-left">
                                                 <label>Nama Lengkap</label>
-                                                <input type="text" class="form-control text-size" value="<?= $leads->nama_konsumen ?>" name="nama_konsumen" id="nama_konsumen" />
+                                                <input type="text" class="form-control text-size" value="<?= $leads->nama_konsumen ?>" name="nama_konsumen" id="nama_konsumen" placeholder="Ibrahim Ahmad" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group form-right">
                                                 <label>Nomor KTP</label>
-                                                <input type="phone" class="form-control text-size placement number-only" value="<?= $leads->no_ktp ?>" name="no_ktp" id="no_ktp" minlength="16" maxlength="16" />
+                                                <input type="phone" class="form-control text-size placement number-only" value="<?= $leads->no_ktp ?>" name="no_ktp" id="no_ktp" minlength="16" maxlength="16" placeholder="0000 0000 0000 0000" />
                                             </div>
                                         </div>
                                     </div>
@@ -174,33 +170,31 @@
                                         <div class="col-md-4">
                                             <div class="form-group form-left">
                                                 <label>Nomor Handphone</label>
-                                                <input type="text" class="form-control text-size placement number-only" value="<?= $leads->telepon ?>" name="telepon" id="telepon" maxlength="15" />
+                                                <input type="text" class="form-control text-size placement number-only" value="<?= $leads->telepon ?>" name="telepon" id="telepon" maxlength="15" placeholder="0000 0000 000" />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group form-center">
                                                 <label>Nomor WA</label>
-                                                <input type="text" class="form-control text-size placement number-only" value="<?= $leads->nomor_wa ?>" name="nomor_wa" id="" maxlength="15" />
+                                                <input type="text" class="form-control text-size placement number-only" value="<?= $leads->nomor_wa ?>" name="nomor_wa" id="" maxlength="15" placeholder="0000 0000 000" />
                                             </div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div id="hide" class="form-group form-right">
-                                                <label>Pilih Cabang Tujuan</label>
-                                                <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
-                                                    <option selected value="">
-                                                    </option>
-                                                    <?php foreach ($branches->result() as $branch) { ?>
-                                                        <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                        <option <?= $leads->cabang_cross == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>">
-                                                            <?= $branch->nama_cabang ?></option>
-                                                    <?php } ?>
-                                                </select>
+                                            <div class="form-group form-right">
+                                                <label>Email</label>
+                                                <input type="email" class="form-control text-size" name="email" value="<?= $leads->email ?>" id="email" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
                                         <div class="col-md-4">
-                                            <div class="form-group text-size form-left">
+                                            <div class="form-group form-left">
+                                                <label>Tanggal Lahir</label>
+                                                <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $leads->tanggal_lahir ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group text-size form-center">
                                                 <label>Jenis Kelamin</label><br>
                                                 <div class="form-check form-check-inline mt-2">
                                                     <input class="form-check-input" type="radio" name="jenis_kelamin" <?= $leads->jenis_kelamin == 'Laki - Laki' ? 'checked' : '' ?> id="" value="Laki - Laki">
@@ -217,11 +211,84 @@
                                             </div>
                                         </div>
                                         <div class="col-md-4">
+                                            <div class="form-group text-size form-right">
+                                                <label>Pekerjaan Konsumen</label><br>
+                                                <div class="form-check form-check-inline mt-2">
+                                                    <input class="form-check-input" type="radio" name="pekerjaan_konsumen" <?= $leads->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?> id="pekerjaan_konsumen" value="Karyawan">
+                                                    <label class="form-check-label">
+                                                        Karyawan
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="pekerjaan_konsumen" <?= $leads->pekerjaan_konsumen == 'Wiraswasta' ? 'checked' : '' ?> id="pekerjaan_konsumen" value="Wiraswasta">
+                                                    <label class="form-check-label">
+                                                        Wiraswasta
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group form-left">
+                                                <label>Pendidikan</label>
+                                                <select class="form-control text-size" name="pendidikan" id="pendidikan">
+                                                    <option selected value="">Pilih Kategori Pendidikan</option>
+                                                    <option <?= $leads->pendidikan == 'SD' ? 'selected' : '' ?> value="SD">
+                                                        SD</option>
+                                                    <option <?= $leads->pendidikan == 'SLTP' ? 'selected' : '' ?> value="SLTP">
+                                                        SLTP</option>
+                                                    <option <?= $leads->pendidikan == 'SMU' ? 'selected' : '' ?> value="SMU">SMU
+                                                    </option>
+                                                    <option <?= $leads->pendidikan == 'SLTA' ? 'selected' : '' ?> value="SLTA">
+                                                        SLTA</option>
+                                                    <option <?= $leads->pendidikan == 'STM' ? 'selected' : '' ?> value="STM">STM
+                                                    </option>
+                                                    <option <?= $leads->pendidikan == 'SMEA' ? 'selected' : '' ?> value="SMEA">
+                                                        SMEA</option>
+                                                    <option <?= $leads->pendidikan == 'D1' ? 'selected' : '' ?> value="D1">
+                                                        D1</option>
+                                                    <option <?= $leads->pendidikan == 'D2' ? 'selected' : '' ?> value="D2">
+                                                        D2</option>
+                                                    <option <?= $leads->pendidikan == 'D3' ? 'selected' : '' ?> value="D3">
+                                                        D3</option>
+                                                    <option <?= $leads->pendidikan == 'S1' ? 'selected' : '' ?> value="S1">
+                                                        S1</option>
+                                                    <option <?= $leads->pendidikan == 'S2' ? 'selected' : '' ?> value="S2">
+                                                        S2</option>
+                                                    <option <?= $leads->pendidikan == 'S3' ? 'selected' : '' ?> value="S3">
+                                                        S3</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group form-center">
+                                                <label>Status Pernikahan</label>
+                                                <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan">
+                                                    <option selected value=""></option>
+                                                    <option <?= $leads->status_pernikahan == 'Sudah Menikah' ? 'selected' : '' ?> value="Sudah Menikah">Sudah Menikah
+                                                    </option>
+                                                    <option <?= $leads->status_pernikahan == 'Belum Menikah' ? 'selected' : '' ?> value="Belum Menikah">Belum Menikah
+                                                    </option>
+                                                    <option <?= $leads->status_pernikahan == 'Janda/Duda - Meninggal' ? 'selected' : '' ?> value="Janda/Duda - Meninggal">
+                                                        Janda/Duda - Meninggal</option>
+                                                    <option <?= $leads->status_pernikahan == 'Janda/Duda - Cerai' ? 'selected' : '' ?> value="Janda/Duda - Cerai">Janda/Duda - Cerai</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 pasangan">
+                                            <div class="form-group form-right">
+                                                <label>Nama Pasangan</label>
+                                                <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $leads->nama_pasangan ?>" placeholder="Nama Pasangan">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
                                                 <label>Jenis Konsumen</label>
                                                 <select class="form-control text-size" name="status_konsumen" id="status_konsumen">
-                                                    <option value="">
-                                                    </option>
+                                                    <option value="">Pilih Jenis Konsumen</option>
                                                     <option <?= $leads->status_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer
                                                     </option>
                                                     <option <?= $leads->status_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
@@ -229,298 +296,203 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
+                                                <label>Lokasi Rumah</label>
+                                                <select class=" form-control text-size" name="lokasi_rumah" id="lokasi_rumah">
+                                                    <option selected value="">Pilih Lokasi Rumah</option>
+                                                    <option <?= $leads->lokasi_rumah == 'Non Perumahan - Tidak bisa Lewat Mobil' ? 'selected' : '' ?> value="Non Perumahan - Tidak bisa Lewat Mobil">
+                                                        Non Perumahan - Tidak bisa Lewat Mobil
+                                                    </option>
+                                                    <option <?= $leads->lokasi_rumah == 'Non Perumahan - Jalan Satu Mobil' ? 'selected' : '' ?> value="Non Perumahan - Jalan Satu Mobil">
+                                                        Non Perumahan - Jalan Satu Mobil
+                                                    </option>
+                                                    <option <?= $leads->lokasi_rumah == 'Non Perumahan - Jalan Dua Mobi' ? 'selected' : '' ?> value="Non Perumahan - Jalan Dua Mobil">
+                                                        Non Perumahan - Jalan Dua Mobil</option>
+                                                    <option <?= $leads->lokasi_rumah == 'Perumahan - Tidak Bisa Lewat Mobil' ? 'selected' : '' ?> value="Perumahan - Tidak Bisa Lewat Mobil">
+                                                        Perumahan - Tidak Bisa Lewat Mobil
+                                                    </option>
+                                                    <option <?= $leads->lokasi_rumah == 'Perumahan - Jalan Satu Mobil' ? 'selected' : '' ?> value="Perumahan - Jalan Satu Mobil">
+                                                        Perumahan - Jalan Satu Mobil</option>
+                                                    <option <?= $leads->lokasi_rumah == 'Perumahan - Jalan Dua Mobil' ? 'selected' : '' ?> value="Perumahan - Jalan Dua Mobil">
+                                                        Perumahan - Jalan Dua Mobil</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
+                                                <label>Jenis Bangunan Rumah</label>
+                                                <select class=" form-control text-size" name="jenis_rumah" id="jenis_rumah">
+                                                    <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
+                                                    <option <?= $leads->jenis_rumah == 'Permanent' ? 'selected' : '' ?> value="Permanent">Permanent</option>
+                                                    <option <?= $leads->jenis_rumah == 'Semi Permanent' ? 'selected' : '' ?> value="Semi Permanent">Semi
+                                                        Permanent</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group form-right">
+                                                <label>Luas Bangunan Rumah</label>
+                                                <select class=" form-control text-size" name="luas_rumah" id="luas_rumah">
+                                                    <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
+                                                    <option <?= $leads->luas_rumah == '< 60 M2' ? 'selected' : '' ?> value="< 60 M2">
+                                                        < 60 M2</option> <option <?= $leads->luas_rumah == '60 - 100 M' ? 'selected' : '' ?> value="60 - 100 M2">60 - 100 M2
+                                                    </option>
+                                                    <option <?= $leads->luas_rumah == '100 - 150 M2' ? 'selected' : '' ?> value="100 - 150 M2">100 - 150 M2
+                                                    </option>
+                                                    <option <?= $leads->luas_rumah == '> 150 M2' ? 'selected' : '' ?> value="> 150 M2">> 150 M2</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-6">
+                                            <div class="form-group form-left">
+                                                <label>Activity Marketing</label>
+                                                <select class="form-control text-size" name="activity_marketing" id="activity_marketing">
+                                                    <option selected value="">Pilih Kategori Activity Marketing</option>
+                                                    <option <?= $leads->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct
+                                                        Selling</option>
+                                                    <option <?= $leads->activity_marketing == 'Tele call' ? 'selected' : '' ?> value="Tele call">Tele call</option>
+                                                    <option <?= $leads->activity_marketing == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital
+                                                        Marketing</option>
+                                                    <option <?= $leads->activity_marketing == 'Sosial Media' ? 'selected' : '' ?> value="Sosial Media">Sosial Media
+                                                    </option>
+                                                    <option <?= $leads->activity_marketing == 'Website' ? 'selected' : '' ?> value="Website">Website</option>
+                                                    <option <?= $leads->activity_marketing == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event
+                                                        Promotion</option>
+                                                    <option <?= $leads->activity_marketing == 'Walk In Branch' ? 'selected' : '' ?> value="Walk In Branch">Walk In
+                                                        Branch</option>
+                                                    <option <?= $leads->activity_marketing == 'Surat Penawaran' ? 'selected' : '' ?> value="Surat Penawaran">Surat
+                                                        Penawaran</option>
+                                                    <option <?= $leads->activity_marketing == 'Blast WA / SMS' ? 'selected' : '' ?> value="Blast WA / SMS">Blast WA /
+                                                        SMS</option>
+                                                    <option <?= $leads->activity_marketing == 'Email Marketing' ? 'selected' : '' ?> value="Email Marketing">Email
+                                                        Marketing</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
                                             <div class="form-group form-right">
                                                 <label>Asal Aplikasi</label>
                                                 <select class="form-control text-size" name="soa" id="soa">
-                                                    <option selected value="">
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Penyedia Jasa' ? 'selected' : '' ?> value="Penyedia Jasa">Penyedia Jasa
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">
-                                                        Agent BA</option>
-                                                    <option <?= $leads->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC
-                                                    </option>
-                                                    <option <?= $leads->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital
-                                                        Marketing
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Website BFI Syariah' ? 'selected' : '' ?> value="Website BFI Syariah">Website BFI
-                                                        Syariah</option>
-                                                    <option <?= $leads->soa == 'RO' ? 'selected' : '' ?> value="RO">RO
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">
-                                                        Walk In</option>
-                                                    <option <?= $leads->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion
-                                                    </option>
-                                                    <option <?= $leads->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing
-                                                    </option>
+                                                    <option selected value="">Pilih Asal Aplikasi</option>
+                                                    <option <?= $leads->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
+                                                    <option <?= $leads->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
+                                                    <option <?= $leads->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
+                                                    <option <?= $leads->soa == 'Tele Sales' ? 'selected' : '' ?> value="Tele Sales">Tele Sales</option>
+                                                    <option <?= $leads->soa == 'CMS' ? 'selected' : '' ?> value="CMS">CMS</option>
+                                                    <option <?= $leads->soa == 'Sharia Head' ? 'selected' : '' ?> value="Sharia Head">Sharia Head</option>
+                                                    <option <?= $leads->soa == 'HO - Product' ? 'selected' : '' ?> value="HO - Product">HO - Product</option>
+                                                    <option <?= $leads->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
+                                                    <option <?= $leads->soa == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
+                                                    <!-- <option <?= $leads->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
+                                                    <option <?= $leads->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                                    <option <?= $leads->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-12 event">
+                                            <div class="form-group form-margin">
+                                                <label>Nama Event</label>
+                                                <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $leads->nama_event ?>">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 form-agent">
+                                            <div class="form-margin">
+                                                <label class="gent">Pilih Data Agent</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control text-size" name="nama_agent" id="nama_agent" value="<?= $leads->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Pilih Nama Agent">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12 form">
+                                            <div class="form-margin">
+                                                <label class="travel">Pilih Data Travel</label>
+                                                <label class="jasa">Pilih Data Penyedia
+                                                    Jasa</label>
+                                                <label class="vendor">Pilih Data Partner</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= $leads->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" placeholder="Pilih Nama Partner">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 nik">
+                                            <div class="form-group form-left">
+                                                <label>NIK</label>
+                                                <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $leads->nik_egc ?>" minlength="6" maxlength="7" placeholder="0000000" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 posisi">
+                                            <div class="form-group form-center">
+                                                <label>Posisi</label>
+                                                <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $leads->posisi_egc ?>" placeholder="Input Posisi">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 cabang">
+                                            <div class="form-group form-right">
+                                                <label>Cabang</label>
+                                                <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $leads->cabang_egc ?>" placeholder="Input Cabang">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 kontrak-ro">
+                                            <div class="form-group form-left">
+                                                <label>Nomor Kontrak</label>
+                                                <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $leads->nomor_kontrak ?>" minlength="10" maxlength="10" placeholder="0000000000" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 konsumen-ro">
+                                            <div class="form-group form-right">
+                                                <label>Nama Konsumen</label>
+                                                <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $leads->referral_konsumen ?>" placeholder="Input Nama Konsumen">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <div class="form-group text-size form-left">
+                                                <label>Konsumen Cross Branch?</label><br>
+                                                <div class="form-check form-check-inline mt-2">
+                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $leads->cross_branch == 'Ya' ? 'checked' : '' ?> value="Ya">
+                                                    <label class="form-check-label">
+                                                        Ya
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $leads->cross_branch == 'Tidak' ? 'checked' : '' ?> value="Tidak">
+                                                    <label class="form-check-label">
+                                                        Tidak
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div id="hide" class="form-group form-right">
+                                                <label>Cabang Tujuan</label>
+                                                <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
+                                                    <option selected value="">Pilih Cabang Tujuan</option>
+                                                    <?php foreach ($branches->result() as $branch) { ?>
+                                                        <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
+                                                        <option <?= $leads->cabang_cross == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>">
+                                                            <?= $branch->nama_cabang ?></option>
+                                                    <?php } ?>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="collapse" id="konsumen">
-                                        <div class="form-row">
-                                            <div class="col-md-4">
-                                                <div class="form-group form-left">
-                                                    <label>Email</label>
-                                                    <input type="email" class="form-control text-size" name="email_konsumen" value="<?= $leads->email_konsumen ?>" id="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group form-center">
-                                                    <label>Tanggal Lahir</label>
-                                                    <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $leads->tanggal_lahir ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group form-right">
-                                                    <label>Pendidikan</label>
-                                                    <select class="form-control text-size" name="pendidikan" id="pendidikan">
-                                                        <option selected value="">
-                                                        </option>
-                                                        <option <?= $leads->pendidikan == 'SD' ? 'selected' : '' ?> value="SD">
-                                                            SD</option>
-                                                        <option <?= $leads->pendidikan == 'SLTP' ? 'selected' : '' ?> value="SLTP">
-                                                            SLTP</option>
-                                                        <option <?= $leads->pendidikan == 'SMU' ? 'selected' : '' ?> value="SMU">SMU
-                                                        </option>
-                                                        <option <?= $leads->pendidikan == 'SLTA' ? 'selected' : '' ?> value="SLTA">
-                                                            SLTA</option>
-                                                        <option <?= $leads->pendidikan == 'STM' ? 'selected' : '' ?> value="STM">STM
-                                                        </option>
-                                                        <option <?= $leads->pendidikan == 'SMEA' ? 'selected' : '' ?> value="SMEA">
-                                                            SMEA</option>
-                                                        <option <?= $leads->pendidikan == 'D1' ? 'selected' : '' ?> value="D1">
-                                                            D1</option>
-                                                        <option <?= $leads->pendidikan == 'D2' ? 'selected' : '' ?> value="D2">
-                                                            D2</option>
-                                                        <option <?= $leads->pendidikan == 'D3' ? 'selected' : '' ?> value="D3">
-                                                            D3</option>
-                                                        <option <?= $leads->pendidikan == 'S1' ? 'selected' : '' ?> value="S1">
-                                                            S1</option>
-                                                        <option <?= $leads->pendidikan == 'S2' ? 'selected' : '' ?> value="S2">
-                                                            S2</option>
-                                                        <option <?= $leads->pendidikan == 'S3' ? 'selected' : '' ?> value="S3">
-                                                            S3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-4">
-                                                <div class="form-group text-size form-left">
-                                                    <label>Pekerjaan Konsumen</label><br>
-                                                    <div class="form-check form-check-inline mt-2">
-                                                        <input class="form-check-input" type="radio" name="pekerjaan_konsumen" <?= $leads->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?> id="pekerjaan_konsumen" value="Karyawan">
-                                                        <label class="form-check-label">
-                                                            Karyawan
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="pekerjaan_konsumen" <?= $leads->pekerjaan_konsumen == 'Wiraswasta' ? 'checked' : '' ?> id="pekerjaan_konsumen" value="Wiraswasta">
-                                                        <label class="form-check-label">
-                                                            Wiraswasta
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group form-center">
-                                                    <label>Status Pernikahan</label>
-                                                    <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan">
-                                                        <option selected value=""></option>
-                                                        <option <?= $leads->status_pernikahan == 'Sudah Menikah' ? 'selected' : '' ?> value="Sudah Menikah">Sudah Menikah
-                                                        </option>
-                                                        <option <?= $leads->status_pernikahan == 'Belum Menikah' ? 'selected' : '' ?> value="Belum Menikah">Belum Menikah
-                                                        </option>
-                                                        <option <?= $leads->status_pernikahan == 'Janda/Duda - Meninggal' ? 'selected' : '' ?> value="Janda/Duda - Meninggal">
-                                                            Janda/Duda - Meninggal</option>
-                                                        <option <?= $leads->status_pernikahan == 'Janda/Duda - Cerai' ? 'selected' : '' ?> value="Janda/Duda - Cerai">Janda/Duda - Cerai</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 pasangan">
-                                                <div class="form-group form-right">
-                                                    <label>Nama Pasangan</label>
-                                                    <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $leads->nama_pasangan ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-4">
-                                                <div class="form-group form-left">
-                                                    <label>Lokasi Rumah</label>
-                                                    <select class="form-control text-size" name="lokasi_rumah" id="lokasi_rumah">
-                                                        <option selected value=""></option>
-                                                        <option <?= $leads->lokasi_rumah == 'Non Perumahan - Tidak bisa Lewat Mobil' ? 'selected' : '' ?> value="Non Perumahan - Tidak bisa Lewat Mobil">
-                                                            Non Perumahan - Tidak bisa Lewat Mobil
-                                                        </option>
-                                                        <option <?= $leads->lokasi_rumah == 'Non Perumahan - Jalan Satu Mobil' ? 'selected' : '' ?> value="Non Perumahan - Jalan Satu Mobil">
-                                                            Non Perumahan - Jalan Satu Mobil
-                                                        </option>
-                                                        <option <?= $leads->lokasi_rumah == 'Non Perumahan - Jalan Dua Mobi' ? 'selected' : '' ?> value="Non Perumahan - Jalan Dua Mobil">
-                                                            Non Perumahan - Jalan Dua Mobil</option>
-                                                        <option <?= $leads->lokasi_rumah == 'Perumahan - Tidak Bisa Lewat Mobil' ? 'selected' : '' ?> value="Perumahan - Tidak Bisa Lewat Mobil">
-                                                            Perumahan - Tidak Bisa Lewat Mobil
-                                                        </option>
-                                                        <option <?= $leads->lokasi_rumah == 'Perumahan - Jalan Satu Mobil' ? 'selected' : '' ?> value="Perumahan - Jalan Satu Mobil">
-                                                            Perumahan - Jalan Satu Mobil</option>
-                                                        <option <?= $leads->lokasi_rumah == 'Perumahan - Jalan Dua Mobil' ? 'selected' : '' ?> value="Perumahan - Jalan Dua Mobil">
-                                                            Perumahan - Jalan Dua Mobil</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group form-center">
-                                                    <label>Jenis Bangunan Rumah</label>
-                                                    <select class=" form-control text-size" name="jenis_rumah" id="jenis_rumah">
-                                                        <option selected value=""></option>
-                                                        <option <?= $leads->jenis_rumah == 'Permanent' ? 'selected' : '' ?> value="Permanent">Permanent</option>
-                                                        <option <?= $leads->jenis_rumah == 'Semi Permanent' ? 'selected' : '' ?> value="Semi Permanent">Semi
-                                                            Permanent</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group form-right">
-                                                    <label>Luas Bangunan Rumah</label>
-                                                    <select class=" form-control text-size" name="luas_rumah" id="luas_rumah">
-                                                        <option selected value=""></option>
-                                                        <option <?= $leads->luas_rumah == '< 60 M2' ? 'selected' : '' ?> value="< 60 M2">
-                                                            < 60 M2</option> <option <?= $leads->luas_rumah == '60 - 100 M' ? 'selected' : '' ?> value="60 - 100 M2">60 - 100 M2
-                                                        </option>
-                                                        <option <?= $leads->luas_rumah == '100 - 150 M2' ? 'selected' : '' ?> value="100 - 150 M2">100 - 150 M2
-                                                        </option>
-                                                        <option <?= $leads->luas_rumah == '> 150 M2' ? 'selected' : '' ?> value="> 150 M2">> 150 M2</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12 event">
-                                                <div class="form-group form-margin">
-                                                    <label>Nama Event</label>
-                                                    <input type="text" class="form-control text-size" name="nama_event" id="nama_event" value="<?= $leads->nama_event ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 form-agent">
-                                                <div class="form-margin">
-                                                    <label class="gent">Pilih Data Agent</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control text-size" name="nama_agent" id="nama_agent" value="<?= $leads->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-primary btn-data btn-cari text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 form">
-                                                <div class="form-margin">
-                                                    <label class="travel">Pilih Data Travel</label>
-                                                    <label class="jasa">Pilih Data Penyedia
-                                                        Jasa</label>
-                                                    <label class="vendor">Pilih Data Partner</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= $leads->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
-                                                        <div class="input-group-append">
-                                                            <button class="btn btn-primary btn-data btn-cari text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 nik">
-                                                <div class="form-group form-left">
-                                                    <label>NIK</label>
-                                                    <input type="phone" class="form-control text-size placement number-only" name="nik_egc" id="nik_egc" value="<?= $leads->nik_egc ?>" minlength="6" maxlength="7" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 posisi">
-                                                <div class="form-group form-center">
-                                                    <label>Posisi</label>
-                                                    <input type="text" class="form-control text-size" name="posisi_egc" id="posisi_egc" value="<?= $leads->posisi_egc ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 cabang">
-                                                <div class="form-group form-right">
-                                                    <label>Cabang</label>
-                                                    <input type="text" class="form-control text-size" name="cabang_egc" id="cabang_egc" value="<?= $leads->cabang_egc ?>">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 kontrak-ro">
-                                                <div class="form-group form-left">
-                                                    <label>Nomor Kontrak</label>
-                                                    <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $leads->nomor_kontrak ?>" minlength="10" maxlength="10" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6 konsumen-ro">
-                                                <div class="form-group form-right">
-                                                    <label>Nama Konsumen</label>
-                                                    <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $leads->referral_konsumen ?>">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="form-group form-left">
-                                                    <label>Activity Marketing</label>
-                                                    <select class="form-control text-size" name="activity_marketing" id="activity_marketing">
-                                                        <option selected value=""></option>
-                                                        <option <?= $leads->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct
-                                                            Selling</option>
-                                                        <option <?= $leads->activity_marketing == 'Tele call' ? 'selected' : '' ?> value="Tele call">Tele call</option>
-                                                        <option <?= $leads->activity_marketing == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital
-                                                            Marketing</option>
-                                                        <option <?= $leads->activity_marketing == 'Sosial Media' ? 'selected' : '' ?> value="Sosial Media">Sosial Media
-                                                        </option>
-                                                        <option <?= $leads->activity_marketing == 'Website' ? 'selected' : '' ?> value="Website">Website</option>
-                                                        <option <?= $leads->activity_marketing == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event
-                                                            Promotion</option>
-                                                        <option <?= $leads->activity_marketing == 'Walk In Branch' ? 'selected' : '' ?> value="Walk In Branch">Walk In
-                                                            Branch</option>
-                                                        <option <?= $leads->activity_marketing == 'Surat Penawaran' ? 'selected' : '' ?> value="Surat Penawaran">Surat
-                                                            Penawaran</option>
-                                                        <option <?= $leads->activity_marketing == 'Blast WA / SMS' ? 'selected' : '' ?> value="Blast WA / SMS">Blast WA /
-                                                            SMS</option>
-                                                        <option <?= $leads->activity_marketing == 'Email Marketing' ? 'selected' : '' ?> value="Email Marketing">Email
-                                                            Marketing</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group text-size form-right">
-                                                    <label>Konsumen Cross Branch?</label><br>
-                                                    <div class="form-check form-check-inline mt-2">
-                                                        <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $leads->cross_branch == 'Ya' ? 'checked' : '' ?> value="Ya">
-                                                        <label class="form-check-label">
-                                                            Ya
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check form-check-inline">
-                                                        <input class="form-check-input cross_branch" type="radio" name="cross_branch" id="cross_branch" <?= $leads->cross_branch == 'Tidak' ? 'checked' : '' ?> value="Tidak">
-                                                        <label class="form-check-label">
-                                                            Tidak
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="col-md-12 konsumen-up">
-                                        <center>
-                                            <h4>
-                                                <a onclick="konsumenupFunction()" data-toggle="collapse" href="#konsumen" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-pembiayaan').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -538,11 +510,7 @@
 
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Tujuan Pembiayaan</b>
-                                        <a class="float-right pembiayaan-down" onclick="pembiayaandownFunction()" data-toggle="collapse" href="#pembiayaan" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a>
-                                    </h5>
+                                    <h5 class="form-margin"><b>Tujuan Pembiayaan</b></h5>
 
                                     <p class="form-left form-caption">Informasi Pembiayaan</p>
                                     <div class="form-row">
@@ -624,167 +592,160 @@
                                         </div>
                                     </div>
 
-                                    <div class="collapse" id="pembiayaan">
-                                        <p class="form-left mt-3 mb-4 form-caption">Informasi Harga</p>
+                                    <p class="form-left mt-3 mb-4 form-caption">Informasi Harga</p>
 
-                                        <div class="form-margin">
-                                            <p>Detail Rencana Angsuran</p>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>
-                                                                <label class="table-lable">Harga Beli Ke
-                                                                    merchant</label>
-                                                            </th>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border number-only table-form-medium" name="purpose_harga_beli_ke_merchant" value="<?= $data->purpose_harga_beli_ke_merchant ?>" id="" data-type="currency" required placeholder="Harga Beli ke Merchant" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th>
-                                                                <label class="table-lable">Harga
-                                                                    Jual ke Konsumen</label>
-                                                            </th>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border number-only" name="purpose_harga_jual_ke_konsumen" value="<?= $data->purpose_harga_jual_ke_konsumen ?>" id="" data-type="currency" required placeholder="Harga Jual ke Konsumen" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Uang
-                                                                    Muka</label>
-                                                            </th>
-                                                            <td><input type="text" class="form-control text-size form-border number-only" name="purpose_uang_muka" value="<?= $data->purpose_uang_muka ?>" id="" data-type="currency" required placeholder="Uang Muka" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Biaya
-                                                                    Administrasi</label>
-                                                            </th>
-                                                            <td><input type="text" class="form-control text-size form-border number-only" name="purpose_biaya_administrasi" value="<?= $data->purpose_biaya_administrasi ?>" id="" data-type="currency" required placeholder="Biaya Administrasi" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Asuransi
-                                                                    Jiwa</label>
-                                                            </th>
-                                                            <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_jiwa" value="<?= $data->purpose_asuransi_jiwa ?>" id="" data-type="currency" required placeholder="Asuransi Jiwa" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Asuransi
-                                                                    kendaraan</label>
-                                                            </th>
-                                                            <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_kendaraan" value="<?= $data->purpose_asuransi_kendaraan ?>" id="" data-type="currency" required placeholder="Asuransi Kendaraan" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Total
-                                                                    Uang Muka</label>
-                                                            </th>
-                                                            <td><input type="text" class="form-control text-size form-border number-only" name="purpose_total_uang_muka" value="<?= $data->purpose_total_uang_muka ?>" id="" data-type="currency" required placeholder="Total Uang Muka" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">NTF Murni</label>
-                                                            </th>
-                                                            <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="" data-type="currency" required placeholder="NTF Murni" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Angsuran Per Bulan</label>
-                                                            </th>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border number-only" name="purpose_angsuran_per_bulan" value="<?= $data->purpose_angsuran_per_bulan ?>" id="" data-type="currency" required placeholder="Angsuran Per Bulan" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th><label class="table-lable">Lama
-                                                                    Angsuran</label>
-                                                            </th>
-                                                            <td>
-                                                                <!-- <input type="text" class="form-control text-size form-border number-only" name="purpose_lama_angsuran" value="<?= $data->purpose_lama_angsuran ?>" id="" data-type="currency" required placeholder="Lama Angsuran" /> -->
-                                                                <select class="form-control text-size form-border" name="purpose_lama_angsuran" id="" required>
-                                                                    <option selected value="">Pilih Lama Angsuran
-                                                                    </option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '3 Bulan' ? 'selected' : '' ?> value="3 Bulan">3 Bulan</option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '6 Bulan' ? 'selected' : '' ?> value="6 Bulan">6 Bulan</option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '12 Bulan' ? 'selected' : '' ?> value="12 Bulan">12 Bulan</option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '18 Bulan' ? 'selected' : '' ?> value="18 Bulan">18 Bulan</option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '24 Bulan' ? 'selected' : '' ?> value="24 Bulan">24 Bulan</option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '36 Bulan' ? 'selected' : '' ?> value="36 Bulan">36 Bulan</option>
-                                                                    <option <?= $data->purpose_lama_angsuran == '48 Bulan' ? 'selected' : '' ?> value="48 Bulan">48 Bulan</option>
-                                                                </select>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                    <div class="form-margin">
+                                        <p>Detail Rencana Angsuran</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>
+                                                            <label class="table-lable">Harga Beli Ke
+                                                                merchant</label>
+                                                        </th>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border number-only table-form-medium" name="purpose_harga_beli_ke_merchant" value="<?= $data->purpose_harga_beli_ke_merchant ?>" id="" data-type="currency" required placeholder="Harga Beli ke Merchant" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>
+                                                            <label class="table-lable">Harga
+                                                                Jual ke Konsumen</label>
+                                                        </th>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_harga_jual_ke_konsumen" value="<?= $data->purpose_harga_jual_ke_konsumen ?>" id="" data-type="currency" required placeholder="Harga Jual ke Konsumen" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Uang
+                                                                Muka</label>
+                                                        </th>
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_uang_muka" value="<?= $data->purpose_uang_muka ?>" id="" data-type="currency" required placeholder="Uang Muka" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Biaya
+                                                                Administrasi</label>
+                                                        </th>
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_biaya_administrasi" value="<?= $data->purpose_biaya_administrasi ?>" id="" data-type="currency" required placeholder="Biaya Administrasi" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Asuransi
+                                                                Jiwa</label>
+                                                        </th>
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_jiwa" value="<?= $data->purpose_asuransi_jiwa ?>" id="" data-type="currency" required placeholder="Asuransi Jiwa" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Asuransi
+                                                                kendaraan</label>
+                                                        </th>
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_kendaraan" value="<?= $data->purpose_asuransi_kendaraan ?>" id="" data-type="currency" required placeholder="Asuransi Kendaraan" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Total
+                                                                Uang Muka</label>
+                                                        </th>
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_total_uang_muka" value="<?= $data->purpose_total_uang_muka ?>" id="" data-type="currency" required placeholder="Total Uang Muka" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">NTF Murni</label>
+                                                        </th>
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="" data-type="currency" required placeholder="NTF Murni" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Angsuran Per Bulan</label>
+                                                        </th>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_angsuran_per_bulan" value="<?= $data->purpose_angsuran_per_bulan ?>" id="" data-type="currency" required placeholder="Angsuran Per Bulan" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Lama
+                                                                Angsuran</label>
+                                                        </th>
+                                                        <td>
+                                                            <!-- <input type="text" class="form-control text-size form-border number-only" name="purpose_lama_angsuran" value="<?= $data->purpose_lama_angsuran ?>" id="" data-type="currency" required placeholder="Lama Angsuran" /> -->
+                                                            <select class="form-control text-size form-border" name="purpose_lama_angsuran" id="" required>
+                                                                <option selected value="">Pilih Lama Angsuran
+                                                                </option>
+                                                                <option <?= $data->purpose_lama_angsuran == '3 Bulan' ? 'selected' : '' ?> value="3 Bulan">3 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '6 Bulan' ? 'selected' : '' ?> value="6 Bulan">6 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '12 Bulan' ? 'selected' : '' ?> value="12 Bulan">12 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '18 Bulan' ? 'selected' : '' ?> value="18 Bulan">18 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '24 Bulan' ? 'selected' : '' ?> value="24 Bulan">24 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '36 Bulan' ? 'selected' : '' ?> value="36 Bulan">36 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '48 Bulan' ? 'selected' : '' ?> value="48 Bulan">48 Bulan</option>
+                                                            </select>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
 
-                                            <p class="mt-5">Informasikan Harga 3 Sumber Lainnya</p>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>
-                                                                <label>Nama
-                                                                    Merchant / Toko</label>
-                                                            </th>
-                                                            <th>
-                                                                <label>Harga</label>
-                                                            </th>
-                                                            <th>
-                                                                <label>Alamat / Telepon</label>
-                                                            </th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border table-form-medium" name="purpose_nama_merchant_1" value="<?= $data->purpose_nama_merchant_1 ?>" id="" placeholder="Nama Merchant / Toko" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border table-form-medium" name="purpose_harga_1" value="<?= $data->purpose_harga_1 ?>" id="" placeholder="Harga" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border table-form-medium" name="purpose_alamat_telepon_1" value="<?= $data->purpose_alamat_telepon_1 ?>" id="" placeholder="Alamat / Telepon" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="purpose_nama_merchant_2" value="<?= $data->purpose_nama_merchant_2 ?>" id="" placeholder="Nama Merchant / Toko" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="purpose_harga_2" value="<?= $data->purpose_harga_2 ?>" id="" placeholder="Harga" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="purpose_alamat_telepon_2" value="<?= $data->purpose_alamat_telepon_2 ?>" id="" placeholder="Alamat / Telepon" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="purpose_nama_merchant_3" value="<?= $data->purpose_nama_merchant_3 ?>" id="" placeholder="Nama Merchant / Toko" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="purpose_harga_3" value="<?= $data->purpose_harga_3 ?>" id="" placeholder="Harga" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="purpose_alamat_telepon_3" value="<?= $data->purpose_alamat_telepon_3 ?>" id="" placeholder="Alamat / Telepon" />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                        <p class="mt-5">Informasikan Harga 3 Sumber Lainnya</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <label>Nama
+                                                                Merchant / Toko</label>
+                                                        </th>
+                                                        <th>
+                                                            <label>Harga</label>
+                                                        </th>
+                                                        <th>
+                                                            <label>Alamat / Telepon</label>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border table-form-medium" name="purpose_nama_merchant_1" value="<?= $data->purpose_nama_merchant_1 ?>" id="" placeholder="Nama Merchant / Toko" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border table-form-medium" name="purpose_harga_1" value="<?= $data->purpose_harga_1 ?>" id="" placeholder="Harga" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border table-form-medium" name="purpose_alamat_telepon_1" value="<?= $data->purpose_alamat_telepon_1 ?>" id="" placeholder="Alamat / Telepon" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="purpose_nama_merchant_2" value="<?= $data->purpose_nama_merchant_2 ?>" id="" placeholder="Nama Merchant / Toko" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="purpose_harga_2" value="<?= $data->purpose_harga_2 ?>" id="" placeholder="Harga" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="purpose_alamat_telepon_2" value="<?= $data->purpose_alamat_telepon_2 ?>" id="" placeholder="Alamat / Telepon" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="purpose_nama_merchant_3" value="<?= $data->purpose_nama_merchant_3 ?>" id="" placeholder="Nama Merchant / Toko" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="purpose_harga_3" value="<?= $data->purpose_harga_3 ?>" id="" placeholder="Harga" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="purpose_alamat_telepon_3" value="<?= $data->purpose_alamat_telepon_3 ?>" id="" placeholder="Alamat / Telepon" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 pembiayaan-up">
-                                        <center>
-                                            <h4 class="ml-3">
-                                                <a onclick="pembiayaanupFunction()" data-toggle="collapse" href="#pembiayaan" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-konsumen').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-kondisi').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -800,11 +761,7 @@
                             <?php if ($leads->pekerjaan_konsumen == 'Karyawan') { ?>
                                 <div class="card">
                                     <div class="card-body text-size">
-                                        <h5 class="form-margin"><b>Kondisi Konsumen</b>
-                                            <a class="float-right kondisi-down" onclick="kondisidownFunction()" data-toggle="collapse" href="#kondisi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                            </a>
-                                        </h5>
+                                        <h5 class="form-margin"><b>Kondisi Konsumen</b></h5>
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
@@ -912,155 +869,142 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group form-left">
+                                                    <label>Total Karyawan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="condition_karyawan_jumlah_karyawan" value="<?= $data->condition_karyawan_jumlah_karyawan ?>" id="" placeholder="5000" required />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-center">
+                                                    <label>Tahun Berdiri</label>
+                                                    <input type="text" class="form-control text-size number-only placement" name="condition_karyawan_tahun_berdiri" value="<?= $data->condition_karyawan_tahun_berdiri ?>" id="" placeholder="2020" minlength="4" maxlength="4" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-right">
+                                                    <label>Pembayaran Gaji Via</label>
+                                                    <select class="form-control text-size" name="condition_karyawan_cara_gajian" id="" required>
+                                                        <option selected value="">Pilih Metode
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_cara_gajian == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
+                                                        <option <?= $data->condition_karyawan_cara_gajian == 'Tranfer' ? 'selected' : '' ?> value="Tranfer">Transfer</option>
+                                                        <option <?= $data->condition_karyawan_cara_gajian == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">Lainnya [transfer]</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-left">
+                                                    <label>Pekerjaan Pasangan</label>
+                                                    <select class="form-control text-size" name="condition_karyawan_pekerjaan_pasangan" id="condition_pasangan" required>
+                                                        <option selected value="">Pilih Pekerjaan
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perhutanan' ? 'selected' : '' ?> value="Perhutanan">Perhutanan
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Peternakan & Perikanan' ? 'selected' : '' ?> value="Peternakan & Perikanan">Peternakan &
+                                                            Perikanan
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Konstruksi' ? 'selected' : '' ?> value="Konstruksi">Konstruksi
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Jasa' ? 'selected' : '' ?> value="Jasa">Jasa
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Pertanian & Perkebunan' ? 'selected' : '' ?> value="Pertanian & Perkebunan">Pertanian &
+                                                            Perkebunan
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perdagangan Besar' ? 'selected' : '' ?> value="Perdagangan Besar">Perdagangan Besar
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perdagangan Eceran' ? 'selected' : '' ?> value="Perdagangan Eceran">Perdagangan
+                                                            Eceran
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perdagangan Ekspor-Impor' ? 'selected' : '' ?> value="Perdagangan Ekspor-Impor">Perdagangan
+                                                            Ekspor-Impor
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Makanan / Minuman' ? 'selected' : '' ?> value="Makanan / Minuman">Makanan / Minuman
+                                                        </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Profesi Beresiko' ? 'selected' : '' ?> value="Profesi Beresiko">Profesi
+                                                            Beresiko</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-right">
+                                                    <label>Tempat Kerja / Usaha pasangan</label>
+                                                    <input type="text" class="form-control text-size" name="condition_karyawan_tempat_kerja_pasangan" value="<?= $data->condition_karyawan_tempat_kerja_pasangan ?>" id="" placeholder="Tempat Kerja / Usaha pasangan" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row resiko-pasangan">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-margin">
+                                                    <label>Penjelasan Profesi Beresiko</label>
+                                                    <input type="text" class="form-control text-size" name="condition_karyawan_profesi_beresiko_pasangan" id="condition_karyawan_profesi_beresiko_pasangan" value="<?= $data->condition_karyawan_profesi_beresiko_pasangan ?>" placeholder="Penjelasan Profesi Beresiko" />
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <div class="collapse" id="kondisi">
-                                            <div class="form-row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-left">
-                                                        <label>Total Karyawan</label>
-                                                        <input type="text" class="form-control text-size number-only" name="condition_karyawan_jumlah_karyawan" value="<?= $data->condition_karyawan_jumlah_karyawan ?>" id="" placeholder="5000" required />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-center">
-                                                        <label>Tahun Berdiri</label>
-                                                        <input type="text" class="form-control text-size number-only placement" name="condition_karyawan_tahun_berdiri" value="<?= $data->condition_karyawan_tahun_berdiri ?>" id="" placeholder="2020" minlength="4" maxlength="4" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-right">
-                                                        <label>Pembayaran Gaji Via</label>
-                                                        <select class="form-control text-size" name="condition_karyawan_cara_gajian" id="" required>
-                                                            <option selected value="">Pilih Metode
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_cara_gajian == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
-                                                            <option <?= $data->condition_karyawan_cara_gajian == 'Tranfer' ? 'selected' : '' ?> value="Tranfer">Transfer</option>
-                                                            <option <?= $data->condition_karyawan_cara_gajian == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">Lainnya [transfer]</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-left">
-                                                        <label>Pekerjaan Pasangan</label>
-                                                        <select class="form-control text-size" name="condition_karyawan_pekerjaan_pasangan" id="condition_pasangan" required>
-                                                            <option selected value="">Pilih Pekerjaan
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perhutanan' ? 'selected' : '' ?> value="Perhutanan">Perhutanan
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Peternakan & Perikanan' ? 'selected' : '' ?> value="Peternakan & Perikanan">Peternakan &
-                                                                Perikanan
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Konstruksi' ? 'selected' : '' ?> value="Konstruksi">Konstruksi
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Jasa' ? 'selected' : '' ?> value="Jasa">Jasa
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Pertanian & Perkebunan' ? 'selected' : '' ?> value="Pertanian & Perkebunan">Pertanian &
-                                                                Perkebunan
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perdagangan Besar' ? 'selected' : '' ?> value="Perdagangan Besar">Perdagangan Besar
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perdagangan Eceran' ? 'selected' : '' ?> value="Perdagangan Eceran">Perdagangan
-                                                                Eceran
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perdagangan Ekspor-Impor' ? 'selected' : '' ?> value="Perdagangan Ekspor-Impor">Perdagangan
-                                                                Ekspor-Impor
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Makanan / Minuman' ? 'selected' : '' ?> value="Makanan / Minuman">Makanan / Minuman
-                                                            </option>
-                                                            <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Profesi Beresiko' ? 'selected' : '' ?> value="Profesi Beresiko">Profesi
-                                                                Beresiko</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-right">
-                                                        <label>Tempat Kerja / Usaha pasangan</label>
-                                                        <input type="text" class="form-control text-size" name="condition_karyawan_tempat_kerja_pasangan" value="<?= $data->condition_karyawan_tempat_kerja_pasangan ?>" id="" placeholder="Tempat Kerja / Usaha pasangan" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-row resiko-pasangan">
-                                                <div class="col-md-12">
-                                                    <div class="form-group form-margin">
-                                                        <label>Penjelasan Profesi Beresiko</label>
-                                                        <input type="text" class="form-control text-size" name="condition_karyawan_profesi_beresiko_pasangan" id="condition_karyawan_profesi_beresiko_pasangan" value="<?= $data->condition_karyawan_profesi_beresiko_pasangan ?>" placeholder="Penjelasan Profesi Beresiko" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-margin">
-                                                <p>Jumlah Tanggungan</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-lable">Orang
-                                                                        Tua</label>
-                                                                </th>
-                                                                <td>
-                                                                    <input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_orangtua" value="<?= $data->condition_karyawan_tanggungan_orangtua ? $data->condition_karyawan_tanggungan_orangtua : '0' ?>" id="condition_karyawan_tanggungan_orangtua" required placeholder="Orang Tua" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-lable">Pasangan</label>
-                                                                </th>
-                                                                <td>
-                                                                    <input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_pasangan" value="<?= $data->condition_karyawan_tanggungan_pasangan ? $data->condition_karyawan_tanggungan_pasangan : '0' ?>" id="condition_karyawan_tanggungan_pasangan" required placeholder="Pasangan" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Anak Usia
-                                                                        Belum Sekolah</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_anak1" value="<?= $data->condition_karyawan_tanggungan_anak1 ? $data->condition_karyawan_tanggungan_anak1 : '0' ?>" id="condition_karyawan_tanggungan_anak1" required placeholder="Anak Usia Belum Sekolah" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Anak Usia TK
-                                                                        - SMA</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_anak2" value="<?= $data->condition_karyawan_tanggungan_anak2 ? $data->condition_karyawan_tanggungan_anak2 : '0' ?>" id="condition_karyawan_tanggungan_anak2" required placeholder="Anak Usia TK - SMA" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Anak Usia
-                                                                        Perguruan Tinggi</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_anak3" value="<?= $data->condition_karyawan_tanggungan_anak3 ? $data->condition_karyawan_tanggungan_anak3 : '0' ?>" id="condition_karyawan_tanggungan_anak3" required placeholder="Anak Usia Perguruan Tinggi" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Saudara /
-                                                                        Keluarga Lainnya</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_saudara" value="<?= $data->condition_karyawan_tanggungan_saudara ? $data->condition_karyawan_tanggungan_saudara : '0' ?>" id="condition_karyawan_tanggungan_saudara" required placeholder="Saudara / Keluarga Lainnya" />
-                                                                </td>
-                                                            </tr>
-                                                            <!-- <tr class="bg-light">
+                                        <div class="form-margin">
+                                            <p>Jumlah Tanggungan</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-lable">Orang
+                                                                    Tua</label>
+                                                            </th>
+                                                            <td>
+                                                                <input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_orangtua" value="<?= $data->condition_karyawan_tanggungan_orangtua ? $data->condition_karyawan_tanggungan_orangtua : '0' ?>" id="condition_karyawan_tanggungan_orangtua" required placeholder="Orang Tua" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-lable">Pasangan</label>
+                                                            </th>
+                                                            <td>
+                                                                <input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_pasangan" value="<?= $data->condition_karyawan_tanggungan_pasangan ? $data->condition_karyawan_tanggungan_pasangan : '0' ?>" id="condition_karyawan_tanggungan_pasangan" required placeholder="Pasangan" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Anak Usia
+                                                                    Belum Sekolah</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_anak1" value="<?= $data->condition_karyawan_tanggungan_anak1 ? $data->condition_karyawan_tanggungan_anak1 : '0' ?>" id="condition_karyawan_tanggungan_anak1" required placeholder="Anak Usia Belum Sekolah" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Anak Usia TK
+                                                                    - SMA</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_anak2" value="<?= $data->condition_karyawan_tanggungan_anak2 ? $data->condition_karyawan_tanggungan_anak2 : '0' ?>" id="condition_karyawan_tanggungan_anak2" required placeholder="Anak Usia TK - SMA" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Anak Usia
+                                                                    Perguruan Tinggi</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_anak3" value="<?= $data->condition_karyawan_tanggungan_anak3 ? $data->condition_karyawan_tanggungan_anak3 : '0' ?>" id="condition_karyawan_tanggungan_anak3" required placeholder="Anak Usia Perguruan Tinggi" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Saudara /
+                                                                    Keluarga Lainnya</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-karyawan" name="condition_karyawan_tanggungan_saudara" value="<?= $data->condition_karyawan_tanggungan_saudara ? $data->condition_karyawan_tanggungan_saudara : '0' ?>" id="condition_karyawan_tanggungan_saudara" required placeholder="Saudara / Keluarga Lainnya" />
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr class="bg-light">
                                                             <th><label class="table-lable">Total Jumlah
                                                                     Tanggungan</label>
                                                             </th>
                                                             <td><input type="number" class="form-control text-size number-only form-border form-radius" name="condition_wir_tanggungan_total" value="<?= $data->condition_wir_tanggungan_total ?>" id="condition_wir_tanggungan_total" required placeholder="Total Jumlah Tanggungan" readonly />
                                                             </td>
                                                         </tr> -->
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
-
-                                        </div>
-                                        <div class="col-md-12 kondisi-up">
-                                            <center>
-                                                <h4 class="ml-3">
-                                                    <a onclick="kondisiupFunction()" data-toggle="collapse" href="#kondisi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                        <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                    </a>
-                                                </h4>
-                                            </center>
                                         </div>
                                     </div>
                                 </div>
@@ -1071,11 +1015,7 @@
                             <?php if ($leads->pekerjaan_konsumen == 'Wiraswasta') { ?>
                                 <div class="card">
                                     <div class="card-body text-size">
-                                        <h5 class="form-margin"><b>Kondisi Konsumen</b>
-                                            <a class="float-right kondisi-down" onclick="kondisidownFunction()" data-toggle="collapse" href="#kondisi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                            </a>
-                                        </h5>
+                                        <h5 class="form-margin"><b>Kondisi Konsumen</b></h5>
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
@@ -1178,212 +1118,198 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <div class="collapse" id="kondisi">
-                                            <div class="form-row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-left">
-                                                        <label>Jenis Bangunan Usaha</label>
-                                                        <select class="form-control text-size" name="condition_wir_jenis_bangunan_usaha" id="" required>
-                                                            <option value="">Pilih Kategori Jenis
-                                                                Bangunan
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jenis_bangunan_usaha == 'Bangungan Permanen' ? 'selected' : '' ?> value="Bangungan Permanen">
-                                                                Bangungan Permanen
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jenis_bangunan_usaha == 'Bangunan Sementara' ? 'selected' : '' ?> value="Bangunan Sementara">Bangunan
-                                                                Sementara
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-center">
-                                                        <label>Pemilik tempat usaha</label>
-                                                        <select class="form-control text-size" name="condition_wir_pemilik_tempat_usaha" id="" required>
-                                                            <option selected value="">Pilih Pemilik
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Sendiri - Lunas' ? 'selected' : '' ?> value="Milik Sendiri - Lunas">Milik
-                                                                Sendiri - Lunas
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Sendiri - Kredit' ? 'selected' : '' ?> value="Milik Sendiri - Kredit">
-                                                                Milik Sendiri - Kredit
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Keluarga - Lunas' ? 'selected' : '' ?> value="Milik Keluarga - Lunas">
-                                                                Milik Keluarga - Lunas
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Keluarga - Kredit' ? 'selected' : '' ?> value="Milik Keluarga - Kredit">
-                                                                Milik Keluarga - Kredit
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Kontrak / Sewa' ? 'selected' : '' ?> value="Kontrak / Sewa">Kontrak /
-                                                                Sewa
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-right">
-                                                        <label>Tahun Berdiri</label>
-                                                        <input type="text" class="form-control text-size number-only placement" name="condition_wir_tahun_berdiri" value="<?= $data->condition_wir_tahun_berdiri ?>" id="" placeholder="2020" minlength="4" maxlength="4" />
-                                                    </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group form-left">
+                                                    <label>Jenis Bangunan Usaha</label>
+                                                    <select class="form-control text-size" name="condition_wir_jenis_bangunan_usaha" id="" required>
+                                                        <option value="">Pilih Kategori Jenis
+                                                            Bangunan
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jenis_bangunan_usaha == 'Bangungan Permanen' ? 'selected' : '' ?> value="Bangungan Permanen">
+                                                            Bangungan Permanen
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jenis_bangunan_usaha == 'Bangunan Sementara' ? 'selected' : '' ?> value="Bangunan Sementara">Bangunan
+                                                            Sementara
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-left">
-                                                        <label>Jumlah Karyawan</label>
-                                                        <select class="form-control text-size" name="condition_wir_jumlah_karyawan" id="" required>
-                                                            <option selected value="">Pilih Jumlah Karyawan
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jumlah_karyawan == '1 - 4' ? 'selected' : ''  ?> value="1 - 4"> 1 - 4
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jumlah_karyawan == '5 - 19' ? 'selected' : ''  ?> value="5 - 19">5 -
-                                                                19
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jumlah_karyawan == '20 - 99' ? 'selected' : ''  ?> value="20 - 99">20 - 99
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jumlah_karyawan == '100 - 499' ? 'selected' : ''  ?> value="100 - 499">
-                                                                100 - 499
-                                                            </option>
-                                                            <option <?= $data->condition_wir_jumlah_karyawan == '> 500' ? 'selected' : ''  ?> value="> 500">> 500
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-center">
-                                                        <label>Metode Pembayaran</label>
-                                                        <select class="form-control text-size" name="condition_wir_cara_bayar" id="" required>
-                                                            <option selected value="">Pilih Metode Pembayaran
-                                                            </option>
-                                                            <option <?= $data->condition_wir_cara_bayar == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
-                                                            <option <?= $data->condition_wir_cara_bayar == 'Transfer' ? 'selected' : '' ?> value="Transfer">Transfer</option>
-                                                            <option <?= $data->condition_wir_cara_bayar == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">Lainnya
-                                                                [Transfer]</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-right">
-                                                        <label>Pekerjaan Pasangan</label>
-                                                        <select class="form-control text-size" name="condition_wir_pekerjaan_pasangan" id="condition_wir_pekerjaan_pasangan" required>
-                                                            <option selected value="">Pilih Pekerjaan
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Tetap' ? 'selected' : '' ?> value="Karyawan Swasta - Tetap">
-                                                                Karyawan Swasta - Tetap</option>
-                                                            <option <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Kontrak' ? 'selected' : '' ?> value="Karyawan Swasta - Kontrak">
-                                                                Karyawan Swasta - Kontrak</option>
-                                                            <option <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Tetap' ? 'selected' : '' ?> value="PNS / ASN - Tetap">PNS / ASN -
-                                                                Tetap</option>
-                                                            <option <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Honorer < 5th' ? 'selected' : '' ?> value="PNS / ASN - Honorer < 5th">PNS /
-                                                                ASN - Honorer < 5th</option> <option <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Honorer > 5th' ? 'selected' : '' ?> value="PNS / ASN - Honorer > 5th">PNS / ASN -
-                                                                    Honorer > 5th</option>
-                                                            <option <?= $data->condition_wir_pekerjaan_pasangan == 'Wiraswasta < 2th' ? 'selected' : '' ?> value="Wiraswasta < 2th">Wiraswasta < 2th</option> <option <?= $data->condition_wir_pekerjaan_pasangan == 'Wiraswasta > 2th' ? 'selected' : '' ?> value="Wiraswasta > 2th">
-                                                                    Wiraswasta > 2th
-                                                            </option>
-                                                            <option <?= $data->condition_wir_pekerjaan_pasangan == 'Profesi Beresiko' ? 'selected' : '' ?> value="Profesi Beresiko">Profesi
-                                                                Beresiko</option>
-                                                        </select>
-                                                    </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-center">
+                                                    <label>Pemilik tempat usaha</label>
+                                                    <select class="form-control text-size" name="condition_wir_pemilik_tempat_usaha" id="" required>
+                                                        <option selected value="">Pilih Pemilik
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Sendiri - Lunas' ? 'selected' : '' ?> value="Milik Sendiri - Lunas">Milik
+                                                            Sendiri - Lunas
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Sendiri - Kredit' ? 'selected' : '' ?> value="Milik Sendiri - Kredit">
+                                                            Milik Sendiri - Kredit
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Keluarga - Lunas' ? 'selected' : '' ?> value="Milik Keluarga - Lunas">
+                                                            Milik Keluarga - Lunas
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Milik Keluarga - Kredit' ? 'selected' : '' ?> value="Milik Keluarga - Kredit">
+                                                            Milik Keluarga - Kredit
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pemilik_tempat_usaha == 'Kontrak / Sewa' ? 'selected' : '' ?> value="Kontrak / Sewa">Kontrak /
+                                                            Sewa
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="col-md-12 resiko-pasangan">
-                                                    <div class="form-group form-margin">
-                                                        <label>Penjelasan Profesi Beresiko</label>
-                                                        <input type="text" class="form-control text-size" name="condition_wir_profesi_beresiko_pasangan" id="condition_wir_profesi_beresiko_pasangan" value="<?= $data->condition_wir_profesi_beresiko_pasangan ?>" placeholder="Penjelasan Profesi Beresiko" />
-                                                    </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-right">
+                                                    <label>Tahun Berdiri</label>
+                                                    <input type="text" class="form-control text-size number-only placement" name="condition_wir_tahun_berdiri" value="<?= $data->condition_wir_tahun_berdiri ?>" id="" placeholder="2020" minlength="4" maxlength="4" />
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-left">
-                                                        <label>Tempat Kerja / Usaha pasangan</label>
-                                                        <input type="text" class="form-control text-size" name="condition_wir_tempat_kerja_pasangan" id="condition_wir_tempat_kerja_pasangan" value="<?= $data->condition_wir_tempat_kerja_pasangan ?>" placeholder="Tempat Kerja / Usaha pasangan" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-right">
-                                                        <label>Kondisi Usaha</label>
-                                                        <input type="text" class="form-control text-size" name="condition_wir_kondisi_usaha" value="<?= $data->condition_wir_kondisi_usaha ?>" id="condition_wir_kondisi_usaha" placeholder="Jelaskan Kondisi Usaha Saat ini" />
-                                                    </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group form-left">
+                                                    <label>Jumlah Karyawan</label>
+                                                    <select class="form-control text-size" name="condition_wir_jumlah_karyawan" id="" required>
+                                                        <option selected value="">Pilih Jumlah Karyawan
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jumlah_karyawan == '1 - 4' ? 'selected' : ''  ?> value="1 - 4"> 1 - 4
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jumlah_karyawan == '5 - 19' ? 'selected' : ''  ?> value="5 - 19">5 -
+                                                            19
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jumlah_karyawan == '20 - 99' ? 'selected' : ''  ?> value="20 - 99">20 - 99
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jumlah_karyawan == '100 - 499' ? 'selected' : ''  ?> value="100 - 499">
+                                                            100 - 499
+                                                        </option>
+                                                        <option <?= $data->condition_wir_jumlah_karyawan == '> 500' ? 'selected' : ''  ?> value="> 500">> 500
+                                                        </option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                            <div class="form-margin mt-3">
-                                                <p>Jumlah Tanggungan</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-lable">Orang
-                                                                        Tua</label>
-                                                                </th>
-                                                                <td>
-                                                                    <input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_orangtua" value="<?= $data->condition_wir_tanggungan_orangtua ? $data->condition_wir_tanggungan_orangtua : '0' ?>" id="orangtua_tanggungan" required placeholder="Orang Tua" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-lable">Pasangan</label>
-                                                                </th>
-                                                                <td>
-                                                                    <input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_pasangan" value="<?= $data->condition_wir_tanggungan_pasangan ? $data->condition_wir_tanggungan_pasangan : '0' ?>" id="pasangan_tanggungan" required placeholder="Pasangan" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Anak Usia
-                                                                        Belum Sekolah</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_anak1" value="<?= $data->condition_wir_tanggungan_anak1 ? $data->condition_wir_tanggungan_anak1 : '0' ?>" id="anak_belum_sekolah" required placeholder="Anak Usia
+                                            <div class="col-md-4">
+                                                <div class="form-group form-center">
+                                                    <label>Metode Pembayaran</label>
+                                                    <select class="form-control text-size" name="condition_wir_cara_bayar" id="" required>
+                                                        <option selected value="">Pilih Metode Pembayaran
+                                                        </option>
+                                                        <option <?= $data->condition_wir_cara_bayar == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
+                                                        <option <?= $data->condition_wir_cara_bayar == 'Transfer' ? 'selected' : '' ?> value="Transfer">Transfer</option>
+                                                        <option <?= $data->condition_wir_cara_bayar == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">Lainnya
+                                                            [Transfer]</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-right">
+                                                    <label>Pekerjaan Pasangan</label>
+                                                    <select class="form-control text-size" name="condition_wir_pekerjaan_pasangan" id="condition_wir_pekerjaan_pasangan" required>
+                                                        <option selected value="">Pilih Pekerjaan
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Tetap' ? 'selected' : '' ?> value="Karyawan Swasta - Tetap">
+                                                            Karyawan Swasta - Tetap</option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Kontrak' ? 'selected' : '' ?> value="Karyawan Swasta - Kontrak">
+                                                            Karyawan Swasta - Kontrak</option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Tetap' ? 'selected' : '' ?> value="PNS / ASN - Tetap">PNS / ASN -
+                                                            Tetap</option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Honorer < 5th' ? 'selected' : '' ?> value="PNS / ASN - Honorer < 5th">PNS /
+                                                            ASN - Honorer < 5th</option> <option <?= $data->condition_wir_pekerjaan_pasangan == 'PNS / ASN - Honorer > 5th' ? 'selected' : '' ?> value="PNS / ASN - Honorer > 5th">PNS / ASN -
+                                                                Honorer > 5th</option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'Wiraswasta < 2th' ? 'selected' : '' ?> value="Wiraswasta < 2th">Wiraswasta < 2th</option> <option <?= $data->condition_wir_pekerjaan_pasangan == 'Wiraswasta > 2th' ? 'selected' : '' ?> value="Wiraswasta > 2th">
+                                                                Wiraswasta > 2th
+                                                        </option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'Profesi Beresiko' ? 'selected' : '' ?> value="Profesi Beresiko">Profesi
+                                                            Beresiko</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-12 resiko-pasangan">
+                                                <div class="form-group form-margin">
+                                                    <label>Penjelasan Profesi Beresiko</label>
+                                                    <input type="text" class="form-control text-size" name="condition_wir_profesi_beresiko_pasangan" id="condition_wir_profesi_beresiko_pasangan" value="<?= $data->condition_wir_profesi_beresiko_pasangan ?>" placeholder="Penjelasan Profesi Beresiko" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-left">
+                                                    <label>Tempat Kerja / Usaha pasangan</label>
+                                                    <input type="text" class="form-control text-size" name="condition_wir_tempat_kerja_pasangan" id="condition_wir_tempat_kerja_pasangan" value="<?= $data->condition_wir_tempat_kerja_pasangan ?>" placeholder="Tempat Kerja / Usaha pasangan" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-right">
+                                                    <label>Kondisi Usaha</label>
+                                                    <input type="text" class="form-control text-size" name="condition_wir_kondisi_usaha" value="<?= $data->condition_wir_kondisi_usaha ?>" id="condition_wir_kondisi_usaha" placeholder="Jelaskan Kondisi Usaha Saat ini" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-margin mt-3">
+                                            <p>Jumlah Tanggungan</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-lable">Orang
+                                                                    Tua</label>
+                                                            </th>
+                                                            <td>
+                                                                <input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_orangtua" value="<?= $data->condition_wir_tanggungan_orangtua ? $data->condition_wir_tanggungan_orangtua : '0' ?>" id="orangtua_tanggungan" required placeholder="Orang Tua" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-lable">Pasangan</label>
+                                                            </th>
+                                                            <td>
+                                                                <input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_pasangan" value="<?= $data->condition_wir_tanggungan_pasangan ? $data->condition_wir_tanggungan_pasangan : '0' ?>" id="pasangan_tanggungan" required placeholder="Pasangan" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Anak Usia
+                                                                    Belum Sekolah</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_anak1" value="<?= $data->condition_wir_tanggungan_anak1 ? $data->condition_wir_tanggungan_anak1 : '0' ?>" id="anak_belum_sekolah" required placeholder="Anak Usia
 																					Belum Sekolah" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Anak Usia TK
-                                                                        - SMA</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_anak2" value="<?= $data->condition_wir_tanggungan_anak2 ? $data->condition_wir_tanggungan_anak2 : '0' ?>" id="anak_sudah_sekolah" required placeholder="Anak Usia TK
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Anak Usia TK
+                                                                    - SMA</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_anak2" value="<?= $data->condition_wir_tanggungan_anak2 ? $data->condition_wir_tanggungan_anak2 : '0' ?>" id="anak_sudah_sekolah" required placeholder="Anak Usia TK
 																					- SMA" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Anak Usia
-                                                                        Perguruan Tinggi</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_anak3" value="<?= $data->condition_wir_tanggungan_anak3 ? $data->condition_wir_tanggungan_anak3 : '0' ?>" id="anak_perguruan_tinggi" required placeholder="Anak Usia
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Anak Usia
+                                                                    Perguruan Tinggi</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_anak3" value="<?= $data->condition_wir_tanggungan_anak3 ? $data->condition_wir_tanggungan_anak3 : '0' ?>" id="anak_perguruan_tinggi" required placeholder="Anak Usia
 																					Perguruan Tinggi" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th><label class="table-lable">Saudara /
-                                                                        Keluarga Lainnya</label>
-                                                                </th>
-                                                                <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_saudara" value="<?= $data->condition_wir_tanggungan_saudara ? $data->condition_wir_tanggungan_saudara : '0' ?>" id="condition_wir_tanggungan_saudara" required placeholder="Saudara / Keluarga Lainnya" />
-                                                                </td>
-                                                            </tr>
-                                                            <!-- <tr class="bg-light">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th><label class="table-lable">Saudara /
+                                                                    Keluarga Lainnya</label>
+                                                            </th>
+                                                            <td><input type="number" class="form-control text-size number-only form-border tanggungan-wiraswasta" name="condition_wir_tanggungan_saudara" value="<?= $data->condition_wir_tanggungan_saudara ? $data->condition_wir_tanggungan_saudara : '0' ?>" id="condition_wir_tanggungan_saudara" required placeholder="Saudara / Keluarga Lainnya" />
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr class="bg-light">
                                                         <th><label class="table-lable">Total Jumlah
                                                                 Tanggungan</label>
                                                         </th>
                                                         <td><input type="number" class="form-control text-size number-only form-border" name="condition_wir_tanggungan_total" value="<?= $data->condition_wir_tanggungan_total ?>" id="condition_wir_tanggungan_total" required placeholder="Total Jumlah Tanggungan" readonly />
                                                         </td>
                                                     </tr> -->
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
-
-                                        </div>
-                                        <div class="col-md-12 kondisi-up">
-                                            <center>
-                                                <h4 class="ml-3">
-                                                    <a onclick="kondisiupFunction()" data-toggle="collapse" href="#kondisi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                        <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                    </a>
-                                                </h4>
-                                            </center>
                                         </div>
                                     </div>
                                 </div>
@@ -1393,11 +1319,7 @@
                             <!-- Aset Konsumen -->
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Aset Konsumen</b>
-                                        <a class="float-right aset-down" onclick="asetdownFunction()" data-toggle="collapse" href="#aset" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a>
-                                    </h5>
+                                    <h5 class="form-margin"><b>Aset Konsumen</b></h5>
 
                                     <div class="form-row">
                                         <div class="col-md-6">
@@ -1446,101 +1368,93 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="collapse" id="aset">
-                                        <div class="form-margin mt-3">
-                                            <p>Informasikan Lima Aset Berharga Yang Dimiliki</p>
-                                            <div class="table-responsive">
-                                                <table class="table table-hover">
-                                                    <tbody>
-                                                        <tr>
-                                                            <th>
-                                                                <label class="table-form-small">Nama Barang</label>
-                                                            </th>
-                                                            <th>
-                                                                <label class="table-form-small">Status Barang </label>
-                                                            </th>
-                                                            <th>
-                                                                <label class="table-form-small">harga jual Pasar</label>
-                                                            </th>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size text-size form-border" name="capital_aset1" value="<?= $data->capital_aset1 ?>" id="" required placeholder="Nama Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang1" value="<?= $data->capital_status_barang1 ?>" id="" required placeholder="Status Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border aset-konsumen" name="capital_harga1" value="<?= $data->capital_harga1 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="capital_aset2" value="<?= $data->capital_aset2 ?>" id="" required placeholder="Nama Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang2" value="<?= $data->capital_status_barang2 ?>" id="" required placeholder="Status Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga2" value="<?= $data->capital_harga2 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="capital_aset3" value="<?= $data->capital_aset3 ?>" id="" required placeholder="Nama Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang3" value="<?= $data->capital_status_barang3 ?>" id="" required placeholder="Status Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga3" value="<?= $data->capital_harga3 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="capital_aset4" value="<?= $data->capital_aset4 ?>" id="" required placeholder="Nama Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang4" value="<?= $data->capital_status_barang4 ?>" id="" required placeholder="Status Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga4" value="<?= $data->capital_harga4 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size form-border" name="capital_aset5" value="<?= $data->capital_aset5 ?>" id="" required placeholder="Nama Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang5" value="<?= $data->capital_status_barang5 ?>" id="" required placeholder="Status Barang" />
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga5" value="<?= $data->capital_harga5 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="bg-light">
-                                                            <td>
-                                                                <label>Total Nilai Aset</label>
-                                                            </td>
-                                                            <td> </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only  form-border form-radius" name="capital_total_aset" value="<?= $data->capital_total_aset ?>" id="capital_total_aset" data-type="currency" required placeholder="Total Nilai Aset" readonly />
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                    <div class="form-margin mt-3">
+                                        <p>Informasikan Lima Aset Berharga Yang Dimiliki</p>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover">
+                                                <tbody>
+                                                    <tr>
+                                                        <th>
+                                                            <label class="table-form-small">Nama Barang</label>
+                                                        </th>
+                                                        <th>
+                                                            <label class="table-form-small">Status Barang </label>
+                                                        </th>
+                                                        <th>
+                                                            <label class="table-form-small">harga jual Pasar</label>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_aset1" value="<?= $data->capital_aset1 ?>" id="" required placeholder="Nama Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang1" value="<?= $data->capital_status_barang1 ?>" id="" required placeholder="Status Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only form-border aset-konsumen" name="capital_harga1" value="<?= $data->capital_harga1 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="capital_aset2" value="<?= $data->capital_aset2 ?>" id="" required placeholder="Nama Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang2" value="<?= $data->capital_status_barang2 ?>" id="" required placeholder="Status Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga2" value="<?= $data->capital_harga2 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="capital_aset3" value="<?= $data->capital_aset3 ?>" id="" required placeholder="Nama Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang3" value="<?= $data->capital_status_barang3 ?>" id="" required placeholder="Status Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga3" value="<?= $data->capital_harga3 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="capital_aset4" value="<?= $data->capital_aset4 ?>" id="" required placeholder="Nama Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang4" value="<?= $data->capital_status_barang4 ?>" id="" required placeholder="Status Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga4" value="<?= $data->capital_harga4 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="capital_aset5" value="<?= $data->capital_aset5 ?>" id="" required placeholder="Nama Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang5" value="<?= $data->capital_status_barang5 ?>" id="" required placeholder="Status Barang" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga5" value="<?= $data->capital_harga5 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="bg-light">
+                                                        <td>
+                                                            <label>Total Nilai Aset</label>
+                                                        </td>
+                                                        <td> </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only  form-border form-radius" name="capital_total_aset" value="<?= $data->capital_total_aset ?>" id="capital_total_aset" data-type="currency" required placeholder="Total Nilai Aset" readonly />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 aset-up">
-                                        <center>
-                                            <h4 class="ml-3">
-                                                <a onclick="asetupFunction()" data-toggle="collapse" href="#aset" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-pembiayaan').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-kapasitas').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -1557,11 +1471,7 @@
                             <?php if ($leads->pekerjaan_konsumen == 'Karyawan') { ?>
                                 <div class="card">
                                     <div class="card-body text-size">
-                                        <h5 class="form-margin"><b>Kapasitas Konsumen</b>
-                                            <a class="float-right kapasitas-down" onclick="kapasitasdownFunction()" data-toggle="collapse" href="#kapasitas" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                            </a>
-                                        </h5>
+                                        <h5 class="form-margin"><b>Kapasitas Konsumen</b></h5>
 
                                         <p class="form-margin form-caption">Pendapatan</p>
 
@@ -1660,58 +1570,56 @@
                                                 </table>
                                             </div>
                                         </div>
-
-                                        <div class="collapse" id="kapasitas">
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-margin">
-                                                        <label>Apakah ada Pendapatan lainnya ?</label><br>
-                                                        <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_income_lainnya" <?= $data->capacity_karyawan_ada_income_lainnya == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
-                                                            <label class="form-check-label">
-                                                                Ya
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_income_lainnya" <?= $data->capacity_karyawan_ada_income_lainnya == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
-                                                            <label class="form-check-label">
-                                                                Tidak
-                                                            </label>
-                                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-margin">
+                                                    <label>Apakah ada Pendapatan lainnya ?</label><br>
+                                                    <div class="form-check form-check-inline mt-2">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_income_lainnya" <?= $data->capacity_karyawan_ada_income_lainnya == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
+                                                        <label class="form-check-label">
+                                                            Ya
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_income_lainnya" <?= $data->capacity_karyawan_ada_income_lainnya == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
+                                                        <label class="form-check-label">
+                                                            Tidak
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-margin mt-3 pendapatan-lainnya">
-                                                <p>Informasi pendapatan Lainnya</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-form-medium">Deskripsi</label>
-                                                                </th>
-                                                                <th>
-                                                                    <label class="table-form-medium">Nominal</label>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_karyawan_income_lainnya1" value="<?= $data->capacity_karyawan_income_lainnya1 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain1" value="<?= $data->capacity_karyawan_nilai_lain1 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_karyawan_income_lainnya2" value="<?= $data->capacity_karyawan_income_lainnya2 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain2" value="<?= $data->capacity_karyawan_nilai_lain2 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <!-- <tr class="bg-light">
+                                        <div class="form-margin mt-3 pendapatan-lainnya">
+                                            <p>Informasi pendapatan Lainnya</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-form-medium">Deskripsi</label>
+                                                            </th>
+                                                            <th>
+                                                                <label class="table-form-medium">Nominal</label>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_income_lainnya1" value="<?= $data->capacity_karyawan_income_lainnya1 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain1" value="<?= $data->capacity_karyawan_nilai_lain1 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_income_lainnya2" value="<?= $data->capacity_karyawan_income_lainnya2 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain2" value="<?= $data->capacity_karyawan_nilai_lain2 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr class="bg-light">
                                                             <td>
                                                                 <label>Total Pendapatan</label>
                                                             </td>
@@ -1719,80 +1627,80 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_income_lainnya" value="<?= $data->capacity_karyawan_total_income_lainnya ?>" id="capacity_karyawan_total_income_lainnya" data-type="currency" required placeholder="Nominal 2" readonly />
                                                             </td>
                                                         </tr> -->
-                                                        </tbody>
-                                                    </table>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-4">
+                                                <div class="form-group form-left">
+                                                    <label>Saldo Rekening Saat ini</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_saldo_rekening" value="<?= $data->capacity_karyawan_saldo_rekening ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
                                                 </div>
                                             </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-left">
-                                                        <label>Saldo Rekening Saat ini</label>
-                                                        <input type="text" class="form-control text-size number-only" name="capacity_karyawan_saldo_rekening" value="<?= $data->capacity_karyawan_saldo_rekening ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-center">
-                                                        <label>Pendapatan Pasangan</label>
-                                                        <input type="text" class="form-control text-size number-only" name="capacity_karyawan_income_pasangan" value="<?= $data->capacity_karyawan_income_pasangan ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group form-right">
-                                                        <label>Total Pendapatan</label>
-                                                        <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_net_income" value="<?= $data->capacity_karyawan_total_net_income ?>" id="capacity_karyawan_total_net_income" data-type="currency" placeholder="Rp. 000000000" />
-                                                    </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-center">
+                                                    <label>Pendapatan Pasangan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_income_pasangan" value="<?= $data->capacity_karyawan_income_pasangan ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group form-right">
+                                                    <label>Total Pendapatan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_net_income" value="<?= $data->capacity_karyawan_total_net_income ?>" id="capacity_karyawan_total_net_income" data-type="currency" placeholder="Rp. 000000000" />
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                            <p class="form-margin form-caption mt-3">Pengeluaran</p>
+                                        <p class="form-margin form-caption mt-3">Pengeluaran</p>
 
-                                            <div class="form-margin">
-                                                <p>Informasikan pengeluaran</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="table-form-medium">Biaya
-                                                                        pendidikan</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan table-form-medium" name="capacity_karyawan_outcome_pendidikan" value="<?= $data->capacity_karyawan_outcome_pendidikan ?>" id="" data-type="currency" required placeholder="Biaya
+                                        <div class="form-margin">
+                                            <p>Informasikan pengeluaran</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <label class="table-form-medium">Biaya
+                                                                    pendidikan</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan table-form-medium" name="capacity_karyawan_outcome_pendidikan" value="<?= $data->capacity_karyawan_outcome_pendidikan ?>" id="" data-type="currency" required placeholder="Biaya
 																					pendidikan" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>Biaya
-                                                                        Rumah
-                                                                        Tangga</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_rumah" value="<?= $data->capacity_karyawan_outcome_rumah ?>" id="" data-type="currency" required placeholder="Biaya Rumah
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya
+                                                                    Rumah
+                                                                    Tangga</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_rumah" value="<?= $data->capacity_karyawan_outcome_rumah ?>" id="" data-type="currency" required placeholder="Biaya Rumah
 																					Tangga" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>Biaya
-                                                                        Internet / Pulsa / Listrik</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_listrik" value="<?= $data->capacity_karyawan_outcome_listrik ?>" id="" data-type="currency" required placeholder="Biaya
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya
+                                                                    Internet / Pulsa / Listrik</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_listrik" value="<?= $data->capacity_karyawan_outcome_listrik ?>" id="" data-type="currency" required placeholder="Biaya
 																					Internet / Pulsa / Listrik" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>Biaya Lain
-                                                                        - Lain</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="" data-type="currency" required placeholder="Biaya Lain - Lain" />
-                                                                </td>
-                                                            </tr>
-                                                            <!-- <tr class="bg-light">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya Lain
+                                                                    - Lain</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="" data-type="currency" required placeholder="Biaya Lain - Lain" />
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr class="bg-light">
                                                             <td>
                                                                 <label>Total
                                                                     Pengeluaran</label>
@@ -1801,70 +1709,70 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_biaya_outcome ?>" id="capacity_karyawan_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
                                                             </td>
                                                         </tr> -->
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
+                                        </div>
 
-                                            <div class=" form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-margin">
-                                                        <label>Apakah ada Hutang
-                                                            ditempat lain ?</label><br>
-                                                        <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_hutang" <?= $data->capacity_karyawan_ada_hutang == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
-                                                            <label class="form-check-label">
-                                                                Ya
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_hutang" <?= $data->capacity_karyawan_ada_hutang == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
-                                                            <label class="form-check-label">
-                                                                Tidak
-                                                            </label>
-                                                        </div>
+                                        <div class=" form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-margin">
+                                                    <label>Apakah ada Hutang
+                                                        ditempat lain ?</label><br>
+                                                    <div class="form-check form-check-inline mt-2">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_hutang" <?= $data->capacity_karyawan_ada_hutang == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
+                                                        <label class="form-check-label">
+                                                            Ya
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_karyawan_ada_hutang" <?= $data->capacity_karyawan_ada_hutang == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
+                                                        <label class="form-check-label">
+                                                            Tidak
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-margin mt-3 hutang-lainnya">
-                                                <p>Informasikan hutang lainnya</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-form-medium">Deskripsi</label>
-                                                                </th>
-                                                                <th>
-                                                                    <label class="table-form-medium">Nominal</label>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang1" value="<?= $data->capacity_karyawan_hutang1 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang1" value="<?= $data->capacity_karyawan_nilai_hutang1 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang2" value="<?= $data->capacity_karyawan_hutang2 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang2" value="<?= $data->capacity_karyawan_nilai_hutang2 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang3" value="<?= $data->capacity_karyawan_hutang3 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang3" value="<?= $data->capacity_karyawan_nilai_hutang3 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <!-- <tr class="bg-light">
+                                        <div class="form-margin mt-3 hutang-lainnya">
+                                            <p>Informasikan hutang lainnya</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-form-medium">Deskripsi</label>
+                                                            </th>
+                                                            <th>
+                                                                <label class="table-form-medium">Nominal</label>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang1" value="<?= $data->capacity_karyawan_hutang1 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang1" value="<?= $data->capacity_karyawan_nilai_hutang1 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang2" value="<?= $data->capacity_karyawan_hutang2 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang2" value="<?= $data->capacity_karyawan_nilai_hutang2 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang3" value="<?= $data->capacity_karyawan_hutang3 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang3" value="<?= $data->capacity_karyawan_nilai_hutang3 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr class="bg-light">
                                                             <td>
                                                                 <label>Total Hutang</label>
                                                             </td>
@@ -1872,35 +1780,27 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_hutang" value="<?= $data->capacity_karyawan_total_hutang ?>" id="capacity_karyawan_total_hutang" data-type="currency" required placeholder="Total Hutang" readonly />
                                                             </td>
                                                         </tr> -->
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-left">
-                                                        <label>Total Pengeluaran</label>
-                                                        <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-right">
-                                                        <label>Kelebihan Pendapatan</label>
-                                                        <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
-                                                    </div>
-                                                </div>
-                                            </div>
-
                                         </div>
-                                        <div class="col-md-12 kapasitas-up">
-                                            <center>
-                                                <h4 class="ml-3">
-                                                    <a onclick="kapasitasupFunction()" data-toggle="collapse" href="#kapasitas" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                        <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                    </a>
-                                                </h4>
-                                            </center>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-left">
+                                                    <label>Total Pengeluaran</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-right">
+                                                    <label>Kelebihan Pendapatan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group form-margin float-right mt-5">
+                                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-kondisi').click()"><b>Kembali</b></button>
+                                            <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-karakter').click()"><b>Selanjutnya</b></button>
                                         </div>
                                     </div>
                                 </div>
@@ -1911,11 +1811,7 @@
                             <?php if ($leads->pekerjaan_konsumen == 'Wiraswasta') { ?>
                                 <div class="card">
                                     <div class="card-body text-size">
-                                        <h5 class="form-margin"><b>Kapasitas Konsumen</b>
-                                            <a class="float-right kapasitas-down" onclick="kapasitasdownFunction()" data-toggle="collapse" href="#kapasitas" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                            </a>
-                                        </h5>
+                                        <h5 class="form-margin"><b>Kapasitas Konsumen</b></h5>
 
                                         <p class="form-margin mt-3 form-caption">Pendapatan</p>
 
@@ -2118,206 +2014,204 @@
                                                 </table>
                                             </div>
                                         </div>
-
-                                        <div class="collapse" id="kapasitas">
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-margin">
-                                                        <label>Apakah ada Pendapatan lainnya ?</label><br>
-                                                        <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_income_lainnya" <?= $data->capacity_wir_ada_income_lainnya == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
-                                                            <label class="form-check-label">
-                                                                Ya
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_income_lainnya" <?= $data->capacity_wir_ada_income_lainnya == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
-                                                            <label class="form-check-label">
-                                                                Tidak
-                                                            </label>
-                                                        </div>
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-margin">
+                                                    <label>Apakah ada Pendapatan lainnya ?</label><br>
+                                                    <div class="form-check form-check-inline mt-2">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_income_lainnya" <?= $data->capacity_wir_ada_income_lainnya == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
+                                                        <label class="form-check-label">
+                                                            Ya
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_income_lainnya" <?= $data->capacity_wir_ada_income_lainnya == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
+                                                        <label class="form-check-label">
+                                                            Tidak
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-margin mt-3 pendapatan-lainnya-wir">
-                                                <p>Informasi pendapatan Lainnya</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-lable">Deskripsi</label>
-                                                                </th>
-                                                                <th>
-                                                                    <label class=" table-lable">Nominal
-                                                                        (Nett)</label>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="table-lable">Saldo Rekening Saat Ini</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="table-lable">Pendapatan Pasangan</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_wir_income_lain1" value="<?= $data->capacity_wir_income_lain1 ?>" id="" required placeholder="Pendapatan Lainnya" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain1" value="<?= $data->capacity_wir_nilai_lain1 ?>" id="" data-type="currency" required placeholder="Rp. 000000000" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_wir_income_lain2" value="<?= $data->capacity_wir_income_lain2 ?>" id="" required placeholder="Pendapatan lainnya" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain2" value="<?= $data->capacity_wir_nilai_lain2 ?>" id="" data-type="currency" required placeholder="Rp. 000000000" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="bg-light">
-                                                                <td>
-                                                                    <label>Total Pendapatan</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_bonus" value="<?= $data->capacity_karyawan_total_bonus ?>" id="capacity_karyawan_total_bonus" data-type="currency" required placeholder="Total Pendapatan Periodik" readonly />
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                        <div class="form-margin mt-3 pendapatan-lainnya-wir">
+                                            <p>Informasi pendapatan Lainnya</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-lable">Deskripsi</label>
+                                                            </th>
+                                                            <th>
+                                                                <label class=" table-lable">Nominal
+                                                                    (Nett)</label>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label class="table-lable">Saldo Rekening Saat Ini</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label class="table-lable">Pendapatan Pasangan</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_wir_income_lain1" value="<?= $data->capacity_wir_income_lain1 ?>" id="" required placeholder="Pendapatan Lainnya" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain1" value="<?= $data->capacity_wir_nilai_lain1 ?>" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_wir_income_lain2" value="<?= $data->capacity_wir_income_lain2 ?>" id="" required placeholder="Pendapatan lainnya" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain2" value="<?= $data->capacity_wir_nilai_lain2 ?>" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-light">
+                                                            <td>
+                                                                <label>Total Pendapatan</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_bonus" value="<?= $data->capacity_karyawan_total_bonus ?>" id="capacity_karyawan_total_bonus" data-type="currency" required placeholder="Total Pendapatan Periodik" readonly />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
+                                        </div>
 
-                                            <p class="form-margin mt-3 form-caption">Pengeluaran</p>
+                                        <p class="form-margin mt-3 form-caption">Pengeluaran</p>
 
-                                            <div class="form-margin mt-3">
-                                                <p>Informasikan pengeluaran</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <label class="table-form-medium">Biaya
-                                                                        pendidikan</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta table-form-medium" name="capacity_wir_outcome_pendidikan" value="<?= $data->capacity_wir_outcome_pendidikan ?>" id="" data-type="currency" required placeholder="Biaya
+                                        <div class="form-margin mt-3">
+                                            <p>Informasikan pengeluaran</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <label class="table-form-medium">Biaya
+                                                                    pendidikan</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta table-form-medium" name="capacity_wir_outcome_pendidikan" value="<?= $data->capacity_wir_outcome_pendidikan ?>" id="" data-type="currency" required placeholder="Biaya
 																					pendidikan" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>Biaya
-                                                                        Rumah
-                                                                        Tangga</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_rumah_tangga" value="<?= $data->capacity_wir_outcome_rumah_tangga ?>" id="" data-type="currency" required placeholder="Biaya Rumah
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya
+                                                                    Rumah
+                                                                    Tangga</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_rumah_tangga" value="<?= $data->capacity_wir_outcome_rumah_tangga ?>" id="" data-type="currency" required placeholder="Biaya Rumah
 																					Tangga" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>Biaya
-                                                                        Internet / Pulsa / Listrik</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_internet" value="<?= $data->capacity_wir_outcome_internet ?>" id="" data-type="currency" required placeholder="Biaya
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya
+                                                                    Internet / Pulsa / Listrik</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_internet" value="<?= $data->capacity_wir_outcome_internet ?>" id="" data-type="currency" required placeholder="Biaya
 																					Internet / Pulsa / Listrik" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <label>Biaya Lain
-                                                                        - Lain</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="" data-type="currency" required placeholder="Biaya Lain - Lain" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="bg-light">
-                                                                <td>
-                                                                    <label>Total
-                                                                        Pengeluaran</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_biaya_outcome ?>" id="capacity_karyawan_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya Lain
+                                                                    - Lain</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="" data-type="currency" required placeholder="Biaya Lain - Lain" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-light">
+                                                            <td>
+                                                                <label>Total
+                                                                    Pengeluaran</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_biaya_outcome ?>" id="capacity_karyawan_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
+                                        </div>
 
-                                            <div class=" form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group form-margin">
-                                                        <label>Apakah ada Hutang ditempat lain ?</label><br>
-                                                        <div class="form-check form-check-inline mt-2">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_hutang" <?= $data->capacity_wir_ada_hutang == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
-                                                            <label class="form-check-label">
-                                                                Ya
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                            <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_hutang" <?= $data->capacity_wir_ada_hutang == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
-                                                            <label class="form-check-label">
-                                                                Tidak
-                                                            </label>
-                                                        </div>
+                                        <div class=" form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-margin">
+                                                    <label>Apakah ada Hutang ditempat lain ?</label><br>
+                                                    <div class="form-check form-check-inline mt-2">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_hutang" <?= $data->capacity_wir_ada_hutang == 'Ya' ? 'checked' : '' ?> id="" value="Ya">
+                                                        <label class="form-check-label">
+                                                            Ya
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input renovasi" type="radio" name="capacity_wir_ada_hutang" <?= $data->capacity_wir_ada_hutang == 'Tidak' ? 'checked' : '' ?> id="" value="Tidak">
+                                                        <label class="form-check-label">
+                                                            Tidak
+                                                        </label>
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
 
-                                            <div class="form-margin mt-3 hutang-lainnya-wir">
-                                                <p>Informasikan hutang lainnya</p>
-                                                <div class="table-responsive">
-                                                    <table class="table table-hover">
-                                                        <tbody>
-                                                            <tr>
-                                                                <th>
-                                                                    <label class="table-form-medium">Deskripsi</label>
-                                                                </th>
-                                                                <th>
-                                                                    <label class=" table-form-medium">Nominal</label>
-                                                                </th>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_wir_hutang1" value="<?= $data->capacity_wir_hutang1 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border hutang-wiraswasta" name="capacity_wir_nilai_hutang1" value="<?= $data->capacity_wir_nilai_hutang1 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_wir_hutang2" value="<?= $data->capacity_wir_hutang2 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border hutang-wiraswasta" name="capacity_wir_nilai_hutang2" value="<?= $data->capacity_wir_nilai_hutang2 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size form-border" name="capacity_wir_hutang3" value="<?= $data->capacity_wir_hutang3 ?>" id="" required placeholder="Deskripsi" />
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border hutang-wiraswasta" name="capacity_wir_nilai_hutang3" value="<?= $data->capacity_wir_nilai_hutang3 ?>" id="" data-type="currency" required placeholder="Nominal" />
-                                                                </td>
-                                                            </tr>
-                                                            <!-- <tr>
+                                        <div class="form-margin mt-3 hutang-lainnya-wir">
+                                            <p>Informasikan hutang lainnya</p>
+                                            <div class="table-responsive">
+                                                <table class="table table-hover">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>
+                                                                <label class="table-form-medium">Deskripsi</label>
+                                                            </th>
+                                                            <th>
+                                                                <label class=" table-form-medium">Nominal</label>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_wir_hutang1" value="<?= $data->capacity_wir_hutang1 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-wiraswasta" name="capacity_wir_nilai_hutang1" value="<?= $data->capacity_wir_nilai_hutang1 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_wir_hutang2" value="<?= $data->capacity_wir_hutang2 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-wiraswasta" name="capacity_wir_nilai_hutang2" value="<?= $data->capacity_wir_nilai_hutang2 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_wir_hutang3" value="<?= $data->capacity_wir_hutang3 ?>" id="" required placeholder="Deskripsi" />
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-wiraswasta" name="capacity_wir_nilai_hutang3" value="<?= $data->capacity_wir_nilai_hutang3 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                            </td>
+                                                        </tr>
+                                                        <!-- <tr>
                                                     <td>
                                                         <label>Total hutang</label>
                                                     </td>
@@ -2325,28 +2219,18 @@
                                                         <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_total_hutang" value="<?= $data->capacity_wir_total_hutang ?>" id="capacity_wir_total_hutang" data-type="currency" required placeholder="Total hutang" readonly />
                                                     </td>
                                                 </tr> -->
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group form-margin">
-                                                        <label>Sisa Pendapatan</label>
-                                                        <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
-                                                    </div>
-                                                </div>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
-                                        <div class="col-md-12 kapasitas-up">
-                                            <center>
-                                                <h4 class="ml-3">
-                                                    <a onclick="kapasitasupFunction()" data-toggle="collapse" href="#kapasitas" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                        <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                    </a>
-                                                </h4>
-                                            </center>
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-margin">
+                                                    <label>Sisa Pendapatan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -2357,11 +2241,7 @@
                             <?php if ($leads->pekerjaan_konsumen == 'Wiraswasta') { ?>
                                 <div class="card">
                                     <div class="card-body text-size">
-                                        <h5 class="form-margin mb-4"><b>Informasi Omset Konsumen</b>
-                                            <a class="float-right omset-down" onclick="omsetdownFunction()" data-toggle="collapse" href="#omset" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                            </a>
-                                        </h5>
+                                        <h5 class="form-margin mb-4"><b>Informasi Omset Konsumen</b></h5>
 
                                         <div class=" form-row">
                                             <div class="col-md-6">
@@ -2471,52 +2351,42 @@
                                                 </table>
                                             </div>
                                         </div>
-
-                                        <div class="collapse" id="omset">
-
-                                            <div class="form-margin mt-3">
-                                                <p>Hasil Omset</p>
-                                                <div class="table-responsive">
-                                                    <table class="table">
-                                                        <tbody>
-                                                            <tr class="bg-light">
-                                                                <td>
-                                                                    <label class="table-form-medium">Gross Profit</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="bg-light">
-                                                                <td>
-                                                                    <label>Total Pendapatan Omset</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="bg-light">
-                                                                <td>
-                                                                    <label>Total Nett Profit</label>
-                                                                </td>
-                                                                <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
-                                                                </td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
+                                        <div class="form-margin mt-3">
+                                            <p>Hasil Omset</p>
+                                            <div class="table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr class="bg-light">
+                                                            <td>
+                                                                <label class="table-form-medium">Gross Profit</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-light">
+                                                            <td>
+                                                                <label>Total Pendapatan Omset</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-light">
+                                                            <td>
+                                                                <label>Total Nett Profit</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
-
                                         </div>
-                                        <div class="col-md-12 omset-up">
-                                            <center>
-                                                <h4 class="ml-3">
-                                                    <a onclick="omsetupFunction()" data-toggle="collapse" href="#omset" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                        <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                    </a>
-                                                </h4>
-                                            </center>
+                                        <div class="form-group form-margin float-right mt-5">
+                                            <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-kondisi').click()"><b>Kembali</b></button>
+                                            <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-karakter').click()"><b>Selanjutnya</b></button>
                                         </div>
                                     </div>
                                 </div>
@@ -2533,11 +2403,7 @@
 
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin mb-4"><b>Konfirmasi Karakter</b>
-                                        <a class="float-right konfirmasi-down" onclick="konfirmasidownFunction()" data-toggle="collapse" href="#konfirmasi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a>
-                                    </h5>
+                                    <h5 class="form-margin mb-4"><b>Konfirmasi Karakter</b></h5>
 
                                     <div class="form-margin mt-3">
                                         <div class="table-responsive">
@@ -2594,25 +2460,17 @@
                                             </table>
                                         </div>
                                     </div>
-
-                                    <div class="collapse" id="konfirmasi">
-                                        <div class="form-group form-margin">
-                                            <label>Informasikan Hasil kredit Checking</label>
-                                            <textarea class="form-control text-size" name="character_hasil_kredit" id="" cols="30" rows="10" placeholder="Informasikan Hasil kredit Checking" style="height:110px;"><?= $data->character_hasil_kredit ?></textarea>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Hasil kredit Checking media lainnya</label>
-                                            <textarea class="form-control text-size" name="character_hasil_kredit_media_lain" id="" cols="30" rows="10" placeholder="Haisl Keterangan Dari media Lain" style="height:110px;"><?= $data->character_hasil_kredit_media_lain ?></textarea>
-                                        </div>
+                                    <div class="form-group form-margin">
+                                        <label>Informasikan Hasil kredit Checking</label>
+                                        <textarea class="form-control text-size" name="character_hasil_kredit" id="" cols="30" rows="10" placeholder="Informasikan Hasil kredit Checking" style="height:110px;"><?= $data->character_hasil_kredit ?></textarea>
                                     </div>
-                                    <div class="col-md-12 konfirmasi-up">
-                                        <center>
-                                            <h4 class="ml-3">
-                                                <a onclick="konfirmasiupFunction()" data-toggle="collapse" href="#konfirmasi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
+                                    <div class="form-group form-margin">
+                                        <label>Hasil kredit Checking media lainnya</label>
+                                        <textarea class="form-control text-size" name="character_hasil_kredit_media_lain" id="" cols="30" rows="10" placeholder="Haisl Keterangan Dari media Lain" style="height:110px;"><?= $data->character_hasil_kredit_media_lain ?></textarea>
+                                    </div>
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-kapasitas').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-jaminan').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -2627,11 +2485,7 @@
 
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Jaminan Kendaraan</b>
-                                        <!-- <a class="float-right jaminan-down" onclick="jaminandownFunction()" data-toggle="collapse" href="#jaminan" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a> -->
-                                    </h5>
+                                    <h5 class="form-margin"><b>Jaminan Kendaraan</b></h5>
                                     <div class="form-row">
                                         <div class="col-md-4">
                                             <div class="form-group form-left">
@@ -2741,18 +2595,10 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- <div class="collapse" id="jaminan"></div> -->
-
-                                    <!-- <div class="col-md-12 jaminan-up">
-                                        <center>
-                                            <h4 class="ml-3">
-                                                <a onclick="jaminanupFunction()" data-toggle="collapse" href="#jaminan" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
-                                    </div> -->
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-karakter').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-religi').click()"><b>Selanjutnya</b></button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -2766,11 +2612,7 @@
 
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Data Religi</b>
-                                        <a class="float-right religi-down" onclick="religidownFunction()" data-toggle="collapse" href="#religi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a>
-                                    </h5>
+                                    <h5 class="form-margin"><b>Data Religi</b></h5>
                                     <div class="form-group form-margin">
                                         <label>Berapa Banyak Shalat Wajib yang dilaksanakan oleh
                                             konsumen setiap harinya ?</label>
@@ -2814,116 +2656,107 @@
                                                 Berzakat</option>
                                         </select>
                                     </div>
-
-                                    <div class="collapse" id="religi">
-                                        <div class="form-group form-margin">
-                                            <label>Apakah pernah menjalankan Ibadah Haji
-                                                ?</label>
-                                            <select class="form-control text-size" name="religi_haji" id="" required>
-                                                <option selected value="">Pilih Jawaban
-                                                </option>
-                                                <option <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji</option> <option <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji">
-                                                        Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum
-                                                        Pernah Berhaji / Belum Pernah Mendaftar Haji</option>
-                                                <option <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Haji / Sudah Mendaftar Haji' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Haji / Sudah Mendaftar Haji">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah
-                                                    Haji / Sudah Mendaftar Haji
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Apakah pernah menjalankan Ibadah Umroh
-                                                ?</label>
-                                            <select class="form-control text-size" name="religi_umroh" id="" required>
-                                                <option selected value="">Pilih Jawaban
-                                                </option>
-                                                <option <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Umroh' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Umroh">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Umroh</option> <option <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum Pernah Umroh' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum Pernah Umroh">
-                                                        Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum
-                                                        Pernah Umroh</option>
-                                                <option <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh, Sudah Daftar Umroh' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh, Sudah Daftar Umroh">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh,
-                                                    Sudah Daftar Umroh</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Apakah pernah menjalankan kurban pada Idul Adha
-                                                ?</label>
-                                            <select class="form-control text-size" name="religi_qurban" id="" required>
-                                                <option selected value="">Pilih Jawaban
-                                                </option>
-                                                <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <20 Juta, Dan Belum Pernah Berkurban' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <20 Juta, Dan Belum Pernah Berkurban">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <20 Juta, Dan Belum Pernah Berkurban</option> <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum Pernah Berkurban' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum Pernah Berkurban">
-                                                        Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum
-                                                        Pernah Berkurban</option>
-                                                <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak Konsisten Berkurban' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak Konsisten Berkurban">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak
-                                                    Konsisten Berkurban</option>
-                                                <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn Berkurban Setiap Tahun' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn Berkurban Setiap Tahun">
-                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn
-                                                    Berkurban Setiap Tahun</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Apakah pernah berhubungan dengan lembaga keuangan syariah
-                                                terkait dengan pinajaman, tabungan, investasi dan sebagainya
-                                                ?</label>
-                                            <select class="form-control text-size" name="religi_lembaga_syariah" id="" required>
-                                                <option selected value="">Pilih Jawaban
-                                                </option>
-                                                <option <?= $data->religi_lembaga_syariah == 'Belum Pernah' ? 'selected' : '' ?> value="Belum Pernah">Belum Pernah</option>
-                                                <option <?= $data->religi_lembaga_syariah == 'Sudah Pernah' ? 'selected' : '' ?> value="Sudah Pernah">Sudah Pernah</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Apakah Konsumen memiliki pengetahuan yang cukup tentang
-                                                ekonomi syariah dan riba
-                                                ?</label>
-                                            <select class="form-control text-size" name="religi_pengetahuan_riba" id="" required>
-                                                <option selected value="">Pilih Jawaban
-                                                </option>
-                                                <option <?= $data->religi_pengetahuan_riba == 'Tidak Mengetahui' ? 'selected' : '' ?> value="Tidak Mengetahui">Tidak Mengetahui</option>
-                                                <option <?= $data->religi_pengetahuan_riba == 'Cukup Mengetahui' ? 'selected' : '' ?> value="Cukup Mengetahui">Cukup Mengetahui</option>
-                                                <option <?= $data->religi_pengetahuan_riba == 'Sangat Mengetahui' ? 'selected' : '' ?> value="Sangat Mengetahui">Sangat Mengetahui</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Apakah konsumen tahu tentang dosa tidak membayar hutang
-                                                di akhirat
-                                                ?</label>
-                                            <select class="form-control text-size" name="religi_dosa_hutang" id="" required>
-                                                <option selected value="">Pilih Jawaban
-                                                </option>
-                                                <option <?= $data->religi_dosa_hutang == 'Tidak Terlalu Memahami' ? 'selected' : '' ?> value="Tidak Terlalu Memahami">Tidak Terlalu
-                                                    Memahami</option>
-                                                <option <?= $data->religi_dosa_hutang == 'Sangat Memahami' ? 'selected' : '' ?> value="Sangat Memahami">Sangat Memahami</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group form-margin">
-                                            <label>Alasan konsumen memilih lembaga keuangan syariah</label>
-                                            <select class="form-control text-size" name="religi_alasan_syariah" id="" required>
-                                                <option selected value="">Pilih Jawaban</option>
-                                                <option <?= $data->religi_alasan_syariah == 'Menghindari Riba' ? 'selected' : '' ?> value="Menghindari Riba">Menghindari Riba</option>
-                                                <option <?= $data->religi_alasan_syariah == 'Referensi Kerabat' ? 'selected' : '' ?> value="Referensi Kerabat">Referensi Kerabat</option>
-                                                <option <?= $data->religi_alasan_syariah == 'jasa pembiayaan sesuai dengan kebutuhan' ? 'selected' : '' ?> value="jasa pembiayaan sesuai dengan kebutuhan">jasa
-                                                    pembiayaan sesuai dengan kebutuhan</option>
-                                                <option <?= $data->religi_alasan_syariah == 'Mendapatkan penawaran' ? 'selected' : '' ?> value="Mendapatkan penawaran">Mendapatkan penawaran
-                                                </option>
-                                                <option <?= $data->religi_alasan_syariah == 'Tidak ada pilihan lain' ? 'selected' : '' ?> value="Tidak ada pilihan lain">Tidak ada pilihan
-                                                    lain</option>
-                                            </select>
-                                        </div>
-
+                                    <div class="form-group form-margin">
+                                        <label>Apakah pernah menjalankan Ibadah Haji
+                                            ?</label>
+                                        <select class="form-control text-size" name="religi_haji" id="" required>
+                                            <option selected value="">Pilih Jawaban
+                                            </option>
+                                            <option <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji</option> <option <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum Pernah Berhaji / Belum Pernah Mendaftar Haji">
+                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Dan Belum
+                                                    Pernah Berhaji / Belum Pernah Mendaftar Haji</option>
+                                            <option <?= $data->religi_haji == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Haji / Sudah Mendaftar Haji' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah Haji / Sudah Mendaftar Haji">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >100 Juta, Sudah Pernah
+                                                Haji / Sudah Mendaftar Haji
+                                            </option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-12 religi-up">
-                                        <center>
-                                            <h4 class="ml-3">
-                                                <a onclick="religiupFunction()" data-toggle="collapse" href="#religi" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
+                                    <div class="form-group form-margin">
+                                        <label>Apakah pernah menjalankan Ibadah Umroh
+                                            ?</label>
+                                        <select class="form-control text-size" name="religi_umroh" id="" required>
+                                            <option selected value="">Pilih Jawaban
+                                            </option>
+                                            <option <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Umroh' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Umroh">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <60 Juta, Dan Belum Pernah Umroh</option> <option <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum Pernah Umroh' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum Pernah Umroh">
+                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Dan Belum
+                                                    Pernah Umroh</option>
+                                            <option <?= $data->religi_umroh == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh, Sudah Daftar Umroh' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh, Sudah Daftar Umroh">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >60 Juta, Sudah Umroh,
+                                                Sudah Daftar Umroh</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin">
+                                        <label>Apakah pernah menjalankan kurban pada Idul Adha
+                                            ?</label>
+                                        <select class="form-control text-size" name="religi_qurban" id="" required>
+                                            <option selected value="">Pilih Jawaban
+                                            </option>
+                                            <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <20 Juta, Dan Belum Pernah Berkurban' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <20 Juta, Dan Belum Pernah Berkurban">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) <20 Juta, Dan Belum Pernah Berkurban</option> <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum Pernah Berkurban' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum Pernah Berkurban">
+                                                    Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Belum
+                                                    Pernah Berkurban</option>
+                                            <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak Konsisten Berkurban' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak Konsisten Berkurban">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Tapi Tidak
+                                                Konsisten Berkurban</option>
+                                            <option <?= $data->religi_qurban == 'Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn Berkurban Setiap Tahun' ? 'selected' : '' ?> value="Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn Berkurban Setiap Tahun">
+                                                Jumlah Harta (Tabungan + Emas + Stok Barang Dagang) >20 Juta, Konsistrn
+                                                Berkurban Setiap Tahun</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin">
+                                        <label>Apakah pernah berhubungan dengan lembaga keuangan syariah
+                                            terkait dengan pinajaman, tabungan, investasi dan sebagainya
+                                            ?</label>
+                                        <select class="form-control text-size" name="religi_lembaga_syariah" id="" required>
+                                            <option selected value="">Pilih Jawaban
+                                            </option>
+                                            <option <?= $data->religi_lembaga_syariah == 'Belum Pernah' ? 'selected' : '' ?> value="Belum Pernah">Belum Pernah</option>
+                                            <option <?= $data->religi_lembaga_syariah == 'Sudah Pernah' ? 'selected' : '' ?> value="Sudah Pernah">Sudah Pernah</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin">
+                                        <label>Apakah Konsumen memiliki pengetahuan yang cukup tentang
+                                            ekonomi syariah dan riba
+                                            ?</label>
+                                        <select class="form-control text-size" name="religi_pengetahuan_riba" id="" required>
+                                            <option selected value="">Pilih Jawaban
+                                            </option>
+                                            <option <?= $data->religi_pengetahuan_riba == 'Tidak Mengetahui' ? 'selected' : '' ?> value="Tidak Mengetahui">Tidak Mengetahui</option>
+                                            <option <?= $data->religi_pengetahuan_riba == 'Cukup Mengetahui' ? 'selected' : '' ?> value="Cukup Mengetahui">Cukup Mengetahui</option>
+                                            <option <?= $data->religi_pengetahuan_riba == 'Sangat Mengetahui' ? 'selected' : '' ?> value="Sangat Mengetahui">Sangat Mengetahui</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin">
+                                        <label>Apakah konsumen tahu tentang dosa tidak membayar hutang
+                                            di akhirat
+                                            ?</label>
+                                        <select class="form-control text-size" name="religi_dosa_hutang" id="" required>
+                                            <option selected value="">Pilih Jawaban
+                                            </option>
+                                            <option <?= $data->religi_dosa_hutang == 'Tidak Terlalu Memahami' ? 'selected' : '' ?> value="Tidak Terlalu Memahami">Tidak Terlalu
+                                                Memahami</option>
+                                            <option <?= $data->religi_dosa_hutang == 'Sangat Memahami' ? 'selected' : '' ?> value="Sangat Memahami">Sangat Memahami</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin">
+                                        <label>Alasan konsumen memilih lembaga keuangan syariah</label>
+                                        <select class="form-control text-size" name="religi_alasan_syariah" id="" required>
+                                            <option selected value="">Pilih Jawaban</option>
+                                            <option <?= $data->religi_alasan_syariah == 'Menghindari Riba' ? 'selected' : '' ?> value="Menghindari Riba">Menghindari Riba</option>
+                                            <option <?= $data->religi_alasan_syariah == 'Referensi Kerabat' ? 'selected' : '' ?> value="Referensi Kerabat">Referensi Kerabat</option>
+                                            <option <?= $data->religi_alasan_syariah == 'jasa pembiayaan sesuai dengan kebutuhan' ? 'selected' : '' ?> value="jasa pembiayaan sesuai dengan kebutuhan">jasa
+                                                pembiayaan sesuai dengan kebutuhan</option>
+                                            <option <?= $data->religi_alasan_syariah == 'Mendapatkan penawaran' ? 'selected' : '' ?> value="Mendapatkan penawaran">Mendapatkan penawaran
+                                            </option>
+                                            <option <?= $data->religi_alasan_syariah == 'Tidak ada pilihan lain' ? 'selected' : '' ?> value="Tidak ada pilihan lain">Tidak ada pilihan
+                                                lain</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary" onclick="document.getElementById('btn-jaminan').click()"><b>Kembali</b></button>
+                                        <button type="button" class="btn btn-primary ml-1" onclick="document.getElementById('btn-score').click()"><b>Selanjutnya</b></button>
                                     </div>
                                 </div>
                             </div>
@@ -2938,8 +2771,7 @@
 
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Hasil Analisa</b>
-                                    </h5>
+                                    <h5 class="form-margin"><b>Hasil Analisa</b></h5>
 
                                     <div class="form-group form-margin">
                                         <label>Strength</label>
@@ -2949,30 +2781,32 @@
                                         <label>Weakness</label>
                                         <textarea class="form-control text-size" name="kesimpulan_weakness" id="" cols="30" rows="10" placeholder="" style="height:110px;"><?= $data->kesimpulan_weakness ?></textarea>
                                     </div>
-
-                                    <!-- <div class="collapse" id="konfirmasi"></div> -->
-
-                                    <!-- <div class="col-md-12 konfirmasi-up">
-													<center>
-														<h4 class="ml-3">
-															<a onclick="konfirmasiupFunction()" data-toggle="collapse"
-																href="#konfirmasi" role="button" aria-expanded="false"
-																aria-controls="collapseExample">
-																<i class="fas fa-chevron-circle-up"></i>
-															</a>
-														</h4>
-													</center>
-												</div> -->
                                 </div>
                             </div>
 
                             <div class="card">
                                 <div class="card-body text-size">
-                                    <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b>
-                                        <!-- <a class="float-right score-down" onclick="scoredownFunction()" data-toggle="collapse" href="#score" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-down fa-lg"></i>
-                                        </a> -->
-                                    </h5>
+                                    <h5 class="form-margin"><b>Data Lampiran</b></h5>
+
+                                    <div class="form-group element text-size form-margin">
+                                        <label>Lampirkan Data</label><br>
+                                        <input type="file" name="tambah_lampiran" id="upload_file1">
+                                    </div>
+                                    <div class="form-margin">
+                                        <div id="moreImageUpload"></div>
+                                        <div class="clear"></div>
+                                        <div id="moreImageUploadLink" class="float-right mt-3">
+                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">tambah
+                                                Form
+                                                lampiran</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card">
+                                <div class="card-body text-size">
+                                    <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b></h5>
 
                                     <div class="form-margin mt-3">
                                         <div class="table-responsive">
@@ -3051,7 +2885,6 @@
                                             </table>
                                         </div>
                                     </div>
-
                                     <div class="form-group form-margin">
                                         <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
                                         <select class="form-control text-size" name="is_recommended" id="" required>
@@ -3060,59 +2893,10 @@
                                             <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
                                         </select>
                                     </div>
-
-                                    <!-- <div class="collapse" id="score"></div> -->
-
-                                    <!-- <div class="col-md-12 score-up">
-                                        <center>
-                                            <h4 class="ml-3">
-                                                <a onclick="scoreupFunction()" data-toggle="collapse" href="#score" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                                    <i class="fas fa-chevron-circle-up fa-lg"></i>
-                                                </a>
-                                            </h4>
-                                        </center>
-                                    </div> -->
-                                </div>
-                            </div>
-                        </form>
-                        <form action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
-                            <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                            <div class="card">
-                                <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Data Lampiran</b>
-                                        <!-- <a class="float-right lampiran-down" onclick="lampirandownFunction()" data-toggle="collapse" href="#lampiran" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                    <i class="fas fa-chevron-circle-down"></i>
-                                </a> -->
-                                    </h5>
-
-                                    <div class="form-group element text-size form-margin">
-                                        <label>Lampirkan Data</label><br>
-                                        <input type="file" name="tambah_lampiran" id="upload_file1">
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                        <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Score</b></button>
                                     </div>
-                                    <div class="form-margin">
-                                        <div id="moreImageUpload"></div>
-                                        <div class="clear"></div>
-                                        <div id="moreImageUploadLink" class="float-right mt-3">
-                                            <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">tambah
-                                                Form
-                                                lampiran</a>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit"><b>Upload Lampiran</b></button>
-
-
-                                    <div class="collapse" id="lampiran">
-
-                                    </div>
-                                    <!-- <div class="col-md-12 lampiran-up">
-                                <center>
-                                    <h4 class="ml-3">
-                                        <a onclick="lampiranupFunction()" data-toggle="collapse" href="#lampiran" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                            <i class="fas fa-chevron-circle-up"></i>
-                                        </a>
-                                    </h4>
-                                </center>
-                            </div> -->
                                 </div>
                             </div>
                         </form>
@@ -3127,14 +2911,94 @@
     </div>
 </div>
 
-<div class="form-row">
+<!-- <div class="form-row">
     <div class="col-md-12">
         <div class="form-group float-right card-margin-survey mt-3 mb-5">
             <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="return" name="return" class="btn" type="button"><b>Return</b></button>
             <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process"><b>Score</b></button>
         </div>
     </div>
+</div> -->
+
+<!-- Modal partner -->
+<div class="modal fade" id="modal-partner" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Partner</b></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Name Usaha</th>
+                            <th>Kategori Produk</th>
+                            <th>Telepon</th>
+                            <th>Status</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $partner->nama_usaha ?></td>
+                            <td><?= $partner->kategori_produk ?></td>
+                            <td><?= $partner->telepon ?></td>
+                            <td>
+                                <?php if ($partner->status == 'draft') { ?>
+                                    <b class="text-secondary">Draft</b>
+                                <?php } ?>
+                                <?php if ($partner->status == 'mapping') { ?>
+                                    <b class="text-secondary">Mapping</b>
+                                <?php } ?>
+                                <?php if ($partner->status == 'lengkap') { ?>
+                                    <b class="text-success">Lengkap</b>
+                                <?php } ?>
+                            </td>
+                            <td>
+                                <center><button class="btn btn-primary pilih-partner radius" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>"><b>Pilih</b></button></center>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
+<!-- Modal partner -->
+
+<!-- Modal agent -->
+<div class="modal fade" id="modal-agent" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-header mb-3">
+                    <h4 class="modal-title"><b>Cari Data Agent</b></h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Nama Lengkap</th>
+                            <th>Telepon</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $agent->nama_lengkap ?></td>
+                            <td><?= $agent->telepon ?></td>
+                            <td>
+                                <center><button class="btn btn-primary pilih-agent radius" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>"><b>Pilih</b></button></center>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal agent -->
 
 <script>
     $('.personal-sudah, .detail-sudah, .product-sudah, .branch-sudah').hide();
@@ -3339,6 +3203,7 @@
         } else {
             $('.pasangan').hide();
             $('#nama_pasangan').removeAttr('required', ' ');
+            $('#nama_pasangan').val('');
         }
     }
     // status pernikahan
