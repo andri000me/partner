@@ -178,7 +178,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group form-right">
                                                 <label>Email</label>
-                                                <input type="email" class="form-control text-size" name="email" value="<?= $leads->email ?>" id="email" placeholder="Email">
+                                                <input type="email" class="form-control text-size" name="email_konsumen" value="<?= $leads->email_konsumen ?>" id="email_konsumen" placeholder="Email">
                                             </div>
                                         </div>
                                     </div>
@@ -283,12 +283,12 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-margin">
                                                 <label>Jenis Konsumen</label>
-                                                <select class="form-control text-size" name="status_konsumen" id="status_konsumen">
+                                                <select class="form-control text-size" name="jenis_konsumen" id="jenis_konsumen">
                                                     <option value="">Pilih Jenis Konsumen</option>
-                                                    <option <?= $leads->status_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer
+                                                    <option <?= $leads->jenis_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer
                                                     </option>
-                                                    <option <?= $leads->status_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
-                                                    <option <?= $leads->status_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
+                                                    <option <?= $leads->jenis_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
+                                                    <option <?= $leads->jenis_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -583,12 +583,12 @@
                                                 <select class="form-control text-size" name="purpose_kategori_produk" id="" required>
                                                     <option selected value="">Pilih Produk
                                                     </option>
-                                                    <option <?= $data->purpose_kategori_produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                                    <option <?= $data->purpose_kategori_produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                                    <option <?= $data->purpose_kategori_produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                                    <option <?= $data->purpose_kategori_produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                                    <option <?= $data->purpose_kategori_produk == 'My Cars' ? 'selected' : '' ?> value="My Cars">My Cars</option>
-                                                    <option <?= $data->purpose_kategori_produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                    <option <?= $leads->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                    <option <?= $leads->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                    <option <?= $leads->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                    <option <?= $leads->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                    <option <?= $leads->produk == 'My Cars' ? 'selected' : '' ?> value="My Cars">My Cars</option>
+                                                    <option <?= $leads->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -597,7 +597,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-margin">
                                                 <label>Detail Barang / Jasa</label>
-                                                <input type="text" class="form-control text-size" name="purpose_detail_barang_jasa" id="" value="<?= $data->purpose_detail_barang_jasa ?>" required placeholder="Paket umroh quad" />
+                                                <input type="text" class="form-control text-size" name="purpose_detail_barang_jasa" id="" value="<?= $leads->detail_produk ?>" required placeholder="Paket umroh quad" />
                                             </div>
                                         </div>
                                     </div>
@@ -2793,27 +2793,21 @@
                                     </div>
                                 </div>
                             </div>
+                        </form>
 
+                        <form action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
+                            <!-- Redirect -->
+                            <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                            <!-- ID Leads -->
+                            <input type="hidden" name="id_leads" value="<?= $leads->id_leads ?>">
+                            <!-- Upload Lampiran -->
                             <div class="card">
                                 <div class="card-body text-size">
                                     <h5 class="form-margin"><b>Data Lampiran</b></h5>
 
-                                    <div class="form-row">
-                                        <div class="col-md-12">
-                                            <div class="form-group element text-size form-margin">
-                                                <label>Lampirkan Data</label><br>
-                                                <input type="file" name="tambah_lampiran" id="upload_file1">
-                                            </div>
-                                            <div class="form-margin">
-                                                <div id="moreImageUpload"></div>
-                                                <div class="clear"></div>
-                                                <div id="moreImageUploadLink" class="float-right mt-3">
-                                                    <a class="btn btn-secondary mr-1" href="javascript:void(0);" id="attachMoree">tambah
-                                                        Form
-                                                        lampiran</a>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="form-group element text-size form-margin">
+                                        <label>Lampirkan Data</label><br>
+                                        <input type="file" name="tambah_lampiran[]" id="upload_file1">
                                     </div>
                                     <hr>
                                     <div class="form-row">
@@ -2834,115 +2828,120 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <button class="btn btn-primary" type="submit">Upload Lampiran</button>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="card">
-                                <div class="card-body text-size">
-                                    <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b></h5>
-
-                                    <div class="form-margin mt-3">
-                                        <div class="table-responsive">
-                                            <p>Tabel Penilaian</p>
-                                            <table class="table table-hover">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            <label class="table-form-large">Penilaian Scoring</label>
-                                                        </th>
-                                                        <th>
-                                                            <label class="table-form-medium">Nilai</label>
-                                                        </th>
-                                                        <th>
-                                                            <label class="table-form-medium">Grade</label>
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <label>Informasi Aplikasi & Konsumen</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <label>Survey Konsumen</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <label>Penilaian Merchant</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <label>Aset Kendaraan</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <label>Tingkat Religiusitas</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" placeholder="Nilai" />
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size form-border" name="" value="" id="" placeholder="Grade" />
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                    <div class="form-group form-margin">
-                                        <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
-                                        <select class="form-control text-size" name="" id="" required>
-                                            <option selected value="">Pilih Jawaban</option>
-                                            <option value="Recommended">Recommended</option>
-                                            <option value="Not Recommended">Not Recommended</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group form-margin float-right mt-5">
-                                        <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                        <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Score</b></button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </form>
                     </div>
-                    <!-- Data Hasil Analisa -->
+
+                    <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <!-- Penilaian Scoring -->
+                        <div class="card">
+                            <div class="card-body text-size">
+                                <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b></h5>
+
+                                <div class="form-margin mt-3">
+                                    <div class="table-responsive">
+                                        <p>Tabel Penilaian</p>
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <label class="table-form-large">Penilaian Scoring</label>
+                                                    </th>
+                                                    <th>
+                                                        <label class="table-form-medium">Nilai</label>
+                                                    </th>
+                                                    <th>
+                                                        <label class="table-form-medium">Grade</label>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <label>Informasi Aplikasi & Konsumen</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_informasi_konsumen" value="<?= $data->hasil_scoring_nilai_informasi_konsumen ?>" id="" placeholder="Nilai" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" value="<?= $data->hasil_scoring_grade_informasi_konsumen ?>" id="" placeholder="Grade" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>Survey Konsumen</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_grade_survey_konsumen ?>" id="" placeholder="Grade" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>Penilaian Merchant</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_penilaian_merchant" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" value="<?= $data->hasil_scoring_grade_penilaian_merchant ?>" id="" placeholder="Grade" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>Aset Kendaraan</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_aset_kendaraan" value="<?= $data->hasil_scoring_nilai_aset_kendaraan ?>" id="" placeholder="Nilai" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" value="<?= $data->hasil_scoring_grade_aset_kendaraan ?>" id="" placeholder="Grade" />
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <label>Tingkat Religiusitas</label>
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_tingkat_religiusitas" value="<?= $data->hasil_scoring_nilai_tingkat_religiusitas ?>" id="" placeholder="Nilai" />
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" value="<?= $data->hasil_scoring_grade_tingkat_religiusitas ?>" id="" placeholder="Grade" />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group form-margin">
+                                    <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
+                                    <select class="form-control text-size" name="is_recommended" id="" required>
+                                        <option selected value="">Pilih Jawaban</option>
+                                        <option <?= $data->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
+                                        <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
+                                    </select>
+                                </div>
+                                <div class="form-group form-margin float-right mt-5">
+                                    <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                    <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Score</b></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
 
                 </div>
-            </div>
+                <!-- Data Hasil Analisa -->
 
+            </div>
         </div>
+
     </div>
+</div>
 </div>
 
 <!-- <div class="form-row">
@@ -3525,7 +3524,7 @@
                 dataType: 'json',
                 beforeSend: function() {
                     if (spinner.length == 0) {
-                        $("[name='" + selector + "']").after(
+                        $("[name='" + selector + "']").before(
                             `<div class="spinner-border spinner-border-sm mt-1 text-primary" data-selector="${selector}"><span class="sr-only">Loading...</span></div>`
                         )
                     }
@@ -3700,7 +3699,7 @@
             moreUploadTag +=
                 '<div class="form-group element text-size"><label for="upload_file"' +
                 upload_number + '>Lampirkan Data ' + '</label>' + '<br>';
-            moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran"/>';
+            moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran[]"/>';
             moreUploadTag += ' <a class="btn btn-secondary float-right" href="javascript:del_file(' +
                 upload_number +
                 ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' +

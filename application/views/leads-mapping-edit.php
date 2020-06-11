@@ -137,7 +137,7 @@
                             <div class="form-agent form-margin">
                                 <label class="agent">Pilih Data Agent</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control text-size readonly pointer" name="data_agent" id="nama_agent" value="<?= $data->nama_agent ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                    <input type="text" class="form-control text-size readonly pointer" name="nama_agent" id="nama_agent" value="<?= $data->nama_agent ?>" placeholder="" aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
                                     </div>
@@ -148,7 +148,7 @@
                                 <label class=" travel">Pilih Data Travel</label>
                                 <label class=" jasa">Pilih Data Penyedia Jasa</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control text-size readonly pointer" name="nama_partner" id="data_partner" value="<?= $data->nama_partner ?>">
+                                    <input type="text" class="form-control text-size readonly pointer" name="nama_partner" id="nama_partner" value="<?= $data->nama_partner ?>">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
                                     </div>
@@ -350,13 +350,13 @@
     $("table").on('click', '.pilih-partner', function() {
         $('#id_partner').val($(this).data('partner'));
         // $('#id_agent').val("");
-        $('#data_partner').val($(this).data('vendor'));
+        $('#nama_partner').val($(this).data('vendor'));
         $('#modal-partner').modal('hide');
     })
     $("table").on('click', '.pilih-agent', function() {
         $('#id_agent').val($(this).data('agent'));
         // $('#id_partner').val("");
-        $('#data_agent').val($(this).data('nama'));
+        $('#nama_agent').val($(this).data('nama'));
         $('#modal-agent').modal('hide');
     })
 </script>

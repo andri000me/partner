@@ -148,6 +148,13 @@
                                         <label for="ticket_active" data-on-label="On" data-off-label="Off"></label>
                                     </div>
                                 </div>
+                                <div class="col-md-3">
+                                    <div class="form-group form-margin">
+                                        <label>Admin</label><br>
+                                        <input type="checkbox" name="admin_active" id="admin_active" switch="none" />
+                                        <label for="admin_active" data-on-label="On" data-off-label="Off"></label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-12">

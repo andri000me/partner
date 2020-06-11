@@ -3,9 +3,10 @@
         <div class="page-title-box card-margin-5">
             <h4><b>Form Leads Prospect</b></h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Tabel</a></li>
-                <li class="breadcrumb-item active">Survey Report</li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Leads</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Prospect</a></li>
+                <li class="breadcrumb-item active">Input Prospect</li>
             </ol>
         </div>
     </div>
@@ -13,12 +14,13 @@
 
 <div class="row">
     <div class="col-md-12">
-        <div class="alert alert-primary font-size gradient card-margin-5" role="alert">
+        <div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
             <div class="topcaption">
                 <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
                         menginput data</b></p>
                 <p class="captiontext">Dilarang memalsukan data dan menginput data - data yang bukan milik konsumen.
-                    Data ini akan disimpan
+                    Data
+                    ini akan disimpan
                     sebagai <b>Leads Prospect</b> dan akan dilanjutkan dengan mengisi <b>Form verifikasi dan Survey.
                         Data ini akan diteruskan ke head di cabang kemudian diassign ke CMS diisi datanya dengan
                         lengkap.</p>
@@ -31,142 +33,149 @@
     <div class="col-lg-12">
         <div class="card m-b-20 card-margin-5">
             <div class="card-body">
-                <form action="<?= base_url('Leads/update') ?>" method="post" enctype="multipart/form-data" class="text-size">
+                <form action="<?= base_url('Leads/update') ?>" method="post" enctype="multipart/form-data" class=" text-size">
                     <input id="website" name="website" type="disable" value="">
-
-                    <!-- Leave for security protection, read docs for details -->
                     <!-- ID Leads -->
                     <input type="hidden" id="id_leads" name="id_leads" value="<?= $data->id_leads ?>">
                     <!-- ID Agent -->
                     <input type="hidden" id="id_agent" name="id_agent" value="<?= $data->id_agent ?>">
                     <!-- ID Mapping Partner -->
-                    <input type="hidden" name="id_partner" id="id_partner" value="<?= $data->id_partner ?>">
+                    <input type="hidden" id="id_partner" name="id_partner" value="<?= $data->id_partner ?>">
                     <!-- ID Branch -->
                     <input type="hidden" id="id_branch" value="<?= $this->fungsi->user_login()->id_branch ?>">
+
                     <!-- Redirect -->
                     <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                    <div class="ml-4">
-                        <h4 class="mt-0 mb-4"><b>Data Konsumen</b></h4>
+                    <div class="form-margin">
+                        <h5 class="mt-0 mb-4"><b>Data Konsumen</b></h5>
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="">
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="form-margin">
-                                            <label>Nama Lengkap</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-danger text-size" type="button" id="reset"><b>Hapus</b></button>
-                                                    <button class="btn btn-primary text-size" type="button" id="button-addon2" data-toggle="modal" data-target="#modal-leads"><b>Cari</b></button>
-                                                </div>
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="form-margin">
+                                        <label>Nama Lengkap</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control text-size" name="nama_konsumen" id="nama_konsumen" value="<?= $data->nama_konsumen ?>" required placeholder="Ibrahim Ahmad" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-danger text-size" type="button" id="reset"><b>Hapus</b></button>
+                                                <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads"><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-left">
-                                            <label>Nomor KTP</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" />
-                                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Nomor KTP</label>
+                                        <input type="phone" class="form-control text-size placement number-only <?= form_error('no_ktp') ? 'is-invalid' : '' ?>" name="no_ktp" id="no_ktp" value="<?= $data->no_ktp ?>" required placeholder="0000 0000 0000 0000" minlength="16" maxlength="16" />
+                                        <?= form_error('no_ktp') ?>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size form-right">
-                                            <label>Jenis kelamin</label><br>
-                                            <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="" required <?= $data->jenis_kelamin == 'Laki - Laki' ? 'checked' : '' ?> value="Laki - Laki">
-                                                <label class="form-check-label">
-                                                    Laki - Laki
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="jenis_kelamin" id="" required <?= $data->jenis_kelamin == 'Perempuan' ? 'checked' : '' ?> value="Perempuan">
-                                                <label class="form-check-label">
-                                                    Perempuan
-                                                </label>
-                                            </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group text-size form-right">
+                                        <label>Jenis Kelamin</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="" required <?= $data->jenis_kelamin == 'Laki - Laki' ? 'checked' : '' ?> value="Laki - Laki">
+                                            <label class="form-check-label">
+                                                Laki - Laki
+                                            </label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="" required <?= $data->jenis_kelamin == 'Perempuan' ? 'checked' : '' ?> value="Perempuan">
+                                            <label class="form-check-label">
+                                                Perempuan
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-left">
-                                            <label>Nomor Handphone</label>
-                                            <input type="text" class="form-control text-size placement number-only" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0896 5533 985" maxlength="15" />
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-right">
-                                            <label>Nomor WA</label>
-                                            <input type="text" class="form-control text-size placement number-only" name="" id="" value="" required placeholder="0896 5533 985" maxlength="15" />
-                                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Nomor Handphone</label>
+                                        <input type="text" class="form-control text-size placement number-only <?= form_error('telepon') ? 'is-invalid' : '' ?>" name="telepon" id="telepon" value="<?= $data->telepon ?>" required placeholder="0896 5533 985" maxlength="15" />
+                                        <?= form_error('telepon') ?>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-left">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control text-size" name="email" id="email" value="<?= $data->email ?>" placeholder="Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-right">
-                                            <label>Pendidikan</label>
-                                            <select class="form-control text-size" name="pendidikan" id="pendidikan" required>
-                                                <option selected value="">Pilih Pendidikan</option>
-                                                <option <?= $data->pendidikan == 'SD' ? 'selected' : '' ?> value="SD">SD
-                                                </option>
-                                                <option <?= $data->pendidikan == 'SLTP' ? 'selected' : '' ?> value="SLTP">SLTP</option>
-                                                <option <?= $data->pendidikan == 'SMU' ? 'selected' : '' ?> value="SMU">
-                                                    SMU</option>
-                                                <option <?= $data->pendidikan == 'SLTA' ? 'selected' : '' ?> value="SLTA">SLTA</option>
-                                                <option <?= $data->pendidikan == 'STM' ? 'selected' : '' ?> value="STM">
-                                                    STM</option>
-                                                <option <?= $data->pendidikan == 'SMEA' ? 'selected' : '' ?> value="SMEA">SMEA</option>
-                                                <option <?= $data->pendidikan == 'D1' ? 'selected' : '' ?> value="D1">D1
-                                                </option>
-                                                <option <?= $data->pendidikan == 'D2' ? 'selected' : '' ?> value="D2">D2
-                                                </option>
-                                                <option <?= $data->pendidikan == 'D3' ? 'selected' : '' ?> value="D3">D3
-                                                </option>
-                                                <option <?= $data->pendidikan == 'S1' ? 'selected' : '' ?> value="S1">S1
-                                                </option>
-                                                <option <?= $data->pendidikan == 'S2' ? 'selected' : '' ?> value="S2">S2
-                                                </option>
-                                                <option <?= $data->pendidikan == 'S3' ? 'selected' : '' ?> value="S3">S3
-                                                </option>
-                                            </select>
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Nomor WA</label>
+                                        <input type="text" class="form-control text-size placement number-only <?= form_error('nomor_wa') ? 'is-invalid' : '' ?>" name="nomor_wa" id="" value="<?= $data->nomor_wa ?>" required placeholder="0896 5533 985" maxlength="15" />
+                                        <?= form_error('') ?>
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-left">
-                                            <label>Tanggal Lahir</label>
-                                            <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->email ?>" placeholder="Tanggal lahir">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-right">
-                                            <label>Status Pernikahan</label>
-                                            <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan" required>
-                                                <option selected value="">Pilih Status Pernikahan</option>
-                                                <option <?= $data->status_pernikahan == 'Sudah Menikah' ? 'selected' : '' ?> value="Sudah Menikah">Sudah Menikah</option>
-                                                <option <?= $data->status_pernikahan == 'Belum Menikah' ? 'selected' : '' ?> value="Belum Menikah">Belum Menikah</option>
-                                                <option <?= $data->status_pernikahan == 'Janda/Duda - Meninggal' ? 'selected' : '' ?> value="Janda/Duda - Meninggal">Janda/Duda - Meninggal</option>
-                                                <option <?= $data->status_pernikahan == 'Janda/Duda - Cerai' ? 'selected' : '' ?> value="Janda/Duda - Cerai">Janda/Duda - Cerai</option>
-                                            </select>
-                                        </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control text-size <?= form_error('email_konsumen') ? 'is-invalid' : '' ?>" name="email_konsumen" id="email_konsumen" value="<?= $data->email_konsumen ?>" placeholder="Email">
+                                        <?= form_error('email_konsumen') ?>
                                     </div>
                                 </div>
-                                <div class="form-row pasangan">
-                                    <div class="col-md-12">
-                                        <div class="form-group form-margin">
-                                            <label>Nama Pasangan</label>
-                                            <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $data->nama_pasangan ?>" placeholder="Nama Pasangan">
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Pendidikan</label>
+                                        <select class="form-control text-size" name="pendidikan" id="pendidikan" required>
+                                            <option selected value="">Pilih Pendidikan</option>
+                                            <option <?= $data->pendidikan == 'SD' ? 'selected' : '' ?> value="SD">SD
+                                            </option>
+                                            <option <?= $data->pendidikan == 'SLTP' ? 'selected' : '' ?> value="SLTP">SLTP
+                                            </option>
+                                            <option <?= $data->pendidikan == 'SMU' ? 'selected' : '' ?> value="SMU">SMU
+                                            </option>
+                                            <option <?= $data->pendidikan == 'SLTA' ? 'selected' : '' ?> value="SLTA">SLTA
+                                            </option>
+                                            <option <?= $data->pendidikan == 'STM' ? 'selected' : '' ?> value="STM">STM
+                                            </option>
+                                            <option <?= $data->pendidikan == 'SMEA' ? 'selected' : '' ?> value="SMEA">SMEA
+                                            </option>
+                                            <option <?= $data->pendidikan == 'D1' ? 'selected' : '' ?> value="D1">D1
+                                            </option>
+                                            <option <?= $data->pendidikan == 'D2' ? 'selected' : '' ?> value="D2">D2
+                                            </option>
+                                            <option <?= $data->pendidikan == 'D3' ? 'selected' : '' ?> value="D3">D3
+                                            </option>
+                                            <option <?= $data->pendidikan == 'S1' ? 'selected' : '' ?> value="S1">S1
+                                            </option>
+                                            <option <?= $data->pendidikan == 'S2' ? 'selected' : '' ?> value="S2">S2
+                                            </option>
+                                            <option <?= $data->pendidikan == 'S3' ? 'selected' : '' ?> value="S3">S3
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Tanggal Lahir</label>
+                                        <input type="date" class="form-control text-size" name="tanggal_lahir" id="tanggal_lahir" value="<?= $data->tanggal_lahir ?>" placeholder="Tanggal lahir">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Status Pernikahan</label>
+                                        <select class="form-control text-size" name="status_pernikahan" id="status_pernikahan" required>
+                                            <option selected value="">Pilih Status Pernikahan</option>
+                                            <option <?= $data->status_pernikahan == 'Sudah Menikah' ? 'selected' : '' ?> value="Sudah Menikah">Sudah
+                                                Menikah</option>
+                                            <option <?= $data->status_pernikahan == 'Belum Menikah' ? 'selected' : '' ?> value="Belum Menikah">Belum
+                                                Menikah</option>
+                                            <option <?= $data->status_pernikahan == 'Janda/Duda - Meninggal' ? 'selected' : '' ?> value="Janda/Duda - Meninggal">Janda/Duda - Meninggal</option>
+                                            <option <?= $data->status_pernikahan == 'Janda/Duda - Cerai' ? 'selected' : '' ?> value="Janda/Duda - Cerai">
+                                                Janda/Duda - Cerai</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-row pasangan">
+                                <div class="col-md-12">
+                                    <div class="form-group form-margin">
+                                        <label>Nama Pasangan</label>
+                                        <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $data->nama_pasangan ?>" placeholder="Nama Pasangan">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -215,7 +224,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="col-md-6">
                             <div class="form-row">
                                 <div class="col-md-12">
@@ -223,17 +231,17 @@
                                         <label>Lokasi Rumah</label>
                                         <select class="form-control text-size" name="lokasi_rumah" id="lokasi_rumah" required>
                                             <option selected value="">Pilih Kategori Lokasi Rumah</option>
-                                            <option <?= $data->lokasi_rumah == 'Non Perumahan - Tidak bisa Lewat Mobil' ? 'selected' : '' ?> value="Non Perumahan - Tidak bisa Lewat Mobil">Non Perumahan - Tidak
+                                            <option <?= $data->lokasi_rumah == 'Non Perumahan - Tidak bisa Lewat Mobil' ? 'selected' :  '' ?> value="Non Perumahan - Tidak bisa Lewat Mobil">Non Perumahan - Tidak
                                                 bisa Lewat Mobil</option>
-                                            <option <?= $data->lokasi_rumah == 'Non Perumahan - Jalan Satu Mobil' ? 'selected' : '' ?> value="Non Perumahan - Jalan Satu Mobil">Non Perumahan - Jalan Satu
+                                            <option <?= $data->lokasi_rumah == 'Non Perumahan - Jalan Satu Mobil' ? 'selected' :  '' ?> value="Non Perumahan - Jalan Satu Mobil">Non Perumahan - Jalan Satu
                                                 Mobil</option>
-                                            <option <?= $data->lokasi_rumah == 'Non Perumahan - Jalan Dua Mobil' ? 'selected' : '' ?> value="Non Perumahan - Jalan Dua Mobil">Non Perumahan - Jalan Dua
+                                            <option <?= $data->lokasi_rumah == 'Non Perumahan - Jalan Dua Mobil' ? 'selected' :  '' ?> value="Non Perumahan - Jalan Dua Mobil">Non Perumahan - Jalan Dua
                                                 Mobil</option>
-                                            <option <?= $data->lokasi_rumah == 'Perumahan - Tidak Bisa Lewat Mobil' ? 'selected' : '' ?> value="Perumahan - Tidak Bisa Lewat Mobil">Perumahan - Tidak Bisa
+                                            <option <?= $data->lokasi_rumah == 'Perumahan - Tidak Bisa Lewat Mobil' ? 'selected' :  '' ?> value="Perumahan - Tidak Bisa Lewat Mobil">Perumahan - Tidak Bisa
                                                 Lewat Mobil</option>
-                                            <option <?= $data->lokasi_rumah == 'Perumahan - Jalan Satu Mobil' ? 'selected' : '' ?> value="Perumahan - Jalan Satu Mobil">Perumahan - Jalan Satu Mobil
+                                            <option <?= $data->lokasi_rumah == 'Perumahan - Jalan Satu Mobil' ? 'selected' :  '' ?> value="Perumahan - Jalan Satu Mobil">Perumahan - Jalan Satu Mobil
                                             </option>
-                                            <option <?= $data->lokasi_rumah == 'Perumahan - Jalan Dua Mobil' ? 'selected' : '' ?> value="Perumahan - Jalan Dua Mobil">Perumahan - Jalan Dua Mobil
+                                            <option <?= $data->lokasi_rumah == 'Perumahan - Jalan Dua Mobil' ? 'selected' :  '' ?> value="Perumahan - Jalan Dua Mobil">Perumahan - Jalan Dua Mobil
                                             </option>
                                         </select>
                                     </div>
@@ -245,9 +253,8 @@
                                         <label>Jenis Bangunan Rumah</label>
                                         <select class="form-control text-size" name="jenis_rumah" id="jenis_rumah" required>
                                             <option selected value="">Pilih Kategori Jenis Bangunan Rumah</option>
-                                            <option <?= $data->jenis_rumah == 'Permanent' ?> value="Permanent">Permanent
-                                            </option>
-                                            <option <?= $data->jenis_rumah == 'Semi Permanent' ?> value="Semi Permanent">Semi Permanent</option>
+                                            <option <?= $data->jenis_rumah == 'Permanent' ? 'selected' : '' ?> value="Permanent">Permanent</option>
+                                            <option <?= $data->jenis_rumah == 'Semi Permanent' ? 'selected' : '' ?> value="Semi Permanent">Semi Permanent</option>
                                         </select>
                                     </div>
                                 </div>
@@ -270,7 +277,7 @@
                                     <div class="form-group form-left">
                                         <label>Asal Aplikasi</label>
                                         <select class="form-control text-size" name="soa" id="soa" required>
-                                            <option selected value="">Pilih Asal Aplikasi</option>
+                                            <option value="" selected>Pilih Asal Aplikasi</option>
                                             <option <?= $data->soa == 'Agent BA' ? 'selected' : '' ?> value="Agent BA">Agent BA</option>
                                             <option <?= $data->soa == 'EGC' ? 'selected' : '' ?> value="EGC">EGC</option>
                                             <option <?= $data->soa == 'CGC' ? 'selected' : '' ?> value="CGC">CGC</option>
@@ -281,16 +288,17 @@
                                             <option <?= $data->soa == 'Tour & travel' ? 'selected' : '' ?> value="Tour & travel">Tour & travel</option>
                                             <option <?= $data->soa == 'Penyedia Jasa / Barang' ? 'selected' : '' ?> value="Penyedia Jasa / Barang">Penyedia Jasa / Barang</option>
                                             <!-- <option <?= $data->soa == 'Walk In' ? 'selected' : '' ?> value="Walk In">Walk In</option>
-                                                <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
-                                                <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
+                                            <option <?= $data->soa == 'Event Promotion' ? 'selected' : '' ?> value="Event Promotion">Event Promotion</option>
+                                            <option <?= $data->soa == 'Tele Marketing' ? 'selected' : '' ?> value="Tele Marketing">Tele Marketing</option> -->
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group form-right">
                                         <label>Activity Marketing</label>
-                                        <select class="form-control text-size" name="activity" id="activity" required>
-                                            <option selected disabled value="">Pilih Kategori Activity Marketing</option>
+                                        <select class="form-control text-size" name="activity_marketing" id="activity_marketing" required>
+                                            <option selected disabled value="">Pilih Kategori Activity Marketing
+                                            </option>
                                             <option <?= $data->activity_marketing == 'Direct Selling' ? 'selected' : '' ?> value="Direct Selling">Direct Selling</option>
                                             <option <?= $data->activity_marketing == 'Tele call' ? 'selected' : '' ?> value="Tele call">Tele call</option>
                                             <option <?= $data->activity_marketing == 'Digital Marketing' ? 'selected' : '' ?> value="Digital Marketing">Digital Marketing</option>
@@ -314,9 +322,9 @@
                                 </div>
                                 <div class="col-md-12 form-agent">
                                     <div class="form-margin">
-                                        <label class="agent">Pilih Data Agent</label>
+                                        <label class="gent">Pilih Data Agent</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-size readonly pointer" name="nama_agent" id="nama_agent" placeholder="" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control text-size" name="nama_agent" id="nama_agent" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
@@ -329,7 +337,7 @@
                                         <label class="jasa">Pilih Data Penyedia Jasa</label>
                                         <label class="vendor">Pilih Data Partner</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control text-size readonly pointer" name="nama_partner" id="nama_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                            <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                             <div class="input-group-append">
                                                 <button class="btn btn-primary text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
@@ -357,7 +365,7 @@
                                 <div class="col-md-6 kontrak-ro">
                                     <div class="form-group form-left">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
+                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" minlength="10" maxlength="10" />
                                     </div>
                                 </div>
                                 <div class="col-md-6 konsumen-ro">
@@ -392,7 +400,7 @@
                                             <option selected disabled value="">Pilih Cabang</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
                                                 <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
-                                                <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $this->fungsi->user_login()->id_branch ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
+                                                <option <?= $data->cabang_cross == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                             <?php } ?>
                                         </select>
                                     </div>
@@ -401,7 +409,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-5 form-margin">
-                        <button class="btn btn-light waves-effect waves-light btn-cari text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                        <button class="btn btn-light waves-effect waves-light text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
                         <button class="btn btn-primary waves-effect waves-light submit text-size btn-width ml-1" type="submit" name="process"><b>Kirim</b></button>
                     </div>
                 </form>
@@ -409,6 +417,11 @@
         </div>
     </div> <!-- end col -->
 </div>
+
+
+<!-- ============================================================== -->
+<!-- End Right content here -->
+<!-- ============================================================== -->
 
 <!-- Modal Mapping Leads -->
 <div class="modal fade bd-example-modal-xl" id="modal-leads" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
@@ -419,7 +432,7 @@
                     <h4 class="modal-title"><b>Cari Data Leads</b></h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <table id="" class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table class="datatable-modal table table-hover dt-responsive wrap text-size table-modal" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>
@@ -455,7 +468,7 @@
                                     <div class="text-size"><?= $mapping->produk ?></div>
                                 </td>
                                 <td>
-                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->leads_id ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>"><b>Pilih</b></button></center>
+                                    <center><button class="btn btn-primary pilih-leads radius" id="search" data-mapping="<?= $mapping->id_leads ?>" data-nama="<?= $mapping->nama_konsumen ?>" data-telepon="<?= $mapping->telepon ?>" data-soa="<?= $mapping->soa ?>" data-produk="<?= $mapping->produk ?>" data-detail="<?= $mapping->detail_produk ?>" data-event="<?= $mapping->nama_event ?>" data-kontrak="<?= $mapping->nomor_kontrak ?>" data-referral="<?= $mapping->referral_konsumen ?>" data-nikegc="<?= $mapping->nik_egc ?>" data-posisiegc="<?= $mapping->posisi_egc ?>" data-cabangegc="<?= $mapping->cabang_egc ?>" data-partner="<?= $mapping->id_partner ?>" data-namapartner="<?= $mapping->nama_partner ?>" data-namaagent="<?= $mapping->nama_agent ?>" data-agent="<?= $mapping->id_agent ?>" data-activity="<?= $mapping->activity_marketing ?>"><b>Pilih</b></button></center>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -496,11 +509,11 @@
                                     <?php if ($partner->status == 'draft') { ?>
                                         <b class="text-secondary">Draft</b>
                                     <?php } ?>
-                                    <?php if ($partner->status == 'lengkap') { ?>
-                                        <b class="text-success">Lengkap</b>
-                                    <?php } ?>
                                     <?php if ($partner->status == 'mapping') { ?>
                                         <b class="text-secondary">Mapping</b>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'lengkap') { ?>
+                                        <b class="text-success">Lengkap</b>
                                     <?php } ?>
                                 </td>
                                 <td>
@@ -665,12 +678,11 @@
         $('#detail_produk').val($(this).data('detail'));
         $('#nama_event').val($(this).data('event'));
         $('#nama_konsumen').val($(this).data('nama'));
-        $('#nama_partner').val($(this).data('namapartner'));
-        $('#nama_agent').val($(this).data('namaagent'));
-
         $('#id_agent').val($(this).data('agent'));
         $('#id_partner').val($(this).data('partner'));
-
+        $('#nama_partner').val($(this).data('namapartner'));
+        $('#nama_agent').val($(this).data('namaagent'));
+        $('#activity_marketing').val($(this).data('activity'));
         $('#modal-leads').modal('hide');
 
         $('#nama_konsumen').attr('readonly', 'readonly');
@@ -681,28 +693,7 @@
 </script>
 
 <script>
-    function show_leads() {
-        var id_leads = $("#id_leads").val();
-        $.ajax({
-            type: 'GET',
-            url: '<?= base_url() ?>' + 'leads/get_leads/' + id_leads,
-            dataType: 'json',
-            data: {
-                id_leads: id_leads
-            },
-            success: function(data) {
-                $("#surveyor").val(data.surveyor);
-                $("#pic_ttd").val(data.pic_ttd);
-            }
-
-        });
-    }
-    $(document).ready(function() {
-        show_leads();
-    })
-</script>
-
-<script>
+    // alert($("#id_leads").val());
     $('#reset').hide();
     if ($("#id_leads").val()) {
         $('#nama_konsumen').attr('readonly', 'readonly');
@@ -716,16 +707,23 @@
             .hide();
         $('#nama_konsumen').removeAttr('readonly');
     })
+    $('#reset').click(function() {
+        $('#id_mapping_leads, #id_agent, #id_mapping, #nama_konsumen, #produk, #detail_produk, #telepon, #soa, #nama_event, #nama_partner, #nama_agent, #nik_egc, #posisi_egc, #cabang_egc, #nomor_kontrak, #referral_konsumen')
+            .val("");
+        $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, #reset')
+            .hide();
+        $('#nama_konsumen').removeAttr('readonly');
+    })
 </script>
 
 <script>
     $('.ro-active, .pasangan').hide();
 
     // Status Konsumen
-    status_konsumen();
+    jenis_konsumen();
 
-    $('#status_konsumen').change(function() {
-        status_konsumen();
+    $('#jenis_konsumen').change(function() {
+        jenis_konsumen();
     })
 
     function status_konsumen() {
@@ -760,21 +758,15 @@
 </script>
 
 <script>
-    $("#leads_id").keyup(function() {
-        var leads_id = ($(this).val());
-
-        $.ajax({
-            type: "POST",
-            url: "<?= base_url('leads/get_leads') ?>",
-            async: false,
-            dataType: "JSON",
-            data: {
-                leads_id: leads_id
-            },
-            success: function(data) {
-                // if(data.exist)
-                alert(data.exist);
-            }
-        })
+    $(document).ready(function() {
+        // $('asd').hide();
+        var radioValue = $("input[name='npwp']:checked").val();
+        if (radioValue == 'Ada') {
+            $(".npwp-form").hide();
+            $('.npwp-form').removeAttr('required', '');
+        } else if (radioValue == 'Ada') {
+            $(".npwp-form").show()
+            $('.npwp-form').attr('required', 'required');
+        }
     })
 </script>

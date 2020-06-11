@@ -23,6 +23,16 @@ class User extends CI_Controller
         $this->template->load('template/index', 'user', $data);
     }
 
+    public function list_karyawan()
+    {
+        $data = [
+            'data' => $this->user_model->get($this->fungsi->user_login()->nik)->row(),
+            'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
+            'branches' => $this->branch_model->get()
+        ];
+        $this->template->load('template/index', 'list-karyawan', $data);
+    }
+
     // Halaman Daftar Akun
     public function create()
     {
@@ -80,6 +90,7 @@ class User extends CI_Controller
                 'kerjasama_active' => isset($post['kerjasama_active']) ? 1 : 0,
                 'approval_bonus_active' => isset($post['approval_bonus_active']) ? 1 : 0,
                 'ticket_active' => isset($post['ticket_active']) ? 1 : 0,
+                'admin_active' => isset($post['admin_active']) ? 1 : 0,
                 'id_user' => $id_user
             ];
 
@@ -119,7 +130,8 @@ class User extends CI_Controller
             'transfer_active' => isset($post['transfer_data_active']) ? 1 : 0,
             'kerjasama_active' => isset($post['kerjasama_active']) ? 1 : 0,
             'approval_bonus_active' => isset($post['approval_bonus_active']) ? 1 : 0,
-            'ticket_active' => isset($post['ticket_active']) ? 1 : 0
+            'ticket_active' => isset($post['ticket_active']) ? 1 : 0,
+            'admin_active' => isset($post['admin_active']) ? 1 : 0
         ];
 
         $this->module_model->update($data_modul, $where);

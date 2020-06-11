@@ -29,7 +29,7 @@
                     <thead>
                         <tr>
                             <th>Nama Konsumen</th>
-                            <th>Telepon</th>
+                            <!-- <th>Telepon</th> -->
                             <th>Source</th>
                             <th>Produk</th>
                             <th>Pemohon</th>
@@ -43,9 +43,9 @@
                                 <td>
                                     <?= $mapping_leads->nama_konsumen ?>
                                 </td>
-                                <td>
+                                <!-- <td>
                                     <?= $mapping_leads->telepon ?>
-                                </td>
+                                </td> -->
                                 <td>
                                     <?= $mapping_leads->soa ?>
                                 </td>

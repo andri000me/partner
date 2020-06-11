@@ -52,8 +52,10 @@
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
                                         <th>Assign To</th>
                                     <?php } ?>
-                                    <th>Recommendation</th>
                                     <th>Score</th>
+                                    <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                                        <th>Recommendation</th>
+                                    <?php } ?>
                                     <th> </th>
                                 </tr>
                             </thead>
@@ -102,17 +104,22 @@
                                             </td>
                                         <?php } ?>
                                         <td>
-                                            <b class="text-primary">Recommend</b><br>
-                                            <b class="text-danger">Not Recommend</b>
-                                        </td>
-                                        <td>
                                             <b class="text-primary">Pass</b><br>
                                             <b class="text-danger">Fail</b>
                                         </td>
                                         <td>
+                                            <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                                                <select class="form-control is_recommended text-size form-border form-radius" name="" id="" data-fs="<?= $fs_konsumen->id ?>">
+                                                    <option value="">Pilih Rekomendasi</option>
+                                                    <option <?= $fs_konsumen->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
+                                                    <option <?= $fs_konsumen->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
+                                                </select>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf fa-lg"></i></a>
                                             </center>
                                         </td>
                                     </tr>
@@ -133,8 +140,10 @@
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
                                         <th>Assign To</th>
                                     <?php } ?>
-                                    <th>Recommendation</th>
                                     <th>Score</th>
+                                    <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                                        <th>Recommendation</th>
+                                    <?php } ?>
                                     <th> </th>
                                 </tr>
                             </thead>
@@ -183,19 +192,22 @@
                                             </td>
                                         <?php } ?>
                                         <td>
-                                            <b class="text-primary">Recommend</b><br>
-                                            <b class="text-danger">Not Recommend</b>
-                                        </td>
-                                        <td>
                                             <b class="text-primary">Pass</b><br>
                                             <b class="text-danger">Fail</b>
                                         </td>
                                         <td>
+                                            <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                                                <select class="form-control is_recommended text-size form-border form-radius" name="" id="" data-fs="<?= $fs_konsumen->id ?>">
+                                                    <option value="">Pilih Rekomendasi</option>
+                                                    <option <?= $fs_konsumen->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
+                                                    <option <?= $fs_konsumen->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
+                                                </select>
+                                            <?php } ?>
                                         </td>
                                         <td>
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf fa-lg"></i></a>
                                             </center>
                                         </td>
                                     </tr>
@@ -216,8 +228,10 @@
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
                                         <th>Assign To</th>
                                     <?php } ?>
-                                    <th>Recommendation</th>
                                     <th>Score</th>
+                                    <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                                        <th>Recommendation</th>
+                                    <?php } ?>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -267,17 +281,23 @@
                                             </td>
                                         <?php } ?>
                                         <td>
-                                            <b class="text-primary">Recommend</b><br>
-                                            <b class="text-danger">Not Recommend</b>
-                                        </td>
-                                        <td>
                                             <b class="text-primary">Pass</b><br>
                                             <b class="text-danger">Fail</b>
                                         </td>
                                         <td>
+                                            <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                                                <select class="form-control is_recommended text-size form-border form-radius" name="" id="" data-fs="<?= $fs_konsumen->id ?>">
+                                                    <option value="">Pilih Rekomendasi</option>
+                                                    <option <?= $fs_konsumen->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
+                                                    <option <?= $fs_konsumen->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
+                                                </select>
+                                            <?php } ?>
+                                        </td>
+                                        <td>
+
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf fa-lg"></i></a>
                                             </center>
                                         </td>
                                     </tr>
@@ -314,6 +334,24 @@
                 }
             });
             // return false;
+        });
+
+        $('.is_recommended').on('change', function() {
+            var data = $(this).data('fs');
+            var recommended = $(this).val();
+
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('fs_konsumen/update_recommendation') ?>",
+                dataType: "JSON",
+                data: {
+                    data: data,
+                    recommended: recommended
+                },
+                success: function(res) {
+                    alert('success');
+                }
+            });
         });
     });
 </script>
