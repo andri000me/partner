@@ -723,8 +723,8 @@
         jenis_konsumen();
     })
 
-    function status_konsumen() {
-        if ($('#status_konsumen').val() == "RO Active") {
+    function jenis_konsumen() {
+        if ($('#jenis_konsumen').val() == "RO Active") {
             $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
         } else {
