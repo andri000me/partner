@@ -166,13 +166,12 @@
                                         <div class="col-md-6">
                                             <div class="form-group form-right">
                                                 <label>Jenis Konsumen</label>
-                                                <select class="form-control text-size" name="status_konsumen" id="status_konsumen" required>
+                                                <select class="form-control text-size" name="jenis_konsumen" id="jenis_konsumen" required>
                                                     <option selected value="">Pilih Jenis Konsumen</option>
-                                                    <option <?= $data->status_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer</option>
-                                                    <option <?= $data->status_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
-                                                    <option <?= $data->status_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
+                                                    <option <?= $data->jenis_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer</option>
+                                                    <option <?= $data->jenis_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
+                                                    <option <?= $data->jenis_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
                                                 </select>
-                                                <input type="hidden" name="status_konsumen" value="<?= $data->status_konsumen ?>" <?= $cabang_asal != $data->cabang_cross ? 'disabled' : '' ?>>
                                             </div>
                                         </div>
                                     </div>
@@ -764,7 +763,7 @@
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
         .hide();
     source_leads();
-    $('#soa').change(function() {
+    $("#soa").change(function() {
         source_leads();
         $('#id_partner').val("");
         $('#id_agent').val("");
@@ -875,14 +874,14 @@
     $('.ro-active, .pasangan').hide();
 
     // Status Konsumen
-    status_konsumen();
+    jenis_konsumen();
 
-    $('#status_konsumen').change(function() {
-        status_konsumen();
+    $('#jenis_konsumen').change(function() {
+        jenis_konsumen();
     })
 
-    function status_konsumen() {
-        if ($('#status_konsumen').val() == "RO Active") {
+    function jenis_konsumen() {
+        if ($('#jenis_konsumen').val() == "RO Active") {
             $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
         } else {

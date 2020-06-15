@@ -17,7 +17,7 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title"><b>Tabel List Karyawan</b></h4>
                 <p class="text-muted m-b-30 text-size">Tabel berisi List Karyawan.</p>
-                <table id="d" class="datatable table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                <table id="" class="datatable table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama</th>

@@ -178,48 +178,48 @@
                                         <input type="text" class="form-control text-size" name="nama_pasangan" id="nama_pasangan" value="<?= $data->nama_pasangan ?>" placeholder="Nama Pasangan">
                                     </div>
                                 </div>
-                                <div class="form-row">
-                                    <div class="col-md-6">
-                                        <div class="form-group text-size form-left">
-                                            <label>Pekerjaan Konsumen?</label><br>
-                                            <div class="form-check form-check-inline mt-2">
-                                                <input class="form-check-input pekerjaan_konsumen" type="radio" name="pekerjaan_konsumen" id="pekerjaan_konsumen" <?= $data->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?> required value="Karyawan">
-                                                <label class="form-check-label">
-                                                    Karyawan
-                                                </label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input pekerjaan_konsumen" type="radio" name="pekerjaan_konsumen" id="pekerjaan_konsumen" <?= $data->pekerjaan_konsumen == 'Wiraswasta' ? 'checked' : '' ?> required value="Wiraswasta">
-                                                <label class="form-check-label">
-                                                    Wiraswasta
-                                                </label>
-                                            </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group text-size form-left">
+                                        <label>Pekerjaan Konsumen</label><br>
+                                        <div class="form-check form-check-inline mt-2">
+                                            <input class="form-check-input" type="radio" name="pekerjaan_konsumen" <?= $data->pekerjaan_konsumen == 'Karyawan' ? 'checked' : '' ?> id="pekerjaan_konsumen" required value="Karyawan">
+                                            <label class="form-check-label">
+                                                Karyawan
+                                            </label>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-right">
-                                            <label>Jenis Konsumen</label>
-                                            <select class="form-control text-size" name="status_konsumen" id="status_konsumen" required>
-                                                <option selected value="">Pilih Jenis Konsumen</option>
-                                                <option <?= $data->status_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer</option>
-                                                <option <?= $data->status_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
-                                                <option <?= $data->status_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
-                                            </select>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pekerjaan_konsumen" <?= $data->pekerjaan_konsumen == 'Wiraswasta' ? 'checked' : '' ?> id="pekerjaan_konsumen" required value="Wiraswasta">
+                                            <label class="form-check-label">
+                                                Wiraswasta
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-row ro-active">
-                                    <div class="col-md-6">
-                                        <div class="form-group form-left">
-                                            <label>Nomor Kontrak</label>
-                                            <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
-                                        </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Jenis Konsumen</label>
+                                        <select class="form-control text-size" name="jenis_konsumen" id="jenis_konsumen" required>
+                                            <option selected value="">Pilih Jenis Konsumen</option>
+                                            <option <?= $data->jenis_konsumen == 'New Customer' ? 'selected' : '' ?> value="New Customer">New Customer</option>
+                                            <option <?= $data->jenis_konsumen == 'RO Expire' ? 'selected' : '' ?> value="RO Expire">RO Expire</option>
+                                            <option <?= $data->jenis_konsumen == 'RO Active' ? 'selected' : '' ?> value="RO Active">RO Active</option>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-right">
-                                            <label>Nama Konsumen</label>
-                                            <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="form-row ro-active">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Nomor Kontrak</label>
+                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="087883774" minlength="10" maxlength="10" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Nama Konsumen</label>
+                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
                                     </div>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="nama_agent" id="nama_agent" value="<?= $data->nama_agent ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                <button class="btn btn-primary btn-data text-size" type="button" id="btn-data-agent" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -339,7 +339,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= $data->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                             <div class="input-group-append">
-                                                <button class="btn btn-primary text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
+                                                <button class="btn btn-primary btn-data text-size" type="button" id="btn-data" data-toggle="modal" data-target=""><b>Cari</b></button>
                                             </div>
                                         </div>
                                     </div>
@@ -726,8 +726,8 @@
         jenis_konsumen();
     })
 
-    function status_konsumen() {
-        if ($('#status_konsumen').val() == "RO Active") {
+    function jenis_konsumen() {
+        if ($('#jenis_konsumen').val() == "RO Active") {
             $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
         } else {

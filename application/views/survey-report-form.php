@@ -776,7 +776,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>Detail Profesi konsumen</label>
-                                                    <select class="form-control text-size" name="condition_karyawan_pekerjaan" id="condition" required>
+                                                    <select class="form-control text-size" name="condition_karyawan_pekerjaan" id="condition_karyawan_pekerjaan" required>
                                                         <option selected value="">Pilih Pekerjaan
                                                         </option>
                                                         <option <?= $data->condition_karyawan_pekerjaan == 'Karyawan Swasta - Tetap' ? 'selected' : '' ?> value="Karyawan Swasta - Tetap">
@@ -905,11 +905,11 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-row">
+                                        <div class="form-row pasangan-wir">
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>Pekerjaan Pasangan</label>
-                                                    <select class="form-control text-size" name="condition_karyawan_pekerjaan_pasangan" id="condition_pasangan" required>
+                                                    <select class="form-control text-size" name="condition_karyawan_pekerjaan_pasangan" id="condition_karyawan_pekerjaan_pasangan" required>
                                                         <option selected value="">Pilih Pekerjaan
                                                         </option>
                                                         <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perhutanan' ? 'selected' : '' ?> value="Perhutanan">Perhutanan
@@ -942,11 +942,11 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-right">
                                                     <label>Tempat Kerja / Usaha pasangan</label>
-                                                    <input type="text" class="form-control text-size" name="condition_karyawan_tempat_kerja_pasangan" value="<?= $data->condition_karyawan_tempat_kerja_pasangan ?>" id="" placeholder="Tempat Kerja / Usaha pasangan" />
+                                                    <input type="text" class="form-control text-size" name="condition_karyawan_tempat_kerja_pasangan" id="condition_karyawan_tempat_kerja_pasangan" value="<?= $data->condition_karyawan_tempat_kerja_pasangan ?>" placeholder="Tempat Kerja / Usaha pasangan" />
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-row resiko-pasangan">
+                                        <div class="form-row resiko-pasangan-kar condition_karyawan_beresiko_pasangan">
                                             <div class="col-md-12">
                                                 <div class="form-group form-margin">
                                                     <label>Penjelasan Profesi Beresiko</label>
@@ -1213,6 +1213,14 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group form-right">
+                                                    <label>Kondisi Usaha</label>
+                                                    <input type="text" class="form-control text-size" name="condition_wir_kondisi_usaha" value="<?= $data->condition_wir_kondisi_usaha ?>" id="condition_wir_kondisi_usaha" placeholder="Jelaskan Kondisi Usaha Saat ini" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pasangan-wir">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-left">
                                                     <label>Pekerjaan Pasangan</label>
                                                     <select class="form-control text-size" name="condition_wir_pekerjaan_pasangan" id="condition_wir_pekerjaan_pasangan" required>
                                                         <option selected value="">Pilih Pekerjaan
@@ -1234,26 +1242,18 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-12 resiko-pasangan">
-                                                <div class="form-group form-margin">
-                                                    <label>Penjelasan Profesi Beresiko</label>
-                                                    <input type="text" class="form-control text-size" name="condition_wir_profesi_beresiko_pasangan" id="condition_wir_profesi_beresiko_pasangan" value="<?= $data->condition_wir_profesi_beresiko_pasangan ?>" placeholder="Penjelasan Profesi Beresiko" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
                                             <div class="col-md-6">
-                                                <div class="form-group form-left">
+                                                <div class="form-group form-right">
                                                     <label>Tempat Kerja / Usaha pasangan</label>
                                                     <input type="text" class="form-control text-size" name="condition_wir_tempat_kerja_pasangan" id="condition_wir_tempat_kerja_pasangan" value="<?= $data->condition_wir_tempat_kerja_pasangan ?>" placeholder="Tempat Kerja / Usaha pasangan" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group form-right">
-                                                    <label>Kondisi Usaha</label>
-                                                    <input type="text" class="form-control text-size" name="condition_wir_kondisi_usaha" value="<?= $data->condition_wir_kondisi_usaha ?>" id="condition_wir_kondisi_usaha" placeholder="Jelaskan Kondisi Usaha Saat ini" />
+                                        </div>
+                                        <div class="form-row resiko-pasangan-wir condition_wir_beresiko_pasangan">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-margin">
+                                                    <label>Penjelasan Profesi Beresiko</label>
+                                                    <input type="text" class="form-control text-size" name="condition_wir_profesi_beresiko_pasangan" id="condition_wir_profesi_beresiko_pasangan" value="<?= $data->condition_wir_profesi_beresiko_pasangan ?>" placeholder="Penjelasan Profesi Beresiko" />
                                                 </div>
                                             </div>
                                         </div>
@@ -2828,112 +2828,111 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit">Upload Lampiran</button>
+                                        <button class="btn btn-primary form-margin" type="submit">Upload Lampiran</button>
                                     </div>
                                 </div>
                             </div>
+                        </form>
+
+                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                            <!-- Penilaian Scoring -->
+                            <div class="card">
+                                <div class="card-body text-size">
+                                    <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b></h5>
+
+                                    <div class="form-margin mt-3">
+                                        <div class="table-responsive">
+                                            <p>Tabel Penilaian</p>
+                                            <table class="table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            <label class="table-form-large">Penilaian Scoring</label>
+                                                        </th>
+                                                        <th>
+                                                            <label class="table-form-medium">Nilai</label>
+                                                        </th>
+                                                        <th>
+                                                            <label class="table-form-medium">Grade</label>
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Informasi Aplikasi & Konsumen</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_informasi_konsumen" value="<?= $data->hasil_scoring_nilai_informasi_konsumen ?>" id="" placeholder="Nilai" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" value="<?= $data->hasil_scoring_grade_informasi_konsumen ?>" id="" placeholder="Grade" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Survey Konsumen</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_grade_survey_konsumen ?>" id="" placeholder="Grade" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Penilaian Merchant</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_penilaian_merchant" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" value="<?= $data->hasil_scoring_grade_penilaian_merchant ?>" id="" placeholder="Grade" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Aset Kendaraan</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_aset_kendaraan" value="<?= $data->hasil_scoring_nilai_aset_kendaraan ?>" id="" placeholder="Nilai" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" value="<?= $data->hasil_scoring_grade_aset_kendaraan ?>" id="" placeholder="Grade" />
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <label>Tingkat Religiusitas</label>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_tingkat_religiusitas" value="<?= $data->hasil_scoring_nilai_tingkat_religiusitas ?>" id="" placeholder="Nilai" />
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" value="<?= $data->hasil_scoring_grade_tingkat_religiusitas ?>" id="" placeholder="Grade" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-margin">
+                                        <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
+                                        <select class="form-control text-size" name="is_recommended" id="" required>
+                                            <option selected value="">Pilih Jawaban</option>
+                                            <option <?= $data->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
+                                            <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group form-margin float-right mt-5">
+                                        <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                        <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Score</b></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
-                    <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
-                        <!-- Penilaian Scoring -->
-                        <div class="card">
-                            <div class="card-body text-size">
-                                <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b></h5>
-
-                                <div class="form-margin mt-3">
-                                    <div class="table-responsive">
-                                        <p>Tabel Penilaian</p>
-                                        <table class="table table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        <label class="table-form-large">Penilaian Scoring</label>
-                                                    </th>
-                                                    <th>
-                                                        <label class="table-form-medium">Nilai</label>
-                                                    </th>
-                                                    <th>
-                                                        <label class="table-form-medium">Grade</label>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <label>Informasi Aplikasi & Konsumen</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_informasi_konsumen" value="<?= $data->hasil_scoring_nilai_informasi_konsumen ?>" id="" placeholder="Nilai" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" value="<?= $data->hasil_scoring_grade_informasi_konsumen ?>" id="" placeholder="Grade" />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label>Survey Konsumen</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_grade_survey_konsumen ?>" id="" placeholder="Grade" />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label>Penilaian Merchant</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_penilaian_merchant" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" value="<?= $data->hasil_scoring_grade_penilaian_merchant ?>" id="" placeholder="Grade" />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label>Aset Kendaraan</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_aset_kendaraan" value="<?= $data->hasil_scoring_nilai_aset_kendaraan ?>" id="" placeholder="Nilai" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" value="<?= $data->hasil_scoring_grade_aset_kendaraan ?>" id="" placeholder="Grade" />
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <label>Tingkat Religiusitas</label>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_tingkat_religiusitas" value="<?= $data->hasil_scoring_nilai_tingkat_religiusitas ?>" id="" placeholder="Nilai" />
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" value="<?= $data->hasil_scoring_grade_tingkat_religiusitas ?>" id="" placeholder="Grade" />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="form-group form-margin">
-                                    <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
-                                    <select class="form-control text-size" name="is_recommended" id="" required>
-                                        <option selected value="">Pilih Jawaban</option>
-                                        <option <?= $data->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
-                                        <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
-                                    </select>
-                                </div>
-                                <div class="form-group form-margin float-right mt-5">
-                                    <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                    <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Score</b></button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-
                 </div>
                 <!-- Data Hasil Analisa -->
 
@@ -3122,17 +3121,17 @@
 </script>
 
 <script>
-    $('.ro-active, .pasangan, .resiko, .resiko-pasangan').hide();
+    $('.ro-active, .pasangan, .pasangan-kar, .pasangan-wir, .resiko, .resiko-pasangan').hide();
 
-    // Status Konsumen
-    status_konsumen();
+    // jenis Konsumen
+    jenis_konsumen();
 
-    $('#status_konsumen').change(function() {
-        status_konsumen();
+    $('#jenis_konsumen').change(function() {
+        jenis_konsumen();
     })
 
-    function status_konsumen() {
-        if ($('#status_konsumen').val() == "RO Active") {
+    function jenis_konsumen() {
+        if ($('#jenis_konsumen').val() == "RO Active") {
             $('.ro-active').show();
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
         } else {
@@ -3141,7 +3140,7 @@
             $('#referral_konsumen, #nomor_kontrak').val('');
         }
     }
-    // Status Konsumen
+    // jenis Konsumen
 
     // status pernikahan
     menikah();
@@ -3152,12 +3151,12 @@
 
     function menikah() {
         if ($('#status_pernikahan').val() == "Sudah Menikah") {
-            $('.pasangan').show();
+            $('.pasangan, .pasangan-kar, .pasangan-wir').show();
             $('#nama_pasangan').attr('required', 'required');
         } else {
-            $('.pasangan').hide();
+            $('.pasangan, .pasangan-kar, .pasangan-wir, .condition_karyawan_beresiko_pasangan, .condition_wir_beresiko_pasangan').hide();
             $('#nama_pasangan').removeAttr('required', ' ');
-            $('#nama_pasangan').val('');
+            $('#nama_pasangan, #condition_karyawan_pekerjaan_pasangan, #condition_karyawan_tempat_kerja_pasangan, #condition_karyawan_profesi_beresiko_pasangan, #condition_wir_pekerjaan_pasangan, #condition_wir_tempat_kerja_pasangan, #condition_wir_profesi_beresiko_pasangan').val('');
         }
     }
     // status pernikahan
@@ -3169,37 +3168,37 @@
     // resiko karyawan
     resiko_kar();
 
-    $('#condition').change(function() {
+    $('#condition_karyawan_pekerjaan').change(function() {
         resiko_kar();
     })
 
     function resiko_kar() {
-        if ($('#condition').val() == "Profesi Beresiko") {
+        if ($('#condition_karyawan_pekerjaan').val() == "Profesi Beresiko") {
             $('.resiko').show();
             $('#condition_karyawan_profesi_beresiko').attr('required', 'required');
         } else {
             $('.resiko').hide();
-            $('#condition_karyawan_profesi_beresiko').removeAttr('required', ' ');
+            $('#condition_karyawan_profesi_beresiko').removeAttr('required', '');
+            $('#condition_karyawan_profesi_beresiko').val('');
         }
     }
     // resiko karyawan
 
     // resiko pasangan karyawan
-    $(document).ready(function() {
-        resiko_kar_pasangan();
-    })
+    resiko_kar_pasangan();
 
-    $('#condition_pasangan').change(function() {
+    $('#condition_karyawan_pekerjaan_pasangan').change(function() {
         resiko_kar_pasangan();
     })
 
     function resiko_kar_pasangan() {
-        if ($('#condition_pasangan').val() == "Profesi Beresiko") {
-            $('.resiko-pasangan').show();
+        if ($('#condition_karyawan_pekerjaan_pasangan').val() == "Profesi Beresiko") {
+            $('.resiko-pasangan-kar').show();
             $('#condition_karyawan_profesi_beresiko_pasangan').attr('required', 'required');
         } else {
-            $('.resiko-pasangan').hide();
-            $('#condition_karyawan_profesi_beresiko_pasangan').removeAttr('required');
+            $('.resiko-pasangan-kar').hide();
+            $('#condition_karyawan_profesi_beresiko_pasangan').removeAttr('required', '');
+            $('#condition_karyawan_profesi_beresiko_pasangan').val('');
         }
     }
     // resiko pasangan karyawan
@@ -3225,10 +3224,10 @@
 
     function resiko_wir_pasangan() {
         if ($('#condition_wir_pekerjaan_pasangan').val() == "Profesi Beresiko") {
-            $('.resiko-pasangan').show();
+            $('.resiko-pasangan-wir').show();
             $('#condition_wir_profesi_beresiko_pasangan').attr('required', 'required');
         } else {
-            $('.resiko-pasangan').hide();
+            $('.resiko-pasangan-wir').hide();
             $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required');
         }
     }
@@ -3368,113 +3367,6 @@
     }
     // analisa omset wiraswasta
 </script>
-
-<!-- btn -->
-<script>
-    $('.konsumen-up, .pembiayaan-up, .kondisi-up, .kapasitas-up, .aset-up, .konfirmasi-up, .jaminan-up, .religi-up, .lampiran-up, .omset-up')
-        .hide();
-
-    function konsumendownFunction() {
-        $('.konsumen-down').hide();
-        $('.konsumen-up').show();
-    }
-
-    function konsumenupFunction() {
-        $('.konsumen-up').hide();
-        $('.konsumen-down').show();
-    }
-
-    function pembiayaandownFunction() {
-        $('.pembiayaan-down').hide();
-        $('.pembiayaan-up').show();
-    }
-
-    function pembiayaanupFunction() {
-        $('.pembiayaan-up').hide();
-        $('.pembiayaan-down').show();
-    }
-
-    function kondisidownFunction() {
-        $('.kondisi-down').hide();
-        $('.kondisi-up').show();
-    }
-
-    function kondisiupFunction() {
-        $('.kondisi-up').hide();
-        $('.kondisi-down').show();
-    }
-
-    function kapasitasdownFunction() {
-        $('.kapasitas-down').hide();
-        $('.kapasitas-up').show();
-    }
-
-    function kapasitasupFunction() {
-        $('.kapasitas-up').hide();
-        $('.kapasitas-down').show();
-    }
-
-    function asetdownFunction() {
-        $('.aset-down').hide();
-        $('.aset-up').show();
-    }
-
-    function asetupFunction() {
-        $('.aset-up').hide();
-        $('.aset-down').show();
-    }
-
-    function konfirmasidownFunction() {
-        $('.konfirmasi-down').hide();
-        $('.konfirmasi-up').show();
-    }
-
-    function konfirmasiupFunction() {
-        $('.konfirmasi-up').hide();
-        $('.konfirmasi-down').show();
-    }
-
-    function jaminandownFunction() {
-        $('.jaminan-down').hide();
-        $('.jaminan-up').show();
-    }
-
-    function jaminanupFunction() {
-        $('.jaminan-up').hide();
-        $('.jaminan-down').show();
-    }
-
-    function religidownFunction() {
-        $('.religi-down').hide();
-        $('.religi-up').show();
-    }
-
-    function religiupFunction() {
-        $('.religi-up').hide();
-        $('.religi-down').show();
-    }
-
-    function lampirandownFunction() {
-        $('.lampiran-down').hide();
-        $('.lampiran-up').show();
-    }
-
-    function lampiranupFunction() {
-        $('.lampiran-up').hide();
-        $('.lampiran-down').show();
-    }
-
-    function omsetdownFunction() {
-        $('.omset-down').hide();
-        $('.omset-up').show();
-    }
-
-    function omsetupFunction() {
-        $('.omset-up').hide();
-        $('.omset-down').show();
-    }
-</script>
-<!-- btn -->
 
 <!-- Script untuk ajax autosave data ke table fs_konsumen -->
 <!-- autosave ketika setiap user mengetik -->
