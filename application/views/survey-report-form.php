@@ -583,12 +583,12 @@
                                                 <select class="form-control text-size" name="purpose_kategori_produk" id="" required>
                                                     <option selected value="">Pilih Produk
                                                     </option>
-                                                    <option <?= $leads->produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
-                                                    <option <?= $leads->produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
-                                                    <option <?= $leads->produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
-                                                    <option <?= $leads->produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
-                                                    <option <?= $leads->produk == 'My Cars' ? 'selected' : '' ?> value="My Cars">My Cars</option>
-                                                    <option <?= $leads->produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                                    <option <?= $data->purpose_kategori_produk == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                                    <option <?= $data->purpose_kategori_produk == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                                    <option <?= $data->purpose_kategori_produk == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                                    <option <?= $data->purpose_kategori_produk == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                                    <option <?= $data->purpose_kategori_produk == 'My Cars' ? 'selected' : '' ?> value="My Cars">My Cars</option>
+                                                    <option <?= $data->purpose_kategori_produk == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -597,7 +597,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group form-margin">
                                                 <label>Detail Barang / Jasa</label>
-                                                <input type="text" class="form-control text-size" name="purpose_detail_barang_jasa" id="" value="<?= $leads->detail_produk ?>" required placeholder="Paket umroh quad" />
+                                                <input type="text" class="form-control text-size" name="purpose_detail_barang_jasa" id="" value="<?= $data->purpose_detail_barang_jasa ?>" required placeholder="Paket umroh quad" />
                                             </div>
                                         </div>
                                     </div>
