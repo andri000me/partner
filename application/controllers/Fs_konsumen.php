@@ -391,13 +391,13 @@ class Fs_konsumen extends CI_Controller
         //Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
         //Jika sudah pernah melampirkan tambahan, maka append nama file di database
-        if ($lampiran_tambahan) {
-            $data_fs_konsumen['lampiran_tambahan'] = $lampiran_tambahan . "," . $comma;
-            $this->fs_konsumen_model->update($data_fs_konsumen, $where);
-        } else {
-            $data_fs_konsumen['lampiran_tambahan'] = $comma;
-            $this->fs_konsumen_model->update($data_fs_konsumen, $where);
-        }
+        // if ($lampiran_tambahan) {
+        //     $data_fs_konsumen['lampiran_tambahan'] = $lampiran_tambahan . "," . $comma;
+        //     $this->fs_konsumen_model->update($data_fs_konsumen, $where);
+        // } else {
+        $data_fs_konsumen['lampiran_tambahan'] = $comma;
+        $this->fs_konsumen_model->update($data_fs_konsumen, $where);
+        // }
 
         redirect($post['redirect']);
     }

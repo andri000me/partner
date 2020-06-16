@@ -2815,14 +2815,17 @@
                                             <div class=" form-margin">
                                                 <div class="owl-carousel owl-theme mt-1">
                                                     <div class="item" style="width: 200px; height: 100px;">
-                                                        <div class="zoom-gallery">
-                                                            <a href="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>"><img src="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                        </div>
-                                                        <a href="">
-                                                            <div class="card text-center" style="height: 200px; width: 100px" data-toggle="tooltip" title="<?= $data->lampiran_tambahan ?>">
-                                                                <i class="fa fa-file fa-5x"></i>
+                                                        <?php if (get_extension($data->lampiran_tambahan)) { ?>
+                                                            <div class="zoom-gallery">
+                                                                <a href="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>"><img src="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>" alt="" style="height:150px; width:300px;"></a>
                                                             </div>
-                                                        </a>
+                                                        <?php } else { ?>
+                                                            <a href="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>">
+                                                                <div class="card text-center" style="height: 200px; width: 100px" data-toggle="tooltip" title="<?= $data->lampiran_tambahan ?>">
+                                                                    <i class="fa fa-file fa-5x"></i>
+                                                                </div>
+                                                            </a>
+                                                        <?php } ?>
                                                     </div>
                                                 </div>
                                             </div>
