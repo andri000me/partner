@@ -1396,10 +1396,15 @@
                                                     </tr>
                                                     <tr>
                                                         <td>
-                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_aset1" value="<?= $data->capital_aset1 ?>" id="" required placeholder="Nama Barang" />
+                                                            <input type="text" class="form-control text-size form-border" name="capital_aset1" value="<?= $data->capital_aset1 ?>" id="" required placeholder="Nama Barang" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang1" value="<?= $data->capital_status_barang1 ?>" id="" required placeholder="Status Barang" />
+                                                            <select class="form-control text-size form-border" name="capital_status_barang1" id="" required>
+                                                                <option selected value="">Pilih Status Barang</option>
+                                                                <option <?= $data->capital_status_barang1 == 'Masih Cicilan' ?> value="Masih Cicilan<">Masih Cicilan</option>
+                                                                <option <?= $data->capital_status_barang1 == 'Sudah Lunas' ?> value="Sudah Lunas">Sudah Lunas</option>
+                                                            </select>
+                                                            <!-- <input type="text" class="form-control text-size form-border" name="capital_status_barang1" value="<?= $data->capital_status_barang1 ?>" id="" required placeholder="Status Barang" /> -->
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control text-size number-only form-border aset-konsumen" name="capital_harga1" value="<?= $data->capital_harga1 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
@@ -1410,7 +1415,12 @@
                                                             <input type="text" class="form-control text-size form-border" name="capital_aset2" value="<?= $data->capital_aset2 ?>" id="" required placeholder="Nama Barang" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang2" value="<?= $data->capital_status_barang2 ?>" id="" required placeholder="Status Barang" />
+                                                            <select class="form-control text-size form-border" name="capital_status_barang2" id="" required>
+                                                                <option selected value="">Pilih Status Barang</option>
+                                                                <option <?= $data->capital_status_barang2 == 'Masih Cicilan' ?> value="Masih Cicilan<">Masih Cicilan</option>
+                                                                <option <?= $data->capital_status_barang2 == 'Sudah Lunas' ?> value="Sudah Lunas">Sudah Lunas</option>
+                                                            </select>
+                                                            <!-- <input type="text" class="form-control text-size form-border" name="capital_status_barang2" value="<?= $data->capital_status_barang2 ?>" id="" required placeholder="Status Barang" /> -->
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga2" value="<?= $data->capital_harga2 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
@@ -1421,7 +1431,12 @@
                                                             <input type="text" class="form-control text-size form-border" name="capital_aset3" value="<?= $data->capital_aset3 ?>" id="" required placeholder="Nama Barang" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang3" value="<?= $data->capital_status_barang3 ?>" id="" required placeholder="Status Barang" />
+                                                            <select class="form-control text-size form-border" name="capital_status_barang3" id="" required>
+                                                                <option selected value="">Pilih Status Barang</option>
+                                                                <option <?= $data->capital_status_barang3 == 'Masih Cicilan' ?> value="Masih Cicilan<">Masih Cicilan</option>
+                                                                <option <?= $data->capital_status_barang3 == 'Sudah Lunas' ?> value="Sudah Lunas">Sudah Lunas</option>
+                                                            </select>
+                                                            <!-- <input type="text" class="form-control text-size form-border" name="capital_status_barang3" value="<?= $data->capital_status_barang3 ?>" id="" required placeholder="Status Barang" /> -->
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga3" value="<?= $data->capital_harga3 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
@@ -1432,7 +1447,12 @@
                                                             <input type="text" class="form-control text-size form-border" name="capital_aset4" value="<?= $data->capital_aset4 ?>" id="" required placeholder="Nama Barang" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang4" value="<?= $data->capital_status_barang4 ?>" id="" required placeholder="Status Barang" />
+                                                            <select class="form-control text-size form-border" name="capital_status_barang4" id="" required>
+                                                                <option selected value="">Pilih Status Barang</option>
+                                                                <option <?= $data->capital_status_barang4 == 'Masih Cicilan' ?> value="Masih Cicilan<">Masih Cicilan</option>
+                                                                <option <?= $data->capital_status_barang4 == 'Sudah Lunas' ?> value="Sudah Lunas">Sudah Lunas</option>
+                                                            </select>
+                                                            <!-- <input type="text" class="form-control text-size form-border" name="capital_status_barang4" value="<?= $data->capital_status_barang4 ?>" id="" required placeholder="Status Barang" /> -->
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga4" value="<?= $data->capital_harga4 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
@@ -1443,7 +1463,12 @@
                                                             <input type="text" class="form-control text-size form-border" name="capital_aset5" value="<?= $data->capital_aset5 ?>" id="" required placeholder="Nama Barang" />
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size text-size form-border" name="capital_status_barang5" value="<?= $data->capital_status_barang5 ?>" id="" required placeholder="Status Barang" />
+                                                            <select class="form-control text-size form-border" name="capital_status_barang5" id="" required>
+                                                                <option selected value="">Pilih Status Barang</option>
+                                                                <option <?= $data->capital_status_barang5 == 'Masih Cicilan' ?> value="Masih Cicilan<">Masih Cicilan</option>
+                                                                <option <?= $data->capital_status_barang5 == 'Sudah Lunas' ?> value="Sudah Lunas">Sudah Lunas</option>
+                                                            </select>
+                                                            <!-- <input type="text" class="form-control text-size form-border" name="capital_status_barang5" value="<?= $data->capital_status_barang5 ?>" id="" required placeholder="Status Barang" /> -->
                                                         </td>
                                                         <td>
                                                             <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga5" value="<?= $data->capital_harga5 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
@@ -1541,7 +1566,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_bonus1" value="<?= $data->capacity_karyawan_bonus1 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode1" value="<?= $data->capacity_karyawan_periode1 ?>" id="" required placeholder="Periode" />
+                                                                <input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode1" value="<?= $data->capacity_karyawan_periode1 ?>" id="" required placeholder="Tuliskan Periode per Tiga Bulan" />
                                                             </td>
                                                             <td>
                                                                 <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-periodik-karyawan" name="capacity_karyawan_nilai1" value="<?= $data->capacity_karyawan_nilai1 ?>" id="" data-type="currency" required placeholder="Nominal" />
@@ -1551,7 +1576,7 @@
                                                             <td>
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_bonus2" value="<?= $data->capacity_karyawan_bonus2 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
-                                                            <td><input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode2" value="<?= $data->capacity_karyawan_periode2 ?>" id="" required placeholder="Periode" />
+                                                            <td><input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode2" value="<?= $data->capacity_karyawan_periode2 ?>" id="" required placeholder="Tuliskan Periode per Tiga Bulan" />
                                                             </td>
                                                             <td>
                                                                 <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-periodik-karyawan" name="capacity_karyawan_nilai2" value="<?= $data->capacity_karyawan_nilai2 ?>" id="" data-type="currency" required placeholder="Nominal" />
@@ -1561,7 +1586,7 @@
                                                             <td>
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_bonus3" value="<?= $data->capacity_karyawan_bonus3 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
-                                                            <td><input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode3" value="<?= $data->capacity_karyawan_periode3 ?>" id="" required placeholder="Periode" />
+                                                            <td><input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode3" value="<?= $data->capacity_karyawan_periode3 ?>" id="" required placeholder="Tuliskan Periode per Tiga Bulan" />
                                                             </td>
                                                             <td>
                                                                 <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-periodik-karyawan" name="capacity_karyawan_nilai3" value="<?= $data->capacity_karyawan_nilai3 ?>" id="" data-type="currency" required placeholder="Nominal" />
@@ -2807,30 +2832,44 @@
 
                                     <div class="form-group element text-size form-margin">
                                         <label>Lampirkan Data</label><br>
-                                        <input type="file" name="tambah_lampiran[]" id="upload_file1">
+                                        <input class="text-size" type="file" name="tambah_lampiran[]" id="upload_file1">
+                                        <hr>
+                                        <div id="moreImageUpload"></div>
+                                        <div class="clear "></div>
+
+                                        <div id="moreImageUploadLink mt-5">
+                                            <a class="btn btn-secondary text-size" href="javascript:void(0);" id="attachMore"><b>Tambah form</b></a>
+                                            <button class="btn btn-primary text-size  float-right" type="submit"><b>Upload Lampiran</b></button>
+                                        </div>
                                     </div>
-                                    <hr>
                                     <div class="form-row">
                                         <div class="col-md-12">
-                                            <div class=" form-margin">
-                                                <div class="owl-carousel owl-theme mt-1">
-                                                    <div class="item" style="width: 200px; height: 100px;">
-                                                        <?php if (get_extension($data->lampiran_tambahan)) { ?>
-                                                            <div class="zoom-gallery">
-                                                                <a href="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>"><img src="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>" alt="" style="height:150px; width:300px;"></a>
+                                            <div class="form-margin mt-5">
+                                                <div class="owl-carousel owl-theme">
+                                                    <?php if ($data->lampiran_tambahan) { ?>
+                                                        <!-- Lampiran Tambahan -->
+                                                        <?php
+                                                        $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+                                                        foreach ($lampiran_tambahan as $upload) {
+                                                        ?>
+                                                            <div class="item" style="width: 300px; height: 150px;">
+                                                                <?php if (get_extension($upload)) { ?>
+                                                                    <div class="zoom-gallery">
+                                                                        <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>"><img class="item" src="<?= base_url('uploads/fs_konsumen/' . $upload) ?>" alt=""></a>
+                                                                    </div>
+                                                                <?php } else { ?>
+                                                                    <a href="<?= base_url('uploads/partners/' . $upload) ?>">
+                                                                        <div class="card text-center" style="width: 200px; height: 100px;" data-toggle="tooltip" title="<?= $upload ?>">
+                                                                            <i class="fa fa-file fa-5x"></i>
+                                                                        </div>
+                                                                    </a>
+                                                                <?php } ?>
                                                             </div>
-                                                        <?php } else { ?>
-                                                            <a href="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>">
-                                                                <div class="card text-center" style="height: 200px; width: 100px" data-toggle="tooltip" title="<?= $data->lampiran_tambahan ?>">
-                                                                    <i class="fa fa-file fa-5x"></i>
-                                                                </div>
-                                                            </a>
                                                         <?php } ?>
-                                                    </div>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary form-margin" type="submit">Upload Lampiran</button>
                                     </div>
                                 </div>
                             </div>
@@ -3594,9 +3633,9 @@
                 '<div class="form-group element text-size"><label for="upload_file"' +
                 upload_number + '>Lampirkan Data ' + '</label>' + '<br>';
             moreUploadTag += '<input type="file" id="upload_file' + '" name="tambah_lampiran[]"/>';
-            moreUploadTag += ' <a class="btn btn-secondary float-right" href="javascript:del_file(' +
+            moreUploadTag += ' <a class="text-size" href="javascript:del_file(' +
                 upload_number +
-                ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")">Hapus' +
+                ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")"><b class="text-danger">Hapus</b>' +
                 '</a></div>' + '<hr>';
             $('<dl id="delete_file' + upload_number + '">' + moreUploadTag + '</dl>').fadeIn('slow')
                 .appendTo('#moreImageUpload');
