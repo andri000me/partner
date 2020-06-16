@@ -665,7 +665,7 @@
                                                     <tr>
                                                         <th><label class="table-lable">NTF Murni</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="" data-type="currency" required placeholder="NTF Murni" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" value="<?= $data->purpose_ntf_murni ?>" id="" data-type="currency" required placeholder="NTF Murni" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -2795,7 +2795,7 @@
                             </div>
                         </form>
 
-                        <form action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
+                        <form method="POST" action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
                             <!-- Redirect -->
                             <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                             <!-- ID Leads -->
@@ -2816,12 +2816,11 @@
                                                 <div class="owl-carousel owl-theme mt-1">
                                                     <div class="item" style="width: 200px; height: 100px;">
                                                         <div class="zoom-gallery">
-                                                            <a href="<?= base_url('../template/assets/images/oldtrafford.jpg') ?>"><img class="item" src="<?= base_url('../template/assets/images/oldtrafford.jpg') ?>" alt=""></a>
+                                                            <a href="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>"><img src="<?= base_url('uploads/fs_konsumen/' . $data->lampiran_tambahan) ?>" alt="" style="height:150px; width:300px;"></a>
                                                         </div>
                                                         <a href="">
-                                                            <div class="card text-center" style="width: 200px; height: 100px;" data-toggle="tooltip" title="">
+                                                            <div class="card text-center" style="height: 200px; width: 100px" data-toggle="tooltip" title="<?= $data->lampiran_tambahan ?>">
                                                                 <i class="fa fa-file fa-5x"></i>
-                                                                <!-- <span class="small"></span> -->
                                                             </div>
                                                         </a>
                                                     </div>

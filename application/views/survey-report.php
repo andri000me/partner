@@ -102,12 +102,20 @@
                                             </td>
                                         <?php } ?>
                                         <td>
-                                            <b class="text-primary">Recommend</b><br>
-                                            <b class="text-danger">Not Recommend</b>
+                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
+                                                <b class="text-primary">Recommended</b><br>
+                                            <?php } ?>
+                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
+                                                <b class="text-danger">Not Recommended</b>
+                                            <?php } ?>
                                         </td>
                                         <td>
-                                            <b class="text-primary">Pass</b><br>
-                                            <b class="text-danger">Fail</b>
+                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
+                                                <b class="text-primary">Pass</b><br>
+                                            <?php } ?>
+                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
+                                                <b class="text-danger">Fail</b>
+                                            <?php } ?>
                                         </td>
                                         <td>
                                             <center>
@@ -183,12 +191,19 @@
                                             </td>
                                         <?php } ?>
                                         <td>
-                                            <b class="text-primary">Recommend</b><br>
-                                            <b class="text-danger">Not Recommend</b>
-                                        </td>
+                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
+                                                <b class="text-primary">Recommended</b><br>
+                                            <?php } ?>
+                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
+                                                <b class="text-danger">Not Recommended</b>
+                                            <?php } ?> </td>
                                         <td>
-                                            <b class="text-primary">Pass</b><br>
-                                            <b class="text-danger">Fail</b>
+                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
+                                                <b class="text-primary">Pass</b><br>
+                                            <?php } ?>
+                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
+                                                <b class="text-danger">Fail</b>
+                                            <?php } ?>
                                         </td>
                                         <td>
                                         </td>
@@ -267,12 +282,20 @@
                                             </td>
                                         <?php } ?>
                                         <td>
-                                            <b class="text-primary">Recommend</b><br>
-                                            <b class="text-danger">Not Recommend</b>
+                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
+                                                <b class="text-primary">Recommended</b><br>
+                                            <?php } ?>
+                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
+                                                <b class="text-danger">Not Recommended</b>
+                                            <?php } ?>
                                         </td>
                                         <td>
-                                            <b class="text-primary">Pass</b><br>
-                                            <b class="text-danger">Fail</b>
+                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
+                                                <b class="text-primary">Pass</b><br>
+                                            <?php } ?>
+                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
+                                                <b class="text-danger">Fail</b>
+                                            <?php } ?>
                                         </td>
                                         <td>
                                             <center>
