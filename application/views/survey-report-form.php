@@ -512,7 +512,7 @@
 
                     <!-- Tujuan Pembiayaan -->
                     <div class="tab-pane p-3" id="nav-pembiayaan" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
                             <!-- ID Leads -->
                             <input type="hidden" id="id_leads" name="id_leads" value="<?= $leads->id_leads ?>">
                             <!-- Level -->
@@ -765,7 +765,7 @@
 
                     <!-- kondisi konsumen -->
                     <div class="tab-pane p-3" id="nav-kondisi" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
 
                             <!-- kondisi konsumen jika karyawan -->
                             <?php if ($leads->pekerjaan_konsumen == 'Karyawan') { ?>
@@ -1500,7 +1500,7 @@
 
                     <!-- kapasitas konsumen -->
                     <div class="tab-pane p-3" id="nav-kapasitas" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
 
                             <!-- Kapasitas konsumen jika karyawan -->
                             <?php if ($leads->pekerjaan_konsumen == 'Karyawan') { ?>
@@ -2434,7 +2434,7 @@
 
                     <!-- konfirmasi karakter -->
                     <div class="tab-pane p-3" id="nav-karakter" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
 
                             <div class="card">
                                 <div class="card-body text-size">
@@ -2516,7 +2516,7 @@
 
                     <!-- Jaminan Kendaraan -->
                     <div class="tab-pane p-3" id="nav-jaminan" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
 
                             <div class="card">
                                 <div class="card-body text-size">
@@ -2559,8 +2559,8 @@
                                                     </option>
                                                     <option <?= $data->collateral_jenis == 'PU' ? 'selected' : '' ?> value="PU">
                                                         PU </option>
-                                                    <option <?= $data->collateral_jenis == 'Truck' ? 'selected' : '' ?> value="Truck ">Truck </option>
-                                                    <option <?= $data->collateral_jenis == 'SJMB' ? 'selected' : '' ?> value="SJMB ">SJMB </option>
+                                                    <option <?= $data->collateral_jenis == 'Truck' ? 'selected' : '' ?> value="Truck">Truck </option>
+                                                    <option <?= $data->collateral_jenis == 'SJMB' ? 'selected' : '' ?> value="SJMB">SJMB </option>
                                                     <option <?= $data->collateral_jenis == 'Heavy Truck' ? 'selected' : '' ?> value="Heavy Truck">Heavy Truck</option>
                                                 </select>
                                             </div>
@@ -2643,7 +2643,7 @@
 
                     <!-- Data Religi -->
                     <div class="tab-pane p-3" id="nav-religi" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
 
                             <div class="card">
                                 <div class="card-body text-size">
@@ -2802,7 +2802,7 @@
 
                     <!-- Data Hasil Analisa -->
                     <div class="tab-pane p-3" id="nav-score" role="tabpanel">
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
 
                             <div class="card">
                                 <div class="card-body text-size">
@@ -2875,7 +2875,7 @@
                             </div>
                         </form>
 
-                        <form id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
                             <!-- Penilaian Scoring -->
                             <div class="card">
                                 <div class="card-body text-size">
