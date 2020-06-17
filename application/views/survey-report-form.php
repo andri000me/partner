@@ -659,20 +659,13 @@
                                                         <th><label class="table-lable">Total
                                                                 Uang Muka</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_total_uang_muka" value="<?= $data->purpose_total_uang_muka ?>" id="" data-type="currency" required placeholder="Total Uang Muka" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_total_uang_muka" value="<?= $data->purpose_total_uang_muka ?>" id="" data-type="currency" required placeholder="Total Uang Muka" readonly />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">NTF Murni</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="" data-type="currency" required placeholder="NTF Murni" />
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th><label class="table-lable">Angsuran Per Bulan</label>
-                                                        </th>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_angsuran_per_bulan" value="<?= $data->purpose_angsuran_per_bulan ?>" id="" data-type="currency" required placeholder="Angsuran Per Bulan" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="" data-type="currency" required placeholder="NTF Murni" readonly />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -692,6 +685,13 @@
                                                                 <option <?= $data->purpose_lama_angsuran == '36 Bulan' ? 'selected' : '' ?> value="36 Bulan">36 Bulan</option>
                                                                 <option <?= $data->purpose_lama_angsuran == '48 Bulan' ? 'selected' : '' ?> value="48 Bulan">48 Bulan</option>
                                                             </select>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th><label class="table-lable">Angsuran Per Bulan</label>
+                                                        </th>
+                                                        <td>
+                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_angsuran_per_bulan" value="<?= $data->purpose_angsuran_per_bulan ?>" id="" data-type="currency" required placeholder="Angsuran Per Bulan" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -912,6 +912,8 @@
                                                     <select class="form-control text-size" name="condition_karyawan_pekerjaan_pasangan" id="condition_karyawan_pekerjaan_pasangan" required>
                                                         <option selected value="">Pilih Pekerjaan
                                                         </option>
+                                                        <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Ibu Rumah Tangga' ? 'selected' : '' ?> value="Ibu Rumah Tangga">Ibu Rumah Tangga
+                                                        </option>
                                                         <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Perhutanan' ? 'selected' : '' ?> value="Perhutanan">Perhutanan
                                                         </option>
                                                         <option <?= $data->condition_karyawan_pekerjaan_pasangan == 'Peternakan & Perikanan' ? 'selected' : '' ?> value="Peternakan & Perikanan">Peternakan &
@@ -939,7 +941,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 condition_karyawan_kerja_pasangan">
                                                 <div class="form-group form-right">
                                                     <label>Tempat Kerja / Usaha pasangan</label>
                                                     <input type="text" class="form-control text-size" name="condition_karyawan_tempat_kerja_pasangan" id="condition_karyawan_tempat_kerja_pasangan" value="<?= $data->condition_karyawan_tempat_kerja_pasangan ?>" placeholder="Tempat Kerja / Usaha pasangan" />
@@ -1225,6 +1227,8 @@
                                                     <select class="form-control text-size" name="condition_wir_pekerjaan_pasangan" id="condition_wir_pekerjaan_pasangan" required>
                                                         <option selected value="">Pilih Pekerjaan
                                                         </option>
+                                                        <option <?= $data->condition_wir_pekerjaan_pasangan == 'Ibu Rumah Tangga' ? 'selected' : '' ?> value="Ibu Rumah Tangga">
+                                                            Ibu Rumah Tangga</option>
                                                         <option <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Tetap' ? 'selected' : '' ?> value="Karyawan Swasta - Tetap">
                                                             Karyawan Swasta - Tetap</option>
                                                         <option <?= $data->condition_wir_pekerjaan_pasangan == 'Karyawan Swasta - Kontrak' ? 'selected' : '' ?> value="Karyawan Swasta - Kontrak">
@@ -1242,7 +1246,7 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 condition_wir_tempat_pasangan">
                                                 <div class="form-group form-right">
                                                     <label>Tempat Kerja / Usaha pasangan</label>
                                                     <input type="text" class="form-control text-size" name="condition_wir_tempat_kerja_pasangan" id="condition_wir_tempat_kerja_pasangan" value="<?= $data->condition_wir_tempat_kerja_pasangan ?>" placeholder="Tempat Kerja / Usaha pasangan" />
@@ -1683,7 +1687,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group form-right">
                                                     <label>Total Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_net_income" value="<?= $data->capacity_karyawan_total_net_income ?>" id="capacity_karyawan_total_net_income" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_net_income" value="<?= $data->capacity_karyawan_total_net_income ?>" id="capacity_karyawan_total_net_income" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -1823,13 +1827,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>Total Pengeluaran</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-right">
                                                     <label>Kelebihan Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -2263,7 +2267,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group form-margin">
                                                     <label>Sisa Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -3270,10 +3274,21 @@
         if ($('#condition_karyawan_pekerjaan_pasangan').val() == "Profesi Beresiko") {
             $('.resiko-pasangan-kar').show();
             $('#condition_karyawan_profesi_beresiko_pasangan').attr('required', 'required');
+            $('.condition_karyawan_kerja_pasangan').show();
+            $('#condition_karyawan_tempat_kerja_pasangan').attr('required', 'required');
+        } else if ($('#condition_karyawan_pekerjaan_pasangan').val() == "Ibu Rumah Tangga") {
+            $('.condition_karyawan_kerja_pasangan').hide();
+            $('#condition_karyawan_tempat_kerja_pasangan').val('');
+            $('#condition_karyawan_tempat_kerja_pasangan').attr('required', '');
+            $('.resiko-pasangan-kar').hide();
+            $('#condition_karyawan_profesi_beresiko_pasangan').removeAttr('required', '');
+            $('#condition_karyawan_profesi_beresiko_pasangan').val('');
         } else {
             $('.resiko-pasangan-kar').hide();
             $('#condition_karyawan_profesi_beresiko_pasangan').removeAttr('required', '');
             $('#condition_karyawan_profesi_beresiko_pasangan').val('');
+            $('.condition_karyawan_kerja_pasangan').show();
+            $('#condition_karyawan_tempat_kerja_pasangan').attr('required', 'required');
         }
     }
     // resiko pasangan karyawan
@@ -3301,9 +3316,21 @@
         if ($('#condition_wir_pekerjaan_pasangan').val() == "Profesi Beresiko") {
             $('.resiko-pasangan-wir').show();
             $('#condition_wir_profesi_beresiko_pasangan').attr('required', 'required');
+            $('.condition_wir_tempat_pasangan').show();
+            $('#condition_wir_tempat_kerja_pasangan').attr('required', 'required');
+        } else if ($('#condition_wir_pekerjaan_pasangan').val() == "Ibu Rumah Tangga") {
+            $('.condition_wir_tempat_pasangan').hide();
+            $('#condition_wir_tempat_kerja_pasangan').attr('required', '');
+            $('#condition_wir_tempat_kerja_pasangan').val('');
+            $('.resiko-pasangan-wir').hide();
+            $('#condition_wir_profesi_beresiko_pasangan').val('');
+            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', '');
         } else {
             $('.resiko-pasangan-wir').hide();
-            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required');
+            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', '');
+            $('#condition_wir_profesi_beresiko_pasangan').val('');
+            $('.condition_wir_tempat_pasangan').show();
+            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', 'rerquired');
         }
     }
 
