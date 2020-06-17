@@ -32,47 +32,47 @@
             <div class="mt-1 ml-5">
                 <p class="gede"><b>Yang harus Diisi</b></p>
 
-                <p class="mt-3 mb-0 sedeng">Personal Data</p>
+                <p class="mt-3 mb-0 sedeng">Data Diri</p>
                 <p class="mb-2 personal-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
                     Lengkap</p>
-                <p class="mb-2 personal-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+                <!-- <p class="mb-2 personal-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
                     Belum
-                    Lengkap</p>
+                    Lengkap</p> -->
 
-                <p class="mb-0 sedeng">Data Analisa</p>
+                <p class="mb-0 sedeng">Tujuan & Struktur</p>
                 <p class="mb-2 detail-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
                     Lengkap</p>
-                <p class="mb-2 detail-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+                <!-- <p class="mb-2 detail-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
                     Belum
-                    Lengkap</p>
+                    Lengkap</p> -->
 
-                <p class="mb-0 sedeng">Struktur Pembiayaan</p>
+                <p class="mb-0 sedeng">Kondisi & Aset</p>
                 <p class="mb-2 product-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
                     Lengkap</p>
-                <p class="mb-2 product-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+                <!-- <p class="mb-2 product-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
                     Belum
-                    Lengkap</p>
+                    Lengkap</p> -->
 
-                <p class="mb-0 sedeng">Data Religi</p>
+                <p class="mb-0 sedeng">Kapasitas</p>
                 <p class="mb-2 branch-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
                     Lengkap</p>
-                <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+                <!-- <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
                     Belum
-                    Lengkap</p>
+                    Lengkap</p> -->
 
-                <p class="mb-0 sedeng">Hasil Analisa</p>
+                <p class="mb-0 sedeng">karakter</p>
                 <p class="mb-2 branch-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
                     Lengkap</p>
-                <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+                <!-- <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
                     Belum
-                    Lengkap</p>
+                    Lengkap</p> -->
 
-                <p class="mb-0 sedeng">Lampiran Data</p>
+                <p class="mb-0 sedeng">Jaminan</p>
                 <p class="mb-2 branch-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
                     Lengkap</p>
-                <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
+                <!-- <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
                     Belum
-                    Lengkap</p>
+                    Lengkap</p> -->
 
                 <p class="gede mt-4"><b>Documents</b></p>
 
@@ -900,7 +900,7 @@
                                                         </option>
                                                         <option <?= $data->condition_karyawan_cara_gajian == 'Tunai' ? 'selected' : '' ?> value="Tunai">Tunai</option>
                                                         <option <?= $data->condition_karyawan_cara_gajian == 'Tranfer' ? 'selected' : '' ?> value="Tranfer">Transfer</option>
-                                                        <option <?= $data->condition_karyawan_cara_gajian == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">Lainnya [transfer]</option>
+                                                        <option <?= $data->condition_karyawan_cara_gajian == 'Lainnya' ? 'selected' : '' ?> value="Lainnya">Lainnya</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -1359,7 +1359,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    <!-- <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group form-left">
                                                 <label>Apakah ada hutang ditempat lain ?</label><br>
@@ -1377,7 +1377,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-margin mt-3">
                                         <p>Informasikan Lima Aset Berharga Yang Dimiliki</p>
                                         <div class="table-responsive">
@@ -3067,7 +3067,7 @@
 </div>
 <!-- Modal agent -->
 
-<script>
+<!-- <script>
     $('.personal-sudah, .detail-sudah, .product-sudah, .branch-sudah').hide();
 
     $(".konsumen").on("keypress keydown keyup", function() {
@@ -3085,7 +3085,7 @@
             $('.personal-sudah').hide();
         }
     });
-</script>
+</script> -->
 
 <script>
     $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
