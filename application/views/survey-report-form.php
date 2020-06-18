@@ -3013,19 +3013,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <b class="text-secondary">Draft</b>
-                                <b class="text-secondary">Mapping</b>
-                                <b class="text-success">Lengkap</b>
-                            </td>
-                            <td>
-                                <center><button class="btn btn-primary pilih-partner radius"><b>Pilih</b></button></center>
-                            </td>
-                        </tr>
+                        <?php foreach ($partners->result() as $partner) { ?>
+                            <tr>
+                                <td><?= $partner->nama_usaha ?></td>
+                                <td><?= $partner->kategori_produk ?></td>
+                                <td><?= $partner->telepon ?></td>
+                                <td>
+                                    <?php if ($partner->status == 'draft') { ?>
+                                        <b class="text-secondary">Draft</b>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'mapping') { ?>
+                                        <b class="text-secondary">Mapping</b>
+                                    <?php } ?>
+                                    <?php if ($partner->status == 'lengkap') { ?>
+                                        <b class="text-success">Lengkap</b>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-partner radius" data-partner="<?= $partner->id_partner ?>" data-vendor="<?= $partner->nama_usaha ?>"><b>Pilih</b></button></center>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -3052,13 +3060,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>
-                                <center><button class="btn btn-primary pilih-agent radius"><b>Pilih</b></button></center>
-                            </td>
-                        </tr>
+                        <?php foreach ($agents->result() as $agent) { ?>
+                            <tr>
+                                <td><?= $agent->nama_lengkap ?></td>
+                                <td><?= $agent->telepon ?></td>
+                                <td>
+                                    <center><button class="btn btn-primary pilih-agent radius" data-agent="<?= $agent->id_agent ?>" data-namaagent="<?= $agent->nama_lengkap ?>"><b>Pilih</b></button></center>
+                                </td>
+                            </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
@@ -3673,4 +3683,51 @@
         var ele = document.getElementById("delete_file" + eleId);
         ele.parentNode.removeChild(ele);
     }
+</script>
+
+<script>
+    $("table").on('click', '.pilih-partner', function() {
+        $('#id_partner').val($(this).data('partner'));
+        // $('#id_agent').val("");
+        $('#nama_vendor').val($(this).data('vendor'));
+        $('#nama_partner').val($(this).data('vendor'));
+        $('#modal-partner').modal('hide');
+    })
+    $("table").on('click', '.pilih-agent', function() {
+        $('#id_agent').val($(this).data('agent'));
+        // $('#id_partner').val("");
+        // $('#nama_vendor').val($(this).data('nama'));
+        $('#nama_agent').val($(this).data('namaagent'));
+        $('#modal-agent').modal('hide');
+    })
+    $("table").on('click', '.pilih-leads', function() {
+        $('#id_leads').val($(this).data('mapping'));
+        $('#soa').val($(this).data('soa'));
+        //EGC
+        $('#nik_egc').val($(this).data('nikegc'));
+        $('#posisi_egc').val($(this).data('posisiegc'));
+        $('#cabang_egc').val($(this).data('cabangegc'));
+        //CGC / RO
+        $('#nomor_kontrak').val($(this).data('kontrak'));
+        $('#referral_konsumen').val($(this).data('referral'));
+
+        //Data Leads
+        $('#produk').val($(this).data('produk'));
+        $('#telepon').val($(this).data('telepon'));
+        $('#nama_partner').val($(this).data('vendor'));
+        $('#detail_produk').val($(this).data('detail'));
+        $('#nama_event').val($(this).data('event'));
+        $('#nama_konsumen').val($(this).data('nama'));
+        $('#id_agent').val($(this).data('agent'));
+        $('#id_partner').val($(this).data('partner'));
+        $('#nama_partner').val($(this).data('namapartner'));
+        $('#nama_agent').val($(this).data('namaagent'));
+        $('#activity_marketing').val($(this).data('activity'));
+        $('#modal-leads').modal('hide');
+
+        $('#nama_konsumen').attr('readonly', 'readonly');
+        $('#reset').show()
+
+        source_leads();
+    })
 </script>
