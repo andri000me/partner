@@ -41,7 +41,7 @@ class Fs_konsumen extends CI_Controller
     {
         $where = ['leads_full.id_leads' => $id];
         $user_login = $this->fungsi->user_login();
-        $where_data = $user_login->level == 1 ? "id_user = $user_login->id_user" : ($user_login->level == 2 || $user_login == 3 ? "id_branch = $user_login->id_branch" : "1");
+        $where_data = $user_login->level == 1 ? "id_user = " . $user_login->id_user : (($user_login->level == 2 || $user_login->level == 3) ? "id_branch = " . $user_login->id_branch : "id_user IS NOT NULL");
         $data = [
             'data'              => $this->fs_konsumen_model->get($where)->row(),
             'leads'              => $this->leads_model->get($where)->row(),

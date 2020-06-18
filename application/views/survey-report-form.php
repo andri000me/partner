@@ -1341,16 +1341,16 @@
                                                 <select class="form-control text-size" name="capital_tempat_tinggal_milik" id="" required>
                                                     <option selected value="">Pilih Kategori Kepemilikan
                                                     </option>
-                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Sendiri - Lunas' ?> value="Milik Sendiri - Lunas">Milik Sendiri -
+                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Sendiri - Lunas' ? 'selected' : '' ?> value="Milik Sendiri - Lunas">Milik Sendiri -
                                                         Lunas</option>
-                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Sendiri - Kredit' ?> value="Milik Sendiri - Kredit">Milik Sendiri -
+                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Sendiri - Kredit' ? 'selected' : ''  ?> value="Milik Sendiri - Kredit">Milik Sendiri -
                                                         Kredit</option>
-                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Keluarga - Lunas' ?> value="Milik Keluarga - Lunas">Milik Keluarga -
+                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Keluarga - Lunas' ? 'selected' : ''  ?> value="Milik Keluarga - Lunas">Milik Keluarga -
                                                         Lunas</option>
-                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Keluarga - Kredit' ?> value="Milik Keluarga - Kredit">Milik Keluarga -
+                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Milik Keluarga - Kredit' ? 'selected' : ''  ?> value="Milik Keluarga - Kredit">Milik Keluarga -
                                                         Kredit</option>
-                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Kontrak / Sewa' ?> value="Kontrak / Sewa">Kontrak / Sewa</option>
-                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Dinas' ?> value="Dinas">
+                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Kontrak / Sewa' ? 'selected' : ''  ?> value="Kontrak / Sewa">Kontrak / Sewa</option>
+                                                    <option <?= $data->capital_tempat_tinggal_milik == 'Dinas' ? 'selected' : ''  ?> value="Dinas">
                                                         Dinas</option>
                                                 </select>
                                             </div>
@@ -2047,6 +2047,16 @@
                                                 </table>
                                             </div>
                                         </div>
+
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-margin">
+                                                    <label>Saldo Rekening Saat Ini</label>
+                                                    <input type="text" class="form-control text-size number-only" name="" value="" id="" data-type="currency" placeholder="Rp. 000000000" required />
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group form-margin">
@@ -2081,14 +2091,14 @@
                                                                     (Nett)</label>
                                                             </th>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr>
                                                             <td>
                                                                 <label class="table-lable">Saldo Rekening Saat Ini</label>
                                                             </td>
                                                             <td>
                                                                 <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
                                                             </td>
-                                                        </tr>
+                                                        </tr> -->
                                                         <tr>
                                                             <td>
                                                                 <label class="table-lable">Pendapatan Pasangan</label>
@@ -2187,6 +2197,15 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-row">
+                                            <div class="col-md-12">
+                                                <div class="form-group form-margin">
+                                                    <label>Sisa Pendapatan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class=" form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group form-margin">
@@ -2254,15 +2273,6 @@
                                                 </tr> -->
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row">
-                                            <div class="col-md-12">
-                                                <div class="form-group form-margin">
-                                                    <label>Sisa Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -2372,14 +2382,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
-                                                        <!-- <tr class="bg-light">
-                                                        <td>
-                                                            <label>Biaya Lainnya</label>
-                                                        </td>
-                                                        <td>
-                                                            <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
-                                                        </td>
-                                                    </tr> -->
+                                                        <tr>
+                                                            <td>
+                                                                <label>Biaya Lainnya</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -2391,7 +2401,15 @@
                                                     <tbody>
                                                         <tr class="bg-light">
                                                             <td>
-                                                                <label class="table-form-medium">Gross Profit</label>
+                                                                <label class="table-form-medium">Presentase Profit margin</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-light">
+                                                            <td>
+                                                                <label class="table-form-medium">Total Biaya Operasional</label>
                                                             </td>
                                                             <td>
                                                                 <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
@@ -2906,7 +2924,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_informasi_konsumen" value="<?= $data->hasil_scoring_nilai_informasi_konsumen ?>" id="" placeholder="Nilai" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" value="<?= $data->hasil_scoring_grade_informasi_konsumen ?>" id="" placeholder="Grade" />
+                                                                <select class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" required>
+                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                </select>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2917,7 +2942,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" value="<?= $data->hasil_scoring_grade_survey_konsumen ?>" id="" placeholder="Grade" />
+                                                                <select class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" required>
+                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                </select>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2928,7 +2960,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_penilaian_merchant" value="<?= $data->hasil_scoring_nilai_penilaian_merchant ?>" id="" placeholder="Nilai" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" value="<?= $data->hasil_scoring_grade_penilaian_merchant ?>" id="" placeholder="Grade" />
+                                                                <select class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" required>
+                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                </select>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2939,7 +2978,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_aset_kendaraan" value="<?= $data->hasil_scoring_nilai_aset_kendaraan ?>" id="" placeholder="Nilai" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" value="<?= $data->hasil_scoring_grade_aset_kendaraan ?>" id="" placeholder="Grade" />
+                                                                <select class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" required>
+                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                </select>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2950,7 +2996,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="hasil_scoring_nilai_tingkat_religiusitas" value="<?= $data->hasil_scoring_nilai_tingkat_religiusitas ?>" id="" placeholder="Nilai" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" value="<?= $data->hasil_scoring_grade_tingkat_religiusitas ?>" id="" placeholder="Grade" />
+                                                                <select class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" required>
+                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                </select>
                                                             </td>
                                                         </tr>
                                                     </tbody>
