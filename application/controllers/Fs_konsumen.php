@@ -30,7 +30,6 @@ class Fs_konsumen extends CI_Controller
             'data'      => $this->fs_konsumen_model->get($this->where),
             'unfinished'   => $this->fs_konsumen_model->get("tickets.status < 5 AND " . $this->where),
             'completed' => $this->fs_konsumen_model->get("tickets.status = 5 AND " . $this->where),
-
             'users'     => $this->user_model->get_all("users.id_branch = " . $this->fungsi->user_login()->id_branch)
         ];
 
