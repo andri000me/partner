@@ -1,3 +1,4 @@
+<button class="btn btn-secondary" onclick="topFunction()" id="myBtn" title="Go to top" style="right: 10px;"><i class="fas fa-angle-up"></i></button>
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-5">
@@ -494,7 +495,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Data Lainnya</label>
-                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
@@ -704,33 +705,31 @@
             var value = $(selector).val();
             if (value != '') {
                 $.ajax({
-                        url: '<?= base_url('
-                    partner / check_duplicate / ') ?>' + field + '/' + value,
-                        method: 'POST',
-                        data: {
-                            field: value
-                        },
-                        dataType: 'text',
-                        success: function(data) {
-                            if (data == 'available') {
-                                $(selector).removeClass("is-invalid");
-                                $(target).html("<span class='text text-success'>" + message +
-                                    " Tersedia!</span>");
-                            } else {
-                                $(selector).val("").addClass("is-invalid");
-                                $(target).html("<span class='text text-danger'>" + message + " '" + value +
-                                    "' sudah dipakai!</span>");
-                            }
+                    url: '<?= base_url('partner / check_duplicate / ') ?>' + field + '/' + value,
+                    method: 'POST',
+                    data: {
+                        field: value
+                    },
+                    dataType: 'text',
+                    success: function(data) {
+                        if (data == 'available') {
+                            $(selector).removeClass("is-invalid");
+                            $(target).html("<span class='text text-success'>" + message +
+                                " Tersedia!</span>");
+                        } else {
+                            $(selector).val("").addClass("is-invalid");
+                            $(target).html("<span class='text text-danger'>" + message + " '" + value +
+                                "' sudah dipakai!</span>");
                         }
                     }
                 })
+            }
         }
-    }
-    $("#telepon").blur(function() {
-        check_availabilty("telepon", "#telepon", "#telepon-availabilty", "Nomor telepon ini");
-    }) $("#email").blur(function() {
-        check_availabilty("email", "#email", "#email-availabilty", "Email ini");
-    })
+        $("#telepon").blur(function() {
+            check_availabilty("telepon", "#telepon", "#telepon-availabilty", "Nomor telepon ini");
+        }) $("#email").blur(function() {
+            check_availabilty("email", "#email", "#email-availabilty", "Email ini");
+        })
     })
 </script>
 

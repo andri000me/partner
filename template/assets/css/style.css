@@ -3912,7 +3912,6 @@ input[data-readonly] {
 	display: none;
 	position: fixed;
 	bottom: 90px;
-	right: 1px;
 	z-index: 99;
 	font-size: 20px;
 	border-radius: 25px;
