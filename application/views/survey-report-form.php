@@ -348,7 +348,7 @@
                                                 <select class=" form-control text-size" name="luas_rumah" id="luas_rumah">
                                                     <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
                                                     <option <?= $leads->luas_rumah == '< 60 M2' ? 'selected' : '' ?> value="< 60 M2">
-                                                        < 60 M2</option> <option <?= $leads->luas_rumah == '60 - 100 M' ? 'selected' : '' ?> value="60 - 100 M2">60 - 100 M2
+                                                        < 60 M2</option> <option <?= $leads->luas_rumah == '60 - 100 M2' ? 'selected' : '' ?> value="60 - 100 M2">60 - 100 M2
                                                     </option>
                                                     <option <?= $leads->luas_rumah == '100 - 150 M2' ? 'selected' : '' ?> value="100 - 150 M2">100 - 150 M2
                                                     </option>
@@ -512,7 +512,7 @@
 
                     <!-- Tujuan Pembiayaan -->
                     <div class="tab-pane p-3" id="nav-pembiayaan" role="tabpanel">
-                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
+                        <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>" autocomplete="off">
                             <!-- ID Leads -->
                             <input type="hidden" id="id_leads" name="id_leads" value="<?= $leads->id_leads ?>">
                             <!-- Level -->
@@ -615,7 +615,7 @@
                                                                 merchant</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border number-only table-form-medium" name="purpose_harga_beli_ke_merchant" value="<?= $data->purpose_harga_beli_ke_merchant ?>" id="" data-type="currency" required placeholder="Harga Beli ke Merchant" />
+                                                            <input type="text" class="form-control text-size form-border number-only table-form-medium" name="purpose_harga_beli_ke_merchant" value="<?= $data->purpose_harga_beli_ke_merchant ?>" id="purpose_harga_beli_ke_merchant" data-type="currency" required placeholder="Harga Beli ke Merchant" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -624,48 +624,48 @@
                                                                 Jual ke Konsumen</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_harga_jual_ke_konsumen" value="<?= $data->purpose_harga_jual_ke_konsumen ?>" id="" data-type="currency" required placeholder="Harga Jual ke Konsumen" />
+                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_harga_jual_ke_konsumen" value="<?= $data->purpose_harga_jual_ke_konsumen ?>" id="purpose_harga_jual_ke_konsumen" data-type="currency" required placeholder="Harga Jual ke Konsumen" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Uang
                                                                 Muka</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_uang_muka" value="<?= $data->purpose_uang_muka ?>" id="" data-type="currency" required placeholder="Uang Muka" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_uang_muka" value="<?= $data->purpose_uang_muka ?>" id="purpose_uang_muka" data-type="currency" required placeholder="Uang Muka" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Biaya
                                                                 Administrasi</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_biaya_administrasi" value="<?= $data->purpose_biaya_administrasi ?>" id="" data-type="currency" required placeholder="Biaya Administrasi" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_biaya_administrasi" value="<?= $data->purpose_biaya_administrasi ?>" id="purpose_biaya_administrasi" data-type="currency" required placeholder="Biaya Administrasi" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Asuransi
                                                                 Jiwa</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_jiwa" value="<?= $data->purpose_asuransi_jiwa ?>" id="" data-type="currency" required placeholder="Asuransi Jiwa" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_jiwa" value="<?= $data->purpose_asuransi_jiwa ?>" id="purpose_asuransi_jiwa" data-type="currency" required placeholder="Asuransi Jiwa" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Asuransi
                                                                 kendaraan</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_kendaraan" value="<?= $data->purpose_asuransi_kendaraan ?>" id="" data-type="currency" required placeholder="Asuransi Kendaraan" />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_asuransi_kendaraan" value="<?= $data->purpose_asuransi_kendaraan ?>" id="purpose_asuransi_kendaraan" data-type="currency" required placeholder="Asuransi Kendaraan" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">Total
                                                                 Uang Muka</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_total_uang_muka" value="<?= $data->purpose_total_uang_muka ?>" id="" data-type="currency" required placeholder="Total Uang Muka" readonly />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_total_uang_muka" value="<?= $data->purpose_total_uang_muka ?>" id="purpose_total_uang_muka" data-type="currency" required placeholder="Total Uang Muka" readonly />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <th><label class="table-lable">NTF Murni</label>
                                                         </th>
-                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="" data-type="currency" required placeholder="NTF Murni" readonly />
+                                                        <td><input type="text" class="form-control text-size form-border number-only" name="purpose_ntf_murni" id="purpose_ntf_murni" data-type="currency" required placeholder="NTF Murni" readonly />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -674,16 +674,16 @@
                                                         </th>
                                                         <td>
                                                             <!-- <input type="text" class="form-control text-size form-border number-only" name="purpose_lama_angsuran" value="<?= $data->purpose_lama_angsuran ?>" id="" data-type="currency" required placeholder="Lama Angsuran" /> -->
-                                                            <select class="form-control text-size form-border" name="purpose_lama_angsuran" id="" required>
+                                                            <select class="form-control text-size form-border" name="purpose_lama_angsuran" id="purpose_lama_angsuran" required>
                                                                 <option selected value="">Pilih Lama Angsuran
                                                                 </option>
-                                                                <option <?= $data->purpose_lama_angsuran == '3 Bulan' ? 'selected' : '' ?> value="3 Bulan">3 Bulan</option>
-                                                                <option <?= $data->purpose_lama_angsuran == '6 Bulan' ? 'selected' : '' ?> value="6 Bulan">6 Bulan</option>
-                                                                <option <?= $data->purpose_lama_angsuran == '12 Bulan' ? 'selected' : '' ?> value="12 Bulan">12 Bulan</option>
-                                                                <option <?= $data->purpose_lama_angsuran == '18 Bulan' ? 'selected' : '' ?> value="18 Bulan">18 Bulan</option>
-                                                                <option <?= $data->purpose_lama_angsuran == '24 Bulan' ? 'selected' : '' ?> value="24 Bulan">24 Bulan</option>
-                                                                <option <?= $data->purpose_lama_angsuran == '36 Bulan' ? 'selected' : '' ?> value="36 Bulan">36 Bulan</option>
-                                                                <option <?= $data->purpose_lama_angsuran == '48 Bulan' ? 'selected' : '' ?> value="48 Bulan">48 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '3' ? 'selected' : '' ?> value="3">3 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '6' ? 'selected' : '' ?> value="6">6 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '12' ? 'selected' : '' ?> value="12">12 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '18' ? 'selected' : '' ?> value="18">18 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '24' ? 'selected' : '' ?> value="24">24 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '36' ? 'selected' : '' ?> value="36">36 Bulan</option>
+                                                                <option <?= $data->purpose_lama_angsuran == '48' ? 'selected' : '' ?> value="48">48 Bulan</option>
                                                             </select>
                                                         </td>
                                                     </tr>
@@ -691,7 +691,7 @@
                                                         <th><label class="table-lable">Angsuran Per Bulan</label>
                                                         </th>
                                                         <td>
-                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_angsuran_per_bulan" value="<?= $data->purpose_angsuran_per_bulan ?>" id="" data-type="currency" required placeholder="Angsuran Per Bulan" readonly />
+                                                            <input type="text" class="form-control text-size form-border number-only" name="purpose_angsuran_per_bulan" value="<?= $data->purpose_angsuran_per_bulan ?>" id="purpose_angsuran_per_bulan" data-type="currency" required placeholder="Angsuran Per Bulan" readonly />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -1409,7 +1409,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only form-border aset-konsumen" name="capital_harga1" value="<?= $data->capital_harga1 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                            <input type="text" class="form-control text-size number-only form-border aset-konsumen" name="capital_harga1" value="<?= $data->capital_harga1 ?>" id="capital_harga1" data-type="currency" required placeholder="Harga Jual Pasar" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1424,7 +1424,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga2" value="<?= $data->capital_harga2 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga2" value="<?= $data->capital_harga2 ?>" id="capital_harga2" data-type="currency" required placeholder="Harga Jual Pasar" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1439,7 +1439,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga3" value="<?= $data->capital_harga3 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga3" value="<?= $data->capital_harga3 ?>" id="capital_harga3" data-type="currency" required placeholder="Harga Jual Pasar" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1454,7 +1454,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga4" value="<?= $data->capital_harga4 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga4" value="<?= $data->capital_harga4 ?>" id="capital_harga4" data-type="currency" required placeholder="Harga Jual Pasar" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -1469,7 +1469,7 @@
                                                             </select>
                                                         </td>
                                                         <td>
-                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga5" value="<?= $data->capital_harga5 ?>" id="" data-type="currency" required placeholder="Harga Jual Pasar" />
+                                                            <input type="text" class="form-control text-size number-only  form-border aset-konsumen" name="capital_harga5" value="<?= $data->capital_harga5 ?>" id="capital_harga5" data-type="currency" required placeholder="Harga Jual Pasar" />
                                                         </td>
                                                     </tr>
                                                     <tr class="bg-light">
@@ -1512,13 +1512,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>Pendapatan Berupa (Gaji)</label>
-                                                    <input type="text" class="form-control text-size number-only pendapatan-karyawan" name="capacity_karyawan_income_bruto" value="<?= $data->capacity_karyawan_income_bruto ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only pendapatan-karyawan" name="capacity_karyawan_income_bruto" value="<?= $data->capacity_karyawan_income_bruto ?>" id="capacity_karyawan_income_bruto" data-type="currency" placeholder="Rp. 000000000" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-right">
                                                     <label>Take Home Pay</label>
-                                                    <input type="text" class="form-control text-size number-only pendapatan-karyawan" name="capacity_karyawan_income_thp" value="<?= $data->capacity_karyawan_income_thp ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only pendapatan-karyawan" name="capacity_karyawan_income_thp" value="<?= $data->capacity_karyawan_income_thp ?>" id="capacity_karyawan_income_thp" data-type="currency" placeholder="Rp. 000000000" />
                                                 </div>
                                             </div>
                                         </div>
@@ -1567,7 +1567,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode1" value="<?= $data->capacity_karyawan_periode1 ?>" id="" required placeholder="Tuliskan Periode per Tiga Bulan" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-periodik-karyawan" name="capacity_karyawan_nilai1" value="<?= $data->capacity_karyawan_nilai1 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_nilai1" value="<?= $data->capacity_karyawan_nilai1 ?>" id="capacity_karyawan_nilai1" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1577,7 +1577,7 @@
                                                             <td><input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode2" value="<?= $data->capacity_karyawan_periode2 ?>" id="" required placeholder="Tuliskan Periode per Tiga Bulan" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-periodik-karyawan" name="capacity_karyawan_nilai2" value="<?= $data->capacity_karyawan_nilai2 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_nilai2" value="<?= $data->capacity_karyawan_nilai2 ?>" id="capacity_karyawan_nilai2" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1587,7 +1587,7 @@
                                                             <td><input type="text" class="form-control text-size form-border" name="capacity_karyawan_periode3" value="<?= $data->capacity_karyawan_periode3 ?>" id="" required placeholder="Tuliskan Periode per Tiga Bulan" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-periodik-karyawan" name="capacity_karyawan_nilai3" value="<?= $data->capacity_karyawan_nilai3 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_nilai3" value="<?= $data->capacity_karyawan_nilai3 ?>" id="capacity_karyawan_nilai3" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr class="bg-light">
@@ -1641,7 +1641,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_income_lainnya1" value="<?= $data->capacity_karyawan_income_lainnya1 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain1" value="<?= $data->capacity_karyawan_nilai_lain1 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain1" value="<?= $data->capacity_karyawan_nilai_lain1 ?>" id="capacity_karyawan_nilai_lain1" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1649,7 +1649,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_income_lainnya2" value="<?= $data->capacity_karyawan_income_lainnya2 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain2" value="<?= $data->capacity_karyawan_nilai_lain2 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain2" value="<?= $data->capacity_karyawan_nilai_lain2 ?>" id="capacity_karyawan_nilai_lain2" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <!-- <tr class="bg-light">
@@ -1669,13 +1669,13 @@
                                             <div class="col-md-4">
                                                 <div class="form-group form-left">
                                                     <label>Saldo Rekening Saat ini</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_saldo_rekening" value="<?= $data->capacity_karyawan_saldo_rekening ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_saldo_rekening" value="<?= $data->capacity_karyawan_saldo_rekening ?>" id="capacity_karyawan_saldo_rekening" data-type="currency" placeholder="Rp. 000000000" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group form-center">
                                                     <label>Pendapatan Pasangan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_income_pasangan" value="<?= $data->capacity_karyawan_income_pasangan ?>" id="" data-type="currency" placeholder="Rp. 000000000" />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_income_pasangan" value="<?= $data->capacity_karyawan_income_pasangan ?>" id="capacity_karyawan_income_pasangan" data-type="currency" placeholder="Rp. 000000000" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
@@ -1699,7 +1699,7 @@
                                                                     pendidikan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan table-form-medium" name="capacity_karyawan_outcome_pendidikan" value="<?= $data->capacity_karyawan_outcome_pendidikan ?>" id="" data-type="currency" required placeholder="Biaya
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan table-form-medium" name="capacity_karyawan_outcome_pendidikan" value="<?= $data->capacity_karyawan_outcome_pendidikan ?>" id="capacity_karyawan_outcome_pendidikan" data-type="currency" required placeholder="Biaya
 																					pendidikan" />
                                                             </td>
                                                         </tr>
@@ -1710,7 +1710,7 @@
                                                                     Tangga</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_rumah" value="<?= $data->capacity_karyawan_outcome_rumah ?>" id="" data-type="currency" required placeholder="Biaya Rumah
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_rumah" value="<?= $data->capacity_karyawan_outcome_rumah ?>" id="capacity_karyawan_outcome_rumah" data-type="currency" required placeholder="Biaya Rumah
 																					Tangga" />
                                                             </td>
                                                         </tr>
@@ -1720,7 +1720,7 @@
                                                                     Internet / Pulsa / Listrik</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_listrik" value="<?= $data->capacity_karyawan_outcome_listrik ?>" id="" data-type="currency" required placeholder="Biaya
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_listrik" value="<?= $data->capacity_karyawan_outcome_listrik ?>" id="capacity_karyawan_outcome_listrik" data-type="currency" required placeholder="Biaya
 																					Internet / Pulsa / Listrik" />
                                                             </td>
                                                         </tr>
@@ -1730,7 +1730,7 @@
                                                                     - Lain</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="" data-type="currency" required placeholder="Biaya Lain - Lain" />
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="capacity_karyawan_outcome_lainnya" data-type="currency" required placeholder="Biaya Lain - Lain" />
                                                             </td>
                                                         </tr>
                                                         <!-- <tr class="bg-light">
@@ -1786,7 +1786,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang1" value="<?= $data->capacity_karyawan_hutang1 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang1" value="<?= $data->capacity_karyawan_nilai_hutang1 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang1" value="<?= $data->capacity_karyawan_nilai_hutang1 ?>" id="capacity_karyawan_nilai_hutang1" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1794,7 +1794,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang2" value="<?= $data->capacity_karyawan_hutang2 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang2" value="<?= $data->capacity_karyawan_nilai_hutang2 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang2" value="<?= $data->capacity_karyawan_nilai_hutang2 ?>" id="capacity_karyawan_nilai_hutang2" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -1802,7 +1802,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_karyawan_hutang3" value="<?= $data->capacity_karyawan_hutang3 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang3" value="<?= $data->capacity_karyawan_nilai_hutang3 ?>" id="" data-type="currency" required placeholder="Nominal" />
+                                                                <input type="text" class="form-control text-size number-only form-border hutang-karyawan" name="capacity_karyawan_nilai_hutang3" value="<?= $data->capacity_karyawan_nilai_hutang3 ?>" id="capacity_karyawan_nilai_hutang3" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <!-- <tr class="bg-light">
@@ -1821,13 +1821,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>Total Pengeluaran</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="capacity_karyawan_total_outcome" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-right">
                                                     <label>Kelebihan Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="capacity_karyawan_kelebihan_net_income" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -1880,7 +1880,7 @@
                                                                         Bulan Pertama</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-mutasi table-form-medium" name="capacity_wir_mutasi1" value="<?= $data->capacity_wir_mutasi1 ?>" id="" data-type="currency" required placeholder="Bulan Pertama" />
+                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-mutasi table-form-medium" name="capacity_wir_mutasi1" value="<?= $data->capacity_wir_mutasi1 ?>" id="capacity_wir_mutasi1" data-type="currency" required placeholder="Bulan Pertama" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1889,7 +1889,7 @@
                                                                         Bulan Kedua</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-mutasi" name="capacity_wir_mutasi2" value="<?= $data->capacity_wir_mutasi2 ?>" id="" data-type="currency" required placeholder="Bulan Kedua" />
+                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-mutasi" name="capacity_wir_mutasi2" value="<?= $data->capacity_wir_mutasi2 ?>" id="capacity_wir_mutasi2" data-type="currency" required placeholder="Bulan Kedua" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1898,7 +1898,7 @@
                                                                         Bulan Ketiga</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-mutasi" name="capacity_wir_mutasi3" value="<?= $data->capacity_wir_mutasi3 ?>" id="" data-type="currency" required placeholder="Bulan Ketiga" />
+                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-mutasi" name="capacity_wir_mutasi3" value="<?= $data->capacity_wir_mutasi3 ?>" id="capacity_wir_mutasi3" data-type="currency" required placeholder="Bulan Ketiga" />
                                                                 </td>
                                                             </tr>
                                                             <tr class="bg-light">
@@ -1926,7 +1926,7 @@
                                                                         Bulan Pertama</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-nota table-form-medium" name="capacity_wir_nota1" value="<?= $data->capacity_wir_nota1 ?>" id="" data-type="currency" required placeholder="Bulan Pertama" />
+                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-nota table-form-medium" name="capacity_wir_nota1" value="<?= $data->capacity_wir_nota1 ?>" id="capacity_wir_nota1" data-type="currency" required placeholder="Bulan Pertama" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1935,7 +1935,7 @@
                                                                         Bulan Kedua</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-nota" name="capacity_wir_nota2" value="<?= $data->capacity_wir_nota2 ?>" id="" data-type="currency" required placeholder="Bulan Kedua" />
+                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-nota" name="capacity_wir_nota2" value="<?= $data->capacity_wir_nota2 ?>" id="capacity_wir_nota2" data-type="currency" required placeholder="Bulan Kedua" />
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -1944,7 +1944,7 @@
                                                                         Bulan Ketiga</label>
                                                                 </td>
                                                                 <td>
-                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-nota" name="capacity_wir_nota3" value="<?= $data->capacity_wir_nota3 ?>" id="" data-type="currency" required placeholder="Bulan Ketiga" />
+                                                                    <input type="text" class="form-control text-size number-only form-border wiraswasta-nota" name="capacity_wir_nota3" value="<?= $data->capacity_wir_nota3 ?>" id="capacity_wir_nota3" data-type="currency" required placeholder="Bulan Ketiga" />
                                                                 </td>
                                                             </tr>
                                                             <tr class="bg-light">
@@ -1973,7 +1973,7 @@
                                                                     (Jika sewa)</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border total-operasional-wiraswasta table-form-medium" name="capacity_wir_sewa" value="<?= $data->capacity_wir_sewa ?>" id="" data-type="currency" required placeholder="Biaya
+                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="capacity_wir_sewa" value="<?= $data->capacity_wir_sewa ?>" id="capacity_wir_sewa" data-type="currency" required placeholder="Biaya
 																				Sewa" />
                                                             </td>
                                                         </tr>
@@ -1983,7 +1983,7 @@
                                                                     Perbulan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border total-operasional-wiraswasta" name="capacity_wir_payroll" value="<?= $data->capacity_wir_payroll ?>" id="" data-type="currency" required placeholder="Gaji Karyawan
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_payroll" value="<?= $data->capacity_wir_payroll ?>" id="capacity_wir_payroll" data-type="currency" required placeholder="Gaji Karyawan
 																				Perbulan" />
                                                             </td>
                                                         </tr>
@@ -1993,7 +1993,7 @@
                                                                     Internet / Pulsa / Listrik</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border total-operasional-wiraswasta" name="capacity_wir_internet" value="<?= $data->capacity_wir_internet ?>" id="" data-type="currency" required placeholder="Biaya
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_internet" value="<?= $data->capacity_wir_internet ?>" id="capacity_wir_internet" data-type="currency" required placeholder="Biaya
 																				Internet / Pulsa / Listrik" />
                                                             </td>
                                                         </tr>
@@ -2003,7 +2003,7 @@
                                                                     lainnya</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border total-operasional-wiraswasta" name="capacity_wir_lainnya" value="<?= $data->capacity_wir_lainnya ?>" id="" data-type="currency" required placeholder="Biaya lainny" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_lainnya" value="<?= $data->capacity_wir_lainnya ?>" id="capacity_wir_lainnya" data-type="currency" required placeholder="Biaya lainny" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2104,7 +2104,7 @@
                                                                 <label class="table-lable">Pendapatan Pasangan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_income_pasangan" value="<?= $data->capacity_wir_income_pasangan ?>" id="capacity_wir_income_pasangan" data-type="currency" required placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2112,7 +2112,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_wir_income_lain1" value="<?= $data->capacity_wir_income_lain1 ?>" id="" required placeholder="Pendapatan Lainnya" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain1" value="<?= $data->capacity_wir_nilai_lain1 ?>" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain1" value="<?= $data->capacity_wir_nilai_lain1 ?>" id="capacity_wir_nilai_lain1" data-type="currency" required placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2120,7 +2120,7 @@
                                                                 <input type="text" class="form-control text-size form-border" name="capacity_wir_income_lain2" value="<?= $data->capacity_wir_income_lain2 ?>" id="" required placeholder="Pendapatan lainnya" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain2" value="<?= $data->capacity_wir_nilai_lain2 ?>" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan-wiraswasta-lainnya" name="capacity_wir_nilai_lain2" value="<?= $data->capacity_wir_nilai_lain2 ?>" id="capacity_wir_nilai_lain2" data-type="currency" required placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                         <tr class="bg-light">
@@ -2149,7 +2149,7 @@
                                                                     pendidikan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta table-form-medium" name="capacity_wir_outcome_pendidikan" value="<?= $data->capacity_wir_outcome_pendidikan ?>" id="" data-type="currency" required placeholder="Biaya
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta table-form-medium" name="capacity_wir_outcome_pendidikan" value="<?= $data->capacity_wir_outcome_pendidikan ?>" id="capacity_wir_outcome_pendidikan" data-type="currency" required placeholder="Biaya
 																					pendidikan" />
                                                             </td>
                                                         </tr>
@@ -2160,7 +2160,7 @@
                                                                     Tangga</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_rumah_tangga" value="<?= $data->capacity_wir_outcome_rumah_tangga ?>" id="" data-type="currency" required placeholder="Biaya Rumah
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_rumah_tangga" value="<?= $data->capacity_wir_outcome_rumah_tangga ?>" id="capacity_wir_outcome_rumah_tangga" data-type="currency" required placeholder="Biaya Rumah
 																					Tangga" />
                                                             </td>
                                                         </tr>
@@ -2170,7 +2170,7 @@
                                                                     Internet / Pulsa / Listrik</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_internet" value="<?= $data->capacity_wir_outcome_internet ?>" id="" data-type="currency" required placeholder="Biaya
+                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-wiraswasta" name="capacity_wir_outcome_internet" value="<?= $data->capacity_wir_outcome_internet ?>" id="capacity_wir_outcome_internet" data-type="currency" required placeholder="Biaya
 																					Internet / Pulsa / Listrik" />
                                                             </td>
                                                         </tr>
@@ -2180,7 +2180,7 @@
                                                                     - Lain</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border pengeluaran-karyawan" name="capacity_karyawan_outcome_lainnya" value="<?= $data->capacity_karyawan_outcome_lainnya ?>" id="" data-type="currency" required placeholder="Biaya Lain - Lain" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_outcome_lainnya" value="<?= $data->capacity_wir_outcome_lainnya ?>" id="capacity_wir_outcome_lainnya" data-type="currency" required placeholder="Biaya Lain - Lain" />
                                                             </td>
                                                         </tr>
                                                         <tr class="bg-light">
@@ -2201,7 +2201,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group form-margin">
                                                     <label>Sisa Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="capacity_karyawan_kelebihan_net_income" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -2363,7 +2363,7 @@
                                                                 <label class="table-form-medium">Biaya Sewa (Jika Sewa)</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="capacity_wir_sewa_duplicate" data-type="currency" readonly placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2371,7 +2371,7 @@
                                                                 <label>Gaji Karyawan Perbulan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="capacity_wir_payroll_duplicate" data-type="currency" readonly placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2379,7 +2379,7 @@
                                                                 <label>Biaya Listrik / Internet / Pulsa</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="capacity_wir_internet_duplicate" data-type="currency" readonly placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -2387,7 +2387,7 @@
                                                                 <label>Biaya Lainnya</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="capacity_wir_lainnya_duplicate" data-type="currency" readonly placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2573,10 +2573,9 @@
                                                 <select class="form-control text-size" name="collateral_jenis" id="" required>
                                                     <option selected value="">Pilih jenis Kendaraan
                                                     </option>
-                                                    <option <?= $data->collateral_jenis == 'PU' ? 'selected' : '' ?> value="PU">
-                                                        PU </option>
-                                                    <option <?= $data->collateral_jenis == 'Truck' ? 'selected' : '' ?> value="Truck">Truck </option>
-                                                    <option <?= $data->collateral_jenis == 'SJMB' ? 'selected' : '' ?> value="SJMB">SJMB </option>
+                                                    <option <?= $data->collateral_jenis == 'PU' ? 'selected' : '' ?> value="PU">PU</option>
+                                                    <option <?= $data->collateral_jenis == 'Truck' ? 'selected' : '' ?> value="Truck">Truck</option>
+                                                    <option <?= $data->collateral_jenis == 'SJMB' ? 'selected' : '' ?> value="SJMB">SJMB</option>
                                                     <option <?= $data->collateral_jenis == 'Heavy Truck' ? 'selected' : '' ?> value="Heavy Truck">Heavy Truck</option>
                                                 </select>
                                             </div>
@@ -2901,7 +2900,7 @@
                                         <div class="form-margin mt-3">
                                             <div class="table-responsive">
                                                 <p>Tabel Penilaian</p>
-                                                <table class="table table-hover">
+                                                <table class="table table-hover scoring_ho">
                                                     <thead>
                                                         <tr>
                                                             <th>
@@ -2925,11 +2924,11 @@
                                                             </td>
                                                             <td>
                                                                 <select class="form-control text-size form-border" name="hasil_scoring_grade_informasi_konsumen" required>
-                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option selected value="">Pilih Grade</option>
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
-                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
                                                                 </select>
                                                             </td>
@@ -2943,11 +2942,11 @@
                                                             </td>
                                                             <td>
                                                                 <select class="form-control text-size form-border" name="hasil_scoring_grade_survey_konsumen" required>
-                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option selected value="">Pilih Grade</option>
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
-                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
                                                                 </select>
                                                             </td>
@@ -2961,11 +2960,11 @@
                                                             </td>
                                                             <td>
                                                                 <select class="form-control text-size form-border" name="hasil_scoring_grade_penilaian_merchant" required>
-                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option selected value="">Pilih Grade</option>
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
-                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
                                                                 </select>
                                                             </td>
@@ -2979,11 +2978,11 @@
                                                             </td>
                                                             <td>
                                                                 <select class="form-control text-size form-border" name="hasil_scoring_grade_aset_kendaraan" required>
-                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option selected value="">Pilih Grade</option>
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
-                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
                                                                 </select>
                                                             </td>
@@ -2997,11 +2996,11 @@
                                                             </td>
                                                             <td>
                                                                 <select class="form-control text-size form-border" name="hasil_scoring_grade_tingkat_religiusitas" required>
-                                                                    <option selected value="">Pilih Status Barang</option>
+                                                                    <option selected value="">Pilih Grade</option>
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 1' ? 'selected' : '' ?> value="Grade 1">Grade 1</option>
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 2' ? 'selected' : '' ?> value="Grade 2">Grade 2</option>
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
-                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Garde 4' ? 'selected' : '' ?> value="Garde 4">Garde 4</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
                                                                 </select>
                                                             </td>
@@ -3012,7 +3011,7 @@
                                         </div>
                                         <div class="form-group form-margin">
                                             <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
-                                            <select class="form-control text-size" name="is_recommended" id="" required>
+                                            <select class="form-control text-size scoring_ho" name="is_recommended" id="" required>
                                                 <option selected value="">Pilih Jawaban</option>
                                                 <option <?= $data->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
                                                 <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
@@ -3020,7 +3019,7 @@
                                         </div>
                                         <div class="form-group form-margin float-right mt-5">
                                             <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                            <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Score</b></button>
+                                            <a href="<?= base_url("fs_konsumen") ?>" class="btn btn-primary waves-effect waves-light submit text-size"><b>Score</b></a>
                                         </div>
                                     </div>
                                 </div>
@@ -3223,6 +3222,9 @@
         e.preventDefault();
     });
 </script>
+
+<script src="<?= base_url('template/assets/js/kalkulasi.js') ?>"></script>
+
 
 <script>
     $('.ro-active, .pasangan, .pasangan-kar, .pasangan-wir, .resiko, .resiko-pasangan').hide();
@@ -3588,116 +3590,15 @@
     })
 </script>
 
-<script>
-    $(document).ready(function() {
-        function sum(hitung, hasil) {
-            var total = 0;
-            $(hitung).each(function() {
-                if ($(this).val() == '') {
-                    $(this).val('0');
-                    $(this).select();
-                }
-                total = total + parseInt($(this).val().replace(/,/g, ''));
-            })
-            $(hasil).val(total);
-        }
-
-        function average(hitung, hasil) {
-            var total = 0;
-            var jumlah_field = 0;
-            $(hitung).each(function() {
-                jumlah_field++;
-                total = total + parseInt($(this).val().replace(/,/g, ''));
-            })
-            $(hasil).val(total / jumlah_field);
-        }
-        $("input").on("input", function() {
-            // tanggungan karyawan
-            sum(".tanggungan-karyawan", "#condition_karyawan_tanggungan_total")
-
-            // tanggungan wiraswasta
-            sum(".tanggungan-wiraswasta", "#condition_wir_tanggungan_total")
-
-            // mutasi wiraswasta
-            average(".wiraswasta-mutasi", "#capacity_wir_avr_mutasi")
-            // nota wiraswasta
-            average(".wiraswasta-nota", "#capacity_wir_avr_nota")
-
-            //total biaya operasional (capacity wiraswasta)
-            sum(".total-operasional-wiraswasta", "#capacity_wir_total_operasional")
-
-            //omset wiraswasta (capacity wiraswasta)
-            // hitung omset per bulan
-            var omset_per_hari = parseInt($("#capacity_wir_usaha_omset_perhari").val().replace(/,/g, ''));
-            var jumlah_hari = parseInt($("#capacity_wir_usaha_jumlah_hari_buka").val().replace(/,/g, ''));
-            $("#capacity_wir_usaha_omset_perbulan").val(omset_per_hari * jumlah_hari);
-
-            //hitung total nett profit
-            var total_operasional = parseInt($("#capacity_wir_total_operasional").val().replace(/,/g, ''));
-            var omset_per_bulan = parseInt($("#capacity_wir_usaha_omset_perbulan").val().replace(/,/g, ''));
-            $("#capacity_wir_total_income").val(omset_per_bulan - total_operasional);
-
-            //hitung total nett profit (capacity wiraswasta)
-            var profit_margin = parseInt($("#capacity_wir_profit_margin").val().replace(/,/g, ''));
-            var pendapatan_omset = parseInt($("#capacity_wir_total_income").val().replace(/,/g, ''));
-            $("#capacity_wir_total_net_profit").val(pendapatan_omset * (profit_margin / 100));
-
-            //pendapatan wiraswasta lainnya (capacity wiraswasta)
-            sum(".pendapatan-wiraswasta-lainnya", "#capacity_wir_total_lain")
-
-            //total pendapatan wiraswasta (capacity wiraswasta)
-            sum(".total-pendapatan-wiraswasta", "#capacity_wir_total_nett_income")
-
-            //pengeluaran wiraswasta (capacity wiraswasta)
-            sum(".pengeluaran-wiraswasta", "#capacity_wir_total_biaya_outcome")
-
-            //hutang wiraswasta (capacity wiraswasta)
-            sum(".hutang-wiraswasta", "#capacity_wir_total_hutang")
-
-            //total pendapatan wiraswasta (capacity wiraswasta)
-            sum(".total-pendapatan-wiraswasta", "#capacity_wir_total_nett_income");
-
-            //kelebihan pendapatan (capacity wiraswasta)
-            var total_pendapatan_wiraswasta = $("#capacity_wir_total_nett_income").val().replace(/,/g, "");
-            var total_pengeluaran_wiraswasta = $("#capacity_wir_total_outcome").val().replace(/,/g, "");
-            $("#capacity_wir_nett_income").val(total_pendapatan_wiraswasta - total_pengeluaran_wiraswasta);
-
-            //hutang wiraswasta (capacity wiraswasta)
-            sum(".hutang-wiraswasta", "#capacity_wir_total_hutang");
-
-            //pendapatan karyawan (capacity)
-            sum(".pendapatan-karyawan", "#capacity_karyawan_total_net_income")
-            //pendapatan periodik karyawan (capacity)
-            sum(".pendapatan-periodik-karyawan", "#capacity_karyawan_total_bonus")
-
-            //pendapatan karyawan lainnya (capacity)
-            sum(".pendapatan-karyawan-lainnya", "#capacity_karyawan_total_income_lainnya")
-
-            //pengeluaran karyawan (capacity)
-            sum(".pengeluaran-karyawan", "#capacity_karyawan_total_biaya_outcome")
-
-            //kelebihan pendapatan (capacity karyawan)
-            var total_pendapatan_karyawan = $("#capacity_karyawan_total_net_income").val().replace(/,/g,
-                "");
-            var total_pengeluaran_karyawan = $("#capacity_karyawan_total_outcome").val().replace(/,/g, "");
-            $("#capacity_karyawan_kelebihan_net_income").val(total_pendapatan_karyawan -
-                total_pengeluaran_karyawan);
-
-            //hutang karyawan (capacity)
-            sum(".hutang-karyawan", "#capacity_karyawan_total_hutang")
-
-            //Aset konsumen (capital)
-            sum(".aset-konsumen", "#capital_total_aset")
-        })
-
-    })
-</script>
-
-<!-- Jika Head/Manager, maka disable semua form inputan -->
+<!-- Jika Head/Manager login, maka disable semua form inputan -->
 <script>
     var level = $("#level").val()
-    if (level == '2' || level == '3') {
+    if (level == '2' || level == '3' || level == '4' || level == '5') {
         $("input, select, textarea").attr('disabled', 'disabled');
+        if (level == '4' || level == '5') {
+            $("#id_leads").removeAttr('disabled');
+            $(".scoring_ho input, .scoring_ho select, .scoring_ho textarea, .scoring_ho").removeAttr('disabled');
+        }
     }
 </script>
 

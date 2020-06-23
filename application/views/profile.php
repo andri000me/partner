@@ -75,7 +75,7 @@
                                     <div class="form-group text-size form-right">
                                         <label>Cabang</label>
                                         <!-- <input type="text" class="form-control" name="cabang" id="cabang" value="<?= $data->nama_cabang ?>" placeholder=""> -->
-                                        <select class="form-control text-size" name="cabang" id="cabang">
+                                        <select class="form-control text-size" name="" id="cabang" disabled>
                                             <option selected disabled value="">- Pilih Cabang -</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
                                                 <option <?= $branch->id_branch == $data->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>

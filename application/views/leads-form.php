@@ -262,7 +262,6 @@
                                             <option selected value="">Pilih Kategori Luas Bangunan Rumah</option>
                                             <option <?= set_value('luas_rumah') == '< 60 M2' ? 'selected' : '' ?> value="< 60 M2">
                                                 < 60 M2</option> <option <?= set_value('luas_rumah') == '60 - 100 M2' ? 'selected' : '' ?> value="60 - 100 M2">60 - 100 M2
-                                            </option>
                                             <option <?= set_value('luas_rumah') == '100 - 150 M2' ? 'selected' : '' ?> value="100 - 150 M2">100 - 150 M2</option>
                                             <option <?= set_value('luas_rumah') == '> 150 M2' ? 'selected' : '' ?> value="> 150 M2">> 150 M2</option>
                                         </select>
