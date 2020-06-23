@@ -1,3 +1,4 @@
+<button class="btn btn-secondary" onclick="topFunction()" id="myBtn" title="Go to top" style="right: 10px;"><i class="fas fa-angle-up"></i></button>
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-5">
@@ -1747,6 +1748,21 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-row">
+                                            <div class="col-md-6">
+                                                <div class="form-group form-left">
+                                                    <label>Total Pengeluaran</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group form-right">
+                                                    <label>Kelebihan Pendapatan</label>
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class=" form-row">
                                             <div class="col-md-6">
                                                 <div class="form-group form-margin">
@@ -1815,20 +1831,6 @@
                                                         </tr> -->
                                                     </tbody>
                                                 </table>
-                                            </div>
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="col-md-6">
-                                                <div class="form-group form-left">
-                                                    <label>Total Pengeluaran</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="capacity_karyawan_total_outcome" data-type="currency" placeholder="Rp. 000000000" readonly />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group form-right">
-                                                    <label>Kelebihan Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="capacity_karyawan_kelebihan_net_income" data-type="currency" placeholder="Rp. 000000000" readonly />
-                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group form-margin float-right mt-5">
@@ -2390,6 +2392,14 @@
                                                                 <input type="text" class="form-control text-size number-only form-border" name="" value="" id="capacity_wir_lainnya_duplicate" data-type="currency" readonly placeholder="Rp. 000000000" />
                                                             </td>
                                                         </tr>
+                                                        <!-- <tr class="bg-light">
+                                                            <td>
+                                                                <label class="table-form-medium">Total Biaya Operasional</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                            </td>
+                                                        </tr> -->
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -2401,26 +2411,18 @@
                                                     <tbody>
                                                         <tr class="bg-light">
                                                             <td>
+                                                                <label>Gross Profit</label>
+                                                            </td>
+                                                            <td>
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="bg-light">
+                                                            <td>
                                                                 <label class="table-form-medium">Presentase Profit margin</label>
                                                             </td>
                                                             <td>
                                                                 <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="bg-light">
-                                                            <td>
-                                                                <label class="table-form-medium">Total Biaya Operasional</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="bg-light">
-                                                            <td>
-                                                                <label>Total Pendapatan Omset</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
                                                             </td>
                                                         </tr>
                                                         <tr class="bg-light">
@@ -2854,7 +2856,7 @@
 
                                         <div id="moreImageUploadLink mt-5">
                                             <a class="btn btn-secondary text-size" href="javascript:void(0);" id="attachMore"><b>Tambah form</b></a>
-                                            <button class="btn btn-primary text-size  float-right" type="submit"><b>Upload Lampiran</b></button>
+                                            <button class="btn btn-primary text-size float-right" type="submit"><b>Upload Lampiran</b></button>
                                         </div>
                                     </div>
                                     <div class="form-row">
@@ -2870,19 +2872,25 @@
                                                             <div class="item" style="width: 300px; height: 150px;">
                                                                 <?php if (get_extension($upload)) { ?>
                                                                     <div class="zoom-gallery">
-                                                                        <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>"><img class="item" src="<?= base_url('uploads/fs_konsumen/' . $upload) ?>" alt=""></a>
+                                                                        <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>"><img style="width: 300px; height: 150px;" class="item" src="<?= base_url('uploads/fs_konsumen/' . $upload) ?>" alt=""></a>
                                                                     </div>
                                                                 <?php } else { ?>
                                                                     <a href="<?= base_url('uploads/partners/' . $upload) ?>">
-                                                                        <div class="card text-center" style="width: 200px; height: 100px;" data-toggle="tooltip" title="<?= $upload ?>">
-                                                                            <i class="fa fa-file fa-5x"></i>
-                                                                        </div>
+                                                                        <center>
+                                                                            <div class="card text-center mt-3" style="width: 250px; height: 140px;" data-toggle="tooltip" title="<?= $upload ?>">
+                                                                                <i class="fa fa-file fa-5x" style="margin-top: 35px;"></i>
+                                                                            </div>
+                                                                        </center>
                                                                     </a>
                                                                 <?php } ?>
                                                             </div>
                                                         <?php } ?>
                                                     <?php } ?>
                                                 </div>
+                                            </div>
+                                            <div class="form-group form-margin float-right mt-5">
+                                                <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                                <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Kirim</b></button>
                                             </div>
                                         </div>
                                     </div>

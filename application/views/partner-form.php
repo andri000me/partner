@@ -1,3 +1,4 @@
+<button class="btn btn-secondary" onclick="topFunction()" id="myBtn" title="Go to top" style="right: 10px;"><i class="fas fa-angle-up"></i></button>
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-5">
@@ -494,7 +495,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Data Lainnya</label>
-                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
