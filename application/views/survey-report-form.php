@@ -2940,6 +2940,7 @@
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                    <option <?= $data->hasil_scoring_grade_informasi_konsumen == 'Fatal Score' ? 'selected' : '' ?> value="Fatal Score">Fatal Score</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -2958,6 +2959,7 @@
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                    <option <?= $data->hasil_scoring_grade_survey_konsumen == 'Fatal Score' ? 'selected' : '' ?> value="Fatal Score">Fatal Score</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -2976,6 +2978,7 @@
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                    <option <?= $data->hasil_scoring_grade_penilaian_merchant == 'Fatal Score' ? 'selected' : '' ?> value="Fatal Score">Fatal Score</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -2994,6 +2997,7 @@
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                    <option <?= $data->hasil_scoring_grade_aset_kendaraan == 'Fatal Score' ? 'selected' : '' ?> value="Fatal Score">Fatal Score</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
@@ -3012,6 +3016,7 @@
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 3' ? 'selected' : '' ?> value="Grade 3">Grade 3</option>
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 4' ? 'selected' : '' ?> value="Grade 4">Grade 4</option>
                                                                     <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Grade 5' ? 'selected' : '' ?> value="Grade 5">Grade 5</option>
+                                                                    <option <?= $data->hasil_scoring_grade_tingkat_religiusitas == 'Fatal Score' ? 'selected' : '' ?> value="Fatal Score">Fatal Score</option>
                                                                 </select>
                                                             </td>
                                                         </tr>
