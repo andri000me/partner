@@ -1503,7 +1503,7 @@
 
                             <!-- Kapasitas konsumen jika karyawan -->
                             <?php if ($leads->pekerjaan_konsumen == 'Karyawan') { ?>
-                                <div class="card">
+                                <div id="kapasitas-karyawan" class="card">
                                     <div class="card-body text-size">
                                         <h5 class="form-margin"><b>Kapasitas Konsumen</b></h5>
 
@@ -1752,13 +1752,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>Total Pengeluaran</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_outcome ?>" id="capacity_karyawan_total_outcome" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group form-right">
                                                     <label>Kelebihan Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="capacity_karyawan_kelebihan_net_income" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -2130,7 +2130,7 @@
                                                                 <label>Total Pendapatan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_bonus" value="<?= $data->capacity_karyawan_total_bonus ?>" id="capacity_karyawan_total_bonus" data-type="currency" required placeholder="Total Pendapatan Periodik" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_wir_total_lain" value="<?= $data->capacity_wir_total_lain ?>" id="capacity_wir_total_lain" data-type="currency" required placeholder="Total Pendapatan Periodik" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2191,7 +2191,7 @@
                                                                     Pengeluaran</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_karyawan_total_outcome" value="<?= $data->capacity_karyawan_total_biaya_outcome ?>" id="capacity_karyawan_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border form-radius" name="capacity_wir_total_biaya_outcome" value="<?= $data->capacity_wir_total_biaya_outcome ?>" id="capacity_wir_total_biaya_outcome" data-type="currency" required placeholder="Total Pengeluaran" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2203,7 +2203,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group form-margin">
                                                     <label>Sisa Pendapatan</label>
-                                                    <input type="text" class="form-control text-size number-only" name="capacity_karyawan_kelebihan_net_income" value="<?= $data->capacity_karyawan_kelebihan_net_income ?>" id="capacity_karyawan_kelebihan_net_income" data-type="currency" placeholder="Rp. 000000000" readonly />
+                                                    <input type="text" class="form-control text-size number-only" name="capacity_wir_nett_income" value="<?= $data->capacity_wir_nett_income ?>" id="capacity_wir_nett_income" data-type="currency" placeholder="Rp. 000000000" readonly />
                                                 </div>
                                             </div>
                                         </div>
@@ -2338,7 +2338,7 @@
                                                                     bulan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_usaha_omset_perbulan" value="<?= $data->capacity_wir_usaha_omset_perbulan ?>" id="capacity_wir_usaha_omset_perbulan" data-type="currency" required placeholder="Omset per bulan" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_usaha_omset_perbulan" value="<?= $data->capacity_wir_usaha_omset_perbulan ?>" id="capacity_wir_usaha_omset_perbulan" data-type="currency" readonly required placeholder="Omset per bulan" />
                                                             </td>
                                                         </tr>
                                                         <!-- <tr class="bg-light">
@@ -2414,15 +2414,15 @@
                                                                 <label>Gross Profit</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_wir_gross_profit" value="<?= $data->capacity_wir_gross_profit ?>" id="capacity_wir_gross_profit" data-type="currency" required placeholder="Rp. 000000000" readonly />
                                                             </td>
                                                         </tr>
                                                         <tr class="bg-light">
                                                             <td>
-                                                                <label class="table-form-medium">Presentase Profit margin</label>
+                                                                <label class="table-form-medium">Presentase Profit margin (%)</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="" value="" id="capacity_wir_profit_margin_duplikat" data-type="currency" required placeholder="Rp. 000000000" readonly />
                                                             </td>
                                                         </tr>
                                                         <tr class="bg-light">
@@ -2430,7 +2430,7 @@
                                                                 <label>Total Nett Profit</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="" data-type="currency" required placeholder="Rp. 000000000" readonly />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="" value="" id="capacity_wir_total_net_profit_duplikat" data-type="currency" required placeholder="Rp. 000000000" readonly />
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -2875,7 +2875,7 @@
                                                                         <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>"><img style="width: 300px; height: 150px;" class="item" src="<?= base_url('uploads/fs_konsumen/' . $upload) ?>" alt=""></a>
                                                                     </div>
                                                                 <?php } else { ?>
-                                                                    <a href="<?= base_url('uploads/partners/' . $upload) ?>">
+                                                                    <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>">
                                                                         <center>
                                                                             <div class="card text-center mt-3" style="width: 250px; height: 140px;" data-toggle="tooltip" title="<?= $upload ?>">
                                                                                 <i class="fa fa-file fa-5x" style="margin-top: 35px;"></i>
@@ -2888,10 +2888,12 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-                                            <div class="form-group form-margin float-right mt-5">
-                                                <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                                <button class="btn btn-primary waves-effect waves-light submit text-size" type="submit" name="process"><b>Kirim</b></button>
-                                            </div>
+                                            <?php if ($this->fungsi->user_login()->level < 4) { ?>
+                                                <div class="form-group form-margin float-right mt-5">
+                                                    <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                                    <a href="<?= base_url('fs_konsumen') ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Kirim</b></a>
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

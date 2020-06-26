@@ -214,6 +214,7 @@ class Fs_konsumen extends CI_Controller
             'capacity_wir_usaha_jumlah_hari_buka'   => !empty($this->input->post('capacity_wir_usaha_jumlah_hari_buka')) ? $this->input->post('capacity_wir_usaha_jumlah_hari_buka') : NULL,
             'capacity_wir_usaha_omset_perbulan'     => !empty($this->input->post('capacity_wir_usaha_omset_perbulan')) ? $this->input->post('capacity_wir_usaha_omset_perbulan') : NULL,
             'capacity_wir_total_omset'              => !empty($this->input->post('capacity_wir_total_omset')) ? str_replace(",", "", $this->input->post('capacity_wir_total_omset')) : NULL,
+            'capacity_wir_gross_profit'              => !empty($this->input->post('capacity_wir_gross_profit')) ? str_replace(",", "", $this->input->post('capacity_wir_gross_profit')) : NULL,
 
             //capital (aset konsumen)
             'capital_tempat_tinggal_milik'  => !empty($this->input->post('capital_tempat_tinggal_milik')) ? $this->input->post('capital_tempat_tinggal_milik') : NULL,

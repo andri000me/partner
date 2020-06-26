@@ -1,16 +1,9 @@
 $(function () {
 	function convertToInt(id) {
-		if (isNaN($(id).val()))
-			$(id).attr("placeholder", "Masukkan angka yang valid");
-		if ($(id).length) return parseInt($(id).val().replace(/,/g, ""));
-	}
-
-	function isNotNumber(id, value) {
-		if (isNan($(id).val())) {
-			return $(id).attr("placeholder", "Masukkan semua angka yang valid");
-		} else {
-			return $(id).val(value);
+		if (!$(id).is(":focus")) {
+			if ($(id).val() == "") $(id).val("0");
 		}
+		if ($(id).length) return parseInt($(id).val().replace(/,/g, ""));
 	}
 
 	//Purpose
@@ -26,13 +19,13 @@ $(function () {
 		//NTF Murni
 		var ntf_murni =
 			convertToInt("#purpose_harga_beli_ke_merchant") -
-			convertToInt("#purpose_total_uang_muka");
+			convertToInt("#purpose_uang_muka");
 		$("#purpose_ntf_murni").val(ntf_murni);
 
 		//Angsuran per bulan
 		var angsuran =
 			(convertToInt("#purpose_harga_jual_ke_konsumen") -
-				convertToInt("#purpose_total_uang_muka")) /
+				convertToInt("#purpose_uang_muka")) /
 			convertToInt("#purpose_lama_angsuran");
 		$("#purpose_angsuran_per_bulan").val(angsuran);
 	});
@@ -50,7 +43,8 @@ $(function () {
 	});
 
 	//Karyawan
-	$("#nav-kapasitas").on("keyup change", function () {
+	$("#kapasitas-karyawan").on("keyup change", function () {
+		// alert();
 		// Pendapatan Lainnya (Karyawan)
 		var pendapatan_karyawan_lainnya =
 			convertToInt("#capacity_karyawan_nilai_lain1") +
@@ -58,7 +52,7 @@ $(function () {
 
 		// Total Pendapatan (Karyawan)
 		var pendapatan_karyawan =
-			convertToInt("#capacity_karyawan_income_bruto") +
+			// convertToInt("#capacity_karyawan_income_bruto") +
 			convertToInt("#capacity_karyawan_income_thp") +
 			convertToInt("#capacity_karyawan_total_bonus") +
 			pendapatan_karyawan_lainnya +
@@ -91,17 +85,10 @@ $(function () {
 		$("#capacity_karyawan_kelebihan_net_income").val(
 			pendapatan_karyawan - pengeluaran_karyawan
 		);
-
-		//Omset per bulan (karyawan)
-		var omset_per_bulan =
-			convertToInt("#capacity_wir_usaha_omset_perhari") *
-			convertToInt("#capacity_wir_usaha_jumlah_hari_buka");
-		$("#capacity_wir_usaha_omset_perbulan").val(omset_per_bulan);
 	});
 
 	// Wiraswasta
 	$("#nav-kapasitas").on("keyup change", function () {
-		// alert();
 		// Average Kredit Mutasi (Wiraswasta)
 		var wiraswasta_mutasi =
 			convertToInt("#capacity_wir_mutasi1") +
@@ -142,8 +129,12 @@ $(function () {
 
 		//Total Nett Profit (Wiraswasta)
 		var total_nett_profit =
-			convertToInt("#capacity_wir_total_income") -
-			convertToInt("#capacity_wir_total_operasional");
+			// convertToInt("#capacity_wir_total_income") -
+			// convertToInt("#capacity_wir_total_operasional");
+
+			(convertToInt("#capacity_wir_gross_profit") *
+				convertToInt("#capacity_wir_profit_margin")) /
+			100;
 		$("#capacity_wir_total_net_profit").val(total_nett_profit);
 
 		// Pengeluaran Wiraswasta (Wiraswasta)
@@ -152,7 +143,7 @@ $(function () {
 			convertToInt("#capacity_wir_outcome_rumah_tangga") +
 			convertToInt("#capacity_wir_outcome_internet") +
 			convertToInt("#capacity_wir_outcome_lainnya");
-		$("#capacity_karyawan_total_biaya_outcome").val(pengeluaran_wiraswasta);
+		$("#capacity_wir_total_biaya_outcome").val(pengeluaran_wiraswasta);
 
 		//Total Pendapatan (Wiraswasta)
 		var total_pendapatan_wiraswasta =
@@ -160,11 +151,32 @@ $(function () {
 			convertToInt("#capacity_wir_income_pasangan") +
 			convertToInt("#capacity_wir_nilai_lain1") +
 			convertToInt("#capacity_wir_nilai_lain2");
-		$("#capacity_karyawan_total_bonus").val(total_pendapatan_wiraswasta);
+		$("#capacity_wir_total_lain").val(total_pendapatan_wiraswasta);
 
+		// Sisa Pendapatan (Wirasawsta)
 		var sisa_pendapatan =
-			convertToInt("#capacity_karyawan_total_bonus") -
-			convertToInt("#capacity_karyawan_total_biaya_outcome");
-		$("#capacity_karyawan_kelebihan_net_income").val(sisa_pendapatan);
+			convertToInt("#capacity_wir_total_lain") -
+			convertToInt("#capacity_wir_total_biaya_outcome");
+		$("#capacity_wir_nett_income").val(sisa_pendapatan);
+
+		//Omset per bulan (Wiraswasta)
+		var omset_per_bulan =
+			convertToInt("#capacity_wir_usaha_omset_perhari") *
+			convertToInt("#capacity_wir_usaha_jumlah_hari_buka");
+		$("#capacity_wir_usaha_omset_perbulan").val(omset_per_bulan);
+
+		// Gross Profit (Wiraswasta)
+		var gross_profit =
+			convertToInt("#capacity_wir_usaha_omset_perbulan") -
+			convertToInt("#capacity_wir_total_operasional");
+		$("#capacity_wir_gross_profit").val(gross_profit);
+
+		// Hasil Omset Duplikat (Wiraswasta)
+		$("#capacity_wir_profit_margin_duplikat").val(
+			$("#capacity_wir_profit_margin").val()
+		);
+		$("#capacity_wir_total_net_profit_duplikat").val(
+			$("#capacity_wir_total_net_profit").val()
+		);
 	});
 });
