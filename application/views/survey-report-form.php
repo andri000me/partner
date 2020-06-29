@@ -449,7 +449,7 @@
                                             <div class="form-margin">
                                                 <label class="travel">Pilih Data Travel</label>
                                                 <label class="jasa">Pilih Data Penyedia Jasa</label>
-                                                <label class="vendor">Pilih Data Partner</label>
+                                                <label class="vendor">Pilih Data Merchant</label>
                                                 <div class="input-group">
                                                     <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= $leads->nama_partner ?>" aria-label="Recipient's username" aria-describedby="button-addon2">
                                                     <div class="input-group-append">
