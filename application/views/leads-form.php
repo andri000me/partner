@@ -210,18 +210,40 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-left">
                                         <label>Nomor Kontrak</label>
-                                        <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" minlength="10" maxlength="10" />
+                                        <input type="phone" class="form-control text-size placement number-only nomor_kontrak" name="nomor_kontrak" value="<?= set_value('nomor_kontrak') ?>" placeholder="087883774" minlength="10" maxlength="10" />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group form-right">
                                         <label>Nama Konsumen</label>
-                                        <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
+                                        <input type="text" class="form-control text-size referral_konsumen" name="referral_konsumen" value="<?= set_value('referral_konsumen') ?>" placeholder="Input Nama konsumen">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group form-left">
+                                        <label>Kategori Produk</label>
+                                        <select class="form-control text-size" name="produk" id="produk" required>
+                                            <option value="" selected>Pilih Kategori Produk</option>
+                                            <option <?= set_value('produk') == 'My Ihram' ? 'selected' : '' ?> value="My Ihram">My Ihram</option>
+                                            <option <?= set_value('produk') == 'My Safar' ? 'selected' : '' ?> value="My Safar">My Safar</option>
+                                            <option <?= set_value('produk') == 'My Talim' ? 'selected' : '' ?> value="My Talim">My Talim</option>
+                                            <option <?= set_value('produk') == 'My Hajat' ? 'selected' : '' ?> value="My Hajat">My Hajat</option>
+                                            <option <?= set_value('produk') == 'My Faedah' ? 'selected' : '' ?> value="My Faedah">My Faedah</option>
+                                            <option <?= set_value('produk') == 'My CarS' ? 'selected' : '' ?> value="My CarS">My CarS</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-right">
+                                        <label>Detail Barang / jasa</label>
+                                        <input type="text" class="form-control text-size" name="detail_produk" id="detail_produk" value="<?= set_value('detail_produk') ?>" required placeholder="Detail Barang / Jasa" />
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-row">
                                 <div class="col-md-12">
                                     <div class="form-group form-margin">
@@ -331,7 +353,7 @@
                                     <div class="form-margin">
                                         <label class="travel">Pilih Data Travel</label>
                                         <label class="jasa">Pilih Data Penyedia Jasa</label>
-                                        <label class="vendor">Pilih Data Partner</label>
+                                        <label class="vendor">Pilih Data Merchant</label>
                                         <div class="input-group">
                                             <input type="text" class="form-control text-size" name="nama_partner" id="nama_partner" value="<?= set_value('nama_partner') ?>" aria-label="Recipient's username" aria-describedby="button-addon2" readonly>
                                             <div class="input-group-append">
@@ -589,8 +611,7 @@
             $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
             $('#btn-data').attr('data-target', '#modal-partner')
             $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', '');
             $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
         } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
@@ -598,40 +619,37 @@
             $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
             $('#btn-data').attr('data-target', '#modal-partner')
             $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', '');
             $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
                 .hide();
         } else if ($('#soa').val() == 'Agent BA') {
             $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant')
             $('#btn-data').attr('data-target', '#modal-partner')
             $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
             $('#btn-data-agent').attr('data-target', '#modal-agent')
             $('#nama_agent').attr('required', 'required');
-            $('#nama_partner, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required',
-                    '');
+            $('#nama_partner, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', '');
             $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
                 .hide();
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-            $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
+            $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', '');
             $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+            $('#nama_partner, #nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
         } else {
             $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#nama_partner, #nama_agent').removeAttr('required', 'required');
+            $('#nama_partner, #nama_agent').removeAttr('required', '');
         }
     }
 
@@ -725,11 +743,11 @@
     function jenis_konsumen() {
         if ($('#jenis_konsumen').val() == "RO Active") {
             $('.ro-active').show();
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
+            $('.referral_konsumen, .nomor_kontrak').attr('required', 'required');
         } else {
             $('.ro-active').hide();
-            $('#referral_konsumen, #nomor_kontrak').removeAttr('required', '');
-            $('#referral_konsumen, #nomor_kontrak').val('');
+            $('.referral_konsumen, .nomor_kontrak').removeAttr('required', '');
+            $('.referral_konsumen, .nomor_kontrak').val('');
         }
     }
     // Status Konsumen

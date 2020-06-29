@@ -144,7 +144,7 @@
                                 </div>
                             </div>
                             <div class="form form-margin">
-                                <label class=" vendor">Pilih Data Partner</label>
+                                <label class=" vendor">Pilih Data Merchant</label>
                                 <label class=" travel">Pilih Data Travel</label>
                                 <label class=" jasa">Pilih Data Penyedia Jasa</label>
                                 <div class="input-group">
@@ -398,7 +398,7 @@
                 .hide();
         } else if ($('#soa').val() == 'Agent BA') {
             $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner')
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant')
             $('#btn-data').attr('data-target', '#modal-partner')
             $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
             $('#btn-data-agent').attr('data-target', '#modal-agent')
@@ -410,22 +410,22 @@
                 .hide();
         } else if ($('#soa').val() == 'EGC') {
             $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
             $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
             $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
         } else if ($('#soa').val() == 'CGC') {
             $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Partner');
+            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
             $('#btn-data').attr('data-target', '#modal-partner');
             $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', 'required');
+            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
             $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
         } else {
             $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
                 .hide();
-            $('#nama_partner, #nama_agent').removeAttr('required', 'required');
+            $('#nama_partner, #nama_agent').removeAttr('required', '');
         }
     }
 

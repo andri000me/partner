@@ -103,7 +103,7 @@
                         <ul class="submenu">
                             <li><a href="<?= base_url('partner/index_mapping') ?>" class="waves-effect">Mapping Merchant</a></li>
                             <li><a href="<?= base_url('partner') ?>" class="waves-effect">Daftar Merchant</a></li>
-                            <li><a href="<?= base_url('agent') ?>" class="waves-effect">Agent / BA</a></li>
+                            <li><a href="<?= base_url('agent') ?>" class="waves-effect">Daftar Agent / BA</a></li>
                         </ul>
                     </li>
                 <?php } ?>
