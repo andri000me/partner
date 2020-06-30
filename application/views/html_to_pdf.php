@@ -5,23 +5,23 @@
     <meta charset="utf-8">
     <title>PDF</title>
     <style>
-    body {
-        font-family: "Verdana", Helvetica, sans-serif;
-    }
+        body {
+            font-family: "Verdana", Helvetica, sans-serif;
+        }
 
-    th {
-        text-align: left;
-    }
+        th {
+            text-align: left;
+        }
 
-    .border th,
-    .border td {
-        border: 1px solid black;
-    }
+        .border th,
+        .border td {
+            border: 1px solid black;
+        }
 
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
     </style>
 </head>
 
@@ -60,7 +60,7 @@
             <tr>
                 <td>Jenis Konsumen</td>
                 <td>:</td>
-                <td><?= $data->status_konsumen ?></td>
+                <td><?= $data->jenis_konsumen ?></td>
             </tr>
             <tr>
                 <td>Asal Aplikasi</td>
@@ -228,589 +228,589 @@
     </div>
 
     <!-- Jika Karyawan -->
-    <?php if($data->pekerjaan_konsumen == 'Karyawan'){  ?>
-    <div id="karyawan">
-        <div id="kondisi-karyawan">
-            <h2>Kondisi Konsumen</h2>
-            <table>
-                <tr>
-                    <td>Pekerjaan Konsumen</td>
-                    <td><?= $data->condition_karyawan_pekerjaan ?></td>
-                </tr>
-                <tr>
-                    <td>Penjelasan Profesi Beresiko</td>
-                    <td><?= $data->condition_karyawan_profesi_beresiko ?></td>
-                </tr>
-                <tr>
-                    <td>Nama Perusahaan Bekerja</td>
-                    <td><?= $data->condition_karyawan_tempat_kerja ?></td>
-                </tr>
-                <tr>
-                    <td>Bidang Usaha</td>
-                    <td><?= $data->condition_karyawan_bidang_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Pekerjaan Pasangan</td>
-                    <td><?= $data->condition_karyawan_pekerjaan_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Penjelasan Profesi Beresiko Pasangan</td>
-                    <td><?= $data->condition_karyawan_profesi_beresiko_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Tempat Kerja / Usaha Pasangan</td>
-                    <td><?= $data->condition_karyawan_tempat_kerja_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Jabatan</td>
-                    <td><?= $data->condition_karyawan_jabatan ?></td>
-                </tr>
-                <tr>
-                    <td>Lama Bekerja</td>
-                    <td><?= $data->condition_karyawan_lama_bekerja ?></td>
-                </tr>
-            </table>
-            <h3>Jumlah Tanggungan</h3>
-            <table class="border">
-                <tr>
-                    <td>Orang Tua</td>
-                    <td><?= $data->condition_karyawan_tanggungan_orangtua ?></td>
-                </tr>
-                <tr>
-                    <td>Pasangan</td>
-                    <td><?= $data->condition_karyawan_tanggungan_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Anak Usia Belum Sekolah</td>
-                    <td><?= $data->condition_karyawan_tanggungan_anak1 ?></td>
-                </tr>
-                <tr>
-                    <td>Anak Usia TK - SMA</td>
-                    <td><?= $data->condition_karyawan_tanggungan_anak2 ?></td>
-                </tr>
-                <tr>
-                    <td>Anak Usia Perguruan Tinggi</td>
-                    <td><?= $data->condition_karyawan_tanggungan_anak3 ?></td>
-                </tr>
-                <tr>
-                    <td>Saudara / Keluarga Lainnya</td>
-                    <td><?= $data->condition_karyawan_tanggungan_saudara ?></td>
-                </tr>
-                <tr>
-                    <td>Total Tanggungan</td>
-                    <td><?= $data->condition_karyawan_tanggungan_total ?></td>
-                </tr>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Pembayaran gaji via</td>
-                    <td><?= $data->condition_karyawan_cara_gajian ?></td>
-                </tr>
-                <tr>
-                    <td>Lama Bekerja</td>
-                    <td><?= $data->condition_karyawan_lama_bekerja ?></td>
-                </tr>
-                <tr>
-                    <td>Total karyawan</td>
-                    <td><?= $data->condition_karyawan_jumlah_karyawan ?></td>
-                </tr>
-                <tr>
-                    <td>Tahun Berdiri</td>
-                    <td><?= $data->condition_karyawan_tahun_berdiri ?></td>
-                </tr>
-            </table>
-        </div>
-        <div id="kapsasitas-karyawan">
-            <h2>Kapasitas Konsumen</h2>
-            <h3>Pendapatan</h3>
-            <table>
-                <tr>
-                    <td>Pendapatan Bruto (Gaji)</td>
-                    <td><?= $data->capacity_karyawan_income_bruto ?></td>
-                </tr>
-                <tr>
-                    <td>Take Home Pay</td>
-                    <td><?= $data->capacity_karyawan_income_thp ?></td>
-                </tr>
-                <tr>
-                    <td>Apakah ada bonus periodik?</td>
-                    <td><?= $data->capacity_karyawan_ada_bonus_periodik ?></td>
-                </tr>
-            </table>
-            <h3>Informasi pendapatan periodik</h3>
-            <table class="border">
-                <thead>
+    <?php if ($data->pekerjaan_konsumen == 'Karyawan') {  ?>
+        <div id="karyawan">
+            <div id="kondisi-karyawan">
+                <h2>Kondisi Konsumen</h2>
+                <table>
                     <tr>
-                        <th>Deskripsi</th>
-                        <th>Periode Bulan</th>
-                        <th>Nominal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $data->capacity_karyawan_bonus1 ?></td>
-                        <td><?= $data->capacity_karyawan_periode1 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai1 ?></td>
+                        <td>Pekerjaan Konsumen</td>
+                        <td><?= $data->condition_karyawan_pekerjaan ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_karyawan_bonus2 ?></td>
-                        <td><?= $data->capacity_karyawan_periode2 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai2 ?></td>
+                        <td>Penjelasan Profesi Beresiko</td>
+                        <td><?= $data->condition_karyawan_profesi_beresiko ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_karyawan_bonus3 ?></td>
-                        <td><?= $data->capacity_karyawan_periode3 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai3 ?></td>
+                        <td>Nama Perusahaan Bekerja</td>
+                        <td><?= $data->condition_karyawan_tempat_kerja ?></td>
                     </tr>
                     <tr>
-                        <td colspan="2">Total Pendapatan Periodik</td>
-                        <td><?= $data->capacity_karyawan_total_bonus ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Apakah ada pendapatan lainnya?</td>
-                    <td><?= $data->capacity_karyawan_ada_income_lainnya ?></td>
-                </tr>
-            </table>
-            <h3>Informasi pendapatan</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Deskripsi</th>
-                        <th>Nominal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $data->capacity_karyawan_income_lainnya1 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai_lain1 ?></td>
+                        <td>Bidang Usaha</td>
+                        <td><?= $data->condition_karyawan_bidang_usaha ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_karyawan_income_lainnya2 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai_lain2 ?></td>
+                        <td>Pekerjaan Pasangan</td>
+                        <td><?= $data->condition_karyawan_pekerjaan_pasangan ?></td>
                     </tr>
                     <tr>
-                        <td>Total Pendapatan Lainnya</td>
-                        <td><?= $data->capacity_karyawan_total_income_lainnya ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Saldo Rekening Saat Ini</td>
-                    <td><?= $data->capacity_karyawan_saldo_rekening ?></td>
-                </tr>
-                <tr>
-                    <td>Pendapatan Pasangan</td>
-                    <td><?= $data->capacity_karyawan_income_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Total Pendapatan</td>
-                    <td><?= $data->capacity_karyawan_total_net_income ?></td>
-                </tr>
-            </table>
-            <h3>Pengeluaran</h3>
-            <h3>Informasi Pengeluaran</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Deskripsi</th>
-                        <th>Nominal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Biaya Pendidikan</td>
-                        <td><?= $data->capacity_karyawan_outcome_pendidikan ?></td>
+                        <td>Penjelasan Profesi Beresiko Pasangan</td>
+                        <td><?= $data->condition_karyawan_profesi_beresiko_pasangan ?></td>
                     </tr>
                     <tr>
-                        <td>Biaya Rumah Tangga</td>
-                        <td><?= $data->capacity_karyawan_outcome_rumah ?></td>
+                        <td>Tempat Kerja / Usaha Pasangan</td>
+                        <td><?= $data->condition_karyawan_tempat_kerja_pasangan ?></td>
                     </tr>
                     <tr>
-                        <td>Biaya Internet / Pulsa / Listrik</td>
-                        <td><?= $data->capacity_karyawan_outcome_listrik ?></td>
+                        <td>Jabatan</td>
+                        <td><?= $data->condition_karyawan_jabatan ?></td>
                     </tr>
                     <tr>
-                        <td>Biaya Lain-lain</td>
-                        <td><?= $data->capacity_karyawan_outcome_lainnya ?></td>
+                        <td>Lama Bekerja</td>
+                        <td><?= $data->condition_karyawan_lama_bekerja ?></td>
+                    </tr>
+                </table>
+                <h3>Jumlah Tanggungan</h3>
+                <table class="border">
+                    <tr>
+                        <td>Orang Tua</td>
+                        <td><?= $data->condition_karyawan_tanggungan_orangtua ?></td>
                     </tr>
                     <tr>
-                        <td>Total Pengeluaran</td>
-                        <td><?= $data->capacity_karyawan_total_biaya_outcome ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Apakah ada hutang di tempat lain?</td>
-                    <td><?= $data->capacity_karyawan_ada_hutang ?></td>
-                </tr>
-            </table>
-            <h3>Informasi hutang lainnya</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Deskripsi</th>
-                        <th>Nominal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $data->capacity_karyawan_hutang1 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai_hutang1 ?></td>
+                        <td>Pasangan</td>
+                        <td><?= $data->condition_karyawan_tanggungan_pasangan ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_karyawan_hutang2 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai_hutang2 ?></td>
+                        <td>Anak Usia Belum Sekolah</td>
+                        <td><?= $data->condition_karyawan_tanggungan_anak1 ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_karyawan_hutang3 ?></td>
-                        <td><?= $data->capacity_karyawan_nilai_hutang3 ?></td>
+                        <td>Anak Usia TK - SMA</td>
+                        <td><?= $data->condition_karyawan_tanggungan_anak2 ?></td>
                     </tr>
                     <tr>
-                        <td>Total Pengeluaran</td>
-                        <td><?= $data->capacity_karyawan_total_hutang ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Total Pengeluaran</td>
-                    <td><?= $data->capacity_karyawan_total_outcome ?></td>
-                </tr>
-                <tr>
-                    <td>Kelebihan Pendapatan</td>
-                    <td><?= $data->capacity_karyawan_kelebihan_net_income ?></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <?php } ?>
-
-    <!-- Jika Wiraswasta -->
-    <?php if($data->pekerjaan_konsumen == 'Wiraswasta'){  ?>
-    <div id="wiraswasta">
-        <div id="kondisi-wiraswasta">
-            <h2>Kondisi Konsumen (Wiraswasta)</h2>
-            <table>
-                <tr>
-                    <td>Pekerjaan Konsumen</td>
-                    <td>:</td>
-                    <td><?= $data->condition_karyawan_pekerjaan ?></td>
-                </tr>
-                <tr>
-                    <td>Penjelasan Profesi Beresiko</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_profesi_beresiko ?></td>
-                </tr>
-                <tr>
-                    <td>Tempat Kerja / Usaha Pasangan</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_tempat_kerja_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Penjelasan Profesi Beresiko Pasangan</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_profesi_beresiko_pasangan ?></td>
-                </tr>
-            </table>
-
-            <h3>Jumlah Tanggungan</h3>
-            <table class="border">
-                <tr>
-                    <td>Orang Tua</td>
-                    <td><?= $data->condition_wir_tanggungan_orangtua ?></td>
-                </tr>
-                <tr>
-                    <td>Pasangan</td>
-                    <td><?= $data->condition_wir_tanggungan_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Anak Usia Belum Sekolah</td>
-                    <td><?= $data->condition_wir_tanggungan_anak1 ?></td>
-                </tr>
-                <tr>
-                    <td>Anak Usia TK - SMA</td>
-                    <td><?= $data->condition_wir_tanggungan_anak2 ?></td>
-                </tr>
-                <tr>
-                    <td>Anak Usia Perguruan Tinggi</td>
-                    <td><?= $data->condition_wir_tanggungan_anak3 ?></td>
-                </tr>
-                <tr>
-                    <td>Saudara / Keluarga Lainnya</td>
-                    <td><?= $data->condition_wir_tanggungan_saudara ?></td>
-                </tr>
-                <tr>
-                    <td>Total Jumlah Tanggungan</td>
-                    <td><?= $data->condition_wir_tanggungan_total ?></td>
-                </tr>
-            </table>
-
-            <table>
-                <tr>
-                    <td>Nama Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_nama_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Bidang Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_bidang_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Tahun Berdiri</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_tahun_berdiri ?></td>
-                </tr>
-                <tr>
-                    <td>Jumlah Karyawan</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_jumlah_karyawan ?></td>
-                </tr>
-                <tr>
-                    <td>Jenis Bangunan Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_jenis_bangunan_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Pemilik Tempat Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_pemilik_tempat_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Kepemilikan Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_kepemilikan_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Bentuk Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_bentuk_usaha ?></td>
-                </tr>
-                <tr>
-                    <td>Metode Pembayaran</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_cara_bayar ?></td>
-                </tr>
-                <tr>
-                    <td>Kondisi Usaha</td>
-                    <td>:</td>
-                    <td><?= $data->condition_wir_kondisi_usaha ?></td>
-                </tr>
-            </table>
-
-        </div>
-
-        <div id="kapasitas-wiraswasta">
-            <h2>Kapasitas Konsumen (Wiraswasta)</h2>
-            <h3>Pendapatan</h3>
-            <table>
-                <tr>
-                    <td>Data Analisa</td>
-                    <td>:</td>
-                    <td><?= $data->capacity_wir_pilih_data_analisa ?></td>
-                </tr>
-            </table>
-
-            <h3>Informasi Kredit Rekening (jika kredit rekening)</h3>
-            <table class="border">
-                <tr>
-                    <td>Mutasi Kredit Bulan Pertama</td>
-                    <td><?= $data->capacity_wir_mutasi1 ?></td>
-                </tr>
-                <tr>
-                    <td>Mutasi Kredit Bulan Kedua</td>
-                    <td><?= $data->capacity_wir_mutasi2 ?></td>
-                </tr>
-                <tr>
-                    <td>Mutasi Kredit Bulan Ketiga</td>
-                    <td><?= $data->capacity_wir_mutasi3 ?></td>
-                </tr>
-                <tr>
-                    <td>Average Kredit</td>
-                    <td><?= $data->capacity_wir_avr_mutasi ?></td>
-                </tr>
-            </table>
-
-            <h3>Informasi Total Nilai Nota (jika nota)</h3>
-            <table class="border">
-                <tr>
-                    <td>Total Nota Bulan Pertama</td>
-                    <td><?= $data->capacity_wir_nota1 ?></td>
-                </tr>
-                <tr>
-                    <td>Total Nota Bulan Kedua</td>
-                    <td><?= $data->capacity_wir_nota2 ?></td>
-                </tr>
-                <tr>
-                    <td>Total Nota Bulan Ketiga</td>
-                    <td><?= $data->capacity_wir_nota3 ?></td>
-                </tr>
-                <tr>
-                    <td>Average Kredit</td>
-                    <td><?= $data->capacity_wir_avr_nota ?></td>
-                </tr>
-            </table>
-
-            <h3>Biaya Operasional</h3>
-            <table class="border">
-                <tr>
-                    <td>Biaya Sewa (jika sewa)</td>
-                    <td><?= $data->capacity_wir_sewa ?></td>
-                </tr>
-                <tr>
-                    <td>Gaji Karyawan per Bulan</td>
-                    <td><?= $data->capacity_wir_payroll ?></td>
-                </tr>
-                <tr>
-                    <td>Biaya Internet / Pulsa / Listrik</td>
-                    <td><?= $data->capacity_wir_internet ?></td>
-                </tr>
-                <tr>
-                    <td>Biaya Lainnya</td>
-                    <td><?= $data->capacity_wir_lainnya ?></td>
-                </tr>
-                <tr>
-                    <td>Total Biaya Operasional</td>
-                    <td><?= $data->capacity_wir_total_operasional ?></td>
-                </tr>
-                <tr>
-                    <td>Total Pendapatan Omset</td>
-                    <td><?= $data->capacity_wir_total_income ?></td>
-                </tr>
-                <tr>
-                    <td>Total Nett Profit</td>
-                    <td><?= $data->capacity_wir_total_net_profit ?></td>
-                </tr>
-                <tr>
-                    <td>Presentase Profit Margin (%)</td>
-                    <td><?= $data->capacity_wir_profit_margin ?></td>
-                </tr>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Apakah Ada Pendapatan Lainnya?</td>
-                    <td>:</td>
-                    <td><?= $data->capacity_wir_ada_income_lainnya ?></td>
-                </tr>
-            </table>
-            <br>
-            <table class="border">
-                <thead>
-                    <tr>
-                        <th>Deskripsi</th>
-                        <th>Nominal (Nett)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $data->capacity_wir_income_lain1 ?></td>
-                        <td><?= $data->capacity_wir_nilai_lain1 ?></td>
+                        <td>Anak Usia Perguruan Tinggi</td>
+                        <td><?= $data->condition_karyawan_tanggungan_anak3 ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_wir_income_lain2 ?></td>
-                        <td><?= $data->capacity_wir_nilai_lain2 ?></td>
+                        <td>Saudara / Keluarga Lainnya</td>
+                        <td><?= $data->condition_karyawan_tanggungan_saudara ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Tanggungan</td>
+                        <td><?= $data->condition_karyawan_tanggungan_total ?></td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Pembayaran gaji via</td>
+                        <td><?= $data->condition_karyawan_cara_gajian ?></td>
+                    </tr>
+                    <tr>
+                        <td>Lama Bekerja</td>
+                        <td><?= $data->condition_karyawan_lama_bekerja ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total karyawan</td>
+                        <td><?= $data->condition_karyawan_jumlah_karyawan ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tahun Berdiri</td>
+                        <td><?= $data->condition_karyawan_tahun_berdiri ?></td>
+                    </tr>
+                </table>
+            </div>
+            <div id="kapsasitas-karyawan">
+                <h2>Kapasitas Konsumen</h2>
+                <h3>Pendapatan</h3>
+                <table>
+                    <tr>
+                        <td>Pendapatan Bruto (Gaji)</td>
+                        <td><?= $data->capacity_karyawan_income_bruto ?></td>
+                    </tr>
+                    <tr>
+                        <td>Take Home Pay</td>
+                        <td><?= $data->capacity_karyawan_income_thp ?></td>
+                    </tr>
+                    <tr>
+                        <td>Apakah ada bonus periodik?</td>
+                        <td><?= $data->capacity_karyawan_ada_bonus_periodik ?></td>
+                    </tr>
+                </table>
+                <h3>Informasi pendapatan periodik</h3>
+                <table class="border">
+                    <thead>
+                        <tr>
+                            <th>Deskripsi</th>
+                            <th>Periode Bulan</th>
+                            <th>Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_bonus1 ?></td>
+                            <td><?= $data->capacity_karyawan_periode1 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai1 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_bonus2 ?></td>
+                            <td><?= $data->capacity_karyawan_periode2 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai2 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_bonus3 ?></td>
+                            <td><?= $data->capacity_karyawan_periode3 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai3 ?></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">Total Pendapatan Periodik</td>
+                            <td><?= $data->capacity_karyawan_total_bonus ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Apakah ada pendapatan lainnya?</td>
+                        <td><?= $data->capacity_karyawan_ada_income_lainnya ?></td>
+                    </tr>
+                </table>
+                <h3>Informasi pendapatan</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Deskripsi</th>
+                            <th>Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_income_lainnya1 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai_lain1 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_income_lainnya2 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai_lain2 ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Pendapatan Lainnya</td>
+                            <td><?= $data->capacity_karyawan_total_income_lainnya ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Saldo Rekening Saat Ini</td>
+                        <td><?= $data->capacity_karyawan_saldo_rekening ?></td>
+                    </tr>
+                    <tr>
+                        <td>Pendapatan Pasangan</td>
+                        <td><?= $data->capacity_karyawan_income_pasangan ?></td>
                     </tr>
                     <tr>
                         <td>Total Pendapatan</td>
-                        <td><?= $data->capacity_wir_total_lain ?></td>
+                        <td><?= $data->capacity_karyawan_total_net_income ?></td>
                     </tr>
-                </tbody>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Saldo Rekening Saat Ini</td>
-                    <td><?= $data->capacity_wir_saldo_rekening ?></td>
-                </tr>
-                <tr>
-                    <td>Pendapatan Pasangan</td>
-                    <td><?= $data->capacity_wir_income_pasangan ?></td>
-                </tr>
-                <tr>
-                    <td>Total Pendapatan</td>
-                    <td><?= $data->capacity_wir_total_nett_income ?></td>
-                </tr>
-            </table>
+                </table>
+                <h3>Pengeluaran</h3>
+                <h3>Informasi Pengeluaran</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Deskripsi</th>
+                            <th>Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biaya Pendidikan</td>
+                            <td><?= $data->capacity_karyawan_outcome_pendidikan ?></td>
+                        </tr>
+                        <tr>
+                            <td>Biaya Rumah Tangga</td>
+                            <td><?= $data->capacity_karyawan_outcome_rumah ?></td>
+                        </tr>
+                        <tr>
+                            <td>Biaya Internet / Pulsa / Listrik</td>
+                            <td><?= $data->capacity_karyawan_outcome_listrik ?></td>
+                        </tr>
+                        <tr>
+                            <td>Biaya Lain-lain</td>
+                            <td><?= $data->capacity_karyawan_outcome_lainnya ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Pengeluaran</td>
+                            <td><?= $data->capacity_karyawan_total_biaya_outcome ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Apakah ada hutang di tempat lain?</td>
+                        <td><?= $data->capacity_karyawan_ada_hutang ?></td>
+                    </tr>
+                </table>
+                <h3>Informasi hutang lainnya</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Deskripsi</th>
+                            <th>Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_hutang1 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai_hutang1 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_hutang2 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai_hutang2 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_karyawan_hutang3 ?></td>
+                            <td><?= $data->capacity_karyawan_nilai_hutang3 ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Pengeluaran</td>
+                            <td><?= $data->capacity_karyawan_total_hutang ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Total Pengeluaran</td>
+                        <td><?= $data->capacity_karyawan_total_outcome ?></td>
+                    </tr>
+                    <tr>
+                        <td>Kelebihan Pendapatan</td>
+                        <td><?= $data->capacity_karyawan_kelebihan_net_income ?></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    <?php } ?>
 
-            <h3>Pengeluaran</h3>
-            <h3>Informasikan pengeluaran</h3>
-            <table class="border">
-                <thead>
-                    <tr>Deskripsi</tr>
-                    <tr>Nominal</tr>
-                </thead>
-                <tbody>
+    <!-- Jika Wiraswasta -->
+    <?php if ($data->pekerjaan_konsumen == 'Wiraswasta') {  ?>
+        <div id="wiraswasta">
+            <div id="kondisi-wiraswasta">
+                <h2>Kondisi Konsumen (Wiraswasta)</h2>
+                <table>
                     <tr>
-                        <td>Biaya Pendidikan</td>
-                        <td><?= $data->capacity_wir_outcome_pendidikan ?></td>
+                        <td>Pekerjaan Konsumen</td>
+                        <td>:</td>
+                        <td><?= $data->condition_karyawan_pekerjaan ?></td>
                     </tr>
                     <tr>
-                        <td>Biaya Rumah Tangga</td>
-                        <td><?= $data->capacity_wir_outcome_rumah_tangga ?></td>
+                        <td>Penjelasan Profesi Beresiko</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_profesi_beresiko ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tempat Kerja / Usaha Pasangan</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_tempat_kerja_pasangan ?></td>
+                    </tr>
+                    <tr>
+                        <td>Penjelasan Profesi Beresiko Pasangan</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_profesi_beresiko_pasangan ?></td>
+                    </tr>
+                </table>
+
+                <h3>Jumlah Tanggungan</h3>
+                <table class="border">
+                    <tr>
+                        <td>Orang Tua</td>
+                        <td><?= $data->condition_wir_tanggungan_orangtua ?></td>
+                    </tr>
+                    <tr>
+                        <td>Pasangan</td>
+                        <td><?= $data->condition_wir_tanggungan_pasangan ?></td>
+                    </tr>
+                    <tr>
+                        <td>Anak Usia Belum Sekolah</td>
+                        <td><?= $data->condition_wir_tanggungan_anak1 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Anak Usia TK - SMA</td>
+                        <td><?= $data->condition_wir_tanggungan_anak2 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Anak Usia Perguruan Tinggi</td>
+                        <td><?= $data->condition_wir_tanggungan_anak3 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Saudara / Keluarga Lainnya</td>
+                        <td><?= $data->condition_wir_tanggungan_saudara ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Jumlah Tanggungan</td>
+                        <td><?= $data->condition_wir_tanggungan_total ?></td>
+                    </tr>
+                </table>
+
+                <table>
+                    <tr>
+                        <td>Nama Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_nama_usaha ?></td>
+                    </tr>
+                    <tr>
+                        <td>Bidang Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_bidang_usaha ?></td>
+                    </tr>
+                    <tr>
+                        <td>Tahun Berdiri</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_tahun_berdiri ?></td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah Karyawan</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_jumlah_karyawan ?></td>
+                    </tr>
+                    <tr>
+                        <td>Jenis Bangunan Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_jenis_bangunan_usaha ?></td>
+                    </tr>
+                    <tr>
+                        <td>Pemilik Tempat Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_pemilik_tempat_usaha ?></td>
+                    </tr>
+                    <tr>
+                        <td>Kepemilikan Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_kepemilikan_usaha ?></td>
+                    </tr>
+                    <tr>
+                        <td>Bentuk Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_bentuk_usaha ?></td>
+                    </tr>
+                    <tr>
+                        <td>Metode Pembayaran</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_cara_bayar ?></td>
+                    </tr>
+                    <tr>
+                        <td>Kondisi Usaha</td>
+                        <td>:</td>
+                        <td><?= $data->condition_wir_kondisi_usaha ?></td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div id="kapasitas-wiraswasta">
+                <h2>Kapasitas Konsumen (Wiraswasta)</h2>
+                <h3>Pendapatan</h3>
+                <table>
+                    <tr>
+                        <td>Data Analisa</td>
+                        <td>:</td>
+                        <td><?= $data->capacity_wir_pilih_data_analisa ?></td>
+                    </tr>
+                </table>
+
+                <h3>Informasi Kredit Rekening (jika kredit rekening)</h3>
+                <table class="border">
+                    <tr>
+                        <td>Mutasi Kredit Bulan Pertama</td>
+                        <td><?= $data->capacity_wir_mutasi1 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Mutasi Kredit Bulan Kedua</td>
+                        <td><?= $data->capacity_wir_mutasi2 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Mutasi Kredit Bulan Ketiga</td>
+                        <td><?= $data->capacity_wir_mutasi3 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Average Kredit</td>
+                        <td><?= $data->capacity_wir_avr_mutasi ?></td>
+                    </tr>
+                </table>
+
+                <h3>Informasi Total Nilai Nota (jika nota)</h3>
+                <table class="border">
+                    <tr>
+                        <td>Total Nota Bulan Pertama</td>
+                        <td><?= $data->capacity_wir_nota1 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Nota Bulan Kedua</td>
+                        <td><?= $data->capacity_wir_nota2 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Nota Bulan Ketiga</td>
+                        <td><?= $data->capacity_wir_nota3 ?></td>
+                    </tr>
+                    <tr>
+                        <td>Average Kredit</td>
+                        <td><?= $data->capacity_wir_avr_nota ?></td>
+                    </tr>
+                </table>
+
+                <h3>Biaya Operasional</h3>
+                <table class="border">
+                    <tr>
+                        <td>Biaya Sewa (jika sewa)</td>
+                        <td><?= $data->capacity_wir_sewa ?></td>
+                    </tr>
+                    <tr>
+                        <td>Gaji Karyawan per Bulan</td>
+                        <td><?= $data->capacity_wir_payroll ?></td>
                     </tr>
                     <tr>
                         <td>Biaya Internet / Pulsa / Listrik</td>
-                        <td><?= $data->capacity_wir_outcome_internet ?></td>
+                        <td><?= $data->capacity_wir_internet ?></td>
                     </tr>
                     <tr>
-                        <td>Biaya Lain-lain</td>
-                        <td><?= $data->capacity_wir_outcome_lainnya ?></td>
+                        <td>Biaya Lainnya</td>
+                        <td><?= $data->capacity_wir_lainnya ?></td>
                     </tr>
                     <tr>
-                        <td>Total Pengeluaran</td>
-                        <td><?= $data->capacity_wir_total_biaya_outcome ?></td>
-                    </tr>
-                </tbody>
-            </table>
-            <br>
-            <table>
-                <tr>
-                    <td>Apakah ada hutang ditempat lain?</td>
-                    <td>:</td>
-                    <td><?= $data->capacity_wir_ada_hutang ?></td>
-                </tr>
-            </table>
-            <h3>Informasi hutang lainnya</h3>
-            <table class="border">
-                <thead>
-                    <tr>
-                        <th>Deskripsi</th>
-                        <th>Nominal</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?= $data->capacity_wir_hutang1 ?></td>
-                        <td><?= $data->capacity_wir_nilai_hutang1 ?></td>
+                        <td>Total Biaya Operasional</td>
+                        <td><?= $data->capacity_wir_total_operasional ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_wir_hutang2 ?></td>
-                        <td><?= $data->capacity_wir_nilai_hutang2 ?></td>
+                        <td>Total Pendapatan Omset</td>
+                        <td><?= $data->capacity_wir_total_income ?></td>
                     </tr>
                     <tr>
-                        <td><?= $data->capacity_wir_hutang3 ?></td>
-                        <td><?= $data->capacity_wir_nilai_hutang3 ?></td>
+                        <td>Total Nett Profit</td>
+                        <td><?= $data->capacity_wir_total_net_profit ?></td>
                     </tr>
                     <tr>
-                        <td>Total Hutang</td>
-                        <td><?= $data->capacity_wir_total_hutang ?></td>
+                        <td>Presentase Profit Margin (%)</td>
+                        <td><?= $data->capacity_wir_profit_margin ?></td>
                     </tr>
-                </tbody>
-            </table>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Apakah Ada Pendapatan Lainnya?</td>
+                        <td>:</td>
+                        <td><?= $data->capacity_wir_ada_income_lainnya ?></td>
+                    </tr>
+                </table>
+                <br>
+                <table class="border">
+                    <thead>
+                        <tr>
+                            <th>Deskripsi</th>
+                            <th>Nominal (Nett)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $data->capacity_wir_income_lain1 ?></td>
+                            <td><?= $data->capacity_wir_nilai_lain1 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_wir_income_lain2 ?></td>
+                            <td><?= $data->capacity_wir_nilai_lain2 ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Pendapatan</td>
+                            <td><?= $data->capacity_wir_total_lain ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Saldo Rekening Saat Ini</td>
+                        <td><?= $data->capacity_wir_saldo_rekening ?></td>
+                    </tr>
+                    <tr>
+                        <td>Pendapatan Pasangan</td>
+                        <td><?= $data->capacity_wir_income_pasangan ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Pendapatan</td>
+                        <td><?= $data->capacity_wir_total_nett_income ?></td>
+                    </tr>
+                </table>
 
+                <h3>Pengeluaran</h3>
+                <h3>Informasikan pengeluaran</h3>
+                <table class="border">
+                    <thead>
+                        <tr>Deskripsi</tr>
+                        <tr>Nominal</tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Biaya Pendidikan</td>
+                            <td><?= $data->capacity_wir_outcome_pendidikan ?></td>
+                        </tr>
+                        <tr>
+                            <td>Biaya Rumah Tangga</td>
+                            <td><?= $data->capacity_wir_outcome_rumah_tangga ?></td>
+                        </tr>
+                        <tr>
+                            <td>Biaya Internet / Pulsa / Listrik</td>
+                            <td><?= $data->capacity_wir_outcome_internet ?></td>
+                        </tr>
+                        <tr>
+                            <td>Biaya Lain-lain</td>
+                            <td><?= $data->capacity_wir_outcome_lainnya ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Pengeluaran</td>
+                            <td><?= $data->capacity_wir_total_biaya_outcome ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <table>
+                    <tr>
+                        <td>Apakah ada hutang ditempat lain?</td>
+                        <td>:</td>
+                        <td><?= $data->capacity_wir_ada_hutang ?></td>
+                    </tr>
+                </table>
+                <h3>Informasi hutang lainnya</h3>
+                <table class="border">
+                    <thead>
+                        <tr>
+                            <th>Deskripsi</th>
+                            <th>Nominal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><?= $data->capacity_wir_hutang1 ?></td>
+                            <td><?= $data->capacity_wir_nilai_hutang1 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_wir_hutang2 ?></td>
+                            <td><?= $data->capacity_wir_nilai_hutang2 ?></td>
+                        </tr>
+                        <tr>
+                            <td><?= $data->capacity_wir_hutang3 ?></td>
+                            <td><?= $data->capacity_wir_nilai_hutang3 ?></td>
+                        </tr>
+                        <tr>
+                            <td>Total Hutang</td>
+                            <td><?= $data->capacity_wir_total_hutang ?></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
         </div>
-    </div>
     <?php } ?>
 
     <!-- Aset Konsumen (Capital) -->
@@ -1039,6 +1039,46 @@
                 <td>:</td>
                 <td><?= $data->kesimpulan_weakness ?></td>
             </tr>
+        </table>
+    </div>
+
+    <div id="hasil_scoring">
+        <h2>Hasil Scoring HO</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Penilaian Scoring</th>
+                    <th>Nilai</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Informasi & Aplikasi Konsumen</td>
+                    <td><?= $data->hasil_scoring_nilai_informasi_konsumen ?></td>
+                    <td><?= $data->hasil_scoring_grade_informasi_konsumen ?></td>
+                </tr>
+                <tr>
+                    <td>Survey Konsumen</td>
+                    <td><?= $data->hasil_scoring_nilai_survey_konsumen ?></td>
+                    <td><?= $data->hasil_scoring_grade_survey_konsumen ?></td>
+                </tr>
+                <tr>
+                    <td>Penilaian Merchant</td>
+                    <td><?= $data->hasil_scoring_nilai_penilaian_merchant ?></td>
+                    <td><?= $data->hasil_scoring_grade_penilaian_merchant ?></td>
+                </tr>
+                <tr>
+                    <td>Aset Kendaraan</td>
+                    <td><?= $data->hasil_scoring_nilai_aset_kendaraan ?></td>
+                    <td><?= $data->hasil_scoring_grade_aset_kendaraan ?></td>
+                </tr>
+                <tr>
+                    <td>Tingkat Reliugisitas</td>
+                    <td><?= $data->hasil_scoring_nilai_tingkat_religiusitas ?></td>
+                    <td><?= $data->hasil_scoring_grade_tingkat_religiusitas ?></td>
+                </tr>
+            </tbody>
         </table>
     </div>
 

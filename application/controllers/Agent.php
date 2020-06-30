@@ -191,7 +191,6 @@ class Agent extends CI_Controller
                 //Membuat notifikasi tiket baru untuk Admin
                 $notification = $this->notification($id_ticket, 'Tiket Baru');
                 $this->notification_model->create($notification);
-
             }
             //Membuat history activity inputan data Agent
             $agent_activity_model = [
@@ -217,11 +216,11 @@ class Agent extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
 
-        $original_value = $this->agent_model->get(['id_agent' => $post['id_agent']])->row();
-        $this->form_validation->set_rules('email', 'Alamat E-mail', ($post['email'] != $original_value->email) ? 'is_unique[agents.email]' : '', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti alamat e-mail']);
-        $this->form_validation->set_rules('telepon', 'Nomor Telepon', ($post['telepon'] != $original_value->telepon) ? 'is_unique[agents.telepon]' : '', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
-        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', ($post['no_ktp'] != $original_value->no_ktp) ? 'is_unique[agents.no_ktp]' : '', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor KTP']);
-        $this->form_validation->set_rules('no_npwp', 'NPWP', ($post['no_npwp'] != $original_value->no_npwp) ? 'is_unique[agents.no_npwp]' : '', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti NPWP']);
+        // $original_value = $this->agent_model->get(['id_agent' => $post['id_agent']])->row();
+        // $this->form_validation->set_rules('email', 'Alamat E-mail', ($post['email'] != $original_value->email) ? 'is_unique[agents.email]' : '', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti alamat e-mail']);
+        // $this->form_validation->set_rules('telepon', 'Nomor Telepon', ($post['telepon'] != $original_value->telepon) ? 'is_unique[agents.telepon]' : '', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
+        // $this->form_validation->set_rules('no_ktp', 'Nomor KTP', ($post['no_ktp'] != $original_value->no_ktp) ? 'is_unique[agents.no_ktp]' : '', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor KTP']);
+        // $this->form_validation->set_rules('no_npwp', 'NPWP', ($post['no_npwp'] != $original_value->no_npwp) ? 'is_unique[agents.no_npwp]' : '', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti NPWP']);
         // $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor rekening']);
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
@@ -421,7 +420,7 @@ class Agent extends CI_Controller
     {
 
         $post = $this->input->post(NULL, TRUE);
-        
+
         $data = [];
 
         $lampiran_arr = [];
@@ -430,15 +429,15 @@ class Agent extends CI_Controller
         $countfiles = count($_FILES['tambah_lampiran']['name']);
 
         //Looping all files
-        for($i = 0; $i < $countfiles; $i++){
-            if(!empty($_FILES['tambah_lampiran']['name'][$i])){
+        for ($i = 0; $i < $countfiles; $i++) {
+            if (!empty($_FILES['tambah_lampiran']['name'][$i])) {
                 $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
                 $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
                 $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
                 $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
                 $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
 
-               
+
 
                 //Konfigurasi Upload
                 $config['upload_path']         = './uploads/agents';
@@ -447,17 +446,17 @@ class Agent extends CI_Controller
                 $config['max_width']            = 0;
                 $config['max_height']           = 0;
                 // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
-                
+
                 // Load upload library
                 $this->load->library('upload', $config);
 
                 // File upload
-                if($this->upload->do_upload('file')){
+                if ($this->upload->do_upload('file')) {
                     // Get data about the file
                     $uploadData = $this->upload->data();
                     $filename = $uploadData['file_name'];
 
-                    
+
                     // Initialize array
                     $data['filenames'][] = $filename;
 
@@ -468,20 +467,20 @@ class Agent extends CI_Controller
 
 
 
-        $where = "agents.id_agent = ".  $post['id_agent'];
+        $where = "agents.id_agent = " .  $post['id_agent'];
         //Mengambil nama file lampiran tambahan yang ada
         $lampiran_tambahan = $this->agent_model->get($where)->row()->lampiran_tambahan;
         //Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
         //Jika sudah pernah melampirkan tambahan, maka append nama file di database
-        if($lampiran_tambahan){
-            $data_agent['lampiran_tambahan'] = $lampiran_tambahan. ",". $comma;
+        if ($lampiran_tambahan) {
+            $data_agent['lampiran_tambahan'] = $lampiran_tambahan . "," . $comma;
             $this->agent_model->update($data_agent, $where);
-        }else{
+        } else {
             $data_agent['lampiran_tambahan'] = $comma;
             $this->agent_model->update($data_agent, $where);
         }
-        
+
         redirect($post['redirect']);
     }
 
@@ -512,7 +511,7 @@ class Agent extends CI_Controller
         $config['max_height']           = 0;
 
         $this->load->library('upload', $config);
-        
+
         if (!$this->upload->do_upload('upload_mou')) {
             echo $this->upload->display_errors();
         } else {
@@ -535,6 +534,4 @@ class Agent extends CI_Controller
             redirect($this->input->post('redirect'));
         }
     }
-
-    
 }

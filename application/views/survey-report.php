@@ -46,7 +46,7 @@
                                 <tr>
                                     <th>ID Ticket</th>
                                     <th>Nama Konsumen</th>
-                                    <th>Produk</th>
+                                    <th>Cross Branch</th>
                                     <th>Cabang</th>
                                     <th>Status</th>
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -67,7 +67,7 @@
                                             <?= $fs_konsumen->nama_konsumen ?>
                                         </td>
                                         <td>
-                                            <?= $fs_konsumen->produk ?>
+                                            <?= $fs_konsumen->cross_branch ?>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_cabang ?>
@@ -135,7 +135,7 @@
                                 <tr>
                                     <th>ID Ticket</th>
                                     <th>Nama Konsumen</th>
-                                    <th>Produk</th>
+                                    <th>Cross Branch</th>
                                     <th>Cabang</th>
                                     <th>Status</th>
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -156,7 +156,7 @@
                                             <?= $fs_konsumen->nama_konsumen ?>
                                         </td>
                                         <td>
-                                            <?= $fs_konsumen->produk ?>
+                                            <?= $fs_konsumen->cross_branch ?>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_cabang ?>
@@ -225,7 +225,7 @@
                                 <tr>
                                     <th>ID Ticket</th>
                                     <th>Nama Konsumen</th>
-                                    <th>Produk</th>
+                                    <th>Cross Branch</th>
                                     <th>Cabang</th>
                                     <th>Status</th>
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -246,7 +246,7 @@
                                             <?= $fs_konsumen->nama_konsumen ?>
                                         </td>
                                         <td>
-                                            <?= $fs_konsumen->produk ?>
+                                            <?= $fs_konsumen->cross_branch ?>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_cabang ?>

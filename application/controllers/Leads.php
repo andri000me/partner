@@ -51,8 +51,8 @@ class Leads extends CI_Controller
             'telepon'               => !empty($post['telepon']) ? $post['telepon'] : NULL,
             'nomor_wa'               => !empty($post['nomor_wa']) ? $post['nomor_wa'] : NULL,
             'soa'                   => !empty($post['soa']) ? $post['soa'] : NULL,
-            // 'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
-            // 'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
+            'produk'                => !empty($post['produk']) ? $post['produk'] : NULL,
+            'detail_produk'         => !empty($post['detail_produk']) ? $post['detail_produk'] : NULL,
 
             // Untuk SOA EGC
             'nik_egc'               => !empty($post['nik_egc']) ? $post['nik_egc'] : NULL,

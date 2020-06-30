@@ -43,6 +43,8 @@
                             <th>
                                 Nomor KTP
                             </th>
+                            <th>Status</th>
+                            <th>PKS</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -63,6 +65,24 @@
                                 </td>
                                 <td>
                                     <?= $agent->no_ktp ?>
+                                </td>
+                                <td>
+                                    <?php if ($agent->status_ticket == 6) { ?>
+                                        <b class="text-primary">Teraktivasi</b>
+                                    <?php } else if ($agent->status_ticket == 5) { ?>
+                                        <b class="text-success">Terverifikasi</b>
+                                    <?php } else if ($agent->status_ticket == 4) { ?>
+                                        <b class="text-danger">Ditolak</b>
+                                    <?php } else if ($agent->status_ticket <= 2) { ?>
+                                        <b class="tect-secondary">Belum Terverifikasi</b>
+                                    <?php } ?>
+                                </td>
+                                <td>
+                                    <?php if ($agent->ttd_pks == 'Ya') { ?>
+                                        <b class="text-success">PKS</b>
+                                    <?php } else { ?>
+                                        <b class="text-danger">Non-PKS</b>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <?php if ($agent->status == 'draft') { ?>

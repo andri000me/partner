@@ -9,7 +9,7 @@ class Ticket extends CI_Controller
     {
 
         parent::__construct();
-        
+
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
             $this->where = ['tickets.id_user' => $this->fungsi->user_login()->id_user];
@@ -50,7 +50,7 @@ class Ticket extends CI_Controller
         $this->template->load('template/index', 'tiket', $data);
     }
 
-    public function approve_status($id_ticket)
+    public function approve_status($id_ticket, $redirect = 'ticket')
     {
         // $data = ['']
         $where = ['id_ticket' => $id_ticket];
@@ -95,10 +95,10 @@ class Ticket extends CI_Controller
         $this->notification_model->create($notification);
 
         $this->session->set_flashdata("berhasil_approve", "Data Tiket ID #$id_ticket berhasil diapprove.");
-        redirect('Ticket');
+        redirect($redirect);
     }
 
-    public function reject_status($id_ticket)
+    public function reject_status($id_ticket, $redirect = 'ticket')
     {
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
         if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
@@ -116,7 +116,7 @@ class Ticket extends CI_Controller
         $this->notification_model->create($notification);
 
         $this->session->set_flashdata("berhasil_approve", "Data Tiket ID #$id_ticket berhasil di-reject.");
-        redirect('Ticket');
+        redirect($redirect);
     }
 
     public function update_ttd()
