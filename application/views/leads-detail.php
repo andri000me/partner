@@ -359,13 +359,13 @@
                                         <div class="col-md-6 kontrak-ro">
                                             <div class="form-group form-left">
                                                 <label>Nomor Kontrak</label>
-                                                <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
+                                                <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak_cgc" id="nomor_kontrak" value="<?= $data->nomor_kontrak ?>" placeholder="0878837741" minlength="10" maxlength="10" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 konsumen-ro">
                                             <div class="form-group form-right">
                                                 <label>Nama Konsumen</label>
-                                                <input type="text" class="form-control text-size" name="referral_konsumen" id="referral_konsumen" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
+                                                <input type="text" class="form-control text-size" name="referral_konsumen_cgc" id="referral_konsumen_cgc" value="<?= $data->referral_konsumen ?>" placeholder="Input Nama konsumen">
                                             </div>
                                         </div>
                                     </div>

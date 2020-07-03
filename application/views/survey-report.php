@@ -78,13 +78,14 @@
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
                                                 <b class="text-secondary">Menunggu Persetujuan Manager</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending</b>
+                                                <b class="text-secondary">Pending HO</b>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                                <b class="text-success">Disetujui</b>
+                                                <!-- <b class="text-success">Disetujui</b> -->
+                                                <b class="text-success">Selesai</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
                                                 <b class="text-primary">Diaktivasi</b>
                                             <?php } ?>
@@ -117,7 +118,7 @@
                                                 <b class="text-danger">Fail</b>
                                             <?php } ?>
                                         </td>
-                                        <td>
+                                        <td style="white-space: nowrap;">
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
@@ -173,7 +174,8 @@
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                                <b class="text-success">Disetujui</b>
+                                                <!-- <b class="text-success">Disetujui</b> -->
+                                                <b class="text-success">Selesai</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
                                                 <b class="text-primary">Diaktivasi</b>
                                             <?php } ?>
@@ -207,7 +209,7 @@
                                         </td>
                                         <td>
                                         </td>
-                                        <td>
+                                        <td style="white-spa;">
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
@@ -263,7 +265,8 @@
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                                <b class="text-success">Disetujui</b>
+                                                <!-- <b class="text-success">Disetujui</b> -->
+                                                <b class="text-success">Selesai</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
                                                 <b class="text-primary">Diaktivasi</b>
                                             <?php } ?>
@@ -297,7 +300,7 @@
                                                 <b class="text-danger">Fail</b>
                                             <?php } ?>
                                         </td>
-                                        <td>
+                                        <td style="white-spa;">
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>

@@ -72,8 +72,12 @@
                                         <b class="text-success">Terverifikasi</b>
                                     <?php } else if ($partner->status_ticket == 4) { ?>
                                         <b class="text-danger">Ditolak</b>
-                                    <?php } else if ($partner->status_ticket <= 2) { ?>
-                                        <b class="tect-secondary">Belum Terverifikasi</b>
+                                    <?php } else if ($partner->status_ticket == 2) { ?>
+                                        <b class="text-secondary">Pending HO</b>
+                                    <?php } else if ($partner->status_ticket == 1) { ?>
+                                        <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                    <?php } else if ($partner->status_ticket == 0) { ?>
+                                        <b class="text-secondary">Menunggu Persetujuan Head</b>
                                     <?php } ?>
                                 </td>
                                 <td>

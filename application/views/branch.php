@@ -38,6 +38,7 @@
                                             <option <?= $cabang->has_superior == 0 ? 'selected' : '' ?> value="0">Tidak Ada Head & Manager</option>
                                             <option <?= $cabang->has_superior == 1 ? 'selected' : '' ?> value="1">Ada Head</option>
                                             <option <?= $cabang->has_superior == 2 ? 'selected' : '' ?> value="2">Ada Head & Manager</option>
+                                            <option <?= $cabang->has_superior == 3 ? 'selected' : '' ?> value="3">CMS & Sharia Manager</option>
                                         </select>
                                     </td>
                                     <td>

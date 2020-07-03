@@ -26,8 +26,8 @@ class Profile extends CI_Controller
     {
         $post = $this->input->post(null, TRUE);
         $data = [
-            'email' => $post['email'],
-            'id_branch' => $post['cabang']
+            'email' => $post['email']
+            // 'id_branch' => $post['cabang']
         ];
         //Konfigurasi Upload
         $config['upload_path']         = './uploads/foto_profil';

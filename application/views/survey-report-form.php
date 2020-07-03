@@ -149,6 +149,15 @@
                             <input type="hidden" name="id_leads" value="<?= $leads->id_leads ?>">
                             <!-- ID Branch -->
                             <input type="hidden" id="id_branch" value="<?= $leads->id_branch ?>">
+                            <!-- Level -->
+                            <input type="hidden" id="level" value="<?= $this->fungsi->user_login()->level ?>">
+                            <!-- Akun cabang login saat ini -->
+                            <input type="hidden" id="branch_login" value="<?= $this->fungsi->user_login()->id_branch ?>">
+                            <!-- id user login saat ini -->
+                            <input type="hidden" id="user_login" value="<?= $this->fungsi->user_login()->id_user ?>">
+                            <!-- Assign To -->
+                            <input type="hidden" id="assign_cms" value="<?= $data->assign_cms ?>">
+
                             <div class="card">
                                 <div class="card-body text-size">
                                     <h5 class="form-margin"><b>Data Konsumen</b></h5>
@@ -482,7 +491,7 @@
                                         <div class="col-md-6 kontrak-ro">
                                             <div class="form-group form-left">
                                                 <label>Nomor Kontrak</label>
-                                                <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak" id="nomor_kontrak" value="<?= $leads->nomor_kontrak ?>" minlength="10" maxlength="10" placeholder="0000000000" />
+                                                <input type="phone" class="form-control text-size placement number-only" name="nomor_kontrak_cgc" id="nomor_kontrak_cgc" value="<?= $leads->nomor_kontrak ?>" minlength="10" maxlength="10" placeholder="0000000000" />
                                             </div>
                                         </div>
                                         <div class="col-md-6 konsumen-ro">
@@ -539,8 +548,7 @@
                         <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>" autocomplete="off">
                             <!-- ID Leads -->
                             <input type="hidden" id="id_leads" name="id_leads" value="<?= $leads->id_leads ?>">
-                            <!-- Level -->
-                            <input type="hidden" id="level" value="<?= $this->fungsi->user_login()->level ?>">
+
 
                             <div class="card">
                                 <div class="card-body text-size">
@@ -2891,7 +2899,7 @@
                                             <?php if ($this->fungsi->user_login()->level < 4) { ?>
                                                 <div class="form-group form-margin float-right mt-5">
                                                     <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                                    <a href="<?= base_url('fs_konsumen') ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Kirim</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/kirim_fs/' . $data->id) ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Kirim</b></a>
                                                 </div>
                                             <?php } ?>
                                         </div>
@@ -3620,10 +3628,12 @@
 
     var id_branch = $("#id_branch").val();
     var cabang_cross = $("#cabang_cross").val();
+    var branch_login = $("#branch_login").val();
+    var user_login = $("#user_login").val();
 
     // alert(id_branch + ' ' + cabang_cross)
-    if (level == '2' || level == '3' || level == '4' || level == '5' || cabang_cross != '') {
-        $("input, select, textarea").attr('disabled', 'disabled');
+    if ((level == '2' && id_branch == branch_login) || (level == '3' && id_branch == branch_login) || level == '4' || level == '5' || cabang_cross != '') {
+        $("input, select, textarea, button[type='submit'], button[data-toggle='modal']").attr('disabled', 'disabled');
         if (level == '4' || level == '5') {
             $("#id_leads").removeAttr('disabled');
             $(".scoring_ho input, .scoring_ho select, .scoring_ho textarea, .scoring_ho").removeAttr('disabled');

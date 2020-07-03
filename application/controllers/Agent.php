@@ -84,7 +84,7 @@ class Agent extends CI_Controller
         $this->form_validation->set_rules('telepon', 'Alamat E-mail', 'is_unique[agents.telepon]', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
         $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[agents.no_ktp]', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor KTP']);
         $this->form_validation->set_rules('no_npwp', 'NPWP', 'is_unique[agents.no_npwp]', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti NPWP']);
-        // $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor rekening']);
+        $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor rekening']);
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 

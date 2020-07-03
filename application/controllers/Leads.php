@@ -61,6 +61,8 @@ class Leads extends CI_Controller
             // Untuk SOA CGC / RO
             'nomor_kontrak'         => !empty($post['nomor_kontrak']) ? $post['nomor_kontrak'] : NULL,
             'referral_konsumen'     => !empty($post['referral_konsumen']) ? $post['referral_konsumen'] : NULL,
+            'nomor_kontrak'         => !empty($post['nomor_kontrak_cgc']) ? $post['nomor_kontrak_cgc'] : NULL,
+            'referral_konsumen'     => !empty($post['referral_konsumen_cgc']) ? $post['referral_konsumen_cgc'] : NULL,
             // Untuk SOA Event
             'nama_event'            => !empty($post['nama_event']) ? $post['nama_event'] : NULL,
 
