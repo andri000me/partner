@@ -168,7 +168,7 @@
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
                                                 <b class="text-secondary">Menunggu Persetujuan Manager</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending</b>
+                                                <b class="text-secondary">Pending HO</b>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
@@ -259,7 +259,7 @@
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
                                                 <b class="text-secondary">Menunggu Persetujuan Manager</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending</b>
+                                                <b class="text-secondary">Pending HO</b>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>

@@ -333,6 +333,9 @@ class Leads extends CI_Controller
                 // Tambah record ke Form Survey
                 $form_survey = ['id_leads' => $id];
                 $this->fs_konsumen_model->create($form_survey);
+
+                //Jika CMS mengirim data leads, maka assign form survey otomatis terkirim ke cms tersebut
+                if ($this->fungsi->user_login()->level == 1) $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $id]);
             }
             if ($id) {
                 //Memberi pesan berhasil data menyimpan data mapping
@@ -423,6 +426,9 @@ class Leads extends CI_Controller
             // Tambah record ke Form Survey
             $form_survey = ['id_leads' => $post['id_leads']];
             $this->fs_konsumen_model->create($form_survey);
+
+            //Jika CMS mengirim data leads, maka assign form survey otomatis terkirim ke cms tersebut
+            if ($this->fungsi->user_login()->level == 1) $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $post['id_leads']]);
         }
 
         $where = ['id_leads' => $post['id_leads']];

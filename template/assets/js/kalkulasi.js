@@ -129,12 +129,12 @@ $(function () {
 
 		//Total Nett Profit (Wiraswasta)
 		var total_nett_profit =
-			// convertToInt("#capacity_wir_total_income") -
-			// convertToInt("#capacity_wir_total_operasional");
+			convertToInt("#capacity_wir_total_income") -
+			convertToInt("#capacity_wir_total_operasional");
 
-			(convertToInt("#capacity_wir_gross_profit") *
-				convertToInt("#capacity_wir_profit_margin")) /
-			100;
+		// (convertToInt("#capacity_wir_gross_profit") *
+		// 	convertToInt("#capacity_wir_profit_margin")) /
+		// 100;
 		$("#capacity_wir_total_net_profit").val(total_nett_profit);
 
 		// Pengeluaran Wiraswasta (Wiraswasta)

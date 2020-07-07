@@ -44,7 +44,7 @@
             if (!$this->upload->do_upload($attachment)) {
                 return $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
             } else {
-                return $data[$attachment] = $this->upload->data('file_name');
+                return $this->upload->data('file_name');
             }
         }
 
@@ -261,13 +261,13 @@
             $config['max_height']           = 0;
             $this->load->library('upload', $config);
 
-            $this->upload_data_partner('ktp');
-            $this->upload_data_partner('npwp');
-            $this->upload_data_partner('buku_tabungan_perusahaan');
-            $this->upload_data_partner('siup');
-            $this->upload_data_partner('logo_perusahaan');
-            $this->upload_data_partner('foto_usaha');
-            $this->upload_data_partner('form_mou');
+            $data['ktp']                        = $this->upload_data_partner('ktp');
+            $data['npwp']                       = $this->upload_data_partner('npwp');
+            $data['buku_tabungan_perusahaan']   = $this->upload_data_partner('buku_tabungan_perusahaan');
+            $data['siup']                       = $this->upload_data_partner('siup');
+            $data['logo_perusahaan']            = $this->upload_data_partner('logo_perusahaan');
+            $data['foto_usaha']                 = $this->upload_data_partner('foto_usaha');
+            // $data['form_mou']                   = $this->upload_data_partner('form_mou');
 
             if (isset($post['draft'])) {
                 $data['status'] = 'draft';
@@ -289,10 +289,10 @@
 
             //Menambah antrian tiket untuk data Partner
             if (isset($post['process'])) {
-                //Menambah antrian tiket untuk data Agent
                 $has_superior = $this->fungsi->user_login()->has_superior;
+                $staging = $has_superior == 0 ? 2 : ($has_superior == 1 ? 0 : ($has_superior == 2 ? 0 : 2));
                 $ticket = [
-                    'status'        => 2,
+                    'status'        => $staging,
                     'date_pending'  => date('Y-m-d H:i:s'),
                     'date_created'  => date('Y-m-d H:i:s'),
                     'date_modified' => date('Y-m-d H:i:s'),
@@ -301,6 +301,7 @@
                     'id_branch'     => $this->fungsi->user_login()->id_branch
                 ];
 
+                //Jika sudah mou 'Iya' dan Form Mou diupload.
                 if (!$this->upload->do_upload('form_mou')) {
                     $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
                 } else {
@@ -349,22 +350,23 @@
             $config['max_height']           = 0;
             $this->load->library('upload', $config);
 
-            $this->upload_data_partner('ktp');
-            $this->upload_data_partner('npwp');
-            $this->upload_data_partner('buku_tabungan_perusahaan');
-            $this->upload_data_partner('siup');
-            $this->upload_data_partner('logo_perusahaan');
-            $this->upload_data_partner('foto_usaha');
-            $this->upload_data_partner('form_mou');
+            $data['ktp']                        = $this->upload_data_partner('ktp');
+            $data['npwp']                       = $this->upload_data_partner('npwp');
+            $data['buku_tabungan_perusahaan']   = $this->upload_data_partner('buku_tabungan_perusahaan');
+            $data['siup']                       = $this->upload_data_partner('siup');
+            $data['logo_perusahaan']            = $this->upload_data_partner('logo_perusahaan');
+            $data['foto_usaha']                 = $this->upload_data_partner('foto_usaha');
+            // $data['form_mou']                   = $this->upload_data_partner('form_mou');
 
             if (isset($post['draft'])) {
                 $data['status'] = 'draft';
             } else if (isset($post['process'])) {
                 $data['status'] = 'lengkap';
-                //Menambah antrian tiket untuk data Agent
+                //Menambah antrian tiket untuk data Partner
                 $has_superior = $this->fungsi->user_login()->has_superior;
+                $staging = $has_superior == 0 ? 2 : ($has_superior == 1 ? 0 : ($has_superior == 2 ? 0 : 2));
                 $ticket = [
-                    'status'        => 2,
+                    'status'        => $staging,
                     'date_pending'  => date('Y-m-d H:i:s'),
                     'date_created'  => date('Y-m-d H:i:s'),
                     'date_modified' => date('Y-m-d H:i:s'),
@@ -373,6 +375,7 @@
                     'id_branch'     => $this->fungsi->user_login()->id_branch
                 ];
 
+                //Jika sudah mou 'Iya' dan Form Mou diupload.
                 if (!$this->upload->do_upload('form_mou')) {
                     $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
                 } else {
@@ -472,6 +475,7 @@
             $post = $this->input->post(NULL, TRUE);
 
             $data = $this->data_partner();
+            unset($data["ttd_pks"]);
             //unset data created_at, id_user, id_branch. Karena untuk update data
             unset($data["created_at"], $data["id_user"], $data["id_branch"]);
 
@@ -498,10 +502,7 @@
                 // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
                 'status'        => 2,
                 'date_pending'  => date('Y-m-d H:i:s'),
-                // 'date_created'  => date('Y-m-d H:i:s'),
                 'date_modified'  => date('Y-m-d H:i:s'),
-                // 'id_user'       => $this->fungsi->user_login()->id_user,
-                // 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
             $where_ticket = ['id_ticket' => $post['id_ticket']];
             $this->ticket_model->update($ticket, $where_ticket);
@@ -554,7 +555,7 @@
                         // Initialize array
                         $data['filenames'][] = $filename;
 
-                        $lampiran_arr[] = $filename;
+                        return $lampiran_arr[] = $filename;
                     }
                 }
             }
@@ -606,19 +607,24 @@
             if (!$this->upload->do_upload('upload_mou')) {
                 echo $this->upload->display_errors();
             } else {
+                $where = ['id_partner' => $this->input->post('id_partner')];
+
+                $data['form_mou'] = $this->upload->data('file_name');
+                $this->partner_model->update($data, $where);
+
                 $data_ticket = [
                     'date_verified_ttd' =>  date('Y-m-d H:i:s'),
                     'verified_by'       => $this->fungsi->user_login()->id_user
                 ];
-                $where = ['id_partner' => $this->input->post('id_partner')];
+                // meng-update tanggal tanda tangan kerjasama
                 $this->ticket_model->update($data_ticket, $where);
-                $data['form_mou'] = $this->upload->data('file_name');
-                $this->partner_model->update($data, $where);
 
-                //Jika data tiket sudah diapprove namun belum di upload form pks, maka ketika user upload form mou, tiket kembali ke status `pending`
                 $id_partner = $this->ticket_model->get(['tickets.id_partner' => $this->input->post('id_partner')])->row();
+                //Jika data tiket sudah diapprove namun belum di upload form pks, maka ketika user upload form mou, tiket kembali ke status `pending`
                 if ($id_partner->status_ticket == 5 || $id_partner->status_ticket == 6) {
+                    //merubah status tiket kembali ke pending
                     $data_ticket = ['status' => 2];
+                    // meng-update tanggal tanda tangan kerjasama
                     $this->ticket_model->update($data_ticket, ['id_partner' => $this->input->post('id_partner')]);
                 }
 
@@ -626,16 +632,53 @@
             }
         }
 
-        //check duplicate
-        public function check_duplicate($field, $value)
+        public function download_lampiran($id)
         {
-            // if($id == NULL){
-            $check = $this->partner_model->get("$field = '$value'");
-            if ($check->num_rows() == 0) {
-                echo 'available';
-            } else {
-                echo 'not available';
+
+            $where = ['partners_full.id_partner' => $id];
+            $data = $this->partner_model->get($where)->row();
+            $data_maintain = $this->maintain_partner_model->get($where);
+
+            $uploads = [
+                $data->ktp,
+                $data->npwp,
+                $data->buku_tabungan_perusahaan,
+                $data->siup,
+                $data->logo_perusahaan,
+                $data->foto_usaha,
+                $data->form_mou,
+            ];
+
+            // Download lampiran partner
+            foreach ($uploads as $upload => $file) {
+                if ($file != NULL || $file != '') {
+                    ${'upload' . $upload} =  FCPATH . 'uploads/partners/' . $file;
+                    $this->zip->read_file(${"upload" . $upload});
+                }
+                // echo $upload . $file . '<br>';
             }
-            // }
+
+            // Download lampiran maintain partner
+            if ($data_maintain->num_rows() > 0) {
+                $iteration = 0;
+                foreach ($data_maintain->result() as $file) {
+                    ${'maintain' . $iteration} = FCPATH . 'uploads/maintains/' . $file->photo_activity;
+                    $this->zip->read_file(${'maintain' . $iteration});
+                    $iteration++;
+                }
+            }
+
+            //Download Data lampiran tambahan
+            $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+            foreach ($lampiran_tambahan as $file) {
+                if ($file != NULL || $file != '') {
+                    ${'upload' . $upload} =  FCPATH . 'uploads/partners/' . $file;
+                    $this->zip->read_file(${"upload" . $upload});
+                    // echo $file . '<br>';
+                }
+            }
+            // Download
+            $filename = "ID_Partner_$data->id_partner.zip";
+            $this->zip->download($filename);
         }
     }

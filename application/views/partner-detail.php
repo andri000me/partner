@@ -521,6 +521,23 @@
                                                 <?php } ?>
                                             </div>
                                         <?php } ?>
+                                        <?php if ($data->form_mou) { ?>
+                                            <!-- Foto Usaha -->
+                                            <div class="item" style="height:150px; width:300px;">
+                                                <?php if (get_extension($data->form_mou)) { ?>
+                                                    <div class="zoom-gallery">
+                                                        <a href="<?= base_url('uploads/partners/' . $data->form_mou) ?>"><img src="<?= base_url('uploads/partners/' . $data->form_mou) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                    </div>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('uploads/partners/' . $data->form_mou) ?>">
+                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->form_mou ?>">
+                                                            <i class="fa fa-file fa-5x"></i>
+                                                            <!-- <span class="small"><?= $data->form_mou ?></span> -->
+                                                        </div>
+                                                    </a>
+                                                <?php } ?>
+                                            </div>
+                                        <?php } ?>
                                         <?php if ($data->foto_usaha) { ?>
                                             <!-- Foto Usaha -->
                                             <div class="item" style="height:150px; width:300px;">
@@ -885,7 +902,7 @@
                                                                 </form>
                                                                 <div id="" class="form-group ml-3 form_mou">
                                                                     <form action="<?= base_url('partner/upload_mou') ?>" method="post" enctype="multipart/form-data">
-                                                                        <input type="hidden" name="id_partner" value="<?= $ticket->id_partner ?>">
+                                                                        <input type="hidden" name="id_partner" value="<?= $data->id_partner ?>">
                                                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
                                                                         <div class="form-group mr-2">
                                                                             <label>Form MOU</label>
@@ -1096,7 +1113,7 @@
                                                     <p class="inbox-item-author mt-0 mb-1"><i class="fas fa-download"></i>&nbsp;</p>
                                                 </td>
                                                 <td>
-                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="<?= base_url('zip/partner/' . $data->id_partner) ?>">Download
+                                                    <p class="inbox-item-author mt-0 mb-1 text-size"><b><a href="<?= base_url('partner/download_lampiran/' . $data->id_partner) ?>">Download
                                                                 Semua Lampiran</b></a></p>
                                                 </td>
                                             </tr>

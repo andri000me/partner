@@ -44,7 +44,6 @@
                                 Nomor KTP
                             </th>
                             <th>Status</th>
-                            <th>PKS</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -79,13 +78,6 @@
                                         <b class="text-secondary">Menunggu Persetujuan Manager</b>
                                     <?php } else if ($agent->status_ticket == 0) { ?>
                                         <b class="text-secondary">Menunggu Persetujuan Head</b>
-                                    <?php } ?>
-                                </td>
-                                <td>
-                                    <?php if ($agent->ttd_pks == 'Ya') { ?>
-                                        <b class="text-success">PKS</b>
-                                    <?php } else { ?>
-                                        <b class="text-danger">Non-PKS</b>
                                     <?php } ?>
                                 </td>
                                 <td>

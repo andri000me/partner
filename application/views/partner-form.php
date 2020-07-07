@@ -488,14 +488,16 @@
                                     <div class="form-row">
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
-                                                <label>Data Lainnya</label>
-                                                <input type="file" name="" class="filestyle" data-buttonname="btn-secondary">
+                                                <label>Data Lainnya</label><br>
+                                                <input type="file" name="tambah_lampiran[]" id="upload_file1">
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group text-size form-margin">
-                                                <label>Data Lainnya</label>
-                                                <input type="file" name="" class="filestyle upload-form" data-buttonname="btn-secondary">
+                                            <h4 class="mt-0 header-title mb-4"><b>Tambah Data Lampiran</b></h4>
+                                            <hr>
+                                            <div id="moreImageUpload"></div>
+                                            <div class="clear "></div>
+                                            <div id="moreImageUploadLink" class="float-right mt-3">
+                                                <a class="btn btn-secondary text-size mr-1" href="javascript:void(0);" id="attachMore">Tambah Form</a>
+                                                <button class="btn btn-primary text-size">Simpan</button>
                                             </div>
                                         </div>
                                     </div>
