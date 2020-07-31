@@ -77,8 +77,8 @@ $(function () {
 			convertToInt("#capacity_karyawan_outcome_pendidikan") +
 			convertToInt("#capacity_karyawan_outcome_rumah") +
 			convertToInt("#capacity_karyawan_outcome_listrik") +
-			convertToInt("#capacity_karyawan_outcome_lainnya") +
-			hutang_karyawan;
+			convertToInt("#capacity_karyawan_outcome_lainnya");
+		// hutang_karyawan;
 		$("#capacity_karyawan_total_outcome").val(pengeluaran_karyawan);
 
 		//Kelebihan Pendapatan Karyawan (Karyawan)

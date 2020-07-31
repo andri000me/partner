@@ -21,11 +21,13 @@ class Partner_model extends CI_Model
         $this->db->delete('partners_full', $where);
     }
 
-    public function get($where = NULL)
+    public function get($where = NULL, $list = FALSE)
     {
         $this->db->select("partners_full.*, tickets.status as status_ticket");
+        if ($list == true) $this->db->select("branches.*");
         $this->db->from('partners_full');
         $this->db->join('tickets', 'tickets.id_partner = partners_full.id_partner', 'left');
+        if ($list == true) $this->db->join('branches', 'branches.id_branch = partners_full.id_branch', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

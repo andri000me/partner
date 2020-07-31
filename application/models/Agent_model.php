@@ -21,12 +21,15 @@ class Agent_model extends CI_Model
         $this->db->delete('agents', $where);
     }
 
-    public function get($where = NULL)
+    public function get($where = NULL, $list = FALSE)
     {
         $this->db->select('agents.*, tickets.status as status_ticket');
+        if ($list == true)
+            $this->db->select("branches.*");
         $this->db->from('agents');
         $this->db->join('tickets', 'tickets.id_agent = agents.id_agent', 'left');
-        // $this->db->join('users', 'users.id_user = agents.id_user', 'inner');
+        if ($list == true)
+            $this->db->join('branches', 'branches.id_branch = agents.id_branch', 'left');
         if ($where != null) {
             $this->db->where($where);
         }

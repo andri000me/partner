@@ -35,10 +35,6 @@ class Ticket_model extends CI_Model
         user_completed.name as nama_user_completed, 
         user_activated.name as nama_user_activated, 
         user_verified_ttd.name as nama_user_verified,
-        partners_full.ktp as ktp_partner,
-        agents.ktp as ktp_agent,
-        partners_full.npwp as npwp_partner,
-        agents.npwp as npwp_agent,
 
         DATE_FORMAT(date_pending, '%d %b, %Y') as tanggal_pending,
         DATE_FORMAT(date_approved_by_head, '%d %b, %Y') as tanggal_approved_by_head,

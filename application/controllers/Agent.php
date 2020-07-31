@@ -23,34 +23,75 @@ class Agent extends CI_Controller
         check_not_login();
     }
 
-    //Notification Method
-    private function notification($id_ticket, $message)
+    private function data()
     {
-        $notification = [
-            'pengirim'          => $this->fungsi->user_login()->id_user,
-            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
-            'penerima_cabang'   => 46,
-            'type'              => $message,
-            'id_ticket'         => $id_ticket,
-            'created_at'        => date('Y-m-d H:i:s')
+        $post = $this->input->post(NULL, TRUE);
+        $data = [
+            'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : '',
+            // 'jenis_kelamin'             =>!empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : '',
+            'email'                     => !empty($post['email']) ? $post['email'] : '',
+            'telepon'                   => !empty($post['telepon']) ? $post['telepon'] : '',
+            'tanggal_lahir'             => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : '',
+            'no_ktp'                    => !empty($post['no_ktp']) ? $post['no_ktp'] : '',
+            'no_npwp'                   => !empty($post['no_npwp']) ? $post['no_npwp'] : '',
+            'pekerjaan'                 => !empty($post['pekerjaan']) ? $post['pekerjaan'] : '',
+            'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan']) ? $post['jenis_pekerjaan'] : '',
+            'jenis_agent'               => !empty($post['jenis_agent']) ? $post['jenis_agent'] : '',
+            'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah']) ? $post['status_kepemilikan_rumah'] : '',
+            'punya_pinjaman'            => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : '',
+            'afiliasi_travel'           => !empty($post['afiliasi_travel']) ? $post['afiliasi_travel'] : '',
+            'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : '',
+            'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : '',
+            'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : '',
+            'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : '',
+            'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : '',
+            'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : '',
+            'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : '',
+            'atas_nama'                 => !empty($post['atas_nama']) ? $post['atas_nama'] : '',
+
+            //Timestamp
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s'),
+
+            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
+            'id_user'               => $post['id_user'],
+            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
+            'id_branch'             => $post['id_branch']
         ];
 
-        return $notification;
+        return $data;
+    }
+
+    private function lampiran($attachment)
+    {
+        //Konfigurasi Upload
+        $config['upload_path']         = './uploads/agents';
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 0;
+        $config['max_width']            = 0;
+        $config['max_height']           = 0;
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($attachment)) {
+            return $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+        } else {
+            return $this->upload->data('file_name');
+        }
     }
 
     public function index()
     {
         $data = [
-            'data' => $this->agent_model->get($this->where),
+            'data' => $this->agent_model->get($this->where, TRUE),
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
         ];
 
-        $this->template->load('template/index', 'agent', $data);
+        $this->template->load('template/index', 'agent/agent', $data);
     }
 
     public function create()
     {
-        $this->template->load('template/index', 'agent-form');
+        $this->template->load('template/index', 'agent/agent-form');
     }
 
     public function edit($id)
@@ -59,7 +100,7 @@ class Agent extends CI_Controller
         $data = [
             'data' => $this->agent_model->get($where)->row(),
         ];
-        $this->template->load('template/index', 'agent-edit', $data);
+        $this->template->load('template/index', 'agent/agent-edit', $data);
     }
 
     public function detail($id)
@@ -72,7 +113,7 @@ class Agent extends CI_Controller
             'ticket' => $this->ticket_model->get($where)->row()
         ];
 
-        $this->template->load('template/index', 'agent-detail', $data);
+        $this->template->load('template/index', 'agent/agent-detail', $data);
     }
 
 
@@ -88,79 +129,15 @@ class Agent extends CI_Controller
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 
-
         if ($this->form_validation->run() != FALSE) {
 
-            $data = [
-                'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : NULL,
-                // 'jenis_kelamin'             =>!empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
-                'email'                     => !empty($post['email']) ? $post['email'] : NULL,
-                'telepon'                   => !empty($post['telepon']) ? $post['telepon'] : NULL,
-                'tanggal_lahir'             => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
-                'no_ktp'                    => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-                'no_npwp'                   => !empty($post['no_npwp']) ? $post['no_npwp'] : NULL,
-                'pekerjaan'                 => !empty($post['pekerjaan']) ? $post['pekerjaan'] : NULL,
-                'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan']) ? $post['jenis_pekerjaan'] : NULL,
-                'jenis_agent'               => !empty($post['jenis_agent']) ? $post['jenis_agent'] : NULL,
-                'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah']) ? $post['status_kepemilikan_rumah'] : NULL,
-                'punya_pinjaman'            => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : NULL,
-                'afiliasi_travel'           => !empty($post['afiliasi_travel']) ? $post['afiliasi_travel'] : NULL,
-                'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : NULL,
-                'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : NULL,
-                'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : NULL,
-                'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : NULL,
-                'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
-                'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
-                'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
-                'atas_nama'                 => !empty($post['atas_nama']) ? $post['atas_nama'] : NULL,
+            $data                   = $this->data();
 
-                //Timestamp
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-
-                //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-                'id_user'               => $post['id_user'],
-                //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-                'id_branch'             => $post['id_branch']
-            ];
-
-            //Konfigurasi Upload
-            $config['upload_path']         = './uploads/agents';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 0;
-            $config['max_width']            = 0;
-            $config['max_height']           = 0;
-            $this->load->library('upload', $config);
-
-            if (!$this->upload->do_upload('ktp')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['ktp'] = $this->upload->data('file_name');
-            }
-
-            if (!$this->upload->do_upload('npwp')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['npwp'] = $this->upload->data('file_name');
-            }
-
-            if (!$this->upload->do_upload('buku_tabungan')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['buku_tabungan'] = $this->upload->data('file_name');
-            }
-
-            if (!$this->upload->do_upload('foto_selfie')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['foto_selfie'] = $this->upload->data('file_name');
-            }
-
-            if (!$this->upload->do_upload('form_f100')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['form_f100'] = $this->upload->data('file_name');
-            }
+            $data['ktp']            = $this->lampiran('ktp');
+            $data['npwp']           = $this->lampiran('npwp');
+            $data['buku_tabungan']  = $this->lampiran('buku_tabungan');
+            $data['foto_selfie']    = $this->lampiran('foto_selfie');
+            $data['form_f100']      = $this->lampiran('form_f100');
 
             if (isset($post['draft'])) {
                 $data['status'] = 'draft';
@@ -169,28 +146,14 @@ class Agent extends CI_Controller
             }
 
             //Memasukkan data ke database `Agents`
-
-
             $id = $this->agent_model->create($data);
 
             if (isset($post['process'])) {
                 //Menambah antrian tiket untuk data Agent
-                $has_superior = $this->fungsi->user_login()->has_superior;
-                $ticket = [
-                    // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-                    'status'        => 2,
-                    'date_pending'  => date('Y-m-d H:i:s'),
-                    'date_created'  => date('Y-m-d H:i:s'),
-                    'date_modified'  => date('Y-m-d H:i:s'),
-                    'id_agent'      => $id,
-                    'id_user'       => $this->fungsi->user_login()->id_user,
-                    'id_branch'     => $this->fungsi->user_login()->id_branch
-                ];
-                $id_ticket = $this->ticket_model->create($ticket);
+                $id_ticket = $this->tiket->tambah_tiket('id_partner', $id);
 
                 //Membuat notifikasi tiket baru untuk Admin
-                $notification = $this->notification($id_ticket, 'Tiket Baru');
-                $this->notification_model->create($notification);
+                $this->notifikasi->send($id_ticket, 'Tiket Baru');
             }
             //Membuat history activity inputan data Agent
             $agent_activity_model = [
@@ -207,7 +170,7 @@ class Agent extends CI_Controller
 
             redirect('Agent');
         } else {
-            $this->template->load('template/index', 'agent-form');
+            $this->template->load('template/index', 'agent/agent-form');
         }
     }
 
@@ -225,76 +188,14 @@ class Agent extends CI_Controller
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 
-        $data = [
-            'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : NULL,
-            // 'jenis_kelamin'             => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
-            'email'                     => !empty($post['email']) ? $post['email'] : NULL,
-            'telepon'                   => !empty($post['telepon']) ? $post['telepon'] : NULL,
-            'tanggal_lahir'             => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
-            'no_ktp'                    => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-            'no_npwp'                   => !empty($post['no_npwp']) ? $post['no_npwp'] : NULL,
-            'pekerjaan'                 => !empty($post['pekerjaan']) ? $post['pekerjaan'] : NULL,
-            'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan']) ? $post['jenis_pekerjaan'] : NULL,
-            'jenis_agent'               => !empty($post['jenis_agent']) ? $post['jenis_agent'] : NULL,
-            'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah']) ? $post['status_kepemilikan_rumah'] : NULL,
-            'punya_pinjaman'            => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : NULL,
-            'afiliasi_travel'           => !empty($post['afiliasi_travel']) ? $post['afiliasi_travel'] : NULL,
-            'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : NULL,
-            'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : NULL,
-            'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : NULL,
-            'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : NULL,
-            'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
-            'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
-            'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
-            'atas_nama'                 => !empty($post['atas_nama']) ? $post['atas_nama'] : NULL,
+        $data = $this->data();
+        unset($data['created_at'], $data['id_user'], $data['id_branch']);
 
-            //Timestamp
-            // 'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s'),
-
-            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            // 'id_user'               => $post['id_user'],
-            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            // 'id_branch'             => $post['id_branch']
-        ];
-
-        //Konfigurasi Upload
-        $config['upload_path']         = './uploads/agents';
-        $config['allowed_types']        = '*';
-        $config['max_size']             = 0;
-        $config['max_width']            = 0;
-        $config['max_height']           = 0;
-        $this->load->library('upload', $config);
-
-        if (!$this->upload->do_upload('ktp')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['ktp'] = $this->upload->data('file_name');
-        }
-
-        if (!$this->upload->do_upload('npwp')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['npwp'] = $this->upload->data('file_name');
-        }
-
-        if (!$this->upload->do_upload('buku_tabungan')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['buku_tabungan'] = $this->upload->data('file_name');
-        }
-
-        if (!$this->upload->do_upload('foto_selfie')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['foto_selfie'] = $this->upload->data('file_name');
-        }
-
-        if (!$this->upload->do_upload('form_f100')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['form_f100'] = $this->upload->data('file_name');
-        }
+        $data['ktp']            = $this->lampiran('ktp');
+        $data['npwp']           = $this->lampiran('npwp');
+        $data['buku_tabungan']  = $this->lampiran('buku_tabungan');
+        $data['foto_selfie']    = $this->lampiran('foto_selfie');
+        $data['form_f100']      = $this->lampiran('form_f100');
 
         if (isset($post['draft'])) {
             $data['status'] = 'draft';
@@ -302,24 +203,10 @@ class Agent extends CI_Controller
             $data['status'] = 'lengkap';
 
             //Menambah antrian tiket untuk data Agent
-            $has_superior = $this->fungsi->user_login()->has_superior;
-            $data['status'] = 'lengkap';
-
-            $ticket = [
-                // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-                'status'        => 2,
-                'date_pending'  => date('Y-m-d H:i:s'),
-                // 'date_created'  => date('Y-m-d H:i:s'),
-                'date_modified'  => date('Y-m-d H:i:s'),
-                'id_agent'    => $post['id_agent'],
-                'id_user'       => $this->fungsi->user_login()->id_user,
-                'id_branch'     => $this->fungsi->user_login()->id_branch
-            ];
-            $id_ticket = $this->ticket_model->create($ticket);
+            $id_ticket = $this->tiket->tambah_tiket('id_agent', $post['id_agent']);
 
             //Membuat notifikasi tiket baru untuk Admin
-            $notification = $this->notification($id_ticket, 'Tiket Baru');
-            $this->notification_model->create($notification);
+            $this->notifikasi->send($id_ticket, 'Tiket Baru');
         }
         $where = ['id_agent' => $post['id_agent']];
         //Memasukkan data ke database `Agents`
@@ -345,38 +232,8 @@ class Agent extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        $data = [
-            'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : NULL,
-            // 'jenis_kelamin'             => !empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : NULL,
-            'email'                     => !empty($post['email']) ? $post['email'] : NULL,
-            'telepon'                   => !empty($post['telepon']) ? $post['telepon'] : NULL,
-            'tanggal_lahir'             => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : NULL,
-            'no_ktp'                    => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
-            'no_npwp'                   => !empty($post['no_npwp']) ? $post['no_npwp'] : NULL,
-            'pekerjaan'                 => !empty($post['pekerjaan']) ? $post['pekerjaan'] : NULL,
-            'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan']) ? $post['jenis_pekerjaan'] : NULL,
-            'jenis_agent'               => !empty($post['jenis_agent']) ? $post['jenis_agent'] : NULL,
-            'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah']) ? $post['status_kepemilikan_rumah'] : NULL,
-            'punya_pinjaman'            => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : NULL,
-            'afiliasi_travel'           => !empty($post['afiliasi_travel']) ? $post['afiliasi_travel'] : NULL,
-            'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : NULL,
-            'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : NULL,
-            'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : NULL,
-            'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : NULL,
-            'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : NULL,
-            'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : NULL,
-            'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : NULL,
-            'atas_nama'                 => !empty($post['atas_nama']) ? $post['atas_nama'] : NULL,
-
-            //Timestamp
-            // 'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
-
-            //Memasukkan id user, agar mengetahui user siapa yang menginput data mapping
-            // 'id_user'               => $post['id_user'],
-            //Memasukkan id cabang, agar mengetahui cabang mana yang menginput data mapping
-            // 'id_branch'             => $post['id_branch']
-        ];
+        $data = $this->data();
+        unset($data['created_at'], $data['id_user'], $data['id_branch']);
 
         $where = ['id_agent' => $post['id_agent']];
         //Memasukkan data mapping ke database `Agents`
@@ -393,22 +250,10 @@ class Agent extends CI_Controller
         $this->agent_activity_model->create($agent_activity_model);
 
         //Membuat notifikasi Perubahan Data untuk Admin
-        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
-        $this->notification_model->create($notification);
+        $this->notifikasi->send($post['id_ticket'], 'Perubahan Data');
 
         //Meng-update antrian tiket untuk data Agent
-        $has_superior = $this->fungsi->user_login()->has_superior;
-        $ticket = [
-            // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-            'status'        => 2,
-            'date_pending'  => date('Y-m-d H:i:s'),
-            // 'date_created'  => date('Y-m-d H:i:s'),
-            'date_modified'  => date('Y-m-d H:i:s'),
-            // 'id_user'       => $this->fungsi->user_login()->id_user,
-            // 'id_branch'     => $this->fungsi->user_login()->id_branch
-        ];
-        $where_ticket = ['id_ticket' => $post['id_ticket']];
-        $this->ticket_model->update($ticket, $where_ticket);
+        $this->tiket->update_tiket($post['id_ticket']);
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diupdate. <a href='#'>Lihat Data</a>");
@@ -533,5 +378,47 @@ class Agent extends CI_Controller
 
             redirect($this->input->post('redirect'));
         }
+    }
+
+    //Download Lampiran
+    public function download_lampiran($id)
+    {
+
+        $where = ['agents.id_agent' => $id];
+        $data = $this->agent_model->get($where)->row();
+        $data_tiket = $this->ticket_model->get($where)->row();
+        $uploads = [
+            $data->ktp,
+            $data->npwp,
+            $data->buku_tabungan,
+            $data->foto_selfie,
+            $data->form_f100,
+
+            //form mou
+            $data_tiket->form_mou
+        ];
+
+        // $uploads[] = $data_tiket->form_f100;
+
+        foreach ($uploads as $upload => $file) {
+            if ($file != NULL || $file != '') {
+                ${'upload' . $upload} =  FCPATH . 'uploads/agents/' . $file;
+                $this->zip->read_file(${"upload" . $upload});
+            }
+            // echo $upload . $file . '<br>';
+        }
+        //Download Data lampiran tambahan
+        $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+        foreach ($lampiran_tambahan as $file) {
+            if ($file != NULL || $file != '') {
+                ${'upload' . $upload} =  FCPATH . 'uploads/agents/' . $file;
+                $this->zip->read_file(${"upload" . $upload});
+                // echo $file . '<br>';
+            }
+        }
+        // Download
+        $nama_lengkap = str_replace(" ", "_", $data->nama_lengkap);
+        $filename = $nama_lengkap . "_$data->id_agent.zip";
+        $this->zip->download($filename);
     }
 }

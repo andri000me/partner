@@ -321,22 +321,26 @@
 <script>
     $(document).ready(function() {
         $('.survey').on('change', function() {
-            var data = $(this).data('fs');
-            var cms = $(this).val();
+            //ID Leads
+            var id_leads = $(this).data('fs');
+            //ID CMS
+            var assign_cms = $(this).val();
 
-            // alert('assign: ' + cms + ' data id: ' + data);
+            // alert('assign: ' + assign_cms + ' data id: ' + id_leads);
 
             $.ajax({
                 type: "POST",
                 url: "<?= base_url('fs_konsumen/update_assignment') ?>",
                 dataType: "JSON",
                 data: {
-                    data: data,
-                    cms: cms
+                    assign_cms: assign_cms,
+                    id_leads: id_leads
                 },
                 success: function(res) {
-                    alert(cms != '' ? 'Data form survey telah di-assign' :
+                    alert(assign_cms != '' ? 'Data form survey telah di-assign' :
                         'Assignment telah ditarik');
+                    console.log(res);
+
                 }
             });
             // return false;

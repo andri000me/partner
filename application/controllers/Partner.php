@@ -24,23 +24,16 @@
             check_not_login();
         }
 
-        //Notification Method
-        private function notification($id_ticket, $message)
+        private function lampiran($attachment)
         {
-            $notification = [
-                'pengirim'          => $this->fungsi->user_login()->id_user,
-                // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
-                'penerima_cabang'   => 46,
-                'type'              => $message,
-                'id_ticket'         => $id_ticket,
-                'created_at'        => date('Y-m-d H:i:s')
-            ];
+            //Konfigurasi Upload
+            $config['upload_path']         = './uploads/partners';
+            $config['allowed_types']        = '*';
+            $config['max_size']             = 0;
+            $config['max_width']            = 0;
+            $config['max_height']           = 0;
+            $this->load->library('upload', $config);
 
-            return $notification;
-        }
-
-        private function upload_data_partner($attachment)
-        {
             if (!$this->upload->do_upload($attachment)) {
                 return $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
             } else {
@@ -49,7 +42,7 @@
         }
 
         //form post data partner
-        private function data_partner()
+        private function data()
         {
             $post = $this->input->post(NULL, TRUE);
 
@@ -114,22 +107,22 @@
                 'data' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'mapping', $data);
+            $this->template->load('template/index', 'partner/mapping', $data);
         }
 
         public function index()
         {
             $data = [
-                'data' => $this->partner_model->get("(partners_full.status = 'draft' OR partners_full.status = 'lengkap') AND partners_full." . $this->where),
+                'data' => $this->partner_model->get("(partners_full.status = 'draft' OR partners_full.status = 'lengkap') AND partners_full." . $this->where, TRUE),
                 'maintains' => $this->partner_model->get("partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner', $data);
+            $this->template->load('template/index', 'partner/partner', $data);
         }
 
         public function create_mapping()
         {
-            $this->template->load('template/index', 'mapping-form');
+            $this->template->load('template/index', 'partner/mapping-form');
         }
 
         public function create()
@@ -139,7 +132,7 @@
                 'mappings' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner-form', $data);
+            $this->template->load('template/index', 'partner/partner-form', $data);
         }
 
 
@@ -148,7 +141,7 @@
             $data = [
                 'data' => $this->partner_model->get(['partners_full.id_partner' => $id])->row()
             ];
-            $this->template->load('template/index', 'mapping-edit', $data);
+            $this->template->load('template/index', 'partner/mapping-edit', $data);
         }
 
         public function edit($id)
@@ -160,7 +153,7 @@
                 'mappings' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner-edit', $data);
+            $this->template->load('template/index', 'partner/partner-edit', $data);
         }
 
         public function detail($id)
@@ -174,7 +167,7 @@
                 'activities'    => $this->partner_activity_model->get($where),
                 'comments'      => $this->comment_model->get($where)
             ];
-            $this->template->load('template/index', 'partner-detail', $data);
+            $this->template->load('template/index', 'partner/partner-detail', $data);
             // echo json_encode($data['data']);
         }
 
@@ -235,7 +228,7 @@
 
                 redirect('partner/index_mapping');
             } else {
-                $this->template->load('template/index', 'mapping-form');
+                $this->template->load('template/index', 'partner/mapping-form');
             }
         }
 
@@ -251,23 +244,15 @@
 
 
             // $this->mapping_partner->update($data_mapping, $where_mapping);                             
-            $data = $this->data_partner();
+            $data = $this->data();
 
-            //Konfigurasi Upload
-            $config['upload_path']         = './uploads/partners';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 0;
-            $config['max_width']            = 0;
-            $config['max_height']           = 0;
-            $this->load->library('upload', $config);
-
-            $data['ktp']                        = $this->upload_data_partner('ktp');
-            $data['npwp']                       = $this->upload_data_partner('npwp');
-            $data['buku_tabungan_perusahaan']   = $this->upload_data_partner('buku_tabungan_perusahaan');
-            $data['siup']                       = $this->upload_data_partner('siup');
-            $data['logo_perusahaan']            = $this->upload_data_partner('logo_perusahaan');
-            $data['foto_usaha']                 = $this->upload_data_partner('foto_usaha');
-            // $data['form_mou']                   = $this->upload_data_partner('form_mou');
+            $data['ktp']                        = $this->lampiran('ktp');
+            $data['npwp']                       = $this->lampiran('npwp');
+            $data['buku_tabungan_perusahaan']   = $this->lampiran('buku_tabungan_perusahaan');
+            $data['siup']                       = $this->lampiran('siup');
+            $data['logo_perusahaan']            = $this->lampiran('logo_perusahaan');
+            $data['foto_usaha']                 = $this->lampiran('foto_usaha');
+            $data['form_mou']                   = $this->lampiran('form_mou');
 
             if (isset($post['draft'])) {
                 $data['status'] = 'draft';
@@ -289,31 +274,18 @@
 
             //Menambah antrian tiket untuk data Partner
             if (isset($post['process'])) {
-                $has_superior = $this->fungsi->user_login()->has_superior;
-                $staging = $has_superior == 0 ? 2 : ($has_superior == 1 ? 0 : ($has_superior == 2 ? 0 : 2));
-                $ticket = [
-                    'status'        => $staging,
-                    'date_pending'  => date('Y-m-d H:i:s'),
-                    'date_created'  => date('Y-m-d H:i:s'),
-                    'date_modified' => date('Y-m-d H:i:s'),
-                    'id_partner'    => $id,
-                    'id_user'       => $this->fungsi->user_login()->id_user,
-                    'id_branch'     => $this->fungsi->user_login()->id_branch
-                ];
-
                 //Jika sudah mou 'Iya' dan Form Mou diupload.
                 if (!$this->upload->do_upload('form_mou')) {
                     $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
                 } else {
-                    $ticket['date_verified_ttd'] = date('Y-m-d H:i:s');
-                    $ticket['verified_by'] = $this->fungsi->user_login()->id_user;
+                    $ticket = [
+                        'date_verified_ttd' => date('Y-m-d H:i:s'),
+                        'verified_by' => $this->fungsi->user_login()->id_user
+                    ];
                 }
-
-                $id_ticket = $this->ticket_model->create($ticket);
-
+                $id_ticket = $this->tiket->tambah_tiket('id_partner', $id, $ticket);
                 //Membuat notifikasi tiket baru untuk Admin
-                $notification = $this->notification($id_ticket, 'Tiket Baru');
-                $this->notification_model->create($notification);
+                $this->notifikasi->send($id_ticket, 'Tiket Baru');
             }
 
             //Membuat history activity inputan data partner
@@ -337,57 +309,36 @@
         {
             $post = $this->input->post(NULL, TRUE);
 
-            $data = $this->data_partner();
+            $data = $this->data();
             //unset data created_at, id_user, id_branch. Karena untuk update data
             unset($data["created_at"], $data["id_user"], $data["id_branch"]);
 
-
-            //Konfigurasi Upload
-            $config['upload_path']         = './uploads/partners';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 0;
-            $config['max_width']            = 0;
-            $config['max_height']           = 0;
-            $this->load->library('upload', $config);
-
-            $data['ktp']                        = $this->upload_data_partner('ktp');
-            $data['npwp']                       = $this->upload_data_partner('npwp');
-            $data['buku_tabungan_perusahaan']   = $this->upload_data_partner('buku_tabungan_perusahaan');
-            $data['siup']                       = $this->upload_data_partner('siup');
-            $data['logo_perusahaan']            = $this->upload_data_partner('logo_perusahaan');
-            $data['foto_usaha']                 = $this->upload_data_partner('foto_usaha');
-            // $data['form_mou']                   = $this->upload_data_partner('form_mou');
+            $data['ktp']                        = $this->lampiran('ktp');
+            $data['npwp']                       = $this->lampiran('npwp');
+            $data['buku_tabungan_perusahaan']   = $this->lampiran('buku_tabungan_perusahaan');
+            $data['siup']                       = $this->lampiran('siup');
+            $data['logo_perusahaan']            = $this->lampiran('logo_perusahaan');
+            $data['foto_usaha']                 = $this->lampiran('foto_usaha');
+            $data['form_mou']                   = $this->lampiran('form_mou');
 
             if (isset($post['draft'])) {
                 $data['status'] = 'draft';
             } else if (isset($post['process'])) {
                 $data['status'] = 'lengkap';
-                //Menambah antrian tiket untuk data Partner
-                $has_superior = $this->fungsi->user_login()->has_superior;
-                $staging = $has_superior == 0 ? 2 : ($has_superior == 1 ? 0 : ($has_superior == 2 ? 0 : 2));
-                $ticket = [
-                    'status'        => $staging,
-                    'date_pending'  => date('Y-m-d H:i:s'),
-                    'date_created'  => date('Y-m-d H:i:s'),
-                    'date_modified' => date('Y-m-d H:i:s'),
-                    'id_partner'    => $post['id_partner'],
-                    'id_user'       => $this->fungsi->user_login()->id_user,
-                    'id_branch'     => $this->fungsi->user_login()->id_branch
-                ];
-
                 //Jika sudah mou 'Iya' dan Form Mou diupload.
                 if (!$this->upload->do_upload('form_mou')) {
                     $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
                 } else {
-                    $ticket['date_verified_ttd'] = date('Y-m-d H:i:s');
-                    $ticket['verified_by'] = $this->fungsi->user_login()->id_user;
+                    $ticket = [
+                        'date_verified_ttd' => date('Y-m-d H:i:s'),
+                        'verified_by' => $this->fungsi->user_login()->id_user
+                    ];
                 }
-
-                $id_ticket = $this->ticket_model->create($ticket);
+                //Menambah antrian tiket untuk data Partner
+                $id_ticket = $this->tiket->tambah_tiket('id_partner', $post['id_partner'], $ticket);
 
                 //Membuat notifikasi tiket baru untuk Admin
-                $notification = $this->notification($id_ticket, 'Tiket Baru');
-                $this->notification_model->create($notification);
+                $this->notifikasi->send($id_ticket, 'Tiket Baru');
             }
 
             //Memasukkan data mapping ke database `partners`
@@ -466,7 +417,7 @@
                 $data = [
                     'data' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
                 ];
-                $this->template->load('template/index', 'mapping-edit', $data);
+                $this->template->load('template/index', 'partner/mapping-edit', $data);
             }
         }
 
@@ -474,7 +425,7 @@
         {
             $post = $this->input->post(NULL, TRUE);
 
-            $data = $this->data_partner();
+            $data = $this->data();
             unset($data["ttd_pks"]);
             //unset data created_at, id_user, id_branch. Karena untuk update data
             unset($data["created_at"], $data["id_user"], $data["id_branch"]);
@@ -493,21 +444,12 @@
             $this->partner_activity_model->create($partner_activity_model);
 
             //Membuat notifikasi Perubahan Data untuk Admin
-            $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
-            $this->notification_model->create($notification);
+            $this->notifikasi->send($post['id_ticket'], 'Perubahan Data');
 
-            //Meng-update antrian tiket untuk data Agent
-            $has_superior = $this->fungsi->user_login()->has_superior;
-            $ticket = [
-                // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-                'status'        => 2,
-                'date_pending'  => date('Y-m-d H:i:s'),
-                'date_modified'  => date('Y-m-d H:i:s'),
-            ];
-            $where_ticket = ['id_ticket' => $post['id_ticket']];
-            $this->ticket_model->update($ticket, $where_ticket);
+            //Mengupdate status tiket
+            $this->tiket->update_tiket($post['id_ticket']);
 
-
+            $this->session->set_flashdata("alert", "<div class='alert alert-success' role='alert'>Data Merchant berhasil diupdate</div>");
             redirect($post['redirect']);
         }
 
@@ -555,7 +497,7 @@
                         // Initialize array
                         $data['filenames'][] = $filename;
 
-                        return $lampiran_arr[] = $filename;
+                        $lampiran_arr[] = $filename;
                     }
                 }
             }
@@ -574,6 +516,7 @@
                 $this->partner_model->update($data_partner, $where);
             }
 
+            $this->session->set_flashdata("alert", "<div class='alert alert-success' role='alert'>Data Lampiran berhasil ditambah</div>");
             redirect($post['redirect']);
         }
 
@@ -589,8 +532,7 @@
 
             echo json_encode($data);
 
-            $notification = $this->notification($this->input->post('id_partner'), 'Ditanda tangan oleh');
-            $this->notification_model->create($notification);
+            $notification = $this->notifikasi->send($this->input->post('id_partner'), 'Ditanda tangan oleh');
         }
 
         //Upload Formulir MOU
@@ -678,7 +620,8 @@
                 }
             }
             // Download
-            $filename = "ID_Partner_$data->id_partner.zip";
+            $nama_usaha = str_replace(" ", "_", $data->nama_usaha);
+            $filename = $nama_usaha . "_$data->id_partner.zip";
             $this->zip->download($filename);
         }
     }

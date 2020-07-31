@@ -323,13 +323,17 @@ class Fs_konsumen extends CI_Controller
         $where = ['id_leads' => $this->input->post('id_leads')];
         $json = $this->fs_konsumen_model->update($data, $where);
 
-        if ($this->ticket_model->get("tickets.id_leads = " . $this->input->post('id_leads'))->row()->status_approval == '4') {
+        if (($this->fungsi->user_login()->level == 1 ||
+                $this->fungsi->user_login()->level == 2 ||
+                $this->fungsi->user_login()->level == 3) &&
+            $this->ticket_model->get("tickets.id_leads = " . $this->input->post('id_leads'))->row()->status_approval == '4'
+        ) {
             $pending = ['status' => '2'];
             $this->ticket_model->update($pending, $where);
         }
 
         // Jika is recommended telah ditentukan, maka set tiket fs ke selesai
-        if (empty($this->input->post('is_recommended'))) {
+        if ($this->input->post('is_recommended') != "") {
             $this->ticket_model->update(['status' => 5], $where);
         } else {
             $this->ticket_model->update(['status' => 2], $where);
@@ -343,11 +347,12 @@ class Fs_konsumen extends CI_Controller
     {
         // $post = $this->input->post(NULL, TRUE);
 
-        $data = ['assign_cms' => !empty($this->input->post('cms'))];
-        $where = ['id_leads' => $this->input->post('data')];
-        $id = $this->fs_konsumen_model->update($data, $where);
+        $data = ['assign_cms' => $this->input->post('assign_cms')];
+        $where = ['id_leads' => $this->input->post('id_leads')];
+        $this->fs_konsumen_model->update($data, $where);
 
-        echo json_encode($id);
+        // echo json_encode($id);
+        echo json_encode(['assign_cms' => $this->input->post('assign_cms'), 'id_leads' => $this->input->post('id_leads')]);
     }
 
     //fungsi untuk mengembalikan form survey ke cms
@@ -406,7 +411,7 @@ class Fs_konsumen extends CI_Controller
 
         //Looping all files
         for ($i = 0; $i < $countfiles; $i++) {
-            if (empty($_FILES['tambah_lampiran']['name'][$i])) {
+            if (!empty($_FILES['tambah_lampiran']['name'][$i])) {
                 $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
                 $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
                 $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
@@ -421,6 +426,7 @@ class Fs_konsumen extends CI_Controller
                 $config['max_size']             = 0;
                 $config['max_width']            = 0;
                 $config['max_height']           = 0;
+                // $config['file_name']            = $_FILES['tambah_lampiran']['name'][$i]; 
 
                 // Load upload library
                 $this->load->library('upload', $config);
@@ -441,9 +447,9 @@ class Fs_konsumen extends CI_Controller
         }
 
         $where = "fs_konsumen.id_leads = " .  $post['id_leads'];
-        //Mengambil nama file lampiran tambahan yang ada
+        //Mengambil nama file lampiran tambahan yang ada 
         $lampiran_tambahan = $this->fs_konsumen_model->get($where)->row()->lampiran_tambahan;
-        //Konversi nama file dari array ke string
+        // Konversi nama file dari array ke string
         $comma = implode(",", $lampiran_arr);
         //Jika sudah pernah melampirkan tambahan, maka append nama file di database
         if ($lampiran_tambahan) {
@@ -454,7 +460,29 @@ class Fs_konsumen extends CI_Controller
             $this->fs_konsumen_model->update($data_fs_konsumen, $where);
         }
 
+        $this->session->set_flashdata("alert", "<div class='alert alert-success' role='alert'>Data Lampiran berhasil ditambah</div>");
         redirect($post['redirect']);
+    }
+
+    public function download_lampiran($id)
+    {
+
+        $where = ['fs_konsumen.id_leads' => $id];
+        $data = $this->fs_konsumen_model->get($where)->row();
+
+        //Download Data lampiran tambahan
+        $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+        foreach ($lampiran_tambahan as $file) {
+            if ($file != NULL || $file != '') {
+                ${'upload' . $file} =  FCPATH . 'uploads/fs_konsumen/' . $file;
+                $this->zip->read_file(${"upload" . $file});
+                echo $file . '<br>';
+            }
+        }
+        // Download
+        $nama_konsumen = str_replace(" ", "_", $data->nama_konsumen);
+        $filename = $nama_konsumen . "_$data->id_leads.zip";
+        $this->zip->download($filename);
     }
 
     public function update_recommendation()
@@ -464,36 +492,5 @@ class Fs_konsumen extends CI_Controller
         $id = $this->fs_konsumen_model->update($data, $where);
 
         echo json_encode($id);
-    }
-
-    public function download_lampiran()
-    {
-        $this->load->model('agent_model');
-        $where = ['agents.id_agent' => $id];
-        $data = $this->agent_model->get($where)->row();
-        $data_tiket = $this->ticket_model->get($where)->row();
-        $uploads = [
-            $data->ktp,
-            $data->npwp,
-            $data->buku_tabungan,
-            $data->foto_selfie,
-            $data->form_f100,
-
-            //form mou
-            $data_tiket->form_mou
-        ];
-
-        // $uploads[] = $data_tiket->form_f100;
-
-        foreach ($uploads as $upload => $file) {
-            if ($file != NULL || $file != '') {
-                ${'upload' . $upload} =  FCPATH . 'uploads/agents/' . $file;
-                $this->zip->read_file(${"upload" . $upload});
-            }
-            // echo $upload . $file . '<br>';
-        }
-        // Download
-        $filename = "ID_Agent_$data->id_agent.zip";
-        $this->zip->download($filename);
     }
 }

@@ -77,7 +77,7 @@
 
                 <p class="gede mt-4"><b>Documents</b></p>
 
-                <p class="mb-2 kecil"><a href="#"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Download Semua Dokumen</a></p>
+                <p class="mb-2 kecil"><a href="<?= base_url('fs_konsumen/download_lampiran/' . $data->id_leads) ?>"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Download Semua Dokumen</a></p>
             </div>
 
         </div>
@@ -162,16 +162,22 @@
                                 <div class="card-body text-size">
                                     <h5 class="form-margin"><b>Data Konsumen</b></h5>
                                     <div class="form-row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group form-left">
                                                 <label>Nama Lengkap</label>
                                                 <input type="text" class="form-control text-size" value="<?= $leads->nama_konsumen ?>" name="nama_konsumen" id="nama_konsumen" placeholder="Ibrahim Ahmad" />
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group form-right">
+                                        <div class="col-md-4">
+                                            <div class="form-group form-center">
                                                 <label>Nomor KTP</label>
                                                 <input type="phone" class="form-control text-size placement number-only" value="<?= $leads->no_ktp ?>" name="no_ktp" id="no_ktp" minlength="16" maxlength="16" placeholder="0000 0000 0000 0000" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group form-right">
+                                                <label>NPWP</label>
+                                                <input type="text" class="form-control text-size placement number-only <?= form_error('no_npwp') ? 'is-invalid' : '' ?>" name="no_npwp" id="no_npwp" value="<?= $leads->no_npwp ?>" required placeholder="NPWP" maxlength="15" />
                                             </div>
                                         </div>
                                     </div>
@@ -2845,17 +2851,18 @@
                             </div>
                         </form>
 
-                        <form method="POST" action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
-                            <!-- Redirect -->
-                            <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                            <!-- ID Leads -->
-                            <input type="hidden" name="id_leads" value="<?= $leads->id_leads ?>">
-                            <!-- Upload Lampiran -->
-                            <div class="card">
-                                <div class="card-body text-size">
-                                    <h5 class="form-margin"><b>Data Lampiran</b></h5>
 
-                                    <div class="form-group element text-size form-margin">
+                        <!-- Upload Lampiran -->
+                        <div class="card">
+                            <div class="card-body text-size">
+                                <h5 class="form-margin"><b>Data Lampiran</b></h5>
+
+                                <div class="form-group element text-size form-margin">
+                                    <form method="post" action="<?= base_url('fs_konsumen/tambah_lampiran') ?>" enctype="multipart/form-data">
+                                        <!-- Redirect -->
+                                        <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                                        <!-- ID Leads -->
+                                        <input type="hidden" name="id_leads" value="<?= $leads->id_leads ?>">
                                         <label>Lampirkan Data</label><br>
                                         <input class="text-size" type="file" name="tambah_lampiran[]" id="upload_file1">
                                         <hr>
@@ -2866,51 +2873,51 @@
                                             <a class="btn btn-secondary text-size" href="javascript:void(0);" id="attachMore"><b>Tambah form</b></a>
                                             <button class="btn btn-primary text-size float-right" type="submit"><b>Upload Lampiran</b></button>
                                         </div>
-                                    </div>
-                                    <div class="form-row">
-                                        <div class="col-md-12">
-                                            <div class="form-margin mt-5">
-                                                <div class="owl-carousel owl-theme">
-                                                    <?php if ($data->lampiran_tambahan) { ?>
-                                                        <!-- Lampiran Tambahan -->
-                                                        <?php
-                                                        $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
-                                                        foreach ($lampiran_tambahan as $upload) {
-                                                        ?>
-                                                            <div class="item" style="width: 300px; height: 150px;">
-                                                                <?php if (get_extension($upload)) { ?>
-                                                                    <div class="zoom-gallery">
-                                                                        <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>"><img style="width: 300px; height: 150px;" class="item" src="<?= base_url('uploads/fs_konsumen/' . $upload) ?>" alt=""></a>
-                                                                    </div>
-                                                                <?php } else { ?>
-                                                                    <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>">
-                                                                        <center>
-                                                                            <div class="card text-center mt-3" style="width: 250px; height: 140px;" data-toggle="tooltip" title="<?= $upload ?>">
-                                                                                <i class="fa fa-file fa-5x" style="margin-top: 35px;"></i>
-                                                                            </div>
-                                                                        </center>
-                                                                    </a>
-                                                                <?php } ?>
-                                                            </div>
-                                                        <?php } ?>
+                                    </form>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="form-margin mt-5">
+                                            <div class="owl-carousel owl-theme">
+                                                <?php if ($data->lampiran_tambahan) { ?>
+                                                    <!-- Lampiran Tambahan -->
+                                                    <?php
+                                                    $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
+                                                    foreach ($lampiran_tambahan as $upload) {
+                                                    ?>
+                                                        <div class="item" style="width: 300px; height: 150px;">
+                                                            <?php if (get_extension($upload)) { ?>
+                                                                <div class="zoom-gallery">
+                                                                    <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>"><img style="width: 300px; height: 150px;" class="item" src="<?= base_url('uploads/fs_konsumen/' . $upload) ?>" alt=""></a>
+                                                                </div>
+                                                            <?php } else { ?>
+                                                                <a href="<?= base_url('uploads/fs_konsumen/' . $upload) ?>">
+                                                                    <center>
+                                                                        <div class="card text-center mt-3" style="width: 250px; height: 140px;" data-toggle="tooltip" title="<?= $upload ?>">
+                                                                            <i class="fa fa-file fa-5x" style="margin-top: 35px;"></i>
+                                                                        </div>
+                                                                    </center>
+                                                                </a>
+                                                            <?php } ?>
+                                                        </div>
                                                     <?php } ?>
-                                                </div>
+                                                <?php } ?>
                                             </div>
-                                            <?php if ($this->fungsi->user_login()->level < 4) { ?>
-                                                <div class="form-group form-margin float-right mt-5">
-                                                    <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                                    <a href="<?= base_url('fs_konsumen/kirim_fs/' . $data->id) ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Kirim</b></a>
-                                                </div>
-                                            <?php } ?>
                                         </div>
+                                        <?php if ($this->fungsi->user_login()->level < 4) { ?>
+                                            <div class="form-group form-margin float-right mt-5">
+                                                <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                                <a href="<?= base_url('fs_konsumen/kirim_fs/' . $data->id) ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Kirim</b></a>
+                                            </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
 
                         <form method="post" id="fs_konsumen" action="<?= base_url('fs_konsumen/update') ?>">
                             <!-- Penilaian Scoring -->
-                            <?php if ($this->fungsi->user_login()->level >= 4) { ?>
+                            <?php if ($this->fungsi->user_login()->level == 5) { ?>
                                 <div class="card">
                                     <div class="card-body text-size">
                                         <h5 class="form-margin mb-4"><b>Hasil Scoring HO</b></h5>
@@ -3041,7 +3048,8 @@
                                             </select>
                                         </div>
                                         <div class="form-group form-margin float-right mt-5">
-                                            <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
+                                            <!-- <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button> -->
+                                            <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="return" name="return" class="btn" type="button"><b>Return</b></button>
                                             <a href="<?= base_url("fs_konsumen") ?>" class="btn btn-primary waves-effect waves-light submit text-size"><b>Score</b></a>
                                         </div>
                                     </div>
@@ -3172,220 +3180,10 @@
     });
 </script> -->
 
-<script>
-    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
-        .hide();
-    source_leads();
-    $("#soa").change(function() {
-        source_leads();
-        $('#id_partner').val("");
-        $('#id_agent').val("");
-        $('#nama_vendor').val("").removeAttr("required");
-        $('#nama_event').val("");
-        $('#nama_partner').val("");
-        $('#nama_agent').val("");
-        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
 
-    })
-
-    function source_leads() {
-        if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
-                .hide();
-        } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
-            $('.jasa, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
-                .hide();
-        } else if ($('#soa').val() == 'Agent BA') {
-            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
-            $('#btn-data-agent').attr('data-target', '#modal-agent')
-            $('#nama_agent').attr('required', 'required');
-            $('#nama_partner, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required',
-                    '');
-            $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
-                .hide();
-        } else if ($('#soa').val() == 'EGC') {
-            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-            $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
-            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-        } else {
-            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#nama_partner, #nama_agent').removeAttr('required', '');
-        }
-    }
-
-
-    $(".readonly").keydown(function(e) {
-        e.preventDefault();
-    });
-</script>
-
+<script src="<?= base_url('template/assets/js/leads_prospect.js') ?>"></script>
 <script src="<?= base_url('template/assets/js/kalkulasi.js') ?>"></script>
 
-
-<script>
-    $('.ro-active, .pasangan, .pasangan-kar, .pasangan-wir, .resiko, .resiko-pasangan').hide();
-
-    // jenis Konsumen
-    jenis_konsumen();
-
-    $('#jenis_konsumen').change(function() {
-        jenis_konsumen();
-    })
-
-    function jenis_konsumen() {
-        if ($('#jenis_konsumen').val() == "RO Active") {
-            $('.ro-active').show();
-            $('.referral_konsumen, .nomor_kontrak').attr('required', 'required');
-        } else {
-            $('.ro-active').hide();
-            $('.referral_konsumen, .nomor_kontrak').removeAttr('required', '');
-            $('.referral_konsumen, .nomor_kontrak').val('');
-        }
-    }
-    // jenis Konsumen
-
-    // status pernikahan
-    menikah();
-
-    $('#status_pernikahan').change(function() {
-        menikah();
-    })
-
-    function menikah() {
-        if ($('#status_pernikahan').val() == "Sudah Menikah") {
-            $('.pasangan, .pasangan-kar, .pasangan-wir').show();
-            $('#nama_pasangan').attr('required', 'required');
-        } else {
-            $('.pasangan, .pasangan-kar, .pasangan-wir, .condition_karyawan_beresiko_pasangan, .condition_wir_beresiko_pasangan').hide();
-            $('#nama_pasangan').removeAttr('required', ' ');
-            $('#nama_pasangan, #condition_karyawan_pekerjaan_pasangan, #condition_karyawan_tempat_kerja_pasangan, #condition_karyawan_profesi_beresiko_pasangan, #condition_wir_pekerjaan_pasangan, #condition_wir_tempat_kerja_pasangan, #condition_wir_profesi_beresiko_pasangan').val('');
-        }
-    }
-    // status pernikahan
-
-    // form survey field
-    function fs_field() {
-
-    }
-    // resiko karyawan
-    resiko_kar();
-
-    $('#condition_karyawan_pekerjaan').change(function() {
-        resiko_kar();
-    })
-
-    function resiko_kar() {
-        if ($('#condition_karyawan_pekerjaan').val() == "Profesi Beresiko") {
-            $('.resiko').show();
-            $('#condition_karyawan_profesi_beresiko').attr('required', 'required');
-        } else {
-            $('.resiko').hide();
-            $('#condition_karyawan_profesi_beresiko').removeAttr('required', '');
-            $('#condition_karyawan_profesi_beresiko').val('');
-        }
-    }
-    // resiko karyawan
-
-    // resiko pasangan karyawan
-    resiko_kar_pasangan();
-
-    $('#condition_karyawan_pekerjaan_pasangan').change(function() {
-        resiko_kar_pasangan();
-    })
-
-    function resiko_kar_pasangan() {
-        if ($('#condition_karyawan_pekerjaan_pasangan').val() == "Profesi Beresiko") {
-            $('.resiko-pasangan-kar').show();
-            $('#condition_karyawan_profesi_beresiko_pasangan').attr('required', 'required');
-            $('.condition_karyawan_kerja_pasangan').show();
-            $('#condition_karyawan_tempat_kerja_pasangan').attr('required', 'required');
-        } else if ($('#condition_karyawan_pekerjaan_pasangan').val() == "Ibu Rumah Tangga") {
-            $('.condition_karyawan_kerja_pasangan').hide();
-            $('#condition_karyawan_tempat_kerja_pasangan').val('');
-            $('#condition_karyawan_tempat_kerja_pasangan').attr('required', '');
-            $('.resiko-pasangan-kar').hide();
-            $('#condition_karyawan_profesi_beresiko_pasangan').removeAttr('required', '');
-            $('#condition_karyawan_profesi_beresiko_pasangan').val('');
-        } else {
-            $('.resiko-pasangan-kar').hide();
-            $('#condition_karyawan_profesi_beresiko_pasangan').removeAttr('required', '');
-            $('#condition_karyawan_profesi_beresiko_pasangan').val('');
-            $('.condition_karyawan_kerja_pasangan').show();
-            $('#condition_karyawan_tempat_kerja_pasangan').attr('required', 'required');
-        }
-    }
-    // resiko pasangan karyawan
-
-    // resiko wiraswasta
-    // $('#condition_wir_pekerjaan').change(function() {
-    //     if ($('#condition_wir_pekerjaan').val() == "Profesi Beresiko") {
-    //         $('.resiko').show();
-    //         $('#condition_wir_profesi_beresiko').attr('required', 'required');
-    //     } else {
-    //         $('.resiko').hide();
-    //         $('#condition_wir_profesi_beresiko').removeAttr('required', ' ');
-    //     }
-    // })
-    $(document).ready(function() {
-        resiko_wir_pasangan();
-
-    })
-
-    $('#condition_wir_pekerjaan_pasangan').change(function() {
-        resiko_wir_pasangan();
-    })
-
-    function resiko_wir_pasangan() {
-        if ($('#condition_wir_pekerjaan_pasangan').val() == "Profesi Beresiko") {
-            $('.resiko-pasangan-wir').show();
-            $('#condition_wir_profesi_beresiko_pasangan').attr('required', 'required');
-            $('.condition_wir_tempat_pasangan').show();
-            $('#condition_wir_tempat_kerja_pasangan').attr('required', 'required');
-        } else if ($('#condition_wir_pekerjaan_pasangan').val() == "Ibu Rumah Tangga") {
-            $('.condition_wir_tempat_pasangan').hide();
-            $('#condition_wir_tempat_kerja_pasangan').attr('required', '');
-            $('#condition_wir_tempat_kerja_pasangan').val('');
-            $('.resiko-pasangan-wir').hide();
-            $('#condition_wir_profesi_beresiko_pasangan').val('');
-            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', '');
-        } else {
-            $('.resiko-pasangan-wir').hide();
-            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', '');
-            $('#condition_wir_profesi_beresiko_pasangan').val('');
-            $('.condition_wir_tempat_pasangan').show();
-            $('#condition_wir_profesi_beresiko_pasangan').removeAttr('required', 'rerquired');
-        }
-    }
-
-    // resiko wiraswasta
-</script>
 
 <script>
     // bonus periodik karyawan

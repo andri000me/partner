@@ -29,11 +29,25 @@ class Fungsi
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($level == 2 || $level == 3) {
             $where = ("cabang_penerima.id_branch = $id_branch AND pengirim != $id_user AND has_read = 1");
-        } else if($level >= 4){
+        } else if ($level >= 4) {
             $where = "notifications.penerima_cabang = 46 AND has_read = 1";
         }
         $user_data = $this->ci->notification_model->get($where);
         return $user_data;
+    }
+
+    function send($message, $id_ticket, $penerima = NULL, $penerima_cabang = NULL)
+    {
+        $notification = [
+            'pengirim'          => 46,
+            'penerima'          => $penerima == NULL ? NULL :  $this->ci->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
+            'penerima_cabang'   => $penerima_cabang == NULL ? NULL : $this->ci->ticket_model->get(['id_ticket' => $id_ticket])->row()->branch_id,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+
+        return $this->ci->notification_model->create($notification);
     }
 
     function module()
@@ -48,12 +62,12 @@ class Fungsi
     function check_duplicate($field, $value)
     {
         // if($id == NULL){
-            $check = $this->partner_model->get("$field = '$value'");
-            if($check->num_rows() == 0){
-                echo 'available';
-            } else {
-                echo 'not available';
-            } 
+        $check = $this->partner_model->get("$field = '$value'");
+        if ($check->num_rows() == 0) {
+            echo 'available';
+        } else {
+            echo 'not available';
+        }
         // }
-    } 
+    }
 }

@@ -75,6 +75,7 @@ class Leads extends CI_Controller
 
             // ----- PROSPECT
             'no_ktp'                => !empty($post['no_ktp']) ? $post['no_ktp'] : NULL,
+            'no_npwp'                => !empty($post['no_npwp']) ? $post['no_npwp'] : NULL,
             'cross_branch'          => !empty($post['cross_branch']) ? $post['cross_branch'] : NULL,
             'cabang_cross'          => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
 
@@ -268,94 +269,94 @@ class Leads extends CI_Controller
         $post = $this->input->post(NULL, TRUE);
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
-        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[leads_full.no_ktp]', ['is_unique' => 'Nomor KTP sudah dipakai, mohon ganti nomor KTP']);
+        // $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[leads_full.no_ktp]', ['is_unique' => 'Nomor KTP sudah dipakai, mohon ganti nomor KTP']);
 
-        if ($this->form_validation->run() != FALSE) {
-            $data = $this->submitted_leads_prospect();
+        // if ($this->form_validation->run() != FALSE) {
+        $data = $this->submitted_leads_prospect();
 
-            if (isset($post['draft'])) {
-                $data['status'] = 'draft';
-            } else if (isset($post['process'])) {
-                $data['status'] = 'lengkap';
-            }
+        if (isset($post['draft'])) {
+            $data['status'] = 'draft';
+        } else if (isset($post['process'])) {
+            $data['status'] = 'lengkap';
+        }
 
-            // Jika Leads Database dipilih / terisi, maka leads database yang ada akan diupdate
-            // Jika tak dipilih, maka akan membuat record leads baru
-            if (!empty($post['id_leads'])) {
-                $id = $post["id_leads"];
+        // Jika Leads Database dipilih / terisi, maka leads database yang ada akan diupdate
+        // Jika tak dipilih, maka akan membuat record leads baru
+        if (!empty($post['id_leads'])) {
+            $id = $post["id_leads"];
 
-                //menghapuskan date created, untuk proses update
-                unset($data["created_at"]);
-                $this->leads_model->update($data, ["id_leads" => $id]);
-            } else {
-                $id = $this->leads_model->create($data);
-            }
-
-            //Membuat history activity inputan data leads
-            $leads_activity_model = [
-                'activity' => 'Data leads telah dibuat',
-                'date_activity' => date('Y-m-d H:i:s'),
-                'id_leads' => $id,
-                'id_user' => $this->fungsi->user_login()->id_user
-            ];
-
-            $this->leads_activity_model->create($leads_activity_model);
-
-            //Menambah antrian tiket untuk data leads
-            if (isset($post['process'])) {
-                //Menambah ke antrian tiket
-                $ticket = [
-                    // 'status'        => 0,
-                    'status'        => 2,
-                    'date_pending'  => date('Y-m-d H:i:s'),
-                    'date_created'  => date('Y-m-d H:i:s'),
-                    'date_modified'  => date('Y-m-d H:i:s'),
-                    'id_leads'       => $id,
-                    'id_user'       => $this->fungsi->user_login()->id_user,
-                    'id_branch'     => $this->fungsi->user_login()->id_branch
-                ];
-                $id_ticket = $this->ticket_model->create($ticket);
-
-                //Notifikasi
-                $notification = [
-                    'pengirim'          => $this->fungsi->user_login()->id_user,
-                    'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-                    'type'              => 'Cross Branch oleh',
-                    'id_ticket'         => $id_ticket,
-                    'created_at'        => date('Y-m-d H:i:s')
-                ];
-                $this->notification_model->create($notification);
-
-                //Membuat notifikasi tiket baru untuk Admin
-                $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
-                $this->notification_model->create($notification_admin);
-
-                // Tambah record ke Form Survey
-                $form_survey = ['id_leads' => $id];
-                $this->fs_konsumen_model->create($form_survey);
-
-                //Jika CMS mengirim data leads, maka assign form survey otomatis terkirim ke cms tersebut
-                if ($this->fungsi->user_login()->level == 1) $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $id]);
-            }
-            if ($id) {
-                //Memberi pesan berhasil data menyimpan data mapping
-                $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
-
-                //Langsung redirect ke halaman form survey
-                isset($post['process']) ? redirect('Fs_konsumen/create/' . $id) : redirect('leads');
-            }
+            //menghapuskan date created, untuk proses update
+            unset($data["created_at"]);
+            $this->leads_model->update($data, ["id_leads" => $id]);
         } else {
-            $data = [
-                'mappings'  => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
-                'branches'  => $this->branch_model->get(),
-                'users'     => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
+            $id = $this->leads_model->create($data);
+        }
 
-                'agents'    => $this->agent_model->get("agents." . $this->where),
-                'partners'  => $this->partner_model->get("partners_full." . $this->where)
+        //Membuat history activity inputan data leads
+        $leads_activity_model = [
+            'activity' => 'Data leads telah dibuat',
+            'date_activity' => date('Y-m-d H:i:s'),
+            'id_leads' => $id,
+            'id_user' => $this->fungsi->user_login()->id_user
+        ];
+
+        $this->leads_activity_model->create($leads_activity_model);
+
+        //Menambah antrian tiket untuk data leads
+        if (isset($post['process'])) {
+            //Menambah ke antrian tiket
+            $ticket = [
+                // 'status'        => 0,
+                'status'        => 2,
+                'date_pending'  => date('Y-m-d H:i:s'),
+                'date_created'  => date('Y-m-d H:i:s'),
+                'date_modified'  => date('Y-m-d H:i:s'),
+                'id_leads'       => $id,
+                'id_user'       => $this->fungsi->user_login()->id_user,
+                'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-            $this->template->load('template/index', 'leads-form', $data);
+            $id_ticket = $this->ticket_model->create($ticket);
+
+            //Notifikasi
+            $notification = [
+                'pengirim'          => $this->fungsi->user_login()->id_user,
+                'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
+                'type'              => 'Cross Branch oleh',
+                'id_ticket'         => $id_ticket,
+                'created_at'        => date('Y-m-d H:i:s')
+            ];
+            $this->notification_model->create($notification);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
+            $this->notification_model->create($notification_admin);
+
+            // Tambah record ke Form Survey
+            $form_survey = ['id_leads' => $id];
+            $this->fs_konsumen_model->create($form_survey);
+
+            //Jika CMS mengirim data leads, maka assign form survey otomatis terkirim ke cms tersebut
+            if ($this->fungsi->user_login()->level == 1) $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $id]);
+        }
+        if ($id) {
+            //Memberi pesan berhasil data menyimpan data mapping
+            $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
+
+            //Langsung redirect ke halaman form survey
+            isset($post['process']) ? redirect('Fs_konsumen/create/' . $id) : redirect('leads');
         }
     }
+    //  else {
+    //     $data = [
+    //         'mappings'  => $this->leads_model->get("status= 'database' AND leads_full." . $this->where),
+    //         'branches'  => $this->branch_model->get(),
+    //         'users'     => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch]),
+
+    //         'agents'    => $this->agent_model->get("agents." . $this->where),
+    //         'partners'  => $this->partner_model->get("partners_full." . $this->where)
+    //     ];
+    //     $this->template->load('template/index', 'leads-form', $data);
+    // }
 
     public function save_database()
     {
@@ -553,11 +554,11 @@ class Leads extends CI_Controller
         echo json_encode($data->result());
     }
 
-    public function get_leads($id)
-    {
-        $where = ['leads.id_leads' => $id];
-        echo json_encode($this->leads_model->get($where)->row());
-    }
+    // public function get_leads($id)
+    // {
+    //     $where = ['leads.id_leads' => $id];
+    //     echo json_encode($this->leads_model->get($where)->row());
+    // }
 
     // Form Valdation
     public function leads_check()
