@@ -107,7 +107,7 @@
                 'data' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner/mapping', $data);
+            $this->template->load('template/index', 'mapping', $data);
         }
 
         public function index()
@@ -117,12 +117,12 @@
                 'maintains' => $this->partner_model->get("partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner/partner', $data);
+            $this->template->load('template/index', 'partner', $data);
         }
 
         public function create_mapping()
         {
-            $this->template->load('template/index', 'partner/mapping-form');
+            $this->template->load('template/index', 'mapping-form');
         }
 
         public function create()
@@ -132,7 +132,7 @@
                 'mappings' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner/partner-form', $data);
+            $this->template->load('template/index', 'partner-form', $data);
         }
 
 
@@ -141,7 +141,7 @@
             $data = [
                 'data' => $this->partner_model->get(['partners_full.id_partner' => $id])->row()
             ];
-            $this->template->load('template/index', 'partner/mapping-edit', $data);
+            $this->template->load('template/index', 'mapping-edit', $data);
         }
 
         public function edit($id)
@@ -153,7 +153,7 @@
                 'mappings' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
             ];
 
-            $this->template->load('template/index', 'partner/partner-edit', $data);
+            $this->template->load('template/index', 'partner-edit', $data);
         }
 
         public function detail($id)
@@ -167,7 +167,7 @@
                 'activities'    => $this->partner_activity_model->get($where),
                 'comments'      => $this->comment_model->get($where)
             ];
-            $this->template->load('template/index', 'partner/partner-detail', $data);
+            $this->template->load('template/index', 'partner-detail', $data);
             // echo json_encode($data['data']);
         }
 
@@ -226,9 +226,9 @@
                 //Memberi pesan berhasil data menyimpan data mapping
                 $this->session->set_flashdata("berhasil_simpan", "Data Mapping Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
 
-                redirect('partner/index_mapping');
+                redirect('index_mapping');
             } else {
-                $this->template->load('template/index', 'partner/mapping-form');
+                $this->template->load('template/index', 'mapping-form');
             }
         }
 
@@ -283,9 +283,9 @@
                         'verified_by' => $this->fungsi->user_login()->id_user
                     ];
                 }
-                $id_ticket = $this->tiket->tambah_tiket('id_partner', $id, $ticket);
+                $id_ticket = $this->tiket->tambah_tiket('id_partner', $id, !empty($ticket) ? $ticket : NULL);
                 //Membuat notifikasi tiket baru untuk Admin
-                $this->notifikasi->send($id_ticket, 'Tiket Baru');
+                $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
             }
 
             //Membuat history activity inputan data partner
@@ -335,10 +335,10 @@
                     ];
                 }
                 //Menambah antrian tiket untuk data Partner
-                $id_ticket = $this->tiket->tambah_tiket('id_partner', $post['id_partner'], $ticket);
+                $id_ticket = $this->tiket->tambah_tiket('id_partner', $post['id_partner'], !empty($ticket) ? $ticket : NULL);
 
                 //Membuat notifikasi tiket baru untuk Admin
-                $this->notifikasi->send($id_ticket, 'Tiket Baru');
+                $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
             }
 
             //Memasukkan data mapping ke database `partners`
@@ -417,7 +417,7 @@
                 $data = [
                     'data' => $this->partner_model->get("partners_full.status = 'mapping' AND partners_full." . $this->where)
                 ];
-                $this->template->load('template/index', 'partner/mapping-edit', $data);
+                $this->template->load('template/index', 'mapping-edit', $data);
             }
         }
 

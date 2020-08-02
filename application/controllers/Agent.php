@@ -86,12 +86,12 @@ class Agent extends CI_Controller
             'users' => $this->user_model->get_all(['users.id_branch' => $this->fungsi->user_login()->id_branch])
         ];
 
-        $this->template->load('template/index', 'agent/agent', $data);
+        $this->template->load('template/index', 'agent', $data);
     }
 
     public function create()
     {
-        $this->template->load('template/index', 'agent/agent-form');
+        $this->template->load('template/index', 'agent-form');
     }
 
     public function edit($id)
@@ -100,7 +100,7 @@ class Agent extends CI_Controller
         $data = [
             'data' => $this->agent_model->get($where)->row(),
         ];
-        $this->template->load('template/index', 'agent/agent-edit', $data);
+        $this->template->load('template/index', 'agent-edit', $data);
     }
 
     public function detail($id)
@@ -113,7 +113,7 @@ class Agent extends CI_Controller
             'ticket' => $this->ticket_model->get($where)->row()
         ];
 
-        $this->template->load('template/index', 'agent/agent-detail', $data);
+        $this->template->load('template/index', 'agent-detail', $data);
     }
 
 
@@ -153,7 +153,7 @@ class Agent extends CI_Controller
                 $id_ticket = $this->tiket->tambah_tiket('id_partner', $id);
 
                 //Membuat notifikasi tiket baru untuk Admin
-                $this->notifikasi->send($id_ticket, 'Tiket Baru');
+                $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
             }
             //Membuat history activity inputan data Agent
             $agent_activity_model = [
@@ -170,7 +170,7 @@ class Agent extends CI_Controller
 
             redirect('Agent');
         } else {
-            $this->template->load('template/index', 'agent/agent-form');
+            $this->template->load('template/index', 'agent-form');
         }
     }
 
@@ -206,7 +206,7 @@ class Agent extends CI_Controller
             $id_ticket = $this->tiket->tambah_tiket('id_agent', $post['id_agent']);
 
             //Membuat notifikasi tiket baru untuk Admin
-            $this->notifikasi->send($id_ticket, 'Tiket Baru');
+            $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
         }
         $where = ['id_agent' => $post['id_agent']];
         //Memasukkan data ke database `Agents`
@@ -327,22 +327,6 @@ class Agent extends CI_Controller
         }
 
         redirect($post['redirect']);
-    }
-
-    public function update_ttd()
-    {
-        // $post = $this->input->post(null, TRUE);
-        $data = [
-            'ttd_pks'           => $this->input->post('ttd_pks')
-        ];
-
-        $where = ['id_agent' => $this->input->post('id_agent')];
-        $data = $this->agent_model->update($data, $where);
-
-        echo json_encode($data);
-
-        $notification = $this->notification($this->input->post('id_agent'), 'Ditanda tangan oleh');
-        $this->notification_model->create($notification);
     }
 
     //Upload Formulir MOU

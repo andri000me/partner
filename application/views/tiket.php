@@ -18,23 +18,6 @@
                 <!-- Jika CMS/Head tiket descending, jika Admin tiket ascending -->
                 <input type="hidden" id="level" value="<?= $this->fungsi->user_login()->level ?>">
                 <h4 class="header-title mb-3"><b>Tabel Daftar Tiket</b></h4>
-                <!-- <div class="row">
-                    <div class="col-md-2">
-                        <div class="form-group">
-                            <label for="exampleFormControlSelect1">Sort Table By </label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option selected>All</option>
-                                <option>Disetujui</option>
-                                <option>Ditolak</option>
-                                <option>Diaktivasi</option>
-                                <option>In Progress</option>
-                                <option>Menunggu Persetujuan HO</option>
-                                <option>Menunggu Persetujuan Head</option>
-                                <option>Menunggu Persetujuan Manager</option>
-                            </select>
-                        </div>
-                    </div>
-                </div> -->
                 <p class="text-muted m-b-30 text-size">Tiket di bawah.</p>
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
@@ -114,6 +97,8 @@
                                                     <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                                 <?php } else if ($ticket->id_approval_bonus != NULL) { ?>
                                                     <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
+                                                <?php } else if ($ticket->id_leads != NULL) { ?>
+                                                    <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                                 <?php } ?>
                                                 <!-- <button class="btn btn-primary">Lihat</button> -->
                                             </center>
@@ -180,6 +165,8 @@
                                                     <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                                 <?php } else if ($ticket->id_approval_bonus != NULL) { ?>
                                                     <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
+                                                <?php } else if ($ticket->id_leads != NULL) { ?>
+                                                    <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                                 <?php } ?>
                                                 <!-- <button class="btn btn-primary">Lihat</button> -->
                                             </center>
@@ -246,6 +233,8 @@
                                                     <a href="<?= base_url('nst/edit/' . $ticket->id_nst) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                                 <?php } else if ($ticket->id_approval_bonus != NULL) { ?>
                                                     <a href="<?= base_url('approval_bonus/edit/' . $ticket->id_approval_bonus) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
+                                                <?php } else if ($ticket->id_leads != NULL) { ?>
+                                                    <a href="<?= base_url('leads/detail/' . $ticket->id_leads) ?>" class="btn btn-primary text-size radius"><b>Lihat</b></a>
                                                 <?php } ?>
                                                 <!-- <button class="btn btn-primary">Lihat</button> -->
                                             </center>
@@ -256,9 +245,6 @@
                         </table>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
     </div> <!-- end col -->

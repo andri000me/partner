@@ -12,15 +12,15 @@ class Ticket extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['tickets.id_user' => $this->fungsi->user_login()->id_user];
+            $this->where = "tickets.id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = ['tickets.id_branch' => $this->fungsi->user_login()->id_branch];
+            $this->where = "tickets.id_branch =" . $this->fungsi->user_login()->id_branch;
         } else if ($this->fungsi->user_login()->level == 4) {
-            $this->where = ['tickets.status >=' => 2];
+            $this->where = "tickets.status >= 2";
         } else if ($this->fungsi->user_login()->level == 5) {
-            $this->where = ['tickets.status >=' => 0];
+            $this->where = "tickets.status >=  0";
         }
 
         check_not_login();
@@ -28,8 +28,8 @@ class Ticket extends CI_Controller
 
     public function index()
     {
-        $finished = array_merge($this->where, ['tickets.status =' => 5]);
-        $unfinished = array_merge($this->where, ['tickets.status <=' => 5]);
+        $finished = $this->where . " AND tickets.status = 5";
+        $unfinished = $this->where . " AND tickets.status < 5";
         $data = [
             'data' => $this->ticket_model->get($this->where),
             'finished' => $this->ticket_model->get($finished),
@@ -50,7 +50,7 @@ class Ticket extends CI_Controller
                 'status' => 2
             ];
 
-            $this->pemberitahuan->send($id_ticket, 'Disetujui oleh Head');
+            $this->notifikasi->send($id_ticket, 'Disetujui oleh Head');
         }
         //Jika Manager yang menekan tombol approve, maka tiket sudah disetujui oleh Manager
         else if ($this->fungsi->user_login()->level == 3) {
@@ -58,7 +58,7 @@ class Ticket extends CI_Controller
                 'date_approved_by_manager' => date('Y-m-d H:i:s'),
                 'status' => 2
             ];
-            $this->pemberitahuan->send($id_ticket, 'Disetujui oleh Manager');
+            $this->notifikasi->send($id_ticket, 'Disetujui oleh Manager');
         }
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
         else if ($this->fungsi->user_login()->level == 4) {
@@ -67,7 +67,7 @@ class Ticket extends CI_Controller
                 'status'            => 5,
                 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
-            $this->pemberitahuan->send($id_ticket, 'Disetujui oleh Admin HO');
+            $this->notifikasi->send($id_ticket, 'Disetujui oleh Admin HO');
         }
         //Jika Head HO yang menekan tombol approve, maka tiket sudah diaktivasi oleh Head HO
         else if ($this->fungsi->user_login()->level == 5) {
@@ -76,7 +76,7 @@ class Ticket extends CI_Controller
                 'status'            => 6,
                 'activated_by'      => $this->fungsi->user_login()->id_user
             ];
-            $this->pemberitahuan->send($id_ticket, 'Diaktivasi oleh Head HO');
+            $this->notifikasi->send($id_ticket, 'Diaktivasi oleh Head HO');
         }
         $this->ticket_model->update($data, $where);
 
@@ -93,7 +93,7 @@ class Ticket extends CI_Controller
                 'status'            => 4
                 // 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
-            $this->pemberitahuan->send($id_ticket, 'Ditolak oleh');
+            $this->notifikasi->send($id_ticket, 'Ditolak oleh');
         }
 
         $where = ['id_ticket' => $id_ticket];
@@ -118,7 +118,7 @@ class Ticket extends CI_Controller
 
         echo json_encode($data);
 
-        $this->pemberitahuan->send($this->input->post('id_ticket'), 'Ditanda tangan oleh');
+        $this->notifikasi->send($this->input->post('id_ticket'), 'Ditanda tangan oleh');
     }
 
     //Upload Formulir MOU

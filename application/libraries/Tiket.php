@@ -7,9 +7,58 @@ class Tiket
     public function __construct()
     {
         $this->ci = &get_instance();
-        
+
         $this->has_superior = $this->ci->fungsi->user_login()->has_superior;
-        $this->staging = $this->has_superior == 0 ? 2 : ($this->has_superior == 1 ? 0 : ($this->has_superior == 2 ? 0 : 2))
+        if ($this->ci->fungsi->user_login()->level == 1) {
+            //Jika cabang tidak memiliki head & manager, maka status set ke 'pending ho'
+            if ($this->has_superior == 0) {
+                $this->staging = 2;
+            }
+            //Jika cabang memiliki head & tidak memiliki manager, maka status set ke 'menunggu persetujuan head'
+            else if ($this->has_superior == 1) {
+                $this->staging = 0;
+            }
+            //Jika cabang memiliki head & manager, maka status set ke 'menunggu persetujuan head'
+            else if ($this->has_superior == 2) {
+                $this->staging = 0;
+            } else {
+                $this->staging = 2;
+            }
+        } else if ($this->ci->fungsi->user_login()->level == 2) {
+            //Jika cabang tidak memiliki head & manager, maka status set ke 'pending ho'
+            if ($this->has_superior == 0) {
+                $this->staging = 2;
+            }
+            //Jika cabang memiliki head & tidak memiliki manager, maka status set ke 'pending ho'
+            else if ($this->has_superior == 1) {
+                $this->staging = 2;
+            }
+            //Jika cabang memiliki head & manager, maka status set ke 'menunggu persetujuan manager'
+            else if ($this->has_superior == 2) {
+                $this->staging = 1;
+            } else {
+                $this->staging = 2;
+            }
+        } else if ($this->ci->fungsi->user_login()->level == 3) {
+            //Jika cabang tidak memiliki head & manager, maka status set ke 'pending ho'
+            if ($this->has_superior == 0) {
+                $this->staging = 2;
+            }
+            //Jika cabang memiliki head & tidak memiliki manager, maka status set ke 'pending ho'
+            else if ($this->has_superior == 1) {
+                $this->staging = 2;
+            }
+            //Jika cabang memiliki head & manager, maka status set ke 'menunggu persetujuan manager'
+            else if ($this->has_superior == 2) {
+                $this->staging = 2;
+            } else {
+                $this->staging = 2;
+            }
+        } else if ($this->ci->fungsi->user_login()->level == 4 || $this->ci->fungsi->user_login()->level == 5) {
+            $this->staging = 5;
+        } else {
+            $this->staging = 2;
+        }
     }
 
     function tambah_tiket($aktivitas_cabang, $id, $merge = NULL)

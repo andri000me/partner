@@ -30,7 +30,6 @@ class Leads extends CI_Controller
     {
         $notification = [
             'pengirim'          => $this->fungsi->user_login()->id_user,
-            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
             'penerima_cabang'   => 46,
             'type'              => $message,
             'id_ticket'         => $id_ticket,
@@ -211,8 +210,6 @@ class Leads extends CI_Controller
         $this->template->load('template/index', 'leads-mapping-form', $data);
     }
 
-
-
     public function edit($id)
     {
 
@@ -305,38 +302,32 @@ class Leads extends CI_Controller
         //Menambah antrian tiket untuk data leads
         if (isset($post['process'])) {
             //Menambah ke antrian tiket
-            $ticket = [
-                // 'status'        => 0,
-                'status'        => 2,
-                'date_pending'  => date('Y-m-d H:i:s'),
-                'date_created'  => date('Y-m-d H:i:s'),
-                'date_modified'  => date('Y-m-d H:i:s'),
-                'id_leads'       => $id,
-                'id_user'       => $this->fungsi->user_login()->id_user,
-                'id_branch'     => $this->fungsi->user_login()->id_branch
-            ];
-            $id_ticket = $this->ticket_model->create($ticket);
+            $id_ticket = $this->tiket->tambah_tiket('id_leads', $id);
 
-            //Notifikasi
-            $notification = [
-                'pengirim'          => $this->fungsi->user_login()->id_user,
-                'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-                'type'              => 'Cross Branch oleh',
-                'id_ticket'         => $id_ticket,
-                'created_at'        => date('Y-m-d H:i:s')
-            ];
-            $this->notification_model->create($notification);
+            // $notification = [
+            //     'pengirim'          => $this->fungsi->user_login()->id_user,
+            //     'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
+            //     'type'              => 'Cross Branch oleh',
+            //     'id_ticket'         => $id_ticket,
+            //     'created_at'        => date('Y-m-d H:i:s')
+            // ];
+            // $this->notification_model->create($notification);
+            //Notifikasi untuk cross branch
+            $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', NULL, $post['cabang_cross']);
 
             //Membuat notifikasi tiket baru untuk Admin
-            $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
-            $this->notification_model->create($notification_admin);
+            $this->notifikasi->send($id_ticket, 'Tiket Baru');
+            // $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
+            // $this->notification_model->create($notification_admin);
+
 
             // Tambah record ke Form Survey
             $form_survey = ['id_leads' => $id];
             $this->fs_konsumen_model->create($form_survey);
 
             //Jika CMS mengirim data leads, maka assign form survey otomatis terkirim ke cms tersebut
-            if ($this->fungsi->user_login()->level == 1) $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $id]);
+            if ($this->fungsi->user_login()->level == 1)
+                $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $id]);
         }
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
@@ -398,38 +389,21 @@ class Leads extends CI_Controller
             $data['status'] = 'lengkap';
 
             //Menambah antrian ke tiket
-            $ticket = [
-                // 'status'        => 0,
-                'status'        => 2,
-                'date_pending'  => date('Y-m-d H:i:s'),
-                'date_created'  => date('Y-m-d H:i:s'),
-                'date_modified' => date('Y-m-d H:i:s'),
-                'id_leads'      => $post['id_leads'],
-                'id_user'       => $this->fungsi->user_login()->id_user,
-                'id_branch'     => $this->fungsi->user_login()->id_branch
-            ];
-            $id_ticket = $this->ticket_model->create($ticket);
+            $id_ticket = $this->tiket->tambah_tiket('id_leads', $post['id_leads']);
+
+            //Notifikasi untuk cross branch
+            $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', NULL, $post['cabang_cross']);
 
             //Membuat notifikasi tiket baru untuk Admin
-            $notification = $this->notification($id_ticket, 'Tiket Baru');
-            $this->notification_model->create($notification);
-
-            //Notifikasi Cross Branch
-            $notification = [
-                'pengirim'          => $this->fungsi->user_login()->id_user,
-                'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-                'type'              => 'Cross Branch oleh',
-                'id_ticket'         => $id_ticket,
-                'created_at'        => date('Y-m-d H:i:s')
-            ];
-            $this->notification_model->create($notification);
+            $this->notifikasi->send($id_ticket, 'Tiket Baru');
 
             // Tambah record ke Form Survey
             $form_survey = ['id_leads' => $post['id_leads']];
             $this->fs_konsumen_model->create($form_survey);
 
             //Jika CMS mengirim data leads, maka assign form survey otomatis terkirim ke cms tersebut
-            if ($this->fungsi->user_login()->level == 1) $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $post['id_leads']]);
+            if ($this->fungsi->user_login()->level == 1)
+                $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $post['id_leads']]);
         }
 
         $where = ['id_leads' => $post['id_leads']];
@@ -519,22 +493,10 @@ class Leads extends CI_Controller
         $this->leads_activity_model->create($leads_activity_model);
 
         //Meng-update antrian tiket untuk data Leads
-        $has_superior = $this->fungsi->user_login()->has_superior;
-        $ticket = [
-            // 'status'        => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-            'status'        => 2,
-            'date_pending'  => date('Y-m-d H:i:s'),
-            // 'date_created'  => date('Y-m-d H:i:s'),
-            'date_modified'  => date('Y-m-d H:i:s')
-            // 'id_user'       => $this->fungsi->user_login()->id_user,
-            // 'id_branch'     => $this->fungsi->user_login()->id_branch
-        ];
-        $where_ticket = ['id_ticket' => $post['id_ticket']];
-        $this->ticket_model->update($ticket, $where_ticket);
+        $this->tiket->update_tiket($post['id_ticket']);
 
         //Membuat notifikasi Perubahan Data untuk Admin
-        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
-        $this->notification_model->create($notification);
+        $this->notifikasi->send($post['id_ticket'], 'Perubahan Data');
 
         //Memberi pesan berhasil data menyimpan data mapping
         $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
