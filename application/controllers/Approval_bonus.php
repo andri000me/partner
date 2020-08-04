@@ -11,13 +11,13 @@ class Approval_bonus extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "approval_bonuses.id_user = " . $this->fungsi->user_login()->id_user;
+            $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "approval_bonuses.id_branch = " . $this->fungsi->user_login()->id_branch;
+            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = " IS NOT NULL";
         }
 
         check_not_login();
@@ -41,42 +41,16 @@ class Approval_bonus extends CI_Controller
     public function index()
     {
         $data = [
-            'data' => $this->approval_bonus_model->get($this->where)
+            'data' => $this->approval_bonus_model->get("approval_bonuses.id_approval_bonus" . $this->where)
         ];
         $this->template->load('template/index', 'approval-bonus', $data);
     }
 
     public function create()
     {
-        //Jika CMS login maka memunculkan data berdasarkan `id_user`
-        if ($this->fungsi->user_login()->level == 1) {
-            $where = 'leads_full.id_user = '. $this->fungsi->user_login()->id_user;
-        }
-        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
-        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where = 'leads_full.id_branch = '. $this->fungsi->user_login()->id_branch;
-        } else {
-            $where = 'leads_full.id_leads IS NOT NULL';
-        }
-
-        $get_leads =
-            "SELECT *, 
-        leads_full.leads_id as leads_id_leads,
-        leads_full.nama_konsumen as nama_konsumen_leads,
-        leads_full.id_branch as id_branch_leads,
-        leads_full.produk as produk_leads,
-        leads_full.id_user as id_user_leads,
-        leads_full.nama_konsumen as nama_konsumen_leads,
-        leads_full.created_at as created_at_leads
-        FROM leads_full
-        INNER JOIN users ON users.id_user = leads_full.id_user 
-        INNER JOIN branches ON branches.id_branch = leads_full.id_branch
-        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads_full.leads_id
-        WHERE approval_bonuses.leads_id IS NULL 
-        AND $where";
 
         $data = [
-            'leads' => $this->leads_model->query($get_leads)
+            'data' => $this->fs_konsumen_model->get("tickets.status = 5 AND leads_full.$this->where")
         ];
 
         $this->template->load('template/index', 'approval-bonus-form', $data);
@@ -84,36 +58,12 @@ class Approval_bonus extends CI_Controller
 
     public function edit($id)
     {
-        //Jika CMS login maka memunculkan data berdasarkan `id_user`
-        if ($this->fungsi->user_login()->level == 1) {
-            $where = 'leads_full.id_user = '. $this->fungsi->user_login()->id_user;
-        }
-        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
-        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where = 'leads_full.id_branch = '. $this->fungsi->user_login()->id_branch;
-        } else {
-            $where = 'leads_full.id_leads IS NOT NULL';
-        }
+        $where = ["approval_bonuses.id_approval_bonus" => $id];
 
-        $get_leads =
-            "SELECT *, 
-        leads_full.leads_id as leads_id_leads,
-        leads_full.nama_konsumen as nama_konsumen_leads,
-        leads_full.id_branch as id_branch_leads,
-        leads_full.produk as produk_leads,
-        leads_full.id_user as id_user_leads,
-        leads_full.nama_konsumen as nama_konsumen_leads,
-        leads_full.created_at as created_at_leads
-        FROM leads_full
-        INNER JOIN users ON users.id_user = leads_full.id_user 
-        INNER JOIN branches ON branches.id_branch = leads_full.id_branch
-        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads_full.leads_id
-        WHERE approval_bonuses.leads_id IS NULL 
-        AND $where";
-        
-            $data = [
-            'data' => $this->approval_bonus_model->get_ticket(['approval_bonuses.id_approval_bonus' => $id])->row(),
-            'leads' => $this->leads_model->query($get_leads)
+        $data = [
+            'data' => $this->approval_bonus_model->get($where)->row(),
+            'fs_konsumen' => $this->fs_konsumen_model->get("tickets.status = 5 AND leads_full.id_leads$this->where"),
+            'ticket' => $this->ticket_model->get($where)->row()
         ];
 
         $this->template->load('template/index', 'approval-bonus-edit', $data);
@@ -185,7 +135,7 @@ class Approval_bonus extends CI_Controller
             $notification = $this->notification($id_ticket, 'Tiket Baru');
             $this->notification_model->create($notification);
 
-            redirect('approval_bonus_model');
+            redirect('approval_bonus');
         } else {
             $get_leads =
                 "SELECT *, 
@@ -217,49 +167,49 @@ class Approval_bonus extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-            $data = [
-                'leads_id'              => $post['leads_id'],
-                'requester'             => $post['requester'],
-                'cabang'                => $post['cabang'],
-                'nama_konsumen'         => $post['nama_konsumen'],
-                'tanggal_dibuat'        => $post['tanggal_dibuat'],
-                'produk'                => $post['produk'],
-                'sumber_lead'           => $post['sumber_lead'],
-                // 'nama_pemberi_lead'     => $post['nama_pemberi_lead'],
-                'nomor_kontrak'         => $post['nomor_kontrak'],
-                'nomor_rekening'        => $post['nomor_rekening'],
-                'atas_nama'             => $post['atas_nama'],
-                'nama_bank'             => $post['nama_bank'],
-                'npwp'                  => $post['npwp'],
+        $data = [
+            'leads_id'              => $post['leads_id'],
+            'requester'             => $post['requester'],
+            'cabang'                => $post['cabang'],
+            'nama_konsumen'         => $post['nama_konsumen'],
+            'tanggal_dibuat'        => $post['tanggal_dibuat'],
+            'produk'                => $post['produk'],
+            'sumber_lead'           => $post['sumber_lead'],
+            // 'nama_pemberi_lead'     => $post['nama_pemberi_lead'],
+            'nomor_kontrak'         => $post['nomor_kontrak'],
+            'nomor_rekening'        => $post['nomor_rekening'],
+            'atas_nama'             => $post['atas_nama'],
+            'nama_bank'             => $post['nama_bank'],
+            'npwp'                  => $post['npwp'],
 
-                // 'created_at'          => date('Y-m-d H:i:s'),
-                'updated_at'         => date('Y-m-d H:i:s')
+            // 'created_at'          => date('Y-m-d H:i:s'),
+            'updated_at'         => date('Y-m-d H:i:s')
 
-                // 'id_user'               => $this->fungsi->user_login()->id_user,
-                // 'id_branch'             => $this->fungsi->user_login()->id_branch
-            ];
+            // 'id_user'               => $this->fungsi->user_login()->id_user,
+            // 'id_branch'             => $this->fungsi->user_login()->id_branch
+        ];
 
-            //Konfigurasi Upload
-            $config['upload_path']          = './uploads/approval_bonuses';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 0;
-            $config['max_width']            = 0;
-            $config['max_height']           = 0;
-            $this->load->library('upload', $config);
+        //Konfigurasi Upload
+        $config['upload_path']          = './uploads/approval_bonuses';
+        $config['allowed_types']        = '*';
+        $config['max_size']             = 0;
+        $config['max_width']            = 0;
+        $config['max_height']           = 0;
+        $this->load->library('upload', $config);
 
-            if (!$this->upload->do_upload('upload_file')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['lampiran'] = $this->upload->data('file_name');
-            }
+        if (!$this->upload->do_upload('upload_file')) {
+            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
+        } else {
+            $data['lampiran'] = $this->upload->data('file_name');
+        }
 
-            $where = ['leads_id' => $post['leads_id']];
-            $id = $this->approval_bonus_model->update($data, $where);
+        $where = ['leads_id' => $post['leads_id']];
+        $id = $this->approval_bonus_model->update($data, $where);
 
-            //Membuat notifikasi Perubahan Data untuk Admin
-            $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
-            $this->notification_model->create($notification);
+        //Membuat notifikasi Perubahan Data untuk Admin
+        $notification = $this->notification($post['id_ticket'], 'Perubahan Data');
+        $this->notification_model->create($notification);
 
-            redirect('approval_bonus_model');
+        redirect('approval_bonus_model');
     }
 }

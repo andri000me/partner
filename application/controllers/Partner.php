@@ -444,13 +444,22 @@
             $this->partner_activity_model->create($partner_activity_model);
 
             //Membuat notifikasi Perubahan Data untuk Admin
-            $this->notifikasi->send($post['id_ticket'], 'Perubahan Data');
+            $this->notifikasi->send($post['id_ticket'], 'Perubahan Data', 46);
 
             //Mengupdate status tiket
             $this->tiket->update_tiket($post['id_ticket']);
 
             $this->session->set_flashdata("alert", "<div class='alert alert-success' role='alert'>Data Merchant berhasil diupdate</div>");
             redirect($post['redirect']);
+        }
+
+        public function delete()
+        {
+            $id = $this->input->post('keyToString');
+            echo "Berhasil menghapus data agent id $id";
+            return $this->partner_model->delete($id);
+
+            // return 'success';
         }
 
         public function tambah_lampiran()
@@ -532,7 +541,7 @@
 
             echo json_encode($data);
 
-            $notification = $this->notifikasi->send($this->input->post('id_partner'), 'Ditanda tangan oleh');
+            $this->notifikasi->send($this->input->post('id_partner'), 'Ditanda tangan oleh', 46);
         }
 
         //Upload Formulir MOU

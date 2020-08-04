@@ -32,8 +32,8 @@ class Approval_bonus_model extends CI_Model
 
     public function get_ticket($where = NULL)
     {
-        
-        
+
+
         $this->db->select("*, DATE_FORMAT(updated_at, '%d %b, %Y') as tanggal_diubah");
         $this->db->from("approval_bonuses");
         $this->db->join("users", "users.id_user = approval_bonuses.requester", "inner");

@@ -384,6 +384,18 @@ class Fs_konsumen extends CI_Controller
         redirect('fs_konsumen');
     }
 
+    public function update_leads_id()
+    {
+        $post = $this->input->post(NULL, TRUE);
+
+        $data = ['leads_id' => $post['leads_id']];
+        $where = ['id_leads' => $post['id']];
+        $this->fs_konsumen_model->update($data, $where);
+
+        echo 'success';
+        // echo json_encode(['assign_cms' => $post['assign_cms'], 'id_leads' => $post['id_leads']]);
+    }
+
 
     public function generate_pdf_html($id)
     {

@@ -20,6 +20,7 @@
                 <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size"><b>Rekrut
                             Merchant</b></button></a>
                 <a href="#"><button class="btn btn-primary ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl"><b>Maintain Merchant</b></button></a>
+                <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
             </div>
         <?php } ?>
     </div>
@@ -31,6 +32,7 @@
                 <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>ID Partner</th>
                             <th>Nama Usaha</th>
                             <th>Produk</th>
@@ -43,6 +45,7 @@
                     <tbody>
                         <?php foreach ($data->result() as $partner) { ?>
                             <tr>
+                                <td><input class="data-key" type="checkbox" value="<?= $partner->id_partner ?>"></td>
                                 <td>
                                     <?= $partner->id_partner ?>
                                 </td>
@@ -147,3 +150,41 @@
     </div>
 </div>
 <!-- Modal -->
+
+<script>
+    $(document).ready(function() {
+        // <!-- Script untuk delete key -->
+        removeKey = () => {
+            var key = [];
+            $(".data-key:checked").each(function(i) {
+                key[i] = $(this).val();
+            });
+            var keyToString = key.join();
+            console.log(keyToString);
+            if (key.length === 0) {
+                alert("Pilih setidaknya satu data!");
+            } else {
+                // for (var i = 0; i < key.length; i++) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('partner/delete') ?>",
+                    data: {
+                        keyToString: keyToString
+                    },
+                    success: function(data) {
+                        alert(data);
+                        window.location.reload();
+                    }
+                });
+                // }
+            }
+        };
+        // removeKey();
+        $("#btn-hapus").on("click", function() {
+            var confirmation = confirm('Apakah Anda yakin ingin menghapus data yang dipilih?');
+            if (confirmation) {
+                removeKey();
+            }
+        });
+    })
+</script>

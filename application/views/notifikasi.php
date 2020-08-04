@@ -57,7 +57,7 @@
                                     </td>
                                     <td>
                                         <div style="width:450px;">
-                                            <?= $notif->type ?> (<?= $notif->nama_pengirim ?>) &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
+                                            <?= $notif->type ?> (<?= $notif->nama_pengirim ?>) - <?= $notif->partner_id != NULL ? 'Merchant' : ($notif->agent_id != NULL ? 'Agent' : ($notif->id_lead != NULL ? 'Leads' : ($notif->id_approval_bonus != NULL ? 'Approval Bonus' : ($notif->id_nst != NULL ? 'NST' : '')))) ?> – ID Tiket <?= $notif->id_ticket ?>.
                                         </div>
                                     </td>
                                     <td>
@@ -81,20 +81,6 @@
                                         <div style="width: 100px;">
                                             <?= $notif->dibuat_pada ?>
                                         </div>
-                                    </td>
-                                    <td>
-                                        <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
-                                        <?php if ($notif->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('agent/detail/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
-                                        <?php if ($notif->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
-                                        <?php if ($notif->type == 'Leads Assignment oleh') { ?>
-                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -132,7 +118,7 @@
                                     </td>
                                     <td>
                                         <div style="width:450px;">
-                                            <?= $notif->type ?> (<?= $notif->nama_pengirim ?>) &nbsp;–&nbsp; ID Tiket <?= $notif->id_ticket ?>.
+                                            <?= $notif->type ?> (<?= $notif->nama_pengirim ?>) - <?= $notif->partner_id != NULL ? 'Merchant' : ($notif->agent_id != NULL ? 'Agent' : ($notif->id_lead != NULL ? 'Leads' : ($notif->id_approval_bonus != NULL ? 'Approval Bonus' : ($notif->id_nst != NULL ? 'NST' : '')))) ?> – ID Tiket <?= $notif->id_ticket ?>.
                                         </div>
                                     </td>
                                     <td>
@@ -158,18 +144,6 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <?php if ($notif->id_lead != NULL) { ?>
-                                            <a href="<?= base_url('leads/detail/' . $notif->id_lead) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
-                                        <?php if ($notif->agent_id != NULL) { ?>
-                                            <a href="<?= base_url('agent/edit/' . $notif->agent_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
-                                        <?php if ($notif->partner_id != NULL) { ?>
-                                            <a href="<?= base_url('partner/detail/' . $notif->partner_id) ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
-                                        <?php if ($notif->type == 'Leads Assignment oleh') { ?>
-                                            <a href="<?= base_url('assignment/leads') ?>" class="title notifikasi btn btn-primary radius text-size" data-id="<?= $notif->id_notification ?>"><b>View</b></a>
-                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -184,7 +158,6 @@
 
 <!-- //Script untuk mark as read notifikasi -->
 <script>
-    //Update Barang
     $('#mark_all').on('click', function() {
         var has_read = 1;
         $.ajax({

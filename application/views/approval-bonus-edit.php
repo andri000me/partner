@@ -35,7 +35,7 @@
                     <!-- ID Agent -->
                     <input type="hidden" id="id_approval_bonus" name="id_approval_bonus" value="<?= $data->id_approval_bonus ?>">
                     <!-- ID Ticket -->
-                    <input type="hidden" id="id_ticket" name="id_ticket" value="<?= $data->id_ticket ?>">
+                    <input type="hidden" id="id_ticket" name="id_ticket" value="<?= $ticket->id_ticket ?>">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-row mb-3">
@@ -57,8 +57,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Cabang</label>
-                                        <input type="text" class="form-control text-size" name="nama_cabang" id="nama_cabang" value="<?= $data->nama_cabang ?>" placeholder="Cabang" readonly>
-                                        <input type="hidden" id="cabang" name="cabang" value="<?= $data->cabang ?>">
+                                        <input type="text" class="form-control text-size" name="nama_cabang" id="nama_cabang" value="<?= $ticket->nama_cabang ?>" placeholder="Cabang" readonly>
+                                        <input type="hidden" id="cabang" name="cabang" value="<?= $ticket->cabang ?>">
                                     </div>
                                 </div>
                             </div>
@@ -66,8 +66,8 @@
                                 <div class="col-md-12">
                                     <div class="form-group ml-4 mr-4">
                                         <label>Requester</label>
-                                        <input type="text" class="form-control text-size" name="requester" id="requester" value="<?= $data->name ?>" placeholder="Requester" readonly>
-                                        <input type="hidden" id="requester" name="requester" value="<?= $data->requester ?>">
+                                        <input type="text" class="form-control text-size" name="requester" id="requester" value="<?= $ticket->name ?>" placeholder="Requester" readonly>
+                                        <input type="hidden" id="requester" name="requester" value="<?= $ticket->requester ?>">
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                             </div>
                             <div class="form-group ml-4 mr-4">
                                 <label>Nomor Rekening</label>
-                                <input type="text" class="form-control text-size placement number-only" name="nomor_rekening" id="nomor_rekening" value="<?= $data->nomor_rekening ?>" required placeholder="Nomor Rekening" minlength="16" maxlength="16" />
+                                <input type="text" class="form-control text-size placement number-only" name="nomor_rekening" id="nomor_rekening" value="<?= $data->nomor_rekening ?>" required placeholder="Nomor Rekening" minlength="7" maxlength="50" />
                             </div>
                             <div class="form-group ml-4 mr-4">
                                 <label>Atas Nama</label>
@@ -193,23 +193,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($leads->result() as $data) { ?>
+                        <?php foreach ($fs_konsumen->result() as $leads) { ?>
                             <tr>
                                 <td>
-                                    <div class="text-size"><?= $data->nama_konsumen_leads ?><div>
+                                    <div class="text-size"><?= $leads->nama_konsumen ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->leads_id_leads ?><div>
+                                    <div class="text-size"><?= $leads->leads_id ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->no_ktp ?><div>
+                                    <div class="text-size"><?= $leads->no_ktp ?></div>
                                 </td>
                                 <td>
-                                    <div class="text-size"><?= $data->follow_up_by ?><div>
+                                    <div class="text-size"><?= $leads->follow_up_by ?></div>
                                 </td>
                                 <td>
                                     <center>
-                                        <button class="btn btn-primary pilih-leads radius" data-leads="<?= $data->leads_id_leads ?>" data-cabang="<?= $data->id_branch_leads ?>" data-namacabang="<?= $data->nama_cabang ?>" data-requester="<?= $data->id_user_leads ?>" data-namarequester="<?= $data->name ?>" data-konsumen="<?= $data->nama_konsumen_leads ?>" data-tanggal="<?= $data->created_at_leads ?>" data-produk="<?= $data->produk_leads ?>" data-soa="<?= $data->soa ?>">Pilih</button>
+                                        <button class="btn btn-primary pilih-leads radius" data-leads="<?= $leads->leads_id ?>" data-cabang="<?= $leads->id_branch ?>" data-namacabang="<?= $leads->nama_cabang ?>" data-requester="<?= $leads->id_user ?>" data-namarequester="<?= $leads->name ?>" data-konsumen="<?= $leads->nama_konsumen ?>" data-tanggal="<?= $leads->created_at ?>" data-produk="<?= $leads->produk ?>" data-soa="<?= $leads->soa ?>">Pilih</button>
                                     </center>
                                 </td>
                             </tr>

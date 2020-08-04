@@ -16,9 +16,10 @@ class Partner_model extends CI_Model
         return $this->db->affected_rows();
     }
 
-    public function delete($where)
+    public function delete($id)
     {
-        $this->db->delete('partners_full', $where);
+        // $this->db->delete('partners_full', $where);
+        return $this->db->query("DELETE FROM partners_full WHERE id_partner IN($id)");
     }
 
     public function get($where = NULL, $list = FALSE)

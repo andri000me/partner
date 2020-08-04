@@ -12,8 +12,8 @@ class Notifikasi
     {
         $notification = [
             'pengirim'          => $this->ci->fungsi->user_login()->id_user,
-            'penerima'          => $penerima != NULL ? $penerima :  $this->ci->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
-            'penerima_cabang'   => $penerima_cabang != NULL ? $penerima_cabang : $this->ci->ticket_model->get(['id_ticket' => $id_ticket])->row()->branch_id,
+            'penerima_cabang'   => $penerima_cabang != NULL ? $penerima_cabang : NULL,
+            'penerima'          => $penerima != NULL ? $penerima : NULL,
             'type'              => $message,
             'id_ticket'         => $id_ticket,
             'created_at'        => date('Y-m-d H:i:s')
@@ -26,8 +26,8 @@ class Notifikasi
     {
         $notification = [
             'pengirim'          => $this->ci->fungsi->user_login()->id_user,
-            'penerima'          => $penerima == NULL ? NULL :  $penerima,
             'penerima_cabang'   => $penerima_cabang == NULL ? NULL : $penerima_cabang,
+            'penerima'          => $penerima == NULL ? NULL :  $penerima,
             'type'              => $message,
             'id_ticket'         => $id_ticket,
             'created_at'        => date('Y-m-d H:i:s')

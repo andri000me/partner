@@ -504,6 +504,15 @@ class Leads extends CI_Controller
         redirect($post['redirect']);
     }
 
+    public function delete()
+    {
+        $id = $this->input->post('keyToString');
+        echo "Berhasil menghapus data agent id $id";
+        return $this->leads_model->delete($id);
+
+        // return 'success';
+    }
+
     // AJAX Controller
     // mengambil list user untuk cross branch
     public function get_user($cabang_cross = NULL)

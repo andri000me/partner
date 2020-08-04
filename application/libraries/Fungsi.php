@@ -36,20 +36,6 @@ class Fungsi
         return $user_data;
     }
 
-    function send($message, $id_ticket, $penerima = NULL, $penerima_cabang = NULL)
-    {
-        $notification = [
-            'pengirim'          => 46,
-            'penerima'          => $penerima == NULL ? NULL :  $this->ci->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
-            'penerima_cabang'   => $penerima_cabang == NULL ? NULL : $this->ci->ticket_model->get(['id_ticket' => $id_ticket])->row()->branch_id,
-            'type'              => $message,
-            'id_ticket'         => $id_ticket,
-            'created_at'        => date('Y-m-d H:i:s')
-        ];
-
-        return $this->ci->notification_model->create($notification);
-    }
-
     function module()
     {
         $this->ci->load->model('module_model');

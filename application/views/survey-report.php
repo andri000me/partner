@@ -41,7 +41,7 @@
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active p-3" id="all" role="tabpanel">
-                        <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
@@ -131,7 +131,7 @@
                         </table>
                     </div>
                     <div class="tab-pane p-3" id="pending" role="tabpanel">
-                        <table id="datatable-buttons-1" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
@@ -207,9 +207,7 @@
                                                 <b class="text-danger">Fail</b>
                                             <?php } ?>
                                         </td>
-                                        <td>
-                                        </td>
-                                        <td style="white-spa;">
+                                        <td style="white-space: nowrap;">
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
@@ -222,10 +220,11 @@
                         </table>
                     </div>
                     <div class="tab-pane p-3" id="finished" role="tabpanel">
-                        <table id="datatable-buttons-2" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <table id="form-survey-completed" class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
+                                    <th>Leads ID</th>
                                     <th>Nama Konsumen</th>
                                     <th>Cross Branch</th>
                                     <th>Cabang</th>
@@ -245,6 +244,9 @@
                                             <?= $fs_konsumen->id ?>
                                         </td>
                                         <td>
+                                            <input type="text" class="form-control leads_id" data-id="<?= $fs_konsumen->id ?>" value="<?= $fs_konsumen->leads_id ?>">
+                                        </td>
+                                        <td>
                                             <?= $fs_konsumen->nama_konsumen ?>
                                         </td>
                                         <td>
@@ -255,7 +257,7 @@
                                         </td>
                                         <td>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class=" text-secondary">Menunggu Persetujuan Head</b>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
                                                 <b class="text-secondary">Menunggu Persetujuan Manager</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
@@ -300,7 +302,7 @@
                                                 <b class="text-danger">Fail</b>
                                             <?php } ?>
                                         </td>
-                                        <td style="white-spa;">
+                                        <td style="white-space: nowrap;">
                                             <center>
                                                 <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
@@ -364,4 +366,25 @@
             });
         });
     });
+</script>
+
+<script>
+    $(document).ready(function() {
+        //menyimpan data secara AJAX
+        $("#form-survey-completed").on("blur", ".leads_id", function() {
+            var leads_id = $(this).val();
+            var id = $(this).data('id');
+            $.ajax({
+                url: '<?= base_url() ?>' + 'fs_konsumen/update_leads_id/',
+                type: 'POST',
+                data: {
+                    leads_id: leads_id,
+                    id: id
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            })
+        })
+    })
 </script>

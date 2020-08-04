@@ -17,6 +17,7 @@
             <div class="btn-kanan card-margin-2">
                 <a href="<?= base_url('Agent/create') ?>"><button class="btn btn-primary mb-2 text-size"><b>Rekrut Agent /
                             BA</b></button></a>
+                <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
             </div>
         <?php } ?>
     </div>
@@ -28,6 +29,7 @@
                 <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
+                            <th></th>
                             <th>
                                 ID Agent
                             </th>
@@ -50,6 +52,7 @@
                     <tbody>
                         <?php foreach ($data->result() as $agent) { ?>
                             <tr>
+                                <td><input class="data-key" type="checkbox" value="<?= $agent->id_agent ?>"></td>
                                 <td>
                                     <?= $agent->id_agent ?>
                                 </td>
@@ -121,6 +124,45 @@
                 }
             });
             return false;
+        });
+    })
+</script>
+
+<!-- fungsi delete data -->
+<script>
+    $(document).ready(function() {
+        // <!-- Script untuk delete key -->
+        removeKey = () => {
+            var key = [];
+            $(".data-key:checked").each(function(i) {
+                key[i] = $(this).val();
+            });
+            var keyToString = key.join();
+            console.log(keyToString);
+            if (key.length === 0) {
+                alert("Pilih setidaknya satu data!");
+            } else {
+                // for (var i = 0; i < key.length; i++) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('agent/delete') ?>",
+                    data: {
+                        keyToString: keyToString
+                    },
+                    success: function(data) {
+                        alert(data);
+                        window.location.reload();
+                    }
+                });
+                // }
+            }
+        };
+        // removeKey();
+        $("#btn-hapus").on("click", function() {
+            var confirmation = confirm('Apakah Anda yakin ingin menghapus data yang dipilih?');
+            if (confirmation) {
+                removeKey();
+            }
         });
     })
 </script>

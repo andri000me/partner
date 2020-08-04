@@ -35,7 +35,8 @@ class Notification_model extends CI_Model
         $this->db->join('partners_full', 'partners_full.id_partner = tickets.id_partner', 'left');
         $this->db->join('agents', 'agents.id_agent = tickets.id_agent', 'left');
         $this->db->join('leads_full', 'leads_full.id_leads = tickets.id_leads', 'left');
-        // $this->db->join('leads_assignments', 'assignto.id_leads = tickets.id_leads', 'left');
+        $this->db->join('nst', 'nst.id_nst = tickets.id_nst', 'left');
+        $this->db->join('approval_bonuses', 'approval_bonuses.id_approval_bonus = tickets.id_approval_bonus', 'left');
 
         // Pengirim Notifikasi
         $this->db->join('users as user_pengirim', 'user_pengirim.id_user = notifications.pengirim', 'left');
@@ -50,6 +51,7 @@ class Notification_model extends CI_Model
             $this->db->where($where);
         }
         $this->db->order_by('id_notification', 'DESC');
+        $this->db->limit(50);
         return $this->db->get();
     }
 }

@@ -3158,32 +3158,10 @@
         </div>
     </div>
 </div>
-<!-- Modal agent -->
-
-<!-- <script>
-    $('.personal-sudah, .detail-sudah, .product-sudah, .branch-sudah').hide();
-
-    $(".konsumen").on("keypress keydown keyup", function() {
-        var empty = [];
-        $(".konsumen").each(function() {
-            empty.push($(this).val());
-        })
-        console.log(empty)
-        //
-        if (!empty.includes('')) {
-            $('.personal-belum').hide();
-            $('.personal-sudah').show();
-        } else {
-            $('.personal-belum').show();
-            $('.personal-sudah').hide();
-        }
-    });
-</script> -->
 
 
 <script src="<?= base_url('template/assets/js/leads_prospect.js') ?>"></script>
 <script src="<?= base_url('template/assets/js/kalkulasi.js') ?>"></script>
-
 
 <script>
     // bonus periodik karyawan

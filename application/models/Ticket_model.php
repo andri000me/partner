@@ -63,6 +63,8 @@ class Ticket_model extends CI_Model
         $this->db->join('leads_full', 'leads_full.id_leads = tickets.id_leads', 'left');
         // Join Table `Leads`
         $this->db->join('nst', 'nst.id_nst = tickets.id_nst', 'left');
+        // Join Table `Approval Bonuses`
+        $this->db->join('approval_bonuses', 'approval_bonuses.id_approval_bonus = tickets.id_approval_bonus', 'left');
         // Join Table `Users`
         $this->db->join('users', 'users.id_user = tickets.id_user', 'left');
         // Join Table `Users` (untuk id_user siapa yang meng-approve data tiket)

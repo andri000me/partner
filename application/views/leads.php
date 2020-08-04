@@ -16,6 +16,7 @@
         <div class="btn-kanan mb-2 card-margin-2">
             <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size"><b>Input
                         Prospect</b></button></a>
+            <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
         </div>
     </div>
     <div class="col-12">
@@ -43,9 +44,9 @@
                         <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>ID</th>
                                     <th>Nama</th>
-                                    <th>Leads ID</th>
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
                                     <th>Requester</th>
@@ -56,12 +57,10 @@
                             <tbody>
                                 <?php foreach ($belum_funding->result() as $leads) { ?>
                                     <tr>
+                                        <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
                                         <td><?= $leads->id_leads ?></td>
                                         <td>
                                             <?= $leads->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->leads_id ?>
                                         </td>
                                         <td>
                                             <?= $leads->no_ktp ?>
@@ -92,8 +91,8 @@
                         <table id="datatable-buttons-1" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
+                                    <th></th>
                                     <th>Nama</th>
-                                    <th>Leads ID</th>
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
                                     <th>Requester</th>
@@ -104,11 +103,9 @@
                             <tbody>
                                 <?php foreach ($sudah_funding->result() as $leads) { ?>
                                     <tr>
+                                        <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
                                         <td>
                                             <?= $leads->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->leads_id ?>
                                         </td>
                                         <td>
                                             <?= $leads->no_ktp ?>
@@ -139,3 +136,42 @@
         </div>
     </div> <!-- end col -->
 </div>
+
+<!-- fungsi delete data -->
+<script>
+    $(document).ready(function() {
+        // <!-- Script untuk delete key -->
+        removeKey = () => {
+            var key = [];
+            $(".data-key:checked").each(function(i) {
+                key[i] = $(this).val();
+            });
+            var keyToString = key.join();
+            console.log(keyToString);
+            if (key.length === 0) {
+                alert("Pilih setidaknya satu data!");
+            } else {
+                // for (var i = 0; i < key.length; i++) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= base_url('leads/delete') ?>",
+                    data: {
+                        keyToString: keyToString
+                    },
+                    success: function(data) {
+                        alert(data);
+                        window.location.reload();
+                    }
+                });
+                // }
+            }
+        };
+        // removeKey();
+        $("#btn-hapus").on("click", function() {
+            var confirmation = confirm('Apakah Anda yakin ingin menghapus data yang dipilih?');
+            if (confirmation) {
+                removeKey();
+            }
+        });
+    })
+</script>

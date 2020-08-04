@@ -39,10 +39,6 @@
                                 <label>Leads ID</label>
                                 <div class="input-group mb-3">
                                     <input type="text" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= $data->leads_id ?>" required placeholder="202001SLOS12345" readonly>
-                                    <!-- <div class="input-group-append">
-                                            <button class="btn btn-danger text-size" type="button" id="reset">x</button>
-                                            <button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads"><span class="ion-ios7-search-strong"></span></button>
-                                        </div> -->
                                 </div>
                                 <?= form_error('leads_id') ?>
                             </div>
@@ -69,21 +65,50 @@
                         </div>
                         <div class="col-md-12">
                             <h5 class="form-margin"><b>Lampiran</b></h5>
-                            <?php
-                            $uploads =  explode(",", $data->upload_file);
-                            foreach ($uploads as $upload) {
-                            ?>
-                                <a href="<?= base_url('uploads/nst/' . $upload) ?>"><?= $upload ?></a>
-                            <?php } ?>
+                            <div class="owl-carousel owl-theme">
+                                <?php
+                                $uploads =  explode(",", $data->upload_file);
+                                foreach ($uploads as $upload) {
+                                ?>
+                                    <!-- NPWP -->
+                                    <div class="item" style="height:150px; width:300px;">
+                                        <?php if (get_extension($upload)) { ?>
+                                            <div class="zoom-gallery">
+                                                <a href="<?= base_url('uploads/nst/' . $upload) ?>">
+                                                    <img src="<?= base_url('uploads/nst/' . $upload) ?>" alt="" style="height:150px; width:300px;"></a>
+                                            </div>
+                                        <?php } else { ?>
+                                            <a href="<?= base_url('uploads/nst/' . $upload) ?>">
+                                                <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $upload ?>">
+                                                    <i class="fa fa-file fa-5x"></i>
+                                                    <!-- <span class="small"><?= $upload ?></span> -->
+                                                </div>
+                                            </a>
+                                        <?php } ?>
+                                    </div>
+                                <?php } ?>
+                            </div>
                             <div class="form-group mb-0 float-right ml-4 mr-4">
                                 <?php
                                 $level = $this->fungsi->user_login()->level;
-                                if (($level != 1) && (($level == 2 && $ticket->status_approval == 0) || ($level == 3 && $ticket->status_approval == 1) || ($level == 4 && $ticket->status_approval == 2))) {
+                                if (
+                                    //Bukan CMS
+                                    ($level != 1) &&
+                                    // Head & Menunggu Persetujuan Head 
+                                    (
+                                        ($level == 2 && $ticket->status_approval == 0) ||
+                                        // Manager & Menunggu Persetujuan Manager 
+                                        ($level == 3 && $ticket->status_approval == 1) ||
+                                        // Admin & Pending HO 
+                                        ($level == 4 && $ticket->status_approval == 2) ||
+                                        // Head HO & Disetujui 
+                                        ($level == 5 && $ticket->status_approval == 5))
+                                ) {
                                 ?>
-                                    <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket) ?>"><b>Approve</b></a>
+                                    <a class="btn btn-info text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket . '/partner') ?>"><b>Approve</b></a>
                                 <?php } ?>
                                 <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
-                                    <button type="button" class="btn btn-danger text-size" data-toggle="modal" data-target="#modal"><b>Reject</b></button>
+                                    <a class="btn btn-danger text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/partner') ?>"><b>Reject</b></a>
                                 <?php } ?>
                             </div>
                         </div>

@@ -150,7 +150,7 @@ class Agent extends CI_Controller
 
             if (isset($post['process'])) {
                 //Menambah antrian tiket untuk data Agent
-                $id_ticket = $this->tiket->tambah_tiket('id_partner', $id);
+                $id_ticket = $this->tiket->tambah_tiket('id_agent', $id);
 
                 //Membuat notifikasi tiket baru untuk Admin
                 $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
@@ -250,7 +250,7 @@ class Agent extends CI_Controller
         $this->agent_activity_model->create($agent_activity_model);
 
         //Membuat notifikasi Perubahan Data untuk Admin
-        $this->notifikasi->send($post['id_ticket'], 'Perubahan Data');
+        $this->notifikasi->send($post['id_ticket'], 'Perubahan Data', 46);
 
         //Meng-update antrian tiket untuk data Agent
         $this->tiket->update_tiket($post['id_ticket']);
@@ -259,6 +259,18 @@ class Agent extends CI_Controller
         $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diupdate. <a href='#'>Lihat Data</a>");
 
         redirect($post['redirect']);
+    }
+
+    public function delete()
+    {
+        $id = $this->input->post('keyToString');
+        // return implode(",", $id);
+        // return $id;
+        // return $this->agent_model->delete("id_agent IN (" . $id . ")");
+        echo 'success';
+        return $this->agent_model->delete(37);
+
+        // return 'success';
     }
 
     public function tambah_lampiran()
@@ -391,6 +403,7 @@ class Agent extends CI_Controller
             }
             // echo $upload . $file . '<br>';
         }
+
         //Download Data lampiran tambahan
         $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
         foreach ($lampiran_tambahan as $file) {

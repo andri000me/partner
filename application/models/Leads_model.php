@@ -15,9 +15,9 @@ class Leads_model extends CI_Model
         $this->db->update('leads_full', $data, $where);
     }
 
-    public function delete($where)
+    public function delete($id)
     {
-        $this->db->delete('leads_full', $where);
+        return $this->db->query("DELETE FROM leads_full WHERE id_leads IN($id)");
     }
 
     public function get($where = NULL)

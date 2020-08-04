@@ -51,7 +51,7 @@
 							</div>
 							<div class="form-group form-margin">
 								<label>Kategori produk</label>
-								<input type="text" class="form-control" name="kategori_produk" id="produk" required value="" placeholder="Kategori produk" readonly />
+								<input type="text" class="form-control" name="produk" id="produk" required value="" placeholder="Kategori produk" readonly />
 							</div>
 							<div class="form-group form-margin">
 								<label>Requester</label>
@@ -65,12 +65,18 @@
 							</div>
 						</div>
 						<div class="col-md-6">
-							<?php for ($i = 1; $i <= 5; $i++) { ?>
-								<div class="form-group text-size form-margin">
-									<label>Data Lampiran</label>
-									<input type="file" name="lampiran<?= $i ?>" class="filestyle" data-buttonname="btn-secondary">
-								</div>
-							<?php } ?>
+							<input type="hidden" name="redirect" value="<?= uri_string() ?>">
+							<h4 class="mt-0 header-title mb-4"><b>Tambah Data Lampiran</b></h4>
+							<div class="form-group element text-size">
+								<label>Lampirkan Data</label><br>
+								<input type="file" name="tambah_lampiran[]" id="upload_file1" required>
+							</div>
+							<hr>
+							<div id="moreImageUpload"></div>
+							<div class="clear "></div>
+							<div id="moreImageUploadLink" class="float-right mt-3">
+								<a class="btn btn-secondary text-size mr-1" href="javascript:void(0);" id="attachMore">Tambah Form</a>
+							</div>
 						</div>
 						<div class="col-md-12">
 							<div class="form-group mb-0 float-right mt-5 form-margin">
@@ -105,13 +111,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php foreach ($leads->result() as $lead) { ?>
+						<?php foreach ($data->result() as $leads) { ?>
 							<tr>
-								<td><?= $lead->nama_konsumen ?></td>
-								<td><?= $lead->lead_id ?></td>
+								<td><?= $leads->nama_konsumen ?></td>
+								<td><?= $leads->leads_id ?></td>
 								<td>
 									<center>
-										<button class="btn btn-primary pilih-leads radius" id="search" data-id="<?= $lead->id_leads ?>" data-konsumen="<?= $lead->nama_konsumen ?>" data-leads="<?= $lead->lead_id ?>" data-requester="<?= $lead->name ?>" data-cabang="<?= $lead->nama_cabang ?>" data-produk="<?= $lead->produk ?>"><b>Pilih</b></button>
+										<button class="btn btn-primary pilih-leads radius" id="search" data-id="<?= $leads->id_leads ?>" data-konsumen="<?= $leads->nama_konsumen ?>" data-leads="<?= $leads->leads_id ?>" data-requester="<?= $leads->name ?>" data-cabang="<?= $leads->nama_cabang ?>" data-produk="<?= $leads->kategori_produk ?>"><b>Pilih</b></button>
 									</center>
 								</td>
 							</tr>

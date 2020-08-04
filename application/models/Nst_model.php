@@ -23,9 +23,10 @@ class Nst_model extends CI_Model
     public function get($where = NULL)
     {
         $this->db->from('nst');
-        $this->db->join('leads_full', 'leads_full.leads_id = nst.leads_id', 'inner');
-        $this->db->join('users', 'users.id_user = nst.id_user', 'inner');
-        $this->db->join('branches', 'branches.id_branch = nst.id_branch', 'inner');
+        $this->db->join('fs_konsumen', 'fs_konsumen.leads_id = nst.leads_id', 'left');
+        $this->db->join('leads_full', 'leads_full.id_leads = fs_konsumen.id_leads', 'left');
+        $this->db->join('users', 'users.id_user = nst.id_user', 'left');
+        $this->db->join('branches', 'branches.id_branch = nst.id_branch', 'left');
         if ($where != null) {
             $this->db->where($where);
         }
