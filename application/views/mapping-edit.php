@@ -3,7 +3,7 @@
         <div class="page-title-box card-margin-5">
             <h4><b>Form Mapping Lokasi Merchant</b></h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
                 <li class="breadcrumb-item text-size"><a href="<?= base_url('partner/index_mapping') ?>">Mapping Lokasi
                         Partner</a></li>

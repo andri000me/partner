@@ -3,7 +3,7 @@
         <div class="page-title-box card-margin-2">
             <h4><b>List Karyawan</b></h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Admin</a></li>
                 <li class="breadcrumb-item text-size active">List Karyawan</li>
             </ol>
@@ -16,12 +16,12 @@
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <h4 class="mt-0 header-title"><b>Tabel List Karyawan</b></h4>
-                <p class="text-muted m-b-30 text-size">Tabel berisi List Karyawan.</p>
+                <p class="text-muted m-b-30 text-size">Data karyawan yang berada di cabang anda. Informasikan head office jika ada perubahan data</p>
                 <table id="" class="datatable table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>Nik</th>
+                            <th>NIK</th>
                             <th>Jabatan</th>
                             <th>Cabang</th>
                             <th>Status</th>

@@ -71,19 +71,19 @@
                                         </td>
                                         <td>
                                             <?php if ($ticket->status_approval == 0) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class="text-secondary">Head Approval/b>
                                             <?php } else if ($ticket->status_approval == 1) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                                <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($ticket->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending HO</b>
+                                                <b class="text-secondary">HO Approval</b>
                                             <?php } else if ($ticket->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($ticket->status_approval == 4) { ?>
-                                                <b class="text-danger">Ditolak</b>
+                                                <b class="text-danger">Rejected</b>
                                             <?php } else if ($ticket->status_approval == 5) { ?>
-                                                <b class="text-success">Disetujui</b>
+                                                <b class="text-success">Approved</b>
                                             <?php } else if ($ticket->status_approval == 6) { ?>
-                                                <b class="text-primary">Diaktivasi</b>
+                                                <b class="text-primary">Activated</b>
                                             <?php } ?>
                                         </td>
                                         <td><?= $ticket->tanggal_diubah ?></td>
@@ -139,19 +139,19 @@
                                         </td>
                                         <td>
                                             <?php if ($ticket->status_approval == 0) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class="text-secondary">Head Approval/b>
                                             <?php } else if ($ticket->status_approval == 1) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                                <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($ticket->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending HO</b>
+                                                <b class="text-secondary">HO Approval</b>
                                             <?php } else if ($ticket->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($ticket->status_approval == 4) { ?>
-                                                <b class="text-danger">Ditolak</b>
+                                                <b class="text-danger">Rejected</b>
                                             <?php } else if ($ticket->status_approval == 5) { ?>
-                                                <b class="text-success">Disetujui</b>
+                                                <b class="text-success">Approved</b>
                                             <?php } else if ($ticket->status_approval == 6) { ?>
-                                                <b class="text-primary">Diaktivasi</b>
+                                                <b class="text-primary">Activated</b>
                                             <?php } ?>
                                         </td>
                                         <td><?= $ticket->tanggal_diubah ?></td>
@@ -207,19 +207,19 @@
                                         </td>
                                         <td>
                                             <?php if ($ticket->status_approval == 0) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class="text-secondary">Head Approval/b>
                                             <?php } else if ($ticket->status_approval == 1) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                                <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($ticket->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending HO</b>
+                                                <b class="text-secondary">HO Approval</b>
                                             <?php } else if ($ticket->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($ticket->status_approval == 4) { ?>
-                                                <b class="text-danger">Ditolak</b>
+                                                <b class="text-danger">Rejected</b>
                                             <?php } else if ($ticket->status_approval == 5) { ?>
-                                                <b class="text-success">Disetujui</b>
+                                                <b class="text-success">Approved</b>
                                             <?php } else if ($ticket->status_approval == 6) { ?>
-                                                <b class="text-primary">Diaktivasi</b>
+                                                <b class="text-primary">Activated</b>
                                             <?php } ?>
                                         </td>
                                         <td><?= $ticket->tanggal_diubah ?></td>

@@ -52,14 +52,14 @@
                     <div class="tab-pane active p-3" id="edit-data" role="tabpanel">
                         <div class="ml-3">
                             <h4 class="mt-0 header-title">Edit Data</h4>
-                            <p class="text-muted m-b-30 text-size">Edit data profile sesuai kebutuhan anda.</p>
+                            <p class="text-muted m-b-30 text-size">Edit data profile sesuai dengan identitas.</p>
                         </div>
 
                         <form action="<?= base_url('Profile/update') ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="col-md-6">
                                     <div class="form-group text-size form-margin">
-                                        <label>Foto</label>
+                                        <label>Photo</label>
                                         <input type="file" name="foto" class="filestyle text-size" data-buttonname="btn-secondary" placeholder="Silahkan Upload Foto Kegiatan">
                                     </div>
                                 </div>

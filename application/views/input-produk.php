@@ -47,20 +47,18 @@
                             </td>
                             <td>
                                 <center>
-                                    <h6><span class="badge badge-success">Terverifikasi</span></h6>
+                                    <h6><span class="badge badge-success">Verified</span></h6>
                                     <br>
-                                    <h6><span class="badge badge-primary">Teraktivasi</span></h6>
+                                    <h6><span class="badge badge-primary">Activated</span></h6>
                                     <br>
-                                    <h6><span class="badge badge-danger">Belum Terverifikasi</span></h6>
+                                    <h6><span class="badge badge-danger">HO Approval</span></h6>
                                 </center>
                             </td>
                             <td>
                                 <center>
-                                    <h6><span class="badge badge-success">Sudah Tanda Tangan
-                                            Kerjasama</span></h6>
+                                    <h6><span class="badge badge-success">PKS</span></h6>
                                     <br>
-                                    <h6><span class="badge badge-danger">Belum Tanda Tangan
-                                            Kerjasama</span></h6>
+                                    <h6><span class="badge badge-danger">Non PKS</span></h6>
                                 </center>
                             </td>
                             <td>

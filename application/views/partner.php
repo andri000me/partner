@@ -3,7 +3,7 @@
         <div class="page-title-box card-margin-2">
             <h4><b>Daftar Merchant</b></h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item text-size"><a href="javascript:void(0);">Kerjasama</a></li>
                 <li class="breadcrumb-item text-size active">Daftar Merchant</li>
             </ol>
@@ -69,17 +69,17 @@
                                 <!-- Status -->
                                 <td>
                                     <?php if ($partner->status_ticket == 6) { ?>
-                                        <b class="text-primary">Teraktivasi</b>
+                                        <b class="text-primary">Activated</b>
                                     <?php } else if ($partner->status_ticket == 5) { ?>
-                                        <b class="text-success">Terverifikasi</b>
+                                        <b class="text-success">Verified</b>
                                     <?php } else if ($partner->status_ticket == 4) { ?>
-                                        <b class="text-danger">Ditolak</b>
+                                        <b class="text-danger">Rejected</b>
                                     <?php } else if ($partner->status_ticket == 2) { ?>
-                                        <b class="text-secondary">Pending HO</b>
+                                        <b class="text-secondary">HO Approval</b>
                                     <?php } else if ($partner->status_ticket == 1) { ?>
-                                        <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                        <b class="text-secondary">Manager Approval</b>
                                     <?php } else if ($partner->status_ticket == 0) { ?>
-                                        <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                        <b class="text-secondary">Head Approval</b>
                                     <?php } ?>
                                 </td>
                                 <td>

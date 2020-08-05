@@ -4,7 +4,7 @@
         <div class="page-title-box card-margin-5">
             <h4><b>Form Survey Report</b></h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Daftar Data Survey</a></li>
                 <li class="breadcrumb-item active">Survey Report</li>
             </ol>
@@ -2907,7 +2907,7 @@
                                         <?php if ($this->fungsi->user_login()->level < 4) { ?>
                                             <div class="form-group form-margin float-right mt-5">
                                                 <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button>
-                                                <a href="<?= base_url('fs_konsumen/kirim_fs/' . $data->id) ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Kirim</b></a>
+                                                <a href="<?= base_url('fs_konsumen/kirim_fs/' . $data->id) ?>" class="btn btn-primary waves-effect waves-light submit text-size" name="process"><b>Proses Data</b></a>
                                             </div>
                                         <?php } ?>
                                     </div>

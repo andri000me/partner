@@ -1,9 +1,9 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box card-margin-2">
-            <h4><b>Daftar Akun</b></h4>
+            <h4><b>Daftar User Helpdesk</b></h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Admin</a></li>
                 <li class="breadcrumb-item active">List User</li>
             </ol>
@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="mb-2 btn-kanan card-margin-2">
-            <a class="btn btn-primary text-size" href="<?= base_url('user/create') ?>"><b>Tambah Akun</b></a>
+            <a class="btn btn-primary text-size" href="<?= base_url('user/create') ?>"><b>Tambah User</b></a>
         </div>
     </div>
 
@@ -26,7 +26,7 @@
                 <table id="datatable-buttons" class="table table-hover dt-responsive nowrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th>Foto</th>
+                            <th>Photo</th>
                             <th>Nama</th>
                             <th>NIK</th>
                             <th>Jabatan</th>
@@ -144,7 +144,7 @@
                                     <div class="card-body">
                                         <div class="row mb-2">
                                             <div class="col-md-12 ">
-                                                <h5 class="ml-3"><b>Pengaturan Halaman</b></h5>
+                                                <h5 class="ml-3"><b>Pengaturan Akses Menu</b></h5>
                                             </div>
                                         </div>
                                         <div class="form-row">
@@ -203,7 +203,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group ml-3 mr-3">
-                                                    <label>Transfer Data User</label><br>
+                                                    <label>Transfer Data</label><br>
                                                     <input type="checkbox" name="transfer_data_active" id="transfer_data" switch="none" />
                                                     <label for="transfer_data" data-on-label="On" data-off-label="Off"></label>
                                                 </div>

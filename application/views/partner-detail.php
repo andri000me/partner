@@ -755,7 +755,7 @@
                                 <div class="web mt-2">
                                     <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
                                     <div class="boxxx overflow-auto">
-                                        <!-- Terverifikasi -->
+                                        <!-- Verified -->
                                         <?php if ($ticket->status_approval == 5) { ?>
                                             <div class="inbox-wid">
                                                 <div class="inbox-item">
@@ -766,7 +766,7 @@
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size text-success">
-                                                                    <b>Terverifikasi</b></p>
+                                                                    <b>Verified</b></p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
@@ -797,7 +797,7 @@
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size text-primary">
-                                                                    <b>Teraktivasi</b></p>
+                                                                    <b>Activated</b></p>
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
@@ -827,7 +827,7 @@
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size  text-danger">
-                                                                    <b>Belum Diverifikasi</b></p>
+                                                                    <b>HO Approval</b></p>
                                                             </td>
                                                             <td></td>
                                                         </tr>
@@ -948,7 +948,7 @@
                                                         </td>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1 text-success">
-                                                                <b>Terverifikasi</b></p>
+                                                                <b>Verified</b></p>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -979,7 +979,7 @@
                                                         </td>
                                                         <td>
                                                             <p class="inbox-item-author mt-0 mb-1 text-size text-primary">
-                                                                <b>Teraktivasi</b></p>
+                                                                <b>Activated</b></p>
                                                         </td>
                                                         <td>
                                                             <p class="inbox-item-date text-muted mt-1 mb-0 text-size">
