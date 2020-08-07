@@ -32,6 +32,7 @@
                             <th>Alamat</th>
                             <th>E-mail</th>
                             <th>Telepon</th>
+                            <th>Tanggal Dibuat</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -55,6 +56,9 @@
                                 </td>
                                 <td>
                                     <?= $mapping->telepon ?>
+                                </td>
+                                <td>
+                                    <?= $mapping->tanggal_dibuat ?>
                                 </td>
                                 <td>
                                     <center><a href="<?= base_url('partner/edit_mapping/' . $mapping->id_partner) ?>" class="btn btn-secondary text-size"><b>Detail</b></a></center>

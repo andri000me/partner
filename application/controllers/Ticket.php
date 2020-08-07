@@ -26,6 +26,42 @@ class Ticket extends CI_Controller
         check_not_login();
     }
 
+    private function activity($id_ticket, $activity)
+    {
+        $data = $this->ticket_model->get("tickets.id_ticket = " . $id_ticket)->row();
+        if ($data->agent_id != NULL) {
+            $agent_activity_model = [
+                'activity' => $activity,
+                'date_activity' => date('Y-m-d H:i:s'),
+                'id_agent' => $data->agent_id,
+                'id_user' => $this->fungsi->user_login()->id_user
+            ];
+
+            $insert = $this->agent_activity_model->create($agent_activity_model);
+        }
+        if ($data->partner_id != NULL) {
+            $partner_activity_model = [
+                'activity' => $activity,
+                'date_activity' => date('Y-m-d H:i:s'),
+                'id_partner' => $data->partner_id,
+                'id_user' => $this->fungsi->user_login()->id_user
+            ];
+
+            $insert = $this->partner_activity_model->create($partner_activity_model);
+        }
+        if ($data->lead_id != NULL) {
+            $leads_activity_model = [
+                'activity' => $activity,
+                'date_activity' => date('Y-m-d H:i:s'),
+                'id_leads' => $data->lead_id,
+                'id_user' => $this->fungsi->user_login()->id_user
+            ];
+
+            $insert = $this->leads_activity_model->create($leads_activity_model);
+        }
+        return $insert;
+    }
+
     public function index()
     {
         $finished = $this->where . " AND tickets.status = 5";
@@ -51,6 +87,7 @@ class Ticket extends CI_Controller
             ];
 
             $this->notifikasi->send($id_ticket, 'Disetujui oleh Head');
+            $this->activity($id_ticket, 'Disetujui oleh Head');
         }
         //Jika Manager yang menekan tombol approve, maka tiket sudah disetujui oleh Manager
         else if ($this->fungsi->user_login()->level == 3) {
@@ -59,6 +96,7 @@ class Ticket extends CI_Controller
                 'status' => 2
             ];
             $this->notifikasi->send($id_ticket, 'Disetujui oleh Manager');
+            $this->activity($id_ticket, 'Disetujui oleh Manager');
         }
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
         else if ($this->fungsi->user_login()->level == 4) {
@@ -68,6 +106,7 @@ class Ticket extends CI_Controller
                 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
             $this->notifikasi->send($id_ticket, 'Disetujui oleh Admin HO');
+            $this->activity($id_ticket, 'Disetujui oleh Admin HO');
         }
         //Jika Head HO yang menekan tombol approve, maka tiket sudah diaktivasi oleh Head HO
         else if ($this->fungsi->user_login()->level == 5) {
@@ -77,6 +116,7 @@ class Ticket extends CI_Controller
                 'activated_by'      => $this->fungsi->user_login()->id_user
             ];
             $this->notifikasi->send($id_ticket, 'Diaktivasi oleh Head HO');
+            $this->activity($id_ticket, 'Diaktivasi oleh Head HO');
         }
         $this->ticket_model->update($data, $where);
 
@@ -91,9 +131,9 @@ class Ticket extends CI_Controller
             $data = [
                 'date_rejected'    => date('Y-m-d H:i:s'),
                 'status'            => 4
-                // 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
             $this->notifikasi->send($id_ticket, 'Ditolak oleh');
+            $this->activity($id_ticket, 'Ditolak oleh');
         }
 
         $where = ['id_ticket' => $id_ticket];
@@ -153,10 +193,5 @@ class Ticket extends CI_Controller
 
             redirect($this->input->post('redirect'));
         }
-    }
-
-    public function test()
-    {
-        $this->load->view('test');
     }
 }

@@ -15,7 +15,7 @@ class Nst extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
         } else {
-            $this->where = NULL;
+            $this->where = "IS NOT NULL";
         }
 
         check_not_login();

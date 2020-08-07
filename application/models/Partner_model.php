@@ -24,7 +24,8 @@ class Partner_model extends CI_Model
 
     public function get($where = NULL, $list = FALSE)
     {
-        $this->db->select("partners_full.*, tickets.status as status_ticket");
+        $this->db->select("partners_full.*, tickets.status as status_ticket, DATE_FORMAT(partners_full.created_at, '%d %M %Y %H:%I:%s') as tanggal_dibuat,
+        ");
         if ($list == true) $this->db->select("branches.*");
         $this->db->from('partners_full');
         $this->db->join('tickets', 'tickets.id_partner = partners_full.id_partner', 'left');

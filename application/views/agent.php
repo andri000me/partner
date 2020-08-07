@@ -142,7 +142,6 @@
             if (key.length === 0) {
                 alert("Pilih setidaknya satu data!");
             } else {
-                // for (var i = 0; i < key.length; i++) {
                 $.ajax({
                     type: "POST",
                     url: "<?= base_url('agent/delete') ?>",
@@ -154,10 +153,8 @@
                         window.location.reload();
                     }
                 });
-                // }
             }
         };
-        // removeKey();
         $("#btn-hapus").on("click", function() {
             var confirmation = confirm('Apakah Anda yakin ingin menghapus data yang dipilih?');
             if (confirmation) {

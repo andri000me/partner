@@ -411,10 +411,16 @@
                                     ?>
                                         <a class="btn btn-info text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket . '/partner') ?>"><b>Approve</b></a>
                                     <?php } ?>
+                                    <!-- Tombol REJECT untuk ADMIN HO -->
                                     <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
                                         <a class="btn btn-danger text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/partner') ?>"><b>Reject</b></a>
                                     <?php } ?>
-                                    <?php if ($level < 4) { ?>
+                                    <!-- Tombol RETURN untuk Head & Manager -->
+                                    <?php if (($level == 2 || $level == 3) && ($ticket->status_approval == 0 || $ticket->status_approval == 1)) { ?>
+                                        <a class="btn btn-danger text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENGEMBALIKAN data tiket ini ke CMS?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/partner') ?>"><b>Return</b></a>
+                                    <?php } ?>
+                                    <!-- Tombol SIMPAN untuk simpan data -->
+                                    <?php if ($level < 4 && $level != 3) { ?>
                                         <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size ml-1 mb-1">
                                             <b>Simpan</b>
                                         </button>

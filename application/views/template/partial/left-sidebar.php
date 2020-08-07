@@ -7,7 +7,7 @@
             <ul class="metismenu" id="side-menu">
                 <li class="menu-title">Informasi</li>
                 <li>
-                    <a href="#" class="waves-effect">
+                    <a href="<?= base_url("dashboard") ?>" class="waves-effect">
                         <i class="fas fa-th-large"></i> <span> Dashboard </span>
                     </a>
                 </li>

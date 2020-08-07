@@ -20,7 +20,7 @@
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#agent" role="tab">
                                 <span class="d-block d-sm-none mb-1"><i class="far fa-user"></i></span>
-                                <span class="d-none d-sm-block mb-1">Data partner</span>
+                                <span class="d-none d-sm-block mb-1">Data Agent</span>
                             </a>
                         </li>
                         <li class="nav-item">
@@ -128,7 +128,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group form-right">
                                                 <label class="text-size">Nomor NPWP</label>
-                                                <input type="text" class="form-control placement text-size number-only" name="telepon" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
+                                                <input type="text" class="form-control placement text-size number-only" name="no_npwp" id="no_npwp" value="<?= $data->no_npwp ?>" required placeholder="123456789123456" minlength="15" maxlength="15" />
                                             </div>
                                         </div>
                                     </div>
@@ -257,10 +257,16 @@
                                     ?>
                                         <a class="btn btn-info text-size ml-1" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket . '/agent') ?>">Approve</a>
                                     <?php } ?>
+                                    <!-- Tombol REJECT untuk ADMIN HO -->
                                     <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
                                         <a class="btn btn-danger text-size ml-1 mb-1" onclick=" return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href=" <?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/agent') ?>">Reject</a>
                                     <?php } ?>
-                                    <?php if ($level < 4) { ?>
+                                    <!-- Tombol RETURN untuk Head & Manager -->
+                                    <?php if (($level == 2 || $level == 3) && ($ticket->status_approval == 0 || $ticket->status_approval == 1)) { ?>
+                                        <a class="btn btn-danger text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENGEMBALIKAN data tiket ini ke CMS?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/partner') ?>"><b>Return</b></a>
+                                    <?php } ?>
+                                    <!-- Tombol SIMPAN untuk simpan data -->
+                                    <?php if ($level < 4 && $level != 3) { ?>
                                         <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size ml-1 mb-1">
                                             Simpan
                                         </button>
@@ -528,7 +534,7 @@
                                 </div>
 
                                 <div class="web mt-2">
-                                    <h6 class="header-title mb-0 mt-0">STATUS PARTNER</h6>
+                                    <h6 class="header-title mb-0 mt-0">STATUS AGENT</h6>
                                     <div class="boxxx overflow-auto">
                                         <!-- Terverifikasi -->
                                         <?php if ($ticket->status_approval == 5) { ?>
@@ -613,7 +619,7 @@
                                 </div>
 
                                 <div class="mobile mt-2">
-                                    <h6 class="header-title mb-0">STATUS PARTNER</h6>
+                                    <h6 class="header-title mb-0">STATUS AGENT</h6>
                                     <?php if ($ticket->status_approval == 5) { ?>
                                         <div class="inbox-wid">
                                             <div class="inbox-item">

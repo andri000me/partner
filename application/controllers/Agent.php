@@ -121,11 +121,11 @@ class Agent extends CI_Controller
     {
         $post = $this->input->post(NULL, TRUE);
 
-        $this->form_validation->set_rules('email', 'Alamat E-mail', 'is_unique[agents.email]', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti alamat e-mail']);
-        $this->form_validation->set_rules('telepon', 'Alamat E-mail', 'is_unique[agents.telepon]', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
-        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'is_unique[agents.no_ktp]', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor KTP']);
-        $this->form_validation->set_rules('no_npwp', 'NPWP', 'is_unique[agents.no_npwp]', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti NPWP']);
-        $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor rekening']);
+        $this->form_validation->set_rules('email', 'Alamat E-mail', 'required|is_unique[agents.email]', ['is_unique' => 'Alamat E-mail sudah terdaftar, mohon ganti alamat e-mail']);
+        $this->form_validation->set_rules('telepon', 'Alamat E-mail', 'required|is_unique[agents.telepon]', ['is_unique' => 'Nomor Telepon sudah terdaftar, mohon ganti nomor telepon']);
+        $this->form_validation->set_rules('no_ktp', 'Nomor KTP', 'required|is_unique[agents.no_ktp]', ['is_unique' => 'Nomor KTP sudah terdaftar, mohon ganti nomor KTP']);
+        $this->form_validation->set_rules('no_npwp', 'NPWP', 'required|is_unique[agents.no_npwp]', ['is_unique' => 'NPWP sudah terdaftar, mohon ganti NPWP']);
+        $this->form_validation->set_rules('rekening_bank', 'Rekening Bank', 'required|is_unique[agents.rekening_bank]', ['is_unique' => 'Rekening Bank sudah terdaftar, mohon ganti nomor rekening']);
 
         $this->form_validation->set_error_delimiters('<div class="text-danger">', '</div>');
 
@@ -264,13 +264,8 @@ class Agent extends CI_Controller
     public function delete()
     {
         $id = $this->input->post('keyToString');
-        // return implode(",", $id);
-        // return $id;
-        // return $this->agent_model->delete("id_agent IN (" . $id . ")");
-        echo 'success';
-        return $this->agent_model->delete(37);
-
-        // return 'success';
+        echo "Berhasil menghapus data agent id $id";
+        return $this->agent_model->delete($id);
     }
 
     public function tambah_lampiran()

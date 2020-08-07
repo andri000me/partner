@@ -313,7 +313,7 @@ class Leads extends CI_Controller
             // ];
             // $this->notification_model->create($notification);
             //Notifikasi untuk cross branch
-            $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', NULL, $post['cabang_cross']);
+            $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', $post['cabang_cross']);
 
             //Membuat notifikasi tiket baru untuk Admin
             $this->notifikasi->send($id_ticket, 'Tiket Baru');
@@ -392,7 +392,7 @@ class Leads extends CI_Controller
             $id_ticket = $this->tiket->tambah_tiket('id_leads', $post['id_leads']);
 
             //Notifikasi untuk cross branch
-            $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', NULL, $post['cabang_cross']);
+            $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', $post['cabang_cross']);
 
             //Membuat notifikasi tiket baru untuk Admin
             $this->notifikasi->send($id_ticket, 'Tiket Baru');

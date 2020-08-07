@@ -139,6 +139,32 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <h5 class="form-margin"><b>Lampiran</b></h5>
+                        <div class="owl-carousel owl-theme">
+                            <?php
+                            $uploads =  explode(",", $data->upload_file);
+                            foreach ($uploads as $upload) {
+                            ?>
+                                <!-- NPWP -->
+                                <div class="item" style="height:150px; width:300px;">
+                                    <?php if (get_extension($upload)) { ?>
+                                        <div class="zoom-gallery">
+                                            <a href="<?= base_url('uploads/approval_bonuses/' . $upload) ?>">
+                                                <img src="<?= base_url('uploads/approval_bonuses/' . $upload) ?>" alt="" style="height:150px; width:300px;"></a>
+                                        </div>
+                                    <?php } else { ?>
+                                        <a href="<?= base_url('uploads/approval_bonuses/' . $upload) ?>">
+                                            <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $upload ?>">
+                                                <i class="fa fa-file fa-5x"></i>
+                                                <!-- <span class="small"><?= $upload ?></span> -->
+                                            </div>
+                                        </a>
+                                    <?php } ?>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
                     <div class="form-group mb-0 float-right mt-4 mr-4">
                         <?php
                         $level = $this->fungsi->user_login()->level;

@@ -21,6 +21,8 @@ class Tiket
             //Jika cabang memiliki head & manager, maka status set ke 'menunggu persetujuan head'
             else if ($this->has_superior == 2) {
                 $this->staging = 0;
+            } else if ($this->has_superior == 3) {
+                $this->staging = 1;
             } else {
                 $this->staging = 2;
             }
@@ -36,6 +38,8 @@ class Tiket
             //Jika cabang memiliki head & manager, maka status set ke 'menunggu persetujuan manager'
             else if ($this->has_superior == 2) {
                 $this->staging = 1;
+            } else if ($this->has_superior == 3) {
+                $this->staging = 1;
             } else {
                 $this->staging = 2;
             }
@@ -50,6 +54,8 @@ class Tiket
             }
             //Jika cabang memiliki head & manager, maka status set ke 'menunggu persetujuan manager'
             else if ($this->has_superior == 2) {
+                $this->staging = 2;
+            } else if ($this->has_superior == 3) {
                 $this->staging = 2;
             } else {
                 $this->staging = 2;
