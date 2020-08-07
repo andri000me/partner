@@ -3,7 +3,7 @@
         <div class="page-title-box card-margin-2">
             <h4><b>Daftar Data Survey</b></h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item active">Daftar Data Survey</li>
             </ol>
         </div>
@@ -74,20 +74,20 @@
                                         </td>
                                         <td>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class="text-secondary">Head Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                                <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending HO</b>
+                                                <b class="text-secondary">HO Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                                 <!-- <b class="text-success">Disetujui</b> -->
-                                                <b class="text-success">Selesai</b>
+                                                <b class="text-success">Finished</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                                <b class="text-primary">Diaktivasi</b>
+                                                <b class="text-primary">Activated</b>
                                             <?php } ?>
                                         </td>
                                         <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -120,7 +120,11 @@
                                         </td>
                                         <td style="white-space: nowrap;">
                                             <center>
-                                                <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                            <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
+                                                    <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                    <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
                                         </td>
@@ -164,20 +168,20 @@
                                         </td>
                                         <td>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class="text-secondary">Head Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                                <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending HO</b>
+                                                <b class="text-secondary">HO Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                                 <!-- <b class="text-success">Disetujui</b> -->
-                                                <b class="text-success">Selesai</b>
+                                                <b class="text-success">Finished</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                                <b class="text-primary">Diaktivasi</b>
+                                                <b class="text-primary">Activated</b>
                                             <?php } ?>
                                         </td>
                                         <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -209,7 +213,11 @@
                                         </td>
                                         <td style="white-space: nowrap;">
                                             <center>
-                                                <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                            <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
+                                                    <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                    <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
                                         </td>
@@ -257,20 +265,20 @@
                                         </td>
                                         <td>
                                             <?php if ($fs_konsumen->status_approval == 0) { ?>
-                                                <b class=" text-secondary">Menunggu Persetujuan Head</b>
+                                                <b class=" text-secondary">Head Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
-                                                <b class="text-secondary">Menunggu Persetujuan Manager</b>
+                                                <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 2) { ?>
-                                                <b class="text-secondary">Pending HO</b>
+                                                <b class="text-secondary">HO Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 3) { ?>
                                                 <b class="text-warning">In Progress</b>
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                                 <!-- <b class="text-success">Disetujui</b> -->
-                                                <b class="text-success">Selesai</b>
+                                                <b class="text-success">Finished</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                                <b class="text-primary">Diaktivasi</b>
+                                                <b class="text-primary">Activated</b>
                                             <?php } ?>
                                         </td>
                                         <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -304,7 +312,11 @@
                                         </td>
                                         <td style="white-space: nowrap;">
                                             <center>
-                                                <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
+                                                    <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                    <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
                                         </td>

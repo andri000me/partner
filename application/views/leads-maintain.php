@@ -26,7 +26,7 @@
                     <div class="form-group">
                         <label>Jenis Kegiatan</label>
                         <select class="form-control" name="jenis_kegiatan" id="jenis_kegiatan">
-                            <option selected>Pilih Jenis Kegiatan</option>
+                            <option selected>Pilih Aktivitas</option>
                             <option value="Update produk">Update produk/option>
                             <option value="Silaturahmi">Silaturahmi</option>
                             <option value="Presentasi">Presentasi</option>
@@ -87,7 +87,7 @@
                     <hr class="mt-4 mb-4">
 
                     <h4 class="mt-0 header-title">STATUS PARTNER</h4>
-                    <p class="text-muted"><i class="mdi mdi-account-check"></i>&nbsp;&nbsp;&nbsp;Terverifikasi Oleh
+                    <p class="text-muted"><i class="mdi mdi-account-check"></i>&nbsp;&nbsp;&nbsp;Verified Oleh
                         Teri
                         Anggraini<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <code style="color: blue;">30 Des, 2019 -

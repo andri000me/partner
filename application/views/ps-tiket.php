@@ -3,7 +3,7 @@
         <div class="page-title-box card-margin-2">
             <h4><b>Product Support</b></h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item active">Product Support</li>
             </ol>
         </div>
@@ -29,13 +29,13 @@
                             <label for="exampleFormControlSelect1">Sort Table By</label>
                             <select class="form-control" id="exampleFormControlSelect1">
                                 <option selected>All</option>
-                                <option>Disetujui</option>
-                                <option>Ditolak</option>
-                                <option>Diaktivasi</option>
+                                <option>Approved</option>
+                                <option>Rejected</option>
+                                <option>Activated</option>
                                 <option>In Progress</option>
-                                <option>Pending HO</option>
-                                <option>Menunggu Persetujuan Head</option>
-                                <option>Menunggu Persetujuan Manager</option>
+                                <option>HO Approval</option>
+                                <option>Head Approval</option>
+                                <option>Manager Approval</option>
                             </select>
                         </div>
                     </div>
@@ -72,15 +72,15 @@
                                     <center>
                                         <?php if ($ticket->status_approval == 0) { ?>
                                             <h6><span class="badge badge-secondary" style="width: 200px; height: 30px;">
-                                                    <p style="margin-top: 2pxz">Menunggu Persetujuan Head</p>
+                                                    <p style="margin-top: 2pxz">Head Approval</p>
                                                 </span></h6>
                                         <?php } else if ($ticket->status_approval == 1) { ?>
                                             <h6><span class="badge badge-secondary" style="width: 220px; height: 30px;">
-                                                    <p style="margin-top: 2px">Menunggu Persetujuan Manager</p>
+                                                    <p style="margin-top: 2px">Manager Approval</p>
                                                 </span></h6>
                                         <?php } else if ($ticket->status_approval == 2) { ?>
                                             <h6><span class="badge badge-secondary" style="width: 90px; height: 30px;">
-                                                    <p style="margin-top: 2px">Pending HO</p>
+                                                    <p style="margin-top: 2px">HO Approval</p>
                                                 </span></h6>
                                         <?php } else if ($ticket->status_approval == 3) { ?>
                                             <h6><span class="badge badge-warning" style="width: 90px; height: 30px;">
@@ -88,15 +88,15 @@
                                                 </span></h6>
                                         <?php } else if ($ticket->status_approval == 4) { ?>
                                             <h6><span class="badge badge-danger" style="width: 60px; height: 30px;">
-                                                    <p style="margin-top: 2px">Ditolak</p>
+                                                    <p style="margin-top: 2px">Rejected</p>
                                                 </span></h6>
                                         <?php } else if ($ticket->status_approval == 5) { ?>
                                             <h6><span class="badge badge-success" style="width: 70px; height: 30px;">
-                                                    <p style="margin-top: 2px">Disetujui</p>
+                                                    <p style="margin-top: 2px">Approved</p>
                                                 </span></h6>
                                         <?php } else if ($ticket->status_approval == 6) { ?>
                                             <h6><span class="badge badge-primary" style="width: 80px; height: 30px;">
-                                                    <p style="margin-top: 2px">Diaktivasi</p>
+                                                    <p style="margin-top: 2px">Activated</p>
                                                 </span></h6>
                                         <?php } ?>
                                     </center>

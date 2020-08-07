@@ -4,7 +4,7 @@
         <div class="page-title-box card-margin-5">
             <h4><b>Form Rekrut Merchant</b></h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Help Desk</a></li>
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
                 <li class="breadcrumb-item"><a href="javascript:void(0);">Kerjasama</a></li>
                 <li class="breadcrumb-item"><a href="<?= base_url('partner') ?>">Daftar Merchant</a></li>
                 <li class="breadcrumb-item active">Rekrut Merchant</li>
