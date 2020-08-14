@@ -16,7 +16,9 @@
         <div class="btn-kanan mb-2 card-margin-2">
             <a href="<?= base_url('leads/create') ?>"><button class="btn btn-primary text-size"><b>Input
                         Prospect</b></button></a>
-            <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+            <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+            <?php } ?>
         </div>
     </div>
     <div class="col-12">
@@ -44,7 +46,9 @@
                         <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
-                                    <th></th>
+                                    <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                        <th></th>
+                                    <?php } ?>
                                     <th>ID</th>
                                     <th>Nama</th>
                                     <th>Nomor KTP</th>
@@ -57,7 +61,9 @@
                             <tbody>
                                 <?php foreach ($belum_funding->result() as $leads) { ?>
                                     <tr>
-                                        <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
+                                        <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                            <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
+                                        <?php } ?>
                                         <td><?= $leads->id_leads ?></td>
                                         <td>
                                             <?= $leads->nama_konsumen ?>

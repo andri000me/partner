@@ -20,7 +20,9 @@
                 <a href="<?= base_url('Partner/create') ?>"><button class="btn btn-primary text-size"><b>Rekrut
                             Merchant</b></button></a>
                 <a href="#"><button class="btn btn-primary ml-1 text-size" data-toggle="modal" data-target=".bd-example-modal-xl"><b>Maintain Merchant</b></button></a>
-                <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+                <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                    <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+                <?php } ?>
             </div>
         <?php } ?>
     </div>
@@ -29,11 +31,15 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title"><b>Tabel Data Merchant</b></h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol rekrut Merchant untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Detail untuk melihat data yang telah diinput.</p>
+                <?= $this->session->flashdata('alert') ?>
                 <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th></th>
+                            <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                <th></th>
+                            <?php } ?>
                             <th>ID Partner</th>
+                            <th>Tanggal dibuat</th>
                             <th>Nama Usaha</th>
                             <th>Produk</th>
                             <th>Kerjasama</th>
@@ -45,10 +51,13 @@
                     <tbody>
                         <?php foreach ($data->result() as $partner) { ?>
                             <tr>
-                                <td><input class="data-key" type="checkbox" value="<?= $partner->id_partner ?>"></td>
+                                <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                    <td><input class="data-key" type="checkbox" value="<?= $partner->id_partner ?>"></td>
+                                <?php } ?>
                                 <td>
                                     <?= $partner->id_partner ?>
                                 </td>
+                                <td><?= $partner->tanggal_dibuat ?></td>
                                 <td>
                                     <?= $partner->nama_usaha ?>
                                 </td>
@@ -80,6 +89,8 @@
                                         <b class="text-secondary">Manager Approval</b>
                                     <?php } else if ($partner->status_ticket == 0) { ?>
                                         <b class="text-secondary">Head Approval</b>
+                                    <?php } else if ($partner->status_ticket == '' || $partner->status_ticket == null) { ?>
+                                        <b class="text-secondary">Draft</b>
                                     <?php } ?>
                                 </td>
                                 <td>

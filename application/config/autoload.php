@@ -163,5 +163,6 @@ $autoload['model'] = [
     'ps_model',
     'ps_ticket_model',
     'ticket_model',
-    'user_model'
+    'user_model',
+    'validation_model',
 ];

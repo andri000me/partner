@@ -18,7 +18,7 @@
             else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
                 $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
             } else {
-                $this->where = "id_user IS NOT NULL AND partners_full.status = 'lengkap'";
+                $this->where = "id_partner IS NOT NULL";
             }
 
             check_not_login();
@@ -224,9 +224,9 @@
                 $id = $this->partner_model->create($data);
 
                 //Memberi pesan berhasil data menyimpan data mapping
-                $this->session->set_flashdata("berhasil_simpan", "Data Mapping Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
+                $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Mapping Partner berhasil disimpan.</div>");
 
-                redirect('index_mapping');
+                redirect('partner/index_mapping');
             } else {
                 $this->template->load('template/index', 'mapping-form');
             }
@@ -300,7 +300,7 @@
 
             if ($id) {
                 //Memberi pesan berhasil data menyimpan data mapping
-                $this->session->set_flashdata("berhasil_simpan", "Data Partner berhasil disimpan. <a href='#'>Lihat Data</a>");
+                $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Merchant berhasil disimpan.</div>");
                 redirect('Partner');
             }
         }
@@ -357,7 +357,7 @@
 
             if ($id) {
                 //Memberi pesan berhasil data menyimpan data mapping
-                $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil disimpan. <a href='#'>Lihat Data</a>");
+                $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Merchant berhasil diupdate.</div>");
 
                 redirect('Partner');
             }
@@ -410,7 +410,7 @@
                 $id = $this->partner_model->update($data, $where);
 
                 //Memberi pesan berhasil data menyimpan data mapping
-                $this->session->set_flashdata("berhasil_simpan", "Data Mapping berhasil diupdate. <a href='#'>Lihat Data</a>");
+                $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Mapping Partner berhasil diupdate.</div>");
 
                 redirect($post['redirect']);
             } else {
@@ -632,5 +632,13 @@
             $nama_usaha = str_replace(" ", "_", $data->nama_usaha);
             $filename = $nama_usaha . "_$data->id_partner.zip";
             $this->zip->download($filename);
+        }
+
+        public function partner_check()
+        {
+            $post = $this->input->post(NULL, TRUE);
+
+            $count = $this->partner_model->query("SELECT * FROM partners_full WHERE " . $post['column'] . " = " . $post['value'] . " AND id_partner != " . $post['id_partner']);
+            echo $count->num_rows();
         }
     }

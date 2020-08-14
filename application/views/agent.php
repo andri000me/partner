@@ -17,7 +17,9 @@
             <div class="btn-kanan card-margin-2">
                 <a href="<?= base_url('Agent/create') ?>"><button class="btn btn-primary mb-2 text-size"><b>Rekrut Agent /
                             BA</b></button></a>
-                <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+                <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                    <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+                <?php } ?>
             </div>
         <?php } ?>
     </div>
@@ -26,13 +28,17 @@
             <div class="card-body">
                 <h4 class="mt-0 header-title"><b>Tabel Data Agent / BA</b></h4>
                 <p class="text-muted m-b-30 text-size">Tekan Tombol rekrut Agen / BA untuk menambahkan data yang baru dan data akan tersimpan di tabel, tekan tombol Detail untuk melihat data yang telah diinput.</p>
+                <?= $this->session->flashdata('alert') ?>
                 <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th></th>
+                            <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                <th></th>
+                            <?php } ?>
                             <th>
                                 ID Agent
                             </th>
+                            <th>Tanggal Dibuat</th>
                             <th>
                                 Nama Agent
                             </th>
@@ -52,10 +58,13 @@
                     <tbody>
                         <?php foreach ($data->result() as $agent) { ?>
                             <tr>
-                                <td><input class="data-key" type="checkbox" value="<?= $agent->id_agent ?>"></td>
+                                <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                    <td><input class="data-key" type="checkbox" value="<?= $agent->id_agent ?>"></td>
+                                <?php } ?>
                                 <td>
                                     <?= $agent->id_agent ?>
                                 </td>
+                                <td><?= $agent->tanggal_dibuat ?></td>
                                 <td>
                                     <?= $agent->nama_lengkap ?>
                                 </td>
@@ -83,6 +92,8 @@
                                         <b class="text-secondary">Manager Approval</b>
                                     <?php } else if ($agent->status_ticket == 0) { ?>
                                         <b class="text-secondary">Head Approval</b>
+                                    <?php } else if ($agent->status_ticket == NULL) { ?>
+                                        <b class="text-secondary">Draft</b>
                                     <?php } ?>
                                 </td>
                                 <td>

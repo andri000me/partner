@@ -411,7 +411,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>NPWP Penyedia Jasa</label>
-                                                        <input type="text" class="form-control placement text-size number-only" id="" name="npwp_penyedia_jasa" value="<?= set_value('npwp_penyedia_jasa') ?>" required placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
+                                                        <input type="text" class="form-control placement text-size number-only" id="" name="npwp_penyedia_jasa" value="<?= set_value('npwp_penyedia_jasa') ?>" placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -438,13 +438,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>KTP</label>
-                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
@@ -452,13 +452,13 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Cover Tabungan</label>
-                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>SIUP / TDP</label>
-                                                <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                                <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
@@ -480,7 +480,7 @@
                                         <div class="col-md-6" id="lampiran_mou">
                                             <div class="form-group text-size form-margin">
                                                 <label>Lampiran MOU</label>
-                                                <input type="file" id="form_mou" name="form_mou" class="filestyle upload-form" data-buttonname="btn-secondary" required>
+                                                <input type="file" id="form_mou" name="form_mou" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             </div>
                                         </div>
                                     </div>
@@ -503,7 +503,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group mb-0 float-right form-margin mt-5">
-                                    <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                                    <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Draft</b></button>
                                     <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward"><b>Kembali</b></button>
                                     <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward"><b>Selanjutnya</b></button>
                                     <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil"><b>Kirim</b></button>

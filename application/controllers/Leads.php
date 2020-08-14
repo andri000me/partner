@@ -291,10 +291,10 @@ class Leads extends CI_Controller
 
         //Membuat history activity inputan data leads
         $leads_activity_model = [
-            'activity' => 'Data leads telah dibuat',
+            'activity'      => 'Data leads telah dibuat',
             'date_activity' => date('Y-m-d H:i:s'),
-            'id_leads' => $id,
-            'id_user' => $this->fungsi->user_login()->id_user
+            'id_leads'      => $id,
+            'id_user'       => $this->fungsi->user_login()->id_user
         ];
 
         $this->leads_activity_model->create($leads_activity_model);
@@ -304,22 +304,11 @@ class Leads extends CI_Controller
             //Menambah ke antrian tiket
             $id_ticket = $this->tiket->tambah_tiket('id_leads', $id);
 
-            // $notification = [
-            //     'pengirim'          => $this->fungsi->user_login()->id_user,
-            //     'penerima_cabang'   => !empty($post['cabang_cross']) ? $post['cabang_cross'] : NULL,
-            //     'type'              => 'Cross Branch oleh',
-            //     'id_ticket'         => $id_ticket,
-            //     'created_at'        => date('Y-m-d H:i:s')
-            // ];
-            // $this->notification_model->create($notification);
             //Notifikasi untuk cross branch
             $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', $post['cabang_cross']);
 
             //Membuat notifikasi tiket baru untuk Admin
             $this->notifikasi->send($id_ticket, 'Tiket Baru');
-            // $notification_admin = $this->notification($id_ticket, 'Tiket Baru');
-            // $this->notification_model->create($notification_admin);
-
 
             // Tambah record ke Form Survey
             $form_survey = ['id_leads' => $id];
@@ -329,6 +318,7 @@ class Leads extends CI_Controller
             if ($this->fungsi->user_login()->level == 1)
                 $this->fs_konsumen_model->update(['assign_cms' => $this->fungsi->user_login()->id_user], ['id_leads' => $id]);
         }
+
         if ($id) {
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil disimpan. <a href='#'>Lihat Data</a>");
@@ -365,7 +355,7 @@ class Leads extends CI_Controller
             $id = $this->leads_model->create($data);
 
             //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Leads Database berhasil disimpan. <a href='#'>Lihat Data</a>");
+            $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Leads Database berhasil disimpan.</div>");
 
             redirect('leads/leads_database');
         } else {
@@ -466,7 +456,7 @@ class Leads extends CI_Controller
         $id = $this->leads_model->update($data, $where);
 
         //Memberi pesan berhasil data menyimpan data mapping
-        $this->session->set_flashdata("berhasil_simpan", "Leads Database berhasil diupdate. <a href='#'>Lihat Data</a>");
+        $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Leads Database berhasil diupdate.</div>");
 
         redirect($post['redirect']);
     }
@@ -499,7 +489,7 @@ class Leads extends CI_Controller
         $this->notifikasi->send($post['id_ticket'], 'Perubahan Data');
 
         //Memberi pesan berhasil data menyimpan data mapping
-        $this->session->set_flashdata("berhasil_simpan", "Data leads berhasil diupdate. <a href='#'>Lihat Data</a>");
+        $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Leads Database berhasil diupdate.</div>");
 
         redirect($post['redirect']);
     }
@@ -534,5 +524,9 @@ class Leads extends CI_Controller
     // Form Valdation
     public function leads_check()
     {
+        $post = $this->input->post(NULL, TRUE);
+
+        $count = $this->leads_model->query("SELECT * FROM leads_full WHERE " . $post['column'] . " = " . $post['value'] . " AND id_leads != " . $post['id_leads']);
+        echo $count->num_rows();
     }
 }

@@ -172,6 +172,14 @@ class Fs_konsumen extends CI_Controller
             'capacity_karyawan_nilai3'                  => $this->is_set($id_leads, 'capacity_karyawan_nilai3', TRUE),
             'capacity_karyawan_total_bonus'             => $this->is_set($id_leads, 'capacity_karyawan_total_bonus', TRUE),
             'capacity_karyawan_ada_income_lainnya'      => $this->is_set($id_leads, 'capacity_karyawan_ada_income_lainnya'),
+            'capacity_karyawan_sewa'                    => $this->is_set($id_leads, 'capacity_karyawan_sewa', TRUE),
+            'capacity_karyawan_payroll'                 => $this->is_set($id_leads, 'capacity_karyawan_payroll', TRUE),
+            'capacity_karyawan_internet'                => $this->is_set($id_leads, 'capacity_karyawan_internet', TRUE),
+            'capacity_karyawan_lainnya'                 => $this->is_set($id_leads, 'capacity_karyawan_lainnya', TRUE),
+            'capacity_karyawan_profit_margin'           => $this->is_set($id_leads, 'capacity_karyawan_profit_margin', TRUE),
+            'capacity_karyawan_total_operasional'       => $this->is_set($id_leads, 'capacity_karyawan_total_operasional', TRUE),
+            'capacity_karyawan_total_income'            => $this->is_set($id_leads, 'capacity_karyawan_total_income', TRUE),
+            'capacity_karyawan_total_net_profit'        => $this->is_set($id_leads, 'capacity_karyawan_total_net_profit', TRUE),
             'capacity_karyawan_income_lainnya1'         => $this->is_set($id_leads, 'capacity_karyawan_income_lainnya1'),
             'capacity_karyawan_nilai_lain1'             => $this->is_set($id_leads, 'capacity_karyawan_nilai_lain1', TRUE),
             'capacity_karyawan_income_lainnya2'         => $this->is_set($id_leads, 'capacity_karyawan_income_lainnya2'),
@@ -334,7 +342,7 @@ class Fs_konsumen extends CI_Controller
 
         // Jika is recommended telah ditentukan, maka set tiket fs ke selesai
         if ($this->input->post('is_recommended') != "") {
-            $this->ticket_model->update(['status' => 5], $where);
+            $this->ticket_model->update(['status' => 6], $where);
         } else {
             $this->ticket_model->update(['status' => 2], $where);
         }
@@ -358,15 +366,15 @@ class Fs_konsumen extends CI_Controller
     //fungsi untuk mengembalikan form survey ke cms
     public function return_fs()
     {
-        //tiket ditolak (returned)
-        $data = ['status' => 4];
+        //hilangkan is_recommended
+        $this->fs_konsumen_model->update(['is_recommended' => ''], ['id_leads' => $this->input->post('data')]);
 
-        $where = ['id_leads' => $this->input->post('data')];
-        $id = $this->ticket_model->update($data, $where);
+        //tiket ditolak (returned)
+        $id = $this->ticket_model->update(['status' => 4], ['id_leads' => $this->input->post('data')]);
 
         //notification
-        // $id_ticket = $this->ticket_model->get("tickets.id_leads = " . $this->input->post('data'))->row()->id_ticket;
-        // $this->notification($id_ticket, "Data Form ")
+        $ticket = $this->ticket_model->get("tickets.id_leads = " . $this->input->post('data'))->row();
+        $this->notifikasi->send($ticket->id_ticket, "Data Form survey dikembalikan" . $ticket->branch_id, $ticket->user_id);
 
         echo json_encode($id);
     }
@@ -375,10 +383,14 @@ class Fs_konsumen extends CI_Controller
     public function kirim_fs($id)
     {
         //tiket diapprove
-        $data = ['status' => 2];
-
-        $where = ['id_leads' => $id];
-        $id = $this->ticket_model->update($data, $where);
+        if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            //pending ho
+            $status = 2;
+        } else if ($this->fungsi->user_login()->level == 4) {
+            // scoring
+            $status = 5;
+        }
+        $id = $this->ticket_model->update(['status' => $status], ['id_leads' => $id]);
 
         // echo json_encode($id);
         redirect('fs_konsumen');
@@ -393,9 +405,7 @@ class Fs_konsumen extends CI_Controller
         $this->fs_konsumen_model->update($data, $where);
 
         echo 'success';
-        // echo json_encode(['assign_cms' => $post['assign_cms'], 'id_leads' => $post['id_leads']]);
     }
-
 
     public function generate_pdf_html($id)
     {

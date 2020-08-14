@@ -310,7 +310,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>NPWP</label>
-                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
+                                                <input type="file" name="npwp" class="filestyle" data-buttonname="btn-secondary">
                                                 <?php if ($data->npwp) { ?>
                                                     <?php if (get_extension($data->npwp)) { ?>
                                                         <div class="img-fluid mt-1">
@@ -334,7 +334,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Buku Tabungan</label>
-                                                <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary" <?= $data->buku_tabungan ? '' : 'required' ?>>
+                                                <input type="file" name="buku_tabungan" class="filestyle" data-buttonname="btn-secondary">
                                                 <?php if ($data->buku_tabungan) { ?>
                                                     <?php if (get_extension($data->buku_tabungan)) { ?>
                                                         <div class="img-fluid mt-1">
@@ -356,7 +356,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group text-size form-margin">
                                                 <label>Foto Selfie</label>
-                                                <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary" <?= $data->foto_selfie ? '' : 'required' ?>>
+                                                <input type="file" name="foto_selfie" class="filestyle" data-buttonname="btn-secondary">
                                                 <?php if ($data->foto_selfie) { ?>
                                                     <?php if (get_extension($data->foto_selfie)) { ?>
                                                         <div class="img-fluid mt-1">
@@ -405,7 +405,7 @@
                             </div>
                             <!-- /middle-wizard -->
                             <div class="form-group mb-0 float-right mt-4 mr-4">
-                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                                <button class="btn btn-danger waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Draft</b></button>
                                 <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward"><b>Kembali</b></button>
                                 <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward"><b>Selanjutnya</b></button>
                                 <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process"><b>Kirim</b></button>

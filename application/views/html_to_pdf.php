@@ -376,7 +376,7 @@
                         <td><?= $data->capacity_karyawan_ada_income_lainnya ?></td>
                     </tr>
                 </table>
-                <h3>Informasi pendapatan</h3>
+                <!-- <h3>Informasi pendapatan</h3>
                 <table>
                     <thead>
                         <tr>
@@ -398,6 +398,41 @@
                             <td><?= $data->capacity_karyawan_total_income_lainnya ?></td>
                         </tr>
                     </tbody>
+                </table> -->
+                <h3>Biaya Operasional</h3>
+                <table class="border">
+                    <tr>
+                        <td>Biaya Sewa (jika sewa)</td>
+                        <td><?= $data->capacity_karyawan_sewa ?></td>
+                    </tr>
+                    <tr>
+                        <td>Gaji Karyawan per Bulan</td>
+                        <td><?= $data->capacity_karyawan_payroll ?></td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Internet / Pulsa / Listrik</td>
+                        <td><?= $data->capacity_karyawan_internet ?></td>
+                    </tr>
+                    <tr>
+                        <td>Biaya Lainnya</td>
+                        <td><?= $data->capacity_karyawan_lainnya ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Biaya Operasional</td>
+                        <td><?= $data->capacity_karyawan_total_operasional ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Pendapatan Omset</td>
+                        <td><?= $data->capacity_karyawan_total_income ?></td>
+                    </tr>
+                    <tr>
+                        <td>Total Nett Profit</td>
+                        <td><?= $data->capacity_karyawan_total_net_profit ?></td>
+                    </tr>
+                    <tr>
+                        <td>Presentase Profit Margin (%)</td>
+                        <td><?= $data->capacity_karyawan_profit_margin ?></td>
+                    </tr>
                 </table>
                 <br>
                 <table>

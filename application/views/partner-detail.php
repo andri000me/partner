@@ -833,7 +833,7 @@
                                                             </td>
                                                             <td>
                                                                 <p class="inbox-item-author mt-0 mb-1 text-size  text-danger">
-                                                                    <b>HO Approval</b></p>
+                                                                    <b>Belum diverifikasi</b></p>
                                                             </td>
                                                             <td></td>
                                                         </tr>

@@ -1639,86 +1639,42 @@
                                         </div>
 
                                         <div class="form-margin mt-3 pendapatan-lainnya">
-                                            <p>Biaya Operasional</p>
+                                            <p>Informasi pendapatan Lainnya</p>
                                             <div class="table-responsive">
                                                 <table class="table table-hover">
                                                     <tbody>
                                                         <tr>
+                                                            <th>
+                                                                <label class="table-form-medium">Deskripsi</label>
+                                                            </th>
+                                                            <th>
+                                                                <label class="table-form-medium">Nominal</label>
+                                                            </th>
+                                                        </tr>
+                                                        <tr>
                                                             <td>
-                                                                <label class="table-form-medium">Biaya Sewa
-                                                                    (Jika sewa)</label>
+                                                                <input type="text" class="form-control text-size form-border pendapatan_lainnya_kar" name="capacity_karyawan_income_lainnya1" value="<?= $data->capacity_karyawan_income_lainnya1 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border table-form-medium" name="capacity_karyawan_sewa" value="<?= $data->capacity_karyawan_sewa ?>" id="capacity_karyawan_sewa" data-type="currency" required placeholder="Biaya
-																				Sewa" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan_lainnya_kar pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain1" value="<?= $data->capacity_karyawan_nilai_lain1 ?>" id="capacity_karyawan_nilai_lain1" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <label>Gaji Karyawan
-                                                                    Perbulan</label>
+                                                                <input type="text" class="form-control text-size form-border pendapatan_lainnya_kar" name="capacity_karyawan_income_lainnya2" value="<?= $data->capacity_karyawan_income_lainnya2 ?>" id="" required placeholder="Deskripsi" />
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_payroll" value="<?= $data->capacity_karyawan_payroll ?>" id="capacity_karyawan_payroll" data-type="currency" required placeholder="Gaji Karyawan
-																				Perbulan" />
+                                                                <input type="text" class="form-control text-size number-only form-border pendapatan_lainnya_kar pendapatan-karyawan pendapatan-karyawan-lainnya" name="capacity_karyawan_nilai_lain2" value="<?= $data->capacity_karyawan_nilai_lain2 ?>" id="capacity_karyawan_nilai_lain2" data-type="currency" required placeholder="Nominal" />
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <!-- <tr class="bg-light">
                                                             <td>
-                                                                <label>Biaya
-                                                                    Internet / Pulsa / Listrik</label>
+                                                                <label>Total Pendapatan</label>
                                                             </td>
                                                             <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_internet" value="<?= $data->capacity_karyawan_internet ?>" id="capacity_karyawan_internet" data-type="currency" required placeholder="Biaya
-																				Internet / Pulsa / Listrik" />
+                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_income_lainnya" value="<?= $data->capacity_karyawan_total_income_lainnya ?>" id="capacity_karyawan_total_income_lainnya" data-type="currency" required placeholder="Nominal 2" readonly />
                                                             </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <label>Biaya
-                                                                    lainnya</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_lainnya" value="<?= $data->capacity_karyawan_lainnya ?>" id="capacity_karyawan_lainnya" data-type="currency" required placeholder="Biaya lainny" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <label>Presentase
-                                                                    Profit Margin</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_profit_margin" value="<?= $data->capacity_karyawan_profit_margin ?>" id="capacity_karyawan_profit_margin" data-type="currency" required placeholder="Presentase
-																				Profit Margin" />
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="bg-light">
-                                                            <td>
-                                                                <label>Total Biaya
-                                                                    Operasional</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_operasional" value="<?= $data->capacity_karyawan_total_operasional ?>" id="capacity_karyawan_total_operasional" data-type="currency" required placeholder="Total Biaya Operasional" readonly />
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="bg-light">
-                                                            <td>
-                                                                <label>Total
-                                                                    Pendapatan Omset</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border" name="capacity_karyawan_total_income" value="<?= $data->capacity_karyawan_total_income ?>" id="capacity_karyawan_total_income" data-type="currency" required placeholder="Total Pendapatan Omset" readonly />
-                                                            </td>
-                                                        </tr>
-                                                        <tr class="bg-light">
-                                                            <td>
-                                                                <label>Total Nett
-                                                                    Profit</label>
-                                                            </td>
-                                                            <td>
-                                                                <input type="text" class="form-control text-size number-only form-border total-pendapatan-wiraswasta" name="capacity_karyawan_total_net_profit" value="<?= $data->capacity_karyawan_total_net_profit ?>" id="capacity_karyawan_total_net_profit" data-type="currency" required placeholder="Total Nett Profit" readonly />
-                                                            </td>
-                                                        </tr>
+                                                        </tr> -->
                                                     </tbody>
                                                 </table>
                                             </div>

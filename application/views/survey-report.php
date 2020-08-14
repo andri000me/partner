@@ -85,9 +85,9 @@
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                                 <!-- <b class="text-success">Disetujui</b> -->
-                                                <b class="text-success">Finished</b>
+                                                <b class="text-secondary">Scoring</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                                <b class="text-primary">Activated</b>
+                                                <b class="text-success">Finished</b>
                                             <?php } ?>
                                         </td>
                                         <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -120,11 +120,11 @@
                                         </td>
                                         <td style="white-space: nowrap;">
                                             <center>
-                                            <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
                                                     <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
-                                                    <?php } else { ?>
+                                                <?php } else { ?>
                                                     <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                                    <?php } ?>
+                                                <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
                                         </td>
@@ -178,10 +178,9 @@
                                             <?php } else if ($fs_konsumen->status_approval == 4) { ?>
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
-                                                <!-- <b class="text-success">Disetujui</b> -->
-                                                <b class="text-success">Finished</b>
+                                                <b class="text-secondary">Scoring</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                                <b class="text-primary">Activated</b>
+                                                <b class="text-success">Finished</b>
                                             <?php } ?>
                                         </td>
                                         <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -213,11 +212,11 @@
                                         </td>
                                         <td style="white-space: nowrap;">
                                             <center>
-                                            <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
                                                     <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
-                                                    <?php } else { ?>
+                                                <?php } else { ?>
                                                     <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                                    <?php } ?>
+                                                <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
                                         </td>
@@ -276,9 +275,9 @@
                                                 <b class="text-danger">Returned</b>
                                             <?php } else if ($fs_konsumen->status_approval == 5) { ?>
                                                 <!-- <b class="text-success">Disetujui</b> -->
-                                                <b class="text-success">Finished</b>
+                                                <b class="text-secondary">Scoring</b>
                                             <?php } else if ($fs_konsumen->status_approval == 6) { ?>
-                                                <b class="text-primary">Activated</b>
+                                                <b class="text-success">Finished</b>
                                             <?php } ?>
                                         </td>
                                         <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -314,9 +313,9 @@
                                             <center>
                                                 <?php if ($this->fungsi->user_login()->level >= 3) { ?>
                                                     <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
-                                                    <?php } else { ?>
+                                                <?php } else { ?>
                                                     <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
-                                                    <?php } ?>
+                                                <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
                                         </td>

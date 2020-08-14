@@ -19,17 +19,22 @@
             <a href=" <?= base_url('leads/create_database') ?>"><button class="btn btn-primary text-size"><b>Buat Leads</b></button></a>
             <!-- <a href=" <?= base_url('mapping_leads/export_template') ?>"><button class="btn btn-primary text-size">Export Template Excel</button></a>
             <a href=" <?= base_url('mapping_leads/form') ?>"><button class="btn btn-primary text-size">Import Template Excel</button></a> -->
-            <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+            <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                <button class="btn btn-danger float-right" id="btn-hapus"><i class="fa fa-trash"></i></button>
+            <?php } ?>
         </div>
     </div>
     <div class="col-12">
         <div class="card m-b-20 card-margin-2">
             <div class="card-body">
                 <!-- <h4 class="mt-0 header-title"><b>Tabel Daftar Leads</b></h4> -->
+                <?= $this->session->flashdata('alert') ?>
                 <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
-                            <th></th>
+                            <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                <th></th>
+                            <?php } ?>
                             <th>ID</th>
                             <th>Nama Konsumen</th>
                             <!-- <th>Telepon</th> -->
@@ -43,7 +48,9 @@
                     <tbody>
                         <?php foreach ($data->result() as $mapping_leads) { ?>
                             <tr>
-                                <td><input class="data-key" type="checkbox" value="<?= $mapping_leads->id_leads ?>"></td>
+                                <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                    <td><input class="data-key" type="checkbox" value="<?= $mapping_leads->id_leads ?>"></td>
+                                <?php } ?>
                                 <td><?= $mapping_leads->id_leads ?></td>
                                 <td>
                                     <?= $mapping_leads->nama_konsumen ?>

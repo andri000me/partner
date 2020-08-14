@@ -46,16 +46,40 @@ $(function () {
 	$("#kapasitas-karyawan").on("keyup change", function () {
 		// alert();
 		// Pendapatan Lainnya (Karyawan)
-		var pendapatan_karyawan_lainnya =
-			convertToInt("#capacity_karyawan_nilai_lain1") +
-			convertToInt("#capacity_karyawan_nilai_lain2");
+		// var pendapatan_karyawan_lainnya =
+		// 	convertToInt("#capacity_karyawan_nilai_lain1") +
+		// 	convertToInt("#capacity_karyawan_nilai_lain2");
+
+		//Biaya Operasional (Karyawan)
+		var operasional_karyawan =
+			convertToInt("#capacity_karyawan_sewa") +
+			convertToInt("#capacity_karyawan_payroll") +
+			convertToInt("#capacity_karyawan_internet") +
+			convertToInt("#capacity_karyawan_lainnya");
+		$("#capacity_karyawan_total_operasional").val(operasional_karyawan);
+
+		//Total Pendapatan Omset (Karyawan)
+		var total_pendapatan_omset =
+			((convertToInt("#capacity_karyawan_income_bruto") +
+				convertToInt("#capacity_karyawan_income_thp") +
+				convertToInt("#capacity_karyawan_income_pasangan")) *
+				convertToInt("#capacity_karyawan_profit_margin")) /
+			100;
+		$("#capacity_karyawan_total_income").val(total_pendapatan_omset);
+
+		//Total Nett Profit (Karyawan)
+		var total_nett_profit =
+			convertToInt("#capacity_karyawan_total_income") -
+			convertToInt("#capacity_karyawan_total_operasional");
+
+		$("#capacity_karyawan_total_net_profit").val(total_nett_profit);
 
 		// Total Pendapatan (Karyawan)
 		var pendapatan_karyawan =
 			// convertToInt("#capacity_karyawan_income_bruto") +
 			convertToInt("#capacity_karyawan_income_thp") +
 			convertToInt("#capacity_karyawan_total_bonus") +
-			pendapatan_karyawan_lainnya +
+			operasional_karyawan +
 			convertToInt("#capacity_karyawan_income_pasangan");
 		$("#capacity_karyawan_total_net_income").val(pendapatan_karyawan);
 

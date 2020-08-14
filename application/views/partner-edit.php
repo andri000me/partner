@@ -408,7 +408,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group form-left">
                                                     <label>NPWP Penyedia Jasa</label>
-                                                    <input type="text" class="form-control placement text-size number-only" id="" name="npwp_penyedia_jasa" value="<?= $data->npwp_penyedia_jasa ?>" required placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
+                                                    <input type="text" class="form-control placement text-size number-only" id="" name="npwp_penyedia_jasa" value="<?= $data->npwp_penyedia_jasa ?>" placeholder="0000 0000 0000 000" minlength="15" maxlength="15">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -435,7 +435,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>KTP</label>
-                                            <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary" <?= $data->ktp ? '' : 'required' ?>>
+                                            <input type="file" name="ktp" class="filestyle" data-buttonname="btn-secondary">
                                             <?php if ($data->ktp) { ?>
                                                 <?php if (get_extension($data->ktp)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -457,7 +457,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>NPWP</label>
-                                            <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->npwp ? '' : 'required' ?>>
+                                            <input type="file" name="npwp" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             <?php if ($data->npwp) { ?>
                                                 <?php if (get_extension($data->npwp)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -481,7 +481,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>Cover Tabungan</label>
-                                            <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->buku_tabungan_perusahaan ? '' : 'required' ?>>
+                                            <input type="file" name="buku_tabungan_perusahaan" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             <?php if ($data->buku_tabungan_perusahaan) { ?>
                                                 <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -503,7 +503,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group text-size form-margin">
                                             <label>SIUP / TDP</label>
-                                            <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary" <?= $data->siup ? '' : 'required' ?>>
+                                            <input type="file" name="siup" class="filestyle upload-form" data-buttonname="btn-secondary">
                                             <?php if ($data->siup) { ?>
                                                 <?php if (get_extension($data->siup)) { ?>
                                                     <div class="img-fluid mt-1">
@@ -602,7 +602,7 @@
                                 <!-- /middle-wizard -->
                             </div>
                             <div class="form-group mb-0 float-right form-margin mt-5">
-                                <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                                <button class="btn btn-light waves-effect waves-light text-size" id="draft" name="draft" class="btn" type="submit"><b>Draft</b></button>
                                 <button class="btn btn-secondary waves-effect waves-light backward text-size ml-1" type="button" name="backward"><b>Kembali</b></button>
                                 <button class="btn btn-primary waves-effect waves-light forward text-size ml-1" type="button" name="forward"><b>Selanjutnya</b></button>
                                 <button class="btn btn-primary waves-effect waves-light submit text-size ml-1" type="submit" name="process" data-toggle="modal" data-target="#modalBerhasil"><b>Kirim</b></button>
@@ -797,5 +797,51 @@
 
     $('#bentuk_usaha').click(function() {
         perorangan();
+    })
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        function validation(selector, message, columnName = null) {
+            $(`#${selector}`).on('blur', function() {
+                var id_partner = $("#id_partner").val();
+                var value = $(`#${selector}`).val();
+                $.ajax({
+                    url: '<?= base_url() ?>' + 'partner/partner_check/',
+                    type: 'POST',
+                    data: {
+                        id_partner: id_partner,
+                        column: columnName == null ? selector : columnName,
+                        value: value
+                    },
+                    beforeSend: function() {
+                        $("[type='submit']").css({
+                            'pointer-events': 'none',
+                            'opacity': '0.3'
+                        });
+                    },
+                    success: function(data) {
+                        $("[type='submit']").css({
+                            'pointer-events': 'auto',
+                            'opacity': '1.0'
+                        });
+                        if (data > 0) {
+                            if ($(`.${selector}`).length == 0) {
+                                console.log('duplikat');
+                                $(`#${selector}`).val("").addClass("is-invalid").after(`<div class='${selector} text-danger'>${message}</div>`);
+                            }
+                            $(`#${selector}`).val("");
+                        } else {
+                            console.log('tersedia');
+                            $(`#${selector}`).removeClass("is-invalid").next().remove(".text-danger");
+                        }
+                        console.log(data);
+                    }
+                })
+            })
+        }
+
+        validation("telepon", "Nomor Telepon sudah dipakai")
     })
 </script>

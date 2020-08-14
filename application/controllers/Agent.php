@@ -26,28 +26,29 @@ class Agent extends CI_Controller
     private function data()
     {
         $post = $this->input->post(NULL, TRUE);
+
         $data = [
-            'nama_lengkap'              => !empty($post['nama_lengkap']) ? $post['nama_lengkap'] : '',
-            // 'jenis_kelamin'             =>!empty($post['jenis_kelamin']) ? $post['jenis_kelamin'] : '',
-            'email'                     => !empty($post['email']) ? $post['email'] : '',
-            'telepon'                   => !empty($post['telepon']) ? $post['telepon'] : '',
-            'tanggal_lahir'             => !empty($post['tanggal_lahir']) ? $post['tanggal_lahir'] : '',
-            'no_ktp'                    => !empty($post['no_ktp']) ? $post['no_ktp'] : '',
-            'no_npwp'                   => !empty($post['no_npwp']) ? $post['no_npwp'] : '',
-            'pekerjaan'                 => !empty($post['pekerjaan']) ? $post['pekerjaan'] : '',
-            'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan']) ? $post['jenis_pekerjaan'] : '',
-            'jenis_agent'               => !empty($post['jenis_agent']) ? $post['jenis_agent'] : '',
-            'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah']) ? $post['status_kepemilikan_rumah'] : '',
-            'punya_pinjaman'            => !empty($post['punya_pinjaman']) ? $post['punya_pinjaman'] : '',
-            'afiliasi_travel'           => !empty($post['afiliasi_travel']) ? $post['afiliasi_travel'] : '',
-            'agent_konvensional'        => !empty($post['agent_konvensional']) ? $post['agent_konvensional'] : '',
-            'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi']) ? $post['hubungan_karyawan_bfi'] : '',
-            'konsumen_bfi'              => !empty($post['konsumen_bfi']) ? $post['konsumen_bfi'] : '',
-            'income'                    => !empty($post['income']) ? str_replace(",", "", $post['income']) : '',
-            'rekening_bank'             => !empty($post['rekening_bank']) ? $post['rekening_bank'] : '',
-            'cabang_bank'               => !empty($post['cabang_bank']) ? $post['cabang_bank'] : '',
-            'nama_bank'                 => !empty($post['nama_bank']) ? $post['nama_bank'] : '',
-            'atas_nama'                 => !empty($post['atas_nama']) ? $post['atas_nama'] : '',
+            'nama_lengkap'              => !empty($post['nama_lengkap'])                ? $post['nama_lengkap'] : '',
+            // 'jenis_kelamin'             =>!empty($post['jenis_kelamin'])             ? $post['jenis_kelamin'] : '',
+            'email'                     => !empty($post['email'])                       ? $post['email'] : '',
+            'telepon'                   => !empty($post['telepon'])                     ? $post['telepon'] : '',
+            'tanggal_lahir'             => !empty($post['tanggal_lahir'])               ? $post['tanggal_lahir'] : '',
+            'no_ktp'                    => !empty($post['no_ktp'])                      ? $post['no_ktp'] : '',
+            'no_npwp'                   => !empty($post['no_npwp'])                     ? $post['no_npwp'] : '',
+            'pekerjaan'                 => !empty($post['pekerjaan'])                   ? $post['pekerjaan'] : '',
+            'jenis_pekerjaan'           => !empty($post['jenis_pekerjaan'])             ? $post['jenis_pekerjaan'] : '',
+            'jenis_agent'               => !empty($post['jenis_agent'])                 ? $post['jenis_agent'] : '',
+            'status_kepemilikan_rumah'  => !empty($post['status_kepemilikan_rumah'])    ? $post['status_kepemilikan_rumah'] : '',
+            'punya_pinjaman'            => !empty($post['punya_pinjaman'])              ? $post['punya_pinjaman'] : '',
+            'afiliasi_travel'           => !empty($post['afiliasi_travel'])             ? $post['afiliasi_travel'] : '',
+            'agent_konvensional'        => !empty($post['agent_konvensional'])          ? $post['agent_konvensional'] : '',
+            'hubungan_karyawan_bfi'     => !empty($post['hubungan_karyawan_bfi'])       ? $post['hubungan_karyawan_bfi'] : '',
+            'konsumen_bfi'              => !empty($post['konsumen_bfi'])                ? $post['konsumen_bfi'] : '',
+            'income'                    => !empty($post['income'])                      ? str_replace(",", "", $post['income']) : '',
+            'rekening_bank'             => !empty($post['rekening_bank'])               ? $post['rekening_bank'] : '',
+            'cabang_bank'               => !empty($post['cabang_bank'])                 ? $post['cabang_bank'] : '',
+            'nama_bank'                 => !empty($post['nama_bank'])                   ? $post['nama_bank'] : '',
+            'atas_nama'                 => !empty($post['atas_nama'])                   ? $post['atas_nama'] : '',
 
             //Timestamp
             'created_at' => date('Y-m-d H:i:s'),
@@ -166,7 +167,7 @@ class Agent extends CI_Controller
             $this->agent_activity_model->create($agent_activity_model);
 
             //Memberi pesan berhasil data menyimpan data mapping
-            $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil disimpan. <a href='#'>Lihat Data</a>");
+            $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Agent berhasil disimpan.</div>");
 
             redirect('Agent');
         } else {
@@ -223,7 +224,7 @@ class Agent extends CI_Controller
         $this->agent_activity_model->create($agent_activity_model);
 
         //Memberi pesan berhasil data menyimpan data mapping
-        $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diubah. <a href='#'>Lihat Data</a>");
+        $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Agent berhasil diubah.</div>");
 
         redirect('Agent');
     }
@@ -256,7 +257,7 @@ class Agent extends CI_Controller
         $this->tiket->update_tiket($post['id_ticket']);
 
         //Memberi pesan berhasil data menyimpan data mapping
-        $this->session->set_flashdata("berhasil_simpan", "Data Agent berhasil diupdate. <a href='#'>Lihat Data</a>");
+        $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Agent berhasil diupdate.</div>");
 
         redirect($post['redirect']);
     }

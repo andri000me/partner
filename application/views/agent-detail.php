@@ -32,6 +32,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active p-3" id="agent" role="tabpanel">
+                            <?= $this->session->flashdata('alert') ?>
                             <form class="" action="<?= base_url('Agent/update_detail') ?>" method="post">
                                 <!-- ID Ticket -->
                                 <input type="hidden" name="id_ticket" value="<?= $ticket->id_ticket ?>" id="id_ticket">
@@ -359,26 +360,7 @@
                                                 <?php } ?>
                                             </div>
                                         <?php } ?>
-                                        <?php if ($data->lampiran_tambahan) { ?>
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php
-                                                $uploads =  explode(",", $data->lampiran_tambahan);
-                                                foreach ($uploads as $upload) {
-                                                ?>
-                                                    <?php if (get_extension($upload)) { ?>
-                                                        <div class="zoom-gallery">
-                                                            <a href="<?= base_url('uploads/agents/' . $upload) ?>"><img src="<?= base_url('uploads/agents/' . $upload) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                        </div>
-                                                    <?php } else { ?>
-                                                        <a href="<?= base_url('uploads/agents/' . $upload) ?>">
-                                                            <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->lampiran_tambahan ?>">
-                                                                <i class="fa fa-file fa-5x"></i>
-                                                            </div>
-                                                        </a>
-                                                    <?php } ?>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
+
                                         <?php if ($ticket->form_mou) { ?>
                                             <div class="item" style="height:150px; width:300px;">
                                                 <?php if (get_extension($ticket->form_mou)) { ?>
@@ -394,6 +376,26 @@
                                                     </a>
                                                 <?php } ?>
                                             </div>
+                                        <?php } ?>
+                                        <?php if ($data->lampiran_tambahan) { ?>
+                                            <?php
+                                            $uploads =  explode(",", $data->lampiran_tambahan);
+                                            foreach ($uploads as $upload) {
+                                            ?>
+                                                <div class="item" style="height:150px; width:300px;">
+                                                    <?php if (get_extension($upload)) { ?>
+                                                        <div class="zoom-gallery">
+                                                            <a href="<?= base_url('uploads/agents/' . $upload) ?>"><img src="<?= base_url('uploads/agents/' . $upload) ?>" alt="" style="height:150px; width:300px;"></a>
+                                                        </div>
+                                                    <?php } else { ?>
+                                                        <a href="<?= base_url('uploads/agents/' . $upload) ?>">
+                                                            <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $upload ?>">
+                                                                <i class="fa fa-file fa-5x"></i>
+                                                            </div>
+                                                        </a>
+                                                    <?php } ?>
+                                                </div>
+                                            <?php } ?>
                                         <?php } ?>
                                     </div>
                                     <hr>

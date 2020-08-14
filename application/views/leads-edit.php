@@ -111,7 +111,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group form-right">
                                         <label>Nomor WA</label>
-                                        <input type="text" class="form-control text-size placement number-only <?= form_error('nomor_wa') ? 'is-invalid' : '' ?>" name="nomor_wa" id="" value="<?= $data->nomor_wa ?>" required placeholder="0896 5533 985" maxlength="15" />
+                                        <input type="text" class="form-control text-size placement number-only <?= form_error('nomor_wa') ? 'is-invalid' : '' ?>" name="nomor_wa" id="nomor_wa" value="<?= $data->nomor_wa ?>" required placeholder="0896 5533 985" maxlength="15" />
                                         <?= form_error('') ?>
                                     </div>
                                 </div>
@@ -440,7 +440,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-5 form-margin">
-                        <button class="btn btn-light waves-effect waves-light text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                        <button class="btn btn-light waves-effect waves-light text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Draft</b></button>
                         <button class="btn btn-primary waves-effect waves-light submit text-size btn-width ml-1" type="submit" name="process"><b>Kirim</b></button>
                     </div>
                 </form>
@@ -649,5 +649,54 @@
         $('#reset').show()
 
         source_leads();
+    })
+</script>
+
+<script>
+    $(document).ready(function() {
+
+        function validation(selector, message, columnName = null) {
+            $(`#${selector}`).on('blur', function() {
+                var id_leads = $("#id_leads").val();
+                var value = $(`#${selector}`).val();
+                $.ajax({
+                    url: '<?= base_url() ?>' + 'leads/leads_check/',
+                    type: 'POST',
+                    data: {
+                        id_leads: id_leads,
+                        column: columnName == null ? selector : columnName,
+                        value: value
+                    },
+                    beforeSend: function() {
+                        $("[type='submit']").css({
+                            'pointer-events': 'none',
+                            'opacity': '0.3'
+                        });
+                    },
+                    success: function(data) {
+                        $("[type='submit']").css({
+                            'pointer-events': 'auto',
+                            'opacity': '1.0'
+                        });
+                        if (data > 0) {
+                            if ($(`.${selector}`).length == 0) {
+                                console.log('duplikat');
+                                $(`#${selector}`).val("").addClass("is-invalid").after(`<div class='${selector} text-danger'>${message}</div>`);
+                            }
+                            $(`#${selector}`).val("");
+                        } else {
+                            console.log('tersedia');
+                            $(`#${selector}`).removeClass("is-invalid").next().remove(".text-danger");
+                        }
+                        console.log(data);
+                    }
+                })
+            })
+        }
+
+        validation("no_ktp", "No KTP sudah dipakai")
+        validation("telepon", "No Handphone sudah dipakai")
+        validation("nomor_wa", "No WhatsApp sudah dipakai")
+        validation("email_konsumen", "Email sudah dipakai")
     })
 </script>

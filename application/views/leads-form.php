@@ -436,7 +436,7 @@
                         </div>
                     </div>
                     <div class="form-group mb-0 float-right mt-5 form-margin">
-                        <button class="btn btn-light waves-effect waves-light text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Simpan</b></button>
+                        <button class="btn btn-light waves-effect waves-light text-size btn-width" id="draft" name="draft" class="btn" type="submit"><b>Draft</b></button>
                         <button class="btn btn-primary waves-effect waves-light submit text-size btn-width ml-1" type="submit" name="process"><b>Kirim</b></button>
                     </div>
                 </form>
