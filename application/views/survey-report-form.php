@@ -28,61 +28,7 @@
 </div>
 
 <div class="row">
-    <div class="col-md-3 web">
-        <div class="card-margin-left" id="leftcaption">
-            <div class="mt-1 ml-5">
-                <p class="gede"><b>Yang harus Diisi</b></p>
 
-                <p class="mt-3 mb-0 sedeng">Data Diri</p>
-                <p class="mb-2 personal-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
-                    Lengkap</p>
-                <!-- <p class="mb-2 personal-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
-                    Belum
-                    Lengkap</p> -->
-
-                <p class="mb-0 sedeng">Tujuan & Struktur</p>
-                <p class="mb-2 detail-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
-                    Lengkap</p>
-                <!-- <p class="mb-2 detail-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
-                    Belum
-                    Lengkap</p> -->
-
-                <p class="mb-0 sedeng">Kondisi & Aset</p>
-                <p class="mb-2 product-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
-                    Lengkap</p>
-                <!-- <p class="mb-2 product-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
-                    Belum
-                    Lengkap</p> -->
-
-                <p class="mb-0 sedeng">Kapasitas</p>
-                <p class="mb-2 branch-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
-                    Lengkap</p>
-                <!-- <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
-                    Belum
-                    Lengkap</p> -->
-
-                <p class="mb-0 sedeng">karakter</p>
-                <p class="mb-2 branch-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
-                    Lengkap</p>
-                <!-- <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
-                    Belum
-                    Lengkap</p> -->
-
-                <p class="mb-0 sedeng">Jaminan</p>
-                <p class="mb-2 branch-sudah kecil"><i class="fas fa-check-circle text-success"></i>&nbsp;&nbsp;&nbsp;Data
-                    Lengkap</p>
-                <!-- <p class="mb-2 branch-belum kecil"><i class="fas fa-times-circle text-danger"></i>&nbsp;&nbsp;&nbsp;Data
-                    Belum
-                    Lengkap</p> -->
-
-                <p class="gede mt-4"><b>Documents</b></p>
-
-                <p class="mb-2 kecil"><a href="<?= base_url('fs_konsumen/download_lampiran/' . $data->id_leads) ?>"><i class="far fa-file-archive"></i>&nbsp;&nbsp;&nbsp;Download Semua Dokumen</a></p>
-            </div>
-
-        </div>
-
-    </div>
 
     <div class="col-md-9">
         <div class="row">
@@ -3092,7 +3038,7 @@
                                         </div>
                                         <div class="form-group form-margin">
                                             <label>Kesimpulan Hasil Analisa HO Berdasarkan Rule</label>
-                                            <select class="form-control text-size scoring_ho" name="is_recommended" id="" required>
+                                            <select class="form-control text-size scoring_ho" name="is_recommended" id="is_recommended" required>
                                                 <option selected value="">Pilih Jawaban</option>
                                                 <option <?= $data->is_recommended == 'Recommended' ? 'selected' : '' ?> value="Recommended">Recommended</option>
                                                 <option <?= $data->is_recommended == 'Not Recommended' ? 'selected' : '' ?> value="Not Recommended">Not Recommended</option>
@@ -3101,7 +3047,7 @@
                                         <div class="form-group form-margin float-right mt-5">
                                             <!-- <button type="button" class="btn btn-secondary text-size mr-1" onclick="document.getElementById('btn-religi').click()"><b>Kembali</b></button> -->
                                             <button class="btn btn-light waves-effect waves-light text-size btn-cari" id="return" name="return" class="btn" type="button"><b>Return</b></button>
-                                            <a href="<?= base_url("fs_konsumen") ?>" class="btn btn-primary waves-effect waves-light submit text-size"><b>Score</b></a>
+                                            <a href="#" id="score" class="btn btn-primary waves-effect waves-light submit text-size"><b>Score</b></a>
                                         </div>
                                     </div>
                                 </div>
@@ -3112,6 +3058,16 @@
                 <!-- Data Hasil Analisa -->
 
             </div>
+        </div>
+
+    </div>
+
+    <div class="col-md-3 web">
+        <div class="card-margin-left" id="leftcaption">
+            <div class="mt-1 ml-5">
+
+            </div>
+
         </div>
 
     </div>
@@ -3441,7 +3397,30 @@
                 },
                 dataType: 'json',
                 success: function(data) {
-                    alert('success')
+                    window.location.href = "<?= base_url('fs_konsumen') ?>"
+                }
+            })
+        }
+    })
+</script>
+
+<!-- score form konsumen -->
+<script>
+    $('#score').click(function(e) {
+        e.preventDefault();
+        var id = $("#id_leads").val();
+        var data = $("#is_recommended").val();
+        var conf = confirm('Apakah Anda yakin ingin score form survey ini?');
+        if (conf) {
+            $.ajax({
+                url: '<?= base_url() ?>' + 'fs_konsumen/update_recommendation/',
+                type: 'POST',
+                data: {
+                    id: id,
+                    data: data
+                },
+                success: function(data) {
+                    window.location.href = "<?= base_url('fs_konsumen') ?>"
                 }
             })
         }

@@ -25,23 +25,13 @@ class Assignment extends CI_Controller
 
     public function prospect()
     {
+
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
-        if ($this->fungsi->user_login()->level == 1) {
-            $where_leads = "cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND status = 'lengkap'";
-        }
+        if ($this->fungsi->user_login()->level == 1 || $this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3)
+            $data['data'] = $this->leads_model->get("cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND status = 'lengkap'");
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangnya dan memunculkan data cross-branch.
-        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where_leads = "cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND status = 'lengkap'";
-        } else {
-            $where_leads = "id_leads IS NOT NULL AND status = 'lengkap'";
-        }
-        $data = [
-            'data' => $this->leads_model->get($where_leads),
-            // Menampilkan Data Leads belum funding
-            'belum_funding' => $this->leads_model->get("sudah_funding = 'Belum' AND (" . $where_leads . ")"),
-            // Menampilkan Data Leads sudah funding
-            'sudah_funding' => $this->leads_model->get("sudah_funding = 'Sudah' AND (" . $where_leads . ")")
-        ];
+        if ($this->fungsi->user_login()->level >=  4)
+            $data['data'] = $this->leads_model->get("id_leads IS NOT NULL AND status = 'lengkap'");
 
         $this->template->load('template/index', 'assignment-lead-prospect', $data);
     }

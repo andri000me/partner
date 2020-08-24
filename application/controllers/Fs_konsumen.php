@@ -318,6 +318,7 @@ class Fs_konsumen extends CI_Controller
         $where = ['id_leads' => $this->input->post('id_leads')];
         $json = $this->fs_konsumen_model->update($data, $where);
 
+        //jika data fs_konsumen ditolak dan ketika ada data yang diubah, maka data tiket kembali ke pending
         if (($this->fungsi->user_login()->level == 1 ||
                 $this->fungsi->user_login()->level == 2 ||
                 $this->fungsi->user_login()->level == 3) &&
@@ -327,12 +328,6 @@ class Fs_konsumen extends CI_Controller
             $this->ticket_model->update($pending, $where);
         }
 
-        // Jika is recommended telah ditentukan, maka set tiket fs ke selesai
-        if ($this->input->post('is_recommended') == "Recommended") {
-            $this->ticket_model->update(['status' => 6], $where);
-        } else if ($this->input->post('is_recommended') == "Not Recommended") {
-            $this->ticket_model->update(['status' => 2], $where);
-        }
 
         echo json_encode($data);
     }
@@ -496,11 +491,16 @@ class Fs_konsumen extends CI_Controller
 
     public function update_recommendation()
     {
-        $data = ['is_recommended' => $this->input->post('recommended')];
-        $where = ['id_leads' => $this->input->post('data')];
-        $id = $this->fs_konsumen_model->update($data, $where);
+        $where = ['id_leads' => $this->input->post('id')];
 
-        echo json_encode($id);
+        // Jika is recommended telah ditentukan, maka set tiket fs ke selesai
+        if ($this->input->post('data') == "Recommended") {
+            $this->ticket_model->update(['status' => 6], $where);
+        } else if ($this->input->post('data') == "Not Recommended") {
+            $this->ticket_model->update(['status' => 6], $where);
+        }
+
+        redirect('fs_konsumen');
     }
 
     public function update_status_kontrak()

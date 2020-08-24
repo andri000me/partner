@@ -437,7 +437,7 @@
                 'activity' => 'Perubahan pada data Partner',
                 'date_activity' => date('Y-m-d H:i:s'),
                 'id_partner' => $post['id_partner'],
-                'id_user' => $post['id_user']
+                'id_user' => $this->fungsi->user_login()->id_user
             ];
 
             $this->partner_activity_model->create($partner_activity_model);

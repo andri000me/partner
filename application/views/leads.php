@@ -27,128 +27,57 @@
                 <h4 class="mt-0 header-title"><b>Tabel Leads Prospect</b></h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk
                     keperluan NST, KPI dan Bonus</p>
-                <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#belum-funding" role="tab">
-                            <span class="d-block d-sm-none mb-1">Belum Funding</span>
-                            <span class="d-none d-sm-block mb-1">Belum Funding</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#sudah-funding" role="tab">
-                            <span class="d-block d-sm-none">Sudah Funding</i></span>
-                            <span class="d-none d-sm-block">Sudah Funding</span>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active p-3" id="belum-funding" role="tabpanel">
-                        <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <?php if ($this->fungsi->user_login()->level == 5) { ?>
-                                        <th></th>
+                <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                    <thead>
+                        <tr>
+                            <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                <th></th>
+                            <?php } ?>
+                            <th>ID</th>
+                            <th>Tanggal Diubah</th>
+                            <th>Nama</th>
+                            <th>Nomor KTP</th>
+                            <th>Follow Up By</th>
+                            <th>Requester</th>
+                            <th>Cabang</th>
+                            <th> </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($data->result() as $leads) { ?>
+                            <tr>
+                                <?php if ($this->fungsi->user_login()->level == 5) { ?>
+                                    <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
+                                <?php } ?>
+                                <td><?= $leads->id_leads ?></td>
+                                <td><?= $leads->tanggal_diubah ?></td>
+                                <td>
+                                    <?= $leads->nama_konsumen ?>
+                                </td>
+                                <td>
+                                    <?= $leads->no_ktp ?>
+                                </td>
+                                <td>
+                                    <?= $leads->follow_up_by ?>
+                                </td>
+                                <td>
+                                    <?= $leads->name ?>
+                                </td>
+                                <td>
+                                    <?= $leads->nama_cabang ?>
+                                </td>
+                                <td>
+                                    <?php if ($leads->status == 'draft') { ?>
+                                        <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius"><b>Lanjutkan</b></a></center>
+                                    <?php } else if ($leads->status == 'lengkap') { ?>
+                                        <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius" style="width: 90px;"><b>Detail</b></a>
+                                        </center>
                                     <?php } ?>
-                                    <th>ID</th>
-                                    <th>Tanggal Diubah</th>
-                                    <th>Nama</th>
-                                    <th>Nomor KTP</th>
-                                    <th>Follow Up By</th>
-                                    <th>Requester</th>
-                                    <th>Cabang</th>
-                                    <th> </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($belum_funding->result() as $leads) { ?>
-                                    <tr>
-                                        <?php if ($this->fungsi->user_login()->level == 5) { ?>
-                                            <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
-                                        <?php } ?>
-                                        <td><?= $leads->id_leads ?></td>
-                                        <td><?= $leads->tanggal_diubah ?></td>
-                                        <td>
-                                            <?= $leads->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->no_ktp ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->follow_up_by ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->name ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->nama_cabang ?>
-                                        </td>
-                                        <td>
-                                            <?php if ($leads->status == 'draft') { ?>
-                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius"><b>Lanjutkan</b></a></center>
-                                            <?php } else if ($leads->status == 'lengkap') { ?>
-                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius" style="width: 90px;"><b>Detail</b></a>
-                                                </center>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane p-3" id="sudah-funding" role="tabpanel">
-                        <table id="datatable-buttons-1" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>ID</th>
-                                    <th>Tanggal Diubah</th>
-                                    <th>Nama</th>
-                                    <th>Nomor KTP</th>
-                                    <th>Follow Up By</th>
-                                    <th>Requester</th>
-                                    <th>Cabang</th>
-                                    <th> </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach ($sudah_funding->result() as $leads) { ?>
-                                    <tr>
-                                        <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
-                                        <td>
-                                            <?= $leads->id_leads ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->nama_konsumen ?>
-                                        </td>
-                                        <td><?= $leads->tanggal_diubah ?></td>
-                                        <td>
-                                            <?= $leads->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->no_ktp ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->follow_up_by ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->name ?>
-                                        </td>
-                                        <td>
-                                            <?= $leads->nama_cabang ?>
-                                        </td>
-                                        <td>
-                                            <?php if ($leads->status == 'draft') { ?>
-                                                <center><a href="<?= base_url('Leads/edit/' . $leads->id_leads) ?>" class="btn btn-secondary text-size radius"><b>Lanjutkan</b></a></center>
-                                            <?php } else if ($leads->status == 'lengkap') { ?>
-                                                <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a></center>
-                                            <?php } ?>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                                </td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div> <!-- end col -->

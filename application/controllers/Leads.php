@@ -158,22 +158,13 @@ class Leads extends CI_Controller
     public function index()
     {
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
-        if ($this->fungsi->user_login()->level == 1) {
-            $where_leads = "users.id_user = " . $this->fungsi->user_login()->id_user;
-        }
+        if ($this->fungsi->user_login()->level == 1)
+            $data['data'] = $this->leads_model->get("users.id_user = " . $this->fungsi->user_login()->id_user . " AND (status = 'draft' OR status = 'lengkap')");
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangnya dan memunculkan data cross-branch.
-        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $where_leads = "branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch;
-        } else {
-            $where_leads = 'status = "lengkap"';
-        }
-        $data = [
-            'data' => $this->leads_model->get($where_leads),
-            // Menampilkan Data Leads belum funding
-            'belum_funding' => $this->leads_model->get("sudah_funding = 'Belum' AND (" . $where_leads . ") AND (status = 'draft' OR status = 'lengkap')"),
-            // Menampilkan Data Leads sudah funding
-            'sudah_funding' => $this->leads_model->get("sudah_funding = 'Sudah' AND (" . $where_leads . ") AND (status = 'draft' OR status = 'lengkap')")
-        ];
+        if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3)
+            $data['data'] = $this->leads_model->get("branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR cabang_cross = " . $this->fungsi->user_login()->id_branch . " AND (status = 'draft' OR status = 'lengkap')");
+        if ($this->fungsi->user_login()->level >= 4)
+            $data['data'] = $this->leads_model->get("status = 'lengkap'");
 
         $this->template->load('template/index', 'leads', $data);
     }
@@ -283,7 +274,7 @@ class Leads extends CI_Controller
             $id = $post["id_leads"];
 
             //menghapuskan date created, untuk proses update
-            unset($data["created_at"]);
+            unset($data["created_at"], $data["id_user"], $data["id_branch"]);
             $this->leads_model->update($data, ["id_leads" => $id]);
         } else {
             $id = $this->leads_model->create($data);

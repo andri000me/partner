@@ -243,7 +243,6 @@
                                     <th>Leads ID</th>
                                     <th>Status Kontrak</th>
                                     <th>Nama Konsumen</th>
-                                    <th>Cross Branch</th>
                                     <th>Cabang</th>
                                     <th>Status</th>
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
@@ -268,16 +267,13 @@
                                         </td>
                                         <td>
                                             <select class="form-control text-size border status_kontrak" data-id="<?= $fs_konsumen->id ?>">
-                                                <option selected value="">Pilih Status Kontrak</option>
+                                                <option selected value="">Pilih Status</option>
                                                 <option <?= $fs_konsumen->status_kontrak == 'Live' ? 'selected' : '' ?> value="Live">Live</option>
                                                 <option <?= $fs_konsumen->status_kontrak == 'Reject' ? 'selected' : '' ?> value="Reject">Reject</option>
                                             </select>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_konsumen ?>
-                                        </td>
-                                        <td>
-                                            <?= $fs_konsumen->cross_branch ?>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_cabang ?>
