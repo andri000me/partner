@@ -466,130 +466,134 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php $data_upload = explode(",", $data->ktp) ?>
-                                            <tr>
-                                                <td>KTP</td>
-                                                <?php if (!empty($data->ktp)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/ktp') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $data_upload = explode(",", $data->npwp) ?>
-                                            <tr>
-                                                <td>NPWP</td>
-                                                <?php if (!empty($ata->npwp)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/npwp') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $data_upload = explode(",", $data->buku_tabungan_perusahaan) ?>
-                                            <tr>
-                                                <td>Buku Tabungan Perusahaan</td>
-                                                <?php if (!empty($data->buku_tabungan_perusahaan)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/buku_tabungan_perusahaan') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $data_upload = explode(",", $data->siup) ?>
-                                            <tr>
-                                                <td>SIUP</td>
-                                                <?php if (!empty($data->siup)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/siup') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $data_upload = explode(",", $data->logo_perusahaan) ?>
-                                            <tr>
-                                                <td>Logo Perusahaan</td>
-                                                <?php if (!empty($data->logo_perusahaan)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/logo_perusahaan') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $data_upload = explode(",", $data->form_mou) ?>
-                                            <tr>
-                                                <td>Form MOU</td>
-                                                <?php if (!empty($data->form_mou)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/form_mou') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $data_upload = explode(",", $data->foto_usaha) ?>
-                                            <tr>
-                                                <td>Foto Usaha</td>
-                                                <?php if (!empty($data->foto_usaha)) { ?>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <td style="white-space: nowrap;">
-                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/foto_usaha') ?>"><i class="fa fa-trash"></i></a>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php $i = 0; ?>
-                                            <?php
-                                            $lampiran_tambahan = explode("|", $data->lampiran_tambahan);
-                                            foreach ($lampiran_tambahan as $key => $lampiran) { ?>
-                                                <?php $data_upload = explode(",", $lampiran) ?>
+                                            <form method="post" action="<?= base_url('partner/file_lampiran') ?>" enctype="multipart/form-data">
+                                                <input type="hidden" name="redirect" value="<?= uri_string() ?>">
+                                                <input type="hidden" name="id_partner" value="<?= $data->id_partner ?>">
+                                                <?php $data_upload = explode(",", $data->ktp) ?>
                                                 <tr>
-                                                    <td><?= $i == 0 ? 'Lampiran Tambahan' : '';
-                                                        $i++ ?></td>
-                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
-                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
-                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
-                                                    <?php if (!empty($data_upload)) { ?>
+                                                    <td>KTP</td>
+                                                    <?php if (!empty($data->ktp)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
                                                         <td style="white-space: nowrap;">
                                                             <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
-                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/lampiran_tambahan/' . $key) ?>"><i class="fa fa-trash"></i></a>
-                                                        <?php } ?>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/ktp') ?>"><i class="fa fa-trash"></i></a>
                                                         </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="ktp" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
                                                 </tr>
-                                            <?php } ?>
+                                                <?php $data_upload = explode(",", $data->npwp) ?>
+                                                <tr>
+                                                    <td>NPWP</td>
+                                                    <?php if (!empty($data->npwp)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/npwp') ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="npwp" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php $data_upload = explode(",", $data->buku_tabungan_perusahaan) ?>
+                                                <tr>
+                                                    <td>Buku Tabungan Perusahaan</td>
+                                                    <?php if (!empty($data->buku_tabungan_perusahaan)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/buku_tabungan_perusahaan') ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="buku_tabungan_perusahaan" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php $data_upload = explode(",", $data->siup) ?>
+                                                <tr>
+                                                    <td>SIUP</td>
+                                                    <?php if (!empty($data->siup)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/siup') ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="siup" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php $data_upload = explode(",", $data->logo_perusahaan) ?>
+                                                <tr>
+                                                    <td>Logo Perusahaan</td>
+                                                    <?php if (!empty($data->logo_perusahaan)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/logo_perusahaan') ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="logo_perusahaan" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php $data_upload = explode(",", $data->form_mou) ?>
+                                                <tr>
+                                                    <td>Form MOU</td>
+                                                    <?php if (!empty($data->form_mou)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/form_mou') ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="form_mou" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php $data_upload = explode(",", $data->foto_usaha) ?>
+                                                <tr>
+                                                    <td>Foto Usaha</td>
+                                                    <?php if (!empty($data->foto_usaha)) { ?>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/foto_usaha') ?>"><i class="fa fa-trash"></i></a>
+                                                        </td>
+                                                    <?php } else { ?>
+                                                        <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" name="foto_usaha" type="file" onchange="this.form.submit()"></td>
+                                                    <?php } ?>
+                                                </tr>
+                                                <?php $i = 0; ?>
+                                                <?php
+                                                $lampiran_tambahan = explode("|", $data->lampiran_tambahan);
+                                                foreach ($lampiran_tambahan as $key => $lampiran) { ?>
+                                                    <?php $data_upload = explode(",", $lampiran) ?>
+                                                    <tr>
+                                                        <td><?= $i == 0 ? 'Lampiran Tambahan' : '';
+                                                            $i++ ?></td>
+                                                        <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                        <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                        <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                        <?php if (!empty($data_upload)) { ?>
+                                                            <td style="white-space: nowrap;">
+                                                                <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                                <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/lampiran_tambahan/' . $key) ?>"><i class="fa fa-trash"></i></a>
+                                                            <?php } ?>
+                                                            </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </form>
                                         </tbody>
                                     </table>
                                     <hr>
@@ -598,16 +602,14 @@
                                     <form action="<?= base_url('partner/tambah_lampiran') ?>" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="id_partner" value="<?= $data->id_partner ?>">
                                         <input type="hidden" name="redirect" value="<?= uri_string() ?>">
-                                        <h4 class="mt-0 header-title mb-4"><b>Tambah Data Lampiran</b></h4>
                                         <div class="form-group element text-size">
-                                            <label>Lampirkan Data</label><br>
                                             <input type="file" name="tambah_lampiran[]" id="upload_file1" required>
                                         </div>
                                         <hr>
                                         <div id="moreImageUpload"></div>
                                         <div class="clear "></div>
                                         <div id="moreImageUploadLink" class="float-right mt-3">
-                                            <a class="btn btn-secondary text-size mr-1" href="javascript:void(0);" id="attachMore">Tambah Form</a>
+                                            <a class="btn btn-secondary text-size mr-1" href="javascript:void(0);" id="attachMore">Tambah Lampiran</a>
                                             <button class="btn btn-primary text-size">Simpan</button>
                                         </div>
                                     </form>

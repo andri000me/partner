@@ -35,7 +35,7 @@
             if (!$this->upload->do_upload($attachment)) {
                 return $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
             } else {
-                $string = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y H:i:s')];
+                $string = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y')];
                 return implode(",", $string);
             }
         }
@@ -61,7 +61,7 @@
                 'kode_pos'              => !empty($post['kode_pos'])                ? $post['kode_pos'] : NULL,
                 'provinsi'              => !empty($post['provinsi'])                ? $post['provinsi'] : NULL,
                 'status_tempat_usaha'   => !empty($post['status_tempat_usaha'])     ? $post['status_tempat_usaha'] : NULL,
-                // 'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
+                'bentuk_usaha'          => !empty($post['bentuk_usaha'])            ? $post['bentuk_usaha'] : NULL,
                 'jumlah_karyawan'       => !empty($post['jumlah_karyawan'])         ? $post['jumlah_karyawan'] : NULL,
                 'tahun_berdiri'         => !empty($post['tahun_berdiri'])           ? $post['tahun_berdiri'] : NULL,
 
@@ -461,6 +461,24 @@
             // return 'success';
         }
 
+        public function file_lampiran()
+        {
+            $post = $this->input->post(NULL, TRUE);
+            $where = "partners_full.id_partner = " .  $post['id_partner'];
+            $data = $this->partner_model->get($where)->row();
+
+            $data_lampiran['ktp']                        = $this->lampiran('ktp') ? $this->lampiran('ktp') : $data->ktp;
+            $data_lampiran['npwp']                       = $this->lampiran('npwp') ? $this->lampiran('npwp') : $data->npwp;
+            $data_lampiran['buku_tabungan_perusahaan']   = $this->lampiran('buku_tabungan_perusahaan') ? $this->lampiran('buku_tabungan_perusahaan') : $data->buku_tabungan_perusahaan;
+            $data_lampiran['siup']                       = $this->lampiran('siup') ? $this->lampiran('siup') : $data->siup;
+            $data_lampiran['logo_perusahaan']            = $this->lampiran('logo_perusahaan') ? $this->lampiran('logo_perusahaan') : $data->logo_perusahaan;
+            $data_lampiran['foto_usaha']                 = $this->lampiran('foto_usaha') ? $this->lampiran('foto_usaha') : $data->foto_usaha;
+            $data_lampiran['form_mou']                   = $this->lampiran('form_mou') ? $this->lampiran('form_mou') : $data->form_mou;
+
+            $this->partner_model->update($data_lampiran, $where);
+            redirect($post['redirect']);
+        }
+
         public function tambah_lampiran()
         {
 
@@ -498,7 +516,7 @@
                     // File upload
                     if ($this->upload->do_upload('file')) {
                         // Get data about the file
-                        $uploadData = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y H:i:s')];
+                        $uploadData = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y')];
                         $filename = implode(",", $uploadData);
 
 

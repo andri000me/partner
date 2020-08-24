@@ -443,8 +443,7 @@
         $('#attachMore').click(function() {
             //add more file
             var moreUploadTag = '';
-            moreUploadTag += '<div class="form-group element text-size"><label for="upload_file' +
-                upload_number + '">Lampirkan Data ' + '</label>' + '<br>';
+            moreUploadTag += '<div class="form-group element text-size">';
             moreUploadTag += '<input class="text-size" type="file" id="upload_file' + '" name="tambah_lampiran[]"/>';
             moreUploadTag += ' <a class=" float-right text-size" href="javascript:del_file(' + upload_number +
                 ')" style="cursor:pointer;" onclick="return confirm("Are you really want to delete ?")"><b class="text-danger">Hapus</b>' +
