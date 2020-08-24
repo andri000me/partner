@@ -3459,7 +3459,7 @@
     var user_login = $("#user_login").val();
 
     // alert(id_branch + ' ' + cabang_cross)
-    if ((level == '2' && id_branch == branch_login) || (level == '3' && id_branch == branch_login) || level == '4' || level == '5' || cabang_cross != '') {
+    if ((level == '3' && id_branch == branch_login) || level == '4' || level == '5' || cabang_cross != '') {
         $("input, select, textarea, button[type='submit'], button[data-toggle='modal']").attr('disabled', 'disabled');
         if (level == '4' || level == '5') {
             $("#id_leads").removeAttr('disabled');

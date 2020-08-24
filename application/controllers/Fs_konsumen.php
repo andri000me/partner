@@ -12,32 +12,19 @@ class Fs_konsumen extends CI_Controller
 
         //Jika CMS login maka memunculkan data berdasarkan `id_user`
         if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "(users.id_user = " . $this->fungsi->user_login()->id_user . " OR fs_konsumen.assign_cms = " . $this->fungsi->user_login()->id_user . ")";
+            $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR fs_konsumen.assign_cms = " . $this->fungsi->user_login()->id_user . ")";
         }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR leads_full.cabang_cross = " . $this->fungsi->user_login()->id_branch . ")";
+        } else if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
+            $this->where = "tickets.status >= 2";
         } else {
             $this->where = "id IS NOT NULL";
         }
 
 
         check_not_login();
-    }
-
-    //Notification Method
-    private function notification($id_ticket, $message)
-    {
-        $notification = [
-            'pengirim'          => $this->fungsi->user_login()->id_user,
-            // 'penerima'          => $this->ticket_model->get(['id_ticket' => $id_ticket])->row()->user_id,
-            'penerima_cabang'   => 46,
-            'type'              => $message,
-            'id_ticket'         => $id_ticket,
-            'created_at'        => date('Y-m-d H:i:s')
-        ];
-
-        return $notification;
     }
 
     private function is_set($id, $name, $number = FALSE)
@@ -57,8 +44,8 @@ class Fs_konsumen extends CI_Controller
     {
         $data = [
             'data'      => $this->fs_konsumen_model->get($this->where),
-            'unfinished'   => $this->fs_konsumen_model->get("tickets.status < 5 AND " . $this->where),
-            'completed' => $this->fs_konsumen_model->get("tickets.status = 5 AND " . $this->where),
+            'unfinished'   => $this->fs_konsumen_model->get("tickets.status <= 5 AND " . $this->where),
+            'completed' => $this->fs_konsumen_model->get("tickets.status = 6 AND " . $this->where),
             'users'     => $this->user_model->get_all("users.id_branch = " . $this->fungsi->user_login()->id_branch . " AND is_active = 1")
         ];
 
@@ -341,9 +328,9 @@ class Fs_konsumen extends CI_Controller
         }
 
         // Jika is recommended telah ditentukan, maka set tiket fs ke selesai
-        if ($this->input->post('is_recommended') != "") {
+        if ($this->input->post('is_recommended') == "Recommended") {
             $this->ticket_model->update(['status' => 6], $where);
-        } else {
+        } else if ($this->input->post('is_recommended') == "Not Recommended") {
             $this->ticket_model->update(['status' => 2], $where);
         }
 
@@ -511,6 +498,15 @@ class Fs_konsumen extends CI_Controller
     {
         $data = ['is_recommended' => $this->input->post('recommended')];
         $where = ['id_leads' => $this->input->post('data')];
+        $id = $this->fs_konsumen_model->update($data, $where);
+
+        echo json_encode($id);
+    }
+
+    public function update_status_kontrak()
+    {
+        $data = ['status_kontrak' => $this->input->post('status_kontrak')];
+        $where = ['id_leads' => $this->input->post('id_leads')];
         $id = $this->fs_konsumen_model->update($data, $where);
 
         echo json_encode($id);

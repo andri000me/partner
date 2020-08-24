@@ -91,4 +91,9 @@ class Tiket
         ];
         return $this->ci->ticket_model->update($data, ['id_ticket' => $id_ticket]);
     }
+
+    function update_approval()
+    {
+        return $this->staging;
+    }
 }

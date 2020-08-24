@@ -4,6 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Ticket extends CI_Controller
 {
     public $where;
+    public $staging;
 
     public function __construct()
     {
@@ -22,6 +23,8 @@ class Ticket extends CI_Controller
         } else if ($this->fungsi->user_login()->level == 5) {
             $this->where = "tickets.status >=  0";
         }
+
+        $this->staging = $this->tiket->update_approval();
 
         check_not_login();
     }
@@ -67,9 +70,9 @@ class Ticket extends CI_Controller
         $finished = $this->where . " AND tickets.status = 5";
         $unfinished = $this->where . " AND tickets.status < 5";
         $data = [
-            'data' => $this->ticket_model->get($this->where),
-            'finished' => $this->ticket_model->get($finished),
-            'unfinished' => $this->ticket_model->get($unfinished)
+            'data' => $this->ticket_model->get($this->where . " AND DATE_FORMAT(date_modified, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()"),
+            'finished' => $this->ticket_model->get($finished . " AND DATE_FORMAT(date_modified, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()"),
+            'unfinished' => $this->ticket_model->get($unfinished . " AND DATE_FORMAT(date_modified, '%Y-%m-%d') BETWEEN CURDATE() - INTERVAL 30 DAY AND CURDATE()")
         ];
         $this->template->load('template/index', 'tiket', $data);
     }
@@ -83,7 +86,7 @@ class Ticket extends CI_Controller
         if ($this->fungsi->user_login()->level == 2) {
             $data = [
                 'date_approved_by_head' => date('Y-m-d H:i:s'),
-                'status' => 2
+                'status' => $this->staging
             ];
 
             $this->notifikasi->send($id_ticket, 'Disetujui oleh Head');
@@ -93,7 +96,7 @@ class Ticket extends CI_Controller
         else if ($this->fungsi->user_login()->level == 3) {
             $data = [
                 'date_approved_by_manager' => date('Y-m-d H:i:s'),
-                'status' => 2
+                'status' => $this->staging
             ];
             $this->notifikasi->send($id_ticket, 'Disetujui oleh Manager');
             $this->activity($id_ticket, 'Disetujui oleh Manager');
@@ -102,7 +105,7 @@ class Ticket extends CI_Controller
         else if ($this->fungsi->user_login()->level == 4) {
             $data = [
                 'date_completed'    => date('Y-m-d H:i:s'),
-                'status'            => 5,
+                'status'            => $this->staging,
                 'completed_by'      => $this->fungsi->user_login()->id_user
             ];
             $this->notifikasi->send($id_ticket, 'Disetujui oleh Admin HO');
@@ -112,7 +115,7 @@ class Ticket extends CI_Controller
         else if ($this->fungsi->user_login()->level == 5) {
             $data = [
                 'date_activated'    => date('Y-m-d H:i:s'),
-                'status'            => 6,
+                'status'            => $this->staging,
                 'activated_by'      => $this->fungsi->user_login()->id_user
             ];
             $this->notifikasi->send($id_ticket, 'Diaktivasi oleh Head HO');
@@ -127,14 +130,14 @@ class Ticket extends CI_Controller
     public function reject_status($id_ticket, $redirect = 'ticket')
     {
         //Jika Admin HO yang menekan tombol approve, maka tiket sudah disetujui oleh Admin HO
-        if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
-            $data = [
-                'date_rejected'    => date('Y-m-d H:i:s'),
-                'status'            => 4
-            ];
-            $this->notifikasi->send($id_ticket, 'Ditolak oleh');
-            $this->activity($id_ticket, 'Ditolak oleh');
-        }
+        $data = [
+            'date_rejected'    => date('Y-m-d H:i:s'),
+            'status'            => 4
+        ];
+        // if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
+        $this->notifikasi->send($id_ticket, 'Ditolak oleh');
+        $this->activity($id_ticket, 'Ditolak oleh');
+        // }
 
         $where = ['id_ticket' => $id_ticket];
         $this->ticket_model->update($data, $where);
@@ -193,5 +196,10 @@ class Ticket extends CI_Controller
 
             redirect($this->input->post('redirect'));
         }
+    }
+
+    public function update_approval()
+    {
+        echo $this->tiket->update_approval();
     }
 }

@@ -22,7 +22,7 @@ class Leads_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->select("*");
+        $this->db->select("*,  DATE_FORMAT(leads_full.updated_at, '%d %b %y') as tanggal_diubah");
         $this->db->from('leads_full');
         $this->db->join('users', 'users.id_user = leads_full.id_user', 'inner');
         $this->db->join('branches', 'branches.id_branch = leads_full.id_branch', 'inner');

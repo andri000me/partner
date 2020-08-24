@@ -67,7 +67,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group form-margin">
                                                     <label>E-Mail</label>
-                                                    <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" required placeholder="Aisha@bfisyariah.id" />
+                                                    <input type="email" class="form-control text-size" name="email" id="email" parsley-type="email" value="<?= $data->email ?>" placeholder="Aisha@bfisyariah.id" />
                                                 </div>
                                             </div>
                                         </div>
@@ -203,7 +203,7 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group form-margin">
                                                         <label>Sosial Media / Website</label>
-                                                        <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" value="<?= $data->sosial_media ?>" required placeholder="https://www.instagram.com/bfisyariah">
+                                                        <input type="text" class="form-control text-size" name="sosial_media" id="sosial_media" value="<?= $data->sosial_media ?>" placeholder="https://www.instagram.com/bfisyariah">
                                                     </div>
                                                 </div>
                                             </div>
@@ -253,13 +253,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Rekening Bank</label>
-                                                        <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
+                                                        <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" placeholder="04686587658745" minlength="10" maxlength="16">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-right">
                                                         <label>Nama Bank</label>
-                                                        <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" required placeholder="Bank Mandiri">
+                                                        <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= $data->nama_bank ?>" placeholder="Bank Mandiri">
                                                     </div>
                                                 </div>
                                             </div>
@@ -267,13 +267,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Cabang Bank</label>
-                                                        <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" required placeholder="Cabang Karawaci">
+                                                        <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= $data->cabang_bank ?>" placeholder="Cabang Karawaci">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group form-right">
                                                         <label>Atas Nama</label>
-                                                        <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= $data->atas_nama ?>" required placeholder="Anton Hoed">
+                                                        <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= $data->atas_nama ?>" placeholder="Anton Hoed">
                                                     </div>
                                                 </div>
                                             </div>

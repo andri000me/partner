@@ -433,13 +433,14 @@
                             <ol class="activity-feed mb-0">
                                 <?php if ($maintains->num_rows() > 0) {
                                     foreach ($maintains->result() as $maintain) {  ?>
+                                        <?php $data_maintain = explode(",", $maintain->photo_activity) ?>
                                         <li class="feed-item  text-size">
                                             <div class="feed-item-list">
                                                 <span class="date">Maintain <?= $maintain->tanggal_maintain ?></span>
                                                 <span class="activity-text"><?= $maintain->catatan ?></span>
                                                 <div class="img-fluid">
-                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>" title="Foto maintain partner.">
-                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/maintains/' .   $maintain->photo_activity) ?>">
+                                                    <a class="image-popup-vertical-fit" href="<?= base_url('uploads/maintains/' .   $data_maintain[0]) ?>" title="Foto maintain partner.">
+                                                        <img class="d-flex align-self-start rounded mr-3 img-fluid" alt="" src="<?= base_url('uploads/maintains/' .   $data_maintain[0]) ?>">
                                                     </a>
                                                 </div>
                                             </div>
@@ -454,174 +455,143 @@
                         <div class="tab-pane p-3" id="lampiran" role="tabpanel">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4 class="mt-0 header-title mb-4"><b>Data Lampiran</b></h4>
-                                    <div class="owl-carousel owl-theme">
-                                        <?php if ($data->ktp) { ?>
-                                            <!-- KTP -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->ktp)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>"><img src="<?= base_url('uploads/partners/' . $data->ktp) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Upload Data</th>
+                                                <th>Nama File</th>
+                                                <th>Ukuran</th>
+                                                <th>Date Upload</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php $data_upload = explode(",", $data->ktp) ?>
+                                            <tr>
+                                                <td>KTP</td>
+                                                <?php if (!empty($data->ktp)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/ktp') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->ktp) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->ktp ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->ktp ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->npwp) { ?>
-                                            <!-- NPWP -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->npwp)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>"><img src="<?= base_url('uploads/partners/' . $data->npwp) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                            </tr>
+                                            <?php $data_upload = explode(",", $data->npwp) ?>
+                                            <tr>
+                                                <td>NPWP</td>
+                                                <?php if (!empty($ata->npwp)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/npwp') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->npwp) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->npwp ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->npwp ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->buku_tabungan_perusahaan) { ?>
-                                            <!-- Buku Tabungan Perusahaan -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->buku_tabungan_perusahaan)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>"><img src="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                            </tr>
+                                            <?php $data_upload = explode(",", $data->buku_tabungan_perusahaan) ?>
+                                            <tr>
+                                                <td>Buku Tabungan Perusahaan</td>
+                                                <?php if (!empty($data->buku_tabungan_perusahaan)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/buku_tabungan_perusahaan') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->buku_tabungan_perusahaan) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->buku_tabungan_perusahaan ?>">
-                                                            <i class=" fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->buku_tabungan_perusahaan ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->siup) { ?>
-                                            <!-- SIUP -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->siup)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->siup) ?>"><img src="<?= base_url('uploads/partners/' . $data->siup) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                            </tr>
+                                            <?php $data_upload = explode(",", $data->siup) ?>
+                                            <tr>
+                                                <td>SIUP</td>
+                                                <?php if (!empty($data->siup)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/siup') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->siup) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->siup ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->siup ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->logo_perusahaan) { ?>
-                                            <!-- Logo Perusahaan -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->logo_perusahaan)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>"><img src="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                            </tr>
+                                            <?php $data_upload = explode(",", $data->logo_perusahaan) ?>
+                                            <tr>
+                                                <td>Logo Perusahaan</td>
+                                                <?php if (!empty($data->logo_perusahaan)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/logo_perusahaan') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->logo_perusahaan) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->logo_perusahaan ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->logo_perusahaan ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->form_mou) { ?>
-                                            <!-- Foto Usaha -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->form_mou)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->form_mou) ?>"><img src="<?= base_url('uploads/partners/' . $data->form_mou) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                            </tr>
+                                            <?php $data_upload = explode(",", $data->form_mou) ?>
+                                            <tr>
+                                                <td>Form MOU</td>
+                                                <?php if (!empty($data->form_mou)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/form_mou') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->form_mou) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->form_mou ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->form_mou ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->foto_usaha) { ?>
-                                            <!-- Foto Usaha -->
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($data->foto_usaha)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>"><img src="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
+                                            </tr>
+                                            <?php $data_upload = explode(",", $data->foto_usaha) ?>
+                                            <tr>
+                                                <td>Foto Usaha</td>
+                                                <?php if (!empty($data->foto_usaha)) { ?>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <td style="white-space: nowrap;">
+                                                        <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                        <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/foto_usaha') ?>"><i class="fa fa-trash"></i></a>
+                                                    </td>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $data->foto_usaha) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $data->foto_usaha ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $data->foto_usaha ?></span> -->
-                                                        </div>
-                                                    </a>
+                                                    <td colspan="4" style="vertical-align: middle; text-align: right;"><input class="" type="file"></td>
                                                 <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                        <!-- Foto Maintain -->
-                                        <?php foreach ($maintains->result() as $maintain) { ?>
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <div class="zoom-gallery">
-                                                    <a href="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>"><img src="<?= base_url('uploads/maintains/' . $maintain->photo_activity) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                        <?php if ($data->lampiran_tambahan) { ?>
-                                            <!-- Lampiran Tambahan -->
+                                            </tr>
+                                            <?php $i = 0; ?>
                                             <?php
-                                            $lampiran_tambahan =  explode(",", $data->lampiran_tambahan);
-                                            foreach ($lampiran_tambahan as $upload) {
-                                            ?>
-                                                <div class="item" style="height:150px; width:300px;">
-                                                    <?php if (get_extension($upload)) { ?>
-                                                        <div class="zoom-gallery">
-                                                            <a href="<?= base_url('uploads/partners/' . $upload) ?>"><img src="<?= base_url('uploads/partners/' . $upload) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                        </div>
-                                                    <?php } else { ?>
-                                                        <a href="<?= base_url('uploads/partners/' . $upload) ?>">
-                                                            <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $upload ?>">
-                                                                <i class="fa fa-file fa-5x"></i>
-                                                            </div>
-                                                        </a>
-                                                    <?php } ?>
-                                                </div>
+                                            $lampiran_tambahan = explode("|", $data->lampiran_tambahan);
+                                            foreach ($lampiran_tambahan as $key => $lampiran) { ?>
+                                                <?php $data_upload = explode(",", $lampiran) ?>
+                                                <tr>
+                                                    <td><?= $i == 0 ? 'Lampiran Tambahan' : '';
+                                                        $i++ ?></td>
+                                                    <td><?= array_key_exists(0, $data_upload) ? $data_upload[0] : "-" ?></td>
+                                                    <td><?= array_key_exists(1, $data_upload) ? $data_upload[1] . "Kb" : "-" ?></td>
+                                                    <td><?= array_key_exists(2, $data_upload) ? $data_upload[2] : "-" ?></td>
+                                                    <?php if (!empty($data_upload)) { ?>
+                                                        <td style="white-space: nowrap;">
+                                                            <a class="btn btn-primary radius" style="width: 40px;" href="<?= base_url(array_key_exists(0, $data_upload) ? "uploads/partners/" . $data_upload[0] : "#") ?>" target="_blank"><i class="fa fa-eye"></i></a>
+                                                            <a class="btn btn-danger radius" onclick="return confirm('Apakah Anda yakin ingin menghapus data lampiran ini?')" style="width: 40px;" href="<?= base_url('partner/delete_lampiran/' . $data->id_partner . '/lampiran_tambahan/' . $key) ?>"><i class="fa fa-trash"></i></a>
+                                                        <?php } ?>
+                                                        </td>
+                                                </tr>
                                             <?php } ?>
-                                        <?php } ?>
-                                        <!-- Form MOU -->
-                                        <?php if ($ticket->form_mou) { ?>
-                                            <div class="item" style="height:150px; width:300px;">
-                                                <?php if (get_extension($ticket->form_mou)) { ?>
-                                                    <div class="zoom-gallery">
-                                                        <a href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>"><img src="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>" alt="" style="height:150px; width:300px;"></a>
-                                                    </div>
-                                                <?php } else { ?>
-                                                    <a href="<?= base_url('uploads/partners/' . $ticket->form_mou) ?>">
-                                                        <div class="card text-center" style="height: 150px; width: 300px" data-toggle="tooltip" title="<?= $ticket->form_mou ?>">
-                                                            <i class="fa fa-file fa-5x"></i>
-                                                            <!-- <span class="small"><?= $ticket->form_mou ?></span> -->
-                                                        </div>
-                                                    </a>
-                                                <?php } ?>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
+                                        </tbody>
+                                    </table>
                                     <hr>
                                 </div>
                                 <div class="col-md-12">

@@ -10,13 +10,11 @@
         {
             parent::__construct();
 
-            //Jika CMS login maka memunculkan data berdasarkan `id_user`
-            if ($this->fungsi->user_login()->level == 1) {
-                $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
-            }
             //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
-            else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+            if ($this->fungsi->user_login()->level == 1 || $this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
                 $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
+            } else if ($this->fungsi->user_login()->level == 4) {
+                $this->where = "status = 'lengkap' AND tickets.status >= 2";
             } else {
                 $this->where = "id_partner IS NOT NULL";
             }
@@ -37,7 +35,8 @@
             if (!$this->upload->do_upload($attachment)) {
                 return $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
             } else {
-                return $this->upload->data('file_name');
+                $string = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y H:i:s')];
+                return implode(",", $string);
             }
         }
 
@@ -499,8 +498,8 @@
                     // File upload
                     if ($this->upload->do_upload('file')) {
                         // Get data about the file
-                        $uploadData = $this->upload->data();
-                        $filename = $uploadData['file_name'];
+                        $uploadData = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y H:i:s')];
+                        $filename = implode(",", $uploadData);
 
 
                         // Initialize array
@@ -515,13 +514,13 @@
             //Mengambil nama file lampiran tambahan yang ada
             $lampiran_tambahan = $this->partner_model->get($where)->row()->lampiran_tambahan;
             //Konversi nama file dari array ke string
-            $comma = implode(",", $lampiran_arr);
+            $separator = implode("|", $lampiran_arr);
             //Jika sudah pernah melampirkan tambahan, maka append nama file di database
             if ($lampiran_tambahan) {
-                $data_partner['lampiran_tambahan'] = $lampiran_tambahan . "," . $comma;
+                $data_partner['lampiran_tambahan'] = $lampiran_tambahan . "|" . $separator;
                 $this->partner_model->update($data_partner, $where);
             } else {
-                $data_partner['lampiran_tambahan'] = $comma;
+                $data_partner['lampiran_tambahan'] = $separator;
                 $this->partner_model->update($data_partner, $where);
             }
 
@@ -632,6 +631,22 @@
             $nama_usaha = str_replace(" ", "_", $data->nama_usaha);
             $filename = $nama_usaha . "_$data->id_partner.zip";
             $this->zip->download($filename);
+        }
+
+        public function delete_lampiran($id, $data_lampiran, $key = NULL)
+        {
+            if ($key != NULL) {
+                $get = $this->partner_model->get(['partners_full.id_partner' => $id])->row();
+                $lampiran_tambahan = explode('|', $get->lampiran_tambahan);
+                unset($lampiran_tambahan[$key]);
+                $data = implode("|", $lampiran_tambahan);
+            } else {
+                $data = NULL;
+            }
+            $this->partner_model->update([$data_lampiran => $data], ['id_partner' => $id]);
+
+            $this->session->set_flashdata("alert", "<div class='alert alert-success' role='alert'>Data Lampiran berhasil dihapus</div>");
+            redirect('partner/detail/' . $id);
         }
 
         public function partner_check()

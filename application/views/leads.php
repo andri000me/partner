@@ -50,6 +50,7 @@
                                         <th></th>
                                     <?php } ?>
                                     <th>ID</th>
+                                    <th>Tanggal Diubah</th>
                                     <th>Nama</th>
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
@@ -65,6 +66,7 @@
                                             <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
                                         <?php } ?>
                                         <td><?= $leads->id_leads ?></td>
+                                        <td><?= $leads->tanggal_diubah ?></td>
                                         <td>
                                             <?= $leads->nama_konsumen ?>
                                         </td>
@@ -98,6 +100,8 @@
                             <thead>
                                 <tr>
                                     <th></th>
+                                    <th>ID</th>
+                                    <th>Tanggal Diubah</th>
                                     <th>Nama</th>
                                     <th>Nomor KTP</th>
                                     <th>Follow Up By</th>
@@ -110,6 +114,13 @@
                                 <?php foreach ($sudah_funding->result() as $leads) { ?>
                                     <tr>
                                         <td><input class="data-key" type="checkbox" value="<?= $leads->id_leads ?>"></td>
+                                        <td>
+                                            <?= $leads->id_leads ?>
+                                        </td>
+                                        <td>
+                                            <?= $leads->nama_konsumen ?>
+                                        </td>
+                                        <td><?= $leads->tanggal_diubah ?></td>
                                         <td>
                                             <?= $leads->nama_konsumen ?>
                                         </td>

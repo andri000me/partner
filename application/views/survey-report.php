@@ -45,6 +45,7 @@
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
                                     <th>Nama Konsumen</th>
                                     <th>Cross Branch</th>
                                     <th>Cabang</th>
@@ -62,6 +63,9 @@
                                     <tr>
                                         <td>
                                             <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_konsumen ?>
@@ -121,9 +125,9 @@
                                         <td style="white-space: nowrap;">
                                             <center>
                                                 <?php if ($this->fungsi->user_login()->level >= 3) { ?>
-                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
                                                 <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
@@ -139,6 +143,7 @@
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
                                     <th>Nama Konsumen</th>
                                     <th>Cross Branch</th>
                                     <th>Cabang</th>
@@ -156,6 +161,9 @@
                                     <tr>
                                         <td>
                                             <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_konsumen ?>
@@ -213,9 +221,9 @@
                                         <td style="white-space: nowrap;">
                                             <center>
                                                 <?php if ($this->fungsi->user_login()->level >= 3) { ?>
-                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
                                                 <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
@@ -231,7 +239,9 @@
                             <thead>
                                 <tr>
                                     <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
                                     <th>Leads ID</th>
+                                    <th>Status Kontrak</th>
                                     <th>Nama Konsumen</th>
                                     <th>Cross Branch</th>
                                     <th>Cabang</th>
@@ -250,8 +260,18 @@
                                         <td>
                                             <?= $fs_konsumen->id ?>
                                         </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
+                                        </td>
                                         <td>
                                             <input type="text" class="form-control leads_id" data-id="<?= $fs_konsumen->id ?>" value="<?= $fs_konsumen->leads_id ?>">
+                                        </td>
+                                        <td>
+                                            <select class="form-control text-size border status_kontrak" data-id="<?= $fs_konsumen->id ?>">
+                                                <option selected value="">Pilih Status Kontrak</option>
+                                                <option <?= $fs_konsumen->status_kontrak == 'Live' ? 'selected' : '' ?> value="Live">Live</option>
+                                                <option <?= $fs_konsumen->status_kontrak == 'Reject' ? 'selected' : '' ?> value="Reject">Reject</option>
+                                            </select>
                                         </td>
                                         <td>
                                             <?= $fs_konsumen->nama_konsumen ?>
@@ -312,9 +332,9 @@
                                         <td style="white-space: nowrap;">
                                             <center>
                                                 <?php if ($this->fungsi->user_login()->level >= 3) { ?>
-                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Lihat Data</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
                                                 <?php } else { ?>
-                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius"><b>Isi Data</b></a>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
                                                 <?php } ?>
                                                 <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
                                             </center>
@@ -359,23 +379,31 @@
             // return false;
         });
 
-        $('.is_recommended').on('change', function() {
-            var data = $(this).data('fs');
-            var recommended = $(this).val();
+        $('.status_kontrak').on('change', function() {
+            //ID Leads
+            var id_leads = $(this).data('id');
+            //ID CMS
+            var status_kontrak = $(this).val();
+
+            // alert('assign: ' + assign_cms + ' data id: ' + id_leads);
 
             $.ajax({
                 type: "POST",
-                url: "<?= base_url('fs_konsumen/update_recommendation') ?>",
+                url: "<?= base_url('fs_konsumen/update_status_kontrak') ?>",
                 dataType: "JSON",
                 data: {
-                    data: data,
-                    recommended: recommended
+                    status_kontrak: status_kontrak,
+                    id_leads: id_leads
                 },
                 success: function(res) {
-                    alert('success');
+                    alert(`status kontrak id leads ${id_leads}: ${status_kontrak}`);
+                    // console.log(res);
+
                 }
             });
+            // return false;
         });
+
     });
 </script>
 
@@ -385,6 +413,7 @@
         $("#form-survey-completed").on("blur", ".leads_id", function() {
             var leads_id = $(this).val();
             var id = $(this).data('id');
+            console.log(leads_id + ' ' + id);
             $.ajax({
                 url: '<?= base_url() ?>' + 'fs_konsumen/update_leads_id/',
                 type: 'POST',
@@ -394,6 +423,7 @@
                 },
                 success: function(data) {
                     console.log(data);
+                    $(this).addClass('is-valid')
                 }
             })
         })

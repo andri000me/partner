@@ -254,7 +254,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group form-left">
                                                         <label>Rekening Bank</label>
-                                                        <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement  number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
+                                                        <input type="text" class="form-control text-size <?= form_error('rekening_bank') ? 'is-invalid' : '' ?> placement  number-only" id="rekening_bank" name="rekening_bank" value="<?= $data->rekening_bank ?>" placeholder="04686587658745" minlength="10" maxlength="16">
                                                         <?= form_error('rekening_bank'); ?>
                                                     </div>
                                                 </div>

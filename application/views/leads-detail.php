@@ -787,80 +787,9 @@
         </div>
     </div>
 </div>
-<!-- Modal agent -->
 
-<script>
-    $('.travel, .agent, .jasa, .event, .btn-data, .form, .form-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor')
-        .hide();
-    source_leads();
-    $("#soa").change(function() {
-        source_leads();
-        $('#id_partner').val("");
-        $('#id_agent').val("");
-        $('#nama_vendor').val("").removeAttr("required");
-        $('#nama_event').val("");
-        $('#nama_partner').val("");
-        $('#nama_agent').val("");
-        $('#nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak').val("");
+<script src="<?= base_url('template/assets/js/leads_prospect.js') ?>"></script>
 
-    })
-
-    function source_leads() {
-        if ($('#soa').val() == 'Tour & travel') {
-            $('.travel, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Travel')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.agent, .jasa, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
-                .hide();
-        } else if ($('#soa').val() == 'Penyedia Jasa / Barang') {
-            $('.jasa, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Penyedia Jasa')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_partner').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required', 'required');
-            $('.agent, .travel, .event, .modal-agent, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .vendor, .form-agent')
-                .hide();
-        } else if ($('#soa').val() == 'Agent BA') {
-            $('.vendor, .agent, .form, .agent-form, .btn-data, .form-agent').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant')
-            $('#btn-data').attr('data-target', '#modal-partner')
-            $('#nama_agent').attr('placeholder', 'Pilih Nama Agent')
-            $('#btn-data-agent').attr('data-target', '#modal-agent')
-            $('#nama_agent').attr('required', 'required');
-            $('#nama_partner, #nik_egc, #cabang_egc, #posisi_egc, #referral_konsumen, #nomor_kontrak, #nama_event')
-                .removeAttr('required',
-                    '');
-            $('.travel, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro')
-                .hide();
-        } else if ($('#soa').val() == 'EGC') {
-            $('.nik, .posisi, .cabang, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#nik_egc, #cabang_egc, #posisi_egc').attr('required', 'required');
-            $('#nama_agent, #referral_konsumen, #nomor_kontrak, #nama_event').removeAttr('required', ' ');
-            $('.travel, .agent, .jasa, .event, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent').hide();
-        } else if ($('#soa').val() == 'CGC') {
-            $('.kontrak-ro, .konsumen-ro, .vendor, .form, .btn-data').show();
-            $('#nama_partner').attr('placeholder', 'Pilih Nama Merchant');
-            $('#btn-data').attr('data-target', '#modal-partner');
-            $('#referral_konsumen, #nomor_kontrak').attr('required', 'required');
-            $('#nama_agent, #nik_egc, #cabang_egc, #posisi_egc, #nama_event').removeAttr('required', '');
-            $('.travel, .agent, .jasa, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .form-agent').hide();
-        } else {
-            $('.jasa, .travel, .agent, .form, .event, .nik, .posisi, .cabang, .kontrak-cgc, .konsumen-cgc, .kontrak-ro, .konsumen-ro, .form-agent')
-                .hide();
-            $('#nama_partner, #nama_agent').removeAttr('required', '');
-        }
-    }
-
-    $(".readonly").keydown(function(e) {
-        e.preventDefault();
-    });
-</script>
 
 <script>
     $("table").on('click', '.pilih-partner', function() {

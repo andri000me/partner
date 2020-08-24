@@ -32,7 +32,7 @@ class Agent_model extends CI_Model
 
     public function get($where = NULL, $list = FALSE)
     {
-        $this->db->select('agents.*, tickets.status as status_ticket');
+        $this->db->select('agents.*, tickets.status as status_ticket, DATE_FORMAT(agents.updated_at, "%d %b %y") as tanggal_diubah');
         if ($list == true)
             $this->db->select("branches.*");
         $this->db->from('agents');

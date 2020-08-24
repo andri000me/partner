@@ -479,7 +479,6 @@ class Leads extends CI_Controller
             'id_leads' => $post['id_leads'],
             'id_user' => $this->fungsi->user_login()->id_user
         ];
-
         $this->leads_activity_model->create($leads_activity_model);
 
         //Meng-update antrian tiket untuk data Leads

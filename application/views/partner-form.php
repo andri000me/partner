@@ -256,13 +256,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group form-left">
                                                             <label>Rekening Bank</label>
-                                                            <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="04686587658745" minlength="10" maxlength="16">
+                                                            <input type="text" class="form-control placement text-size number-only" id="rekening_bank" name="rekening_bank" value="<?= set_value('rekening_bank') ?>" placeholder="04686587658745" minlength="10" maxlength="16">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group form-right">
                                                             <label>Nama Bank</label>
-                                                            <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= set_value('rekening_bank') ?>" required placeholder="Bank Mandiri">
+                                                            <input type="text" class="form-control text-size" id="nama_bank" name="nama_bank" value="<?= set_value('nama_bank') ?>" placeholder="Bank Mandiri">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -270,13 +270,13 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group form-left">
                                                             <label>Cabang Bank</label>
-                                                            <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= set_value('cabang_bank') ?>" required placeholder="Cabang Karawaci">
+                                                            <input type="text" class="form-control text-size" id="cabang_bank" name="cabang_bank" value="<?= set_value('cabang_bank') ?>" placeholder="Cabang Karawaci">
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group form-right">
                                                             <label>Atas Nama</label>
-                                                            <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= set_value('atas_nama') ?>" required placeholder="Anton Hoed">
+                                                            <input type="text" class="form-control text-size" id="atas_nama" name="atas_nama" value="<?= set_value('atas_nama') ?>" placeholder="Anton Hoed">
                                                         </div>
                                                     </div>
                                                 </div>

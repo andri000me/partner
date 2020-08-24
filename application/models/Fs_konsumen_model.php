@@ -24,7 +24,7 @@ class Fs_konsumen_model extends CI_Model
 
     public function get($where = NULL)
     {
-        $this->db->select("*, fs_konsumen.id_leads as id, tickets.status as status_approval, users.id_user as user_id, leads_full.produk as kategori_produk");
+        $this->db->select("*, fs_konsumen.id_leads as id, tickets.status as status_approval, users.id_user as user_id, leads_full.produk as kategori_produk, DATE_FORMAT(leads_full.updated_at, '%d %b %y') as tanggal_diubah");
         $this->db->from('fs_konsumen');
         $this->db->join('leads_full', 'leads_full.id_leads = fs_konsumen.id_leads', 'inner');
         $this->db->join('branches', 'branches.id_branch = leads_full.id_branch', 'inner');

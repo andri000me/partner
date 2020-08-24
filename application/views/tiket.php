@@ -71,7 +71,7 @@
                                         </td>
                                         <td>
                                             <?php if ($ticket->status_approval == 0) { ?>
-                                                <b class="text-secondary">Head Approval/b>
+                                                <b class="text-secondary">Head Approval</b>
                                             <?php } else if ($ticket->status_approval == 1) { ?>
                                                 <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($ticket->status_approval == 2) { ?>
@@ -139,7 +139,7 @@
                                         </td>
                                         <td>
                                             <?php if ($ticket->status_approval == 0) { ?>
-                                                <b class="text-secondary">Head Approval/b>
+                                                <b class="text-secondary">Head Approval</b>
                                             <?php } else if ($ticket->status_approval == 1) { ?>
                                                 <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($ticket->status_approval == 2) { ?>
@@ -207,7 +207,7 @@
                                         </td>
                                         <td>
                                             <?php if ($ticket->status_approval == 0) { ?>
-                                                <b class="text-secondary">Head Approval/b>
+                                                <b class="text-secondary">Head Approval</b>
                                             <?php } else if ($ticket->status_approval == 1) { ?>
                                                 <b class="text-secondary">Manager Approval</b>
                                             <?php } else if ($ticket->status_approval == 2) { ?>

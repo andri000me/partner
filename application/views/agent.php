@@ -38,7 +38,7 @@
                             <th>
                                 ID Agent
                             </th>
-                            <th>Tanggal Dibuat</th>
+                            <th>Tanggal Diubah</th>
                             <th>
                                 Nama Agent
                             </th>
@@ -64,7 +64,7 @@
                                 <td>
                                     <?= $agent->id_agent ?>
                                 </td>
-                                <td><?= $agent->tanggal_dibuat ?></td>
+                                <td><?= $agent->tanggal_diubah ?></td>
                                 <td>
                                     <?= $agent->nama_lengkap ?>
                                 </td>
@@ -90,9 +90,9 @@
                                         <b class="text-secondary">HO Approval</b>
                                     <?php } else if ($agent->status_ticket == 1) { ?>
                                         <b class="text-secondary">Manager Approval</b>
-                                    <?php } else if ($agent->status_ticket == 0) { ?>
+                                    <?php } else if ($agent->status_ticket == 0 && $agent->status == 'lengkap') { ?>
                                         <b class="text-secondary">Head Approval</b>
-                                    <?php } else if ($agent->status_ticket == NULL) { ?>
+                                    <?php } else if ($agent->status_ticket == NULL || $agent->status_ticket == '') { ?>
                                         <b class="text-secondary">Draft</b>
                                     <?php } ?>
                                 </td>

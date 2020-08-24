@@ -39,7 +39,7 @@
                                 <th></th>
                             <?php } ?>
                             <th>ID Partner</th>
-                            <th>Tanggal dibuat</th>
+                            <th>Tanggal Diubah</th>
                             <th>Nama Usaha</th>
                             <th>Produk</th>
                             <th>Kerjasama</th>
@@ -57,7 +57,7 @@
                                 <td>
                                     <?= $partner->id_partner ?>
                                 </td>
-                                <td><?= $partner->tanggal_dibuat ?></td>
+                                <td><?= $partner->tanggal_diubah ?></td>
                                 <td>
                                     <?= $partner->nama_usaha ?>
                                 </td>
@@ -87,7 +87,7 @@
                                         <b class="text-secondary">HO Approval</b>
                                     <?php } else if ($partner->status_ticket == 1) { ?>
                                         <b class="text-secondary">Manager Approval</b>
-                                    <?php } else if ($partner->status_ticket == 0) { ?>
+                                    <?php } else if ($partner->status_ticket == 0 && $partner->status == 'lengkap') { ?>
                                         <b class="text-secondary">Head Approval</b>
                                     <?php } else if ($partner->status_ticket == '' || $partner->status_ticket == null) { ?>
                                         <b class="text-secondary">Draft</b>

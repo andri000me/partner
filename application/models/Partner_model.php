@@ -24,7 +24,7 @@ class Partner_model extends CI_Model
 
     public function get($where = NULL, $list = FALSE)
     {
-        $this->db->select("partners_full.*, tickets.status as status_ticket, DATE_FORMAT(partners_full.created_at, '%d-%c-%y') as tanggal_dibuat,
+        $this->db->select("partners_full.*, IF(tickets.status = NULL, '-1', tickets.status) as status_ticket, DATE_FORMAT(partners_full.updated_at, '%d %b %y') as tanggal_diubah
         ");
         if ($list == true) $this->db->select("branches.*");
         $this->db->from('partners_full');

@@ -66,7 +66,9 @@ class Maintain_partner extends CI_Controller
         if (!$this->upload->do_upload('photo_activity')) {
             $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
         } else {
-            $data['photo_activity'] = $this->upload->data('file_name');
+            // $data['photo_activity'] = $this->upload->data('file_name');
+            $string = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y H:i:s')];
+            $data['photo_activity'] = implode(",", $string);
         }
 
         $this->maintain_partner_model->create($data);

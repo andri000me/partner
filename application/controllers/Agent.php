@@ -9,13 +9,11 @@ class Agent extends CI_Controller
     {
         parent::__construct();
 
-        //Jika CMS login maka memunculkan data berdasarkan `id_user`
-        if ($this->fungsi->user_login()->level == 1) {
-            $this->where = ['agents.id_user' => $this->fungsi->user_login()->id_user];
-        }
         //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
-        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+        if ($this->fungsi->user_login()->level == 1 || $this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = ['agents.id_branch' => $this->fungsi->user_login()->id_branch];
+        } else if ($this->fungsi->user_login()->level == 45) {
+            $this->where = "agents.status = 'lengkap' AND tickets.status > 2";
         } else {
             $this->where = "agents.status = 'lengkap'";
         }
@@ -218,7 +216,7 @@ class Agent extends CI_Controller
             'activity' => 'Perubahan pada data Agent',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_agent' => $post['id_agent'],
-            'id_user' => $post['id_user']
+            'id_user' => $this->fungsi->user_login()->id_user
         ];
 
         $this->agent_activity_model->create($agent_activity_model);
@@ -245,7 +243,7 @@ class Agent extends CI_Controller
             'activity' => 'Perubahan pada data Agent',
             'date_activity' => date('Y-m-d H:i:s'),
             'id_agent' => $post['id_agent'],
-            'id_user' => $post['id_user']
+            'id_user' => $this->fungsi->user_login()->id_user
         ];
 
         $this->agent_activity_model->create($agent_activity_model);

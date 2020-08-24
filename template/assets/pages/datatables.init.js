@@ -172,7 +172,7 @@ $(document).ready(function () {
 			search: "",
 			searchPlaceholder: "Cari Data Disini",
 		},
-		pageLength: 25,
+		pageLength: 20,
 	});
 });
 
