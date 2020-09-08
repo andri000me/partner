@@ -293,8 +293,11 @@ class Leads extends CI_Controller
         //Menambah antrian tiket untuk data leads
         if (isset($post['process'])) {
             //Menambah ke antrian tiket
-            $id_ticket = $this->tiket->tambah_tiket('id_leads', $id);
+            // $id_ticket = $this->tiket->tambah_tiket('id_leads', $id);
+            $id_ticket = $this->tiket->tambah_tiket('id_leads', $id, -1);
 
+            if ($post['cross_branch'] == 'Ya') {
+            }
             //Notifikasi untuk cross branch
             $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', $post['cabang_cross']);
 
@@ -370,7 +373,8 @@ class Leads extends CI_Controller
             $data['status'] = 'lengkap';
 
             //Menambah antrian ke tiket
-            $id_ticket = $this->tiket->tambah_tiket('id_leads', $post['id_leads']);
+            // $id_ticket = $this->tiket->tambah_tiket('id_leads', $post['id_leads']);
+            $id_ticket = $this->tiket->tambah_tiket('id_leads', $post['id_leads'], -1);
 
             //Notifikasi untuk cross branch
             $this->notifikasi->cross_branch($id_ticket, 'Cross Branch oleh', $post['cabang_cross']);
@@ -422,7 +426,6 @@ class Leads extends CI_Controller
     public function update_ajax()
     {
         $post = $this->input->post(NULL, TRUE);
-
 
         $data = $this->submitted_leads_prospect();
 
@@ -482,6 +485,8 @@ class Leads extends CI_Controller
         $this->session->set_flashdata("alert", "<div class='alert alert-success'>Data Leads Database berhasil diupdate.</div>");
 
         redirect($post['redirect']);
+
+        // echo json_encode($data);
     }
 
     public function delete()

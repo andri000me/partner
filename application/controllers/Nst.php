@@ -6,35 +6,24 @@ class Nst extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-
-        //Jika CMS login maka memunculkan data berdasarkan `id_user`
-        if ($this->fungsi->user_login()->level == 1) {
-            $this->where = "id_user = " . $this->fungsi->user_login()->id_user;
-        }
-        //Jika Sharia/Manager login maka memunculkan data berdasarkan data di cabangya.
-        else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            $this->where = "id_branch = " . $this->fungsi->user_login()->id_branch;
-        } else {
-            $this->where = "IS NOT NULL";
-        }
-
         check_not_login();
     }
 
     public function index()
     {
-        $data = [
-            'data' => $this->nst_model->get("nst." . $this->where)
-        ];
+        if ($this->fungsi->user_login()->level == 1)
+            $data['data'] =  $this->nst_model->get("nst.id_user = " . $this->fungsi->user_login()->id_user);
+        if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3)
+            $data['data'] =  $this->nst_model->get("nst.id_branch = " . $this->fungsi->user_login()->id_branch);
+        if ($this->fungsi->user_login()->level >= 4)
+            $data['data'] =  $this->nst_model->get();
+
         $this->template->load('template/index', 'nst', $data);
     }
 
     public function create()
     {
-
-        $data = [
-            'data' => $this->fs_konsumen_model->get("tickets.status = 5 AND leads_full.$this->where")
-        ];
+        $data['data'] = $this->fs_konsumen_model->get("tickets.status = 6 AND status_kontrak = 'Live' AND fs_konsumen.leads_id IS NOT NULL");
         $this->template->load('template/index', 'nst-form', $data);
     }
 
@@ -67,8 +56,6 @@ class Nst extends CI_Controller
                 'id_user'       => $this->fungsi->user_login()->id_user,
                 'id_branch'     => $this->fungsi->user_login()->id_branch
             ];
-
-            $post = $this->input->post(NULL, TRUE);
 
             $lampiran_arr = [];
 
@@ -115,7 +102,10 @@ class Nst extends CI_Controller
             $id = $this->nst_model->create($data_nst);
 
             //Menambah ke antrian tiket
-            $this->tiket->tambah_tiket('id_nst', $id);
+            $id_ticket = $this->tiket->tambah_tiket('id_nst', $id);
+
+            //Membuat notifikasi tiket baru untuk Admin
+            $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
 
             //Memberi pesan berhasil data menyimpan data mapping
             $this->session->set_flashdata("berhasil_simpan", "Data NST berhasil disimpan. <a href='#'>Lihat Data</a>");
@@ -123,7 +113,7 @@ class Nst extends CI_Controller
             redirect('nst');
         } else {
             $data = [
-                'data' => $this->fs_konsumen_model->get("tickets.status = 5")
+                'data' => $this->fs_konsumen_model->get("tickets.status = 6 AND status_kontrak = 'Live' AND fs_konsumen.leads_id IS NOT NULL")
             ];
             $this->template->load('template/index', 'nst-form', $data);
         }

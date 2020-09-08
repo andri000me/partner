@@ -37,7 +37,7 @@
                             <th>Tanggal Diubah</th>
                             <th>Nama</th>
                             <th>Nomor KTP</th>
-                            <th>Follow Up By</th>
+                            <th>Activity Marketing</th>
                             <th>Requester</th>
                             <th>Cabang</th>
                             <th> </th>
@@ -58,7 +58,7 @@
                                     <?= $leads->no_ktp ?>
                                 </td>
                                 <td>
-                                    <?= $leads->follow_up_by ?>
+                                    <?= $leads->activity_marketing ?>
                                 </td>
                                 <td>
                                     <?= $leads->name ?>

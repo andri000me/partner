@@ -430,7 +430,6 @@
                                         <select class="form-control text-size" name="cabang_cross" id="cabang_cross">
                                             <option selected disabled value="">Pilih Cabang</option>
                                             <?php foreach ($branches->result() as $branch) { ?>
-                                                <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch) continue; ?>
                                                 <option <?= $data->cabang_cross == $branch->id_branch ? 'selected' : '' ?> value="<?= $branch->id_branch ?>"><?= $branch->nama_cabang ?></option>
                                             <?php } ?>
                                         </select>

@@ -3,8 +3,7 @@
 
 <div class="row">
 
-
-    <div class="col-md-8">
+    <div class="col-lg-8">
         <div class="row">
             <div class="col-sm-12">
                 <div class="page-title-box card-margin-5">
@@ -20,7 +19,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="alert alert-primary font-size gradient ml-3 mr-5 mb-5" role="alert">
+                <div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
                     <div class="topcaption">
                         <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
                                 menginput data</b></p>
@@ -32,7 +31,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <ul class="nav nav-tabs nav-tabs-custom card-margin-survey" role="tablist">
@@ -103,8 +101,8 @@
                             <input type="hidden" id="branch_login" value="<?= $this->fungsi->user_login()->id_branch ?>">
                             <!-- id user login saat ini -->
                             <input type="hidden" id="user_login" value="<?= $this->fungsi->user_login()->id_user ?>">
-                            <!-- Cabang Assignment -->
-                            <input type="hidden" id="cabang_cross" value="<?= $data->cabang_cross ?>">
+                            <!-- Assign To -->
+                            <input type="hidden" id="assign_cms" value="<?= $data->assign_cms ?>">
                             <!-- ID Ticket -->
                             <input type="hidden" id="id_ticket" value="<?= $data->id_ticket ?>">
                             <!-- Status Approval -->
@@ -551,8 +549,6 @@
                                                     <option <?= $data->purpose_jenis_barang == 'Jasa Tukang' ? 'selected' : '' ?> value="Jasa Tukang">Jasa Tukang
                                                     </option>
                                                     <option <?= $data->purpose_jenis_barang == 'Renovasi' ? 'selected' : '' ?> value="Renovasi">Renovasi</option>
-                                                    <option <?= $data->purpose_jenis_barang == 'Sewa Rumah' ? 'selected' : '' ?> value="Sewa Rumah">Sewa Rumah</option>
-                                                    <option <?= $data->purpose_jenis_barang == 'Sewa Ruko/Gudang' ? 'selected' : '' ?> value="Sewa Ruko/Gudang">Sewa Ruko/Gudang</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -3194,34 +3190,21 @@
                             </div>
 
                             <div class="tab-pane p-3" id="comment-tab" role="tabpanel">
-                                <div class="box overflow-auto">
-                                    <?php if ($comments->num_rows() > 0) { ?>
-                                        <?php foreach ($comments->result() as $comment) { ?>
-                                            <div class="media mb-1">
-                                                <a class="image-popup-vertical-fit" href="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" title="Foto Profile.">
-                                                    <img class="d-flex align-self-start rounded mr-3" alt="" src="<?= $comment->foto != '' ? base_url('uploads/foto_profil/' . $comment->foto) : base_url('assets/img/profile-pic.jpg')  ?>" height="64">
-                                                </a>
-                                                <div class="media-body b">
-                                                    <p class="mb-0"><b><?= $comment->name ?></b></p>
-                                                    <p class="text-size mt-0 mb-0"><?= $comment->tanggal ?></p>
-                                                    <p class="text-size mt-0"><?= $comment->comment ?></p>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                    <?php } else { ?>
-                                        <h4 class="text-muted m-b-10 text-size">Tidak Ada Komentar</h4>
-                                    <?php } ?>
-                                </div>
-                                <form id="form-komentar" action="<?= base_url('comment/save') ?>" method="POST">
-                                    <!-- ID Ticket -->
-                                    <input type="hidden" name="ticket" value="<?= $ticket->id_ticket ?>">
-                                    <input type="hidden" name="uri_string" value="<?= uri_string() ?>">
-                                    <div class="form-group">
-                                        <label>Comment</label>
-                                        <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
+                                <div class="box">
+                                    <div class="media mb-1">
+                                        <a class="image-popup-vertical-fit" href="" title="Foto Profile.">
+                                            <img class="d-flex align-self-start rounded mr-3" alt="" src="" height="64">
+                                        </a>
+                                        <div id="row-comment">
+
+                                        </div>
                                     </div>
-                                    <button class="btn btn-primary waves-effect waves-light float-right btn-width" type="submit" id="submitKomentar"><b>Kirim</b></button>
-                                </form>
+                                </div>
+                                <div class="form-group">
+                                    <label>Comment</label>
+                                    <textarea class="form-control" name="comment" id="comment" cols="30" rows="10" required placeholder="tulis comment disini" style="height:80px;"></textarea>
+                                </div>
+                                <button class="btn btn-primary waves-effect waves-light float-right btn-width" type="button" id="submitKomentar"><b>Kirim</b></button>
                             </div>
                         </div>
                     </div>
@@ -3229,7 +3212,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Modal partner -->
@@ -3535,6 +3517,7 @@
 
         var conf = confirm('Apakah Anda yakin ingin mengembalikan data form survey ini ke CMS?');
 
+
         if (conf) {
             // alert('alert')
             $.ajax({
@@ -3580,22 +3563,15 @@
 <script>
     var level = $("#level").val();
 
-    //ID Branch penginput cabang
     var id_branch = $("#id_branch").val();
-    //ID branch cross, jika cross branch
     var cabang_cross = $("#cabang_cross").val();
-    //ID branch, user yang saat ini login
     var branch_login = $("#branch_login").val();
-    //ID user user yang saat ini login
     var user_login = $("#user_login").val();
-    //Status Approval tiket, form survey saat ini
-    var status_approval = parseInt($("#status_approval").val());
-    //ID cross branch
-    var cabang_cross = $("#cabang_cross").val();
+    var status_approval = $("#status_approval").val();
 
-    if ((level == '3' && id_branch == branch_login) || (branch_login == cabang_cross) || level == '4' || (level == '5' && parseInt(status_approval) < 5) || status_approval == 6) {
+    // alert(id_branch + ' ' + cabang_cross)
+    if ((level == '3' && id_branch == branch_login) || level == '4' || (level == '5' && status_approval == '5') || status_approval == '6') {
         $("input, select, textarea, button[type='submit'], button[data-toggle='modal']").attr('disabled', 'disabled');
-        $("#form-komentar input, #form-komentar textarea, #form-komentar button").removeAttr('disabled');
         if (level == '4' || level == '5') {
             $("#id_leads").removeAttr('disabled');
             $(".scoring_ho input, .scoring_ho select, .scoring_ho textarea, .scoring_ho").removeAttr('disabled');
@@ -3723,59 +3699,69 @@
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
 
-    console.log({
-        id_ticket: parseInt($("#id_ticket").removeAttr('disabled').val()),
-        id_user: $("#user_login").removeAttr('disabled').val(),
-        comment: $("#comment").removeAttr('disabled').val(),
-        created_at: dateTime
-    });
-
-    const sendComment = () => {
+    function sendComment() {
         database.ref('comments/').push({
-            id_ticket: parseInt($("#id_ticket").removeAttr('disabled').val()),
-            id_user: $("#user_login").removeAttr('disabled').val(),
-            comment: $("#comment").removeAttr('disabled').val(),
+            id_ticket: parseInt($("#id_ticket").val()),
+            id_user: $("#user_login").val(),
+            comment: $("#comment").val(),
             created_at: dateTime
         })
 
         $("#comment").val("");
     }
 
+
+
     const readComment = (snapshot) => {
         var id_user = '';
         var nama_user = '';
         var _content = '';
 
-        snapshot.forEach(child => {
-            $.ajax({
-                url: '<?= base_url() ?>' + 'comment/realTimeComment/',
-                type: 'post',
-                data: {
-                    id_user: child.val().id_user
-                },
-                success: function(data) {
-                    _content += `<div class="media-body b comment-box">
+        snapshot.forEach(child => id_user = child.val().id_user)
+        console.log(id_user);
+
+        const commentResult = (data) => {
+            // database.ref('/comments').on('value', snapshot => {
+            snapshot.forEach(function(child) {
+                _content += `<div class="media-body b comment-box">
                         <p class="mb-0 d-inline-block"><b>${data}</b>
+                            <div class="dropdown mo-mb-2 ml-4 d-inline-block hide-dropdown">
+                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                </div>
+                            </div>
                         </p>
                         <p class="text-size mt-0 mb-0">${child.val().created_at}</p>
                         <p class="text-size mt-0">${child.val().comment}</p>
                     </div>`
-                    $("#row-comment").html(_content);
-                }
             })
-        })
-        // $("div#row-comment").scrollTop(768);
-        $("div#row-comment").scrollTop(3000)
+            $("#row-comment").html(_content);
+            // });
+        }
 
+        $.ajax({
+            url: '<?= base_url() ?>' + 'comment/realTimeComment/',
+            type: 'post',
+            data: {
+                id_user: id_user
+            },
+            success: function(data) {
+                commentResult(data)
+            }
+        })
     }
 
     const showErr = err => {
         console.log(err);
     }
 
-    database.ref('/comments').orderByChild("id_ticket").equalTo(parseInt($("#id_ticket").removeAttr('disabled').val())).on('value', readComment, showErr);
+    database.ref('/comments').orderByChild("id_ticket").equalTo(parseInt($("#id_ticket").val())).on('value', readComment, showErr);
 
-    // $("#submitKomentar").click(function() {
-    //     sendComment();
-    // })
+    $("#submitKomentar").click(function() {
+        sendComment();
+    })
 </script>

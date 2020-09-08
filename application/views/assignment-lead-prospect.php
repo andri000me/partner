@@ -19,15 +19,21 @@
                 <table id="datatable-buttons" class="table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                     <thead>
                         <tr>
+                            <th>ID</th>
+                            <th>Tanggal Diubah</th>
                             <th>Nama</th>
                             <th>Nomor KTP</th>
-                            <th>Follow Up By</th>
+                            <th>Activity Marketing</th>
+                            <th>Pengirim</th>
+                            <th>Cabang Asal</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($data->result() as $leads) { ?>
                             <tr>
+                                <td><?= $leads->id_leads ?></td>
+                                <td><?= $leads->tanggal_diubah ?></td>
                                 <td>
                                     <?= $leads->nama_konsumen ?>
                                 </td>
@@ -35,10 +41,16 @@
                                     <?= $leads->no_ktp ?>
                                 </td>
                                 <td>
-                                    <?= $leads->follow_up_by ?>
+                                    <?= $leads->activity_marketing ?>
                                 </td>
                                 <td>
-                                    <center><a href="<?= base_url('Leads/detail/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a></center>
+                                    <?= $leads->name ?>
+                                </td>
+                                <td>
+                                    <?= $leads->nama_cabang ?>
+                                </td>
+                                <td>
+                                    <center><a href="<?= base_url('fs_konsumen/create/' . $leads->id_leads) ?>" class="btn btn-primary text-size radius"><b>Detail</b></a></center>
                                 </td>
                             </tr>
                         <?php } ?>

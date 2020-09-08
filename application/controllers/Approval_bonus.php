@@ -40,18 +40,19 @@ class Approval_bonus extends CI_Controller
 
     public function index()
     {
-        $data = [
-            'data' => $this->approval_bonus_model->get("approval_bonuses.id_approval_bonus" . $this->where)
-        ];
+        if ($this->fungsi->user_login()->level == 1)
+            $data['data'] = $this->approval_bonus_model->get("id_user = " . $this->fungsi->user_login()->id_user);
+        if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3)
+            $data['data'] = $this->approval_bonus_model->get("id_branch = " . $this->fungsi->user_login()->id_branch);
+        if ($this->fungsi->user_login()->level > 3)
+            $data['data'] = $this->approval_bonus_model->get();
         $this->template->load('template/index', 'approval-bonus', $data);
     }
 
     public function create()
     {
 
-        $data = [
-            'data' => $this->fs_konsumen_model->get("tickets.status = 5 AND leads_full.$this->where")
-        ];
+        $data['data'] = $this->fs_konsumen_model->get("tickets.status = 6 AND status_kontrak = 'Live' AND fs_konsumen.leads_id IS NOT NULL");
 
         $this->template->load('template/index', 'approval-bonus-form', $data);
     }
@@ -62,7 +63,7 @@ class Approval_bonus extends CI_Controller
 
         $data = [
             'data' => $this->approval_bonus_model->get($where)->row(),
-            'fs_konsumen' => $this->fs_konsumen_model->get("tickets.status = 5 AND leads_full.id_leads$this->where"),
+            'fs_konsumen' => $this->fs_konsumen_model->get("tickets.status = 6 AND status_kontrak = 'Live' AND fs_konsumen.leads_id IS NOT NULL"),
             'ticket' => $this->ticket_model->get($where)->row()
         ];
 
@@ -94,70 +95,67 @@ class Approval_bonus extends CI_Controller
                 'nama_bank'             => $post['nama_bank'],
                 'npwp'                  => $post['npwp'],
 
-                'created_at'          => date('Y-m-d H:i:s'),
-                'updated_at'         => date('Y-m-d H:i:s'),
+                'created_at'            => date('Y-m-d H:i:s'),
+                'updated_at'            => date('Y-m-d H:i:s'),
 
                 'id_user'               => $this->fungsi->user_login()->id_user,
                 'id_branch'             => $this->fungsi->user_login()->id_branch
             ];
 
-            //Konfigurasi Upload
-            $config['upload_path']          = './uploads/approval_bonuses';
-            $config['allowed_types']        = '*';
-            $config['max_size']             = 0;
-            $config['max_width']            = 0;
-            $config['max_height']           = 0;
-            $this->load->library('upload', $config);
+            $lampiran_arr = [];
 
-            if (!$this->upload->do_upload('upload_file')) {
-                $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-            } else {
-                $data['lampiran'] = $this->upload->data('file_name');
+            //Count total file
+            $countfiles = count($_FILES['tambah_lampiran']['name']);
+
+            //Looping all files
+            for ($i = 0; $i < $countfiles; $i++) {
+                if (!empty($_FILES['tambah_lampiran']['name'][$i])) {
+                    $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
+                    $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
+                    $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
+                    $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
+                    $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
+
+                    //Konfigurasi Upload
+                    $config['upload_path']         = './uploads/approval_bonuses';
+                    $config['allowed_types']        = '*';
+                    $config['max_size']             = 0;
+                    $config['max_width']            = 0;
+                    $config['max_height']           = 0;
+
+                    // Load upload library
+                    $this->load->library('upload', $config);
+
+                    // File upload
+                    if ($this->upload->do_upload('file')) {
+                        // Get data about the file
+                        $uploadData = $this->upload->data();
+                        $filename = $uploadData['file_name'];
+
+                        // Initialize array
+                        $data['filenames'][] = $filename;
+
+                        $lampiran_arr[] = $filename;
+                    }
+                }
             }
+
+            //Konversi nama file dari array ke string
+            $comma = implode(",", $lampiran_arr);
+            $data['upload_file'] = $comma;
 
             $id = $this->approval_bonus_model->create($data);
 
-            //Menambah antrian tiket untuk data Agent
-            $has_superior = $this->fungsi->user_login()->has_superior;
-            $ticket = [
-                'status'                => $has_superior == 0 ? 2 : ($has_superior == 1 ? 1 : ($has_superior == 2 ? 0 : 2)),
-                'date_pending'          => date('Y-m-d H:i:s'),
-                'date_created'          => date('Y-m-d H:i:s'),
-                'date_modified'         => date('Y-m-d H:i:s'),
-                'id_approval_bonus'     => $id,
-
-                'id_user'               => $this->fungsi->user_login()->id_user,
-                'id_branch'             => $this->fungsi->user_login()->id_branch
-            ];
-            $id_ticket = $this->ticket_model->create($ticket);
+            //Menambah antrian tiket untuk data Approval Bonus
+            //Menambah ke antrian tiket
+            $id_ticket = $this->tiket->tambah_tiket('id_approval_bonus', $id, 2);
 
             //Membuat notifikasi tiket baru untuk Admin
-            $notification = $this->notification($id_ticket, 'Tiket Baru');
-            $this->notification_model->create($notification);
+            $this->notifikasi->send($id_ticket, 'Tiket Baru', 46);
 
             redirect('approval_bonus');
         } else {
-            $get_leads =
-                "SELECT *, 
-        leads.leads_id as leads_id_leads,
-        mapping_leads.nama_konsumen as nama_konsumen_leads,
-        mapping_leads.id_branch as id_branch_leads,
-        mapping_leads.produk as produk_leads,
-        mapping_leads.id_user as id_user_leads,
-        mapping_leads.nama_konsumen as nama_konsumen_leads,
-        leads.created_at as created_at_leads
-        FROM leads
-        INNER JOIN mapping_leads ON mapping_leads.id_mapping_leads = leads.id_mapping_leads 
-        INNER JOIN users ON users.id_user = mapping_leads.id_user 
-        INNER JOIN branches ON branches.id_branch = mapping_leads.id_branch
-        LEFT JOIN approval_bonuses ON approval_bonuses.leads_id = leads.leads_id
-        WHERE users.id_user = " . $this->fungsi->user_login()->id_user . "
-        AND approval_bonuses.leads_id IS NULL
-        AND mapping_leads.id_branch = " . $this->fungsi->user_login()->id_branch;
-
-            $data = [
-                'leads' => $this->leads_model->query($get_leads)
-            ];
+            $data['data'] = $this->fs_konsumen_model->get("tickets.status = 6 AND status_kontrak = 'Live' AND fs_konsumen.leads_id IS NOT NULL");
 
             $this->template->load('template/index', 'approval-bonus-form', $data);
         }
@@ -189,21 +187,57 @@ class Approval_bonus extends CI_Controller
             // 'id_branch'             => $this->fungsi->user_login()->id_branch
         ];
 
-        //Konfigurasi Upload
-        $config['upload_path']          = './uploads/approval_bonuses';
-        $config['allowed_types']        = '*';
-        $config['max_size']             = 0;
-        $config['max_width']            = 0;
-        $config['max_height']           = 0;
-        $this->load->library('upload', $config);
+        $lampiran_arr = [];
 
-        if (!$this->upload->do_upload('upload_file')) {
-            $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
-        } else {
-            $data['lampiran'] = $this->upload->data('file_name');
+        //Count total file
+        $countfiles = count($_FILES['tambah_lampiran']['name']);
+
+        //Looping all files
+        for ($i = 0; $i < $countfiles; $i++) {
+            if (!empty($_FILES['tambah_lampiran']['name'][$i])) {
+                $_FILES['file']['name'] = $_FILES['tambah_lampiran']['name'][$i];
+                $_FILES['file']['type'] = $_FILES['tambah_lampiran']['type'][$i];
+                $_FILES['file']['tmp_name'] = $_FILES['tambah_lampiran']['tmp_name'][$i];
+                $_FILES['file']['error'] = $_FILES['tambah_lampiran']['error'][$i];
+                $_FILES['file']['size'] = $_FILES['tambah_lampiran']['size'][$i];
+
+                //Konfigurasi Upload
+                $config['upload_path']         = './uploads/approval_bonuses';
+                $config['allowed_types']        = '*';
+                $config['max_size']             = 0;
+                $config['max_width']            = 0;
+                $config['max_height']           = 0;
+
+                // Load upload library
+                $this->load->library('upload', $config);
+
+                // File upload
+                if ($this->upload->do_upload('file')) {
+                    // Get data about the file
+                    $uploadData = $this->upload->data();
+                    $filename = $uploadData['file_name'];
+
+                    // Initialize array
+                    $data['filenames'][] = $filename;
+
+                    $lampiran_arr[] = $filename;
+                }
+            }
         }
 
         $where = ['leads_id' => $post['leads_id']];
+
+        //Mengambil nama file lampiran tambahan yang ada
+        $upload_file = $this->approval_bonus_model->get($where)->row()->upload_file;
+        //Konversi nama file dari array ke string
+        $comma = implode(",", $lampiran_arr);
+        //Jika sudah pernah melampirkan tambahan, maka append nama file di database
+        if ($upload_file) {
+            $data['upload_file'] = $upload_file . "," . $comma;
+        } else {
+            $data['upload_file'] = $comma;
+        }
+
         $id = $this->approval_bonus_model->update($data, $where);
 
         //Membuat notifikasi Perubahan Data untuk Admin

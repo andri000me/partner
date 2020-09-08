@@ -35,8 +35,10 @@
             if (!$this->upload->do_upload($attachment)) {
                 return $this->session->set_flashdata("upload_error", "<div class='alert alert-danger'>" . $this->upload->display_errors() . "</div>");
             } else {
-                $string = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y')];
-                return implode(",", $string);
+                // $string = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y')];
+                $string = $this->upload->data('file_name');
+                // return implode(",", $string);
+                return $string;
             }
         }
 
@@ -518,7 +520,6 @@
                         // Get data about the file
                         $uploadData = [$this->upload->data('file_name'), $this->upload->data('file_size'), date('d-m-Y')];
                         $filename = implode(",", $uploadData);
-
 
                         // Initialize array
                         $data['filenames'][] = $filename;

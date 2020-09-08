@@ -132,7 +132,7 @@ $(".readonly").keydown(function (e) {
 // alert($("#id_leads").val());
 $("#reset").hide();
 if ($("#id_leads").val()) {
-	$("#nama_konsumen").attr("readonly", "readonly");
+	// $("#nama_konsumen").attr("readonly", "readonly");
 	$("#reset").show();
 }
 

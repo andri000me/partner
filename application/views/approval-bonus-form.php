@@ -45,8 +45,8 @@
                                                  <button class="btn btn-danger text-size" type="button" id="reset">hapus</button>
                                                  <button class="btn btn-primary text-size" type="button" id="" data-toggle="modal" data-target="#modal-leads">Cari</button>
                                              </div>
-                                             <?= form_error('leads_id') ?>
                                          </div>
+                                         <?= form_error('leads_id') ?>
                                      </div>
                                  </div>
                              </div>
@@ -131,8 +131,19 @@
                                  <input type="text" class="form-control text-size placement number-only" name="npwp" id="npwp" value="<?= set_value('npwp') ?>" required placeholder="NPWP" minlength="15" maxlength="15" />
                              </div>
                              <div class="form-group text-size ml-4 mr-4">
-                                 <label>Data Lampiran</label>
-                                 <input type="file" name="lampiran" class="filestyle" data-buttonname="btn-secondary">
+                                 <!-- <label>Data Lampiran</label>
+                                 <input type="file" name="lampiran" class="filestyle" data-buttonname="btn-secondary"> -->
+                                 <h4 class="mt-0 header-title mb-4"><b>Tambah Data Lampiran</b></h4>
+                                 <div class="form-group element text-size">
+                                     <label>Lampirkan Data</label><br>
+                                     <input type="file" name="tambah_lampiran[]" id="upload_file1" required>
+                                 </div>
+                                 <hr>
+                                 <div id="moreImageUpload"></div>
+                                 <div class="clear "></div>
+                                 <div id="moreImageUploadLink" class="float-right mt-3">
+                                     <a class="btn btn-secondary text-size mr-1" href="javascript:void(0);" id="attachMore">Tambah Lampiran</a>
+                                 </div>
                              </div>
                          </div>
                      </div>

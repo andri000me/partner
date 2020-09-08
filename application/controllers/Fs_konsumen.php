@@ -18,7 +18,7 @@ class Fs_konsumen extends CI_Controller
         else if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
             $this->where = "(branches.id_branch = " . $this->fungsi->user_login()->id_branch . " OR leads_full.cabang_cross = " . $this->fungsi->user_login()->id_branch . ")";
         } else if ($this->fungsi->user_login()->level == 4 || $this->fungsi->user_login()->level == 5) {
-            $this->where = "tickets.status >= 2";
+            $this->where = "tickets.status >= -1";
         } else {
             $this->where = "id IS NOT NULL";
         }
@@ -43,9 +43,15 @@ class Fs_konsumen extends CI_Controller
     public function index()
     {
         $data = [
-            'data'      => $this->fs_konsumen_model->get($this->where),
-            'unfinished'   => $this->fs_konsumen_model->get("tickets.status <= 5 AND " . $this->where),
-            'completed' => $this->fs_konsumen_model->get("tickets.status = 6 AND " . $this->where),
+            'data'              => $this->fs_konsumen_model->get($this->where),
+            'not_completed'     => $this->fs_konsumen_model->get("tickets.status = -1 AND " . $this->where),
+            'head_approval'     => $this->fs_konsumen_model->get("tickets.status = 0 AND " . $this->where),
+            'manager_approval'  => $this->fs_konsumen_model->get("tickets.status = 1 AND " . $this->where),
+            'ho_approval'       => $this->fs_konsumen_model->get("tickets.status = 2 AND " . $this->where),
+            'returned'          => $this->fs_konsumen_model->get("tickets.status = 4 AND " . $this->where),
+            'scoring'           => $this->fs_konsumen_model->get("tickets.status = 5 AND " . $this->where),
+            'completed'         => $this->fs_konsumen_model->get("tickets.status = 6 AND " . $this->where),
+
             'users'     => $this->user_model->get_all("users.id_branch = " . $this->fungsi->user_login()->id_branch . " AND is_active = 1")
         ];
 
@@ -58,10 +64,12 @@ class Fs_konsumen extends CI_Controller
         $user_login = $this->fungsi->user_login();
         $where_data = $user_login->level == 1 ? "id_user = " . $user_login->id_user : (($user_login->level == 2 || $user_login->level == 3) ? "id_branch = " . $user_login->id_branch : "id_user IS NOT NULL");
         $data = [
-            'data'              => $this->fs_konsumen_model->get($where)->row(),
-            'leads'              => $this->leads_model->get($where)->row(),
-            'branches'          => $this->branch_model->get(),
-
+            'data'          => $this->fs_konsumen_model->get($where)->row(),
+            'leads'         => $this->leads_model->get($where)->row(),
+            'branches'      => $this->branch_model->get(),
+            'activities'    => $this->leads_activity_model->get($where),
+            'ticket'        => $this->ticket_model->get($where)->row(),
+            'comments'      => $this->comment_model->get($where),
             'agents'    => $this->agent_model->get("agents." . $where_data),
             'partners'  => $this->partner_model->get("partners_full." . $where_data)
         ];
@@ -270,7 +278,7 @@ class Fs_konsumen extends CI_Controller
             'character_nama2'                   => $this->is_set($id_leads, 'character_nama2'),
             'character_no_telp2'                => $this->is_set($id_leads, 'character_no_telp2'),
             'character_hubungan2'               => $this->is_set($id_leads, 'character_hubungan2'),
-            'character_nama3'                   => $this->is_set($id_leads, 'character_nama3'),
+            'character_nama3'                  => $this->is_set($id_leads, 'character_nama3'),
             'character_no_telp3'                => $this->is_set($id_leads, 'character_no_telp3'),
             'character_hubungan3'               => $this->is_set($id_leads, 'character_hubungan3'),
             'character_hasil_kredit'            => $this->is_set($id_leads, 'character_hasil_kredit'),
@@ -324,7 +332,7 @@ class Fs_konsumen extends CI_Controller
                 $this->fungsi->user_login()->level == 3) &&
             $this->ticket_model->get("tickets.id_leads = " . $this->input->post('id_leads'))->row()->status_approval == '4'
         ) {
-            $pending = ['status' => '2'];
+            $pending = ['status' => '2', 'date_pending', date('Y-m-d H:i:s')];
             $this->ticket_model->update($pending, $where);
         }
 
@@ -352,29 +360,32 @@ class Fs_konsumen extends CI_Controller
         $this->fs_konsumen_model->update(['is_recommended' => ''], ['id_leads' => $this->input->post('data')]);
 
         //tiket ditolak (returned)
-        $id = $this->ticket_model->update(['status' => 4], ['id_leads' => $this->input->post('data')]);
+        $id = $this->ticket_model->update(['status' => 4, 'date_rejected' => date('Y-m-d H:i:s')], ['id_leads' => $this->input->post('data')]);
 
         //notification
         $ticket = $this->ticket_model->get("tickets.id_leads = " . $this->input->post('data'))->row();
         $this->notifikasi->send($ticket->id_ticket, "Data Form survey dikembalikan" . $ticket->branch_id, $ticket->user_id);
 
+        $this->session->set_flashdata("alert", "<div class='alert alert-success'>Status tiket diproses ke returned</div>");
         echo json_encode($id);
     }
 
     //fungsi untuk head approve form survey ke admin ho
-    public function kirim_fs($id)
+    public function kirim_fs($id_ticket)
     {
-        //tiket diapprove
-        if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
-            //pending ho
-            $status = 2;
-        } else if ($this->fungsi->user_login()->level == 4) {
-            // scoring
-            $status = 5;
-        }
-        $id = $this->ticket_model->update(['status' => $status], ['id_leads' => $id]);
+        // tiket diapprove
+        // if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) {
+        //     //pending ho
+        //     $status = 2;
+        // } else if ($this->fungsi->user_login()->level == 4) {
+        //     // scoring
+        //     $status = 5;
+        // }
+        // $id = $this->ticket_model->update(['status' => $status], ['id_leads' => $id]);
 
         // echo json_encode($id);
+
+        $this->tiket->update_tiket($id_ticket);
         redirect('fs_konsumen');
     }
 
@@ -495,9 +506,9 @@ class Fs_konsumen extends CI_Controller
 
         // Jika is recommended telah ditentukan, maka set tiket fs ke selesai
         if ($this->input->post('data') == "Recommended") {
-            $this->ticket_model->update(['status' => 6], $where);
+            $this->ticket_model->update(['status' => 6, 'date_completed' => date('Y-m-d H:i:s')], $where);
         } else if ($this->input->post('data') == "Not Recommended") {
-            $this->ticket_model->update(['status' => 6], $where);
+            $this->ticket_model->update(['status' => 6, 'date_completed' => date('Y-m-d H:i:s')], $where);
         }
 
         redirect('fs_konsumen');

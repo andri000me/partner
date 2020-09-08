@@ -405,7 +405,7 @@
                                                         <option selected disabled value="">Pilih Cabang</option>
                                                         <?php foreach ($branches->result() as $branch) { ?>
                                                             <?php if ($branch->id_branch == $this->fungsi->user_login()->id_branch && $cabang_asal == $data->id_branch) continue; ?>
-                                                            <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> <?= $branch->id_branch == $cabang_asal ? 'disabled' : '' ?> value="<?= $branch->id_branch ?>">
+                                                            <option <?= $branch->id_branch == $data->cabang_cross ? 'selected' : '' ?> value="<?= $branch->id_branch ?>">
                                                                 <?= $branch->nama_cabang ?></option>
                                                         <?php } ?>
                                                     </select>

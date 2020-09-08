@@ -101,13 +101,10 @@ class Transfer_data extends CI_Controller
         $data = ['id_user' => $post['transfer_to']];
 
         $update_agent = $this->agent_model->update($data, $where);
-        $update_mapping_leads = $this->mapping_leads->update($data, $where);
-        $update_mapping_partner = $this->mapping_partner_model->update($data, $where);
+        $update_leads = $this->leads_model->update($data, $where);
+        $update_partner = $this->partner_model->update($data, $where);
 
-        // if ($update_agent > 0 || $update_mapping_leads > 0 || $update_mapping_partner > 0) {
-        // echo $update_agent . ' ' . $update_mapping_leads . ' ' . $update_mapping_partner;
         redirect('transfer_data');
-        // }
     }
 
     public function update_transfer()

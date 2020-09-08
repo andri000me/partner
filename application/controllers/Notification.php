@@ -1,5 +1,10 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+// require __DIR__ . '/vendor/autoload.php';
+require('vendor/autoload.php');
+
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
 
 class Notification extends CI_Controller
 {
@@ -54,8 +59,22 @@ class Notification extends CI_Controller
         echo json_encode($data);
     }
 
-    public function send_notification()
+
+
+    public function real_time($id_ticket, $message, $penerima_cabang = NULL, $penerima = NULL)
     {
-        $this->pemberitahuan->send(100, 'haha', 5, 5);
+
+        $serviceAccount = 'assets/firebase/partnership-49790-firebase-adminsdk-h3xvx-e51012dda1.json';
+        $firebase = (new Factory)->withServiceAccount($serviceAccount)->withDatabaseUri('https://partnership-49790.firebaseio.com/');
+        $database = $firebase->createDatabase();
+        $postData = [
+            'pengirim'          => $this->fungsi->user_login()->id_user,
+            'penerima_cabang'   => $penerima_cabang != NULL ? $penerima_cabang : NULL,
+            'penerima'          => $penerima != NULL ? $penerima : NULL,
+            'type'              => $message,
+            'id_ticket'         => $id_ticket,
+            'created_at'        => date('Y-m-d H:i:s')
+        ];
+        $postRef = $database->getReference('/notifications')->push($postData);
     }
 }

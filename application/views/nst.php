@@ -11,7 +11,7 @@
 </div>
 <div class="row">
     <div class="col-md-12 card-margin-2">
-        <?php if ($this->fungsi->user_login()->level != 4) { ?>
+        <?php if ($this->fungsi->user_login()->level < 4) { ?>
             <div class="btn-kanan">
                 <a href="<?= base_url('nst/create') ?>"><button class="btn btn-primary mb-2 text-size"><b>Tambah NST</b></button></a>
             </div>

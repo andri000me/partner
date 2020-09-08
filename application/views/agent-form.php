@@ -36,7 +36,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="top-wizard">
-                        <form action="<?= base_url('Agent/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
+                        <form id="agent-form" action="<?= base_url('Agent/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
                             <input id="website" name="website" type="disable" value="">
 
                             <!-- ID Agent -->
@@ -98,7 +98,8 @@
                                                         <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= set_value('pekerjaan') ?>" required placeholder="Pilih Pekerjaan" /> -->
                                                         <select class="form-control text-size <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
                                                             <option selected disabled value="">Pilih Pekerjaan</option>
-                                                            <option <?= set_value('pekerjaan') == 'Swasta' ? 'selected' : '' ?> value="Swasta">Swasta</option>
+                                                            <option <?= set_value('pekerjaan') == 'Pegawai Swasta' ? 'selected' : '' ?> value="Pegawai Swasta">Pegawai Swasta</option>
+                                                            <option <?= set_value('pekerjaan') == 'Pegawai Negeri' ? 'selected' : '' ?> value="Pegawai Negeri">Pegawai Negeri</option>
                                                             <option <?= set_value('pekerjaan') == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">Wiraswasta</option>
                                                             <option <?= set_value('pekerjaan') == 'Freelance' ? 'selected' : '' ?> value="Freelance">Freelance</option>
                                                         </select>
@@ -364,4 +365,16 @@
     $('#draft').click(function() {
         $("input, select").removeAttr('required');
     })
+
+    var required = [];
+    var non_required = [];
+    $('#agent-form').find('input, select, textarea').each(function() {
+        if ($(this).attr('required')) {
+            required.push($(this).attr('name'))
+        } else {
+            non_required.push($(this).attr('name'))
+        }
+    });
+    console.log(required);
+    console.log(non_required);
 </script>

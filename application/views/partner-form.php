@@ -39,7 +39,7 @@
                         <div id="progressbar"></div>
                     </div>
                     <div id="head-wizard">
-                        <form action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
+                        <form id="partner-form" action="<?= base_url('Partner/save') ?>" method="post" enctype="multipart/form-data" class=" text-size">
                             <input id="website" name="website" type="disable" value="">
                             <input type="hidden" name="id_partner" id="id_partner" value="<?= set_value('id_partner') ?>">
 
@@ -698,4 +698,16 @@
     $('#bentuk_usaha').click(function() {
         perorangan();
     })
+
+    var required = [];
+    var non_required = [];
+    $('#partner-form').find('input, select, textarea').each(function() {
+        if ($(this).attr('required')) {
+            required.push($(this).attr('name'))
+        } else {
+            non_required.push($(this).attr('name'))
+        }
+    });
+    console.log(required);
+    console.log(non_required);
 </script>

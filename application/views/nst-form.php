@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="col-sm-12">
 		<div class="page-title-box card-margin-5">
-			<h4><b>Form NST</b></h4>
+			<h4><b>Detail NST</b></h4>
 			<ol class="breadcrumb text-size">
-				<li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
-				<li class="breadcrumb-item"><a href="javascript:void(0);">NST</a></li>
-				<li class="breadcrumb-item active">Tambah NST</li>
+				<li class="breadcrumb-item"><a href="<?= base_url() ?>">Helpdesk</a></li>
+				<li class="breadcrumb-item"><a href="<?= base_url('nst') ?>">NST</a></li>
+				<li class="breadcrumb-item active">Create NST</li>
 			</ol>
 		</div>
 	</div>
@@ -37,7 +37,7 @@
 							<div class="form-margin">
 								<label>Leads ID</label>
 								<div class="input-group">
-									<input type="text" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" required placeholder="202001SLOS12345" aria-label="Recipient's username" aria-describedby="button-addon2">
+									<input type="text" class="form-control <?= form_error('leads_id') ? 'is-invalid' : '' ?>" name="leads_id" id="leads_id" value="<?= set_value('leads_id') ?>" readonly required placeholder="202001SLOS12345" aria-label="Recipient's username" aria-describedby="button-addon2">
 									<div class="input-group-append">
 										<button class="btn btn-danger text-size" type="button" id="reset"><b>Hapus</b></button>
 										<button class="btn btn-primary" type="button" id="button-addon2" data-toggle="modal" data-target=".modal-leads"><b>Cari</b></button>

@@ -3,22 +3,10 @@
         <div class="page-title-box card-margin-5">
             <h4><b>Detail NST</b></h4>
             <ol class="breadcrumb text-size">
-                <li class="breadcrumb-item"><a href="javascript:void(0);">Helpdesk</a></li>
-                <li class="breadcrumb-item"><a href="javascript:void(0);">NST</a></li>
-                <li class="breadcrumb-item active">Tambah NST</li>
+                <li class="breadcrumb-item"><a href="<?= base_url() ?>">Helpdesk</a></li>
+                <li class="breadcrumb-item"><a href="<?= base_url('nst') ?>">NST</a></li>
+                <li class="breadcrumb-item active">Edit NST</li>
             </ol>
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <div class="alert alert-primary font-size gradient card-margin-5 mb-5" role="alert">
-            <div class="topcaption">
-                <p class="captionalert"><i class="fas fa-info-circle fa-lg"></i> &nbsp;&nbsp;<b>Hati - hati dalam
-                        menginput data</b></p>
-                <p class="captiontext">Cari data menggunakan tombol "Cari" di bawah ini.</p>
-            </div>
         </div>
     </div>
 </div>

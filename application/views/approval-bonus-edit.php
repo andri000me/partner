@@ -146,7 +146,6 @@
                             $uploads =  explode(",", $data->upload_file);
                             foreach ($uploads as $upload) {
                             ?>
-                                <!-- NPWP -->
                                 <div class="item" style="height:150px; width:300px;">
                                     <?php if (get_extension($upload)) { ?>
                                         <div class="zoom-gallery">
@@ -168,17 +167,34 @@
                     <div class="form-group mb-0 float-right mt-4 mr-4">
                         <?php
                         $level = $this->fungsi->user_login()->level;
-                        if (($level != 1) && (($level == 2 && $data->status == 0) || ($level == 3 && $data->status == 1) || ($level == 4 && $data->status == 2))) {
+                        if (
+                            //Bukan CMS
+                            ($level != 1) &&
+                            // Head & Menunggu Persetujuan Head 
+                            (
+                                ($level == 2 && $ticket->status_approval == 0) ||
+                                // Manager & Menunggu Persetujuan Manager 
+                                ($level == 3 && $ticket->status_approval == 1) ||
+                                // Admin & Pending HO 
+                                ($level == 4 && $ticket->status_approval == 2) ||
+                                // Head HO & Disetujui 
+                                ($level == 5 && $ticket->status_approval == 5))
+                        ) {
                         ?>
-                            <a class="btn btn-info text-size" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $data->id_ticket) ?>">Approve</a>
+                            <a class="btn btn-info text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENYETUJUI data tiket ini?')" href="<?= base_url('ticket/approve_status/' . $ticket->id_ticket . '/partner') ?>"><b>Approve</b></a>
                         <?php } ?>
-                        <?php if ($level == 4 && $data->status == 2) { ?>
-                            <a class="btn btn-danger text-size" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $data->id_ticket) ?>">Reject</a>
+                        <!-- Tombol REJECT untuk ADMIN HO -->
+                        <?php if ($level == 4 && $ticket->status_approval == 2) { ?>
+                            <a class="btn btn-danger text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENOLAK data tiket ini?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/partner') ?>"><b>Reject</b></a>
                         <?php } ?>
-                        <a href="<?= base_url('mapping_leads') ?>" class="btn btn-secondary waves-effect waves-light text-size">Batal</a>
-                        <?php if ($level < 4) { ?>
-                            <button type="submit" class="btn btn-primary waves-effect waves-light text-size ml-1">
-                                Simpan
+                        <!-- Tombol RETURN untuk Head & Manager -->
+                        <?php if (($level == 2 || $level == 3) && ($ticket->status_approval == 0 || $ticket->status_approval == 1)) { ?>
+                            <a class="btn btn-danger text-size ml-1 mb-1" onclick="return confirm('Apakah Anda yakin MENGEMBALIKAN data tiket ini ke CMS?')" href="<?= base_url('ticket/reject_status/' . $ticket->id_ticket . '/partner') ?>"><b>Return</b></a>
+                        <?php } ?>
+                        <!-- Tombol SIMPAN untuk simpan data -->
+                        <?php if ($level < 4 && $level != 3) { ?>
+                            <button type="submit" onclick="return confirm('Mohon pastikan data yang diisi sudah benar!')" class="btn btn-primary waves-effect waves-light text-size ml-1 mb-1">
+                                <b>Simpan</b>
                             </button>
                         <?php } ?>
                     </div>

@@ -142,11 +142,11 @@
                 <?php } ?>
 
                 <?php if ($this->fungsi->module()->product_active == 1) { ?>
-                    <li>
+                    <!-- <li>
                         <a href="<?= base_url('product_support') ?>" class="waves-effect">
                             <i class="ion-headphone  noti-icon"></i><span> Product Support </span>
                         </a>
-                    </li>
+                    </li> -->
                 <?php } ?>
 
                 <li>

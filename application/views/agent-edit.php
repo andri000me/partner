@@ -99,7 +99,8 @@
                                                         <!-- <input type="text" class="form-control <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" value="<?= $data->pekerjaan ?>" required placeholder="Pilih Pekerjaan" /> -->
                                                         <select class="form-control text-size <?= form_error('pekerjaan') ? 'is-invalid' : '' ?>" name="pekerjaan" id="pekerjaan" required>
                                                             <option selected disabled value="">Pilih Pekerjaan</option>
-                                                            <option <?= $data->pekerjaan == 'Swasta' ? 'selected' : '' ?> value="Swasta">Swasta</option>
+                                                            <option <?= $data->pekerjaan == 'Pegawai Swasta' ? 'selected' : '' ?> value="Pegawai Swasta">Pegawai Swasta</option>
+                                                            <option <?= $data->pekerjaan == 'Pegawai Negeri' ? 'selected' : '' ?> value="Pegawai Negeri">Pegawai Negeri</option>
                                                             <option <?= $data->pekerjaan == 'Wiraswasta' ? 'selected' : '' ?> value="Wiraswasta">Wiraswasta</option>
                                                             <option <?= $data->pekerjaan == 'Freelance' ? 'selected' : '' ?> value="Freelance">Freelance</option>
                                                         </select>

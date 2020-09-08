@@ -67,10 +67,10 @@ class Tiket
         }
     }
 
-    function tambah_tiket($aktivitas_cabang, $id, $merge = NULL)
+    function tambah_tiket($aktivitas_cabang, $id, $staging = NULL, $merge = NULL)
     {
         $data = [
-            'status'            => $this->staging,
+            'status'            => $staging != NULL ? $staging : $this->staging,
             'date_pending'      => date('Y-m-d H:i:s'),
             'date_created'      => date('Y-m-d H:i:s'),
             'date_modified'     => date('Y-m-d H:i:s'),
@@ -89,6 +89,15 @@ class Tiket
             'date_pending'  => date('Y-m-d H:i:s'),
             'date_modified'  => date('Y-m-d H:i:s')
         ];
+        if ($this->staging == 0) $staging = 'Head Approval';
+        if ($this->staging == 1) $staging = 'Manager Approval';
+        if ($this->staging == 2) $staging = 'HO Approval';
+        if ($this->staging == 3) $staging = 'Head Approval';
+        if ($this->staging == 4) $staging = 'Rejected/Returned';
+        if ($this->staging == 5) $staging = 'Approved/Score';
+        if ($this->staging == 6) $staging = 'Finished';
+
+        $this->ci->session->set_flashdata("alert", "<div class='alert alert-success'>Status tiket diproses ke $staging</div>");
         return $this->ci->ticket_model->update($data, ['id_ticket' => $id_ticket]);
     }
 

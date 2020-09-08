@@ -77,4 +77,17 @@ class Comment extends CI_Controller
 
         redirect($post['uri_string']);
     }
+
+    public function realTimeComment()
+    {
+        $post = $this->input->post(NULL, TRUE);
+
+        $where = [
+            'id_user' => $post['id_user']
+        ];
+
+        $data = $this->user_model->get_all($where)->row()->name;
+
+        echo ($data);
+    }
 }

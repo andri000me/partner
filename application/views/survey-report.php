@@ -19,6 +19,7 @@
                 <h4 class="mt-0 header-title"><b>Tabel Data Survey</b></h4>
                 <p class="text-muted m-b-30 text-size">Gunakan form ini untuk input kosumen prospect / go live untuk
                     keperluan NST, KPI dan Bonus</p>
+                <?= $this->session->flashdata('alert') ?>
                 <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#all" role="tab">
@@ -27,15 +28,45 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#pending" role="tab">
-                            <span class="d-block d-sm-none">Unfinished <span class="badge badge-danger"><?= $unfinished->num_rows() ?></span></span>
-                            <span class="d-none d-sm-block">Unfinished <span class="badge badge-danger"><?= $unfinished->num_rows() ?></span></span>
+                        <a class="nav-link" data-toggle="tab" href="#not-completed" role="tab">
+                            <span class="d-block d-sm-none">Not Completed <?= $not_completed->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $not_completed->num_rows() . "</span>" : '' ?> </span>
+                            <span class="d-none d-sm-block">Not Completed <?= $not_completed->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $not_completed->num_rows() . "</span>" : '' ?> </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#head-approval" role="tab">
+                            <span class="d-block d-sm-none">Head Approval <?= $head_approval->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $head_approval->num_rows() . "</span>" : '' ?> </span>
+                            <span class="d-none d-sm-block">Head Approval <?= $head_approval->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $head_approval->num_rows() . "</span>" : '' ?> </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#manager-approval" role="tab">
+                            <span class="d-block d-sm-none">Manager Approval <?= $manager_approval->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $manager_approval->num_rows() . "</span>" : '' ?> </span>
+                            <span class="d-none d-sm-block">Manager Approval <?= $manager_approval->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $manager_approval->num_rows() . "</span>" : '' ?> </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#ho-approval" role="tab">
+                            <span class="d-block d-sm-none">HO Approval <?= $ho_approval->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $ho_approval->num_rows() . "</span>" : '' ?> </span>
+                            <span class="d-none d-sm-block">HO Approval <?= $ho_approval->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $ho_approval->num_rows() . "</span>" : '' ?> </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#scoring" role="tab">
+                            <span class="d-block d-sm-none">Scoring <?= $scoring->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $scoring->num_rows() . "</span>" : '' ?> </span>
+                            <span class="d-none d-sm-block">Scoring <?= $scoring->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $scoring->num_rows() . "</span>" : '' ?> </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#returned" role="tab">
+                            <span class="d-block d-sm-none">Returned <?= $returned->num_rows() > 0 ? "<span class='badge badge-danger'>" . $returned->num_rows() . "</span>" : '' ?> </span>
+                            <span class="d-none d-sm-block">Returned <?= $returned->num_rows() > 0 ? "<span class='badge badge-danger'>" . $returned->num_rows() . "</span>" : '' ?> </span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#finished" role="tab">
-                            <span class="d-block d-sm-none">Finished</span>
-                            <span class="d-none d-sm-block">Finished</span>
+                            <span class="d-block d-sm-none">Finished <?= $completed->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $completed->num_rows() . "</span>" : '' ?></span>
+                            <span class="d-none d-sm-block">Finished <?= $completed->num_rows() > 0 ? "<span class='badge badge-secondary'>" . $completed->num_rows() . "</span>" : '' ?></span>
                         </a>
                     </li>
                 </ul>
@@ -138,7 +169,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="tab-pane p-3" id="pending" role="tabpanel">
+                    <div class="tab-pane p-3" id="not-completed" role="tabpanel">
                         <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                             <thead>
                                 <tr>
@@ -151,13 +182,11 @@
                                     <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
                                         <th>Assign To</th>
                                     <?php } ?>
-                                    <th>Recommendation</th>
-                                    <th>Score</th>
                                     <th> </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($unfinished->result() as $fs_konsumen) { ?>
+                                <?php foreach ($not_completed->result() as $fs_konsumen) { ?>
                                     <tr>
                                         <td>
                                             <?= $fs_konsumen->id ?>
@@ -175,7 +204,9 @@
                                             <?= $fs_konsumen->nama_cabang ?>
                                         </td>
                                         <td>
-                                            <?php if ($fs_konsumen->status_approval == 0) { ?>
+                                            <?php if ($fs_konsumen->status_approval == -1) { ?>
+                                                <b class="text-secondary">Not Completed</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 0) { ?>
                                                 <b class="text-secondary">Head Approval</b>
                                             <?php } else if ($fs_konsumen->status_approval == 1) { ?>
                                                 <b class="text-secondary">Manager Approval</b>
@@ -203,21 +234,411 @@
                                                 </center>
                                             </td>
                                         <?php } ?>
+                                        <td style="white-space: nowrap;">
+                                            <center>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
+                                                <?php } ?>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane p-3" id="head-approval" role="tabpanel">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
+                                    <th>Nama Konsumen</th>
+                                    <th>Cross Branch</th>
+                                    <th>Cabang</th>
+                                    <th>Status</th>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                        <th>Assign To</th>
+                                    <?php } ?>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($head_approval->result() as $fs_konsumen) { ?>
+                                    <tr>
                                         <td>
-                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
-                                                <b class="text-primary">Recommended</b><br>
-                                            <?php } ?>
-                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
-                                                <b class="text-danger">Not Recommended</b>
-                                            <?php } ?> </td>
+                                            <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
+                                        </td>
                                         <td>
-                                            <?php if ($fs_konsumen->is_recommended == 'Recommended') { ?>
-                                                <b class="text-primary">Pass</b><br>
-                                            <?php } ?>
-                                            <?php if ($fs_konsumen->is_recommended == 'Not Recommended') { ?>
-                                                <b class="text-danger">Fail</b>
+                                            <?= $fs_konsumen->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->cross_branch ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_cabang ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($fs_konsumen->status_approval == NULL) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 0) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                                <b class="text-secondary">Manager Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                                <b class="text-secondary">HO Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                                <b class="text-warning">In Progress</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                                <b class="text-danger">Returned</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                                <b class="text-secondary">Scoring</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                                <b class="text-success">Finished</b>
                                             <?php } ?>
                                         </td>
+                                        <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                            <td data-search="<?= $fs_konsumen->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size survey border" data-fs="<?= $fs_konsumen->id ?>">
+                                                        <option selected value="">Pilih CMS</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        <?php } ?>
+                                        <td style="white-space: nowrap;">
+                                            <center>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
+                                                <?php } ?>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane p-3" id="manager-approval" role="tabpanel">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
+                                    <th>Nama Konsumen</th>
+                                    <th>Cross Branch</th>
+                                    <th>Cabang</th>
+                                    <th>Status</th>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                        <th>Assign To</th>
+                                    <?php } ?>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($manager_approval->result() as $fs_konsumen) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->cross_branch ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_cabang ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($fs_konsumen->status_approval == NULL) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 0) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                                <b class="text-secondary">Manager Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                                <b class="text-secondary">HO Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                                <b class="text-warning">In Progress</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                                <b class="text-danger">Returned</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                                <b class="text-secondary">Scoring</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                                <b class="text-success">Finished</b>
+                                            <?php } ?>
+                                        </td>
+                                        <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                            <td data-search="<?= $fs_konsumen->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size survey border" data-fs="<?= $fs_konsumen->id ?>">
+                                                        <option selected value="">Pilih CMS</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        <?php } ?>
+                                        <td style="white-space: nowrap;">
+                                            <center>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
+                                                <?php } ?>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane p-3" id="ho-approval" role="tabpanel">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
+                                    <th>Nama Konsumen</th>
+                                    <th>Cross Branch</th>
+                                    <th>Cabang</th>
+                                    <th>Status</th>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                        <th>Assign To</th>
+                                    <?php } ?>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($ho_approval->result() as $fs_konsumen) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->cross_branch ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_cabang ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($fs_konsumen->status_approval == NULL) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 0) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                                <b class="text-secondary">Manager Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                                <b class="text-secondary">HO Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                                <b class="text-warning">In Progress</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                                <b class="text-danger">Returned</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                                <b class="text-secondary">Scoring</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                                <b class="text-success">Finished</b>
+                                            <?php } ?>
+                                        </td>
+                                        <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                            <td data-search="<?= $fs_konsumen->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size survey border" data-fs="<?= $fs_konsumen->id ?>">
+                                                        <option selected value="">Pilih CMS</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        <?php } ?>
+                                        <td style="white-space: nowrap;">
+                                            <center>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
+                                                <?php } ?>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane p-3" id="scoring" role="tabpanel">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
+                                    <th>Nama Konsumen</th>
+                                    <th>Cross Branch</th>
+                                    <th>Cabang</th>
+                                    <th>Status</th>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                        <th>Assign To</th>
+                                    <?php } ?>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($scoring->result() as $fs_konsumen) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->cross_branch ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_cabang ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($fs_konsumen->status_approval == NULL) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 0) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                                <b class="text-secondary">Manager Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                                <b class="text-secondary">HO Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                                <b class="text-warning">In Progress</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                                <b class="text-danger">Returned</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                                <b class="text-secondary">Scoring</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                                <b class="text-success">Finished</b>
+                                            <?php } ?>
+                                        </td>
+                                        <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                            <td data-search="<?= $fs_konsumen->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size survey border" data-fs="<?= $fs_konsumen->id ?>">
+                                                        <option selected value="">Pilih CMS</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        <?php } ?>
+                                        <td style="white-space: nowrap;">
+                                            <center>
+                                                <?php if ($this->fungsi->user_login()->level >= 3) { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-eye"></i></a>
+                                                <?php } else { ?>
+                                                    <a href="<?= base_url('fs_konsumen/create/' . $fs_konsumen->id) ?>" class="btn btn-primary text-size radius" style="width: 40px;"><i class="fas fa-edit"></i></a>
+                                                <?php } ?>
+                                                <a href="<?= base_url('fs_konsumen/generate_pdf_html/' . $fs_konsumen->id) ?>" class="btn btn-danger text-size pdf-cir ml-2"><i class="far fa-file-pdf"></i></a>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane p-3" id="returned" role="tabpanel">
+                        <table class="datatable table table-hover dt-responsive wrap text-size" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th>ID Ticket</th>
+                                    <th>Tanggal Diubah</th>
+                                    <th>Nama Konsumen</th>
+                                    <th>Cross Branch</th>
+                                    <th>Cabang</th>
+                                    <th>Status</th>
+                                    <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                        <th>Assign To</th>
+                                    <?php } ?>
+                                    <th> </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($returned->result() as $fs_konsumen) { ?>
+                                    <tr>
+                                        <td>
+                                            <?= $fs_konsumen->id ?>
+                                        </td>
+                                        <td data-sort="<?= $fs_konsumen->updated_at ?>">
+                                            <?= $fs_konsumen->tanggal_diubah ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_konsumen ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->cross_branch ?>
+                                        </td>
+                                        <td>
+                                            <?= $fs_konsumen->nama_cabang ?>
+                                        </td>
+                                        <td>
+                                            <?php if ($fs_konsumen->status_approval == NULL) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 0) { ?>
+                                                <b class="text-secondary">Head Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 1) { ?>
+                                                <b class="text-secondary">Manager Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 2) { ?>
+                                                <b class="text-secondary">HO Approval</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 3) { ?>
+                                                <b class="text-warning">In Progress</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 4) { ?>
+                                                <b class="text-danger">Returned</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 5) { ?>
+                                                <b class="text-secondary">Scoring</b>
+                                            <?php } else if ($fs_konsumen->status_approval == 6) { ?>
+                                                <b class="text-success">Finished</b>
+                                            <?php } ?>
+                                        </td>
+                                        <?php if ($this->fungsi->user_login()->level == 2 || $this->fungsi->user_login()->level == 3) { ?>
+                                            <td data-search="<?= $fs_konsumen->name ?>">
+                                                <center>
+                                                    <select class="form-control text-size survey border" data-fs="<?= $fs_konsumen->id ?>">
+                                                        <option selected value="">Pilih CMS</option>
+                                                        <?php foreach ($users->result() as $user) { ?>
+                                                            <option <?= $user->id_user == $fs_konsumen->assign_cms ? 'selected' : '' ?> value="<?= $user->id_user ?>"><?= $user->name ?></option>
+                                                        <?php } ?>
+                                                    </select>
+                                                </center>
+                                            </td>
+                                        <?php } ?>
                                         <td style="white-space: nowrap;">
                                             <center>
                                                 <?php if ($this->fungsi->user_login()->level >= 3) { ?>
@@ -240,8 +661,10 @@
                                 <tr>
                                     <th>ID Ticket</th>
                                     <th>Tanggal Diubah</th>
-                                    <th>Leads ID</th>
-                                    <th>Status Kontrak</th>
+                                    <?php if ($this->fungsi->user_login()->level >= 4 || $this->fungsi->user_login()->level == 5) { ?>
+                                        <th>Leads ID</th>
+                                        <th>Status Kontrak</th>
+                                    <?php } ?>
                                     <th>Nama Konsumen</th>
                                     <th>Cabang</th>
                                     <th>Status</th>
@@ -262,16 +685,18 @@
                                         <td data-sort="<?= $fs_konsumen->updated_at ?>">
                                             <?= $fs_konsumen->tanggal_diubah ?>
                                         </td>
-                                        <td>
-                                            <input type="text" class="form-control leads_id" data-id="<?= $fs_konsumen->id ?>" value="<?= $fs_konsumen->leads_id ?>">
-                                        </td>
-                                        <td>
-                                            <select class="form-control text-size border status_kontrak" data-id="<?= $fs_konsumen->id ?>">
-                                                <option selected value="">Pilih Status</option>
-                                                <option <?= $fs_konsumen->status_kontrak == 'Live' ? 'selected' : '' ?> value="Live">Live</option>
-                                                <option <?= $fs_konsumen->status_kontrak == 'Reject' ? 'selected' : '' ?> value="Reject">Reject</option>
-                                            </select>
-                                        </td>
+                                        <?php if ($this->fungsi->user_login()->level >= 4 || $this->fungsi->user_login()->level == 5) { ?>
+                                            <td>
+                                                <input type="text" class="form-control leads_id" data-id="<?= $fs_konsumen->id ?>" value="<?= $fs_konsumen->leads_id ?>">
+                                            </td>
+                                            <td>
+                                                <select class="form-control text-size border status_kontrak" data-id="<?= $fs_konsumen->id ?>">
+                                                    <option selected value="">Pilih Status</option>
+                                                    <option <?= $fs_konsumen->status_kontrak == 'Live' ? 'selected' : '' ?> value="Live">Live</option>
+                                                    <option <?= $fs_konsumen->status_kontrak == 'Reject' ? 'selected' : '' ?> value="Reject">Reject</option>
+                                                </select>
+                                            </td>
+                                        <?php } ?>
                                         <td>
                                             <?= $fs_konsumen->nama_konsumen ?>
                                         </td>
